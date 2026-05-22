@@ -1,0 +1,136 @@
+extends:
+  - spectral:oas
+  - spectral:asyncapi
+
+functionsDir: "./functions"
+
+documentationUrl: https://developers.tetrascience.com/
+
+rules:
+  # Operations must declare at least one tag
+  operation-tag-defined:
+    description: Every operation must declare at least one tag for navigation
+    given: $.paths[*][get,post,put,delete,patch]
+    severity: error
+    then:
+      field: tags
+      function: truthy
+
+  # Operations must have a summary (Title Case)
+  operation-summary-required:
+    description: Every operation must have a summary
+    given: $.paths[*][get,post,put,delete,patch]
+    severity: error
+    then:
+      field: summary
+      function: truthy
+
+  operation-summary-title-case:
+    description: Operation summaries should start with a capital letter
+    given: $.paths[*][get,post,put,delete,patch].summary
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  # Every operation should have a description
+  operation-description-required:
+    description: Operations should include a description
+    given: $.paths[*][get,post,put,delete,patch]
+    severity: warn
+    then:
+      field: description
+      function: truthy
+
+  # Paths should be lowercase (Tetra uses camelCase resource names e.g. /v1/accessGroups — accept both, but no UPPER_CASE)
+  tetra-path-no-uppercase-segments:
+    description: Path segments should not be ALL CAPS
+    given: $.paths
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "/[A-Z][A-Z0-9_]+/"
+
+  # All v1 endpoints must declare security
+  tetra-secure-v1:
+    description: All /v1 operations must require authentication
+    given: $.paths[?(@property.startsWith('/v1'))][get,post,put,delete,patch]
+    severity: error
+    then:
+      field: security
+      function: truthy
+
+  # Required Tetra auth headers
+  tetra-auth-token-defined:
+    description: The ts-auth-token apiKey security scheme must be defined
+    given: $.components.securitySchemes
+    severity: error
+    then:
+      field: tsAuthToken
+      function: truthy
+
+  tetra-org-slug-defined:
+    description: The x-org-slug apiKey security scheme must be defined for tenant routing
+    given: $.components.securitySchemes
+    severity: error
+    then:
+      field: orgSlug
+      function: truthy
+
+  # Production server present
+  tetra-production-server:
+    description: The production server URL https://api.tetrascience.com must be listed
+    given: $.servers[*].url
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://api\\.tetrascience(-uat|-dev)?\\.com$"
+
+  # responses must include 401 and 429 for v1 ops
+  tetra-401-response:
+    description: Authenticated operations should declare a 401 response
+    given: $.paths[?(@property.startsWith('/v1'))][get,post,put,delete,patch].responses
+    severity: warn
+    then:
+      field: "401"
+      function: truthy
+
+  tetra-429-response:
+    description: Operations should declare a 429 response for rate-limit handling
+    given: $.paths[?(@property.startsWith('/v1'))][get,post,put,delete,patch].responses
+    severity: info
+    then:
+      field: "429"
+      function: truthy
+
+  # Tag names should be Title Case (no lowercase tag names allowed alongside Title Case ones)
+  tetra-tag-title-case:
+    description: Tag names should be Title Case (e.g. "Pipelines", not "pipelines")
+    given: $.tags[*].name
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z0-9 /-]+$"
+
+  # Path parameters should be camelCase, not snake_case
+  tetra-path-param-camelcase:
+    description: Path parameter names should be camelCase
+    given: $.paths[*][get,post,put,delete,patch].parameters[?(@.in == 'path')].name
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  # All schemas in components must have a description
+  tetra-schema-description:
+    description: Component schemas should include a description
+    given: $.components.schemas[*]
+    severity: info
+    then:
+      field: description
+      function: truthy

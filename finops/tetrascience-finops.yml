@@ -1,0 +1,160 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: TetraScience
+providerId: tetrascience
+publisherName: TetraScience
+serviceCategory: Scientific Data Platform
+created: '2026-05-21'
+modified: '2026-05-21'
+tags:
+  - Scientific Data
+  - Life Sciences
+  - Lab Data
+  - Pipelines
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: >-
+  FinOps framework alignment for the Tetra Scientific Data and AI Cloud.
+  Provides a FOCUS-shaped mapping of the platform's cost-bearing surfaces
+  (storage, pipeline compute, AI inference, agents, integrations) so that
+  scientific IT and finance teams can allocate, report, and optimize spend
+  per organization, lab, program, and study.
+principles:
+  - name: Visibility
+    description: >-
+      Expose Tetra Data Lake storage growth, pipeline run cost, and AI
+      inference spend at the organization, access group, and pipeline
+      level via the Administration API and exported billing records.
+  - name: Allocation
+    description: >-
+      Tag every pipeline run, agent, and dataset with consuming
+      organization, program / study, environment, and instrument so that
+      cost can be allocated to scientific business units.
+  - name: Optimization
+    description: >-
+      Continuously evaluate pipeline efficiency, storage tier choices
+      (hot vs. archival), schema-driven dedupe, and AI model selection
+      to reduce cost per useful scientific outcome.
+  - name: Accountability
+    description: >-
+      Establish budget owners per Tetra organization and per program;
+      provide showback / chargeback reporting back to lab and IT cost
+      centers.
+domains:
+  - name: Platform Subscription
+    description: Annual enterprise subscription to the Tetra Data and AI Cloud, including base tenancy, support, and selected modules.
+    costDrivers:
+      - tenant_size
+      - module_selection
+      - support_tier
+    focusMapping:
+      ChargeCategory: Commitment
+      ChargeClass: Subscription
+      ServiceCategory: Scientific Data Platform
+      ServiceSubcategory: SaaS Subscription
+  - name: Agents and Integrations
+    description: Per-instrument and per-application connectors that liberate data into the Tetra Data Platform.
+    costDrivers:
+      - agent_count
+      - integration_count
+      - instrument_type
+    focusMapping:
+      ChargeCategory: Usage
+      ChargeClass: Recurring
+      ServiceCategory: Scientific Data Platform
+      ServiceSubcategory: Data Connectors
+  - name: Tetra Data Pipelines
+    description: Serverless data engineering pipeline executions, billed by run count and / or runtime.
+    costDrivers:
+      - pipeline_runs
+      - average_run_duration
+      - parallelism
+    focusMapping:
+      ChargeCategory: Usage
+      ChargeClass: Consumption
+      ServiceCategory: Scientific Data Platform
+      ServiceSubcategory: Pipeline Execution
+  - name: Tetra Data Lake Storage
+    description: Cloud object storage for raw, processed, and engineered Tetra Data.
+    costDrivers:
+      - storage_gb
+      - storage_class
+      - retention_period
+    focusMapping:
+      ChargeCategory: Usage
+      ChargeClass: Consumption
+      ServiceCategory: Scientific Data Platform
+      ServiceSubcategory: Data Storage
+  - name: Tetra AI Layer
+    description: Scientific AI agents (Tetra Sciborgs), GenAI search, and model orchestration over Tetra Data.
+    costDrivers:
+      - llm_tokens
+      - agent_invocations
+      - embedding_volume
+    focusMapping:
+      ChargeCategory: Usage
+      ChargeClass: Consumption
+      ServiceCategory: AI / ML
+      ServiceSubcategory: AI Agent Platform
+  - name: GxP Compliance Module
+    description: Validation, audit trail, and electronic signatures aligned with regulated environments.
+    costDrivers:
+      - compliance_tier
+      - tenant_size
+    focusMapping:
+      ChargeCategory: Commitment
+      ChargeClass: Subscription
+      ServiceCategory: Scientific Data Platform
+      ServiceSubcategory: Compliance Module
+  - name: Professional Services
+    description: Implementation, validation, custom IDS and pipeline development, and managed services.
+    costDrivers:
+      - project_scope
+      - resources
+      - duration
+    focusMapping:
+      ChargeCategory: Purchase
+      ChargeClass: One-Time
+      ServiceCategory: Professional Services
+      ServiceSubcategory: Implementation
+focusFields:
+  required:
+    - BillingPeriodStart
+    - BillingPeriodEnd
+    - ChargeCategory
+    - ChargePeriodStart
+    - ChargePeriodEnd
+    - ProviderName
+    - PublisherName
+    - InvoiceIssuerName
+    - ServiceName
+    - ServiceCategory
+    - BilledCost
+    - EffectiveCost
+    - ListCost
+    - ContractedCost
+    - PricingCategory
+    - PricingUnit
+    - PricingQuantity
+  recommended:
+    - SubAccountId
+    - SubAccountName
+    - ResourceId
+    - ResourceName
+    - ResourceType
+    - Region
+    - Tags
+notes:
+  - >-
+    TetraScience does not publish a public price list; effective cost
+    rates must be sourced from contractual order forms and invoice data.
+  - >-
+    Tags applied at the organization, access group, and pipeline level
+    are the primary allocation mechanism for FOCUS reporting.

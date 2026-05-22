@@ -1,0 +1,138 @@
+name: TetraScience Domain Vocabulary
+provider: TetraScience
+providerId: tetrascience
+description: >-
+  Normative vocabulary for the Tetra Scientific Data and AI Cloud. Captures
+  the platform's core concepts (Tetra Data lifecycle stages, agents, IDS,
+  pipelines, AI layer), operational dimensions (tenants, organizations,
+  access groups), and scientific domain terms (chromatography, GxP, FAIR).
+created: '2026-05-21'
+modified: '2026-05-21'
+
+platform:
+  - term: Tetra Data Platform
+    abbreviation: TDP
+    description: The core multi-tenant SaaS that ingests, replatforms, engineers, and serves scientific data.
+  - term: Tetra Scientific Data and AI Cloud
+    description: The full TetraScience offering encompassing TDP + AI layer + apps.
+  - term: Tenant
+    description: A customer-scoped TDP installation containing one or more organizations.
+  - term: Organization
+    description: A logical grouping within a tenant; the primary unit of access control.
+  - term: Access Group
+    description: A configurable rule-set governing which files, attributes, and datasets a user can access.
+  - term: Role
+    description: A named permission set assignable to users within an organization.
+
+data:
+  - term: Raw Data
+    description: Files in vendor-proprietary instrument format as captured at the source.
+  - term: Replatformed Data
+    description: Raw files contextualized and centralized in the Tetra Data Lake.
+  - term: Engineered Data
+    description: Replatformed files transformed into the Intermediate Data Schema for downstream consumption.
+  - term: Tetra Data
+    description: Engineered scientific data conforming to a published IDS — FAIR, AI-ready.
+  - term: Tetra X Data
+    description: Cross-organization Tetra Data shareable with sponsors, CROs, and CDMOs without exposing raw formats.
+  - term: Intermediate Data Schema
+    abbreviation: IDS
+    description: Versioned, instrument-and-vendor-neutral JSON schema describing a scientific data type (e.g. chromatography, plate reader, mass spec).
+
+ingestion:
+  - term: Tetra Agent
+    description: Software that liberates raw data from an instrument or application and uploads it to TDP.
+  - term: Tetra Integration
+    description: Cloud-side integration that connects TDP to informatics, analytics, or partner systems.
+  - term: Tetra IoT Layer
+    description: On-premises connectivity surface for instruments behind enterprise firewalls.
+  - term: Empower Agent
+    description: Tetra Agent for Waters Empower CDS.
+  - term: Chromeleon Agent
+    description: Tetra Agent for Thermo Chromeleon CDS.
+  - term: File-Log Agent
+    description: General-purpose file-watcher agent for arbitrary file sources.
+  - term: Connector
+    description: An agent-side adapter for a specific instrument or data source.
+
+processing:
+  - term: Tetra Data Pipeline
+    description: A serverless data engineering job that parses, transforms, enriches, and routes Tetra Data.
+  - term: Pipeline Run
+    description: A single execution of a pipeline against an input file or batch.
+  - term: Master Script
+    description: The orchestrating script within a pipeline that calls protocols.
+  - term: Protocol
+    description: A pipeline definition referencing IDS and master script versions.
+
+ai:
+  - term: Tetra AI Layer
+    description: The AI orchestration surface that grounds LLM agents in Tetra Data.
+  - term: Tetra Sciborg
+    description: A scientific AI agent (chat, copilot, automation) operating over Tetra Data.
+  - term: GenAI Search
+    description: Natural language search across Tetra Data backed by retrieval-augmented generation.
+
+storage_and_search:
+  - term: Tetra Data Lake
+    description: Cloud object storage layer for raw, processed, and engineered files.
+  - term: Attribute
+    description: A typed property attached to a file or dataset (key + value).
+  - term: Tag
+    description: A free-form label for organizing files and datasets.
+  - term: Label
+    description: A controlled-vocabulary classifier for files and datasets.
+  - term: Slug
+    description: A URL-safe identifier for entities such as artifacts, IDS, or pipelines.
+  - term: Namespace
+    description: A logical grouping of artifacts, typically aligned to an organization or program.
+
+compliance:
+  - term: GxP
+    description: Umbrella of regulated environments (GLP, GCP, GMP, GVP) requiring validated software.
+  - term: 21 CFR Part 11
+    description: US FDA regulation on electronic records and signatures.
+  - term: EU Annex 11
+    description: European regulation on computerised systems in GxP environments.
+  - term: Audit Trail
+    description: Immutable record of who did what, when, in the platform.
+  - term: Validation
+    description: Documented evidence that the platform meets intended use and regulatory requirements.
+
+scientific_domains:
+  - term: Chromatography
+    description: Separation technique central to QC, analytical, and process labs (LC, GC, HPLC, UHPLC, IC).
+  - term: Mass Spectrometry
+    description: Detection technique often coupled to chromatography for structural analysis.
+  - term: Spectroscopy
+    description: UV, IR, NMR, fluorescence, etc. for structural and quantitative analysis.
+  - term: BioProcessing
+    description: Upstream and downstream processes for producing biologics.
+  - term: Discovery
+    description: Early-stage research focused on identifying drug candidates.
+  - term: CMC
+    description: Chemistry, Manufacturing, and Controls — late-stage development.
+  - term: QC
+    description: Quality Control testing of materials and products.
+
+architecture:
+  - term: FAIR
+    description: Findable, Accessible, Interoperable, Reusable — the data principles TetraScience operationalizes.
+  - term: AI-Native
+    description: Data engineered for direct, low-friction consumption by ML and LLM workloads.
+  - term: AWS PrivateLink
+    description: Connectivity mode used for tenant-private API access.
+  - term: VPC Endpoint
+    description: Customer VPC endpoint for private connectivity to the Tetra cloud.
+
+api_resources:
+  - term: File
+    description: A unit of scientific data stored in the data lake.
+  - term: Dataset
+    description: A collection of files plus associated metadata.
+  - term: Search
+    description: Query API across files, attributes, and Tetra Data.
+  - term: Artifact
+    description: A versioned platform asset such as an IDS, protocol, master script, or pipeline configuration.
+  - term: Command Queue
+    description: Per-agent queue for remote configuration and control commands.

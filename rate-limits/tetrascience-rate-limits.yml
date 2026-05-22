@@ -1,0 +1,96 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: TetraScience
+providerId: tetrascience
+created: '2026-05-21'
+modified: '2026-05-21'
+tags:
+  - Scientific Data
+  - Life Sciences
+  - Lab Data
+  - Pipelines
+  - Rate Limiting
+  - Quotas
+  - Throttling
+description: >-
+  Scaffolded rate limit definitions for the Tetra Scientific Data and AI
+  Cloud API. TetraScience does not publish a public, plan-tiered rate
+  limit table; effective limits are tenant-contracted and enforced at
+  the gateway, pipeline scheduler, and per-API-token level. The values
+  below are conservative defaults intended to be reconciled with each
+  customer's contractual entitlements and observed gateway responses.
+headers:
+  limit: X-RateLimit-Limit
+  remaining: X-RateLimit-Remaining
+  reset: X-RateLimit-Reset
+  retryAfter: Retry-After
+  policy: RateLimit-Policy
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+  serviceUnavailable: 503
+limits:
+  - tier: tenant-default
+    name: Tenant Default
+    scope: api-token
+    metric: requests_per_minute
+    limit: 600
+    burst: 1200
+    timeFrame: minute
+    applies:
+      - https://api.tetrascience.com/v1/*
+    description: >-
+      Default per-token request rate enforced at the Tetra API gateway
+      for authenticated calls. Bursts above the limit return HTTP 429
+      with Retry-After.
+  - tier: tenant-default
+    name: Concurrent Pipeline Executions
+    scope: tenant
+    metric: concurrent_runs
+    limit: 50
+    timeFrame: instant
+    applies:
+      - https://api.tetrascience.com/v1/pipelines/*
+    description: >-
+      Maximum number of pipeline executions that can run in parallel for
+      a tenant. Excess runs queue rather than fail.
+  - tier: tenant-default
+    name: Search Requests
+    scope: api-token
+    metric: requests_per_minute
+    limit: 120
+    burst: 240
+    timeFrame: minute
+    applies:
+      - https://api.tetrascience.com/v1/search/*
+      - https://api.tetrascience.com/v1/datalake/*
+    description: >-
+      Tighter limit on Elasticsearch-backed search and data-lake query
+      endpoints to protect index cluster health.
+  - tier: tenant-default
+    name: File Upload Volume
+    scope: tenant
+    metric: gigabytes_per_day
+    timeFrame: day
+    applies:
+      - https://api.tetrascience.com/v1/files
+      - https://api.tetrascience.com/v1/datalake/upload
+    description: >-
+      Daily ingest volume cap enforced per tenant. Soft limit — exceeding
+      it typically triggers a customer-success conversation, not a hard
+      block.
+recoveryStrategies:
+  - name: Exponential Backoff
+    description: On 429, wait Retry-After seconds (or back off exponentially starting at 1s, max 60s) before retrying.
+  - name: Token Refresh
+    description: Refresh expired bearer tokens via the login flow before retrying authenticated requests.
+  - name: Queue and Retry
+    description: For bulk pipeline submissions, queue jobs and submit at a steady pace under the concurrency limit.
+notes:
+  - >-
+    Real per-tenant limits should be confirmed with TetraScience Customer
+    Success — contractual entitlements supersede these defaults.
+  - >-
+    Limits may differ across api.tetrascience.com (Production), api.tetrascience-uat.com (UAT),
+    and api.tetrascience-dev.com (Development).

@@ -1,0 +1,142 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "ts": "https://www.tetrascience.com/ns/",
+    "tdp": "https://developers.tetrascience.com/ns/",
+    "apis": "https://apievangelist.com/ns/",
+    "provider": "schema:Organization",
+    "api": "schema:WebAPI",
+    "platform": "schema:SoftwareApplication",
+
+    "TetraScience": {
+      "@id": "ts:Organization",
+      "@type": "schema:Corporation"
+    },
+    "TetraDataPlatform": {
+      "@id": "ts:TetraDataPlatform",
+      "@type": "schema:SoftwareApplication"
+    },
+    "TetraDataAndAICloud": {
+      "@id": "ts:TetraDataAndAICloud",
+      "@type": "schema:SoftwareApplication"
+    },
+    "TetraAgent": {
+      "@id": "ts:Agent",
+      "@type": "schema:SoftwareApplication"
+    },
+    "TetraIntegration": {
+      "@id": "ts:Integration",
+      "@type": "schema:SoftwareApplication"
+    },
+    "TetraPipeline": {
+      "@id": "ts:Pipeline",
+      "@type": "schema:SoftwareApplication"
+    },
+    "IntermediateDataSchema": {
+      "@id": "ts:IDS",
+      "@type": "schema:DataCatalog"
+    },
+    "TetraDataLake": {
+      "@id": "ts:DataLake",
+      "@type": "schema:DataCatalog"
+    },
+    "TetraData": {
+      "@id": "ts:TetraData",
+      "@type": "schema:Dataset"
+    },
+    "TetraSciborg": {
+      "@id": "ts:Sciborg",
+      "@type": "schema:SoftwareApplication"
+    },
+    "GxPComplianceModule": {
+      "@id": "ts:GxPCompliance",
+      "@type": "schema:SoftwareApplication"
+    },
+    "ChromatographyInsightsApp": {
+      "@id": "ts:ChromatographyInsights",
+      "@type": "schema:SoftwareApplication"
+    },
+
+    "Organization": "schema:Organization",
+    "AccessGroup": {
+      "@id": "ts:AccessGroup",
+      "@type": "schema:Audience"
+    },
+    "Role": "schema:Role",
+    "User": "schema:Person",
+    "Tenant": {
+      "@id": "ts:Tenant",
+      "@type": "schema:Organization"
+    },
+
+    "Instrument": {
+      "@id": "ts:Instrument",
+      "@type": "schema:Product"
+    },
+    "RawData": {
+      "@id": "ts:RawData",
+      "@type": "schema:Dataset"
+    },
+    "ReplatformedData": {
+      "@id": "ts:ReplatformedData",
+      "@type": "schema:Dataset"
+    },
+    "EngineeredData": {
+      "@id": "ts:EngineeredData",
+      "@type": "schema:Dataset"
+    },
+    "TetraXData": {
+      "@id": "ts:TetraXData",
+      "@type": "schema:Dataset"
+    },
+
+    "id": "schema:identifier",
+    "name": "schema:name",
+    "description": "schema:description",
+    "documentation": "schema:documentation",
+    "version": "schema:softwareVersion",
+    "license": "schema:license",
+    "vendor": "schema:provider",
+    "owner": "schema:owner",
+    "tags": "schema:keywords",
+    "createdAt": "schema:dateCreated",
+    "updatedAt": "schema:dateModified",
+    "createdBy": "schema:creator",
+    "labels": "schema:keywords",
+    "attributes": "schema:additionalProperty",
+    "tenantId": "ts:tenantId",
+    "organizationId": "ts:organizationId",
+    "accessGroupId": "ts:accessGroupId",
+    "pipelineId": "ts:pipelineId",
+    "agentId": "ts:agentId",
+
+    "FAIR": {
+      "@id": "ts:FAIR",
+      "@type": "@id"
+    },
+    "GxP": {
+      "@id": "ts:GxP",
+      "@type": "@id"
+    },
+    "21CFRPart11": {
+      "@id": "ts:21CFRPart11",
+      "@type": "@id"
+    },
+    "EUAnnex11": {
+      "@id": "ts:EUAnnex11",
+      "@type": "@id"
+    },
+
+    "RAG": {
+      "@id": "ts:RAG",
+      "@type": "@id"
+    },
+    "Chromatography": "schema:keywords",
+    "Spectroscopy": "schema:keywords",
+    "MassSpectrometry": "schema:keywords",
+    "BioProcessing": "schema:keywords",
+    "Discovery": "schema:keywords",
+    "Manufacturing": "schema:keywords",
+    "QC": "schema:keywords"
+  }
+}

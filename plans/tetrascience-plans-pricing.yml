@@ -1,0 +1,143 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: TetraScience
+providerId: tetrascience
+created: '2026-05-21'
+modified: '2026-05-21'
+tags:
+  - Scientific Data
+  - Life Sciences
+  - Lab Data
+  - Pipelines
+  - AI Platform
+description: >-
+  Machine-readable plans scaffold for the Tetra Scientific Data and AI Cloud.
+  TetraScience is sold as enterprise subscriptions to pharma, biotech, CRO,
+  and CDMO customers. There is no self-service public price list — tier
+  values below are illustrative scaffolds that should be reconciled with
+  the contracted commercial terms for each customer.
+plans:
+  - id: tetrascience-platform-subscription
+    name: Platform Subscription
+    type: subscription
+    description: >-
+      Enterprise subscription to the Tetra Scientific Data and AI Cloud,
+      typically priced annually based on tenant size, instrument / agent
+      count, pipeline executions, data volume, and selected modules
+      (Chromatography Insights App, GxP Compliance Module, Tetra AI Layer,
+      Tetra Sciborgs). Pricing is contractual.
+    entries:
+      - label: Tetra Data Platform Tenant
+        description: A dedicated multi-organization TDP tenant in the Tetra cloud.
+        name: tdp_tenant
+        type: entitlement
+        metric: tenant
+        limit: 1
+        timeFrame: subscription
+        geo: global
+        domains:
+          - https://api.tetrascience.com
+        unit: 1
+        price: contract
+      - label: Tetra Agents and Integrations
+        description: Number of connected lab instrument agents and Tetra Integrations included in the subscription.
+        name: agents_integrations
+        type: entitlement
+        metric: agents
+        timeFrame: subscription
+        geo: global
+        domains:
+          - https://api.tetrascience.com
+        unit: 1
+        price: contract
+      - label: Pipeline Executions
+        description: Number of Tetra Data Pipeline executions allotted to the tenant per subscription period.
+        name: pipeline_executions
+        type: quota
+        metric: pipeline_runs
+        timeFrame: month
+        geo: global
+        domains:
+          - https://api.tetrascience.com
+        unit: 1
+        price: contract
+      - label: Data Storage
+        description: Tetra Data Lake storage allocation for raw, processed, and engineered scientific files.
+        name: data_storage
+        type: quota
+        metric: gigabytes
+        timeFrame: subscription
+        geo: global
+        domains:
+          - https://api.tetrascience.com
+        unit: 1
+        price: contract
+  - id: tetrascience-modules
+    name: Add-On Modules
+    type: addon
+    description: >-
+      Optional modules layered on top of the platform subscription.
+      Pricing is contracted per module and may be billed by usage,
+      tenant size, or seat count.
+    entries:
+      - label: Chromatography Insights App
+        description: Cross-vendor chromatography analytics, dashboards, and reporting.
+        name: chromatography_insights
+        type: entitlement
+        metric: module
+        limit: 1
+        timeFrame: subscription
+        geo: global
+        domains:
+          - https://api.tetrascience.com
+        unit: 1
+        price: contract
+      - label: GxP Compliance Module
+        description: 21 CFR Part 11 / EU Annex 11 aligned validation, audit, and electronic signatures.
+        name: gxp_compliance
+        type: entitlement
+        metric: module
+        limit: 1
+        timeFrame: subscription
+        geo: global
+        domains:
+          - https://api.tetrascience.com
+        unit: 1
+        price: contract
+      - label: Tetra AI Layer / Sciborgs
+        description: Scientific AI agents, GenAI search, and copilot workflows over Tetra Data.
+        name: tetra_ai_layer
+        type: entitlement
+        metric: module
+        limit: 1
+        timeFrame: subscription
+        geo: global
+        domains:
+          - https://api.tetrascience.com
+        unit: 1
+        price: contract
+  - id: tetrascience-professional-services
+    name: Professional Services
+    type: services
+    description: >-
+      Implementation, validation, custom pipeline / IDS development, and
+      managed services delivered by TetraScience and its partner network
+      under separate SOWs.
+    entries:
+      - label: Implementation Services
+        description: Onboarding, agent deployment, pipeline build, IDS customization.
+        name: implementation
+        type: project
+        metric: project
+        timeFrame: project
+        geo: global
+        domains:
+          - https://www.tetrascience.com/
+        unit: 1
+        price: contract
+references:
+  - name: TetraScience Pricing Inquiry
+    url: https://www.tetrascience.com/contact
+  - name: Tetra Data Platform Documentation
+    url: https://developers.tetrascience.com/docs/tetra-data-platform

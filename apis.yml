@@ -1,0 +1,252 @@
+aid: tetrascience
+name: TetraScience
+description: >-
+  TetraScience is the scientific data and AI platform company behind the
+  Tetra Scientific Data and AI Cloud — purpose-built infrastructure that
+  liberates, replatforms, and engineers raw lab data from instruments,
+  informatics systems, and partner organizations into FAIR, AI-native
+  Tetra Data. The platform combines lab data automation (agents and
+  integrations for hundreds of instruments and applications), a vendor-
+  agnostic data lake, an Intermediate Data Schema (IDS) layer, pipelines
+  for data engineering, GxP-aligned compliance, and the Tetra AI Layer
+  with Tetra Sciborgs (scientific AI agents) to accelerate discovery,
+  development, manufacturing, and quality outcomes for pharma, biotech,
+  CROs, and CDMOs.
+type: Index
+position: Provider
+access: 1st-Party
+image: https://files.readme.io/d32e87b276cac7db2775f5d68767afa34d2d5ab987ee1f3a4e02ab250c3f2448-small-tetrascience_logo_logo_color.png
+tags:
+  - Scientific Data
+  - Life Sciences
+  - Pharma
+  - Biotech
+  - Lab Data
+  - Lab Automation
+  - Data Platform
+  - Data Engineering
+  - AI Platform
+  - Scientific AI
+  - FAIR Data
+  - GxP Compliance
+  - Chromatography
+  - Spectroscopy
+  - Cloud Data Lake
+  - Pipelines
+  - Agents
+  - IDS
+created: '2026-05-21'
+modified: '2026-05-21'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/tetrascience/refs/heads/main/apis.yml
+specificationVersion: '0.20'
+apis:
+  - aid: tetrascience:tetra-data-and-ai-cloud-api
+    name: Tetra Scientific Data and AI Cloud API
+    description: >-
+      The Tetra Scientific Data and AI Cloud API (Tetra Data Platform API)
+      is the programmatic surface for managing tenants, organizations,
+      users, roles, agents, integrations, pipelines, files, datasets,
+      schemas, and search across the TetraScience platform. It is used to
+      automate lab data acquisition, ingestion, processing, and downstream
+      delivery into analytics, AI, and informatics consumers.
+    humanURL: https://developers.tetrascience.com/
+    baseURL: https://api.tetrascience.com
+    version: '4.0'
+    tags:
+      - Tetra Data Platform
+      - Lab Data
+      - Agents
+      - Pipelines
+      - IDS
+      - Files
+      - Search
+      - Identity
+      - Access Control
+    properties:
+      - type: Documentation
+        url: https://developers.tetrascience.com/
+      - type: HumanURL
+        url: https://www.tetrascience.com/
+      - type: GettingStarted
+        url: https://developers.tetrascience.com/docs/tetra-data-platform
+      - type: APIReference
+        url: https://developers.tetrascience.com/reference
+      - type: ChangeLog
+        url: https://developers.tetrascience.com/docs/agent-release-notes
+      - type: LLMSTxt
+        url: https://developers.tetrascience.com/llms.txt
+      - type: OpenAPI
+        url: openapi/tetrascience-openapi.yml
+      - type: OpenAPI
+        url: openapi/tetrascience-openapi.json
+      - type: Authentication
+        url: https://developers.tetrascience.com/docs/api-tokens
+      - type: SpectralRules
+        url: rules/tetrascience-rules.yml
+      - type: JSON-LD Context
+        url: json-ld/tetrascience-context.jsonld
+      - type: Vocabulary
+        url: vocabulary/tetrascience-vocabulary.yml
+      - type: NaftikoCapability
+        url: capabilities/tdp-agents.yaml
+      - type: NaftikoCapability
+        url: capabilities/tdp-pipelines.yaml
+      - type: NaftikoCapability
+        url: capabilities/tdp-files-and-search.yaml
+      - type: NaftikoCapability
+        url: capabilities/tdp-administration.yaml
+      - type: SDK
+        url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+      - type: PipelineExamples
+        url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+      - type: ElasticsearchExamples
+        url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+      - type: AgentMonitoring
+        url: https://github.com/tetrascience/ts-agent-monitoring
+      - type: Plan
+        url: plans/tetrascience-plans-pricing.yml
+      - type: Rate Limit
+        url: rate-limits/tetrascience-rate-limits.yml
+      - type: FinOps
+        url: finops/tetrascience-finops.yml
+    features:
+      - name: Tetra Agents
+        description: Vendor-specific software agents that liberate raw data from instruments and applications (Empower, Chromeleon, File-Log, IDBS, NuGenesis, Unicorn, and many more) and stream it into the Tetra Data Platform.
+      - name: Tetra Integrations
+        description: Pre-built cloud integrations to lab informatics, ELN/LIMS, CDS, MES, and analytics systems for bidirectional data flow.
+      - name: Tetra Data Pipelines
+        description: Configurable, serverless data engineering pipelines that parse, transform, enrich, and route Tetra Data with replays, versioning, and observability.
+      - name: Intermediate Data Schema (IDS)
+        description: Versioned, instrument-and-vendor-neutral JSON schemas that normalize scientific data into a common shape across the platform.
+      - name: Tetra Data Lake
+        description: Cloud object storage for raw, processed, and engineered scientific files with attributes, tags, labels, and audit trail.
+      - name: Search and Query
+        description: Elasticsearch-backed full-text and structured search across files, attributes, and Tetra Data with shareable, bookmarkable URLs.
+      - name: AI Layer and Tetra Sciborgs
+        description: Scientific AI agents and prompt / model orchestration grounded in Tetra Data, including GenAI search, chat, and copilot workflows.
+      - name: GxP Compliance Module
+        description: Validation, audit trail, access control, electronic signatures, and configurable compliance settings aligned with 21 CFR Part 11 / Annex 11.
+      - name: Chromatography Insights App
+        description: Pre-packaged chromatography analytics, visualization, and reporting unifying CDS data across vendors.
+      - name: Tetra IoT Layer
+        description: On-premises deployment surface for connecting instruments behind enterprise firewalls into the cloud platform via PrivateLink / VPC endpoints.
+      - name: Tenants, Organizations, Roles
+        description: Multi-tenant identity model with organizations, access groups, roles, and SSO (SAML / OIDC) for enterprise governance.
+      - name: API and Webhooks
+        description: REST APIs and event-driven webhooks for automating files, pipelines, agents, and downstream system integration.
+    useCases:
+      - name: Lab Data Automation
+        description: Replace manual file transfers from instruments to informatics with always-on, audit-friendly agents and integrations.
+      - name: Scientific Data Engineering
+        description: Transform raw vendor formats into FAIR, AI-ready Tetra Data through versioned pipelines and IDS schemas.
+      - name: GenAI / RAG for Lab Data
+        description: Ground LLM agents and retrieval workflows in engineered, structured Tetra Data for trustworthy scientific AI.
+      - name: Chromatography Productivity
+        description: Aggregate CDS data across Empower, Chromeleon, OpenLab, and Unicorn for unified analytics and reporting.
+      - name: Discovery Acceleration
+        description: Speed lead identification by unifying assay, screening, and analytical data in a single platform.
+      - name: CMC and Bioprocessing
+        description: Standardize chemistry, manufacturing, and controls data across upstream / downstream bioprocessing.
+      - name: Manufacturing and QC
+        description: Surface real-time production and QC insights with cross-instrument analytics over Tetra Data.
+      - name: CRO / CDMO Data Exchange
+        description: Share engineered Tetra X Data with sponsors and partners without exposing proprietary raw formats.
+      - name: GxP Regulated Workflows
+        description: Run validated, compliance-aware data flows for QC, manufacturing, and clinical analytical environments.
+      - name: Scientific Data Migration
+        description: Decommission legacy archives by replatforming historical scientific data into a unified, queryable lake.
+    industries:
+      - name: Pharmaceutical
+      - name: Biotechnology
+      - name: Contract Research (CRO)
+      - name: Contract Development and Manufacturing (CDMO)
+      - name: Diagnostics
+      - name: Cell and Gene Therapy
+      - name: Analytical Chemistry
+    integrations:
+      - name: Waters Empower (CDS)
+      - name: Thermo Chromeleon (CDS)
+      - name: Agilent OpenLab (CDS)
+      - name: Cytiva Unicorn
+      - name: IDBS E-WorkBook
+      - name: Benchling
+      - name: Dotmatics
+      - name: LabWare LIMS
+      - name: STARLIMS
+      - name: SampleManager
+      - name: Snowflake
+      - name: Databricks
+      - name: AWS S3
+      - name: AWS PrivateLink
+      - name: Elasticsearch
+      - name: Amazon Bedrock
+      - name: OpenAI
+      - name: Spotfire
+      - name: Tableau
+    authentication:
+      - type: API Key
+        header: ts-auth-token
+        description: API token issued from the Tetra Data Platform admin console, sent in the `ts-auth-token` request header.
+      - type: API Key
+        header: x-org-slug
+        description: Organization slug sent in the `x-org-slug` request header for tenant routing — required alongside the auth token.
+      - type: SSO
+        description: SAML 2.0 and OIDC for human users via configured identity providers (Okta, Azure AD, Ping, etc.).
+common:
+  - type: Website
+    url: https://www.tetrascience.com/
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LLMSTxt
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Blog
+    url: https://www.tetrascience.com/blog
+  - type: BlogRSS
+    url: https://www.tetrascience.com/blog/rss.xml
+  - type: GitHubOrganization
+    url: https://github.com/tetrascience
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/tetrascience/
+  - type: TermsOfService
+    url: https://www.tetrascience.com/legal/terms
+  - type: PrivacyPolicy
+    url: https://www.tetrascience.com/legal/privacy
+  - type: Support
+    url: https://developers.tetrascience.com/docs/support-request
+  - type: KnowledgeBase
+    url: https://developers.tetrascience.com/docs/access-the-tetrascience-knowledge-base
+  - type: Compliance
+    url: https://developers.tetrascience.com/docs/tetrascience-gxp-offerings
+  - type: Plan
+    url: plans/tetrascience-plans-pricing.yml
+  - type: Rate Limit
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+integrations:
+  - name: Waters Empower
+  - name: Thermo Chromeleon
+  - name: Agilent OpenLab
+  - name: Cytiva Unicorn
+  - name: IDBS E-WorkBook
+  - name: Benchling
+  - name: Dotmatics
+  - name: LabWare LIMS
+  - name: STARLIMS
+  - name: Snowflake
+  - name: Databricks
+  - name: AWS
+  - name: AWS PrivateLink
+  - name: Elasticsearch
+  - name: Amazon Bedrock
+  - name: OpenAI
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

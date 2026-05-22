@@ -1,0 +1,68 @@
+name: tdp-pipelines
+title: TDP Pipelines and Data Engineering
+provider: TetraScience
+providerId: tetrascience
+description: >-
+  Capability for managing Tetra Data Pipelines — serverless data
+  engineering jobs that parse, transform, enrich, and route Tetra Data.
+  Covers pipeline CRUD, IDS / protocol / task script artifact management,
+  and workflow execution.
+domain: Scientific Data Engineering
+tags:
+  - Pipelines
+  - Protocols
+  - Task Scripts
+  - IDS
+  - Workflows
+operations:
+  - id: list-pipelines
+    method: GET
+    path: /v1/pipelines
+    summary: List pipelines in the organization
+  - id: get-pipeline
+    method: GET
+    path: /v1/pipelines/{pipelineId}
+    summary: Get a single pipeline
+  - id: create-pipeline
+    method: POST
+    path: /v1/pipelines
+    summary: Create a new pipeline
+  - id: update-pipeline
+    method: PUT
+    path: /v1/pipelines/{pipelineId}
+    summary: Update a pipeline
+  - id: delete-pipeline
+    method: DELETE
+    path: /v1/pipelines/{pipelineId}
+    summary: Delete a pipeline
+  - id: search-workflows
+    method: GET
+    path: /v1/workflows
+    summary: Search workflow executions
+  - id: get-workflow
+    method: GET
+    path: /v1/workflows/{workflowId}
+    summary: Get a workflow execution
+  - id: reprocess-files
+    method: POST
+    path: /v1/pipelines/{pipelineId}/reprocess
+    summary: Reprocess files through a pipeline
+  - id: list-ids
+    method: GET
+    path: /v1/artifacts/ids
+    summary: List IDS artifacts
+  - id: list-protocols
+    method: GET
+    path: /v1/artifacts/protocols
+    summary: List protocol artifacts
+  - id: list-task-scripts
+    method: GET
+    path: /v1/artifacts/taskScripts
+    summary: List task script artifacts
+exposers:
+  rest:
+    type: openapi
+    spec: ../openapi/tetrascience-openapi.yml
+  mcp:
+    enabled: true
+    description: Expose pipeline lifecycle and workflow execution as MCP tools.

@@ -1,0 +1,63 @@
+name: tdp-agents
+title: TDP Agents Management
+provider: TetraScience
+providerId: tetrascience
+description: >-
+  Capability for managing Tetra Agents — software that liberates raw data
+  from lab instruments and applications into the Tetra Data Platform.
+  Covers creating, listing, configuring, enabling/disabling, and querying
+  the per-agent command queue.
+domain: Lab Data Ingestion
+tags:
+  - Agents
+  - Commands
+  - Connectors
+  - Lab Data
+operations:
+  - id: list-agents
+    method: GET
+    path: /v1/agents
+    summary: List all agents in the tenant
+  - id: get-agent
+    method: GET
+    path: /v1/agents/{agentId}
+    summary: Retrieve a single agent
+  - id: create-agent
+    method: POST
+    path: /v1/agents
+    summary: Create a new agent
+  - id: update-agent
+    method: PUT
+    path: /v1/agents/{agentId}
+    summary: Update an agent
+  - id: enable-agent
+    method: PUT
+    path: /v1/agents/{agentId}/enable
+    summary: Enable or disable an agent
+  - id: get-agent-configuration
+    method: GET
+    path: /v1/agents/{agentId}/configuration
+    summary: Get File-Log agent configuration
+  - id: post-agent-configuration
+    method: POST
+    path: /v1/agents/{agentId}/configuration
+    summary: Remotely configure a running File-Log agent
+  - id: get-command-queue
+    method: GET
+    path: /v1/agents/{agentId}/commandQueue
+    summary: Get the command queue for an agent
+  - id: enable-command-queue
+    method: PUT
+    path: /v1/agents/{agentId}/commandQueue/enable
+    summary: Enable or disable the command queue
+  - id: purge-command-queue
+    method: POST
+    path: /v1/agents/{agentId}/commandQueue/purge
+    summary: Purge the command queue
+exposers:
+  rest:
+    type: openapi
+    spec: ../openapi/tetrascience-openapi.yml
+  mcp:
+    enabled: true
+    description: Expose agent CRUD and command queue as MCP tools to AI copilots.

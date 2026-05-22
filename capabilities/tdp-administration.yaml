@@ -1,0 +1,89 @@
+name: tdp-administration
+title: TDP Administration (Tenants, Users, Roles, Access Groups)
+provider: TetraScience
+providerId: tetrascience
+description: >-
+  Capability for administering the Tetra Data Platform — managing tenants,
+  organizations, users (and their access to organizations), roles, access
+  groups, and audit trail. Includes login flows and SSO configuration.
+domain: Identity and Access Management
+tags:
+  - Tenants
+  - Organizations
+  - Users
+  - Roles
+  - Access Groups
+  - Audit Trail
+  - Login
+operations:
+  - id: get-tenant
+    method: GET
+    path: /v1/tenants/{tenantId}
+    summary: Get tenant details
+  - id: list-organizations
+    method: GET
+    path: /v1/organizations
+    summary: List organizations
+  - id: get-organization
+    method: GET
+    path: /v1/organizations/{organizationId}
+    summary: Get organization by ID
+  - id: list-org-users
+    method: GET
+    path: /v1/organizations/{organizationId}/users
+    summary: Get users for organization
+  - id: add-org-user
+    method: POST
+    path: /v1/organizations/{organizationId}/users
+    summary: Add a user to an organization
+  - id: remove-org-user
+    method: DELETE
+    path: /v1/organizations/{organizationId}/users/{userId}
+    summary: Remove a user from an organization
+  - id: list-access-groups
+    method: GET
+    path: /v1/accessGroups
+    summary: List access groups for an organization
+  - id: get-access-group
+    method: GET
+    path: /v1/accessGroups/{id}
+    summary: Get access group details
+  - id: create-access-group
+    method: POST
+    path: /v1/accessGroups
+    summary: Create a new access group
+  - id: edit-access-group
+    method: PUT
+    path: /v1/accessGroups/{id}
+    summary: Edit an access group
+  - id: delete-access-group
+    method: DELETE
+    path: /v1/accessGroups/{id}
+    summary: Delete an access group
+  - id: add-user-to-group
+    method: POST
+    path: /v1/accessGroups/{id}/user
+    summary: Add a user to an access group
+  - id: list-roles
+    method: GET
+    path: /v1/roles
+    summary: List roles
+  - id: login
+    method: POST
+    path: /login
+    summary: Login user
+  - id: get-login-config
+    method: GET
+    path: /login/config
+    summary: Get login config
+  - id: sso-login
+    method: GET
+    path: /login/sso
+    summary: SSO login via authorization code
+exposers:
+  rest:
+    type: openapi
+    spec: ../openapi/tetrascience-openapi.yml
+  mcp:
+    enabled: false
+    description: Administrative endpoints — disable MCP exposure by default to prevent agent-driven changes to identity state.

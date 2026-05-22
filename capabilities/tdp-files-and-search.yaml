@@ -1,0 +1,71 @@
+name: tdp-files-and-search
+title: TDP Files, Datasets, and Search
+provider: TetraScience
+providerId: tetrascience
+description: >-
+  Capability for working with files and datasets in the Tetra Data Lake —
+  upload, retrieve, version, label, tag, search via Elasticsearch query,
+  and bulk reprocess.
+domain: Scientific Data Management
+tags:
+  - Files
+  - Data Lake
+  - Search
+  - Attributes
+  - Labels
+operations:
+  - id: upload-file
+    method: POST
+    path: /v1/datalake/upload
+    summary: Upload a file to the data lake
+  - id: get-file
+    method: GET
+    path: /v1/datalake/files/{fileId}
+    summary: Retrieve a file
+  - id: delete-file
+    method: DELETE
+    path: /v1/datalake/files/{fileId}
+    summary: Delete a file
+  - id: get-file-versions
+    method: GET
+    path: /v1/datalake/files/{fileId}/versions
+    summary: Get file versions
+  - id: search-files-via-elasticsearch
+    method: POST
+    path: /v1/datalake/searchEql
+    summary: Search files via Elasticsearch query
+  - id: search-files-get
+    method: GET
+    path: /v1/datalake/searchFiles
+    summary: Search files (GET)
+  - id: search-files-post
+    method: POST
+    path: /v1/datalake/searchFiles
+    summary: Search files (POST)
+  - id: get-metadata
+    method: GET
+    path: /v1/datalake/files/{fileId}/metadata
+    summary: Retrieve metadata and tags of a file
+  - id: post-metadata
+    method: POST
+    path: /v1/datalake/files/{fileId}/metadata
+    summary: Set metadata and tags of a file
+  - id: update-metadata
+    method: PUT
+    path: /v1/datalake/files/{fileId}/metadata
+    summary: Update metadata and tags of a file
+  - id: add-labels
+    method: POST
+    path: /v1/datalake/files/{fileId}/labels
+    summary: Add labels to a file
+  - id: delete-labels
+    method: DELETE
+    path: /v1/datalake/files/{fileId}/labels
+    summary: Remove labels from a file
+exposers:
+  rest:
+    type: openapi
+    spec: ../openapi/tetrascience-openapi.yml
+  mcp:
+    enabled: true
+    description: Expose data-lake search and file metadata as MCP tools for RAG and agent workflows over Tetra Data.
