@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tetrascience-openapi.json, openapi/tetrascience-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: token
+  type: apiKey
+  in: header
+  parameter: ts-auth-token
+  description: JWT Token for authentication
+  sources:
+  - openapi/tetrascience-openapi.json
+  - openapi/tetrascience-openapi.yml
+- name: orgSlug
+  type: apiKey
+  in: header
+  parameter: x-org-slug
+  description: Your organization slug
+  sources:
+  - openapi/tetrascience-openapi.json
+  - openapi/tetrascience-openapi.yml
