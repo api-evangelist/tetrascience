@@ -1,0 +1,853 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Commands API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Commands
+paths:
+  /v1/commands:
+    post:
+      summary: Create command
+      description: 'Use this endpoint to create a new command for an on-premises connector/agent. It also automatically sends command to SQS queue for execution. Once it is in the queue, the connector/agent listening on the target queue picks up the command,  tries to execute it, and sends the response back to the command service.
+
+        The maximum create command request size is 10 MB.'
+      tags:
+      - Commands
+      operationId: ag-create-command
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - targetId
+              - action
+              - expiresAt
+              - payload
+              properties:
+                targetId:
+                  type: string
+                  description: Agent or Connector ID for which command should be created
+                action:
+                  type: string
+                  description: Action label, such as `TetraScience.Connector.sdc.CreateMeasurementOrder`
+                expiresAt:
+                  type: string
+                  description: Command expiration time (ISO timestamp). Must be at least 60 seconds from the current time.
+                  default: '2021-01-31T23:58:43.749Z'
+                metadata:
+                  type: object
+                  description: Metadata key-value pairs
+                  additionalProperties: true
+                payload:
+                  type: object
+                  description: Request body for the command
+                  additionalProperties: true
+                payloadDelivery:
+                  type: string
+                  description: The delivery method for the command payload. When "embedded" is specified the command body is  included in the SQS message payload. When "referenced" is specified the command body is stored in S3 and only  a reference to the S3 object is included in the SQS message payload. In case no value is passed and payload  is small enough to be transferred over SQS "embedded" is used, otherwise "referenced" is used.
+                  enum:
+                  - embedded
+                  - referenced
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"7992e5d6-15bf-4f5b-af06-47f3380ca75a\",\n    \"orgSlug\": \"tetrascience\",\n    \"targetId\": \"b143e7c5-90ae-4b69-895a-decf0b1dfb38\",\n    \"action\": \"TetraScience.Connector.gdc.HttpRequest\",\n    \"expiresAt\": \"2021-01-31T23:58:43.749Z\",\n    \"metadata\": {},\n    \"status\": \"PENDING\",\n    \"requestBody\": {\n        \"body\": {\n            \"url\": \"https://sdc.test.com:9005/SDC/Smartreports/ExportedMeasurements\",\n            \"body\": {\n                \"raw\": \"{\\\"InterfaceId\\\":\\\"1\\\",\\\"LastInterfaceResultId\\\":\\\"0\\\"}\",\n                \"mode\": \"raw\"\n            },\n            \"method\": \"POST\",\n            \"headers\": [\n                {\n                    \"Authorization\": \"Basic ...\"\n                },\n                {\n                    \"Content-Type\": \"application/json\"\n                }\n            ],\n            \"ignore_tls_certificate\": true\n        },\n        \"action\": \"TetraScience.Connector.gdc.HttpRequest\",\n        \"targetId\": \"b143e7c5-90ae-4b69-895a-decf0b1dfb38\",\n        \"commandId\": \"7992e5d6-15bf-4f5b-af06-47f3380ca75a\",\n        \"createdAt\": \"2021-01-20T10:25:02.807Z\",\n        \"expiresAt\": \"2021-01-31T23:58:43.749Z\"\n    },\n    \"responseBody\": null,\n    \"requestPayloadDelivery\": \"embedded\",\n    \"createdByEntity\": \"user\",\n    \"createdBy\": \"59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd\",\n    \"createdAt\": \"2021-01-20T10:25:02.807Z\",\n    \"updatedAt\": \"2021-01-20T10:25:02.872Z\"\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 7992e5d6-15bf-4f5b-af06-47f3380ca75a
+                  orgSlug:
+                    type: string
+                    example: tetrascience
+                  targetId:
+                    type: string
+                    example: b143e7c5-90ae-4b69-895a-decf0b1dfb38
+                  action:
+                    type: string
+                    example: TetraScience.Connector.gdc.HttpRequest
+                  expiresAt:
+                    type: string
+                    example: '2021-01-31T23:58:43.749Z'
+                  metadata:
+                    type: object
+                    properties: {}
+                  status:
+                    type: string
+                    example: PENDING
+                  requestBody:
+                    type: object
+                    properties:
+                      body:
+                        type: object
+                        properties:
+                          url:
+                            type: string
+                            example: https://sdc.test.com:9005/SDC/Smartreports/ExportedMeasurements
+                          body:
+                            type: object
+                            properties:
+                              raw:
+                                type: string
+                                example: '{"InterfaceId":"1","LastInterfaceResultId":"0"}'
+                              mode:
+                                type: string
+                                example: raw
+                          method:
+                            type: string
+                            example: POST
+                          headers:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                Authorization:
+                                  type: string
+                                  example: Basic ...
+                          ignore_tls_certificate:
+                            type: boolean
+                            example: true
+                            default: true
+                      action:
+                        type: string
+                        example: TetraScience.Connector.gdc.HttpRequest
+                      targetId:
+                        type: string
+                        example: b143e7c5-90ae-4b69-895a-decf0b1dfb38
+                      commandId:
+                        type: string
+                        example: 7992e5d6-15bf-4f5b-af06-47f3380ca75a
+                      createdAt:
+                        type: string
+                        example: '2021-01-20T10:25:02.807Z'
+                      expiresAt:
+                        type: string
+                        example: '2021-01-31T23:58:43.749Z'
+                  responseBody: {}
+                  requestPayloadDelivery:
+                    type: string
+                    enum:
+                    - embedded
+                    - referenced
+                    example: embedded
+                  createdByEntity:
+                    type: string
+                    example: user
+                  createdBy:
+                    type: string
+                    example: 59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd
+                  createdAt:
+                    type: string
+                    example: '2021-01-20T10:25:02.807Z'
+                  updatedAt:
+                    type: string
+                    example: '2021-01-20T10:25:02.872Z'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n\t\t\"statusCode\": 400,\n    \"error\": \"Bad request\",\n    \"message\": \"Queue is purging and cannot accept new requests. Please try again later\"\n}"
+              schema:
+                oneOf:
+                - type: object
+                  properties:
+                    statusCode:
+                      type: integer
+                      example: 400
+                      default: 0
+                    error:
+                      type: string
+                      example: Bad request
+                    message:
+                      type: string
+                      example: Command request payload is larger than maximum size of 10 MB.
+                - type: object
+                  properties:
+                    statusCode:
+                      type: integer
+                      example: 400
+                      default: 0
+                    error:
+                      type: string
+                      example: Bad Request
+                    message:
+                      type: string
+                      example: Error validating metadata. Metadata must contain only string with ASCII characters.
+                - type: object
+                  properties:
+                    statusCode:
+                      type: integer
+                      example: 400
+                      default: 0
+                    error:
+                      type: string
+                      example: Bad request
+                    message:
+                      type: string
+                      example: Param expiresAt must be at least 60 seconds from current date timestamp
+                - type: object
+                  properties:
+                    statusCode:
+                      type: integer
+                      example: 400
+                      default: 0
+                    error:
+                      type: string
+                      example: Bad request
+                    message:
+                      type: string
+                      example: Queue is purging and cannot accept new requests. Please try again later
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"An internal server error occurred\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 500
+                    default: 0
+                  error:
+                    type: string
+                    example: Internal Server Error
+                  message:
+                    type: string
+                    example: An internal server error occurred
+      deprecated: false
+    delete:
+      summary: Purge queue
+      description: Use this method to purge all existing commands from the target queue. This command can be useful when testing new pipelines and command creation and the queue is blocked by a large number of unexecuted commands. When you fire this endpoint, all commands are deleted from the queue, and the command status is changed to PURGED.  Also, during the purge, the queue for the given target is blocked and does not receive new commands.
+      tags:
+      - Commands
+      operationId: ag-purge-queue
+      parameters:
+      - name: targetId
+        in: query
+        description: Agent or connector ID for which queue should be purged
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"purged\": [{\n      \"commandId\": \"cd0ce1e2-c0f1-47c1-9da9-feaa10cfe7eb\"\n    },{\n      \"commandId\": \"39ead9af-2926-4800-9d11-a3895de495e8\"\n    }]\n}"
+              schema:
+                type: object
+                properties:
+                  purged:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        commandId:
+                          type: string
+                          example: cd0ce1e2-c0f1-47c1-9da9-feaa10cfe7eb
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \t\"statusCode\": 400,\n    \"error\": \"Bad request\",\n    \"message\": \"Queue is already purging. Please try later.\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 400
+                    default: 0
+                  error:
+                    type: string
+                    example: Bad request
+                  message:
+                    type: string
+                    example: Queue is already purging. Please try later.
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"An internal server error occurred\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 500
+                    default: 0
+                  error:
+                    type: string
+                    example: Internal Server Error
+                  message:
+                    type: string
+                    example: An internal server error occurred
+      deprecated: false
+    get:
+      summary: Search commands
+      description: Use this endpoint to search all on-premises commands based on various filters. This endpoint is useful when you want to filter out commands, get all successful, or unsuccessful commands, get all commands that are sent to some agent/connector, commands that are created within a certain time range and more.
+      tags:
+      - Commands
+      operationId: ag-search-commands
+      parameters:
+      - name: targetId
+        in: query
+        description: ID of the target that received and processed command(s). Supports one or more values, such as `targetId=71003689-9619-43aa-809a-a693ede72e8b&targetId=740b1e83-eaf0-4e03-b134-97fb575a8c4c`
+        schema:
+          type: string
+      - name: action
+        in: query
+        description: Action label, such as TetraScience.Connector.sdc.CreateMeasurementOrder.  Supports one or more values, such as  `action=TetraScience.Connector.sdc.CreateMeasurementOrder&action=TetraScience.Connector.ValidateConfig`
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: 'Command status: CREATED, UNSENT, PENDING, EXPIRED, PURGED, ERROR, PROCESSING, REJECTED, SUCCESS, FAILURE. Supports one or more values, such as  `status=FAILURE&status=SUCCESS`'
+        schema:
+          type: string
+      - name: fromDate
+        in: query
+        description: Deprecated name for `createdAtAfter`
+        schema:
+          type: string
+      - name: toDate
+        in: query
+        description: Deprecated name for `createdAtBefore`
+        schema:
+          type: string
+      - name: createdAtBefore
+        in: query
+        description: Commands created on or before a given date (ISO timestamp)
+        schema:
+          type: string
+      - name: createdAtAfter
+        in: query
+        description: Commands created on or after a given date (ISO timestamp)
+        schema:
+          type: string
+      - name: expiresAtBefore
+        in: query
+        description: Commands expiring on or before a given date (ISO timestamp)
+        schema:
+          type: string
+      - name: expiresAtAfter
+        in: query
+        description: Commands expiring on or after a given date (ISO timestamp)
+        schema:
+          type: string
+      - name: updatedAtBefore
+        in: query
+        description: Commands updated on or before a given date (ISO timestamp)
+        schema:
+          type: string
+      - name: updatedAtAfter
+        in: query
+        description: Commands updated on or after a given date (ISO timestamp)
+        schema:
+          type: string
+      - name: from
+        in: query
+        description: Display commands started from specified number in the results array.  By default, commands are displayed from the start of the array (the number 0).  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with size.
+        schema:
+          type: integer
+          format: int32
+      - name: size
+        in: query
+        description: Indicates the number of results to return in the request.  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with from.
+        schema:
+          type: integer
+          format: int32
+      - name: sortBy
+        in: query
+        description: 'Sort field: createdAt | updatedAt | expiresAt.'
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: 'Sort order: asc | desc'
+        schema:
+          type: string
+      - name: metadata
+        in: query
+        description: Metadata key-value pairs, such as metadata.vendor=tetra. Pairs must be exact matches of existing metadata values.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"hits\": [\n    {\n      \"id\": \"013cf44b-e3ef-4757-84c2-ff19a133c955\",\n      \"orgSlug\": \"mgtest\",\n      \"targetId\": \"d7f4c013-26c3-4214-ae6c-f14467ad6848\",\n      \"action\": \"TetraScience.Connector.gdc.HttpRequest\",\n      \"expiresAt\": \"2021-01-10T23:58:43.749Z\",\n      \"metadata\": {\n        \"key1\": \"value1\",\n        \"key2\": \"value2\"\n      },\n      \"status\": \"SUCCESS\",\n      \"requestBody\": {\n        \"body\": {\n          \"url\": \"https://jsonplaceholder.typicode.com/posts\",\n          \"body\": {\n            \"raw\": \"{ \\\"title\\\": \\\"foo\\\", \\\"body\\\": \\\"bar\\\", \\\"userId\\\": 1 }\",\n            \"mode\": \"raw\"\n          },\n          \"method\": \"POST\",\n          \"headers\": [],\n          \"ignore_tls_certificate\": true\n        },\n        \"action\": \"TetraScience.Connector.gdc.HttpRequest\",\n        \"targetId\": \"d7f4c013-26c3-4214-ae6c-f14467ad6848\",\n        \"commandId\": \"013cf44b-e3ef-4757-84c2-ff19a133c955\",\n        \"createdAt\": \"2021-01-08T23:32:31.456Z\",\n        \"expiresAt\": \"2021-01-10T23:58:43.749Z\"\n      },\n      \"responseBody\": {\n        \"body\": \"{\\\"title\\\":\\\"foo\\\",\\\"body\\\":\\\"bar\\\",\\\"userId\\\":1,\\\"id\\\":101}\",\n        \"headers\": [\n          {\n            \"date\": \"Fri, 08 Jan 2021 23:32:33 GMT\"\n          },\n          {\n            \"content-type\": \"application/json; charset=utf-8\"\n          },\n          {\n            \"content-length\": \"65\"\n          },\n          {\n            \"connection\": \"close\"\n          },\n          {\n            \"set-cookie\": [\n              \"__cfduid=d97d344facc0f82adc186946039b275d91610148753; expires=Sun, 07-Feb-21 23:32:33 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax\"\n            ]\n          },\n          {\n            \"x-powered-by\": \"Express\"\n          },\n          {\n            \"x-ratelimit-limit\": \"1000\"\n          },\n          {\n            \"x-ratelimit-remaining\": \"999\"\n          },\n          {\n            \"x-ratelimit-reset\": \"1610148757\"\n          },\n          {\n            \"vary\": \"Origin, X-HTTP-Method-Override, Accept-Encoding\"\n          },\n          {\n            \"access-control-allow-credentials\": \"true\"\n          },\n          {\n            \"cache-control\": \"no-cache\"\n          },\n          {\n            \"pragma\": \"no-cache\"\n          },\n          {\n            \"expires\": \"-1\"\n          },\n          {\n            \"access-control-expose-headers\": \"Location\"\n          },\n          {\n            \"location\": \"http://jsonplaceholder.typicode.com/posts/101\"\n          },\n          {\n            \"x-content-type-options\": \"nosniff\"\n          },\n          {\n            \"etag\": \"W/\\\"41-GDNaWfnVU6RZhpLbye0veBaqcHA\\\"\"\n          },\n          {\n            \"via\": \"1.1 vegur\"\n          },\n          {\n            \"cf-cache-status\": \"DYNAMIC\"\n          },\n          {\n            \"cf-request-id\": \"0785f147a40000c2c743215000000001\"\n          },\n          {\n            \"expect-ct\": \"max-age=604800, report-uri=\\\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\\\"\"\n          },\n          {\n            \"report-to\": \"{\\\"endpoints\\\":[{\\\"url\\\":\\\"https:\\/\\/a.nel.cloudflare.com\\/report?s=YgiQkNmS0T9r5VNVT7lxY1UOFzqBlOObjIXH5rv5JQuqlQMNpSffc6TdpWXDfXXzBc6PYQcNe7mDBE58luZcL5QssEmJ9BT8GBlVowE9UPNrYlbhbuOF5tSY3QIO\\\"}],\\\"group\\\":\\\"cf-nel\\\",\\\"max_age\\\":604800}\"\n          },\n          {\n            \"nel\": \"{\\\"report_to\\\":\\\"cf-nel\\\",\\\"max_age\\\":604800}\"\n          },\n          {\n            \"server\": \"cloudflare\"\n          },\n          {\n            \"cf-ray\": \"60e9b7ec3c79c2c7-FRA\"\n          }\n        ],\n        \"statusCode\": 201\n      },\n      \"requestPayloadDelivery\": \"embedded\",\n      \"createdByEntity\": \"user\",\n      \"createdBy\": \"59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd\",\n      \"createdAt\": \"2021-01-08T23:32:31.456Z\",\n      \"updatedAt\": \"2021-01-08T23:32:34.219Z\"\n    }\n  ],\n  \"hasNext\": false,\n  \"from\": 0,\n  \"size\": 100,\n  \"sort\": \"desc\"\n}"
+              schema:
+                type: object
+                properties:
+                  hits:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 013cf44b-e3ef-4757-84c2-ff19a133c955
+                        orgSlug:
+                          type: string
+                          example: mgtest
+                        targetId:
+                          type: string
+                          example: d7f4c013-26c3-4214-ae6c-f14467ad6848
+                        action:
+                          type: string
+                          example: TetraScience.Connector.gdc.HttpRequest
+                        expiresAt:
+                          type: string
+                          example: '2021-01-10T23:58:43.749Z'
+                        metadata:
+                          type: object
+                          properties:
+                            key1:
+                              type: string
+                              example: value1
+                            key2:
+                              type: string
+                              example: value2
+                        status:
+                          type: string
+                          example: SUCCESS
+                        requestBody:
+                          type: object
+                          properties:
+                            body:
+                              type: object
+                              properties:
+                                url:
+                                  type: string
+                                  example: https://jsonplaceholder.typicode.com/posts
+                                body:
+                                  type: object
+                                  properties:
+                                    raw:
+                                      type: string
+                                      example: '{ "title": "foo", "body": "bar", "userId": 1 }'
+                                    mode:
+                                      type: string
+                                      example: raw
+                                method:
+                                  type: string
+                                  example: POST
+                                headers:
+                                  type: array
+                                ignore_tls_certificate:
+                                  type: boolean
+                                  example: true
+                                  default: true
+                            action:
+                              type: string
+                              example: TetraScience.Connector.gdc.HttpRequest
+                            targetId:
+                              type: string
+                              example: d7f4c013-26c3-4214-ae6c-f14467ad6848
+                            commandId:
+                              type: string
+                              example: 013cf44b-e3ef-4757-84c2-ff19a133c955
+                            createdAt:
+                              type: string
+                              example: '2021-01-08T23:32:31.456Z'
+                            expiresAt:
+                              type: string
+                              example: '2021-01-10T23:58:43.749Z'
+                        responseBody:
+                          type: object
+                          properties:
+                            body:
+                              type: string
+                              example: '{"title":"foo","body":"bar","userId":1,"id":101}'
+                            headers:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  date:
+                                    type: string
+                                    example: Fri, 08 Jan 2021 23:32:33 GMT
+                            statusCode:
+                              type: integer
+                              example: 201
+                              default: 0
+                        requestPayloadDelivery:
+                          type: string
+                          enum:
+                          - embedded
+                          - referenced
+                          example: embedded
+                        createdByEntity:
+                          type: string
+                          example: user
+                        createdBy:
+                          type: string
+                          example: 59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd
+                        createdAt:
+                          type: string
+                          example: '2021-01-08T23:32:31.456Z'
+                        updatedAt:
+                          type: string
+                          example: '2021-01-08T23:32:34.219Z'
+                  hasNext:
+                    type: boolean
+                    example: false
+                    default: true
+                  from:
+                    type: integer
+                    example: 0
+                    default: 0
+                  size:
+                    type: integer
+                    example: 100
+                    default: 0
+                  sort:
+                    type: string
+                    example: desc
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"An internal server error occurred\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 500
+                    default: 0
+                  error:
+                    type: string
+                    example: Internal Server Error
+                  message:
+                    type: string
+                    example: An internal server error occurred
+      deprecated: false
+  /v1/commands/{id}/history:
+    get:
+      summary: Get command history
+      description: Use this endpoint to obtain all the changes of a given command. It should return all status changes including who made the change and when the change was made.
+      tags:
+      - Commands
+      operationId: get-command-history
+      parameters:
+      - name: id
+        in: path
+        description: Command id
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"57ebb02f-81d6-4627-8248-6c24c2d61323\",\n    \"history\": [\n        {\n            \"id\": \"14da67ba-57fc-45ea-8621-09a8466a3f15\",\n            \"commandId\": \"57ebb02f-81d6-4627-8248-6c24c2d61323\",\n            \"reason\": \"Command created\",\n            \"updatedBy\": \"platform\",\n            \"updatedAt\": \"2021-01-12T10:14:14.512Z\"\n        },\n        {\n            \"id\": \"50f1e195-8c19-4df6-94bb-75540deee23b\",\n            \"commandId\": \"57ebb02f-81d6-4627-8248-6c24c2d61323\",\n            \"reason\": \"Status update to PENDING\",\n            \"updatedBy\": \"platform\",\n            \"updatedAt\": \"2021-01-12T10:14:14.543Z\"\n        },\n        {\n            \"id\": \"ccb8e962-78fe-43a6-814d-6c27cf62d456\",\n            \"commandId\": \"57ebb02f-81d6-4627-8248-6c24c2d61323\",\n            \"reason\": \"Command status changed to PROCESSING\",\n            \"updatedBy\": \"target\",\n            \"updatedAt\": \"2021-01-12T10:14:16.184Z\"\n        },\n        {\n            \"id\": \"5c5abc92-3c37-4312-943e-a78f9016280d\",\n            \"commandId\": \"57ebb02f-81d6-4627-8248-6c24c2d61323\",\n            \"reason\": \"Command status changed to SUCCESS\",\n            \"updatedBy\": \"target\",\n            \"updatedAt\": \"2021-01-12T10:14:18.054Z\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 57ebb02f-81d6-4627-8248-6c24c2d61323
+                  history:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 14da67ba-57fc-45ea-8621-09a8466a3f15
+                        commandId:
+                          type: string
+                          example: 57ebb02f-81d6-4627-8248-6c24c2d61323
+                        reason:
+                          type: string
+                          example: Command created
+                        updatedBy:
+                          type: string
+                          example: platform
+                        updatedAt:
+                          type: string
+                          example: '2021-01-12T10:14:14.512Z'
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Command with given ID 57ebb02f-81d6-4627-8248-6c24c2d61324 does not exist\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Command with given ID 57ebb02f-81d6-4627-8248-6c24c2d61324 does not exist
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"An internal server error occurred\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 500
+                    default: 0
+                  error:
+                    type: string
+                    example: Internal Server Error
+                  message:
+                    type: string
+                    example: An internal server error occurred
+      deprecated: false
+  /v1/commands/{id}:
+    get:
+      summary: Get one command
+      description: Use this endpoint to obtain all the details for one single command. You will need to supply the command id as the path variable. This endpoint returns details like the command id, creation time, expiration time, the action, actual request body, and more.
+      tags:
+      - Commands
+      operationId: get-one-command
+      parameters:
+      - name: id
+        in: path
+        description: Command ID
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"d3b63076-02db-4d36-9cea-39fa32f52647\",\n    \"orgSlug\": \"mgtest\",\n    \"targetId\": \"9154b6c4-0fab-4544-b9c3-c203983e7be6\",\n    \"action\": \"TetraScience.Connector.gdc.HttpRequest\",\n    \"expiresAt\": \"2020-12-30T23:58:43.749Z\",\n    \"metadata\": {\n        \"key1\": \"value1\",\n        \"key2\": \"value2\"\n    },\n    \"status\": \"ERROR\",\n    \"requestBody\": {\n        \"body\": {\n            \"url\": \"https://jsonplaceholder.typicode.com/posts/1\",\n            \"body\": {\n                \"raw\": \"{ \\\"title\\\": \\\"foo\\\", \\\"body\\\": \\\"bar\\\", \\\"userId\\\": 1 }\",\n                \"mode\": \"raw\"\n            },\n            \"method\": \"POST\",\n            \"headers\": [],\n            \"ignore_tls_certificate\": true\n        },\n        \"action\": \"TetraScience.Connector.gdc.HttpRequest\",\n        \"targetId\": \"9154b6c4-0fab-4544-b9c3-c203983e7be6\",\n        \"commandId\": \"d3b63076-02db-4d36-9cea-39fa32f52647\",\n        \"createdAt\": \"2020-12-27T17:04:00.500Z\",\n        \"expiresAt\": \"2020-12-30T23:58:43.749Z\"\n    },\n    \"responseBody\": {\n        \"body\": \"{\\\"message\\\":\\\"Request failed with status code 404\\\"}\"\n    },\n    \"requestPayloadDelivery\": \"embedded\",\n    \"createdByEntity\": null,\n    \"createdBy\": \"59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd\",\n    \"createdAt\": \"2020-12-27T17:04:00.500Z\",\n    \"updatedAt\": \"2020-12-27T17:04:02.721Z\"\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: d3b63076-02db-4d36-9cea-39fa32f52647
+                  orgSlug:
+                    type: string
+                    example: mgtest
+                  targetId:
+                    type: string
+                    example: 9154b6c4-0fab-4544-b9c3-c203983e7be6
+                  action:
+                    type: string
+                    example: TetraScience.Connector.gdc.HttpRequest
+                  expiresAt:
+                    type: string
+                    example: '2020-12-30T23:58:43.749Z'
+                  metadata:
+                    type: object
+                    properties:
+                      key1:
+                        type: string
+                        example: value1
+                      key2:
+                        type: string
+                        example: value2
+                  status:
+                    type: string
+                    example: ERROR
+                  requestBody:
+                    type: object
+                    properties:
+                      body:
+                        type: object
+                        properties:
+                          url:
+                            type: string
+                            example: https://jsonplaceholder.typicode.com/posts/1
+                          body:
+                            type: object
+                            properties:
+                              raw:
+                                type: string
+                                example: '{ "title": "foo", "body": "bar", "userId": 1 }'
+                              mode:
+                                type: string
+                                example: raw
+                          method:
+                            type: string
+                            example: POST
+                          headers:
+                            type: array
+                          ignore_tls_certificate:
+                            type: boolean
+                            example: true
+                            default: true
+                      action:
+                        type: string
+                        example: TetraScience.Connector.gdc.HttpRequest
+                      targetId:
+                        type: string
+                        example: 9154b6c4-0fab-4544-b9c3-c203983e7be6
+                      commandId:
+                        type: string
+                        example: d3b63076-02db-4d36-9cea-39fa32f52647
+                      createdAt:
+                        type: string
+                        example: '2020-12-27T17:04:00.500Z'
+                      expiresAt:
+                        type: string
+                        example: '2020-12-30T23:58:43.749Z'
+                  responseBody:
+                    type: object
+                    properties:
+                      body:
+                        type: string
+                        example: '{"message":"Request failed with status code 404"}'
+                  createdByEntity: {}
+                  requestPayloadDelivery:
+                    type: string
+                    enum:
+                    - embedded
+                    - referenced
+                    example: embedded
+                  createdBy:
+                    type: string
+                    example: 59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd
+                  createdAt:
+                    type: string
+                    example: '2020-12-27T17:04:00.500Z'
+                  updatedAt:
+                    type: string
+                    example: '2020-12-27T17:04:02.721Z'
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Command with ID d3b63076-02db-4d36-9cea-39fa32f52648 not found\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Command with ID d3b63076-02db-4d36-9cea-39fa32f52648 not found
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"An internal server error occurred\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 500
+                    default: 0
+                  error:
+                    type: string
+                    example: Internal Server Error
+                  message:
+                    type: string
+                    example: An internal server error occurred
+      deprecated: false
+  /v1/commands/actions:
+    get:
+      summary: List command actions
+      description: 'Use this endpoint to list all distinct on-premises command actions.
+
+
+        Note that this API does not control command actions, so this result may contain erroneous or unsent actions.'
+      tags:
+      - Commands
+      operationId: list-command-actions
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "[\n  \"TetraScience.Connector.gdc.HttpRequest\",\n  \"TetraScience.Connector.Start\",\n  \"TetraScience.Connector.Stop\"\n]"
+              schema:
+                type: array
+                items:
+                  type: string
+                  example: TetraScience.Connector.Start
+components:
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

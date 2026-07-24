@@ -1,0 +1,607 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Schemas API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Schemas
+paths:
+  /v1/datalake/schemas:
+    get:
+      summary: List Schemas
+      tags:
+      - Schemas
+      description: 'Retrieves schema information for all IDS (Intermediate Data Schema) in the organization.
+
+
+        **Performance Notice**: This endpoint may timeout with large datasets (500+ schemas). For better performance, use the targeted alternatives below.
+
+
+        **Recommended Alternatives**:
+
+        1. **List available IDS (if needed)**: `GET /v1/artifacts/ids`
+
+        2. **Get specific components**:
+
+        - Schema: `GET /v1/artifacts/ids/{namespace}/{slug}/{version}/files/schema`
+
+        - Mapping: `GET /v1/artifacts/ids/{namespace}/{slug}/{version}/files/mapping`
+
+        - Expected: `GET /v1/artifacts/ids/{namespace}/{slug}/{version}/files/expected`
+
+        - README: `GET /v1/artifacts/ids/{namespace}/{slug}/{version}/files/readme`
+
+
+        **When to use alternatives**: If you need specific schema details or are working with organizations that have many IDS definitions.
+
+        '
+      operationId: DL-FI-dl-list-schemas
+      parameters:
+      - name: type
+        in: query
+        description: 'Return only IDS of a given type. Example: `plate-reader`. If omitted, will return the all the IDS the api key has access to.'
+        schema:
+          type: string
+      - name: version
+        in: query
+        description: 'Return a specific version. This must be used with `type`. Example: `v1.0.0`. If omitted, will return all the versions.'
+        schema:
+          type: string
+      - name: ts-auth-token
+        in: header
+        description: JWT Token
+        required: true
+        schema:
+          type: string
+      - name: x-org-slug
+        in: header
+        description: Your organization slug
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: 'Comma-separated list of fields to return (nested paths are also supported). Example: `namespace,slug,version,schema.description`. If omitted, will return full structure. Not-existing fields will be ignored.'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "[\n  {\n    \"namespace\": \"common\",\n    \"slug\": \"some-identificator\",\n    \"version\": \"v1.0.0\",\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"assay_name\": {\n          \"type\": \"string\"\n        },\n        \"temperature\": {\n          \"type\": \"number\"\n        },\n        \"timestamp\": {\n          \"type\": \"string\",\n          \"format\": \"date-time\"\n        },\n        \"readout\": {\n          \"type\": \"array\",\n          \"items\": {\n            \"type\": \"number\"\n          }\n        }\n      }\n    },\n    \"expected\": {},\n    \"elasticsearch\": {},\n    \"athena\": {},\n    \"readme\": \"Some text\"\n  }\n]"
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    namespace:
+                      type: string
+                      example: common
+                    slug:
+                      type: string
+                      example: some-identificator
+                    version:
+                      type: string
+                      example: v1.0.0
+                    schema:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: object
+                        properties:
+                          type: object
+                          properties:
+                            assay_name:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  example: string
+                            temperature:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  example: number
+                            timestamp:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  example: string
+                                format:
+                                  type: string
+                                  example: date-time
+                            readout:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  example: array
+                                items:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: number
+                    expected:
+                      type: object
+                      properties: {}
+                    elasticsearch:
+                      type: object
+                      properties: {}
+                    athena:
+                      type: object
+                      properties: {}
+                    readme:
+                      type: string
+                      example: Some text
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: '# You can also use wget
+
+            curl -H "ts-auth-token: <JWT Token>" \
+
+            -H "x-org-slug: <YOUR ORGANIZATION>"\ -X GET https://api.tetrascience.com/v1/datalake/schemas'
+        - language: javascript
+          code: "const request = require('axios');\n\naxios\n  .get('https://api.tetrascience.com/v1/datalake/schemas', {\n    headers: {\n      'ts-auth-token': 'API_KEY'\n    },\n  \tparams: {\n    \tidsType: 'plate-reader',\n      idsVersion: 'v1.0.0'\n    }\n  })\n  .then(function(response) {\n    console.log(response);\n  });"
+          name: NodeJS
+        - language: python
+          code: "import requests\nheaders = {\n  'ts-auth-token': 'API_KEY'\n}\n\nr = requests.get('https://api.tetrascience.com/v1/datalake/schemas', headers=headers)\n\nprint r.json()"
+        samples-languages:
+        - curl
+        - javascript
+        - python
+  /v1/artifacts/schemas/{namespace}:
+    get:
+      description: Returns a list of all schema artifacts given a namespace
+      summary: List all schemas for namespace
+      tags:
+      - Schemas
+      operationId: getSchemaArtifactByNamespace
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/LatestOnlyQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200SchemaObjectList'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/schemas/{namespace}/{slug}:
+    get:
+      description: Returns a list of all schema artifacts given a namespace and slug
+      summary: List all schemas for namespace/slug
+      tags:
+      - Schemas
+      operationId: getSchemaArtifactByNamespaceAndSlug
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/LatestOnlyQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200SchemaObjectList'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/schemas/{namespace}/{slug}/{version}/files/{fileSlug}:
+    get:
+      description: Returns the file contents for a schemas file given a namespace, slug, version, and file slug
+      summary: Get contents for a schemas file
+      tags:
+      - Schemas
+      operationId: getSchemaArtifactByNamespaceSlugAndFileSlug
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/ArtifactVersion'
+      - $ref: '#/components/parameters/SchemaFileSlugParam'
+      - $ref: '#/components/parameters/DownloadQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200File'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/schemas/{namespace}/{slug}/{version}:
+    get:
+      description: Returns a single schemas artifact matching the namespace, slug, and version
+      summary: Get a single schemas artifact
+      tags:
+      - Schemas
+      operationId: getSchemaArtifactByNamespaceSlugAndVersion
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/ArtifactVersion'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200SchemaObject'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/schemas/{namespace}/{slug}/{version}/files:
+    get:
+      description: Returns which file slugs are available to retrieve for this schemas
+      summary: Get available file slugs for schemas
+      tags:
+      - Schemas
+      operationId: getSchemaArtifactFileSlugs
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/ArtifactVersion'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200SchemaFileSlugList'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/schemas/{namespace}/{slug}/{version}/labels:
+    get:
+      description: Returns a list of the labels associated with a schemas artifact
+      summary: Get labels for a schemas
+      tags:
+      - Schemas
+      operationId: getSchemaArtifactLabels
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/ArtifactVersion'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Labels'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/schemas:
+    get:
+      description: Returns a list of all schema artifacts, optionally filtered by namespace type
+      summary: List all schema artifacts
+      tags:
+      - Schemas
+      operationId: getSchemaArtifacts
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespaceTypeQuery'
+      - $ref: '#/components/parameters/LatestOnlyQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200SchemaObjectList'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/schemas/search:
+    post:
+      summary: Search for schema artifacts
+      description: Search for items using specified criteria
+      tags:
+      - Schemas
+      operationId: searchSchemaArtifacts
+      parameters:
+      - $ref: '#/components/parameters/ValueQuery'
+      - $ref: '#/components/parameters/LimitQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          description: A list of items that match the search query
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchemaObjectList'
+        '404':
+          $ref: '#/components/responses/404Any'
+components:
+  responses:
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
+    200SchemaObject:
+      description: Successfully fetched SchemaObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SchemaObject'
+    200SchemaFileSlugList:
+      description: Successfully fetched available Schema file slugs
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/SchemaFileSlug'
+    200File:
+      description: Successfully fetched file
+      content:
+        application/json:
+          schema:
+            oneOf:
+            - type: object
+              properties:
+                url:
+                  type: string
+              required:
+              - url
+              additionalProperties: false
+            - type: object
+              properties:
+                content:
+                  description: Content of the file.  Could be any type
+                  format: unknown
+              required:
+              - content
+              additionalProperties: false
+            example:
+              content: '# README Contents
+
+
+                * item 1
+
+                * item 2
+
+                * item 3'
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    200SchemaObjectList:
+      description: Successfully fetched SchemaObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SchemaObjectList'
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+  schemas:
+    LabelList:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          value:
+            type: string
+        required:
+        - name
+        - value
+        additionalProperties: false
+      example:
+      - name: label1
+        value: value1
+      - name: another-label
+        value: another-value
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
+    SchemaFileSlug:
+      type: string
+      enum:
+      - build
+      - manifest
+      - readme
+      - source
+      - schema
+      - expected
+    SchemaObject:
+      allOf:
+      - $ref: '#/components/schemas/ArtifactObjectBase'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - schema
+        required:
+        - type
+      example:
+        type: schema
+        namespace: private-test
+        slug: tabular
+        version: v0.5.0
+        createdAt: '2024-04-25T15:15:34.269Z'
+        lastUpdatedAt: '2023-04-25T17:15:34.269Z'
+        name: Tabular schema
+        description: A tabular schema
+        otherVersions:
+        - v0.1.0
+        - v0.5.0
+    ArtifactNamespace:
+      type: string
+      pattern: ^(common|(private|client)-).*$
+    ArtifactObjectBase:
+      type: object
+      properties:
+        namespace:
+          $ref: '#/components/schemas/ArtifactNamespace'
+        slug:
+          type: string
+        version:
+          type: string
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdatedAt:
+          type: string
+          format: date-time
+        otherVersions:
+          type: array
+          items:
+            type: string
+        supportedPlatformVersion:
+          $ref: '#/components/schemas/SupportedPlatformVersion'
+      required:
+      - namespace
+      - slug
+      - version
+      - createdAt
+      - lastUpdatedAt
+    SchemaObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SchemaObject'
+  parameters:
+    SchemaFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within a schema
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/SchemaFileSlug'
+      example: build
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
+    ArtifactNamespaceTypeQuery:
+      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
+      name: namespace_type
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - common
+        - client
+        - private
+      example: client
+    ArtifactSlug:
+      description: Artifact slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+      example: demo-slug
+    ArtifactVersion:
+      description: Artifact version
+      name: version
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
+      example: v1.0.0
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

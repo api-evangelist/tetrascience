@@ -1,0 +1,644 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Data Acquisition API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Data Acquisition
+paths:
+  /v1/data-acquisition/agent/credentials:
+    post:
+      summary: Agent Temp AWS Credentials
+      description: This endpoint returns temporary credentials for a given organization based on Data Hub policy. When using those credentials, client can upload files to their Amazon S3 bucket and write log to Amazon CloudWatch. Returned credentials have expiration time 60 minutes.
+      tags:
+      - Data Acquisition
+      operationId: agent-temp-aws-credentials
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - agentId
+              - agentVersion
+              properties:
+                agentId:
+                  type: string
+                  description: This is the sourceId for a user-defined integration. Need to copy from the TDP web UI, where the user-defined integration is created. For existing TetraScience agent who can connect to the TDP{ directly, provide the agentId to this field.
+                agentVersion:
+                  type: string
+                  description: The Agent version, such as "v1.0.0".
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"AccessKeyId\": \"EXAMPLEAWSACCESSKEYID\",\n    \"SecretAccessKey\": \"EXAMPLEAWSSECRETACCESSKEY/REDACTED\",\n    \"SessionToken\": \"EXAMPLE_AWS_SESSION_TOKEN_REDACTED\",\n    \"Expiration\": \"2020-07-01T19:12:22.000Z\"\n}"
+              schema:
+                type: object
+                properties:
+                  AccessKeyId:
+                    type: string
+                    example: EXAMPLEAWSACCESSKEYID
+                  SecretAccessKey:
+                    type: string
+                    example: EXAMPLEAWSSECRETACCESSKEY/REDACTED
+                  SessionToken:
+                    type: string
+                    example: EXAMPLE_AWS_SESSION_TOKEN_REDACTED
+                  Expiration:
+                    type: string
+                    example: '2020-07-01T19:12:22.000Z'
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist
+      deprecated: false
+  /v1/data-acquisition/agent/config:
+    post:
+      summary: Agent Configuration
+      description: This endpoint returns all the parameters that client needs in order to upload files directly to Amazon S3 and upload log directly to Amazon CloudWatch. Using these values and temporary credentials obtained from `/v1/data-acquisition/agent/credentials` client can upload files to S3 into their bucket and log to CloudWatch into their log groups.
+      tags:
+      - Data Acquisition
+      operationId: user-defined-integration-agent-configuration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - agentId
+              - agentVersion
+              properties:
+                agentId:
+                  type: string
+                  description: This is the sourceId for a user-defined integration. Need to copy from the TDP web UI, where the user-defined integration is created. For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field.
+                agentVersion:
+                  type: string
+                  description: The Agent version, such as "v1.0.0".
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"orgSlug\": \"mgtest\",\n    \"integrationId\": \"844dc7e9-a4c4-429c-b364-b54bf531c078\",\n    \"agentId\": \"0db83bc0-0921-414c-ad1c-05d47af3dd44\",\n    \"agentName\": \"test agent\",\n    \"region\": \"us-east-2\",\n    \"bucket\": \"ts-platform-dev-datalake\",\n    \"streamBucket\": \"ts-platform-dev-stream\",\n    \"backupBucket\": \"ts-platform-dev-backup\",\n    \"kmsKey\": \"alias/customer-key-development-mgtest\",\n    \"integrationType\": \"user_defined\",\n    \"metadata\": {},\n    \"tags\": [],\n    \"logGroupName\": \"/agents/mgtest/0db83bc0-0921-414c-ad1c-05d47af3dd44\",\n    \"rpcSourceQueueUrl\": \"https://sqs.us-east-2.amazonaws/706717599419/onprem-0db83bc0-0921-414c-ad1c-05d47af3dd44.fifo\",\n    \"rpcPlatformQueueUrl\": \"https://sqs.us-east-2.amazonaws/706717599419/onprem-development-command-service-inbound\"\n}"
+              schema:
+                type: object
+                properties:
+                  orgSlug:
+                    type: string
+                    example: mgtest
+                  integrationId:
+                    type: string
+                    example: 844dc7e9-a4c4-429c-b364-b54bf531c078
+                  agentId:
+                    type: string
+                    example: 0db83bc0-0921-414c-ad1c-05d47af3dd44
+                  agentName:
+                    type: string
+                    example: test agent
+                  region:
+                    type: string
+                    example: us-east-2
+                  bucket:
+                    type: string
+                    example: ts-platform-dev-datalake
+                  streamBucket:
+                    type: string
+                    example: ts-platform-dev-stream
+                  backupBucket:
+                    type: string
+                    example: ts-platform-dev-backup
+                  kmsKey:
+                    type: string
+                    example: alias/customer-key-development-mgtest
+                  integrationType:
+                    type: string
+                    example: user_defined
+                  metadata:
+                    type: object
+                    properties: {}
+                  tags:
+                    type: array
+                  logGroupName:
+                    type: string
+                    example: /agents/mgtest/0db83bc0-0921-414c-ad1c-05d47af3dd44
+                  rpcSourceQueueUrl:
+                    type: string
+                    example: https://sqs.us-east-2.amazonaws/706717599419/onprem-0db83bc0-0921-414c-ad1c-05d47af3dd44.fifo
+                  rpcPlatformQueueUrl:
+                    type: string
+                    example: https://sqs.us-east-2.amazonaws/706717599419/onprem-development-command-service-inbound
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist
+      deprecated: false
+  /v1/data-acquisition/agent/status:
+    post:
+      summary: Agent Status (Heart Beat)
+      description: 'This endpoint allows TetraScience Agent to send heartbeats to the Tetrascience platform periodically. Platform will return the agent''s name. It''s recommended to send a heartbeat every 30 seconds.
+
+
+        It requires a user-defined agent set up in the TetraScience Web UI.
+
+
+        Required fields:
+
+        - agentId
+
+        - agentVersion
+
+
+        Optional fields:
+
+        - agent
+
+        - sourceType - If agent defines various source types, like file-log agent, this should be an array of objects with `filePath` and `type` values. Otherwise, it should be single item array that contains object with field `type`'
+      tags:
+      - Data Acquisition
+      operationId: user-defined-integration-agent-status-heart-beat
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - agentId
+              - agentVersion
+              properties:
+                agentId:
+                  type: string
+                  description: This is the sourceId for a user-defined integration. Need to copy from the TDP web UI, where the user-defined integration is created. For existing Tetra Agent that can connect to TetraScience Cloud directly, provide the agentId to this field.
+                agentVersion:
+                  type: string
+                  description: The Agent version, such as "v1.0.0".
+                agent:
+                  type: string
+                  description: Type of agent, in the form `TetraScience.Agent.file-log`, `TetraScience.Agent.empower`, etc. If provided, object in data lake will have the metadata value `agent` in the form of `agent agentVersion` (for example, `TetraScience.Agent.file-log v4.3.0')
+                  enum:
+                  - TetraScience.Agent.file-log
+                  - TetraScience.Agent.empower
+                  - TetraScience.Agent.unicorn
+                  - TetraScience.Agent.labx
+                  - TetraScience.Agent.chromeleon
+                  - TetraScience.Agent.user-defined
+                  default: TetraScience.Agent.user-defined
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"agentName\": \"test\"\n}"
+              schema:
+                type: object
+                properties:
+                  agentName:
+                    type: string
+                    example: test
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist
+      deprecated: false
+    put:
+      summary: Agent Status Setting Update
+      description: "This endpoint allows TetraScience Agent to send status setting update to platform. Tetrascience agents have start/stop button. When start button is clicked, agent should hit endpoint with `statusSetting=STARTED`. Opposite, when stop button is clicked, agent should hit endpoint with `statusSetting=STOPPED`.\n\n It requires a user-defined agent set up in the TetraScience Web UI"
+      tags:
+      - Data Acquisition
+      operationId: user-defined-integration-agent-status-setting-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - agentId
+              - agentVersion
+              properties:
+                agentId:
+                  type: string
+                  description: This is the sourceId for a user-defined integration. Need to copy from the TDP web UI, where the user-defined integration is created.  For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field.
+                agentVersion:
+                  type: string
+                  description: The Agent version, such as "v1.0.0".
+                agent:
+                  type: string
+                  description: Type of agent, in the form `TetraScience.Agent.file-log`, `TetraScience.Agent.empower`, etc. If provided, object in data lake will have the metadata value `agent` in the form of `agent agentVersion` (for example, `TetraScience.Agent.file-log v4.3.0')
+                  enum:
+                  - TetraScience.Agent.file-log
+                  - TetraScience.Agent.empower
+                  - TetraScience.Agent.unicorn
+                  - TetraScience.Agent.labx
+                  - TetraScience.Agent.chromeleon
+                  - TetraScience.Agent.user-defined
+                  default: TetraScience.Agent.user-defined
+                statusSetting:
+                  type: string
+                  description: Status setting of the agent. It can be `STARTED` or `STOPPED`
+                  enum:
+                  - STARTED
+                  - STOPPED
+                  default: STARTED
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"agentName\": \"test\"\n}"
+              schema:
+                type: object
+                properties:
+                  agentName:
+                    type: string
+                    example: test
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist
+      deprecated: false
+  /v1/data-acquisition/agent/systemmetric:
+    post:
+      summary: Agent System Metric Upload
+      description: TetraScience Agent can periodically upload system metrics of itself and the host environment the Agent is running. It requires a user-defined agent set up in the TetraScience Web UI. Uploaded system metric file should be new line delimited JSON file. See below for more details.
+      tags:
+      - Data Acquisition
+      operationId: user-defined-integration-agent-system-metric-upload
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - agentId
+              - agentVersion
+              - systemmetric
+              properties:
+                agentId:
+                  type: string
+                  description: This is the sourceId for a user-defined integration.  Need to copy from the TetraScience Web UI where the user-defined integration is created.  For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field.
+                agentVersion:
+                  type: string
+                  description: The Agent version, such as "v1.0.0".
+                systemmetric:
+                  type: string
+                  description: The system metric file to upload.
+                  format: binary
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"message\": \"OK\"\n}"
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist
+  /v1/data-acquisition/agent/upload:
+    post:
+      summary: File Upload
+      description: 'This endpoint uploads a file to TetraScience Cloud.  It requires a user-defined agent set up in the TetraScience Web UI.  API users can use it to upload, manage their files, and trigger pipelines.
+
+
+
+        Maximum payload size: 500MB
+
+
+        Validations performed by this endpoint:
+
+
+        1. `agentId` must be a valid ID of the user defined agent (UDA)
+
+        2. param `sourceType` must contain only lower case alphanumerical characters and dashes
+
+        3. params `metadata` and `tags` must contain only ASCII characters; `tags` values cannot contain comma and values must be unique
+
+        4. params `metadata` and `tags` together as JSON objects must have less than 1.5KB of text (1536 characters)'
+      tags:
+      - Data Acquisition
+      operationId: user-defined-integration-file-upload
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - agentId
+              - file
+              - filePath
+              properties:
+                agentId:
+                  type: string
+                  description: This is the sourceId for a user-defined integration.  Need to copy from the TetraScience Web UI where the user-defined integration is created.  For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field.
+                agent:
+                  type: string
+                  description: Type of agent, in the form `TetraScience.Agent.file-log`, `TetraScience.Agent.empower`, etc. If provided, object in data lake will have the metadata value `agent` in the form of `agent agentVersion` (for example, `TetraScience.Agent.file-log v4.3.0')
+                  enum:
+                  - TetraScience.Agent.file-log
+                  - TetraScience.Agent.empower
+                  - TetraScience.Agent.unicorn
+                  - TetraScience.Agent.labx
+                  - TetraScience.Agent.chromeleon
+                  - TetraScience.Agent.user-defined
+                  default: TetraScience.Agent.user-defined
+                agentVersion:
+                  type: string
+                  description: Version of the agent that's uploading the file (for example, `v4.3.0`)
+                sourceType:
+                  type: string
+                  description: 'If provided, this field will overwrite the sourceType configured in the TetraScience Web UI. Default value: `unknown`  A valid sourceType string can contain only alphanumeric characters in lower case letters and dash. Any other character will trigger validation error.'
+                  default: unknown
+                fileCategory:
+                  type: string
+                  description: The file category of the uploaded file, included in the datalake path.
+                  enum:
+                  - RAW
+                  - PROCESSED
+                  default: RAW
+                fileId:
+                  type: string
+                  description: If provided, it must be a valid and unique UUID. If not provided, platform will generate unique UUID value.
+                traceId:
+                  type: string
+                  description: A valid UUID, if provided. If not present, system will use the `fileId` value
+                filePath:
+                  type: string
+                  description: Required. An example of `filePath` can be `/experiment_2/sample a/result.pdf`
+                file:
+                  type: string
+                  format: binary
+                  description: Content of a single file to upload
+                payloadGzip:
+                  type: string
+                  description: 'If set to `true`, indicates the file content is gzip compressed. If false or omitted, the content will be gzipped during upload. Default value: `false`.'
+                  default: 'false'
+                metadata:
+                  type: string
+                  description: 'JSON string as `{"key", "value"}`. The metadata and value will overwrite metadata defined for the user-defined integration in the TetraScience Web UI. Validations: fields and values must contain only ASCII characters; values must be either string or null values.'
+                tags:
+                  type: string
+                  description: 'JSON string as `["tag 1", "tag 2"]`. Validations: values must contain only ASCII characters; value must not have comma (,); values must be unique'
+                labels:
+                  type: string
+                  description: 'JSON string as `[{"name":"label name", "value":"label value"}]`. The labels will join the agent defined labels. Validations: Names can include any unicode characters, except line breaks. They cannot be empty, and they have a maximun length of 128 characters. Values can include any unicode characters, except line breaks, and they cannot be empty.'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"type\": \"s3file\",\n    \"fileKey\": \"demo/1cd9ffeb-1e10-45d2-a8d6-61a88c829e5c/RAW/test/raw.json\",\n    \"bucket\": \"ts-platform-env-datalake\",\n    \"version\": \"grXOL0hSiCeKu094tBw.mu4LXQErWzGT\",\n    \"fileId\": \"c4c6cfdf-67d0-4672-a1a6-0b9f558d0156\"\n}"
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: s3file
+                  fileKey:
+                    type: string
+                    example: demo/1cd9ffeb-1e10-45d2-a8d6-61a88c829e5c/RAW/test/raw.json
+                  bucket:
+                    type: string
+                    example: ts-platform-env-datalake
+                  version:
+                    type: string
+                    example: grXOL0hSiCeKu094tBw.mu4LXQErWzGT
+                  fileId:
+                    type: string
+                    example: c4c6cfdf-67d0-4672-a1a6-0b9f558d0156
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Source with config source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Source with config source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 422,\n    \"error\": \"Unprocessable Entity\",\n    \"message\": \"Param sourceType contains invalid character or upper case letter\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 422
+                    default: 0
+                  error:
+                    type: string
+                    example: Unprocessable Entity
+                  message:
+                    type: string
+                    example: Param sourceType contains invalid character or uppercase letter
+      deprecated: false
+  /v1/data-acquisition/agent/log:
+    post:
+      summary: Agent Log Upload
+      description: This endpoint uploads agents log to TetraScience Cloud. It requires a user-defined agent set up in the TetraScience Web UI.
+      tags:
+      - Data Acquisition
+      operationId: user-defined-integration-log-upload
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - agentId
+              - agentVersion
+              - log
+              properties:
+                agentId:
+                  type: string
+                  description: This is the sourceId for a user-defined integration.  Need to copy from the TetraScience Web UI where the user-defined integration is created.  For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field.
+                agentVersion:
+                  type: string
+                  description: The Agent version, such as "v1.0.0".
+                log:
+                  type: string
+                  description: The log file to upload.
+                  format: binary
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"message\": \"OK\"\n}"
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist
+      deprecated: false
+components:
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

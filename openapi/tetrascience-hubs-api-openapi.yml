@@ -1,0 +1,650 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Hubs API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Hubs
+paths:
+  /v1/data-acquisition/hubs:
+    get:
+      tags:
+      - Hubs
+      operationId: HubController_getAll
+      summary: Get all Hubs
+      description: '**:warning: This is a new API which is still subject to change.**
+
+
+        Use this endpoint to get a list of Hubs.'
+      parameters:
+      - name: include
+        required: false
+        in: query
+        description: Include additional Hub fields. Passing 'status' includes network and health statuses.
+        example: status
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - status
+      responses:
+        '200':
+          description: Successful response with a list of all Hubs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HubsResponse'
+  /v1/data-acquisition/hubs/{id}:
+    get:
+      tags:
+      - Hubs
+      operationId: HubController_getById
+      summary: Get a Hub by id
+      description: '**:warning: This is a new API which is still subject to change.**
+
+
+        Use this endpoint to get a Hub''s details by id.'
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: include
+        required: false
+        description: Include additional Hub fields. Passing 'connectors' includes the list of the Hub's Connectors.
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - connectors
+      responses:
+        '200':
+          description: Successful response with a Hub's details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HubDetailsDto'
+components:
+  schemas:
+    HubDetailsDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        orgSlug:
+          type: string
+        description:
+          type: string
+        httpProxyHost:
+          type: string
+        httpProxyPort:
+          type: number
+        httpProxyUsername:
+          type: string
+        httpsProxyHost:
+          type: string
+        httpsProxyPort:
+          type: number
+        httpsProxyUsername:
+          type: string
+        noProxy:
+          type: string
+        l7ProxyForwardPort:
+          type: number
+        l7ProxyReverseHttpPort:
+          type: number
+        l7ProxyReverseHttpsPort:
+          type: number
+        l7ProxySocatPort:
+          type: number
+        l7ProxyReverseMqttPort:
+          type: number
+        l7ProxySocatMqttPort:
+          type: number
+        l7ProxyLocalnets:
+          type: string
+        l7ProxyDnsNameservers:
+          type: string
+        l7ProxyWhitelist:
+          type: string
+        l7ProxyMaximumMemoryMb:
+          type: number
+        enabled:
+          type: boolean
+        status:
+          $ref: '#/components/schemas/HubStatusDto'
+        host:
+          $ref: '#/components/schemas/HubHostDto'
+        updatedAt:
+          format: date-time
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        activationExpiresAt:
+          format: date-time
+          type: string
+        ssmInstanceId:
+          type: string
+        ecsContainerInstanceArn:
+          type: string
+        connectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/HubConnectorDto'
+      required:
+      - id
+      - name
+      - orgSlug
+      - description
+      - httpProxyHost
+      - httpProxyPort
+      - httpProxyUsername
+      - httpsProxyHost
+      - httpsProxyPort
+      - httpsProxyUsername
+      - noProxy
+      - l7ProxyForwardPort
+      - l7ProxyReverseHttpPort
+      - l7ProxyReverseHttpsPort
+      - l7ProxySocatPort
+      - l7ProxyReverseMqttPort
+      - l7ProxySocatMqttPort
+      - l7ProxyLocalnets
+      - l7ProxyDnsNameservers
+      - l7ProxyWhitelist
+      - l7ProxyMaximumMemoryMb
+      - enabled
+      - status
+      - host
+      - updatedAt
+      - createdAt
+      - activationExpiresAt
+      - ssmInstanceId
+      - ecsContainerInstanceArn
+      - connectors
+    HubHostDto:
+      type: object
+      properties:
+        ipAddress:
+          type: string
+          description: The Hub's IP address.
+        hostName:
+          type: string
+          description: The Hub's host name.
+        platformName:
+          type: string
+          description: The Hub's operating system name.
+        platformVersion:
+          type: string
+          description: The Hub's operating system version.
+      required:
+      - ipAddress
+      - hostName
+      - platformName
+      - platformVersion
+    ArtifactDto:
+      type: object
+      properties:
+        namespace:
+          type: string
+        slug:
+          type: string
+        version:
+          type: string
+      required:
+      - namespace
+      - slug
+      - version
+      - manifest
+    HubStatusDto:
+      type: object
+      properties:
+        health:
+          description: The health status of the Hub.
+          type: object
+          properties:
+            breakdown:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    enum:
+                    - Availability
+                    - CPU
+                    - Disk
+                    - Memory
+                    - ProxyMemory
+                    - ProxyMemoryMax
+                    - ProxyAvailability
+                  status:
+                    type: string
+                    enum:
+                    - HEALTHY
+                    - WARNING
+                    - CRITICAL
+            status:
+              type: string
+              description: The overall health status of the Hub. Rolls up to the most severe status in the breakdown.
+              enum:
+              - HEALTHY
+              - WARNING
+              - CRITICAL
+        network:
+          description: The network status of the Hub.
+          type: string
+          enum:
+          - Online
+          - Offline
+          - Never Seen
+        lastSeen:
+          description: The last time the Hub was seen by the platform.
+          format: date-time
+          type: string
+        metrics:
+          type: array
+          items:
+            type: object
+            properties:
+              cpuUsedSystem:
+                type: object
+                properties:
+                  value:
+                    type: number
+                  unit:
+                    type: string
+                    enum:
+                    - Percent
+              cpuUsedUser:
+                type: object
+                properties:
+                  value:
+                    type: number
+                  unit:
+                    type: string
+                    enum:
+                    - Percent
+              diskFree:
+                type: object
+                properties:
+                  value:
+                    type: number
+                  unit:
+                    type: string
+                    enum:
+                    - Bytes
+              diskUsed:
+                type: object
+                properties:
+                  value:
+                    type: number
+                  unit:
+                    type: string
+                    enum:
+                    - Percent
+              memoryUsed:
+                type: object
+                properties:
+                  value:
+                    type: number
+                  unit:
+                    type: string
+                    enum:
+                    - Bytes
+              memoryFree:
+                type: object
+                properties:
+                  value:
+                    type: number
+                  unit:
+                    type: string
+                    enum:
+                    - Bytes
+              memoryBuffered:
+                type: object
+                properties:
+                  value:
+                    type: number
+                  unit:
+                    type: string
+                    enum:
+                    - Bytes
+              memoryCached:
+                type: object
+                properties:
+                  value:
+                    type: number
+                  unit:
+                    type: string
+                    enum:
+                    - Bytes
+              memoryAvailable:
+                type: object
+                properties:
+                  value:
+                    type: number
+                  unit:
+                    type: string
+                    enum:
+                    - Bytes
+              memoryTotal:
+                type: object
+                properties:
+                  value:
+                    type: number
+                  unit:
+                    type: string
+                    enum:
+                    - Bytes
+              memoryUsedPercentOfReservation:
+                type: object
+                properties:
+                  value:
+                    type: number
+                  unit:
+                    type: string
+                    enum:
+                    - Percent
+              memoryMax:
+                type: object
+                properties:
+                  value:
+                    type: number
+                  unit:
+                    type: string
+                    enum:
+                    - Bytes
+        proxies:
+          description: The status of the Hub's built-in Agent proxies.
+          type: object
+          properties:
+            l7:
+              type: object
+              properties:
+                startedAt:
+                  type: string
+                  format: date-time
+                status:
+                  type: string
+                  enum:
+                  - RUNNING
+                  - STOPPED
+            l7ReverseNginx:
+              type: object
+              properties:
+                startedAt:
+                  type: string
+                  format: date-time
+                status:
+                  type: string
+                  enum:
+                  - RUNNING
+                  - STOPPED
+            l7ReverseSocat:
+              type: object
+              properties:
+                startedAt:
+                  type: string
+                  format: date-time
+                status:
+                  type: string
+                  enum:
+                  - RUNNING
+                  - STOPPED
+            metrics:
+              type: array
+              items:
+                type: object
+                properties:
+                  cpuUsed:
+                    type: object
+                    properties:
+                      value:
+                        type: number
+                      unit:
+                        type: string
+                        enum:
+                        - Percent
+                  memoryUsed:
+                    type: object
+                    properties:
+                      value:
+                        type: number
+                      unit:
+                        type: string
+                        enum:
+                        - Bytes
+                  memoryUsedPercentOfMax:
+                    type: object
+                    properties:
+                      value:
+                        type: number
+                      unit:
+                        type: string
+                        enum:
+                        - Percent
+                  memoryUsedPercentOfReservation:
+                    type: object
+                    properties:
+                      value:
+                        type: number
+                      unit:
+                        type: string
+                        enum:
+                        - Percent
+                  memoryMax:
+                    type: object
+                    properties:
+                      value:
+                        type: number
+                      unit:
+                        type: string
+                        enum:
+                        - Bytes
+      required:
+      - network
+      - lastSeen
+      - proxies
+      - metrics
+      - health
+    HubConnectorDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        artifact:
+          $ref: '#/components/schemas/ArtifactDto'
+        hostType:
+          type: string
+          description: The type of host the Connector is running on.
+          enum:
+          - cloud
+          - hub
+        health:
+          type: string
+        healthErrorCode:
+          type: string
+        operatingStatus:
+          type: string
+        networkStatus:
+          type: string
+        lastSeenAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - artifact
+      - hostType
+      - health
+      - healthErrorCode
+      - operatingStatus
+      - networkStatus
+      - lastSeenAt
+      - updatedAt
+      - createdAt
+    HubDto:
+      type: object
+      properties:
+        id:
+          description: The Hub's id.
+          type: string
+        name:
+          description: The Hub's name.
+          type: string
+        orgSlug:
+          description: The organization slug that the Hub belongs to.
+          type: string
+        description:
+          description: The Hub's description.
+          type: string
+        httpProxyHost:
+          description: The Hub's http parent proxy host, if set.
+          type: string
+        httpProxyPort:
+          description: The Hub's http parent proxy port, if set.
+          type: number
+        httpProxyUsername:
+          description: A legacy field from when Hub's parent proxy was configured in the cloud; no longer populated.
+          type: string
+        httpsProxyHost:
+          type: string
+          description: The Hub's https parent proxy host, if set.
+        httpsProxyPort:
+          type: number
+          description: The Hub's https parent proxy port, if set.
+        httpsProxyUsername:
+          type: string
+          description: A legacy field from when Hub's parent proxy was configured in the cloud; no longer populated.
+        noProxy:
+          type: string
+          description: The Hub's no proxy list, if set.
+        l7ProxyForwardPort:
+          type: number
+          description: The Hub's L7 proxy forward port, used by Agents automatically when using this Hub.
+        l7ProxyReverseHttpPort:
+          type: number
+          description: The Hub's L7 proxy reverse http port, configured explicitly on Agents.
+        l7ProxyReverseHttpsPort:
+          type: number
+          description: The Hub's L7 proxy reverse https port, configured explicitly on Agents.
+        l7ProxySocatPort:
+          type: number
+          description: The Hub's L7 proxy socat port. Not used externally, but configurable to avoid port conflicts.
+        l7ProxyReverseMqttPort:
+          type: number
+          description: The Hub's L7 proxy reverse mqtt port, if set, configured explicitly on IoT Agents.
+        l7ProxySocatMqttPort:
+          type: number
+          description: The Hub's L7 proxy socat mqtt port. Not used externally, but configurable to avoid port conflicts.
+        l7ProxyLocalnets:
+          type: string
+          description: The Hub's L7 proxy localnets, if set.
+        l7ProxyDnsNameservers:
+          type: string
+          description: The Hub's L7 proxy dns nameservers, if set explicitly. Otherwise, defaults to the host VM's.
+        l7ProxyWhitelist:
+          type: string
+          description: The Hub's L7 proxy whitelist, if set. If not set, all endpoints are allowed.
+        l7ProxyMaximumMemoryMb:
+          type: number
+          description: The Hub's L7 proxy maximum memory in MB, if set.
+        enabled:
+          type: boolean
+          description: Whether the Hub is enabled. When disabled, Hub Connectors are disabled but the SSM and ECS Agents continue to await commands.
+        status:
+          description: The Hub's status. Only present on the list endpoint if include=status is passed. Not present when Hub info is returned on Connectors endpoints.
+          $ref: '#/components/schemas/HubStatusDto'
+        host:
+          $ref: '#/components/schemas/HubHostDto'
+        updatedAt:
+          format: date-time
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        activationExpiresAt:
+          description: The time at which the Hub's activation will expire. 24 hours after creation.
+          format: date-time
+          type: string
+        ssmInstanceId:
+          description: The Hub's AWS Systems Manager instance id, if the Hub has been installed.
+          type: string
+        ecsContainerInstanceArn:
+          description: The Hub's AWS ECS container instance ARN, if the Hub has been installed.
+          type: string
+      required:
+      - id
+      - name
+      - orgSlug
+      - l7ProxyForwardPort
+      - l7ProxyReverseHttpPort
+      - l7ProxyReverseHttpsPort
+      - l7ProxySocatPort
+      - l7ProxyLocalnets
+      - l7ProxyMaximumMemoryMb
+      - enabled
+      - host
+      - updatedAt
+      - createdAt
+      - activationExpiresAt
+    HubsResponse:
+      type: object
+      properties:
+        hubs:
+          type: array
+          items:
+            $ref: '#/components/schemas/HubDto'
+      required:
+      - hubs
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

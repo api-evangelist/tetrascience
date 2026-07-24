@@ -1,0 +1,736 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Attributes API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Attributes
+paths:
+  /v1/fileinfo/files/{fileId}/labels:
+    post:
+      parameters:
+      - in: path
+        name: fileId
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: ID assigned to the file when it was created in the data lake. Type is uuid.
+      - in: query
+        name: noPropagate
+        description: Prevents label operation from triggering pipelines.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - in: header
+        name: x-org-slug
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    pattern: ^(?![\uFFFE\uFFFF\n\r]).+$/
+                    maxLength: 128
+                  value:
+                    type: string
+                    pattern: ^(?![\uFFFE\uFFFF\n\r]).+$/
+                required:
+                - name
+                - value
+                additionalProperties: false
+              minItems: 1
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "[{\n    \"name\":\"<name>\",\n      \"value\":\"<value>\"\n    }]"
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: <name>
+                    value:
+                      type: string
+                      example: <value>
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 401,\n    \"error\": \"Unauthorized\",\n    \"message\": \"Invalid token\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 401
+                    default: 0
+                  error:
+                    type: string
+                    example: Unauthorized
+                  message:
+                    type: string
+                    example: Invalid token
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Not Found\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Not Found
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"Internal Server Error\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 500
+                    default: 0
+                  error:
+                    type: string
+                    example: Internal Server Error
+                  message:
+                    type: string
+                    example: Internal Server Error
+      summary: Add Labels (POST)
+      description: Add custom labels to a file for categorization, organization, and enhanced searchability within the Data Lake. Use this endpoint when you need to tag files for better organization and filtering.
+      tags:
+      - Attributes
+      operationId: DL-FI-add-labels
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST\n  'https://api.tetrascience.com/v1/fileinfo/files/f7e65f80-18b7-479a-9921-a66dfb3682ca/labels'\n  \\\n\n  --header 'ts-auth-token: {JWT_TOKEN}' \\\n\n  --header 'x-org-slug: tetrascience'  \\ \n\n  --header 'Content-Type: application/json' \\ \n\n  --header 'Authorization: Bearer <token>' \\ \n\n  --data-raw '[{   \"name\":\"<enter name>\", \"value\":\"<enter value>\"  "
+        samples-languages:
+        - curl
+    delete:
+      parameters:
+      - in: path
+        name: fileId
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: ID assigned to the file when it was created in the data lake. Type is uuid.
+      - in: query
+        name: labelId
+        required: true
+        schema:
+          type: array
+          items:
+            type: number
+            format: float
+        description: 'ID Assigned to the Label. You can find this by running the Get File Information endpoint: https://developers.tetrascience.com/reference/get-file-information'
+      - in: query
+        name: noPropagate
+        description: Prevents label operation from triggering pipelines.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - in: header
+        name: x-org-slug
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: ''
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 401,\n    \"error\": \"Unauthorized\",\n    \"message\": \"Invalid token\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 401
+                    default: 0
+                  error:
+                    type: string
+                    example: Unauthorized
+                  message:
+                    type: string
+                    example: Invalid token
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Not Found\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Not Found
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"Internal Server Error\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 500
+                    default: 0
+                  error:
+                    type: string
+                    example: Internal Server Error
+                  message:
+                    type: string
+                    example: Internal Server Error
+      summary: Delete Labels (DELETE)
+      description: Remove specific labels from a file to either update categorization or correct labeling mistakes. Use this endpoint when you need to clean up incorrect labels or reorganize file categorization.
+      tags:
+      - Attributes
+      operationId: DL-FI-delete-labels
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request DELETE\n  'https://api.tetrascience.com/v1/fileinfo/files/f7e65f80-18b7-479a-9921-a66dfb3682ca/labels?id=<label\n  ID>' \\\n\n  --header 'ts-auth-token: {JWT_TOKEN}' \\\n\n  --header 'x-org-slug: tetrascience'  \\ \n\n  --header 'Content-Type: application/json' \\ \n\n  --header 'Authorization: Bearer <token>' \\ "
+        samples-languages:
+        - curl
+  /v1/datalake/metadata-tags:
+    post:
+      summary: Add metadata and tags to a file
+      tags:
+      - Attributes
+      description: "This endpoint appends tags to a target file in the datalake or modifies the value of a metadata key. This endpoint requires either `fileId` or `bucket`, `fileKey` and `version` to be provided in order to uniquely identify a file.\n**Note:** Applying metadata or tags to files larger than 5 GB isn't supported and will return a `500` error. For large files, you should [apply labels](https://developers.tetrascience.com/reference/dl-fi-add-labels) instead. This limitation is because of a hard limit on the [`CopyObject` API operation in Amazon Storage Service (Amazon S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/copy-object.html), which has a maximum source size of 5 GB. When a file's tags or metadata are updated, the TDP copies the Amazon S3 object with new metadata, and this copy operation fails for files 5 GB or larger. For more information, see [Attributes](https://developers.tetrascience.com/docs/basic-concepts-metadata-tags-and-labels).\nTarget file query is determined by field `originalFile`. Target file is queried in two ways:\n1. by `fileId` (UUID of a file in datalake)\n2. by `bucket`, `fileKey` and `version`\n\nEndpoint finds target file by given file query and creates new version with updated metadata and tags. If payload contains neither `metadata` nor `tags`, endpoint will return existing file from datalake.\n\nParameters `metadata` and `tags` description:\n\n1. `metadata` is JSON object, e.g. { \"key1\": \"value\", \"key2\": \"2\" }\n2. `metadata` can have empty string values\n3. `metadata` entry field can be null and in that case it will remove custom metadata value on target file\n4. `tags` is JSON array, e.g.  [\"a\", \"b\"]\nHere is an example payload for this endpoint:\n{\n  \"originalFile\": {\n    \"fileKey\": \"tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json\",\n    \"bucket\": \"ts-platform-dev-datalake\",\n    \"version\": \"dUzbISdeNgKXuSsv.lUT73qr7lYoby_u\",\n    \"type\": \"s3file\"\n  },\n  \"metadata\": {\n    \"a\": \"a\",\n    \"b\": \"\",\n    \"c\": \"Test\"\n  },\n  \"tags\": [\"Boston\", \"San Fran\", \"123\"]\n}\nIt will append any existing metadata/tags with the ones listed in the payload.\n\nValidations performed by this endpoint:\n\n1. if parameter `fileId` is not provided, then all three parameters (`bucket`, `fileKey` and `version`) must be provided\n2. if any one of parameters `bucket`, `fileKey` and `version` is not provided, then parameter `fileId` must be provided\n3. `metadata` keys can only include letters, numbers, spaces, and the symbols `+`, `-`, or `_`\n4. `metadata` values can only include letters, numbers, spaces, and the symbols `+`, `-`, `_`, `/`, `.` or `,`\n5. `tags` must contain only letters, numbers, spaces, and the symbols `+`, `-`, `.`, `/` or ` _` and they must be unique\n6. `metadata` and `tags` together as JSON objects must have less than 1.5KB of text (1536 characters)"
+      operationId: DL-FI-dl-post-metadata-and-tags-of-a-file
+      parameters:
+      - name: ts-auth-token
+        in: header
+        description: JWT Token.
+        required: true
+        schema:
+          type: string
+      - name: x-org-slug
+        in: header
+        description: Your organization's slug.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              description: JSON to specify file identification criteria and metadata and tags values to use for update
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"fileId\": \"f46c1b61-ad7c-477f-8dc6-87790445a730\",\n    \"fileKey\": \"tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json\",\n    \"bucket\": \"ts-platform-dev-datalake\",\n    \"version\": \"DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ\",\n    \"type\": \"s3file\"\n}"
+              schema:
+                type: object
+                properties:
+                  fileId:
+                    type: string
+                    example: f46c1b61-ad7c-477f-8dc6-87790445a730
+                  fileKey:
+                    type: string
+                    example: tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json
+                  bucket:
+                    type: string
+                    example: ts-platform-dev-datalake
+                  version:
+                    type: string
+                    example: DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ
+                  type:
+                    type: string
+                    example: s3file
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Error validating payload\",\n    \"validations\": [\n        {\n            \"message\": \"\\\"b\\\" must be a string\",\n            \"path\": \"metadata.b\",\n            \"type\": \"string.base\",\n            \"context\": {\n                \"value\": 1234123,\n                \"key\": \"b\"\n            }\n        }\n    ]\n}"
+              schema:
+                oneOf:
+                - type: object
+                  properties:
+                    statusCode:
+                      type: integer
+                      example: 400
+                      default: 0
+                    error:
+                      type: string
+                      example: Bad Request
+                    message:
+                      type: string
+                      example: Error validating payload
+                    validations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          message:
+                            type: string
+                            example: '"2" must be a string'
+                          path:
+                            type: string
+                            example: tags.2
+                          type:
+                            type: string
+                            example: string.base
+                          context:
+                            type: object
+                            properties:
+                              value:
+                                type: integer
+                                example: 123
+                                default: 0
+                              key:
+                                type: integer
+                                example: 2
+                                default: 0
+                - type: object
+                  properties:
+                    statusCode:
+                      type: integer
+                      example: 400
+                      default: 0
+                    error:
+                      type: string
+                      example: Bad Request
+                    message:
+                      type: string
+                      example: Error validating payload
+                    validations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          message:
+                            type: string
+                            example: '"b" must be a string'
+                          path:
+                            type: string
+                            example: metadata.b
+                          type:
+                            type: string
+                            example: string.base
+                          context:
+                            type: object
+                            properties:
+                              value:
+                                type: integer
+                                example: 1234123
+                                default: 0
+                              key:
+                                type: string
+                                example: b
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"File not found: ts-platform-dev-datalake1/tetrascience/tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json in version DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: 'File not found: ts-platform-dev-datalake1/tetrascience/tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json in version DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ'
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: shell
+          code: "curl -H \"ts-auth-token: <JWT Token>\" \\\n-H \"x-org-slug: <YOUR ORGANIZATION>\"\\\n-X POST \\\n-H 'Content-Type: application/json; charset=utf-8' \\\n--data-binary @- << EOF\n{\n  \"originalFile\": {\n    \"fileKey\": \"tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json\",\n    \"bucket\": \"ts-platform-dev-datalake\",\n    \"version\": \"dUzbISdeNgKXuSsv.lUT73qr7lYoby_u\",\n    \"type\": \"s3file\"\n  },\n  \"metadata\": {\n    \"a\": null,\n    \"b\": \"\",\n    \"c\": \"Test\"\n  },\n  \"tags\": [\"Boston\", \"San Fran\", \"123\"]\n}\nEOF\nhttps://api.tetrascience.com/v1/datalake/metadata-tags\n"
+          name: cURL
+        - language: curl
+          code: "curl -H \"ts-auth-token: <JWT Token>\" \\\n-H \"x-org-slug: <YOUR ORGANIZATION>\"\\\n-X POST \\\n-H \"Expect:\" \\\n-H 'Content-Type: application/json; charset=utf-8' \\\n--data-binary @- << EOF\n{\n  \"originalFile\": {\n    \"fileId\": \"f46c1b61-ad7c-477f-8dc6-87790445a730\"\n  },\n  \"metadata\": {\n    \"a\": null,\n    \"b\": \"\",\n    \"c\": \"Test\"\n  },\n  \"tags\": [\"Boston\", \"San Fran\", \"123\"]\n}\nEOF\nhttps://api.tetrascience.com/v1/datalake/metadata-tags\n"
+        samples-languages:
+        - shell
+        - curl
+    get:
+      summary: Retrieve metadata and tags of a file
+      tags:
+      - Attributes
+      description: 'This endpoint returns metadata and tags of a target file in datalake. This endpoint require either `fileId` or `bucket`, `fileKey` and `version` to be provided in order to uniquely identify file.
+
+
+        Validations performed by this endpoint:
+
+
+        1. if parameter `fileId` is not provided, then `bucket, `fileKey` and `version` parameters must be provided
+
+        2. if parameters `bucket`, `fileKey` and `version` are not provided, parameter `fileId` must be provided'
+      operationId: DL-FI-dl-retrieve-metadata-and-tags-of-a-file
+      parameters:
+      - name: ts-auth-token
+        in: header
+        description: JWT Token.
+        required: true
+        schema:
+          type: string
+      - name: fileId
+        in: query
+        description: UUIDv4 of the target file in datalake
+        schema:
+          type: string
+      - name: bucket
+        in: query
+        description: S3 bucket of the target file in datalake
+        schema:
+          type: string
+      - name: fileKey
+        in: query
+        description: S3 key of the target file in datalake
+        schema:
+          type: string
+      - name: type
+        in: query
+        schema:
+          type: string
+          default: s3file
+      - name: version
+        in: query
+        description: Version of the target file in datalake
+        schema:
+          type: string
+      - name: x-org-slug
+        in: header
+        description: Your organization's slug.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"metadata\": {\n        \"b\": \"null\",\n        \"c\": \"Test\"\n    },\n    \"tags\": [\n        \"Boston\",\n        \"San Fran\",\n        \"123\"\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      b:
+                        type: string
+                        example: 'null'
+                      c:
+                        type: string
+                        example: Test
+                  tags:
+                    type: array
+                    items:
+                      type: string
+                      example: Boston
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"File not found: ts-platform-dev-datalake1/tetrascience/tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json in version DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: 'File not found: ts-platform-dev-datalake1/tetrascience/tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json in version DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ'
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: shell
+          code: 'curl -H "ts-auth-token: <JWT Token>" \
+
+            -H "x-org-slug: <YOUR ORGANIZATION>"\
+
+            -X GET https://api.tetrascience.com/v1/datalake/metadata-tags?fileId=f46c1b61-ad7c-477f-8dc6-87790445a730
+
+            '
+          name: cURL
+        - language: curl
+          code: 'curl -H "ts-auth-token: <JWT Token>" \
+
+            -H "x-org-slug: <YOUR ORGANIZATION>"\
+
+            -X GET https://api.tetrascience.com/v1/datalake/metadata-tags?bucket=ts-platform-dev-datalake&fileKey=tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json&type=s3file&version=DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ'
+        samples-languages:
+        - shell
+        - curl
+    put:
+      summary: Update metadata and tags to a file
+      tags:
+      - Attributes
+      description: "This endpoint replaces metadata and tags to a target file in the datalake. This endpoint require either `fileId` or `bucket`, `fileKey` and `version` to be provided in order to uniquely identify file.\n\nTarget file query is determined by field `originalFile`. Target file is queried in two ways:\n1. by `fileId` (UUID of a file in datalake)\n2. by `bucket`, `fileKey` and `version`\n\nEndpoint finds target file by given file query and creates new version with updated metadata and tags. If payload doesn't contain neither `metadata` nor `tags`, endpoint will remove all metadata and tags.\n\nParameters `metadata` and `tags` description:\n\n1. `metadata` is JSON object, e.g. { \"key1\": \"value\", \"key2\": \"2\" }\n2. `metadata` can have empty string values\n3. `metadata` entry field can be null and in that case it will remove custom metadata value on target file\n4. `tags` is JSON array, e.g.  [\"a\", \"b\"]\nHere is an example payload for this endpoint:\n{\n  \"originalFile\": {\n    \"fileKey\": \"tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json\",\n    \"bucket\": \"ts-platform-dev-datalake\",\n    \"version\": \"dUzbISdeNgKXuSsv.lUT73qr7lYoby_u\",\n    \"type\": \"s3file\"\n  },\n  \"metadata\": {\n    \"a\": \"a\",\n    \"b\": \"\",\n    \"c\": \"Test\"\n  },\n  \"tags\": [\"Boston\", \"San Fran\", \"123\"]\n}\nIt will replace any existing metadata/tags with the ones listed in the payload.\n\nValidations performed by this endpoint:\n\n1. if parameter `fileId` is not provided, then all three parameters `bucket`, `fileKey` and `version` be provided\n2. if any of parameters `bucket`, `fileKey` and `version` is not provided, then parameter `fileId` must be provided\n3. `metadata` keys can only include letters, numbers, spaces, and the symbols `+`, `-`, or `_`\n4. `metadata` values can only include letters, numbers, spaces, and the symbols `+`, `-`, `_`, `/`, `.` or `,`\n5. `tags` must contain only letters, numbers, spaces, and the symbols `+`, `-`, `.`, `/` or ` _` and they must be unique\n6. `metadata` and `tags` together as JSON objects must have less than 1.5KB of text (1536 characters)"
+      operationId: DL-FI-dl-update-metadata-and-tags-of-a-file
+      parameters:
+      - name: ts-auth-token
+        in: header
+        description: JWT Token.
+        required: true
+        schema:
+          type: string
+      - name: x-org-slug
+        in: header
+        description: Your organization's slug.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              description: JSON to specify file identification criteria and metadata and tags values to use for update
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"fileId\": \"f46c1b61-ad7c-477f-8dc6-87790445a730\",\n    \"fileKey\": \"tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json\",\n    \"bucket\": \"ts-platform-dev-datalake\",\n    \"version\": \"DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ\",\n    \"type\": \"s3file\"\n}"
+              schema:
+                type: object
+                properties:
+                  fileId:
+                    type: string
+                    example: f46c1b61-ad7c-477f-8dc6-87790445a730
+                  fileKey:
+                    type: string
+                    example: tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json
+                  bucket:
+                    type: string
+                    example: ts-platform-dev-datalake
+                  version:
+                    type: string
+                    example: DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ
+                  type:
+                    type: string
+                    example: s3file
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Error validating payload\",\n    \"validations\": [\n        {\n            \"message\": \"\\\"b\\\" must be a string\",\n            \"path\": \"metadata.b\",\n            \"type\": \"string.base\",\n            \"context\": {\n                \"value\": 1234123,\n                \"key\": \"b\"\n            }\n        }\n    ]\n}"
+              schema:
+                oneOf:
+                - type: object
+                  properties:
+                    statusCode:
+                      type: integer
+                      example: 400
+                      default: 0
+                    error:
+                      type: string
+                      example: Bad Request
+                    message:
+                      type: string
+                      example: Error validating payload
+                    validations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          message:
+                            type: string
+                            example: '"2" must be a string'
+                          path:
+                            type: string
+                            example: tags.2
+                          type:
+                            type: string
+                            example: string.base
+                          context:
+                            type: object
+                            properties:
+                              value:
+                                type: integer
+                                example: 123
+                                default: 0
+                              key:
+                                type: integer
+                                example: 2
+                                default: 0
+                - type: object
+                  properties:
+                    statusCode:
+                      type: integer
+                      example: 400
+                      default: 0
+                    error:
+                      type: string
+                      example: Bad Request
+                    message:
+                      type: string
+                      example: Error validating payload
+                    validations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          message:
+                            type: string
+                            example: '"b" must be a string'
+                          path:
+                            type: string
+                            example: metadata.b
+                          type:
+                            type: string
+                            example: string.base
+                          context:
+                            type: object
+                            properties:
+                              value:
+                                type: integer
+                                example: 1234123
+                                default: 0
+                              key:
+                                type: string
+                                example: b
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"File not found: ts-platform-dev-datalake1/tetrascience/tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json in version DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: 'File not found: ts-platform-dev-datalake1/tetrascience/tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json in version DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ'
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: shell
+          code: "curl -H \"ts-auth-token: <JWT Token>\" \\\n-H \"x-org-slug: <YOUR ORGANIZATION>\"\\\n-X PUT \\\n-H 'Content-Type: application/json; charset=utf-8' \\\n--data-binary @- << EOF\n{\n  \"originalFile\": {\n    \"fileKey\": \"tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json\",\n    \"bucket\": \"ts-platform-dev-datalake\",\n    \"version\": \"dUzbISdeNgKXuSsv.lUT73qr7lYoby_u\",\n    \"type\": \"s3file\"\n  },\n  \"metadata\": {\n    \"a\": null,\n    \"b\": \"\",\n    \"c\": \"Test\"\n  },\n  \"tags\": [\"Boston\", \"San Fran\", \"123\"]\n}\nEOF\nhttps://api.tetrascience.com/v1/datalake/metadata-tags\n"
+          name: cURL
+        - language: curl
+          code: "curl -H \"ts-auth-token: <JWT Token>\" \\\n-H \"x-org-slug: <YOUR ORGANIZATION>\"\\\n-X PUT \\\n-H \"Expect:\" \\\n-H 'Content-Type: application/json; charset=utf-8' \\\n--data-binary @- << EOF\n{\n  \"originalFile\": {\n    \"fileId\": \"f46c1b61-ad7c-477f-8dc6-87790445a730\"\n  },\n  \"metadata\": {\n    \"a\": null,\n    \"b\": \"\",\n    \"c\": \"Test\"\n  },\n  \"tags\": [\"Boston\", \"San Fran\", \"123\"]\n}\nEOF\nhttps://api.tetrascience.com/v1/datalake/metadata-tags\n"
+        samples-languages:
+        - shell
+        - curl
+components:
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

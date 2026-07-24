@@ -1,0 +1,489 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Task Scripts API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Task Scripts
+paths:
+  /v1/artifacts/task-scripts/{namespace}:
+    get:
+      description: Returns a list of all task-script artifacts given a namespace
+      summary: List all task-scripts for a namespace
+      tags:
+      - Task Scripts
+      operationId: getTaskScriptArtifactByNamespace
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/LatestOnlyQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200TaskScriptObjectList'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/task-scripts/{namespace}/{slug}:
+    get:
+      description: Returns a list of all task-script artifacts given a namespace and slug
+      summary: List all task-scripts for a namespace/slug
+      tags:
+      - Task Scripts
+      operationId: getTaskScriptArtifactByNamespaceAndSlug
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/LatestOnlyQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200TaskScriptObjectList'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/task-scripts/{namespace}/{slug}/{version}/files/{fileSlug}:
+    get:
+      description: Returns the file contents for a task-script file given a namespace, slug, version, and file slug
+      summary: Get contents of a task-script file
+      tags:
+      - Task Scripts
+      operationId: getTaskScriptArtifactByNamespaceSlugAndFileSlug
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/ArtifactVersion'
+      - $ref: '#/components/parameters/TaskScriptFileSlugParam'
+      - $ref: '#/components/parameters/DownloadQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200File'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/task-scripts/{namespace}/{slug}/{version}:
+    get:
+      description: Returns a single task-script artifact matching the namespace, slug, and version
+      summary: Get single task-script
+      tags:
+      - Task Scripts
+      operationId: getTaskScriptArtifactByNamespaceSlugAndVersion
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/ArtifactVersion'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200TaskScriptObject'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/task-scripts/{namespace}/{slug}/{version}/labels:
+    get:
+      description: Returns a list of the labels associated with a task-script artifact
+      summary: Get labels for a task-script
+      tags:
+      - Task Scripts
+      operationId: getTaskScriptArtifactLabels
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/ArtifactVersion'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Labels'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/task-scripts/{namespace}/{slug}/{version}/relationships:
+    get:
+      description: Returns a list of the relationships a task-script artifact has with other artifacts
+      summary: Get artifacts related to task-script
+      tags:
+      - Task Scripts
+      operationId: getTaskScriptArtifactRelationships
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/ArtifactVersion'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Relationships'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/task-scripts:
+    get:
+      description: Returns a list of all task-script artifacts, optionally filtered by namespace type
+      summary: List all task-scripts
+      tags:
+      - Task Scripts
+      operationId: getTaskScriptArtifacts
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespaceTypeQuery'
+      - $ref: '#/components/parameters/LatestOnlyQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200TaskScriptObjectList'
+  /v1/artifacts/task-scripts/search:
+    post:
+      summary: Search for items
+      description: Search for items using specified criteria
+      operationId: searchTaskScripts
+      tags:
+      - Task Scripts
+      parameters:
+      - $ref: '#/components/parameters/ValueQuery'
+      - $ref: '#/components/parameters/LimitQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          description: A list of items that match the search query
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskScriptObjectList'
+components:
+  schemas:
+    Relationships:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        taskScripts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        protocols:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        connectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+      additionalProperties: false
+    LabelList:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          value:
+            type: string
+        required:
+        - name
+        - value
+        additionalProperties: false
+      example:
+      - name: label1
+        value: value1
+      - name: another-label
+        value: another-value
+    TaskScriptObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TaskScriptObject'
+    TaskScriptObject:
+      allOf:
+      - $ref: '#/components/schemas/ArtifactObjectBase'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - task-script
+          sdkVersion:
+            type: string
+            nullable: true
+          hash:
+            type: string
+            nullable: true
+        required:
+        - type
+        - sdkVersion
+        - hash
+      example:
+        type: task-script
+        namespace: common
+        slug: akta
+        version: v1.1.0
+        name: null
+        description: null
+        sdkVersion: v1.2.0
+        hash: aaabbbccc000111222333
+        createdAt: '2023-02-16T15:15:34.269Z'
+        lastUpdatedAt: '2023-02-16T15:15:34.269Z'
+        otherVersions:
+        - v1.1.0
+        - v1.0.9
+        - v1.0.5
+        - v0.0.3
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
+    TaskScriptFileSlug:
+      type: string
+      enum:
+      - build
+      - buildlog
+      - manifest
+      - readme
+      - source
+    ArtifactNamespace:
+      type: string
+      pattern: ^(common|(private|client)-).*$
+    ArtifactObjectBase:
+      type: object
+      properties:
+        namespace:
+          $ref: '#/components/schemas/ArtifactNamespace'
+        slug:
+          type: string
+        version:
+          type: string
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdatedAt:
+          type: string
+          format: date-time
+        otherVersions:
+          type: array
+          items:
+            type: string
+        supportedPlatformVersion:
+          $ref: '#/components/schemas/SupportedPlatformVersion'
+      required:
+      - namespace
+      - slug
+      - version
+      - createdAt
+      - lastUpdatedAt
+    Key:
+      type: object
+      properties:
+        type:
+          type: string
+        namespace:
+          $ref: '#/components/schemas/ArtifactNamespace'
+        slug:
+          type: string
+        version:
+          type: string
+      required:
+      - type
+      - namespace
+      - slug
+      - version
+      example:
+        type: ids
+        namespace: common
+        slug: akta
+        version: v1.1.0
+  responses:
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
+    200File:
+      description: Successfully fetched file
+      content:
+        application/json:
+          schema:
+            oneOf:
+            - type: object
+              properties:
+                url:
+                  type: string
+              required:
+              - url
+              additionalProperties: false
+            - type: object
+              properties:
+                content:
+                  description: Content of the file.  Could be any type
+                  format: unknown
+              required:
+              - content
+              additionalProperties: false
+            example:
+              content: '# README Contents
+
+
+                * item 1
+
+                * item 2
+
+                * item 3'
+    200Relationships:
+      description: Successfully fetched Relationships
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Relationships'
+    200TaskScriptObject:
+      description: Successfully fetched TaskScriptObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TaskScriptObject'
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+    200TaskScriptObjectList:
+      description: Successfully fetched TaskScriptObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TaskScriptObjectList'
+  parameters:
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
+    ArtifactNamespaceTypeQuery:
+      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
+      name: namespace_type
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - common
+        - client
+        - private
+      example: client
+    ArtifactSlug:
+      description: Artifact slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+      example: demo-slug
+    ArtifactVersion:
+      description: Artifact version
+      name: version
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
+      example: v1.0.0
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
+    TaskScriptFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within a task-script
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/TaskScriptFileSlug'
+      example: build
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

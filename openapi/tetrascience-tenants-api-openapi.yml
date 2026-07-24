@@ -1,0 +1,439 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Tenants API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Tenants
+paths:
+  /v1/tenants/{tenantId}/organizations:
+    get:
+      description: Get all organizations in a tenant, needs to be system admin.
+      tags:
+      - Tenants
+      summary: Get all organizations in a tenant
+      parameters:
+      - $ref: '#/paths/~1v1~1tenants~1%7BtenantId%7D/get/parameters/0'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                    orgSlug:
+                      $ref: '#/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema'
+                    name:
+                      type: string
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+  /v1/tenants/{tenantId}/users:
+    get:
+      description: Get all users in a tenant, needs to be org or system admin.
+      tags:
+      - Tenants
+      summary: Get all users in a tenant
+      parameters:
+      - $ref: '#/paths/~1v1~1tenants~1%7BtenantId%7D/get/parameters/0'
+      - name: email
+        required: false
+        description: Optional email parameter for filtering users
+        in: query
+        schema:
+          type: string
+          minLength: 3
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                    firstName:
+                      type: string
+                      example: John
+                    lastName:
+                      type: string
+                      example: Doe
+                    email:
+                      $ref: '#/paths/~1login/post/requestBody/content/application~1json/schema/properties/email'
+                    status:
+                      type: string
+                      enum:
+                      - active
+                      - inactive
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+  /v1/tenants/{tenantId}:
+    get:
+      description: Get tenant by ID, needs to be org or system admin.
+      tags:
+      - Tenants
+      summary: Get tenant information
+      parameters:
+      - name: tenantId
+        required: true
+        in: path
+        schema:
+          $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1tenants/post/responses/201/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+    put:
+      description: Update tenant by ID, needs to be system admin.
+      tags:
+      - Tenants
+      summary: Update tenant information
+      parameters:
+      - $ref: '#/paths/~1v1~1tenants~1%7BtenantId%7D/get/parameters/0'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                disclaimer:
+                  type: string
+                refreshTokenExpiration:
+                  type: number
+                authTokenExpiration:
+                  type: number
+                idleTimeout:
+                  type: number
+                continuousVerificationEnabled:
+                  type: boolean
+                ssoEnabled:
+                  type: boolean
+                defaultIdp:
+                  type: string
+                idpConfigs:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      ssoMetadataUrl:
+                        type: string
+                      ssoMetadataXml:
+                        type: string
+                      ssoProvider:
+                        type: string
+                      ssoEmailFieldMapping:
+                        type: string
+                      ssoFirstNameFieldMapping:
+                        type: string
+                      ssoLastNameFieldMapping:
+                        type: string
+                      ssoGroupsFieldMapping:
+                        type: string
+                    required:
+                    - ssoProvider
+                    - ssoEmailFieldMapping
+                    - ssoFirstNameFieldMapping
+                    - ssoLastNameFieldMapping
+                    - ssoGroupsFieldMapping
+                    anyOf:
+                    - required:
+                      - ssoMetadataUrl
+                    - required:
+                      - ssoMetadataXml
+                passwordExpiryDays:
+                  type: number
+                passwordComplexity:
+                  type: boolean
+                noPasswordReuse:
+                  type: boolean
+                passwordExpiry:
+                  type: boolean
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/paths/~1v1~1tenants/post/responses/201/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+  /v1/tenants:
+    get:
+      description: Get all tenants, needs to be system admin.
+      tags:
+      - Tenants
+      summary: Get list of tenants
+      parameters:
+      - name: subdomain
+        required: false
+        description: Optional parameter to return a tenant by subdomain
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                    name:
+                      type: string
+                    subdomain:
+                      type: string
+                    createdBy:
+                      $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                    modifiedBy:
+                      $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                    organizations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                          orgSlug:
+                            $ref: '#/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema'
+                          name:
+                            type: string
+                          emailDomain:
+                            type: string
+                          tenantId:
+                            $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+    post:
+      description: Create a new tenant, must be system admin.
+      tags:
+      - Tenants
+      summary: Create a new tenant.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - type: object
+                properties:
+                  name:
+                    type: string
+                  disclaimer:
+                    type: string
+                  refreshTokenExpiration:
+                    type: number
+                  authTokenExpiration:
+                    type: number
+                  idleTimeout:
+                    type: number
+                  continuousVerificationEnabled:
+                    type: boolean
+                  ssoEnabled:
+                    type: boolean
+                  defaultIdp:
+                    type: string
+                  idpConfigs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ssoMetadataUrl:
+                          type: string
+                        ssoMetadataXml:
+                          type: string
+                        ssoProvider:
+                          type: string
+                        ssoEmailFieldMapping:
+                          type: string
+                        ssoFirstNameFieldMapping:
+                          type: string
+                        ssoLastNameFieldMapping:
+                          type: string
+                        ssoGroupsFieldMapping:
+                          type: string
+                      required:
+                      - ssoProvider
+                      - ssoEmailFieldMapping
+                      - ssoFirstNameFieldMapping
+                      - ssoLastNameFieldMapping
+                      - ssoGroupsFieldMapping
+                      anyOf:
+                      - required:
+                        - ssoMetadataUrl
+                      - required:
+                        - ssoMetadataXml
+                  passwordExpiryDays:
+                    type: number
+                  passwordComplexity:
+                    type: boolean
+                  noPasswordReuse:
+                    type: boolean
+                  passwordExpiry:
+                    type: boolean
+              - type: object
+                properties:
+                  subdomain:
+                    type: string
+                    minLength: 3
+                    maxLength: 22
+                required:
+                - subdomain
+      responses:
+        '201':
+          description: Successfully created tenant.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                  name:
+                    type: string
+                  subdomain:
+                    type: string
+                  disclaimer:
+                    type: string
+                  features:
+                    type: object
+                  settings:
+                    type: object
+                    properties:
+                      ssoEnabled:
+                        type: boolean
+                      defaultIdp:
+                        type: string
+                      namedUserClientId:
+                        type: string
+                      namedUserClientSecret:
+                        type: string
+                      ssoDomain:
+                        type: string
+                      ssoRedirectUri:
+                        type: string
+                      authTokenExpiration:
+                        description: Value in a minute. Default=240. min=1, max=720
+                        type: string
+                      refreshTokenExpiration:
+                        description: Value in a minute. Default=720. min=1, max=720
+                        type: string
+                      idleTimeout:
+                        type: string
+                        description: Value in a minute. Default=60. min=1, max=720
+                      resetPassword:
+                        type: string
+                      passwordComplexity:
+                        type: string
+                      passwordExpiryDays:
+                        type: integer
+                      passwordExpiry:
+                        type: boolean
+                      accountLock:
+                        type: boolean
+                      maxFailedLogins:
+                        type: integer
+                      noPasswordReuse:
+                        type: boolean
+                      idpConfigs:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            ssoMetadataUrl:
+                              type: string
+                            ssoMetadataXml:
+                              type: string
+                            ssoProvider:
+                              type: string
+                            ssoEmailFieldMapping:
+                              type: string
+                            ssoFirstNameFieldMapping:
+                              type: string
+                            ssoLastNameFieldMapping:
+                              type: string
+                            ssoGroupsFieldMapping:
+                              type: string
+                          required:
+                          - ssoProvider
+                          - ssoEmailFieldMapping
+                          - ssoFirstNameFieldMapping
+                          - ssoLastNameFieldMapping
+                          - ssoGroupsFieldMapping
+                          anyOf:
+                          - required:
+                            - ssoMetadataUrl
+                          - required:
+                            - ssoMetadataXml
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '409':
+          description: Bad request, Tenant already exists.
+components:
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

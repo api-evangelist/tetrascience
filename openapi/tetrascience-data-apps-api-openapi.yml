@@ -1,0 +1,992 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Data Apps API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Data Apps
+paths:
+  /v1/dataapps/rules-check:
+    post:
+      summary: Check how many data apps match the provided access control rules
+      tags:
+      - Data Apps
+      operationId: check-data-app-rules
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filters:
+                  description: Access control filter (recursive — supports label, allow-all, and, or)
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    label:
+                      type: string
+                    value:
+                      type: string
+                    operator:
+                      type: string
+                  additionalProperties: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dataAppsCount:
+                    type: integer
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal Server Error
+  /v1/dataapps/apps/container/cookies:
+    delete:
+      summary: Clear the selected data app and auth cookies
+      tags:
+      - Data Apps
+      operationId: clear-embed-cookies
+      responses:
+        '200':
+          description: OK
+  /v1/dataapps/kv/{appSlug}/{key}:
+    delete:
+      summary: Delete connector key value by key for a data app
+      tags:
+      - Data Apps
+      operationId: delete-data-app-connector-key-value-by-key
+      parameters:
+      - name: appSlug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: artifact_type
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - CONTAINER
+          - TETRASPHERE
+        description: Required artifact type filter used during authorization and app lookup.
+      - name: namespace
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Required artifact namespace filter used during authorization and app lookup.
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^,]+$
+        description: Connector key. Commas are not allowed.
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '503':
+          description: Service Unavailable
+    get:
+      summary: Fetch connector key value by key for a data app
+      tags:
+      - Data Apps
+      operationId: fetch-data-app-connector-key-value-by-key
+      parameters:
+      - name: appSlug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: artifact_type
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - CONTAINER
+          - TETRASPHERE
+        description: Required artifact type filter used during authorization and app lookup.
+      - name: namespace
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Required artifact namespace filter used during authorization and app lookup.
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[^,]+$
+        description: Connector key. Commas are not allowed.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectorKeyValue'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '503':
+          description: Service Unavailable
+  /v1/dataapps/apps/{id}/logs/download:
+    get:
+      summary: Download container logs for a specific data app
+      tags:
+      - Data Apps
+      operationId: download-container-logs
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: since
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - 30s
+          - 10m
+          - 30m
+          - 1h
+          - 12h
+          - 1d
+          - 3d
+          - 1w
+          default: 12h
+        description: Relative time range for logs (30s, 10m, 30m, 1h, 12h, 1d, 3d, 1w for download)
+      responses:
+        '200':
+          description: OK - Log file download
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+        '403':
+          description: Access Denied
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+  /v1/dataapps/data/executeDML:
+    post:
+      summary: Execute a DML query on external or lakehouse schemas
+      tags:
+      - Data Apps
+      operationId: execute-dml-query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecuteDMLRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DMLResult'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal Server Error
+  /v1/dataapps/apps:
+    get:
+      summary: List installed Data Apps
+      description: Retrieves a paginated list of Data Apps currently installed in your organization. Supports filtering by type, labels, and search term.
+      tags:
+      - Data Apps
+      operationId: fetch-all-data-apps
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 100
+        description: Maximum number of items to return
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+        description: Page number for pagination (starts from 1)
+      - name: includeLabels
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+        description: Include labels for each data app
+      - name: labelKey
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 1
+        description: Filter data apps by label key
+      - name: labelValue
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 1
+        description: Filter data apps by label value (requires labelKey)
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - CONNECTED
+          - CONTAINER
+        description: Filter data apps by type (CONNECTED or CONTAINER)
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description: Search term to filter data apps by name, description, or slug
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - name
+          - type
+          default: name
+        description: Field to sort results by
+      - name: sortDirection
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: asc
+        description: Sort direction (asc or desc)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDataApp'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '503':
+          description: Service Unavailable
+  /v1/dataapps/apps/container/{id}:
+    get:
+      summary: Fetch container data app by connector or data app ID
+      tags:
+      - Data Apps
+      operationId: fetch-container-data-app
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataApp'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '503':
+          description: Service Unavailable
+  /v1/dataapps/apps/{id}/logs:
+    get:
+      summary: Fetch container logs for a specific data app
+      tags:
+      - Data Apps
+      operationId: fetch-container-logs
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: mode
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - time
+          - count
+          default: time
+        description: 'Log fetch mode: "time" for time-based, "count" for last N messages'
+      - name: since
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - 30s
+          - 10m
+          - 30m
+          - 1h
+          - 12h
+          - 1d
+          - 3d
+          - 1w
+          default: 1h
+        description: Relative time range for logs (30s, 10m, 30m, 1h, 12h, 1d, 3d, 1w). Used when mode=time
+      - name: count
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 10000
+        description: Number of most recent log messages to return. Used when mode=count
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 10000
+        description: Maximum number of log events per request (for pagination)
+      - name: nextToken
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Token for pagination
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  nextToken:
+                    type: string
+                  searchedLogStreams:
+                    type: array
+                    items:
+                      type: string
+        '400':
+          description: Bad Request
+        '403':
+          description: Access Denied
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+  /v1/dataapps/apps/{id}:
+    get:
+      summary: Get Data App details
+      description: Retrieves complete details of a single installed Data App, including metadata, deployment configuration, platform requirements, assigned labels, and associated providers.
+      tags:
+      - Data Apps
+      operationId: fetch-data-app-by-id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Data App ID
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataApp'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+  /v1/dataapps/data/fetchDMLResult:
+    get:
+      summary: Fetch next chunk for an executed DML statement
+      tags:
+      - Data Apps
+      operationId: fetch-dml-result
+      parameters:
+      - name: statementId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: chunkIndex
+        in: query
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DMLResultChunk'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal Server Error
+  /v1/dataapps/kv/{appSlug}:
+    get:
+      summary: List connector key value keys for a data app
+      tags:
+      - Data Apps
+      operationId: list-data-app-connector-key-value-keys
+      parameters:
+      - name: appSlug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: artifact_type
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - CONTAINER
+          - TETRASPHERE
+        description: Required artifact type filter used during authorization and app lookup.
+      - name: namespace
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Required artifact namespace filter used during authorization and app lookup.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataAppConnectorKeyValueKeysResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '503':
+          description: Service Unavailable
+    put:
+      summary: Save connector key values for a data app
+      tags:
+      - Data Apps
+      operationId: save-data-app-connector-key-values
+      parameters:
+      - name: appSlug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: artifact_type
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - CONTAINER
+          - TETRASPHERE
+        description: Required artifact type filter used during authorization and app lookup.
+      - name: namespace
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Required artifact namespace filter used during authorization and app lookup.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveDataAppConnectorKeyValuesRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectorKeyValuesResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '503':
+          description: Service Unavailable
+  /v1/dataapps/apps/{id}/labels:
+    put:
+      summary: Update Data App labels for access control
+      description: Replaces all labels assigned to a Data App. Labels drive EARS (Entitlement and Access Rights Service) access control policies — use them to control which users and teams can see and interact with a Data App. Pass an empty array to clear all labels.
+      tags:
+      - Data Apps
+      operationId: update-container-data-app-labels
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Data App ID
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - labels
+              properties:
+                labels:
+                  type: array
+                  description: Complete set of labels to assign. Replaces any previously assigned labels.
+                  items:
+                    type: object
+                    required:
+                    - name
+                    - value
+                    properties:
+                      name:
+                        type: string
+                        description: Label name (e.g., "department", "environment").
+                      value:
+                        type: string
+                        description: Label value (e.g., "research", "production").
+            examples:
+              set_labels:
+                summary: Assign access control labels
+                value:
+                  labels:
+                  - name: department
+                    value: research
+                  - name: environment
+                    value: production
+              clear_labels:
+                summary: Remove all labels
+                value:
+                  labels: []
+      responses:
+        '200':
+          description: Labels updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '400':
+          description: Invalid request format or label configuration.
+        '404':
+          description: Data App not found.
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    SaveDataAppConnectorKeyValuesRequest:
+      type: object
+      required:
+      - values
+      properties:
+        values:
+          type: array
+          items:
+            type: object
+            required:
+            - key
+            - value
+            properties:
+              key:
+                type: string
+                pattern: ^[^,]+$
+                description: Connector key. Commas are not allowed.
+              value: {}
+              secure:
+                type: boolean
+    DMLResult:
+      type: object
+      required:
+      - chunk
+      - resultSchema
+      - statementId
+      - totalChunks
+      - totalRowCount
+      properties:
+        chunk:
+          $ref: '#/components/schemas/DMLResultChunk'
+        resultSchema:
+          $ref: '#/components/schemas/DMLResultSchema'
+        statementId:
+          type: string
+        totalChunks:
+          type: integer
+        totalRowCount:
+          type: integer
+    DMLResultSchemaColumn:
+      type: object
+      required:
+      - name
+      - position
+      - type
+      properties:
+        name:
+          type: string
+        position:
+          type: integer
+        type:
+          type: string
+    DMLResultSchema:
+      type: object
+      required:
+      - columnCount
+      - columns
+      properties:
+        columnCount:
+          type: integer
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/DMLResultSchemaColumn'
+    PaginatedDataApp:
+      type: object
+      properties:
+        dataApps:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataApp'
+        count:
+          type: integer
+    DataAppConnectorKeyValueKeysResponse:
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            type: string
+    ExecuteDMLRequest:
+      type: object
+      required:
+      - appId
+      - statement
+      - parameters
+      properties:
+        appId:
+          type: string
+        statement:
+          type: string
+        parameters:
+          type: array
+          items:
+            type: object
+            required:
+            - name
+            - value
+            - type
+            properties:
+              name:
+                type: string
+              value: {}
+              type:
+                type: string
+    DataAppProvider:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        orgSlug:
+          type: string
+        type:
+          type: string
+        iconUrl:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedBy:
+          type: string
+        createdBy:
+          type: string
+        secrets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataAppProviderSecret'
+    ConnectorKeyValuesResponse:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConnectorKeyValue'
+    DMLResultChunk:
+      type: object
+      required:
+      - statementId
+      - chunkIndex
+      - nextChunkIndex
+      - data
+      - rowCount
+      properties:
+        statementId:
+          type: string
+        chunkIndex:
+          type: integer
+        nextChunkIndex:
+          type: integer
+          nullable: true
+        data:
+          type: array
+          items: {}
+        rowCount:
+          type: integer
+    DataAppProviderSecret:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        type:
+          type: string
+        required:
+          type: boolean
+        arn:
+          type: string
+        envName:
+          type: string
+    DataApp:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+          description: If type is CONNECTED then the url to the external running application
+        iconUrl:
+          type: string
+        type:
+          type: string
+          description: The type of data app. Must be either "CONNECTED" or "CONTAINER"
+        artifactType:
+          type: string
+          enum:
+          - CONTAINER
+          - TETRASPHERE
+          description: Internal artifact type stored in the database
+        deploymentType:
+          type: string
+          enum:
+          - SERVER
+          description: 'Deployment model: SERVER (ECS container, iFrame)'
+        slug:
+          type: string
+        version:
+          type: string
+        otherVersions:
+          type: array
+          items:
+            type: string
+        running:
+          type: boolean
+          description: Whether the container data app is running
+        namespace:
+          type: string
+          description: The namespace of the data app
+        platformRequirements:
+          type: array
+          items:
+            type: object
+            description: Artifact requirement (IDS or Tetraflow)
+            properties:
+              type:
+                type: string
+                enum:
+                - ids
+                - tetraflow
+              namespace:
+                type: string
+              slug:
+                type: string
+              version:
+                type: string
+            required:
+            - type
+            - namespace
+            - slug
+            - version
+        serviceRequirements:
+          type: array
+          items:
+            type: object
+            description: Platform service requirement (e.g., AIS)
+            properties:
+              type:
+                type: string
+                enum:
+                - ais
+              minVersion:
+                type: string
+              maxVersion:
+                type: string
+            required:
+            - type
+            - minVersion
+        supportedPlatformVersion:
+          type: object
+          description: The supported platform version range for this data app
+          properties:
+            minVersion:
+              type: string
+            maxVersion:
+              type: string
+        artifactLabels:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+        labels:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+        providers:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataAppProvider'
+    ConnectorKeyValue:
+      type: object
+      required:
+      - key
+      - secure
+      - createdAt
+      - updatedAt
+      properties:
+        key:
+          type: string
+        value: {}
+        secure:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

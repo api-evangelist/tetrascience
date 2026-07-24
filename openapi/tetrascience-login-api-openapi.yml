@@ -1,0 +1,339 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Login API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Login
+paths:
+  /login/config:
+    get:
+      summary: Get login config
+      description: Retrieve global login configuration including SSO availability, configured identity providers, and platform features. Use this to check if SSO is enabled and which identity providers are configured.
+      tags:
+      - Login
+      security: []
+      responses:
+        '200':
+          description: Successfully fetched login config
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ssoEnabled:
+                    type: boolean
+                  ssoProviders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        providerName:
+                          type: string
+                        authorizationUrl:
+                          type: string
+                        defaultIdp:
+                          type: boolean
+                  features:
+                    type: string
+        '401':
+          description: Not authorized
+  /login/sso:
+    get:
+      summary: SSO login
+      description: Authenticate users via Single Sign-On (SSO) using an authorization code from an identity provider. Use this for SSO login flows to obtain user tokens for API access.
+      parameters:
+      - name: code
+        in: query
+        required: true
+        schema:
+          type: string
+      tags:
+      - Login
+      security: []
+      responses:
+        '200':
+          description: Login Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1login/post/responses/200/content/application~1json/schema'
+        '400':
+          description: SSO not allowed
+        '401':
+          description: Not authorized
+  /{subdomain}/login/config:
+    get:
+      summary: Get login config (Subdomain based)
+      description: Get tenant-specific login configuration for a subdomain including SSO availability, configured identity providers, and tenant features.
+      parameters:
+      - name: subdomain
+        in: path
+        required: true
+        schema:
+          type: string
+          example: tetrascience
+          pattern: ^[0-9a-z][0-9a-z-]*$
+      tags:
+      - Login
+      security: []
+      responses:
+        '200':
+          description: Successfully fetched login config
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1login~1config/get/responses/200/content/application~1json/schema'
+        '401':
+          description: Not authorized
+  /{subdomain}/login/sso:
+    get:
+      summary: SSO login (Subdomain based)
+      parameters:
+      - $ref: '#/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0'
+      - $ref: '#/paths/~1login~1sso/get/parameters/0'
+      tags:
+      - Login
+      security: []
+      responses:
+        '200':
+          description: Login Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1login/post/responses/200/content/application~1json/schema'
+        '400':
+          description: SSO not allowed
+        '401':
+          description: Not authorized
+  /login/forgot-password-request:
+    post:
+      summary: Send a password reset email to the user by email
+      description: Initiate a password reset process by sending a reset email to the user. Use this when users forget their password and need to reset it securely.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  $ref: '#/paths/~1login/post/requestBody/content/application~1json/schema/properties/email'
+                subdomain:
+                  type: string
+                orgSlug:
+                  $ref: '#/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema'
+      tags:
+      - Login
+      security: []
+      responses:
+        '200':
+          description: Password restore email sent to registered email
+        '400':
+          description: Bad request, details in response
+          content:
+            text/plain:
+              schema:
+                type: string
+  /login:
+    post:
+      summary: Login user
+      description: Authenticate user credentials with email and password. Use this for standard username/password login flows to obtain user tokens for API access.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  minLength: 8
+                  format: password
+                subdomain:
+                  type: string
+      tags:
+      - Login
+      security: []
+      responses:
+        '200':
+          description: Login Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      authType:
+                        $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType'
+                      email:
+                        $ref: '#/paths/~1login/post/requestBody/content/application~1json/schema/properties/email'
+                      firstName:
+                        type: string
+                        example: John
+                      lastName:
+                        type: string
+                        example: Doe
+                      id:
+                        $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                      lastActivity:
+                        type: string
+                      status:
+                        type: string
+                        enum:
+                        - active
+                        - inactive
+                      systemRole:
+                        type: string
+                      roles:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                            orgSlug:
+                              $ref: '#/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema'
+                            organizationId:
+                              $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                            role:
+                              example: Administrator
+                            roleId:
+                              $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                            status:
+                              $ref: '#/paths/~1login/post/responses/200/content/application~1json/schema/properties/user/properties/status'
+                            userId:
+                              $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                            orgName:
+                              type: string
+                  token:
+                    type: string
+                    description: JWT token
+        '401':
+          description: Not authorized, details in response body
+          content:
+            text/plain:
+              schema:
+                type: string
+  /login/update-expired:
+    put:
+      summary: Update expired password
+      description: Allow users to update their password if it has expired. Use this when users need to set a new password after their current one has expired.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  $ref: '#/paths/~1login/post/requestBody/content/application~1json/schema/properties/email'
+                password:
+                  $ref: '#/paths/~1login/post/requestBody/content/application~1json/schema/properties/password'
+                newPassword:
+                  $ref: '#/paths/~1login/post/requestBody/content/application~1json/schema/properties/password'
+                subdomain:
+                  type: string
+      tags:
+      - Login
+      security: []
+      responses:
+        '200':
+          description: Password updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  authType:
+                    type: string
+                    enum:
+                    - sso
+                    - password
+                    - service
+                  email:
+                    $ref: '#/paths/~1login/post/requestBody/content/application~1json/schema/properties/email'
+                  firstName:
+                    type: string
+                    example: John
+                  lastName:
+                    type: string
+                    example: Doe
+                  id:
+                    type: string
+                    example: 7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2
+                    format: uuid
+                  lastActivity:
+                    type: string
+                  status:
+                    type: string
+                    enum:
+                    - active
+                    - inactive
+                  systemRole:
+                    type: string
+                  roles:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                        orgSlug:
+                          $ref: '#/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema'
+                        organizationId:
+                          $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                        role:
+                          example: Administrator
+                        roleId:
+                          $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                        status:
+                          $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/status'
+                        userId:
+                          $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                        orgName:
+                          type: string
+        '400':
+          description: Bad request, details in response
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

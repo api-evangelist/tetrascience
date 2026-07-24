@@ -1,0 +1,1224 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Pipelines API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Pipelines
+paths:
+  /v1/pipeline/{pipelineId}/create-pipeline-bulk-processing-job:
+    post:
+      summary: Create a Bulk Processing Job
+      description: ''
+      operationId: DL-FI-createBulkProcessJob
+      tags:
+      - Pipelines
+      parameters:
+      - name: pipelineId
+        in: path
+        description: The ID of the pipeline
+        schema:
+          type: string
+          format: uuid
+        required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - pipelineProcessingTypes
+              - startDate
+              - endDate
+              properties:
+                pipelineProcessingTypes:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: string
+                    enum:
+                    - PIPELINE_PROCESSING_UNPROCESSED
+                    - PIPELINE_PROCESSING_FAILED
+                    - PIPELINE_PROCESSING_COMPLETED
+                autoProcess:
+                  type: boolean
+                  default: true
+                name:
+                  type: string
+                concurrentNumber:
+                  type: integer
+                  minimum: 1
+                  maximum: 1000
+                  default: 1000
+                startDate: {}
+                endDate: {}
+      responses:
+        '200':
+          $ref: '#/components/responses/200Any'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+        '409':
+          description: Bulk processing job already exists
+          content:
+            application/json:
+              schema: {}
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema: {}
+  /v1/pipeline/create:
+    post:
+      summary: Create New Pipeline
+      description: ''
+      operationId: DL-FI-createPipeline
+      tags:
+      - Pipelines
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PipelineInputObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/200PipelineObject'
+        '400':
+          $ref: '#/components/responses/400Any'
+  /v1/pipeline/{pipelineId}:
+    get:
+      summary: Get Details of a Single Pipeline
+      description: Search data pipeline workflows
+      operationId: DL-FI-getPipeline
+      tags:
+      - Pipelines
+      parameters:
+      - name: pipelineId
+        in: path
+        description: The ID of the pipeline
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/200PipelineObject'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/pipeline/{pipelineId}/revisions/{revisionNumber}:
+    get:
+      summary: Get Pipline Revision Contents
+      description: ''
+      operationId: DL-FI-getRevision
+      tags:
+      - Pipelines
+      parameters:
+      - name: pipelineId
+        in: path
+        description: The ID of the pipeline
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - name: revisionNumber
+        in: path
+        description: The number of the revision to get
+        schema:
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: The pipeline at the time of the requested revision number
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineRevision'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/pipeline/{pipelineId}/revisions:
+    get:
+      summary: List Pipeline Revision History
+      description: ''
+      operationId: DL-FI-getRevisions
+      tags:
+      - Pipelines
+      parameters:
+      - name: pipelineId
+        in: path
+        description: The ID of the pipeline
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - name: limit
+        in: query
+        description: The maximum number of results to return. Defaults to 30
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: cursor
+        in: query
+        description: The first element in the dataset to query from. The cursor is a revision number
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A list of revisions and a cursor pointing to the next set of revisions
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - revisions
+                properties:
+                  revisions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PipelineRevisionMetadata'
+                  next:
+                    type: number
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/pipeline/import:
+    post:
+      summary: Import a Pipeline
+      description: ''
+      operationId: DL-FI-importPipeline
+      tags:
+      - Pipelines
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PipelineInputObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/200PipelineObject'
+        '400':
+          $ref: '#/components/responses/400Any'
+  /v1/pipeline/pipelines/id-only:
+    get:
+      summary: List Pipeline IDs
+      description: ''
+      operationId: DL-FI-listAllPipelineIds
+      tags:
+      - Pipelines
+      responses:
+        '200':
+          $ref: '#/components/responses/200PipelineIdsList'
+  /v1/pipeline/clusterPolicies/databricks:
+    get:
+      summary: List Databricks Cluster Policies
+      description: Returns a list of platform-level Databricks cluster policies filtered by prefix 'ts-platform-policy-*'
+      operationId: DL-FI-listDatabricksClusterPolicies
+      tags:
+      - Pipelines
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DatabricksClusterPolicy'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '401':
+          $ref: '#/components/responses/401Any'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  message:
+                    type: string
+  /v1/pipeline/clusters/databricks:
+    get:
+      summary: List Databricks Clusters
+      description: ''
+      operationId: DL-FI-listDatabricksClusters
+      tags:
+      - Pipelines
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DatabricksClusterObject'
+        '401':
+          $ref: '#/components/responses/401Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/pipeline/list:
+    get:
+      summary: Paginate Through all Pipeline Details (Deprecated)
+      description: Lists all of the pipelines in a paginated list
+      operationId: DL-FI-listPipelinesWithPagination
+      tags:
+      - Pipelines
+      parameters:
+      - name: size
+        in: query
+        description: Number of pipelines to return
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+          default: 100
+      - name: from
+        in: query
+        description: Page number to start from (0-indexed)
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  size:
+                    type: integer
+                  hasNext:
+                    type: boolean
+                  from:
+                    type: integer
+                  hits:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PipelineOutputObject'
+        '400':
+          $ref: '#/components/responses/400Any'
+  /v1/pipeline/platform/info:
+    get:
+      summary: Get Platform Information
+      tags:
+      - Pipelines
+      parameters:
+      - in: query
+        name: groups
+        schema:
+          type: array
+          items:
+            anyOf:
+            - enum:
+              - retry
+            - {}
+        required: false
+        description: Groups from which platform information should be retrieved
+      description: Get information about the current platform deployment. May be useful for the platform UI.
+      operationId: DL-FI-platformInfo
+      responses:
+        '200':
+          description: An object containing the requested information fields
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  retry:
+                    type: object
+                    required:
+                    - maxRetryCountLimit
+                    - maxRetryDelaySeconds
+                    - maxRetryCountDefault
+                    additionalProperties: false
+                    properties:
+                      maxRetryCountDefault:
+                        type: integer
+                      maxRetryCountLimit:
+                        type: integer
+                      maxRetryDelaySeconds:
+                        type: integer
+        '400':
+          $ref: '#/components/responses/400Any'
+  /v1/pipeline/process/{pipelineId}:
+    post:
+      summary: Process List of Files with Pipeline
+      description: This endpoint processes a list of files by using a specified pipeline. It processes the latest version of each file only.
+      operationId: DL-FI-processPipeline
+      tags:
+      - Pipelines
+      parameters:
+      - name: pipelineId
+        in: path
+        description: The ID of the pipeline
+        schema:
+          type: string
+          format: uuid
+        required: true
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fileIds:
+                  type: array
+                  minItems: 1
+                  maxItems: 1000
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Complete
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fileId:
+                          type: string
+                        workflowId:
+                          type: string
+                  error:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fileId:
+                          type: string
+                        error:
+                          type: string
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/pipeline/pipelines/{pipelineID}/reprocess:
+    post:
+      summary: Process Files - draft
+      description: Search data pipeline workflows
+      tags:
+      - Pipelines
+      operationId: DL-FI-reprocess-files
+      parameters:
+      - name: pipelineID
+        in: path
+        description: Pipeline UUID
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - fields
+              properties:
+                fields:
+                  type: string
+                  description: JSON array of fileIDs that need to be reprocessed.
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                OK:
+                  value: "{\n    \"successful\": [\n        {\n            \"fileId\": \"6e79b51f-e4b7-4440-996c-10516a02be98\",\n            \"workflowId\": \"966f2740-42c6-4ea9-a1ef-5f78e857e4fc\"\n        },\n        {\n            \"fileId\": \"1126ad94-dc57-4123-9622-68bd73381a74\",\n            \"workflowId\": \"1a480937-fef0-4f99-b4e9-a09e2b8eb8ce\"\n        },\n        {\n            \"fileId\": \"b253b40f-1dca-4e3a-a511-a80a83300c54\",\n            \"workflowId\": \"18fb2609-404d-4727-80f5-9df350bfd6fe\"\n        },\n        {\n            \"fileId\": \"29285cb8-bd94-44a5-b0a5-e7a58d677585\",\n            \"workflowId\": \"205b299c-a9e6-435e-911f-b88193c182ab\"\n        },\n        {\n            \"fileId\": \"4b98ec54-f875-47e3-930f-475155c5dd84\",\n            \"workflowId\": \"dcb0e80a-ac3c-490d-8757-a3ea4f369fb9\"\n        }\n    ],\n    \"errored\": [\n        {\n            \"fileId\": \"29285cb8-bd94-44a5-b0a5-111111111111\",\n            \"error\": \"Not Found\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  successful:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fileId:
+                          type: string
+                          example: 6e79b51f-e4b7-4440-996c-10516a02be98
+                        workflowId:
+                          type: string
+                          example: 966f2740-42c6-4ea9-a1ef-5f78e857e4fc
+                  errored:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fileId:
+                          type: string
+                          example: 29285cb8-bd94-44a5-b0a5-111111111111
+                        error:
+                          type: string
+                          example: Not Found
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl -H \"ts-auth-token: <JWT Token>\" \\\n-H \"x-org-slug: <YOUR ORGANIZATION>\"\\\n-X POST 'https://api.tetrascience.com/v1/pipeline/pipelines/145b53bc-36b8-438f/reprocess'\\\n-d '{\n    \"fileIds\": [\n        \"1126ad94-dc57-4123-9622-68bd73381a74\", \n        \"6e79b51f-e4b7-4440-996c-10516a02be98\",\n        \"b253b40f-1dca-4e3a-a511-a80a83300c54\",\n        \"4b98ec54-f875-47e3-930f-475155c5dd84\",\n        \"29285cb8-bd94-44a5-b0a5-111111111111\"\n    ]\n}'"
+          name: cUrl
+        samples-languages:
+        - curl
+  /v1/pipeline/rules-check:
+    post:
+      summary: Get Count of Pipelines Accessible Via Access Rule
+      description: ''
+      operationId: DL-FI-rulesCheck
+      tags:
+      - Pipelines
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PipelineAttributeRule'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - pipelinesCount
+                properties:
+                  pipelinesCount:
+                    type: integer
+        '400':
+          $ref: '#/components/responses/400Any'
+        '401':
+          $ref: '#/components/responses/401Any'
+  /v1/pipeline/search:
+    get:
+      summary: Search Pipelines
+      description: Search pipelines
+      operationId: DL-FI-search
+      parameters:
+      - name: size
+        in: query
+        description: Number of pipelines to return
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+          default: 100
+      - name: from
+        in: query
+        description: Page number to start from (0-indexed)
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: pipelineStatus
+        in: query
+        description: Status
+        required: false
+        schema:
+          type: string
+          enum:
+          - ''
+          - all
+          - enabled
+          - disabled
+      - name: pipelineNameOrId
+        in: query
+        description: Name or ID
+        required: false
+        schema:
+          type: string
+      - name: artifactType
+        in: query
+        description: Tetraflow or Protocol
+        required: false
+        schema:
+          type: string
+          default: all
+          enum:
+          - all
+          - tetraflow
+          - protocol
+      - name: protocolNamespace
+        in: query
+        description: Namespace of protocol
+        required: false
+        schema:
+          type: string
+      - name: protocolName
+        in: query
+        description: Name of protocol
+        required: false
+        schema:
+          type: string
+      - name: protocolVersion
+        in: query
+        description: Version of protocol
+        required: false
+        schema:
+          type: string
+      - name: startTime
+        in: query
+        description: Time when pipeline started
+        required: false
+        schema:
+          type: string
+      - name: endTime
+        in: query
+        description: Time when pipeline ended
+        required: false
+        schema:
+          type: string
+      - name: sortBy
+        in: query
+        description: Field to sort results by
+        required: false
+        schema:
+          type: string
+          default: lastConfigUpdate
+          enum:
+          - pipelineName
+          - protocolName
+          - lastConfigUpdate
+          - createDate
+      - name: order
+        in: query
+        description: Ordering of
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: labelKey
+        in: query
+        description: Filter pipelines by label key. If provided, response contains pipelines with assigned matching label keys.
+        required: false
+        schema:
+          type: string
+      - name: labelValue
+        in: query
+        description: Filter pipelines by label value. Requires labelKey to be provided. If both labelKey and labelValue are provided, response contains pipelines with assigned matching key-value label pairs.
+        required: false
+        schema:
+          type: string
+      tags:
+      - Pipelines
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  size:
+                    type: integer
+                  hasNext:
+                    type: boolean
+                  from:
+                    type: integer
+                  totalCount:
+                    oneOf:
+                    - type: integer
+                    - type: 'null'
+                  hits:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PipelineOutputObject'
+        '400':
+          $ref: '#/components/responses/400Any'
+  /v1/pipeline/{pipelineId}/status:
+    post:
+      summary: Set Pipeline Status
+      description: ''
+      operationId: DL-FI-setStatus
+      tags:
+      - Pipelines
+      parameters:
+      - name: pipelineId
+        in: path
+        description: The ID of the pipeline
+        schema:
+          type: string
+          format: uuid
+        required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - status
+              properties:
+                status:
+                  type: string
+                  enum:
+                  - disabled
+                  - enabled
+      responses:
+        '204':
+          $ref: '#/components/responses/204Any'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/pipeline/update/{pipelineId}:
+    post:
+      summary: Update Existing Pipeline
+      description: ''
+      operationId: DL-FI-updatePipeline
+      tags:
+      - Pipelines
+      parameters:
+      - name: pipelineId
+        in: path
+        description: The ID of the pipeline
+        schema:
+          type: string
+          format: uuid
+        required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PipelineInputObject'
+      responses:
+        '200':
+          $ref: '#/components/responses/200PipelineObject'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+components:
+  responses:
+    200Any:
+      description: Success
+      content:
+        application/json:
+          schema: {}
+    401Any:
+      description: Unauthorized
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Unauthorized
+            message: Missing authentication.
+    204Any:
+      description: No Data
+      content:
+        application/json:
+          schema: {}
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    200PipelineIdsList:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: string
+    200PipelineObject:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PipelineOutputObject'
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+  schemas:
+    PipelineNestedLabel:
+      type: object
+      required:
+      - name
+      - value
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    PipelineFilterConfig:
+      anyOf:
+      - $ref: '#/components/schemas/PipelineFilterLogicalConfig'
+      - $ref: '#/components/schemas/PipelineLabelFilter'
+    ScheduledTriggerOutputPipeline:
+      allOf:
+      - $ref: '#/components/schemas/BasicPipelineOutputObject'
+      - type: object
+        required:
+        - triggerType
+        - triggerCondition
+        properties:
+          triggerType:
+            type: string
+            enum:
+            - sched
+          triggerCondition:
+            type: object
+            required:
+            - cron
+            - tz
+            properties:
+              cron:
+                type: string
+              tz:
+                type: string
+                description: Java Timezone https://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html
+    PipelineConfig:
+      type: object
+      additionalProperties:
+        anyOf:
+        - type: object
+          additionalProperties: true
+        - type: array
+          items: {}
+        - type: string
+        - type: integer
+        - type: number
+        - type: boolean
+        - type: 'null'
+        - type: object
+          properties:
+            ssm:
+              type: string
+            secret:
+              type: boolean
+    PipelineLabelFilter:
+      properties:
+        id:
+          type: string
+        operator:
+          type: string
+          enum:
+          - contains
+          - is
+          - is not
+          - exists
+          - does not exist
+        value:
+          anyOf:
+          - type: array
+            items:
+              type: string
+          - type: string
+          - type: boolean
+        type:
+          enum:
+          - label
+          type: string
+        label:
+          type: string
+      required:
+      - operator
+      - type
+      - label
+      additionalProperties: false
+      type: object
+    FileTriggerOutputPipeline:
+      allOf:
+      - $ref: '#/components/schemas/BasicPipelineOutputObject'
+      - type: object
+        required:
+        - triggerType
+        - triggerCondition
+        properties:
+          triggerType:
+            type: string
+            enum:
+            - custom
+          triggerCondition:
+            oneOf:
+            - type: object
+              additionalProperties: false
+            - $ref: '#/components/schemas/TriggerConditionGroup'
+    FileTriggerInputPipeline:
+      allOf:
+      - $ref: '#/components/schemas/BasicPipelineInputObject'
+      - type: object
+        required:
+        - triggerType
+        - triggerCondition
+        properties:
+          triggerType:
+            type: string
+            enum:
+            - custom
+          triggerCondition:
+            oneOf:
+            - type: object
+              additionalProperties: false
+            - $ref: '#/components/schemas/TriggerConditionGroup'
+    BasicPipelineInputObject:
+      allOf:
+      - $ref: '#/components/schemas/PipelineSettings'
+      - type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+            description: ignored when provided in Query parameters
+          orgSlug:
+            type: string
+            description: ignored when provided in URL/Headers
+          message:
+            type: string
+          updatedAt:
+            type: string
+          labels:
+            type: array
+            items:
+              $ref: '#/components/schemas/PipelineNestedLabel'
+    FilterAllowAllConfig:
+      properties:
+        type:
+          enum:
+          - allow-all
+          type: string
+      required:
+      - type
+      additionalProperties: false
+      type: object
+    DatabricksClusterPolicy:
+      type: object
+      required:
+      - policyId
+      - name
+      properties:
+        policyId:
+          type: string
+          description: Canonical unique identifier for the cluster policy
+        name:
+          type: string
+          description: Display name of the cluster policy
+        description:
+          type: string
+          description: Description of the cluster policy
+    PipelineInputObject:
+      oneOf:
+      - $ref: '#/components/schemas/FileTriggerInputPipeline'
+      - $ref: '#/components/schemas/ScheduledTriggerInputPipeline'
+    PipelineRevision:
+      allOf:
+      - $ref: '#/components/schemas/PipelineRevisionMetadata'
+      - $ref: '#/components/schemas/PipelineSettings'
+    PipelineSettings:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          oneOf:
+          - type: 'null'
+          - type: string
+        protocolSlug:
+          oneOf:
+          - type: 'null'
+          - type: string
+          deprecated: true
+        protocolVersion:
+          oneOf:
+          - type: 'null'
+          - type: string
+          deprecated: true
+        priority:
+          type: integer
+          default: 5
+        retryBehavior:
+          oneOf:
+          - type: 'null'
+          - type: string
+            enum:
+            - 'off'
+            - oom_only
+            - linear
+            - constant
+            - exponential
+        retryConfiguration:
+          type: object
+          properties:
+            baseDelaySeconds:
+              type: integer
+              minimum: 0
+            maxRetries:
+              type: integer
+              minimum: 0
+        standby:
+          oneOf:
+          - type: 'null'
+          - type: integer
+        status:
+          oneOf:
+          - type: 'null'
+          - type: string
+            enum:
+            - disabled
+        taskScriptTimeoutMins:
+          oneOf:
+          - type: 'null'
+          - type: integer
+        maxParallelWorkflows:
+          type: integer
+          default: 0
+        createdAt:
+          type: string
+        pipelineConfig:
+          $ref: '#/components/schemas/PipelineConfig'
+        stepsConfig:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/StepsConfig'
+          default: {}
+        artifactType:
+          type: string
+          enum:
+          - protocol
+          - tetraflow
+          default: protocol
+        clusterId:
+          deprecated: true
+          oneOf:
+          - type: 'null'
+          - type: string
+          description: 'DEPRECATED: Prefer clusterPolicyId for cost-effective ephemeral job clusters.'
+        clusterPolicyId:
+          oneOf:
+          - type: 'null'
+          - type: string
+          description: Databricks cluster policy ID for job clusters. Preferred over clusterId for cost-effective ephemeral compute. Takes precedence if both are provided.
+        runOnDeleted:
+          type: boolean
+          default: false
+        masterScriptNamespace:
+          oneOf:
+          - type: string
+          - type: 'null'
+        masterScriptVersion:
+          oneOf:
+          - type: string
+          - type: 'null'
+        masterScriptSlug:
+          oneOf:
+          - type: string
+          - type: 'null'
+        inlineArtifact:
+          oneOf:
+          - type: object
+            format: unknown
+          - type: 'null'
+    DatabricksClusterObject:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    BasicPipelineOutputObject:
+      allOf:
+      - $ref: '#/components/schemas/PipelineSettings'
+      - type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+            description: ignored when provided in Query parameters
+          orgSlug:
+            type: string
+            description: ignored when provided in URL/Headers
+          revision:
+            type: number
+          updatedAt:
+            type: string
+          protocolSchema:
+            type: string
+            enum:
+            - v2
+            - v3
+            - tfv1
+          labels:
+            type: array
+            items:
+              $ref: '#/components/schemas/PipelineNestedLabel'
+    ScheduledTriggerInputPipeline:
+      allOf:
+      - $ref: '#/components/schemas/BasicPipelineInputObject'
+      - type: object
+        required:
+        - triggerType
+        - triggerCondition
+        properties:
+          triggerType:
+            type: string
+            enum:
+            - sched
+          triggerCondition:
+            type: object
+            required:
+            - cron
+            - tz
+            properties:
+              cron:
+                type: string
+              tz:
+                type: string
+    PipelineRevisionMetadata:
+      type: object
+      required:
+      - message
+      - pipelineId
+      - number
+      - userId
+      - createdAt
+      properties:
+        message:
+          type: string
+        pipelineId:
+          type: string
+        number:
+          type: number
+        userId:
+          oneOf:
+          - type: string
+          - type: 'null'
+        createdAt:
+          type: string
+    StepsConfig:
+      type: object
+      properties:
+        memoryInMB:
+          type: integer
+        runInLambda:
+          type: boolean
+    PipelineAttributeRule:
+      properties:
+        filters:
+          anyOf:
+          - $ref: '#/components/schemas/PipelineFilterLogicalConfig'
+          - $ref: '#/components/schemas/FilterAllowAllConfig'
+      required:
+      - filters
+      additionalProperties: false
+      type: object
+    PipelineFilterLogicalConfig:
+      properties:
+        id:
+          type: string
+        value:
+          items:
+            $ref: '#/components/schemas/PipelineFilterConfig'
+          type: array
+        type:
+          enum:
+          - and
+          - or
+          type: string
+      required:
+      - type
+      additionalProperties: false
+      type: object
+    TriggerConditionGroup:
+      type: object
+      required:
+      - groupLevel
+      - groupOperator
+      - groups
+      properties:
+        groupLevel:
+          type: integer
+        groupOperator:
+          type: string
+          enum:
+          - AND
+          - OR
+        groups:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/TriggerConditionGroup'
+            - type: object
+              required:
+              - key
+              - operator
+              properties:
+                key:
+                  type: string
+                operator:
+                  type: string
+                value:
+                  type: string
+    PipelineOutputObject:
+      oneOf:
+      - $ref: '#/components/schemas/FileTriggerOutputPipeline'
+      - $ref: '#/components/schemas/ScheduledTriggerOutputPipeline'
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

@@ -1,0 +1,1352 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Agents API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Agents
+paths:
+  /v1/agents/{agentId}/command-queue:
+    put:
+      description: Use this endpoint to enable or disable the command queue of an agent.
+      summary: Enable or disable command queue.
+      operationId: agent-command-queue-enable
+      tags:
+      - Agents
+      parameters:
+      - in: path
+        name: agentId
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The ID of the agent.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  description: Enable or disable the command queue for the agent
+                  type: boolean
+              required:
+              - enabled
+      responses:
+        '200':
+          description: Successful response with updated command queue details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    example: true
+                    description: Indicates whether the command queue is enabled.
+                  name:
+                    type: string
+                    example: https://sqs.us-east-2.amazonaws.com/706717599419/onprem-9b9f275c-a60d-454f-8c6c-1ea094e3fd38.fifo
+                    description: The URL of the command queue. It is returned only for an enabled queue.
+                  visibilityTimeout:
+                    type: integer
+                    example: 600
+                    description: The visibility timeout for messages in the command queue. It is returned only for an enabled queue.
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 400
+                    description: The HTTP status code.
+                  error:
+                    type: string
+                    example: Bad Request
+                    description: A short description of the error.
+                  message:
+                    type: string
+                    example: Can not enable command queue within 60s after disabling the command queue.
+                    description: Additional details about the error.
+    get:
+      summary: Get command queue
+      description: Use this endpoint to get details about the command queue of an agent
+      tags:
+      - Agents
+      operationId: agent-command-queue-get
+      parameters:
+      - in: path
+        name: agentId
+        required: true
+        description: The ID of the agent
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Successful response with command queue details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    example: true
+                    description: Indicates whether the command queue is enabled or not.
+                  name:
+                    type: string
+                    example: https://sqs.us-east-2.amazonaws.com/706717599419/onprem-9b9f275c-a60d-454f-8c6c-1ea094e3fd38.fifo
+                    description: The URL of the command queue. It is returned only for an enabled queue.
+                  visibilityTimeout:
+                    type: integer
+                    example: 600
+                    description: The visibility timeout for messages in the command queue. It is returned only for an enabled queue.
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 400
+                  error:
+                    type: string
+                    example: Bad Request
+                  message:
+                    type: string
+                    example: Error validating payload
+                  validation:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                          example: agentId must be a valid GUID
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Agent with id 9b9f275c-a60d-454f-8c6c-1ea094e3fd37 not found
+  /v1/agents:
+    post:
+      summary: Create an agent
+      description: Use this endpoint to create a new agent.
+      tags:
+      - Agents
+      operationId: agent-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - type
+              - integrationType
+              - integrationId
+              properties:
+                name:
+                  type: string
+                  description: 'Name of the new agent. Validation: It may contain any alphanumeric character, spaces, and the following special characters, `-`, `_`, `+`, `.`, `/`.'
+                  example: Agent name
+                description:
+                  type: string
+                  description: Description of the new agent. It may contain any alphanumeric character, spaces, line breaks, and the following special characters, `-`, `_`, `+`, `.`, `/`.
+                  example: Agent description
+                type:
+                  type: string
+                  description: Type of the new agent. The valid types are `file-log`, `empower`, `unicorn`, `labx`, `chromeleon` or `user-defined`.
+                  enum:
+                  - file-log
+                  - empower
+                  - unicorn
+                  - labx
+                  - chromeleon
+                  - user-defined
+                  example: file-log
+                sourceType:
+                  type: string
+                  description: Source Type of a user-defined agent. For a user-defined agent, it may contain any lower-case alphanumeric character, spaces, and the following special characters, `-`, `_`, `+`, `.`, `/`. However, a space can't be the first character. For other agent types it must be empty, null or not present
+                  example: ''
+                integrationType:
+                  type: string
+                  description: New agent's integration type. The valid types are `api` or `datahub`.
+                  enum:
+                  - api
+                  - datahub
+                integrationId:
+                  type: string
+                  description: Id of the connector to be used by the new agent, in GUID format
+                  example: 6f166302-df8a-4044-ab4b-7ddd3eefb50b
+                  format: uuid
+                datahubId:
+                  type: string
+                  description: Id of the Data Hub the new agent is using, in GUID format. It is required for integrations of type 'datahub'. It must be set to null, empty, or not present for integrations of type 'api'.
+                  format: uuid
+                  example: null
+                tags:
+                  type: array
+                  items:
+                    type: string
+                  example:
+                  - tag1
+                  description: Tags to associate with the agent.
+                metadata:
+                  type: object
+                  additionalProperties: true
+                  example:
+                    metadataKey: metadataValue
+                  description: Metadata to associate with the agent.
+                labels:
+                  type: object
+                  properties:
+                    labelsToAdd:
+                      description: Labels to add the agent
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            maxLength: 128
+                            example: labelKey
+                          value:
+                            type: string
+                            example: labelValue
+                        required:
+                        - name
+                        - value
+                  required:
+                  - labelsToAdd
+                  description: Labels to associate with the agent
+      responses:
+        '200':
+          description: Successful response with agent details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 9b9f275c-a60d-454f-8c6c-1ea094e3fd38
+                    format: uuid
+                    description: The ID of the agent.
+                  name:
+                    type: string
+                    example: File-Log Agent
+                    description: The name of the agent.
+                  description:
+                    type: string
+                    example: description
+                    description: The description of the agent.
+                  sourceType:
+                    type: string
+                    nullable: true
+                    description: The source type of the agent (nullable).
+                  type:
+                    type: string
+                    example: file-log
+                    description: The type of agent.
+                  integrationType:
+                    type: string
+                    example: api
+                    description: The integration type of the agent.
+                  integrationId:
+                    type: string
+                    example: 6f166302-df8a-4044-ab4b-7ddd3eefb50b
+                    format: uuid
+                    description: The integration ID of the agent.
+                  datahubId:
+                    type: string
+                    format: uuid
+                    nullable: true
+                    description: The Data Hub ID of the agent (nullable).
+                  sourceId:
+                    type: string
+                    example: 9201d7a7-2282-4ef2-b295-a1d1d1927b9a
+                    format: uuid
+                    description: The source ID of the agent.
+                  isEnabled:
+                    type: boolean
+                    example: true
+                    description: Indicates if the agent is enabled or not.
+                  tags:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - tag1
+                    description: Tags associated with the agent.
+                  metadata:
+                    type: object
+                    additionalProperties: true
+                    example: null
+                    description: Metadata associated with the agent.
+                  config:
+                    $ref: '#/components/schemas/FLAConfiguration'
+        '400':
+          description: Bad Request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    format: int32
+                    example: 400
+                  error:
+                    type: string
+                    example: Bad Request
+                  message:
+                    type: string
+                    example: Error validating payload
+                  validation:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                          example: '"datahubId" is required'
+    get:
+      summary: Get agents
+      description: Use this endpoint to get a list of agents.
+      tags:
+      - Agents
+      operationId: agents-get
+      parameters:
+      - name: include
+        in: query
+        description: Each agent returned will include its associated labels when the value is 'labels'. Otherwise this parameter is ignored
+        schema:
+          type: string
+        example: labels
+      responses:
+        '200':
+          description: Successful response with a list of all agents.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/paths/~1v1~1agents~1{agentId}/get/responses/200/content/application~1json/schema'
+  /v1/agents/{agentId}/enabled:
+    put:
+      summary: Enable or disable an agent
+      description: Use this endpoint to enable or disable an agent
+      tags:
+      - Agents
+      operationId: agent-enable
+      parameters:
+      - in: path
+        name: agentId
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The ID of the agent.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  description: Enable or disable the the agent
+                  type: boolean
+              required:
+              - enabled
+      responses:
+        '200':
+          description: Agent isEnabled property updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              example: {}
+  /v1/agents/{agentId}/configuration/list:
+    get:
+      summary: Get File-Log agent configuration list
+      description: Use this endpoint to get the past configurations of a File-Log agent
+      tags:
+      - Agents
+      operationId: agent-get-configuration-list
+      parameters:
+      - name: agentId
+        in: path
+        description: Agent ID
+        schema:
+          type: string
+        required: true
+      - name: page
+        in: query
+        description: Page number
+        schema:
+          type: integer
+          minimum: 0
+          default: 1
+        allowEmptyValue: false
+      - name: size
+        in: query
+        description: Number of items per page
+        schema:
+          type: integer
+          minimum: 1
+          default: 10
+        allowEmptyValue: false
+      - name: by
+        in: query
+        description: Filter by agent config type
+        schema:
+          type: string
+          enum:
+          - local
+          - cloud
+          - all
+          default: all
+        allowEmptyValue: false
+      - name: status
+        in: query
+        description: Filter by agent config by its command status
+        schema:
+          type: string
+          enum:
+          - CREATED
+          - UNSENT
+          - PENDING
+          - PURGED
+          - ERROR
+          - PROCESSING
+          - REJECTED
+          - SUCCESS
+          - FAILURE
+          - all
+          default: all
+        allowEmptyValue: false
+      - name: order
+        in: query
+        description: Sorting order by creation date
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+        allowEmptyValue: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page:
+                    type: integer
+                    example: 1
+                  size:
+                    type: integer
+                    example: 10
+                  hasNext:
+                    type: boolean
+                    example: true
+                  hits:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AgentConfiguration'
+  /v1/agents/{agentId}/configuration:
+    get:
+      summary: Get File-Log agent configuration
+      description: Use this endpoint to get the latest configuration, of the type requested, of a File Log Agent
+      tags:
+      - Agents
+      operationId: agent-get-configuration
+      parameters:
+      - name: agentId
+        in: path
+        description: Agent ID
+        schema:
+          type: string
+        required: true
+      - name: type
+        in: query
+        description: Type of the configuration to be returned, 'cloud' or 'local'. If the parameter is not provided, The endpoint will default to 'local' type.
+        schema:
+          type: string
+          enum:
+          - local
+          - cloud
+        required: false
+      responses:
+        '200':
+          description: Successful response with the latest agent configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentConfiguration'
+    post:
+      summary: Remotely configure a running File-Log agent
+      description: '-| This endpoint allows configuration of a running File-Log Agent with paths.  The File-Log Agent must be version 4.1.0 or greater, and configured to Receive Commands. Additionally, the Command Queue must be enabled for this Agent on TDP.
+
+        This will remove any paths not included in the JSON. To preserve existing paths, you must include them each time you POST.
+
+        If the target''s command queue doesn''t exist or is not accessible, the API will return a 400 error code and doesn''t create the command.
+
+        For more details, see https://developers.tetrascience.com/docs/configuring-the-file-log-agent-in-the-cloud.'
+      tags:
+      - Agents
+      operationId: agent-post-configuration
+      parameters:
+      - name: agentId
+        in: path
+        description: Agent ID
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                destination_id:
+                  type: string
+                  format: uuid
+                  description: '**FLA v4.3.0+**: The Destination Id of the Agent'
+                  example: 2e72c40f-432e-46a9-a027-e70686e8cd39
+                services_enabled:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - fileWatcher
+                  description: The services enabled for the Agent
+                  example:
+                  - fileWatcher
+                services_configuration:
+                  type: object
+                  properties:
+                    fileWatcher:
+                      type: object
+                      properties:
+                        use_path_configuration:
+                          type: boolean
+                          description: Whether to use path level configuration for start date and interval.  Must be set to true.
+                          example: true
+                        paths:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/FLAFileWatcherPathConfigurationItem'
+                      required:
+                      - use_path_configuration
+                  required:
+                  - fileWatcher
+              required:
+              - services_enabled
+              - services_configuration
+      responses:
+        '200':
+          description: Successful response with the id to the command that executed the update
+          content:
+            application/json:
+              examples:
+                Result:
+                  value:
+                    commandId: 729dec7d-26f6-4ac2-b1c0-2ae918e270dc
+              schema:
+                type: object
+                properties:
+                  commandId:
+                    type: string
+                    example: 729dec7d-26f6-4ac2-b1c0-2ae918e270dc
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              examples:
+                Agent is Offline:
+                  value:
+                    statusCode: 400
+                    error: Bad Request
+                    message: Cloud configuration is supported only by Online agents
+                Queue is not created or inaccessible:
+                  value:
+                    statusCode: 400
+                    error: Bad Request
+                    message: Queue for target id 729dec7d-26f6-4ac2-b1c0-2ae918e270dc not found or was not writeable. If you see this message in error, please try disabling and re-enabling the queue.
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 400
+                    default: 0
+                  error:
+                    type: string
+                    example: Bad Request
+                  message:
+                    type: string
+                    example: Cloud configuration is supported only by Online agents
+        '404':
+          description: Agent not found
+          content:
+            application/json:
+              examples:
+                Result:
+                  value:
+                    statusCode: 404
+                    error: Not Found
+                    message: Agent with id 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda not found
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Agent with id 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda not found
+  /v1/agents/{agentId}:
+    get:
+      summary: Get agent
+      description: Use this endpoint to get the details of a single agent.
+      operationId: agent-get
+      tags:
+      - Agents
+      parameters:
+      - in: path
+        name: agentId
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The ID of the agent.
+      responses:
+        '200':
+          description: Successful response with agent details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 9b9f275c-a60d-454f-8c6c-1ea094e3fd38
+                    format: uuid
+                    description: The unique identifier of the agent.
+                  name:
+                    type: string
+                    example: FLA Agent
+                    description: The name of the agent.
+                  description:
+                    type: string
+                    example: description
+                    description: The description of the agent.
+                  sourceType:
+                    type: string
+                    nullable: true
+                    description: The source type of the agent (nullable).
+                  type:
+                    type: string
+                    example: file-log
+                    description: The type of the agent.
+                  integrationType:
+                    type: string
+                    example: api
+                    description: The integration type of the agent.
+                  integrationId:
+                    type: string
+                    example: 6f166302-df8a-4044-ab4b-7ddd3eefb50b
+                    format: uuid
+                    description: The integration ID of the agent.
+                  datahubId:
+                    type: string
+                    nullable: true
+                    format: uuid
+                    description: The Data Hub ID of the agent (nullable).
+                  sourceId:
+                    type: string
+                    example: 9201d7a7-2282-4ef2-b295-a1d1d1927b9a
+                    description: The source ID of the agent.
+                    format: uuid
+                  isEnabled:
+                    type: boolean
+                    example: true
+                    description: Indicates whether the agent is enabled.
+                  tags:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - tag1
+                    description: Tags associated with the agent.
+                  metadata:
+                    type: object
+                    additionalProperties: true
+                    example:
+                      metadataKey: metadataValue
+                    description: Metadata associated with the agent.
+                  labels:
+                    type: array
+                    description: Labels associated with the agent
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: The label name
+                          example: vendor
+                        value:
+                          type: string
+                          description: The label value
+                          example: Beckman Coulter
+                      required:
+                      - name
+                      - value
+                  config:
+                    $ref: '#/components/schemas/FLAConfiguration'
+                  configStatus:
+                    type: string
+                    example: SUCCESS
+                    description: Agent configuration status of a File-Log agent, null otherwise.
+                  configStatusUpdatedAt:
+                    type: string
+                    format: date-time
+                    example: '2023-08-28T14:43:59.753Z'
+                    description: Timestamp when configuration status was updated.
+                  configStatusError:
+                    type: string
+                    nullable: true
+                    description: Configuration status error message of a File-Log agent, null otherwise.
+                  configChangedBy:
+                    type: string
+                    example: local
+                    description: User who changed the configuration of a File-Log agent, null otherwise.
+                  configChangedAt:
+                    type: string
+                    format: date-time
+                    example: '2023-09-05T16:25:01.697Z'
+                    description: Timestamp when configuration of a File-Log agent was changed, null otherwise.
+                  createdAt:
+                    type: string
+                    format: date-time
+                    example: '2023-04-04T14:01:30.136Z'
+                    description: Timestamp when the agent was created.
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    example: '2023-10-10T16:29:08.573Z'
+                    description: Timestamp when the agent was last updated.
+                  orgSlug:
+                    type: string
+                    example: tetrascience
+                    description: Organization slug.
+                  status:
+                    type: string
+                    example: Online
+                    description: The status of the agent.
+                  version:
+                    type: string
+                    example: v4.3.1
+                    description: The version of the agent.
+                  liveType:
+                    type: string
+                    example: file-log
+                    description: Type reported by the agent to the platform.
+                  host:
+                    type: object
+                    properties:
+                      ip:
+                        type: string
+                        example: 10.60.4.128
+                        description: The IP address of the agent host.
+                      name:
+                        type: string
+                        example: EC2AMAZ-53HU01M
+                        description: The name of the agent host.
+                    description: Information about the machine that the agent is running on.
+                  queue:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                        example: true
+                        description: Indicates whether the command queue is enabled.
+                      name:
+                        type: string
+                        example: https://sqs.us-east-2.amazonaws.com/706717599419/onprem-9b9f275c-a60d-454f-8c6c-1ea094e3fd38.fifo
+                        description: The URL of the command queue. It is returned only for an enabled queue.
+                      visibilityTimeout:
+                        type: integer
+                        example: 600
+                        description: The visibility timeout for messages in the command queue. It is returned only for an enabled queue.
+                    description: Information about the command queue.
+                description: Agent status and configuration information.
+    put:
+      summary: Update an agent
+      description: Use this endpoint to update a single agent
+      operationId: agent-update
+      tags:
+      - Agents
+      parameters:
+      - in: path
+        name: agentId
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The ID of the agent.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - type
+              - integrationType
+              - integrationId
+              properties:
+                name:
+                  type: string
+                  description: 'Updated name of the agent. Validation: It may contain any alphanumeric character, spaces, and the characters - _ + . /'
+                description:
+                  type: string
+                  description: Updated description of the agent. It may contain any alphanumeric character, spaces, line breaks, and the characters - _ + . /
+                type:
+                  type: string
+                  description: Type of the existing agent. The valid types are file-log, empower, unicorn, labx, chromeleon or user-defined It is not allowed to change the type of the agent, so this parameter must match the type of the agent being updated
+                  enum:
+                  - file-log
+                  - empower
+                  - unicorn
+                  - labx
+                  - chromeleon
+                  - user-defined
+                  example: file-log
+                sourceType:
+                  type: string
+                  description: Source Type of a user-defined agent. For a user-defined agent, it may contain any lower-case alphanumeric character, spaces, and the characters - _ + . / However, a space can't be the first character. For other agent types it must be empty, null or not present
+                  example: ''
+                integrationType:
+                  type: string
+                  description: Type of the updated integration for the agent. The valid types are `api` or `datahub.
+                  enum:
+                  - api
+                  - datahub
+                integrationId:
+                  type: string
+                  description: Id of the connector to be used by the agent, in GUID format
+                  example: 6f166302-df8a-4044-ab4b-7ddd3eefb50b
+                  format: uuid
+                datahubId:
+                  type: string
+                  description: Id of the Data Hub to be used by the new agent, in GUID format. It is required for integrations of type 'datahub'. It must be set to null, empty or not present for integrations of type 'api'
+                  format: uuid
+                  example: null
+                tags:
+                  type: array
+                  items:
+                    type: string
+                  example:
+                  - tag1
+                  description: Tags to associate with the agent.
+                metadata:
+                  type: object
+                  additionalProperties: true
+                  example:
+                    metadataKey: metadataValue
+                  description: Metadata to associate with the agent.
+                labels:
+                  type: object
+                  properties:
+                    labelsToAdd:
+                      type: array
+                      description: Labels to add the agent
+                      items:
+                        $ref: '#/paths/~1v1~1agents/post/requestBody/content/application~1json/schema/properties/labels/properties/labelsToAdd'
+                    labelsToDrop:
+                      oneOf:
+                      - type: array
+                        items:
+                          type: integer
+                          description: Id of the label to drop from the agent
+                      - type: integer
+                        description: Id of the label to drop from the agent
+                      description: Labels to drop from the agent
+                  description: Labels to add or drop from the agent
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1agents~1{agentId}/get/responses/200'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    format: int32
+                    example: 400
+                  error:
+                    type: string
+                    example: Bad Request
+                  message:
+                    type: string
+                    example: Agent type change is not allowed
+  /v1/agents/{agentId}/connector:
+    put:
+      summary: Change agent connector
+      description: Use this endpoint to change the connector of an agent
+      tags:
+      - Agents
+      operationId: agent-update-connector
+      parameters:
+      - in: path
+        name: agentId
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: The ID of the agent.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                integrationType:
+                  type: string
+                  description: Type of the integration. The valid types are `api` or `datahub`.
+                  enum:
+                  - api
+                  - datahub
+                datahubId:
+                  format: uuid
+                  type: string
+                  description: Id of the Data Hub to be used by the new agent, in GUID format. It is required for integrations of type 'datahub'. It must be set to null, empty or not present for integrations of type 'api'
+                integrationId:
+                  type: string
+                  format: uuid
+                  description: The ID of the connector
+            example:
+              integrationType: datahub
+              datahubId: 46568316-feda-4a04-889e-792064ded110
+              integrationId: 222b2fcb-03ab-4875-a420-77bb35fd8f63
+      responses:
+        '200':
+          description: Agent connector updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              example: {}
+  /v1/agents/{agentId}/config:
+    get:
+      deprecated: true
+      summary: Deprecated - Get File-Log agent configuration
+      description: This endpoint has been deprecated in favor of /v1/agents/{agentId}/configuration. Both endpoints are identical.
+      tags:
+      - Agents
+      operationId: deprecated-agent-get-configuration
+      parameters:
+      - name: agentId
+        in: path
+        description: Agent ID
+        schema:
+          type: string
+        required: true
+      - name: type
+        in: query
+        description: Type of the configuration to be returned, 'cloud' or 'local'. If this parameter is not provided, the endpoint will default to 'local'.
+        schema:
+          type: string
+          enum:
+          - local
+          - cloud
+        required: false
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1agents~1{agentId}~1configuration/get/responses/200'
+    post:
+      summary: Deprecated - Remotely configure a running File-Log agent
+      description: -| This endpoint has been deprecated in favor of /v1/agents/{agentId}/configuration. Both endpoints are identical.
+      deprecated: true
+      operationId: deprecated-agent-post-configuration
+      tags:
+      - Agents
+      parameters:
+      - name: agentId
+        in: path
+        description: Agent ID
+        schema:
+          type: string
+        required: true
+      requestBody:
+        $ref: '#/paths/~1v1~1agents~1{agentId}~1configuration/post/requestBody'
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1agents~1{agentId}~1configuration/post/responses/200'
+        '400':
+          $ref: '#/paths/~1v1~1agents~1{agentId}~1configuration/post/responses/400'
+        '404':
+          $ref: '#/paths/~1v1~1agents~1{agentId}~1configuration/post/responses/404'
+components:
+  schemas:
+    FLAFileWatcherPathConfigurationItem:
+      type: object
+      description: '**FLA v4.3.0+**: Options for archival and deletion of files in the path after upload'
+      properties:
+        path:
+          type: string
+          description: The path to watch.
+          example: C:\FLA\test1
+        file_watch_mode:
+          type: string
+          enum:
+          - file
+          - folder
+          description: The file watch mode.
+          example: file
+        source_type:
+          type: string
+          description: The source type.
+          example: unknown
+        interval:
+          type: integer
+          description: 'The time in seconds the agent will monitor the files for changes before uploading.
+
+            This also specifies the time between scans of the path.'
+          example: 30
+        start_date:
+          type: string
+          format: date
+          description: Files with a last modified date on or after the specified date will be scanned and uploaded.
+          example: '2023-03-27'
+        patterns:
+          type: array
+          items:
+            type: string
+          description: Defines a list of [glob patterns](https://developers.tetrascience.com/docs/common-glob-pattern) to match files in the path.
+          example:
+          - '*.*'
+        metadata:
+          type: object
+          description: Custom metadata to associate with files in the path.
+          example:
+            meta1: value1
+        tags:
+          type: string
+          description: Comma-separated list of tags to associate with files in the path.
+          example: tag1,tag2
+        labels:
+          type: array
+          description: '**FLA v4.3.0+**: Labels applied to files in the path'
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The label name.
+                example: vendor
+              value:
+                type: string
+                description: The label value.
+                example: Beckman Coulter
+            required:
+            - name
+            - value
+        archive:
+          type: object
+          description: '**FLA v4.3.0+**: Options for archival and deletion of files in the path after upload'
+          properties:
+            path:
+              type: string
+              description: The location where files from this path will be archived
+              example: c:\archive
+            wait_time:
+              type: integer
+              description: Amount of time to wait before moving the source file to the archive path after uploading
+              example: 1
+            wait_time_unit:
+              type: string
+              enum:
+              - Minutes
+              - Hours
+              - Days
+              description: The unit for the wait_time
+              example: Days
+            archive_without_checksum:
+              type: boolean
+              description: Determines if files uploaded by a previous agent version that have no checksum are archived or not.
+              example: false
+            dry_run:
+              type: boolean
+              description: Whether to perform a dry run
+              example: false
+            delete:
+              type: object
+              description: Options for deletion of files from the archive path
+              properties:
+                wait_time:
+                  type: integer
+                  description: Amount of time to wait before deleting the file from the archive path
+                  example: 7
+                wait_time_unit:
+                  type: string
+                  enum:
+                  - Minutes
+                  - Hours
+                  - Days
+                  description: The unit for the wait_time
+                  example: Days
+              required:
+              - wait_time
+              - wait_time_unit
+          required:
+          - path
+          - wait_time
+          - wait_time_unit
+        fetch_os_created_user:
+          type: boolean
+          description: Determines if the OS-created user metadata is retrieved and included as metadata on files in the path or not.
+          example: false
+        symlink_behavior:
+          type: string
+          enum:
+          - Legacy
+          - Ignore
+          description: '**(For FLA v4.4.1 and higher only)** Specifies how the Agent handles symbolic links when file scanning.'
+      required:
+      - file_watch_mode
+      - source_type
+      - interval
+      - start_date
+      - path
+      - patterns
+    AgentConfiguration:
+      type: object
+      properties:
+        id:
+          type: string
+          example: f82d2230-eed1-443c-9ed8-2e1fef9039c2
+          description: The unique ID of the configuration.
+        config:
+          $ref: '#/components/schemas/FLAConfiguration'
+        by:
+          type: string
+          example: cloud
+          description: The entity that initiated the command.
+        at:
+          type: string
+          format: date-time
+          example: '2023-08-28T14:43:46.381Z'
+          description: The timestamp when the command was executed.
+        commandStatus:
+          type: string
+          example: SUCCESS
+          description: The status of the command.
+        commandId:
+          type: string
+          example: f82d2230-eed1-443c-9ed8-2e1fef9039c2
+          description: The unique ID of the command.
+    FLAConfiguration:
+      type: object
+      description: Agent configuration if available, null otherwise.
+      properties:
+        group_user:
+          type: object
+          properties:
+            user_name:
+              type: string
+              description: The Windows User service account used for managing folder and file access for the agent.
+              example: user1
+            password:
+              type: string
+              description: A secure hash of the user's password.
+              example: '-1943064076'
+        agent_configuration:
+          type: object
+          properties:
+            s3_direct_upload:
+              type: boolean
+              description: Whether to enable direct upload of files and logs to S3.
+              example: true
+            receive_commands:
+              type: boolean
+              description: Whether the agent should receive and execute commands from TDP.
+              example: true
+            destination_id:
+              type: string
+              format: uuid
+              description: The Destination Id of the Agent, used in place of its own ID in datalake file keys.
+              example: 2e72c40f-432e-46a9-a027-e70686e8cd39
+            agent_id:
+              type: string
+              description: The ID of the agent.
+              example: f82d2230-eed1-443c-9ed8-2e1fef9039c2
+            org_slug:
+              type: string
+              description: The slug of the organization.
+              example: tetrascience
+            Authentication:
+              type: string
+              description: A secure hash of the agent's authentication token.
+              example: '-1943064076'
+            advanced_setting:
+              type: object
+              properties:
+                heart_beat_interval:
+                  type: integer
+                  description: The interval in seconds for the agent to check its connection status.
+                  example: 30
+                agent_log_upload_job_interval:
+                  type: integer
+                  description: The interval in seconds for the agent to upload logs.
+                  example: 30
+                compression_type:
+                  type: string
+                  enum:
+                  - Zip
+                  - SevenZip
+                  description: The compression type for the agent.
+                  example: zip
+                retry_limit:
+                  type: integer
+                  description: The number of times the agent will retry to upload a file before it stops attempting the upload.
+                  example: 3
+                tdpApiUrlOverride:
+                  type: string
+                  description: The URL of the TDP API
+                  example: https://api.tetrascience.com
+                validateAwsCertificate:
+                  type: boolean
+                  description: Indicates whether to validate the AWS certificate or not.
+                  example: true
+                proxyUseCustom:
+                  type: boolean
+                  description: Indicates whether to use a custom proxy or not.
+                  example: true
+                proxyHost:
+                  type: string
+                  description: The host of the proxy, if one is set.
+                  example: proxy.example.com
+                proxyPort:
+                  type: integer
+                  description: The port of the proxy, if one is set.
+                  example: 8080
+                proxyBypassList:
+                  type: string
+                  description: The list of addresses to bypass the proxy.
+                  example: example.com,example.org
+                proxyUsername:
+                  type: string
+                  description: The username for the proxy, if one is set.
+                  example: proxyuser
+                proxyPassword:
+                  type: string
+                  description: A secure hash of the agent's authentication token.
+                  example: '-1943064076'
+                proxyUseSystem:
+                  type: boolean
+                  description: Indicates whether to use the system proxy or not.
+                  example: false
+        services_enabled:
+          type: array
+          items:
+            type: string
+            enum:
+            - fileWatcher
+          description: The services enabled for the agent.
+          example:
+          - fileWatcher
+        services_configuration:
+          type: object
+          properties:
+            fileWatcher:
+              type: object
+              properties:
+                use_path_configuration:
+                  type: boolean
+                  description: Indicates whether or not to use path-level configuration for start date and interval.
+                  example: true
+                paths:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/FLAFileWatcherPathConfigurationItem'
+              required:
+              - use_path_configuration
+          required:
+          - fileWatcher
+        windows_scheduled_task:
+          type: object
+          properties:
+            enabled:
+              type: boolean
+              description: Indicates whether the Windows scheduled task to ensure the agent service is running is enabled or not..
+              example: true
+            time:
+              type: string
+              description: The time of day when the Windows scheduled task is triggered.
+              example: 1:00pm
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

@@ -1,0 +1,220 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Audit Trail API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Audit Trail
+paths:
+  /audit-trail:
+    get:
+      tags:
+      - Audit Trail
+      summary: Get audit logs (Paginated)
+      description: Returns a paginated object of audit logs.
+      parameters:
+      - name: actor
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: entityName
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: entity
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: action
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: ids
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: id
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: changeReason
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        in: query
+        required: true
+        schema:
+          $ref: '#/paths/~1audit-trail/get/parameters/7/schema'
+      - name: take
+        in: query
+        required: false
+        schema:
+          type: number
+          minimum: 1
+      - name: skip
+        in: query
+        required: false
+        schema:
+          type: number
+          minimum: 0
+      - name: format
+        in: query
+        required: false
+        schema:
+          type: string
+          default: json
+          enum:
+          - json
+          - csv
+      responses:
+        '200':
+          description: Complex object containing audit logs and paging information.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  skip:
+                    type: number
+                    minimum: 0
+                  take:
+                    type: number
+                    minimum: 1
+                  next:
+                    type: boolean
+                  logs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        orgSlug:
+                          type: string
+                          example: tetrascience
+                        ip:
+                          type: string
+                          format: ipv4
+                        createdAt:
+                          type: string
+                          format: date-time
+                        entity:
+                          type: object
+                          properties:
+                            id:
+                              $ref: '#/paths/~1audit-trail/get/responses/200/content/application~1json/schema/properties/logs/items/properties/id'
+                            type:
+                              type: string
+                              enum:
+                              - user
+                              - file
+                              - datahub-agent
+                              - iot-source
+                              - user-setting
+                              - db-credentials
+                              - feature-flag
+                            before:
+                              type: object
+                            after:
+                              type: object
+                            schemaVersion:
+                              type: number
+                              minimum: 1
+                        action:
+                          type: string
+                          enum:
+                          - create
+                          - update
+                          - delete
+                          - enable
+                          - disable
+                          - unlock
+                          - change-role
+                          - change-password
+                          - login-attempt
+                          - copy
+                          - change-default-role
+                          - reset-password
+                          - forgot-password-request
+                          - expired-token
+                        actor:
+                          type: object
+                          properties:
+                            id:
+                              $ref: '#/paths/~1audit-trail/get/responses/200/content/application~1json/schema/properties/logs/items/properties/id'
+                            type:
+                              type: string
+                              enum:
+                              - user
+                              - service-user
+                              - local-user
+                            name:
+                              type: string
+                              example: Administrator
+                            email:
+                              type: string
+                              format: email
+                        authToken:
+                          type: object
+                          properties:
+                            ending:
+                              type: string
+            text/csv:
+              schema:
+                type: string
+                example: 'id,org_slug,actor_id,actor_type,actor_name,actor_email,ip_address,host,auth_token_ending,entity_type,entity_id,action,before,after,change_reason,entity_schema_version,created_at,entity_name
+
+                  e7917f3c-330a-4f56-8218-a8f018e09bfc,tetrascience,59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd,user,Administrator Administrator,admin@tetrascience.com,178.127.44.13,,w7AY9Uc,service-user,6a7e3a44-4f7a-42dc-b728-75ddfb548339,enable,"{""id"": ""6a7e3a44-4f7a-42dc-b728-75ddfb548339"", ""name"": ""Connector 2b50b737-df0d-4a90-9962-cd6b8df6ffdb"", ""type"": ""service-user"", ""email"": ""ts-service-user.6a7e3a44-4f7a-42dc-b728-75ddfb548339@tetrascience.com"", ""status"": ""inactive""}","{""id"": ""6a7e3a44-4f7a-42dc-b728-75ddfb548339"", ""name"": ""Connector 2b50b737-df0d-4a90-9962-cd6b8df6ffdb"", ""type"": ""service-user"", ""email"": ""ts-service-user.6a7e3a44-4f7a-42dc-b728-75ddfb548339@tetrascience.com"", ""status"": ""active""}",,1,2023-04-19 12:05:02.42+00,Connector 2b50b737-df0d-4a90-9962-cd6b8df6ffdb
+
+                  '
+components:
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

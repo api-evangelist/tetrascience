@@ -1,0 +1,469 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Roles API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Roles
+paths:
+  /v1/roles/{roleId}:
+    delete:
+      summary: Delete role by ID
+      tags:
+      - Roles
+      parameters:
+      - $ref: '#/paths/~1v1~1roles~1%7BroleId%7D/get/parameters/0'
+      responses:
+        '204':
+          description: Role deleted successfully
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: Role not found
+    get:
+      summary: Get role by ID
+      tags:
+      - Roles
+      parameters:
+      - name: roleId
+        required: true
+        in: path
+        schema:
+          $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+      responses:
+        '200':
+          description: Responding with role
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1roles/post/responses/201/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: Role not found
+    put:
+      summary: Update role by ID
+      tags:
+      - Roles
+      parameters:
+      - $ref: '#/paths/~1v1~1roles~1%7BroleId%7D/get/parameters/0'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - type: object
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  ssoGroupMappings:
+                    type: array
+                    items:
+                      type: string
+                      example: idp-group-name
+                  enabled:
+                    type: boolean
+                  policyScopes:
+                    type: array
+                    minimum: 1
+                    items:
+                      type: string
+                      enum:
+                      - developer
+                      - dataUser
+                      - dataOwner
+                      - auditor
+                      - analyst
+                      - tenantAdmin
+                      - orgAdmin
+                      - member
+                      - support
+                      example: developer
+              - type: object
+                properties:
+                  id:
+                    $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+      responses:
+        '200':
+          description: Responding with updated role
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1roles/post/responses/201/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: Role not found
+  /v1/roles/policies:
+    get:
+      summary: Get all policies supported in the system
+      tags:
+      - Roles
+      responses:
+        '200':
+          description: Responding with list of policies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: Developer
+                    scope:
+                      type: string
+                      enum:
+                      - developer
+                      - dataUser
+                      - dataOwner
+                      - auditor
+                      - analyst
+                      - tenantAdmin
+                      - orgAdmin
+                      - member
+                      - support
+                      example: developer
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+  /v1/roles/{roleId}/users:
+    get:
+      summary: Get users with the role
+      tags:
+      - Roles
+      parameters:
+      - $ref: '#/paths/~1v1~1roles~1%7BroleId%7D/get/parameters/0'
+      - name: pageNumber
+        description: Page number
+        in: query
+        required: false
+        schema:
+          type: number
+          default: 1
+          minimum: 1
+      - name: pageSize
+        description: Page size
+        in: query
+        required: false
+        schema:
+          type: number
+          default: 25
+          minimum: 1
+      responses:
+        '200':
+          description: Responding with list of users
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    total:
+                      type: number
+                      example: 100
+                    count:
+                      type: number
+                      example: 25
+                - type: object
+                  properties:
+                    users:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          authType:
+                            $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType'
+                          email:
+                            $ref: '#/paths/~1login/post/requestBody/content/application~1json/schema/properties/email'
+                          firstName:
+                            type: string
+                            example: John
+                          lastName:
+                            type: string
+                            example: Doe
+                          id:
+                            $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                          lastActivity:
+                            type: string
+                          status:
+                            type: string
+                            enum:
+                            - active
+                            - inactive
+                          systemRole:
+                            type: string
+                          roles:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                                orgSlug:
+                                  $ref: '#/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema'
+                                organizationId:
+                                  $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                                role:
+                                  example: Administrator
+                                roleId:
+                                  $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                                status:
+                                  $ref: '#/paths/~1v1~1roles~1%7BroleId%7D~1users/get/responses/200/content/application~1json/schema/allOf/1/properties/users/items/properties/status'
+                                userId:
+                                  $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                                orgName:
+                                  type: string
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: Role not found
+    post:
+      summary: Add / remove users to role
+      tags:
+      - Roles
+      parameters:
+      - $ref: '#/paths/~1v1~1roles~1%7BroleId%7D/get/parameters/0'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userIdsToAdd:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                userIdsToRemove:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+      responses:
+        '204':
+          description: Users added / removed from role successfully
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: Role not found
+  /v1/roles:
+    get:
+      summary: List all roles in an organization
+      tags:
+      - Roles
+      responses:
+        '200':
+          description: Responding with list of roles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    organizationId:
+                      $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                    ssoGroupMappings:
+                      type: array
+                      items:
+                        type: string
+                        example: idp-group-name
+                    enabled:
+                      type: boolean
+                    createdAt:
+                      $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt'
+                    policyScopes:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                        - developer
+                        - dataUser
+                        - dataOwner
+                        - auditor
+                        - analyst
+                        - tenantAdmin
+                        - orgAdmin
+                        - member
+                        - support
+                        example: developer
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: Organization not found
+    post:
+      summary: Create a new role in an organization
+      tags:
+      - Roles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                ssoGroupMappings:
+                  type: array
+                  items:
+                    type: string
+                    example: idp-group-name
+                enabled:
+                  type: boolean
+                policyScopes:
+                  type: array
+                  minimum: 1
+                  items:
+                    type: string
+                    enum:
+                    - developer
+                    - dataUser
+                    - dataOwner
+                    - auditor
+                    - analyst
+                    - tenantAdmin
+                    - orgAdmin
+                    - member
+                    - support
+                    example: developer
+      responses:
+        '201':
+          description: Responding with created role
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  organizationId:
+                    $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                  ssoGroupMappings:
+                    type: array
+                    items:
+                      type: string
+                      example: idp-group-name
+                  enabled:
+                    type: boolean
+                  createdAt:
+                    $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt'
+                  policyScopes:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - developer
+                      - dataUser
+                      - dataOwner
+                      - auditor
+                      - analyst
+                      - tenantAdmin
+                      - orgAdmin
+                      - member
+                      - support
+                      example: developer
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: Organization not found
+  /v1/roles/{roleId}/ssoMapping:
+    put:
+      summary: Update SSO group mapping for role
+      tags:
+      - Roles
+      parameters:
+      - $ref: '#/paths/~1v1~1roles~1%7BroleId%7D/get/parameters/0'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ssoGroupMappings:
+                  type: array
+                  items:
+                    type: string
+                    example: idp-group-name
+      responses:
+        '200':
+          description: Responding with updated role
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1roles/post/responses/201/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: Role not found
+components:
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

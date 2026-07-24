@@ -1,0 +1,525 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Organizations API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Organizations
+paths:
+  /v1/organizations/{organizationId}/users/{userId}:
+    delete:
+      description: Remove a user from the organization, revoking all access and permissions. User account data and audit trails are preserved for compliance purposes.
+      summary: Delete user from organization
+      tags:
+      - Organizations
+      parameters:
+      - $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/parameters/0'
+      - name: userId
+        required: true
+        in: path
+        schema:
+          $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+      responses:
+        '204':
+          description: User deleted successfully
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+  /v1/organizations/{organizationId}/users:
+    post:
+      description: Add a new user to the organization or invite existing users. Assigns default roles and sends invitation emails as configured.
+      operationId: DL-FI-postApiV1OrganizationsOrganizationidUsers
+      summary: Add a user to Organization
+      tags:
+      - Organizations
+      parameters:
+      - $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/parameters/0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                  maxLength: 100
+                lastName:
+                  type: string
+                email:
+                  $ref: '#/paths/~1login/post/requestBody/content/application~1json/schema/properties/email'
+                role:
+                  type: string
+                  enum:
+                  - admin
+                  - member
+                  - readonly
+                password:
+                  type: string
+                status:
+                  type: string
+                  enum:
+                  - active
+                  - inactive
+                  - locked
+                  default: active
+                authType:
+                  $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType'
+      responses:
+        '201':
+          description: Added new user.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    authType:
+                      $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType'
+                    email:
+                      $ref: '#/paths/~1login/post/requestBody/content/application~1json/schema/properties/email'
+                    firstName:
+                      type: string
+                      example: John
+                    lastName:
+                      type: string
+                      example: Doe
+                    id:
+                      $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                    lastActivity:
+                      type: string
+                    status:
+                      type: string
+                      enum:
+                      - active
+                      - inactive
+                    systemRole:
+                      type: string
+                    roles:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                          orgSlug:
+                            $ref: '#/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema'
+                          organizationId:
+                            $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                          role:
+                            example: Administrator
+                          roleId:
+                            $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                          status:
+                            $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/post/responses/201/content/application~1json/schema/allOf/0/properties/status'
+                          userId:
+                            $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                          orgName:
+                            type: string
+                - type: object
+                  properties:
+                    tokens:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                          userId:
+                            $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                          token:
+                            type: string
+                            description: Truncated token value
+                          expiresAt:
+                            $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt'
+                          createdAt:
+                            $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt'
+                          createdBy:
+                            type: object
+                            properties:
+                              id:
+                                $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                              firstName:
+                                type: string
+                                format: John
+                              lastName:
+                                type: string
+                                format: Snow
+                    password_history:
+                      type: array
+                      items:
+                        type: object
+                    athenaCredentialsUpdatedAt:
+                      $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt'
+                - type: object
+                  properties:
+                    preferences:
+                      $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/get/responses/200/content/application~1json/schema/items/allOf/2/properties/preferences'
+                    rowPreferences:
+                      $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/get/responses/200/content/application~1json/schema/items/allOf/2/properties/preferences'
+        '400':
+          description: Bad request, details in response.
+          content:
+            text/plain:
+              schema:
+                type: string
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+    get:
+      description: List all users within an organization including their roles, status, last activity, and access permissions for administrative oversight.
+      summary: Get Users for Organization
+      tags:
+      - Organizations
+      parameters:
+      - $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/parameters/0'
+      - name: userStatus
+        required: false
+        in: query
+        schema:
+          type: string
+          enum:
+          - active
+          - inactive
+          - locked
+          example: active
+      - name: role
+        required: false
+        in: query
+        schema:
+          type: string
+          enum:
+          - admin
+          - member
+          - readonly
+          example: service
+      - name: roleId
+        required: true
+        in: query
+        schema:
+          $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+      - name: authType
+        required: false
+        in: query
+        schema:
+          type: string
+          enum:
+          - password
+          - service
+          example: service
+      - name: from
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: size
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: email
+        required: false
+        description: Email address of the user (exact match)
+        in: query
+        schema:
+          $ref: '#/paths/~1login/post/requestBody/content/application~1json/schema/properties/email'
+      - name: firstName
+        required: false
+        in: query
+        description: Exact match on user first name
+        schema:
+          type: string
+      - name: lastName
+        required: false
+        description: Exact match on user last name
+        in: query
+        schema:
+          type: string
+      - name: include
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - connector-users
+            - task-script-users
+      - name: withCredentials
+        required: false
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Responding with list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                  - type: object
+                    properties:
+                      authType:
+                        $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType'
+                      email:
+                        $ref: '#/paths/~1login/post/requestBody/content/application~1json/schema/properties/email'
+                      firstName:
+                        type: string
+                        example: John
+                      lastName:
+                        type: string
+                        example: Doe
+                      id:
+                        $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                      lastActivity:
+                        type: string
+                      status:
+                        type: string
+                        enum:
+                        - active
+                        - inactive
+                      systemRole:
+                        type: string
+                      roles:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                            orgSlug:
+                              $ref: '#/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema'
+                            organizationId:
+                              $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                            role:
+                              example: Administrator
+                            roleId:
+                              $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                            status:
+                              $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/get/responses/200/content/application~1json/schema/items/allOf/0/properties/status'
+                            userId:
+                              $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                            orgName:
+                              type: string
+                  - type: object
+                    properties:
+                      tokens:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                            userId:
+                              $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                            token:
+                              type: string
+                              description: Truncated token value
+                            expiresAt:
+                              $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt'
+                            createdAt:
+                              $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt'
+                            createdBy:
+                              type: object
+                              properties:
+                                id:
+                                  $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                                firstName:
+                                  type: string
+                                  format: John
+                                lastName:
+                                  type: string
+                                  format: Snow
+                      password_history:
+                        type: array
+                        items:
+                          type: object
+                      athenaCredentialsUpdatedAt:
+                        $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt'
+                  - type: object
+                    properties:
+                      preferences:
+                        type: array
+                        items: {}
+                      rowPreferences:
+                        $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/get/responses/200/content/application~1json/schema/items/allOf/2/properties/preferences'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+  /v1/organizations/{organizationId}:
+    get:
+      description: Retrieve organization details including settings, features, subdomain, and administrative configuration for management purposes.
+      summary: Get organization by ID
+      tags:
+      - Organizations
+      parameters:
+      - name: organizationId
+        required: true
+        in: path
+        schema:
+          $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+      responses:
+        '200':
+          description: Responding with Organization details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                  createdAt:
+                    type: string
+                    format: date-time
+                  createdBy:
+                    $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                  features:
+                    type: object
+                    properties:
+                      ssoGroupMapping:
+                        type: object
+                        properties:
+                          admin:
+                            type: array
+                            items:
+                              type: string
+                          member:
+                            $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/features/properties/ssoGroupMapping/properties/admin'
+                          readonly:
+                            $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/features/properties/ssoGroupMapping/properties/admin'
+                      auditTrail:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          changeReasonEnabled:
+                            type: boolean
+                      continuousVerification:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                  modifiedAt:
+                    $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt'
+                  modifiedBy:
+                    $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                  name:
+                    $ref: '#/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema'
+                  subDomain:
+                    type: string
+                  type:
+                    type: string
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: Organization not found.
+    put:
+      description: Update organization properties including name, description, logo, authentication type, email domain, and feature settings. Requires organization or system admin privileges.
+      summary: Update organization by ID
+      tags:
+      - Organizations
+      parameters:
+      - $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/parameters/0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orgSlug:
+                  $ref: '#/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema'
+                name:
+                  $ref: '#/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema'
+                emailDomain:
+                  type: string
+                authType:
+                  $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType'
+                description:
+                  type: string
+                logo:
+                  type: string
+                features:
+                  type: object
+                  properties:
+                    ssoGroupMapping:
+                      type: object
+                      properties:
+                        admin:
+                          $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/features/properties/ssoGroupMapping/properties/admin'
+                        member:
+                          $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/features/properties/ssoGroupMapping/properties/admin'
+                        readonly:
+                          $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/features/properties/ssoGroupMapping/properties/admin'
+                    auditTrail:
+                      type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                        changeReasonEnabled:
+                          type: boolean
+                    continuousVerification:
+                      type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                tenantId:
+                  $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+              required:
+              - orgSlug
+              - name
+              - emailDomain
+      responses:
+        '200':
+          description: Responding with Organization details
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: Organization not found.
+components:
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

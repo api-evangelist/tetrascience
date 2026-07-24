@@ -1,0 +1,518 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Files API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Files
+paths:
+  /v1/datalake/delete:
+    delete:
+      summary: Delete a File
+      tags:
+      - Files
+      description: This endpoint does soft delete. Soft delete means that file will remain in datalake but will be marked as deleted. This means that file will not appear in file search and Athena search
+      operationId: DL-FI-dl-delete-a-file
+      parameters:
+      - name: fileId
+        in: query
+        description: ID of the file to delete.
+        required: true
+        schema:
+          type: string
+      - name: ts-auth-token
+        in: header
+        description: JWT Token
+        required: true
+        schema:
+          type: string
+      - name: x-org-slug
+        in: header
+        description: Your organization slug
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": \"deleted\",\n  \"entity\": {\n    \"fileId\": \"1013c6fe-05fa-4565-97a7-aed3cf9327cb\",\n    \"filename\": \"example.xlsx\",\n    \"orgSlug\": \"tetrascience\",\n    \"category\": \"raw\",\n    \"sourceType\": \"egnyte\",\n    \"source\": {\n      \"type\": \"egnyte\",\n      \"egnyte\": {\n        \"integrationId\": \"65e63947-81ea-49f3-971b-907051ae7fb3\",\n        \"filePath\": \"/Private/username/example.xlsx\",\n        \"fileName\": \"example.xlsx\",\n        \"groupId\": \"ed2ed265-7f4a-4d02-b687-2b03eda1ce59\",\n        \"entryId\": \"fdea5a6f-d209-4d27-91f3-218ef7175a3a\",\n        \"checksum\":\n          \"63e208ef49ef363bc532a4ce334ff3ca92ad0a3200a61698f9e678132ac2f89d4c7f44b09969ef60d4d53aeb22121658d727d6df745ce2fcc382a9220a496500\",\n        \"versionId\": \"fdea5a6f-d209-4d27-91f3-218ef7175a3a\",\n        \"lastModifiedTime\": \"2018-01-08T23:24:04.000Z\",\n        \"versionNum\": 1\n      }\n    }\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: deleted
+                  entity:
+                    type: object
+                    properties:
+                      fileId:
+                        type: string
+                        example: 1013c6fe-05fa-4565-97a7-aed3cf9327cb
+                      filename:
+                        type: string
+                        example: example.xlsx
+                      orgSlug:
+                        type: string
+                        example: tetrascience
+                      category:
+                        type: string
+                        example: raw
+                      sourceType:
+                        type: string
+                        example: egnyte
+                      source:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: egnyte
+                          egnyte:
+                            type: object
+                            properties:
+                              integrationId:
+                                type: string
+                                example: 65e63947-81ea-49f3-971b-907051ae7fb3
+                              filePath:
+                                type: string
+                                example: /Private/username/example.xlsx
+                              fileName:
+                                type: string
+                                example: example.xlsx
+                              groupId:
+                                type: string
+                                example: ed2ed265-7f4a-4d02-b687-2b03eda1ce59
+                              entryId:
+                                type: string
+                                example: fdea5a6f-d209-4d27-91f3-218ef7175a3a
+                              checksum:
+                                type: string
+                                example: 63e208ef49ef363bc532a4ce334ff3ca92ad0a3200a61698f9e678132ac2f89d4c7f44b09969ef60d4d53aeb22121658d727d6df745ce2fcc382a9220a496500
+                              versionId:
+                                type: string
+                                example: fdea5a6f-d209-4d27-91f3-218ef7175a3a
+                              lastModifiedTime:
+                                type: string
+                                example: '2018-01-08T23:24:04.000Z'
+                              versionNum:
+                                type: integer
+                                example: 1
+                                default: 0
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"File not found: b80da4bf-dbe9-4c46-9baf-5ab0ba66f5bc\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: 'File not found: b80da4bf-dbe9-4c46-9baf-5ab0ba66f5bc'
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: '# You can also use wget
+
+            curl -H "ts-auth-token: <JWT Token>" \
+
+            -H "x-org-slug: <YOUR ORGANIZATION>"\ -X DELETE https://api.tetrascience.com/v1/datalake/delete?fileId=197d6d9e-e836-4e33-b14e-803c2bcf68c7
+
+            '
+        - language: javascript
+          code: "const request = require('axios');\n\naxios\n  .delete('https://api.tetrascience.com/v1/datalake/delete', {\n    headers: {\n    ts-auth-token: '<JWT Token>',\n    x-org-slug: '<YOUR ORGANIZATION>',\n    },\n    params: {\n      fileId: '197d6d9e-e836-4e33-b14e-803c2bcf68c7',\n    },\n  })\n  .then(function(response) {\n    console.log(response);\n  });"
+          name: NodeJS
+        - language: python
+          code: "import requests\n\nheaders = {\n    'ts-auth-token': '<JWT Token>',\n    'x-org-slug': '<YOUR ORGANIZATION>'\n}\n\nparams = (\n    ('fileId', '197d6d9e-e836-4e33-b14e-803c2bcf68c7'),\n)\n\nresponse = requests.get('https://api.tetrascience.com/v1/datalake/delete', headers=headers, params=params)\n"
+        samples-languages:
+        - curl
+        - javascript
+        - python
+  /v1/datalake/retrieve:
+    get:
+      summary: Retrieve a File
+      tags:
+      - Files
+      description: This endpoint retrieves a specific file.
+      operationId: DL-FI-dl-retrieve-a-file
+      parameters:
+      - name: fileId
+        in: query
+        description: ID of the file to retrieve.
+        required: true
+        schema:
+          type: string
+      - name: ts-auth-token
+        in: header
+        description: JWT Token
+        required: true
+        schema:
+          type: string
+      - name: getPresigned
+        in: query
+        description: A JSON object with temporary s3 url will returned instead of the actual file content (expires in 5 minutes)
+        schema:
+          type: boolean
+          default: false
+      - name: x-org-slug
+        in: header
+        description: Your organization slug
+        required: true
+        schema:
+          type: string
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: '# You can also use wget
+
+            curl -H "ts-auth-token: <JWT Token>" \
+
+            -H "x-org-slug: <YOUR ORGANIZATION>"\ -X GET https://api.tetrascience.com/v1/datalake/retrieve?fileId=197d6d9e-e836-4e33-b14e-803c2bcf68c7'
+        - language: javascript
+          code: "const request = require('axios');\n\naxios\n  .get('https://api.tetrascience.com/v1/datalake/retrieve', {\n    headers: {\n    ts-auth-token: '<JWT Token>',\n      x-org-slug: '<YOUR ORGANIZATION>',\n    },\n    params: {\n      fileId: '197d6d9e-e836-4e33-b14e-803c2bcf68c7',\n    },\n  })\n  .then(function(response) {\n    console.log(response);\n  });"
+          name: NodeJS
+        - language: python
+          code: "import requests\nheaders = {\n    'ts-auth-token': '<JWT Token>',\n    'x-org-slug': '<YOUR ORGANIZATION>'\n}\nparams = (\n    ('fileId', '197d6d9e-e836-4e33-b14e-803c2bcf68c7'),\n)\nresponse = requests.get('https://api.tetrascience.com/v1/datalake/retrieve', headers=headers, params=params)"
+        samples-languages:
+        - curl
+        - javascript
+        - python
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+  /v1/datalake/upload:
+    post:
+      summary: Upload a File
+      tags:
+      - Files
+      description: 'This endpoint uploads a file to the Data Lake.
+
+        The maximum upload request size is 200 MB.'
+      operationId: DL-FI-dl-upload-a-file
+      parameters:
+      - name: ts-auth-token
+        in: header
+        description: JWT Token.
+        schema:
+          type: string
+      - name: x-org-slug
+        in: header
+        description: Your organization's slug.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                filename:
+                  type: string
+                  description: Name of the file
+                meta:
+                  type: string
+                  description: '(optional) key-value fields for the file. Example: `{"foo":"bar"}`'
+                  format: json
+                tags:
+                  type: array
+                  description: (optional) tags you want to attach to this file. Example `["tag1","tag2"]`
+                  items:
+                    type: string
+                sourceFileId:
+                  type: string
+                  description: (optional) "fileId" of the file you want to replace
+                sourceType:
+                  type: string
+                  description: (optional) "type" of the file you want to replace
+                labels:
+                  type: array
+                  description: (optional) array of labels to attach to this file. e.g. `[{"name":"test-name","value":"test-value"}]`
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: Name of the label
+                      value:
+                        type: string
+                        description: Value of the label
+                    required:
+                    - name
+                    - value
+                    additionalProperties: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"fileId\": \"18d021da-b2ce-440c-9ec1-5b4ce93f4197\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+  /v1/fileinfo/file/{fileId}:
+    get:
+      summary: Get File Information
+      description: Get detailed information about a specific file, including its metadata, storage location, source, and integration details.
+      tags:
+      - Files
+      operationId: DL-FI-get-file-information
+      parameters:
+      - name: fileId
+        in: path
+        description: ID assigned to the file when it was created in the data lake. Type is uuid.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"orgSlug\": \"tetrascience\",\n  \"fileId\": \"e3b2b43c-ffcd-4e7e-8681-37d3bafb0395\",\n  \"traceId\": \"47616711-f2fc-4156-a807-9112f920b4eb\",\n  \"rawFileId\": \"47616711-f2fc-4156-a807-9112f920b4eb\",\n  \"category\": \"IDS\",\n  \"ids\": \"common/dotmatics-register-compound:v1.0.0\",\n  \"filePath\": \"/register/compound/1000023.json/0.json\",\n  \"createdAt\": \"2020-03-23T02:55:36.000Z\",\n  \"integration\": {\n    \"id\": \"a0f94a3b-d83d-48d4-8007-9de047a6af92\",\n    \"type\": \"datapipeline\"\n  },\n  \"source\": {\n    \"id\": \"00f46847-6fb9-4ecd-b5ae-cc3876fbe8c7\",\n    \"type\": \"dotmatics_register_compound\",\n    \"name\": \"dotmatics data connector test 5\",\n  },\n  \"file\": {\n    \"bucket\": \"ts-platform-dev-datalake\",\n    \"path\": \"tetrascience/00f46847-6fb9-4ecd-b5ae-cc3876fbe8c7/IDS/register/compound/1000023.json/0.json\",\n    \"checksum\": null,\n    \"size\": 583,\n    \"type\": null,\n    \"version\": \"vq4p5o5eH.mRczEJtpR1tZ4rFh_RRdeU\"\n  },\n  \"metadata\": {\n    \"instrument_name\": \"dotmatics-test5\"\n  },\n  \"tags\": [],\n  \"deleted\": false,\n  \"outdated\": false\n}"
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 401,\n    \"error\": \"Unauthorized\",\n    \"message\": \"Invalid token\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 401
+                    default: 0
+                  error:
+                    type: string
+                    example: Unauthorized
+                  message:
+                    type: string
+                    example: Invalid token
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Not Found\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Not Found
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"Internal Server Error\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 500
+                    default: 0
+                  error:
+                    type: string
+                    example: Internal Server Error
+                  message:
+                    type: string
+                    example: Internal Server Error
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: 'curl --location --request GET ''https://api.tetrascience.com/v1/fileinfo/file/e3b2b43c-ffcd-4e7e-8681-37d3bafb0395'' \
+
+            --header ''ts-auth-token: {JWT_TOKEN}'' \
+
+            --header ''x-org-slug: tetrascience'' '
+        samples-languages:
+        - curl
+  /v1/fileinfo/file/{fileId}/versions:
+    get:
+      summary: Get File Versions
+      description: Retrieve a file's version history, including all modifications, updates, and processing iterations. Timestamps and change details are included.
+      tags:
+      - Files
+      operationId: DL-FI-get-file-versions
+      parameters:
+      - name: fileId
+        in: path
+        description: ID assigned to the file when it was created in the data lake. Type is uuid.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "[{\n  \"orgSlug\": \"tetrascience\",\n  \"fileId\": \"e3b2b43c-ffcd-4e7e-8681-37d3bafb0395\",\n  \"traceId\": \"47616711-f2fc-4156-a807-9112f920b4eb\",\n  \"rawFileId\": \"47616711-f2fc-4156-a807-9112f920b4eb\",\n  \"category\": \"IDS\",\n  \"ids\": \"common/dotmatics-register-compound:v1.0.0\",\n  \"filePath\": \"/register/compound/1000023.json/0.json\",\n  \"createdAt\": \"2020-03-23T02:55:36.000Z\",\n  \"integration\": {\n    \"id\": \"a0f94a3b-d83d-48d4-8007-9de047a6af92\",\n    \"type\": \"datapipeline\"\n  },\n  \"source\": {\n    \"id\": \"00f46847-6fb9-4ecd-b5ae-cc3876fbe8c7\",\n    \"type\": \"dotmatics_register_compound\",\n    \"name\": \"dotmatics data connector test 5\",\n  },\n  \"file\": {\n    \"bucket\": \"ts-platform-dev-datalake\",\n    \"path\": \"tetrascience/00f46847-6fb9-4ecd-b5ae-cc3876fbe8c7/IDS/register/compound/1000023.json/0.json\",\n    \"checksum\": null,\n    \"size\": 583,\n    \"type\": null,\n    \"version\": \"vq4p5o5eH.mRczEJtpR1tZ4rFh_RRdeU\"\n  },\n  \"metadata\": {\n    \"instrument_name\": \"dotmatics-test5\"\n  },\n  \"tags\": [],\n  \"deleted\": false,\n  \"outdated\": false\n}]"
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 401,\n    \"error\": \"Unauthorized\",\n    \"message\": \"Invalid token\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 401
+                    default: 0
+                  error:
+                    type: string
+                    example: Unauthorized
+                  message:
+                    type: string
+                    example: Invalid token
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Not Found\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                    default: 0
+                  error:
+                    type: string
+                    example: Not Found
+                  message:
+                    type: string
+                    example: Not Found
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"Internal Server Error\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 500
+                    default: 0
+                  error:
+                    type: string
+                    example: Internal Server Error
+                  message:
+                    type: string
+                    example: Internal Server Error
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: 'curl --location --request GET ''https://api.tetrascience.com/v1/fileinfo/file/aa5a7158-374b-450e-ab1f-ea586a5dc3ee/versions'' \
+
+            --header ''ts-auth-token: {JWT_TOKEN}'' \
+
+            --header ''x-org-slug: tetrascience'' '
+        samples-languages:
+        - curl
+components:
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

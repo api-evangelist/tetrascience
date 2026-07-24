@@ -1,0 +1,460 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Users API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Users
+paths:
+  /v1/users/me:
+    get:
+      summary: Get current user details
+      tags:
+      - Users
+      responses:
+        '200':
+          description: Responding with user details
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/post/responses/201/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: User not found
+  /v1/users/{userId}/roles:
+    get:
+      summary: Get user roles in the organization matching the orgSlug
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users~1%7BuserId%7D/delete/parameters/1'
+      responses:
+        '200':
+          description: Responding with user roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1users~1%7BuserId%7D~1status/put/responses/200/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: User not found
+    post:
+      summary: Add new roles for a user
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users~1%7BuserId%7D/delete/parameters/1'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                organizationId:
+                  $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                roleIds:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+      responses:
+        '200':
+          description: Responding with user roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1users~1me~1organizations/post/responses/200/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: User not found
+    put:
+      summary: Update the roles for a user
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users~1%7BuserId%7D/delete/parameters/1'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1users~1%7BuserId%7D~1roles/post/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          description: Responding with updated list of user roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1users~1me~1organizations/post/responses/200/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: User not found
+  /v1/users/{userId}:
+    get:
+      summary: Get user by ID
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users~1%7BuserId%7D/delete/parameters/1'
+      responses:
+        '200':
+          description: Responding with user details
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/post/responses/201/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: User not found
+    put:
+      summary: Update user by ID
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users~1%7BuserId%7D/delete/parameters/1'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+      responses:
+        '200':
+          description: Responding with user details
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/post/responses/201/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: User not found
+  /v1/users/me/organizations:
+    post:
+      summary: Set default organization
+      tags:
+      - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+      responses:
+        '200':
+          description: Successfully updated default organization
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                  orgSlug:
+                    $ref: '#/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema'
+                  organizationId:
+                    $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                  role:
+                    example: Administrator
+                  roleId:
+                    $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                  status:
+                    type: string
+                    enum:
+                    - active
+                    - inactive
+                  userId:
+                    $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                  orgName:
+                    type: string
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: User/Organization not found
+  /v1/users/{userId}/token/revoke:
+    post:
+      summary: Revoke user token
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users~1%7BuserId%7D/delete/parameters/1'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                token:
+                  type: string
+                  description: Truncated (last 7 characters) or full token value
+              required:
+              - userId
+              - token
+      responses:
+        '200':
+          description: Responding with user token
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1users~1%7BuserId%7D~1token/post/responses/200/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: User not found
+  /v1/users/{userId}/token:
+    post:
+      summary: Create user token
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users~1%7BuserId%7D/delete/parameters/1'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                tokenExpiry:
+                  type: integer
+                  enum:
+                  - 4
+                  - 8
+                  - 12
+                  - 24
+                  example: 12
+                tokenExpiryUnit:
+                  type: string
+                  enum:
+                  - hours
+                  example: hours
+              required:
+              - userId
+              - tokenExpiry
+      responses:
+        '200':
+          description: Responding with user token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  expiresAt:
+                    $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: User not found
+  /v1/users/me/password:
+    put:
+      summary: Update current user's password
+      tags:
+      - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  $ref: '#/paths/~1login/post/requestBody/content/application~1json/schema/properties/password'
+                newPassword:
+                  $ref: '#/paths/~1login/post/requestBody/content/application~1json/schema/properties/password'
+      responses:
+        '200':
+          description: Password updated successfully
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: User not found
+  /v1/users/{userId}/resetPassword:
+    put:
+      summary: Update a user's password
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users~1%7BuserId%7D/delete/parameters/1'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  $ref: '#/paths/~1v1~1users~1%7BuserId%7D~1unlock/put/requestBody/content/application~1json/schema/properties/password'
+      responses:
+        '200':
+          description: Password reset request handled successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/post/responses/201/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: User not found
+  /v1/users/{userId}/status:
+    put:
+      summary: Update user status in the organization
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users~1%7BuserId%7D/delete/parameters/1'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                  - active
+                  - inactive
+      responses:
+        '200':
+          description: Successfully updated user status
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                    orgSlug:
+                      $ref: '#/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema'
+                    organizationId:
+                      $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                    role:
+                      example: Administrator
+                    roleId:
+                      $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                    status:
+                      type: string
+                      enum:
+                      - active
+                      - inactive
+                    userId:
+                      $ref: '#/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id'
+                    orgName:
+                      type: string
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: User not found
+  /v1/users/{userId}/unlock:
+    put:
+      summary: Unlock user
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users~1%7BuserId%7D/delete/parameters/1'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  minLength: 8
+                  format: password
+      responses:
+        '200':
+          description: Unlock user request handled successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/post/responses/201/content/application~1json/schema'
+        '401':
+          description: Invalid token
+        '403':
+          description: Caller is not authorized to perform this action
+        '404':
+          description: User not found
+components:
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

@@ -1,0 +1,370 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Embedded Data Apps API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Embedded Data Apps
+paths:
+  /v1/dataapps/apps/manage:
+    post:
+      summary: Install, update, or uninstall Data Apps
+      description: Perform one or more install, update, or uninstall operations on embedded Data Apps. Submit an array of operations to manage which Data Apps are enabled in your organization. This endpoint supports automated governance workflows from CI/CD pipelines, GitHub Actions, or ServiceNow.
+      tags:
+      - Embedded Data Apps
+      operationId: create-or-delete-embedded-data-app
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              items:
+                type: object
+                required:
+                - action
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    description: Data App ID. Required for UPDATE and DELETE actions.
+                  name:
+                    type: string
+                    description: Data App name. Required for CREATE and UPDATE actions.
+                  slug:
+                    type: string
+                    description: Data App slug identifier. Required for CREATE and UPDATE actions.
+                  type:
+                    type: string
+                    description: The type of data app. Always "CONTAINER".
+                    enum:
+                    - CONTAINER
+                    default: CONTAINER
+                  deploymentType:
+                    type: string
+                    enum:
+                    - SERVER
+                    description: 'Deployment model: SERVER (ECS container, iFrame).'
+                    default: SERVER
+                  version:
+                    type: string
+                    description: Semantic version to install (e.g., "v2.1.0"). Required for CREATE and UPDATE actions.
+                  namespace:
+                    type: string
+                    description: Artifact namespace (e.g., "common"). Required for CREATE and UPDATE actions.
+                  action:
+                    type: string
+                    enum:
+                    - CREATE
+                    - UPDATE
+                    - DELETE
+                    description: 'The operation to perform: CREATE (install), UPDATE (modify), or DELETE (uninstall).'
+                  labels:
+                    type: array
+                    description: Labels for EARS access control. Determines which users can see and use this Data App.
+                    items:
+                      type: object
+                      required:
+                      - name
+                      - value
+                      properties:
+                        name:
+                          type: string
+                          description: Label name (e.g., "department", "environment").
+                        value:
+                          type: string
+                          description: Label value (e.g., "research", "production").
+                  providerIds:
+                    type: array
+                    description: Provider IDs to associate with this Data App on install.
+                    items:
+                      type: string
+                      format: uuid
+            examples:
+              install_app:
+                summary: Install a Data App
+                value:
+                - action: CREATE
+                  name: Akta Visualizer
+                  slug: akta-visualizer
+                  namespace: common
+                  version: v1.0.0
+                  type: CONTAINER
+                  deploymentType: SERVER
+              install_app_with_labels:
+                summary: Install a Data App with EARS labels
+                value:
+                - action: CREATE
+                  name: Empower Results Viewer
+                  slug: empower-results-viewer
+                  namespace: common
+                  version: v2.1.0
+                  type: CONTAINER
+                  deploymentType: SERVER
+                  labels:
+                  - name: department
+                    value: chromatography
+              uninstall_app:
+                summary: Uninstall a Data App
+                value:
+                - action: DELETE
+                  id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+              batch_operations:
+                summary: Install one and uninstall another
+                value:
+                - action: CREATE
+                  name: Chromeleon Connector
+                  slug: chromeleon-connector
+                  namespace: common
+                  version: v1.0.0
+                  type: CONTAINER
+                  deploymentType: SERVER
+                - action: DELETE
+                  id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+      responses:
+        '200':
+          description: All operations completed successfully.
+        '400':
+          description: 'Validation error. Common causes: missing required fields (action, version, namespace, slug, or name for CREATE/UPDATE), or invalid field values.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '403':
+          description: Data App management is not enabled for this organization.
+        '503':
+          description: Data App management service is temporarily unavailable. Retry with backoff.
+    get:
+      summary: List available Data Apps for installation
+      description: Retrieves the catalog of Data Apps available for installation in your organization, including their current installation status. Use this as the discovery endpoint for automated governance workflows — browse available apps and check requirements before installing.
+      tags:
+      - Embedded Data Apps
+      operationId: fetch-all-available-data-apps
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 100
+        description: Maximum number of items to return
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+        description: Page number for pagination (starts from 1)
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description: Search term to filter data apps by name or slug
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dataApps:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DataAppManaged'
+                  count:
+                    type: integer
+                    description: Total number of data apps matching the search criteria
+                required:
+                - dataApps
+                - count
+              examples:
+                example_response:
+                  summary: Response with data apps and count
+                  value:
+                    dataApps:
+                    - name: Threads
+                      description: A Streamlit-powered dashboard to manage threads. A thread is a way capture work-to-be-done by one or more individuals.
+                      slug: threads
+                      version: v0.8.0
+                      namespace: common
+                      iconUrl: https://example.com/icon.png
+                      otherVersions: []
+                      type: CONTAINER
+                      artifactType: CONTAINER
+                      deploymentType: SERVER
+                      platformRequirements: []
+                      serviceRequirements:
+                      - type: ais
+                        minVersion: v1.0.0
+                    - name: Chromatography Insights
+                      description: A Streamlit-powered dashboard to visualize chromatography insights
+                      slug: chromatography-insights
+                      version: v1.7.0
+                      namespace: common
+                      iconUrl: https://example.com/icon.png
+                      type: CONTAINER
+                      artifactType: CONTAINER
+                      deploymentType: SERVER
+                      platformRequirements:
+                      - type: ids
+                        namespace: common
+                        slug: lcuv-empower
+                        version: '>=15.0.0 <16.1.0'
+                      - type: ids
+                        namespace: common
+                        slug: lcuv-chromeleon
+                        version: v6.0.0
+                      - type: tetraflow
+                        namespace: common
+                        slug: chromatography-insights
+                        version: v1.6.1
+                      serviceRequirements: []
+                    count: 25
+        '400':
+          description: Bad Request - Invalid query parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message describing the validation failure
+              examples:
+                invalid_search:
+                  summary: Invalid search parameter
+                  value:
+                    error: '"search" is not allowed to be empty'
+                invalid_limit:
+                  summary: Invalid limit parameter
+                  value:
+                    error: '"limit" must be greater than or equal to 1'
+        '503':
+          description: Service Unavailable - Managed Data Apps settings are currently unavailable
+components:
+  schemas:
+    DataAppManaged:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        slug:
+          type: string
+        namespace:
+          type: string
+        iconUrl:
+          type: string
+        type:
+          type: string
+        artifactType:
+          type: string
+          enum:
+          - CONTAINER
+          - TETRASPHERE
+          description: Internal artifact type stored in the database
+        deploymentType:
+          type: string
+          enum:
+          - SERVER
+          description: 'Deployment model: SERVER (ECS container, iFrame)'
+        version:
+          type: string
+        otherVersions:
+          type: array
+          items:
+            type: string
+        platformRequirements:
+          type: array
+          items:
+            type: object
+            description: Artifact requirement (IDS or Tetraflow)
+            properties:
+              type:
+                type: string
+                enum:
+                - ids
+                - tetraflow
+              namespace:
+                type: string
+              slug:
+                type: string
+              version:
+                type: string
+            required:
+            - type
+            - namespace
+            - slug
+            - version
+        serviceRequirements:
+          type: array
+          items:
+            type: object
+            description: Platform service requirement (e.g., AIS)
+            properties:
+              type:
+                type: string
+                enum:
+                - ais
+              minVersion:
+                type: string
+              maxVersion:
+                type: string
+            required:
+            - type
+            - minVersion
+        supportedPlatformVersion:
+          type: object
+          description: The supported platform version range for this data app
+          properties:
+            minVersion:
+              type: string
+            maxVersion:
+              type: string
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

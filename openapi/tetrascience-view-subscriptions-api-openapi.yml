@@ -1,0 +1,201 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups View Subscriptions API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: View Subscriptions
+paths:
+  /v1/externalevents/subscriptions/{subscriptionId}:
+    parameters:
+    - name: subscriptionId
+      in: path
+      required: true
+      description: ID of the subscription
+      schema:
+        type: string
+    get:
+      operationId: getSubscription
+      tags:
+      - View Subscriptions
+      summary: Get a subscription by ID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventbridgeSubscriptionFull'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+        '500':
+          $ref: '#/components/responses/500Any'
+        '503':
+          $ref: '#/components/responses/503Any'
+  /v1/externalevents/subscriptions:
+    get:
+      operationId: getSubscriptions
+      tags:
+      - View Subscriptions
+      summary: Get subscriptions for your org
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventbridgeSubscriptionFull'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+        '500':
+          $ref: '#/components/responses/500Any'
+        '503':
+          $ref: '#/components/responses/503Any'
+components:
+  responses:
+    500Any:
+      description: Internal error managing rules on eventbridge
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Internal DB Error
+            message: Internal error with teh database
+    503Any:
+      description: Could not retrieve information from AWS
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Unavailable
+            message: Information could not be retrieved
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+  schemas:
+    EventbridgeSubscriptionFull:
+      type: object
+      properties:
+        id:
+          type: string
+        orgSlug:
+          type: string
+        selectedEventTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - tetrascience.file.RegistrationSucceeded.v1
+            - tetrascience.file.RegistrationFailed.v1
+            - tetrascience.file.SearchIndexingSucceeded.v1
+            - tetrascience.file.SearchIndexingFailed.v1
+            - tetrascience.file.SQLIndexingSucceeded.v1
+            - tetrascience.file.SQLIndexingFailed.v1
+            - tetrascience.file.WorkflowCreated.v1
+            - tetrascience.file.WorkflowInProgress.v1
+            - tetrascience.file.WorkflowSucceeded.v1
+            - tetrascience.file.WorkflowFailed.v1
+            - tetrascience.file.WorkflowCanceled.v1
+            - tetrascience.agents.common.heartbeat.v1
+            - tetrascience.agents.common.agentStarted.v1
+            - tetrascience.agents.common.agentStopped.v1
+            - tetrascience.agents.filelog.archiveFileDeleteCompleted.v1
+            - tetrascience.agents.filelog.archiveFileDeleteFailed.v1
+            - tetrascience.agents.filelog.fileArchiveCompleted.v1
+            - tetrascience.agents.filelog.fileArchiveFailed.v1
+            - tetrascience.agents.filelog.fileArchiveSkipped.v1
+            - tetrascience.agents.filelog.fileArchiveStarted.v1
+            - tetrascience.agents.filelog.fileScanned.v1
+            - tetrascience.agents.filelog.fileUploadCompleted.v1
+            - tetrascience.agents.filelog.fileUploadFailed.v1
+            - tetrascience.agents.filelog.fileUploadStarted.v1
+            - tetrascience.agents.filelog.pathValidationFailed.v1
+            - tetrascience.agents.filelog.scanCompleted.v1
+            - tetrascience.agents.filelog.scanError.v1
+            - tetrascience.agents.filelog.scanStarted.v1
+          minItems: 1
+          description: The types of events to subscribe to
+        userDefinedName:
+          type: string
+          pattern: ^[\S ]*\S[\S ]*$
+          description: Subscription name set and displayed in the UI
+        targetEndpoint:
+          type: string
+          pattern: arn:aws:events:.+:.+:.+
+          description: Amazon Resource Name of the bus resource where events should be sent
+        targetType:
+          type: string
+          enum:
+          - BUS
+        enabled:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdatedAt:
+          type: string
+          format: date-time
+      required:
+      - id
+      - orgSlug
+      - selectedEventTypes
+      - userDefinedName
+      - targetEndpoint
+      - targetType
+      - enabled
+      - createdAt
+      - lastUpdatedAt
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

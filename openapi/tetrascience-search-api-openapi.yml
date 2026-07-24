@@ -1,0 +1,827 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Search API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Search
+paths:
+  /v1/datalake/searchEql:
+    post:
+      summary: Search files via Elasticsearch Query Language
+      tags:
+      - Search
+      description: Execute advanced search queries using Elasticsearch Query Language to find files based on metadata, content, labels, and processing attributes. Use this for complex search operations that require precise filtering.
+      operationId: DL-FI-dl-search-files-via-elasticsearch-query
+      parameters:
+      - name: ts-auth-token
+        in: header
+        description: JWT Token for authentication
+        required: true
+        schema:
+          type: string
+      - name: x-org-slug
+        in: header
+        description: Your organization slug
+        required: true
+        schema:
+          type: string
+      - name: index
+        in: query
+        schema:
+          anyOf:
+          - type: array
+            items:
+              type: string
+          - type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              description: The Elasticsearch query/aggregation JSON.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"took\": 4,\n    \"timed_out\": false,\n    \"_shards\": {\n        \"total\": 10,\n        \"successful\": 10,\n        \"skipped\": 0,\n        \"failed\": 0\n    },\n    \"hits\": {\n        \"total\": 1,\n        \"max_score\": 0.2876821,\n        \"hits\": [\n            {\n                \"_index\": \"client-uat_raw\",\n                \"_type\": \"entity\",\n                \"_id\": \"N2FRhmUBsUUn35dwY3Z5\",\n                \"_score\": 0.2876821,\n                \"_source\": {\n                    \"fileId\": \"256dd68f-747c-4135-88e7-6b7dda3ae3e0\",\n                    \"orgSlug\": \"kaleido-uat\",\n                    \"category\": \"raw\",\n                    \"sourceType\": \"egnyte\",\n                    \"source\": {\n                        \"type\": \"egnyte\",\n                        \"egnyte\": {\n                            \"integrationId\": \"a94b6a27-59e9-4d1d-a014-dbc810f688dd\",\n                            \"filePath\": \"/Shared/client-uat/abc.txt\",\n                            \"fileName\": \"abc.txt\",\n                            \"groupId\": \"6bec083d-ae58-4e29-a3ae-87049a0bc72f\",\n                            \"entryId\": \"61e316d4-94fc-48bd-83bf-911172c68964\",\n                            \"checksum\": \"59ea1c161e1f789b27dfee620f16fdca3da1f4b04cda2480a539cb13540421c245e27314307182aae83e3ad0472e30ac5504c3476573b13ebd55be90daa05fd2\",\n                            \"versionId\": \"61e316d4-94fc-48bd-83bf-911172c68964\",\n                            \"lastModifiedTime\": \"2018-08-23T00:42:42.000Z\",\n                            \"versionNum\": 2\n                        }\n                    },\n                    \"createdAt\": \"2018-08-29T15:33:25.469Z\"\n                }\n            }\n        ]\n    }\n}"
+              schema:
+                type: object
+                properties:
+                  took:
+                    type: integer
+                    example: 4
+                    default: 0
+                  timed_out:
+                    type: boolean
+                    example: false
+                    default: true
+                  _shards:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        example: 10
+                        default: 0
+                      successful:
+                        type: integer
+                        example: 10
+                        default: 0
+                      skipped:
+                        type: integer
+                        example: 0
+                        default: 0
+                      failed:
+                        type: integer
+                        example: 0
+                        default: 0
+                  hits:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        example: 1
+                        default: 0
+                      max_score:
+                        type: number
+                        example: 0.2876821
+                        default: 0
+                      hits:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            _index:
+                              type: string
+                              example: client-uat_raw
+                            _type:
+                              type: string
+                              example: entity
+                            _id:
+                              type: string
+                              example: N2FRhmUBsUUn35dwY3Z5
+                            _score:
+                              type: number
+                              example: 0.2876821
+                              default: 0
+                            _source:
+                              type: object
+                              properties:
+                                fileId:
+                                  type: string
+                                  example: 256dd68f-747c-4135-88e7-6b7dda3ae3e0
+                                orgSlug:
+                                  type: string
+                                  example: kaleido-uat
+                                category:
+                                  type: string
+                                  example: raw
+                                sourceType:
+                                  type: string
+                                  example: egnyte
+                                source:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: egnyte
+                                    egnyte:
+                                      type: object
+                                      properties:
+                                        integrationId:
+                                          type: string
+                                          example: a94b6a27-59e9-4d1d-a014-dbc810f688dd
+                                        filePath:
+                                          type: string
+                                          example: /Shared/client-uat/abc.txt
+                                        fileName:
+                                          type: string
+                                          example: abc.txt
+                                        groupId:
+                                          type: string
+                                          example: 6bec083d-ae58-4e29-a3ae-87049a0bc72f
+                                        entryId:
+                                          type: string
+                                          example: 61e316d4-94fc-48bd-83bf-911172c68964
+                                        checksum:
+                                          type: string
+                                          example: 59ea1c161e1f789b27dfee620f16fdca3da1f4b04cda2480a539cb13540421c245e27314307182aae83e3ad0472e30ac5504c3476573b13ebd55be90daa05fd2
+                                        versionId:
+                                          type: string
+                                          example: 61e316d4-94fc-48bd-83bf-911172c68964
+                                        lastModifiedTime:
+                                          type: string
+                                          example: '2018-08-23T00:42:42.000Z'
+                                        versionNum:
+                                          type: integer
+                                          example: 2
+                                          default: 0
+                                createdAt:
+                                  type: string
+                                  example: '2018-08-29T15:33:25.469Z'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl -X POST \\\n  https://api.tetrascience.com/v1/datalake/searchEql \\\n  -H 'Content-Type: application/json' \\\n  -H \"ts-auth-token: <JWT Token>\" \\\n  -H \"x-org-slug: <YOUR ORGANIZATION>\"\\\n  -d '{\n    \"query\": {\n      \"term\": {\n        \"data.assay.name\": \"pk\"\n      }\n    }\n\t}'"
+          name: cURL
+        - language: javascript
+          code: "var data = JSON.stringify({\n  \"query\": {\n    \"term\": {\n      \"fileId\": \"256dd68f-747c-4135-88e7-6b7dda3ae3e0\"\n    }\n  }\n});\n\nvar xhr = new XMLHttpRequest();\nxhr.withCredentials = true;\n\nxhr.addEventListener(\"readystatechange\", function () {\n  if (this.readyState === 4) {\n    console.log(this.responseText);\n  }\n});\n\nxhr.open(\"POST\", \"https://api.tetrascience.com/v1/datalake/searchEql\");\nxhr.setRequestHeader(\"Content-Type\", \"application/json\");\n\nxhr.send(data);\n\n"
+        - language: python
+          code: "import requests\n\nurl = \"https://api.tetrascience.com/v1/datalake/searchEql\"\n\npayload = {\n    \"query\": {\n      \"term\": {\n        \"fileId\": \"256dd68f-747c-4135-88e7-6b7dda3ae3e0\"\n      }\n    }\n  }\n\nheaders = {\n    \"Content-Type\": \"application/json\",\n    }\n\nresponse = requests.request(\"POST\", url, data=payload, headers=headers)\n\nprint(response.text)"
+          name: Python
+        samples-languages:
+        - curl
+        - javascript
+        - python
+  /v1/fileinfo/search:
+    get:
+      summary: Search Files (GET) (Deprecated)
+      description: "\uD83D\uDEA7 IMPORTANT The Search Files (GET) endpoint is on a deprecation path and does not support searching for files by metadata. It's recommended that you use the [/searchEql endpoint](<https://developers.tetrascience.com/reference/dl-fi-dl-search-files-via-elasticsearch-query>) instead. For more information, see [Search Files, Search Workflow, and Paginate through All Pipeline Details API Endpoints Deprecation](<https://developers.tetrascience.com/docs/tdp-deprecation-notices#search-files-search-workflow-and-paginate-through-all-pipeline-details-api-endpoints-deprecation>)."
+      tags:
+      - Search
+      operationId: DL-FI-search-files-get
+      parameters:
+      - name: category
+        in: query
+        description: File category. Values are RAW, IDS, and PROCESSED.
+        schema:
+          type: string
+      - name: from
+        in: query
+        description: Display files started from a specified number in the results array. By default, files are displayed from the start of the array (the number 0). This parameter is included if the result set is large, pagination might be required. This parameter is typically used in conjunction with size.
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: fromDate
+        in: query
+        description: Search for files created on or after a specific date.
+        schema:
+          type: string
+          format: date
+      - name: excludeTags
+        in: query
+        description: Lists the tags that should be excluded. Files that have the specified tags associated with them do not appear in search results.
+        schema:
+          type: array
+          items:
+            type: string
+      - name: ids
+        in: query
+        description: Name, type, and version of the schema used to create the IDS file.  Format is {namespace}/{idsType}:{idsVersion}.
+        schema:
+          type: string
+      - name: integrationId
+        in: query
+        description: UUID for the integration.
+        schema:
+          type: string
+      - name: integrationType
+        in: query
+        description: Integration type.  Values are EGNYTE, BOX, DOTMATICS, HRB CELLARIO, DATAHUB, PIPELINE, RAW, and API.
+        schema:
+          type: string
+      - name: metadata.[key]
+        in: query
+        description: Searches for files that have specific metadata.
+        schema:
+          type: string
+      - name: pipelineId
+        in: query
+        description: UUID for the pipeline.
+        schema:
+          type: string
+      - name: rawFileId
+        in: query
+        description: UUID for the RAW file that this file was generated from.
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: Indicates the number of results to return in the request.  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with from.
+        schema:
+          type: integer
+          format: int32
+          default: 100
+      - name: sort
+        in: query
+        description: 'Indicates the sort order for the search results.  Sort occurs on the date (createAt timestamp, which occurred when the file was created in the data lake. Options: desc, asc'
+        schema:
+          type: string
+          default: asc
+      - name: sourceId
+        in: query
+        description: UUID for the source.
+        schema:
+          type: string
+      - name: sourceType
+        in: query
+        description: Type of source, which is typically the name of the instrument or other lab equipment used to generate the data or report.
+        schema:
+          type: string
+      - name: traceId
+        in: query
+        description: UUID generated when the RAW file is first uploaded to the data lake. All files derived from the RAW file, such as an IDS file, have the same traceId.
+        schema:
+          type: string
+      - name: tags
+        in: query
+        description: Lists tags that the user added to the file.
+        schema:
+          type: array
+          items:
+            type: string
+      - name: toDate
+        in: query
+        description: Search for files created on or before a specific date.
+        schema:
+          type: string
+          format: date
+      - name: workflowId (Added version TDP 3.1.0)
+        in: query
+        description: ID for the pipeline workflow.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"from\": 0,\n    \"size\": 1,\n    \"sort\": \"asc\",\n    \"hasNext\": false,\n    \"hits\": [\n        {\n            \"fileId\": \"ac2750f0-f252-4083-90d1-7825d2b1691f\",\n            \"filePath\": \"/my-machine-name/UNICORN_HDAServer12.1/Default/Folders/DefaultHome/Cheng/01/sample_01 - SPPD-17-0050 BHIC 09APR17 New Resin Run 1 001.json/0.json\",\n            \"orgSlug\": \"tetrascience\",\n            \"traceId\": \"6f1b19f7-fa44-43fe-9d32-ad30ac3069a1\",\n            \"file\": {\n                \"bucket\": \"myBucketName\",\n                \"path\": \"tetrascience/7abaa520-726d-4182-9e17-8c830f29ae0e/IDS/my-machine-name/UNICORN_HDAServer12.1/Default/Folders/DefaultHome/Cheng/01/sample_01 - SPPD-17-0050 BHIC 09APR17 New Resin Run 1 001.json/0.json\",\n                \"checksum\": \"690a567e4d58c1ea87e5cb1d8c4fd54a-2\",\n                \"size\": 5984603,\n                \"type\": null,\n                \"version\": \"v3.A3soqFFydk2V1PXBwXcyJgV17sUuh\"\n            },\n            \"createdAt\": \"2021-08-21T23:13:04.000Z\",\n            \"category\": \"IDS\",\n            \"integration\": {\n                \"id\": \"d61bcba5-3ebb-4149-a59d-16f4c20b4b86\",\n                \"type\": \"datapipeline\",\n                \"name\": \"Liang Unicorn v2.6.0 Test 05-04-2020\",\n                \"workflowId\": \"eeac26b1-5034-4a1d-a97f-0c8b8cd2ea1e\",\n                \"masterScript\": \"common/akta-raw-to-ids:v3.0.0\",\n                \"taskScript\": \"common/akta-raw-to-ids:v3.0.0\",\n                \"taskSlug\": \"akta-raw-to-ids\",\n                \"taskExecutionId\": \"12202ae7-a796-4dc8-b048-0da994b38ec2\"\n            },\n            \"source\": {\n                \"id\": \"7abaa520-726d-4182-9e17-8c830f29ae0e\",\n                \"type\": \"unicorn-hda\",\n                \"name\": \"UNICORN-TEST-AGENT-2\",\n                \"datapipeline\": {\n                    \"workflowId\": \"eeac26b1-5034-4a1d-a97f-0c8b8cd2ea1e\",\n                    \"taskExecutionId\": \"12202ae7-a796-4dc8-b048-0da994b38ec2\",\n                    \"taskSlug\": \"akta-raw-to-ids\",\n                    \"taskScript\": \"common/akta-raw-to-ids:v3.0.0\",\n                    \"masterScript\": \"common/akta-raw-to-ids:v3.0.0\",\n                    \"inputFileId\": \"6f1b19f7-fa44-43fe-9d32-ad30ac3069a1\"\n                }\n            },\n            \"rawFileId\": \"6f1b19f7-fa44-43fe-9d32-ad30ac3069a1\",\n            \"ids\": \"common/akta:v3.0.0\",\n            \"metadata\": {\n                \"Version\": \"v330\",\n                \"CREATED_FOR\": \"PQ\",\n                \"cheeeng\": \"sss\"\n            },\n            \"tags\": [\n                \"PQ\",\n                \"ssss\"\n            ],\n            \"deleted\": false,\n            \"outdated\": false\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  from:
+                    type: integer
+                    example: 0
+                    default: 0
+                  size:
+                    type: integer
+                    example: 1
+                    default: 0
+                  sort:
+                    type: string
+                    example: asc
+                  hasNext:
+                    type: boolean
+                    example: false
+                    default: true
+                  hits:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fileId:
+                          type: string
+                          example: ac2750f0-f252-4083-90d1-7825d2b1691f
+                        filePath:
+                          type: string
+                          example: /my-machine-name/UNICORN_HDAServer12.1/Default/Folders/DefaultHome/Cheng/01/sample_01 - SPPD-17-0050 BHIC 09APR17 New Resin Run 1 001.json/0.json
+                        orgSlug:
+                          type: string
+                          example: tetrascience
+                        traceId:
+                          type: string
+                          example: 6f1b19f7-fa44-43fe-9d32-ad30ac3069a1
+                        file:
+                          type: object
+                          properties:
+                            bucket:
+                              type: string
+                              example: myBucketName
+                            path:
+                              type: string
+                              example: tetrascience/7abaa520-726d-4182-9e17-8c830f29ae0e/IDS/my-machine-name/UNICORN_HDAServer12.1/Default/Folders/DefaultHome/Cheng/01/sample_01 - SPPD-17-0050 BHIC 09APR17 New Resin Run 1 001.json/0.json
+                            checksum:
+                              type: string
+                              example: 690a567e4d58c1ea87e5cb1d8c4fd54a-2
+                            size:
+                              type: integer
+                              example: 5984603
+                              default: 0
+                            type: {}
+                            version:
+                              type: string
+                              example: v3.A3soqFFydk2V1PXBwXcyJgV17sUuh
+                        createdAt:
+                          type: string
+                          example: '2021-08-21T23:13:04.000Z'
+                        category:
+                          type: string
+                          example: IDS
+                        integration:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: d61bcba5-3ebb-4149-a59d-16f4c20b4b86
+                            type:
+                              type: string
+                              example: datapipeline
+                            name:
+                              type: string
+                              example: Liang Unicorn v2.6.0 Test 05-04-2020
+                            workflowId:
+                              type: string
+                              example: eeac26b1-5034-4a1d-a97f-0c8b8cd2ea1e
+                            masterScript:
+                              type: string
+                              example: common/akta-raw-to-ids:v3.0.0
+                            taskScript:
+                              type: string
+                              example: common/akta-raw-to-ids:v3.0.0
+                            taskSlug:
+                              type: string
+                              example: akta-raw-to-ids
+                            taskExecutionId:
+                              type: string
+                              example: 12202ae7-a796-4dc8-b048-0da994b38ec2
+                        source:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: 7abaa520-726d-4182-9e17-8c830f29ae0e
+                            type:
+                              type: string
+                              example: unicorn-hda
+                            name:
+                              type: string
+                              example: UNICORN-TEST-AGENT-2
+                            datapipeline:
+                              type: object
+                              properties:
+                                workflowId:
+                                  type: string
+                                  example: eeac26b1-5034-4a1d-a97f-0c8b8cd2ea1e
+                                taskExecutionId:
+                                  type: string
+                                  example: 12202ae7-a796-4dc8-b048-0da994b38ec2
+                                taskSlug:
+                                  type: string
+                                  example: akta-raw-to-ids
+                                taskScript:
+                                  type: string
+                                  example: common/akta-raw-to-ids:v3.0.0
+                                masterScript:
+                                  type: string
+                                  example: common/akta-raw-to-ids:v3.0.0
+                                inputFileId:
+                                  type: string
+                                  example: 6f1b19f7-fa44-43fe-9d32-ad30ac3069a1
+                        rawFileId:
+                          type: string
+                          example: 6f1b19f7-fa44-43fe-9d32-ad30ac3069a1
+                        ids:
+                          type: string
+                          example: common/akta:v3.0.0
+                        metadata:
+                          type: object
+                          properties:
+                            Version:
+                              type: string
+                              example: v330
+                            CREATED_FOR:
+                              type: string
+                              example: PQ
+                            cheeeng:
+                              type: string
+                              example: sss
+                        tags:
+                          type: array
+                          items:
+                            type: string
+                            example: PQ
+                        deleted:
+                          type: boolean
+                          example: false
+                          default: true
+                        outdated:
+                          type: boolean
+                          example: false
+                          default: true
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 401,\n    \"error\": \"Unauthorized\",\n    \"message\": \"Invalid token\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 401
+                    default: 0
+                  error:
+                    type: string
+                    example: Unauthorized
+                  message:
+                    type: string
+                    example: Invalid token
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"Internal Server Error\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 500
+                    default: 0
+                  error:
+                    type: string
+                    example: Internal Server Error
+                  message:
+                    type: string
+                    example: Internal Server Error
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl -X GET \\\n  'http://api.tetrascience.com/v1/fileinfo/search?category=IDS&tags=test1&tags=test2&sort=desc' \\\n  -H 'ts-auth-token: {JWT_TOKEN}' \\\n  -H 'x-org-slug: tetrascience'"
+        samples-languages:
+        - curl
+    post:
+      summary: Search Files (POST) (Deprecated)
+      description: "\uD83D\uDEA7 IMPORTANT The Search Files (POST) endpoint is on a deprecation path and does not support searching for files by metadata. It's recommended that you use the [/searchEql endpoint](<https://developers.tetrascience.com/reference/dl-fi-dl-search-files-via-elasticsearch-query>) instead. For more information, see [Search Files, Search Workflow, and Paginate through All Pipeline Details API Endpoints Deprecation](<https://developers.tetrascience.com/docs/tdp-deprecation-notices#search-files-search-workflow-and-paginate-through-all-pipeline-details-api-endpoints-deprecation>)."
+      tags:
+      - Search
+      operationId: DL-FI-search-files-post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: string
+                  description: Returns information on files from the RAW, IDS, or PROCESSED categories.
+                from:
+                  type: integer
+                  description: Display files started from specified number in the results array.  By default, files are displayed from the start of the array (the number 0).  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with size.
+                  default: 0
+                  format: int32
+                fromDate:
+                  type: string
+                  description: Search for files created on or after a specific date.
+                  format: date
+                excludeTags:
+                  type: array
+                  description: Exclude files that have the specified tags from the search results.
+                  items:
+                    type: string
+                ids:
+                  type: string
+                  description: Returns files that match the IDS schema.
+                integrationId:
+                  type: string
+                  description: Returns files that match the specified ID for the integration.
+                integrationType:
+                  type: string
+                  description: 'Returns files that are of the specified integration type.  Types include: EGNYTE, BOX, DOTMATICS, HRB CELLARIO, DATAHUB, PIPELINE, RAW, and API.'
+                metadata:
+                  type: object
+                  description: Search for files that have specific metadata.
+                  properties: {}
+                pipelineId:
+                  type: string
+                  description: Returns information about files that match the pipeline file ID.
+                rawFileId:
+                  type: string
+                  description: Returns information about files that match the RAW file ID.
+                size:
+                  type: integer
+                  description: Indicates the number of results to return in the request.  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with from.
+                  default: 100
+                  format: int32
+                sort:
+                  type: string
+                  description: 'Indicates the sort order for the search results.  Sort occurs on the date (createAt timestamp, which occurred when the file was created in the data lake. Options: desc, asc'
+                  default: asc
+                sourceId:
+                  type: string
+                  description: Returns files that match the specified ID for the source (typically an instrument that generated the RAW file).
+                sourceType:
+                  type: string
+                  description: Returns files that match the specified type of source.  This is typically the name of an instrument.
+                tags:
+                  type: array
+                  description: Include files that have the specified tags in the search results.
+                  items:
+                    type: string
+                toDate:
+                  type: string
+                  description: Search for files created on or before a specific date.
+                  format: date
+                traceId:
+                  type: string
+                  description: Returns information about files that match the ID number generated when the RAW file is first uploaded to the data lake.  To maintain traceability, all files derived from the RAW file, such as the IDS file, have the same traceId.
+                workflowId:
+                  type: string
+                  description: '**(Added in TDP 3.1.0)**  ID of the pipeline workflow.'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"from\": 0,\n    \"size\": 1,\n    \"sort\": \"asc\",\n    \"hasNext\": false,\n    \"hits\": [\n        {\n            \"fileId\": \"ac2750f0-f252-4083-90d1-7825d2b1691f\",\n            \"filePath\": \"/my-machine-name/UNICORN_HDAServer12.1/Default/Folders/DefaultHome/Cheng/01/sample_01 - SPPD-17-0050 BHIC 09APR17 New Resin Run 1 001.json/0.json\",\n            \"orgSlug\": \"tetrascience\",\n            \"traceId\": \"6f1b19f7-fa44-43fe-9d32-ad30ac3069a1\",\n            \"file\": {\n                \"bucket\": \"myBucketName\",\n                \"path\": \"tetrascience/7abaa520-726d-4182-9e17-8c830f29ae0e/IDS/my-machine-name/UNICORN_HDAServer12.1/Default/Folders/DefaultHome/Cheng/01/sample_01 - SPPD-17-0050 BHIC 09APR17 New Resin Run 1 001.json/0.json\",\n                \"checksum\": \"690a567e4d58c1ea87e5cb1d8c4fd54a-2\",\n                \"size\": 5984603,\n                \"type\": null,\n                \"version\": \"v3.A3soqFFydk2V1PXBwXcyJgV17sUuh\"\n            },\n            \"createdAt\": \"2021-08-21T23:13:04.000Z\",\n            \"category\": \"IDS\",\n            \"integration\": {\n                \"id\": \"d61bcba5-3ebb-4149-a59d-16f4c20b4b86\",\n                \"type\": \"datapipeline\",\n                \"name\": \"Liang Unicorn v2.6.0 Test 05-04-2020\",\n                \"workflowId\": \"eeac26b1-5034-4a1d-a97f-0c8b8cd2ea1e\",\n                \"masterScript\": \"common/akta-raw-to-ids:v3.0.0\",\n                \"taskScript\": \"common/akta-raw-to-ids:v3.0.0\",\n                \"taskSlug\": \"akta-raw-to-ids\",\n                \"taskExecutionId\": \"12202ae7-a796-4dc8-b048-0da994b38ec2\"\n            },\n            \"source\": {\n                \"id\": \"7abaa520-726d-4182-9e17-8c830f29ae0e\",\n                \"type\": \"unicorn-hda\",\n                \"name\": \"UNICORN-TEST-AGENT-2\",\n                \"datapipeline\": {\n                    \"workflowId\": \"eeac26b1-5034-4a1d-a97f-0c8b8cd2ea1e\",\n                    \"taskExecutionId\": \"12202ae7-a796-4dc8-b048-0da994b38ec2\",\n                    \"taskSlug\": \"akta-raw-to-ids\",\n                    \"taskScript\": \"common/akta-raw-to-ids:v3.0.0\",\n                    \"masterScript\": \"common/akta-raw-to-ids:v3.0.0\",\n                    \"inputFileId\": \"6f1b19f7-fa44-43fe-9d32-ad30ac3069a1\"\n                }\n            },\n            \"rawFileId\": \"6f1b19f7-fa44-43fe-9d32-ad30ac3069a1\",\n            \"ids\": \"common/akta:v3.0.0\",\n            \"metadata\": {\n                \"Version\": \"v330\",\n                \"CREATED_FOR\": \"PQ\",\n                \"cheeeng\": \"sss\"\n            },\n            \"tags\": [\n                \"PQ\",\n                \"ssss\"\n            ],\n            \"deleted\": false,\n            \"outdated\": false\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  from:
+                    type: integer
+                    example: 0
+                    default: 0
+                  size:
+                    type: integer
+                    example: 1
+                    default: 0
+                  sort:
+                    type: string
+                    example: asc
+                  hasNext:
+                    type: boolean
+                    example: false
+                    default: true
+                  hits:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fileId:
+                          type: string
+                          example: ac2750f0-f252-4083-90d1-7825d2b1691f
+                        filePath:
+                          type: string
+                          example: /my-machine-name/UNICORN_HDAServer12.1/Default/Folders/DefaultHome/Cheng/01/sample_01 - SPPD-17-0050 BHIC 09APR17 New Resin Run 1 001.json/0.json
+                        orgSlug:
+                          type: string
+                          example: tetrascience
+                        traceId:
+                          type: string
+                          example: 6f1b19f7-fa44-43fe-9d32-ad30ac3069a1
+                        file:
+                          type: object
+                          properties:
+                            bucket:
+                              type: string
+                              example: myBucketName
+                            path:
+                              type: string
+                              example: tetrascience/7abaa520-726d-4182-9e17-8c830f29ae0e/IDS/my-machine-name/UNICORN_HDAServer12.1/Default/Folders/DefaultHome/Cheng/01/sample_01 - SPPD-17-0050 BHIC 09APR17 New Resin Run 1 001.json/0.json
+                            checksum:
+                              type: string
+                              example: 690a567e4d58c1ea87e5cb1d8c4fd54a-2
+                            size:
+                              type: integer
+                              example: 5984603
+                              default: 0
+                            type: {}
+                            version:
+                              type: string
+                              example: v3.A3soqFFydk2V1PXBwXcyJgV17sUuh
+                        createdAt:
+                          type: string
+                          example: '2021-08-21T23:13:04.000Z'
+                        category:
+                          type: string
+                          example: IDS
+                        integration:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: d61bcba5-3ebb-4149-a59d-16f4c20b4b86
+                            type:
+                              type: string
+                              example: datapipeline
+                            name:
+                              type: string
+                              example: Liang Unicorn v2.6.0 Test 05-04-2020
+                            workflowId:
+                              type: string
+                              example: eeac26b1-5034-4a1d-a97f-0c8b8cd2ea1e
+                            masterScript:
+                              type: string
+                              example: common/akta-raw-to-ids:v3.0.0
+                            taskScript:
+                              type: string
+                              example: common/akta-raw-to-ids:v3.0.0
+                            taskSlug:
+                              type: string
+                              example: akta-raw-to-ids
+                            taskExecutionId:
+                              type: string
+                              example: 12202ae7-a796-4dc8-b048-0da994b38ec2
+                        source:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: 7abaa520-726d-4182-9e17-8c830f29ae0e
+                            type:
+                              type: string
+                              example: unicorn-hda
+                            name:
+                              type: string
+                              example: UNICORN-TEST-AGENT-2
+                            datapipeline:
+                              type: object
+                              properties:
+                                workflowId:
+                                  type: string
+                                  example: eeac26b1-5034-4a1d-a97f-0c8b8cd2ea1e
+                                taskExecutionId:
+                                  type: string
+                                  example: 12202ae7-a796-4dc8-b048-0da994b38ec2
+                                taskSlug:
+                                  type: string
+                                  example: akta-raw-to-ids
+                                taskScript:
+                                  type: string
+                                  example: common/akta-raw-to-ids:v3.0.0
+                                masterScript:
+                                  type: string
+                                  example: common/akta-raw-to-ids:v3.0.0
+                                inputFileId:
+                                  type: string
+                                  example: 6f1b19f7-fa44-43fe-9d32-ad30ac3069a1
+                        rawFileId:
+                          type: string
+                          example: 6f1b19f7-fa44-43fe-9d32-ad30ac3069a1
+                        ids:
+                          type: string
+                          example: common/akta:v3.0.0
+                        metadata:
+                          type: object
+                          properties:
+                            Version:
+                              type: string
+                              example: v330
+                            CREATED_FOR:
+                              type: string
+                              example: PQ
+                            cheeeng:
+                              type: string
+                              example: sss
+                        tags:
+                          type: array
+                          items:
+                            type: string
+                            example: PQ
+                        deleted:
+                          type: boolean
+                          example: false
+                          default: true
+                        outdated:
+                          type: boolean
+                          example: false
+                          default: true
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 401,\n    \"error\": \"Unauthorized\",\n    \"message\": \"Invalid token\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 401
+                    default: 0
+                  error:
+                    type: string
+                    example: Unauthorized
+                  message:
+                    type: string
+                    example: Invalid token
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"statusCode\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"Internal Server Error\"\n}"
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 500
+                    default: 0
+                  error:
+                    type: string
+                    example: Internal Server Error
+                  message:
+                    type: string
+                    example: Internal Server Error
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl -X GET \\\n  'http://api.tetrascience.com/v1/fileinfo/search?category=IDS&tags=test1&tags=test2&order=desc' \\\n  -H 'ts-auth-token: {JWT_TOKEN}' \\\n  -H 'x-org-slug: tetrascience'"
+        samples-languages:
+        - curl
+components:
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

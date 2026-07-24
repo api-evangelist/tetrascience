@@ -1,0 +1,444 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups ai-workflows API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: ai-workflows
+paths:
+  /v1/artifacts/ai-workflows/{namespace}:
+    get:
+      description: Returns a list of all ai-workflow artifacts given a namespace
+      summary: List all ai-workflows for namespace
+      tags:
+      - ai-workflows
+      operationId: getAiWorkflowArtifactByNamespace
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/LatestOnlyQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200AiWorkflowObjectList'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/ai-workflows/{namespace}/{slug}:
+    get:
+      description: Returns a list of all ai-workflow artifacts given a namespace and slug
+      summary: List all ai-workflows for namespace/slug
+      tags:
+      - ai-workflows
+      operationId: getAiWorkflowArtifactByNamespaceAndSlug
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/LatestOnlyQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200AiWorkflowObjectList'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/ai-workflows/{namespace}/{slug}/{version}/files/{fileSlug}:
+    get:
+      description: Returns the file contents for a ai-workflow file given a namespace, slug, version, and file slug
+      summary: Get contents for a ai-workflow file
+      tags:
+      - ai-workflows
+      operationId: getAiWorkflowArtifactByNamespaceSlugAndFileSlug
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/ArtifactVersion'
+      - $ref: '#/components/parameters/AiWorkflowFileSlugParam'
+      - $ref: '#/components/parameters/DownloadQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200File'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/ai-workflows/{namespace}/{slug}/{version}:
+    get:
+      description: Returns a single ai-workflow artifact matching the namespace, slug, and version
+      summary: Get a single ai-workflow artifact
+      tags:
+      - ai-workflows
+      operationId: getAiWorkflowArtifactByNamespaceSlugAndVersion
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/ArtifactVersion'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200AiWorkflowObject'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/ai-workflows/{namespace}/{slug}/{version}/files:
+    get:
+      description: Returns which file slugs are available to retrieve for this ai-workflow
+      summary: Get available file slugs for ai-workflow
+      tags:
+      - ai-workflows
+      operationId: getAiWorkflowArtifactFileSlugs
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/ArtifactVersion'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200AiWorkflowFileSlugList'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/ai-workflows/{namespace}/{slug}/{version}/labels:
+    get:
+      description: Returns a list of the labels associated with a ai-workflow artifact
+      summary: Get labels for a ai-workflow
+      tags:
+      - ai-workflows
+      operationId: getAiWorkflowArtifactLabels
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespace'
+      - $ref: '#/components/parameters/ArtifactSlug'
+      - $ref: '#/components/parameters/ArtifactVersion'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Labels'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/ai-workflows:
+    get:
+      description: Returns a list of all ai-workflow artifacts, optionally filtered by namespace type
+      summary: List all ai-workflow artifacts
+      tags:
+      - ai-workflows
+      operationId: getAiWorkflowArtifacts
+      parameters:
+      - $ref: '#/components/parameters/ArtifactNamespaceTypeQuery'
+      - $ref: '#/components/parameters/LatestOnlyQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200AiWorkflowObjectList'
+        '404':
+          $ref: '#/components/responses/404Any'
+  /v1/artifacts/ai-workflows/search:
+    post:
+      summary: Search for ai-workflow artifacts
+      description: Search for items using specified criteria
+      tags:
+      - ai-workflows
+      operationId: searchAiWorkflowArtifacts
+      parameters:
+      - $ref: '#/components/parameters/ValueQuery'
+      - $ref: '#/components/parameters/LimitQuery'
+      - $ref: '#/components/parameters/IncludePrereleasesQuery'
+      responses:
+        '200':
+          description: A list of items that match the search query
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AiWorkflowObjectList'
+        '404':
+          $ref: '#/components/responses/404Any'
+components:
+  schemas:
+    AiWorkflowObject:
+      allOf:
+      - $ref: '#/components/schemas/ArtifactObjectBase'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - ai-workflow
+        required:
+        - type
+      example:
+        type: ai-workflow
+        namespace: private-test
+        slug: mlflow
+        version: v0.5.0
+        createdAt: '2024-04-25T15:15:34.269Z'
+        lastUpdatedAt: '2023-04-25T17:15:34.269Z'
+        name: MLflow workflow
+        description: An MLflow workflow
+        otherVersions:
+        - v0.1.0
+        - v0.5.0
+    LabelList:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          value:
+            type: string
+        required:
+        - name
+        - value
+        additionalProperties: false
+      example:
+      - name: label1
+        value: value1
+      - name: another-label
+        value: another-value
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
+    AiWorkflowFileSlug:
+      type: string
+      enum:
+      - build
+      - manifest
+      - readme
+      - source
+      - databricksYml
+    ArtifactNamespace:
+      type: string
+      pattern: ^(common|(private|client)-).*$
+    ArtifactObjectBase:
+      type: object
+      properties:
+        namespace:
+          $ref: '#/components/schemas/ArtifactNamespace'
+        slug:
+          type: string
+        version:
+          type: string
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdatedAt:
+          type: string
+          format: date-time
+        otherVersions:
+          type: array
+          items:
+            type: string
+        supportedPlatformVersion:
+          $ref: '#/components/schemas/SupportedPlatformVersion'
+      required:
+      - namespace
+      - slug
+      - version
+      - createdAt
+      - lastUpdatedAt
+    AiWorkflowObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AiWorkflowObject'
+  responses:
+    200AiWorkflowFileSlugList:
+      description: Successfully fetched available AiWorkflow file slugs
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/AiWorkflowFileSlug'
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
+    200File:
+      description: Successfully fetched file
+      content:
+        application/json:
+          schema:
+            oneOf:
+            - type: object
+              properties:
+                url:
+                  type: string
+              required:
+              - url
+              additionalProperties: false
+            - type: object
+              properties:
+                content:
+                  description: Content of the file.  Could be any type
+                  format: unknown
+              required:
+              - content
+              additionalProperties: false
+            example:
+              content: '# README Contents
+
+
+                * item 1
+
+                * item 2
+
+                * item 3'
+    200AiWorkflowObject:
+      description: Successfully fetched AiWorkflowObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AiWorkflowObject'
+    200AiWorkflowObjectList:
+      description: Successfully fetched AiWorkflowObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AiWorkflowObjectList'
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+  parameters:
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
+    ArtifactNamespaceTypeQuery:
+      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
+      name: namespace_type
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - common
+        - client
+        - private
+      example: client
+    ArtifactSlug:
+      description: Artifact slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+      example: demo-slug
+    ArtifactVersion:
+      description: Artifact version
+      name: version
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
+      example: v1.0.0
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
+    AiWorkflowFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within an ai-workflow
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/AiWorkflowFileSlug'
+      example: build
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

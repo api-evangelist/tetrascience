@@ -1,0 +1,575 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Requests API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Requests
+paths:
+  /v1/externalevents/requests/creation:
+    post:
+      operationId: createSubscription
+      tags:
+      - Requests
+      summary: Request to create a new subscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventbridgeExternalSubscriptionCreate'
+      responses:
+        '200':
+          description: Request created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventbridgeWriteRequest'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+        '500':
+          $ref: '#/components/responses/500Any'
+        '501':
+          $ref: '#/components/responses/501Any'
+  /v1/externalevents/requests/{requestId}:
+    parameters:
+    - name: requestId
+      in: path
+      required: true
+      description: ID of the request
+      schema:
+        type: string
+    delete:
+      operationId: deleteRequest
+      tags:
+      - Requests
+      summary: Delete a request by ID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventbridgeWriteRequest'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+        '405':
+          description: This request cannot yet be deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventbridgeWriteRequest'
+        '500':
+          $ref: '#/components/responses/500Any'
+    get:
+      operationId: getRequest
+      tags:
+      - Requests
+      summary: Get a request by ID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventbridgeWriteRequest'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+        '500':
+          $ref: '#/components/responses/500Any'
+  /v1/externalevents/requests/deletion:
+    post:
+      operationId: deleteSubscription
+      tags:
+      - Requests
+      summary: Request to delete a subscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+              required:
+              - id
+      responses:
+        '200':
+          description: Request created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventbridgeWriteRequest'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+        '500':
+          $ref: '#/components/responses/500Any'
+        '501':
+          $ref: '#/components/responses/501Any'
+  /v1/externalevents/requests:
+    get:
+      operationId: getRequests
+      tags:
+      - Requests
+      summary: Get recent requests
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventbridgeWriteRequest'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+        '500':
+          $ref: '#/components/responses/500Any'
+  /v1/externalevents/requests/update:
+    post:
+      operationId: updateSubscription
+      tags:
+      - Requests
+      summary: Request to update a subscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - id
+              - update
+              properties:
+                id:
+                  type: string
+                update:
+                  $ref: '#/components/schemas/EventbridgeSubscriptionUpdate'
+      responses:
+        '200':
+          description: Request created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventbridgeWriteRequest'
+        '400':
+          $ref: '#/components/responses/400Any'
+        '404':
+          $ref: '#/components/responses/404Any'
+        '500':
+          $ref: '#/components/responses/500Any'
+        '501':
+          $ref: '#/components/responses/501Any'
+components:
+  schemas:
+    EventbridgeExternalSubscriptionCreate:
+      type: object
+      properties:
+        selectedEventTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - tetrascience.file.RegistrationSucceeded.v1
+            - tetrascience.file.RegistrationFailed.v1
+            - tetrascience.file.SearchIndexingSucceeded.v1
+            - tetrascience.file.SearchIndexingFailed.v1
+            - tetrascience.file.SQLIndexingSucceeded.v1
+            - tetrascience.file.SQLIndexingFailed.v1
+            - tetrascience.file.WorkflowCreated.v1
+            - tetrascience.file.WorkflowInProgress.v1
+            - tetrascience.file.WorkflowSucceeded.v1
+            - tetrascience.file.WorkflowFailed.v1
+            - tetrascience.file.WorkflowCanceled.v1
+            - tetrascience.agents.common.heartbeat.v1
+            - tetrascience.agents.common.agentStarted.v1
+            - tetrascience.agents.common.agentStopped.v1
+            - tetrascience.agents.filelog.archiveFileDeleteCompleted.v1
+            - tetrascience.agents.filelog.archiveFileDeleteFailed.v1
+            - tetrascience.agents.filelog.fileArchiveCompleted.v1
+            - tetrascience.agents.filelog.fileArchiveFailed.v1
+            - tetrascience.agents.filelog.fileArchiveSkipped.v1
+            - tetrascience.agents.filelog.fileArchiveStarted.v1
+            - tetrascience.agents.filelog.fileScanned.v1
+            - tetrascience.agents.filelog.fileUploadCompleted.v1
+            - tetrascience.agents.filelog.fileUploadFailed.v1
+            - tetrascience.agents.filelog.fileUploadStarted.v1
+            - tetrascience.agents.filelog.pathValidationFailed.v1
+            - tetrascience.agents.filelog.scanCompleted.v1
+            - tetrascience.agents.filelog.scanError.v1
+            - tetrascience.agents.filelog.scanStarted.v1
+          minItems: 1
+          description: The types of events to subscribe to
+        userDefinedName:
+          type: string
+          pattern: ^[\S ]*\S[\S ]*$
+          description: Subscription name set and displayed in the UI
+        targetEndpoint:
+          type: string
+          pattern: arn:aws:events:.+:.+:.+
+          description: Amazon Resource Name of the bus resource where events should be sent
+        targetType:
+          type: string
+          enum:
+          - BUS
+        enabled:
+          type: boolean
+      required:
+      - selectedEventTypes
+      - userDefinedName
+      - targetEndpoint
+      - targetType
+      - enabled
+    EventbridgeSubscriptionUpdate:
+      type: object
+      properties:
+        selectedEventTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - tetrascience.file.RegistrationSucceeded.v1
+            - tetrascience.file.RegistrationFailed.v1
+            - tetrascience.file.SearchIndexingSucceeded.v1
+            - tetrascience.file.SearchIndexingFailed.v1
+            - tetrascience.file.SQLIndexingSucceeded.v1
+            - tetrascience.file.SQLIndexingFailed.v1
+            - tetrascience.file.WorkflowCreated.v1
+            - tetrascience.file.WorkflowInProgress.v1
+            - tetrascience.file.WorkflowSucceeded.v1
+            - tetrascience.file.WorkflowFailed.v1
+            - tetrascience.file.WorkflowCanceled.v1
+            - tetrascience.agents.common.heartbeat.v1
+            - tetrascience.agents.common.agentStarted.v1
+            - tetrascience.agents.common.agentStopped.v1
+            - tetrascience.agents.filelog.archiveFileDeleteCompleted.v1
+            - tetrascience.agents.filelog.archiveFileDeleteFailed.v1
+            - tetrascience.agents.filelog.fileArchiveCompleted.v1
+            - tetrascience.agents.filelog.fileArchiveFailed.v1
+            - tetrascience.agents.filelog.fileArchiveSkipped.v1
+            - tetrascience.agents.filelog.fileArchiveStarted.v1
+            - tetrascience.agents.filelog.fileScanned.v1
+            - tetrascience.agents.filelog.fileUploadCompleted.v1
+            - tetrascience.agents.filelog.fileUploadFailed.v1
+            - tetrascience.agents.filelog.fileUploadStarted.v1
+            - tetrascience.agents.filelog.pathValidationFailed.v1
+            - tetrascience.agents.filelog.scanCompleted.v1
+            - tetrascience.agents.filelog.scanError.v1
+            - tetrascience.agents.filelog.scanStarted.v1
+          minItems: 1
+          description: The types of events to subscribe to
+        userDefinedName:
+          type: string
+          pattern: ^[\S ]*\S[\S ]*$
+          description: Subscription name set and displayed in the UI
+        targetEndpoint:
+          type: string
+          pattern: arn:aws:events:.+:.+:.+
+          description: Amazon Resource Name of the bus resource where events should be sent
+        targetType:
+          type: string
+          enum:
+          - BUS
+        enabled:
+          type: boolean
+    EventbridgeWriteRequest:
+      allOf:
+      - type: object
+        properties:
+          orgSlug:
+            type: string
+        required:
+        - orgSlug
+      - anyOf:
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - create
+            input:
+              type: object
+              properties:
+                id:
+                  type: string
+                orgSlug:
+                  type: string
+                selectedEventTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - tetrascience.file.RegistrationSucceeded.v1
+                    - tetrascience.file.RegistrationFailed.v1
+                    - tetrascience.file.SearchIndexingSucceeded.v1
+                    - tetrascience.file.SearchIndexingFailed.v1
+                    - tetrascience.file.SQLIndexingSucceeded.v1
+                    - tetrascience.file.SQLIndexingFailed.v1
+                    - tetrascience.file.WorkflowCreated.v1
+                    - tetrascience.file.WorkflowInProgress.v1
+                    - tetrascience.file.WorkflowSucceeded.v1
+                    - tetrascience.file.WorkflowFailed.v1
+                    - tetrascience.file.WorkflowCanceled.v1
+                    - tetrascience.agents.common.heartbeat.v1
+                    - tetrascience.agents.common.agentStarted.v1
+                    - tetrascience.agents.common.agentStopped.v1
+                    - tetrascience.agents.filelog.archiveFileDeleteCompleted.v1
+                    - tetrascience.agents.filelog.archiveFileDeleteFailed.v1
+                    - tetrascience.agents.filelog.fileArchiveCompleted.v1
+                    - tetrascience.agents.filelog.fileArchiveFailed.v1
+                    - tetrascience.agents.filelog.fileArchiveSkipped.v1
+                    - tetrascience.agents.filelog.fileArchiveStarted.v1
+                    - tetrascience.agents.filelog.fileScanned.v1
+                    - tetrascience.agents.filelog.fileUploadCompleted.v1
+                    - tetrascience.agents.filelog.fileUploadFailed.v1
+                    - tetrascience.agents.filelog.fileUploadStarted.v1
+                    - tetrascience.agents.filelog.pathValidationFailed.v1
+                    - tetrascience.agents.filelog.scanCompleted.v1
+                    - tetrascience.agents.filelog.scanError.v1
+                    - tetrascience.agents.filelog.scanStarted.v1
+                  minItems: 1
+                  description: The types of events to subscribe to
+                userDefinedName:
+                  type: string
+                  pattern: ^[\S ]*\S[\S ]*$
+                  description: Subscription name set and displayed in the UI
+                targetEndpoint:
+                  type: string
+                  pattern: arn:aws:events:.+:.+:.+
+                  description: Amazon Resource Name of the bus resource where events should be sent
+                targetType:
+                  type: string
+                  enum:
+                  - BUS
+                enabled:
+                  type: boolean
+              required:
+              - id
+              - orgSlug
+              - selectedEventTypes
+              - userDefinedName
+              - targetEndpoint
+              - targetType
+              - enabled
+          required:
+          - type
+          - input
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - update
+            input:
+              type: object
+              properties:
+                id:
+                  type: string
+                update:
+                  type: object
+                  properties:
+                    selectedEventTypes:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                        - tetrascience.file.RegistrationSucceeded.v1
+                        - tetrascience.file.RegistrationFailed.v1
+                        - tetrascience.file.SearchIndexingSucceeded.v1
+                        - tetrascience.file.SearchIndexingFailed.v1
+                        - tetrascience.file.SQLIndexingSucceeded.v1
+                        - tetrascience.file.SQLIndexingFailed.v1
+                        - tetrascience.file.WorkflowCreated.v1
+                        - tetrascience.file.WorkflowInProgress.v1
+                        - tetrascience.file.WorkflowSucceeded.v1
+                        - tetrascience.file.WorkflowFailed.v1
+                        - tetrascience.file.WorkflowCanceled.v1
+                        - tetrascience.agents.common.heartbeat.v1
+                        - tetrascience.agents.common.agentStarted.v1
+                        - tetrascience.agents.common.agentStopped.v1
+                        - tetrascience.agents.filelog.archiveFileDeleteCompleted.v1
+                        - tetrascience.agents.filelog.archiveFileDeleteFailed.v1
+                        - tetrascience.agents.filelog.fileArchiveCompleted.v1
+                        - tetrascience.agents.filelog.fileArchiveFailed.v1
+                        - tetrascience.agents.filelog.fileArchiveSkipped.v1
+                        - tetrascience.agents.filelog.fileArchiveStarted.v1
+                        - tetrascience.agents.filelog.fileScanned.v1
+                        - tetrascience.agents.filelog.fileUploadCompleted.v1
+                        - tetrascience.agents.filelog.fileUploadFailed.v1
+                        - tetrascience.agents.filelog.fileUploadStarted.v1
+                        - tetrascience.agents.filelog.pathValidationFailed.v1
+                        - tetrascience.agents.filelog.scanCompleted.v1
+                        - tetrascience.agents.filelog.scanError.v1
+                        - tetrascience.agents.filelog.scanStarted.v1
+                      minItems: 1
+                      description: The types of events to subscribe to
+                    userDefinedName:
+                      type: string
+                      pattern: ^[\S ]*\S[\S ]*$
+                      description: Subscription name set and displayed in the UI
+                    targetEndpoint:
+                      type: string
+                      pattern: arn:aws:events:.+:.+:.+
+                      description: Amazon Resource Name of the bus resource where events should be sent
+                    targetType:
+                      type: string
+                      enum:
+                      - BUS
+                    enabled:
+                      type: boolean
+              required:
+              - id
+              - update
+          required:
+          - type
+          - input
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - delete
+            input:
+              type: object
+              properties:
+                id:
+                  type: string
+              required:
+              - id
+          required:
+          - type
+          - input
+      - type: object
+        properties:
+          createdAt:
+            type: string
+            format: date-time
+          lastUpdatedAt:
+            type: string
+            format: date-time
+          id:
+            type: string
+        required:
+        - createdAt
+        - lastUpdatedAt
+        - id
+      - anyOf:
+        - type: object
+          properties:
+            status:
+              type: string
+              enum:
+              - queued
+          required:
+          - status
+        - type: object
+          properties:
+            status:
+              type: string
+              enum:
+              - in-progress
+          required:
+          - status
+        - type: object
+          properties:
+            status:
+              type: string
+              enum:
+              - failed
+            output:
+              type: object
+              properties:
+                message:
+                  type: string
+              required:
+              - message
+          required:
+          - status
+          - output
+        - type: object
+          properties:
+            status:
+              type: string
+              enum:
+              - completed
+          required:
+          - status
+  responses:
+    500Any:
+      description: Internal error managing rules on eventbridge
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Internal DB Error
+            message: Internal error with teh database
+    501Any:
+      description: Internal error managing rules on eventbridge
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Internal Eventbridge Error
+            message: Internal error managing rules on eventbridge
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token

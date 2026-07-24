@@ -1,0 +1,300 @@
+openapi: 3.1.0
+info:
+  title: TetraScience Data and AI Cloud Access Groups Logs API
+  version: '4.0'
+  description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
+  contact:
+    name: TetraScience
+    url: https://www.tetrascience.com/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.tetrascience.com
+  description: Production Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptance Server
+- url: https://api.tetrascience-dev.com
+  description: Development Server
+- url: https://api.tetrascience-uat.com
+  description: User Acceptabce Server
+- url: api.tetrascience.com
+security:
+- token: []
+  orgSlug: []
+- orgSlug: []
+  tsAuthToken: []
+tags:
+- name: Logs
+paths:
+  /v1/datalake/queryActivityLog:
+    get:
+      summary: Query System Logs
+      tags:
+      - Logs
+      description: This endpoint retrieves System Logs for user activity in the Data Lake. You can query logs based on various parameters to track user actions or file operations and changes.
+      operationId: DL-FI-dl-get-queryActivityLog
+      parameters:
+      - name: ts-auth-token
+        in: header
+        description: JWT Token
+        required: true
+        schema:
+          type: string
+      - name: x-org-slug
+        in: header
+        description: Your organization slug
+        required: true
+        schema:
+          type: string
+      - name: queryId
+        in: query
+        description: Query ID to retrieve more logs
+        schema:
+          type: string
+      - name: max
+        in: query
+        description: Maximum number of logs to return
+        schema:
+          type: integer
+          default: 1000
+      - name: next
+        in: query
+        description: Next page token
+        schema:
+          type: string
+      - name: take
+        in: query
+        description: Number of logs to take
+        schema:
+          type: integer
+          default: 8
+      - name: skip
+        in: query
+        description: Number of logs to skip
+        schema:
+          type: integer
+          default: 0
+      - name: actor
+        in: query
+        description: Filter by actor name (case-insensitive partial match)
+        schema:
+          type: string
+      - name: targetType
+        in: query
+        description: Filter by target type (exact match)
+        schema:
+          type: string
+      - name: targetName
+        in: query
+        description: Filter by target name (case-insensitive partial match)
+        schema:
+          type: string
+      - name: action
+        in: query
+        description: Filter by single action type
+        schema:
+          type: string
+      - name: actions
+        in: query
+        description: Filter by multiple action types (comma-separated)
+        schema:
+          type: string
+      - name: from
+        in: query
+        description: Filter logs after this timestamp (ISO format)
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        in: query
+        description: Filter logs before this timestamp (ISO format)
+        schema:
+          type: string
+          format: date-time
+      - name: ids
+        in: query
+        description: Filter by array of IDs
+        schema:
+          type: array
+          items:
+            type: string
+      - name: id
+        in: query
+        description: Filter by target ID (case-insensitive partial match)
+        schema:
+          type: string
+      - name: changeReason
+        in: query
+        description: Filter by change reason (case-insensitive partial match)
+        schema:
+          type: string
+      - name: targetIds
+        in: query
+        description: Filter by multiple target IDs (comma-separated)
+        schema:
+          type: string
+      - name: format
+        in: query
+        schema:
+          type: string
+        description: Format of the response (use "csv" to download a CSV file)
+      - name: sortDirection
+        in: query
+        description: Order of sorting by timestamp ("asc" for ASC, DESC by default)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved activity logs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  queryId:
+                    type: string
+                    example: c61f201d-e55d-44f0-b196-b0728cf354fb
+                  logs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 1044121d-bf56-4cdd-93d3-4b71b83e0062
+                        type:
+                          type: string
+                          example: user.logout.v1
+                        category:
+                          type: string
+                          example: event
+                        created_at:
+                          type: string
+                          format: date-time
+                          example: '2025-01-29T15:25:21.571Z'
+                        tenant_id:
+                          type: string
+                          example: 64682d30-7d38-6866-10b7-b0fe58fb4073
+                        org_slug:
+                          type: string
+                          example: cell-culture-app-test
+                        actor:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: 59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd
+                            type:
+                              type: string
+                              example: user
+                            name:
+                              type: string
+                              example: Administrator Administrator
+                            email:
+                              type: string
+                              example: admin@tetrascience.com
+                        action:
+                          type: string
+                          example: logout
+                        target:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: 59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd
+                            type:
+                              type: string
+                              example: user
+                            name:
+                              type: string
+                              example: Administrator Administrator11
+                        source:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: tdp
+                            type:
+                              type: string
+                              example: platform
+                            tracking:
+                              type: object
+                              properties:
+                                ipaddress:
+                                  type: string
+                                  example: 11.1.11.111
+                                useragent:
+                                  type: string
+                                  example: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36
+                                token:
+                                  type: string
+                                  example: xxxxxx
+                                other:
+                                  type: string
+                                  example: ''
+                        tags:
+                          type: object
+                          example: {}
+                        before:
+                          type: object
+                          example: {}
+                        after:
+                          type: object
+                          example: {}
+                  hasMore:
+                    type: boolean
+                    example: true
+            text/csv:
+              schema:
+                type: string
+                example: 'id,type,category,created_at,tenant_id,org_slug,actor.id,actor.type,actor.name,actor.email,action,target.id,target.type,target.name,source.id,source.type,source.tracking.ipaddress,source.tracking.useragent,source.tracking.token,source.tracking.other,tags,before,after
+
+                  1044121d-bf56-4cdd-93d3-4b71b83e0062,user.logout.v1,event,2025-01-29T15:25:21.571Z,64682d30-7d38-6866-10b7-b0fe58fb4073,cell-culture-app-test,59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd,user,Administrator Administrator'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 400
+                  error:
+                    type: string
+                    example: Bad Request
+                  message:
+                    type: string
+                    example: Invalid query parameters
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: 'curl -H "ts-auth-token: <JWT Token>" \ -H "x-org-slug: <YOUR ORGANIZATION>" \ -X GET "https://api.tetrascience.com/v1/datalake/queryActivityLog"
+
+            '
+        - language: javascript
+          code: "const request = require('axios');\nconst params = {\n  fileId: '256dd68f-747c-4135-88e7-6b7dda3ae3e0',\n  startTime: '2024-01-01T00:00:00Z'\n};\naxios\n  .get('https://api.tetrascience.com/v1/datalake/queryActivityLog', {\n    headers: {\n      'ts-auth-token': '<JWT Token>',\n      'x-org-slug': '<YOUR ORGANIZATION>'\n    }\n  })\n  .then(function(response) {\n    console.log(response.data);\n  });\n"
+          name: NodeJS
+        - language: python
+          code: "import requests import json\nheaders = {\n    'ts-auth-token': '<JWT Token>',\n    'x-org-slug': '<YOUR ORGANIZATION>'\n}\nresponse = requests.get(\n    'https://api.tetrascience.com/v1/datalake/queryActivityLog',\n    headers=headers,\n)\nprint(response.json())\n"
+        samples-languages:
+        - curl
+        - javascript
+        - python
+components:
+  securitySchemes:
+    token:
+      type: apiKey
+      description: JWT Token for authentication
+      in: header
+      name: ts-auth-token
+    orgSlug:
+      type: apiKey
+      description: Your organization slug
+      in: header
+      name: x-org-slug
+    tsAuthToken:
+      type: apiKey
+      in: header
+      name: ts-auth-token
