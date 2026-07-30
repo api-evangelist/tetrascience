@@ -9,6 +9,19 @@ description: >-
   (scientific AI agents) to accelerate discovery, development, manufacturing, and quality outcomes for pharma, biotech,
   CROs, and CDMOs.
 type: Index
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Provider
 access: 1st-Party
 image: >-
@@ -37,175 +50,1549 @@ modified: '2026-05-21'
 url: https://raw.githubusercontent.com/api-evangelist/tetrascience/refs/heads/main/apis.yml
 specificationVersion: '0.20'
 apis:
-  - aid: tetrascience:tetra-data-and-ai-cloud-api
-    name: Tetra Scientific Data and AI Cloud API
-    description: >-
-      The Tetra Scientific Data and AI Cloud API (Tetra Data Platform API) is the programmatic surface for managing
-      tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across
-      the TetraScience platform. It is used to automate lab data acquisition, ingestion, processing, and downstream
-      delivery into analytics, AI, and informatics consumers.
-    humanURL: https://developers.tetrascience.com/
-    baseURL: https://api.tetrascience.com
-    version: '4.0'
-    tags:
-      - Tetra Data Platform
-      - Lab Data
-      - Agents
-      - Pipelines
-      - IDS
-      - Files
-      - Search
-      - Identity
-      - Access Control
-    properties:
-      - type: Documentation
-        url: https://developers.tetrascience.com/
-      - type: HumanURL
-        url: https://www.tetrascience.com/
-      - type: GettingStarted
-        url: https://developers.tetrascience.com/docs/tetra-data-platform
-      - type: APIReference
-        url: https://developers.tetrascience.com/reference
-      - type: ChangeLog
-        url: https://developers.tetrascience.com/docs/agent-release-notes
-      - type: LlmsText
-        url: https://developers.tetrascience.com/llms.txt
-      - type: OpenAPI
-        url: openapi/tetrascience-openapi.yml
-      - type: OpenAPI
-        url: openapi/tetrascience-openapi.json
-      - type: Authentication
-        url: https://developers.tetrascience.com/docs/api-tokens
-      - type: SpectralRules
-        url: rules/tetrascience-rules.yml
-      - type: JSONLDContext
-        url: json-ld/tetrascience-context.jsonld
-      - type: Vocabulary
-        url: vocabulary/tetrascience-vocabulary.yml
-      - type: SDKs
-        url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
-      - type: PipelineExamples
-        url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
-      - type: ElasticsearchExamples
-        url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
-      - type: AgentMonitoring
-        url: https://github.com/tetrascience/ts-agent-monitoring
-      - type: Plans
-        url: plans/tetrascience-plans-pricing.yml
-      - type: RateLimits
-        url: rate-limits/tetrascience-rate-limits.yml
-      - type: FinOps
-        url: finops/tetrascience-finops.yml
-    features:
-      - name: Tetra Agents
-        description: >-
-          Vendor-specific software agents that liberate raw data from instruments and applications (Empower, Chromeleon,
-          File-Log, IDBS, NuGenesis, Unicorn, and many more) and stream it into the Tetra Data Platform.
-      - name: Tetra Integrations
-        description: >-
-          Pre-built cloud integrations to lab informatics, ELN/LIMS, CDS, MES, and analytics systems for bidirectional
-          data flow.
-      - name: Tetra Data Pipelines
-        description: >-
-          Configurable, serverless data engineering pipelines that parse, transform, enrich, and route Tetra Data with
-          replays, versioning, and observability.
-      - name: Intermediate Data Schema (IDS)
-        description: >-
-          Versioned, instrument-and-vendor-neutral JSON schemas that normalize scientific data into a common shape
-          across the platform.
-      - name: Tetra Data Lake
-        description: >-
-          Cloud object storage for raw, processed, and engineered scientific files with attributes, tags, labels, and
-          audit trail.
-      - name: Search and Query
-        description: >-
-          Elasticsearch-backed full-text and structured search across files, attributes, and Tetra Data with shareable,
-          bookmarkable URLs.
-      - name: AI Layer and Tetra Sciborgs
-        description: >-
-          Scientific AI agents and prompt / model orchestration grounded in Tetra Data, including GenAI search, chat,
-          and copilot workflows.
-      - name: GxP Compliance Module
-        description: >-
-          Validation, audit trail, access control, electronic signatures, and configurable compliance settings aligned
-          with 21 CFR Part 11 / Annex 11.
-      - name: Chromatography Insights App
-        description: Pre-packaged chromatography analytics, visualization, and reporting unifying CDS data across vendors.
-      - name: Tetra IoT Layer
-        description: >-
-          On-premises deployment surface for connecting instruments behind enterprise firewalls into the cloud platform
-          via PrivateLink / VPC endpoints.
-      - name: Tenants, Organizations, Roles
-        description: >-
-          Multi-tenant identity model with organizations, access groups, roles, and SSO (SAML / OIDC) for enterprise
-          governance.
-      - name: API and Webhooks
-        description: >-
-          REST APIs and event-driven webhooks for automating files, pipelines, agents, and downstream system
-          integration.
-    useCases:
-      - name: Lab Data Automation
-        description: >-
-          Replace manual file transfers from instruments to informatics with always-on, audit-friendly agents and
-          integrations.
-      - name: Scientific Data Engineering
-        description: Transform raw vendor formats into FAIR, AI-ready Tetra Data through versioned pipelines and IDS schemas.
-      - name: GenAI / RAG for Lab Data
-        description: Ground LLM agents and retrieval workflows in engineered, structured Tetra Data for trustworthy scientific AI.
-      - name: Chromatography Productivity
-        description: Aggregate CDS data across Empower, Chromeleon, OpenLab, and Unicorn for unified analytics and reporting.
-      - name: Discovery Acceleration
-        description: Speed lead identification by unifying assay, screening, and analytical data in a single platform.
-      - name: CMC and Bioprocessing
-        description: Standardize chemistry, manufacturing, and controls data across upstream / downstream bioprocessing.
-      - name: Manufacturing and QC
-        description: Surface real-time production and QC insights with cross-instrument analytics over Tetra Data.
-      - name: CRO / CDMO Data Exchange
-        description: Share engineered Tetra X Data with sponsors and partners without exposing proprietary raw formats.
-      - name: GxP Regulated Workflows
-        description: Run validated, compliance-aware data flows for QC, manufacturing, and clinical analytical environments.
-      - name: Scientific Data Migration
-        description: Decommission legacy archives by replatforming historical scientific data into a unified, queryable lake.
-    industries:
-      - name: Pharmaceutical
-      - name: Biotechnology
-      - name: Contract Research (CRO)
-      - name: Contract Development and Manufacturing (CDMO)
-      - name: Diagnostics
-      - name: Cell and Gene Therapy
-      - name: Analytical Chemistry
-    integrations:
-      - name: Waters Empower (CDS)
-      - name: Thermo Chromeleon (CDS)
-      - name: Agilent OpenLab (CDS)
-      - name: Cytiva Unicorn
-      - name: IDBS E-WorkBook
-      - name: Benchling
-      - name: Dotmatics
-      - name: LabWare LIMS
-      - name: STARLIMS
-      - name: SampleManager
-      - name: Snowflake
-      - name: Databricks
-      - name: AWS S3
-      - name: AWS PrivateLink
-      - name: Elasticsearch
-      - name: Amazon Bedrock
-      - name: OpenAI
-      - name: Spotfire
-      - name: Tableau
-    authentication:
-      - type: API Key
-        header: ts-auth-token
-        description: API token issued from the Tetra Data Platform admin console, sent in the `ts-auth-token` request header.
-      - type: API Key
-        header: x-org-slug
-        description: >-
-          Organization slug sent in the `x-org-slug` request header for tenant routing — required alongside the auth
-          token.
-      - type: SSO
-        description: SAML 2.0 and OIDC for human users via configured identity providers (Okta, Azure AD, Ping, etc.).
+- aid: tetrascience:tetrascience-access-groups-api
+  name: TetraScience Access Groups API
+  description: The Access Groups API from TetraScience — 6 operation(s) for access groups.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Access Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-access-groups-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-agents-api
+  name: TetraScience Agents API
+  description: The Agents API from TetraScience — 8 operation(s) for agents.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Agents
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-agents-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-ai-workflows-api
+  name: TetraScience ai-workflows API
+  description: The ai-workflows API from TetraScience — 8 operation(s) for ai-workflows.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - ai-workflows
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-ai-workflows-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-attributes-api
+  name: TetraScience Attributes API
+  description: The Attributes API from TetraScience — 2 operation(s) for attributes.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Attributes
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-attributes-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-audit-trail-api
+  name: TetraScience Audit Trail API
+  description: The Audit Trail API from TetraScience — 1 operation(s) for audit trail.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Audit Trail
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-audit-trail-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-clusters-api
+  name: TetraScience clusters API
+  description: The clusters API from TetraScience — 2 operation(s) for clusters.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - clusters
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-clusters-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-commands-api
+  name: TetraScience Commands API
+  description: The Commands API from TetraScience — 4 operation(s) for commands.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Commands
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-commands-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-connectors-api
+  name: TetraScience Connectors API
+  description: The Connectors API from TetraScience — 23 operation(s) for connectors.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Connectors
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-connectors-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-data-acquisition-api
+  name: TetraScience Data Acquisition API
+  description: The Data Acquisition API from TetraScience — 6 operation(s) for data acquisition.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Data Acquisition
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-data-acquisition-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-data-app-providers-api
+  name: TetraScience Data App Providers API
+  description: The Data App Providers API from TetraScience — 3 operation(s) for data app providers.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Data App Providers
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-data-app-providers-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-data-apps-api
+  name: TetraScience Data Apps API
+  description: The Data Apps API from TetraScience — 12 operation(s) for data apps.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Data Apps
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-data-apps-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-databricks-api
+  name: TetraScience databricks API
+  description: The databricks API from TetraScience — 2 operation(s) for databricks.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - databricks
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-databricks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-edit-subscriptions-api
+  name: TetraScience Edit Subscriptions API
+  description: The Edit Subscriptions API from TetraScience — 4 operation(s) for edit subscriptions.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Edit Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-edit-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-embedded-data-apps-api
+  name: TetraScience Embedded Data Apps API
+  description: The Embedded Data Apps API from TetraScience — 1 operation(s) for embedded data apps.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Embedded Data Apps
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-embedded-data-apps-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-files-api
+  name: TetraScience Files API
+  description: The Files API from TetraScience — 5 operation(s) for files.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-files-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-hubs-api
+  name: TetraScience Hubs API
+  description: The Hubs API from TetraScience — 2 operation(s) for hubs.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Hubs
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-hubs-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-ids-api
+  name: TetraScience IDS API
+  description: The IDS API from TetraScience — 8 operation(s) for ids.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - IDS
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-ids-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-lakehouse-api
+  name: TetraScience lakehouse API
+  description: The lakehouse API from TetraScience — 8 operation(s) for lakehouse.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - lakehouse
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-lakehouse-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-linked-data-apps-api
+  name: TetraScience Linked Data Apps API
+  description: The Linked Data Apps API from TetraScience — 2 operation(s) for linked data apps.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Linked Data Apps
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-linked-data-apps-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-login-api
+  name: TetraScience Login API
+  description: The Login API from TetraScience — 7 operation(s) for login.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Login
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-login-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-logs-api
+  name: TetraScience Logs API
+  description: The Logs API from TetraScience — 1 operation(s) for logs.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-logs-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-organizations-api
+  name: TetraScience Organizations API
+  description: The Organizations API from TetraScience — 3 operation(s) for organizations.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-pipelines-api
+  name: TetraScience Pipelines API
+  description: The Pipelines API from TetraScience — 17 operation(s) for pipelines.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Pipelines
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-pipelines-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-protocols-api
+  name: TetraScience Protocols API
+  description: The Protocols API from TetraScience — 11 operation(s) for protocols.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Protocols
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-protocols-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-requests-api
+  name: TetraScience Requests API
+  description: The Requests API from TetraScience — 5 operation(s) for requests.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-requests-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-roles-api
+  name: TetraScience Roles API
+  description: The Roles API from TetraScience — 5 operation(s) for roles.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-roles-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-schemas-api
+  name: TetraScience Schemas API
+  description: The Schemas API from TetraScience — 9 operation(s) for schemas.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Schemas
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-schemas-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-search-api
+  name: TetraScience Search API
+  description: The Search API from TetraScience — 2 operation(s) for search.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-search-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-task-scripts-api
+  name: TetraScience Task Scripts API
+  description: The Task Scripts API from TetraScience — 8 operation(s) for task scripts.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Task Scripts
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-task-scripts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-tenants-api
+  name: TetraScience Tenants API
+  description: The Tenants API from TetraScience — 4 operation(s) for tenants.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Tenants
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-tenants-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-tetraflows-api
+  name: TetraScience tetraflows API
+  description: The tetraflows API from TetraScience — 8 operation(s) for tetraflows.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - tetraflows
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-tetraflows-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-tetraspheres-api
+  name: TetraScience tetraspheres API
+  description: The tetraspheres API from TetraScience — 8 operation(s) for tetraspheres.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - tetraspheres
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-tetraspheres-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-users-api
+  name: TetraScience Users API
+  description: The Users API from TetraScience — 10 operation(s) for users.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-users-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-view-subscriptions-api
+  name: TetraScience View Subscriptions API
+  description: The View Subscriptions API from TetraScience — 2 operation(s) for view subscriptions.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - View Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-view-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
+- aid: tetrascience:tetrascience-workflows-api
+  name: TetraScience Workflows API
+  description: The Workflows API from TetraScience — 5 operation(s) for workflows.
+  humanURL: https://developers.tetrascience.com/
+  baseURL: https://api.tetrascience.com
+  tags:
+  - Workflows
+  properties:
+  - type: OpenAPI
+    url: openapi/tetrascience-workflows-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tetrascience.com/
+  - type: HumanURL
+    url: https://www.tetrascience.com/
+  - type: GettingStarted
+    url: https://developers.tetrascience.com/docs/tetra-data-platform
+  - type: APIReference
+    url: https://developers.tetrascience.com/reference
+  - type: ChangeLog
+    url: https://developers.tetrascience.com/docs/agent-release-notes
+  - type: LlmsText
+    url: https://developers.tetrascience.com/llms.txt
+  - type: Authentication
+    url: https://developers.tetrascience.com/docs/api-tokens
+  - type: SpectralRules
+    url: rules/tetrascience-rules.yml
+  - type: JSONLDContext
+    url: json-ld/tetrascience-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tetrascience-vocabulary.yml
+  - type: SDKs
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-api-examples
+  - type: PipelineExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-pipeline-examples
+  - type: ElasticsearchExamples
+    url: https://github.com/tetrascience/ts-scientific-data-and-ai-cloud-elasticsearch-examples
+  - type: AgentMonitoring
+    url: https://github.com/tetrascience/ts-agent-monitoring
+  - type: Plans
+    url: plans/tetrascience-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/tetrascience-rate-limits.yml
+  - type: FinOps
+    url: finops/tetrascience-finops.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/tetrascience/overview
   - type: AgenticAccess
     url: agentic-access/tetrascience-agentic-access.yml
   - type: TrustCenter
