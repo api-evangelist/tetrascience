@@ -1,0 +1,970 @@
+{
+  "info": {
+    "_postman_id": "de72238b-ac72-437d-b47c-7dc7171a7ea6",
+    "name": "TetraScience Data and AI Cloud Access Groups Workflows API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:12.000Z",
+    "updatedAt": "2026-07-28T03:13:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-de72238b-ac72-437d-b47c-7dc7171a7ea6"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "workflow",
+          "item": [
+            {
+              "name": "{workflowId}",
+              "item": [
+                {
+                  "name": "Get Single Workflow Details",
+                  "id": "3364bb14-9786-4ccf-afe2-5ac2458982b3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/workflow/:workflowId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "workflow",
+                        ":workflowId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fd142eb7-d3e5-4c84-8905-60899656b9d3",
+                          "key": "workflowId",
+                          "value": "<string>",
+                          "description": "(Required) Required. UUID of the workflow."
+                        }
+                      ]
+                    },
+                    "description": "Search data pipeline workflows"
+                  },
+                  "response": [
+                    {
+                      "id": "08d14117-0f50-472e-acd9-5da3001d690b",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/workflow/:workflowId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "workflow",
+                            ":workflowId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "workflowId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"orgSlug\": \"<string>\",\n  \"pipelineId\": \"<string>\",\n  \"masterScriptNamespace\": \"<string>\",\n  \"masterScriptSlug\": \"<string>\",\n  \"masterScriptVersion\": \"<string>\",\n  \"protocolSlug\": \"<string>\",\n  \"protocolVersion\": \"<string>\",\n  \"protocol\": {\n    \"protocolSchema\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"steps\": [\n      {\n        \"slug\": \"<string>\",\n        \"description\": \"<string>\",\n        \"type\": \"<string>\",\n        \"script\": {\n          \"namespace\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"version\": \"<string>\"\n        },\n        \"functionSlug\": \"<string>\"\n      },\n      {\n        \"slug\": \"<string>\",\n        \"description\": \"<string>\",\n        \"type\": \"<string>\",\n        \"script\": {\n          \"namespace\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"version\": \"<string>\"\n        },\n        \"functionSlug\": \"<string>\"\n      }\n    ],\n    \"config\": \"<array>\"\n  },\n  \"pipelineConfig\": {\n    \"notificationsConfig\": {\n      \"sendOnSuccessful\": true,\n      \"sendOnFailed\": true,\n      \"notificationEmailAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"pipelineName\": \"<string>\"\n  },\n  \"inputFile\": {\n    \"meta\": {\n      \"fileId\": \"<string>\",\n      \"source\": {\n        \"box\": {\n          \"id\": \"<string>\",\n          \"size\": 0,\n          \"filePath\": \"<string>\",\n          \"integrationSource\": \"<string>\"\n        },\n        \"type\": \"<string>\"\n      },\n      \"traceId\": \"<string>\",\n      \"sourceId\": \"<string>\",\n      \"sourceName\": \"<string>\",\n      \"sourceType\": \"<string>\",\n      \"integrationId\": \"<string>\",\n      \"integrationType\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"fileId\": \"<string>\",\n    \"fileKey\": \"<string>\",\n    \"version\": \"<string>\",\n    \"customTags\": \"<array>\",\n    \"customMetadata\": {}\n  },\n  \"tasks\": [\n    {\n      \"slug\": \"<string>\",\n      \"input\": {\n        \"input_file\": {\n          \"meta\": {\n            \"fileId\": \"<string>\",\n            \"source\": {\n              \"box\": {\n                \"id\": \"<string>\",\n                \"size\": 0,\n                \"filePath\": \"<string>\",\n                \"integrationSource\": \"<string>\"\n              },\n              \"type\": \"<string>\"\n            },\n            \"traceId\": \"<string>\",\n            \"sourceId\": \"<string>\",\n            \"sourceName\": \"<string>\",\n            \"sourceType\": \"<string>\",\n            \"integrationId\": \"<string>\",\n            \"integrationType\": \"<string>\"\n          },\n          \"type\": \"<string>\",\n          \"bucket\": \"<string>\",\n          \"fileId\": \"<string>\",\n          \"fileKey\": \"<string>\",\n          \"version\": \"<string>\",\n          \"customTags\": \"<array>\",\n          \"customMetadata\": {}\n        }\n      },\n      \"retry\": 0,\n      \"events\": [\n        {\n          \"at\": \"<string>\",\n          \"status\": \"<string>\"\n        },\n        {\n          \"at\": \"<string>\",\n          \"status\": \"<string>\"\n        }\n      ],\n      \"output\": {\n        \"type\": \"<string>\",\n        \"result\": [\n          {\n            \"type\": \"<string>\",\n            \"bucket\": \"<string>\",\n            \"fileId\": \"<string>\",\n            \"fileKey\": \"<string>\",\n            \"version\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"bucket\": \"<string>\",\n            \"fileId\": \"<string>\",\n            \"fileKey\": \"<string>\",\n            \"version\": \"<string>\"\n          }\n        ]\n      },\n      \"script\": {\n        \"list\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"slug\": \"<string>\",\n        \"docker\": {\n          \"image\": \"<string>\"\n        },\n        \"version\": \"<string>\",\n        \"language\": \"<string>\",\n        \"maxCount\": 0,\n        \"createdAt\": \"<string>\",\n        \"functions\": [\n          {\n            \"slug\": \"<string>\",\n            \"function\": \"<string>\"\n          },\n          {\n            \"slug\": \"<string>\",\n            \"function\": \"<string>\"\n          }\n        ],\n        \"hasSource\": true,\n        \"namespace\": \"<string>\",\n        \"timestamp\": 0,\n        \"runnerType\": \"<string>\",\n        \"buildLogSaved\": true,\n        \"buildDurationMs\": 0\n      },\n      \"status\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"options\": {},\n      \"createdAt\": \"<string>\",\n      \"containerId\": \"<string>\",\n      \"functionSlug\": \"<string>\",\n      \"lastUpdatedAt\": \"<string>\",\n      \"taskMemoryInMB\": 0,\n      \"cloudWatchUrl\": \"<string>\"\n    },\n    {\n      \"slug\": \"<string>\",\n      \"input\": {\n        \"input_file\": {\n          \"meta\": {\n            \"fileId\": \"<string>\",\n            \"source\": {\n              \"box\": {\n                \"id\": \"<string>\",\n                \"size\": 0,\n                \"filePath\": \"<string>\",\n                \"integrationSource\": \"<string>\"\n              },\n              \"type\": \"<string>\"\n            },\n            \"traceId\": \"<string>\",\n            \"sourceId\": \"<string>\",\n            \"sourceName\": \"<string>\",\n            \"sourceType\": \"<string>\",\n            \"integrationId\": \"<string>\",\n            \"integrationType\": \"<string>\"\n          },\n          \"type\": \"<string>\",\n          \"bucket\": \"<string>\",\n          \"fileId\": \"<string>\",\n          \"fileKey\": \"<string>\",\n          \"version\": \"<string>\",\n          \"customTags\": \"<array>\",\n          \"customMetadata\": {}\n        }\n      },\n      \"retry\": 0,\n      \"events\": [\n        {\n          \"at\": \"<string>\",\n          \"status\": \"<string>\"\n        },\n        {\n          \"at\": \"<string>\",\n          \"status\": \"<string>\"\n        }\n      ],\n      \"output\": {\n        \"type\": \"<string>\",\n        \"result\": [\n          {\n            \"type\": \"<string>\",\n            \"bucket\": \"<string>\",\n            \"fileId\": \"<string>\",\n            \"fileKey\": \"<string>\",\n            \"version\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"bucket\": \"<string>\",\n            \"fileId\": \"<string>\",\n            \"fileKey\": \"<string>\",\n            \"version\": \"<string>\"\n          }\n        ]\n      },\n      \"script\": {\n        \"list\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"slug\": \"<string>\",\n        \"docker\": {\n          \"image\": \"<string>\"\n        },\n        \"version\": \"<string>\",\n        \"language\": \"<string>\",\n        \"maxCount\": 0,\n        \"createdAt\": \"<string>\",\n        \"functions\": [\n          {\n            \"slug\": \"<string>\",\n            \"function\": \"<string>\"\n          },\n          {\n            \"slug\": \"<string>\",\n            \"function\": \"<string>\"\n          }\n        ],\n        \"hasSource\": true,\n        \"namespace\": \"<string>\",\n        \"timestamp\": 0,\n        \"runnerType\": \"<string>\",\n        \"buildLogSaved\": true,\n        \"buildDurationMs\": 0\n      },\n      \"status\": \"<string>\",\n      \"taskId\": \"<string>\",\n      \"options\": {},\n      \"createdAt\": \"<string>\",\n      \"containerId\": \"<string>\",\n      \"functionSlug\": \"<string>\",\n      \"lastUpdatedAt\": \"<string>\",\n      \"taskMemoryInMB\": 0,\n      \"cloudWatchUrl\": \"<string>\"\n    }\n  ],\n  \"supersededTasks\": \"<array>\",\n  \"status\": \"<string>\",\n  \"events\": [\n    {\n      \"at\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"at\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<string>\",\n  \"lastUpdatedAt\": \"<string>\",\n  \"restarted\": true,\n  \"masterScriptLogs\": \"<array>\",\n  \"retryBehavior\": {},\n  \"output\": {\n    \"type\": \"<string>\",\n    \"result\": [\n      {\n        \"type\": \"<string>\",\n        \"bucket\": \"<string>\",\n        \"fileId\": \"<string>\",\n        \"fileKey\": \"<string>\",\n        \"version\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"bucket\": \"<string>\",\n        \"fileId\": \"<string>\",\n        \"fileKey\": \"<string>\",\n        \"version\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T03:13:13.000Z",
+                      "updatedAt": "2026-07-28T03:13:13.000Z",
+                      "uid": "35240-08d14117-0f50-472e-acd9-5da3001d690b"
+                    },
+                    {
+                      "id": "267c5bfb-bf1a-4ac9-90f6-f092800adad9",
+                      "name": "404",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/workflow/:workflowId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "workflow",
+                            ":workflowId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "workflowId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:13:13.000Z",
+                      "updatedAt": "2026-07-28T03:13:13.000Z",
+                      "uid": "35240-267c5bfb-bf1a-4ac9-90f6-f092800adad9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-3364bb14-9786-4ccf-afe2-5ac2458982b3"
+                }
+              ],
+              "id": "707affab-87d0-4c18-bc45-97fbd99750a4",
+              "createdAt": "2026-07-28T03:13:13.000Z",
+              "updatedAt": "2026-07-28T03:13:13.000Z",
+              "uid": "35240-707affab-87d0-4c18-bc45-97fbd99750a4"
+            },
+            {
+              "name": "search",
+              "item": [
+                {
+                  "name": "Search Workflow",
+                  "id": "10d4678d-de93-4612-8eda-db1cc9b675c4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/workflow/search?size=<string>&from=<string>&filter=<string>&pipelineId=<string>&startTime=<dateTime>&endTime=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "workflow",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional.  Number of results to return starting from the page index given in the \u201cfrom\u201d parameter.  Default: 10 Max: 100",
+                          "key": "size",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional.  Paging index. Starts with zero. Default: 0",
+                          "key": "from",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional. Filter by the workflow completion status. Possible values are:  1. all - for all the workflows (pending, in-progress, completed, failed).  2.  failed - for the workflows that failed.  3. completed - for the workflows that completed successfully.  4. pending - for workflows waiting to be scheduled.  5.  in-progress - for workflows that are executing.  Default: all",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional. UUID of the pipeline. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved.",
+                          "key": "pipelineId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional.  If provided, service returns all the workflows created after this time. Value can be ISO format only with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                          "key": "startTime",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional. If provided, service returns all the workflows created before this time. Value can be ISO format only with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                          "key": "endTime",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    },
+                    "description": "Search data pipeline workflows"
+                  },
+                  "response": [
+                    {
+                      "id": "0e308af0-8384-461d-9811-23c193428100",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/workflow/search?size=<string>&from=<string>&filter=<string>&pipelineId=<string>&startTime=<dateTime>&endTime=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "workflow",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional.  Number of results to return starting from the page index given in the \u201cfrom\u201d parameter.  Default: 10 Max: 100",
+                              "key": "size",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional.  Paging index. Starts with zero. Default: 0",
+                              "key": "from",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional. Filter by the workflow completion status. Possible values are:  1. all - for all the workflows (pending, in-progress, completed, failed).  2.  failed - for the workflows that failed.  3. completed - for the workflows that completed successfully.  4. pending - for workflows waiting to be scheduled.  5.  in-progress - for workflows that are executing.  Default: all",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional. UUID of the pipeline. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved.",
+                              "key": "pipelineId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional.  If provided, service returns all the workflows created after this time. Value can be ISO format only with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                              "key": "startTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Optional. If provided, service returns all the workflows created before this time. Value can be ISO format only with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                              "key": "endTime",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"from\": 0,\n  \"size\": 0,\n  \"hasNext\": true,\n  \"hits\": [\n    {\n      \"id\": \"<string>\",\n      \"orgSlug\": \"<string>\",\n      \"pipelineId\": \"<string>\",\n      \"masterScriptNamespace\": \"<string>\",\n      \"masterScriptSlug\": \"<string>\",\n      \"masterScriptVersion\": \"<string>\",\n      \"protocolSlug\": \"<string>\",\n      \"protocolVersion\": \"<string>\",\n      \"protocol\": {\n        \"protocolSchema\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"steps\": [\n          {\n            \"slug\": \"<string>\",\n            \"description\": \"<string>\",\n            \"type\": \"<string>\",\n            \"script\": {\n              \"namespace\": \"<string>\",\n              \"slug\": \"<string>\",\n              \"version\": \"<string>\"\n            },\n            \"functionSlug\": \"<string>\"\n          },\n          {\n            \"slug\": \"<string>\",\n            \"description\": \"<string>\",\n            \"type\": \"<string>\",\n            \"script\": {\n              \"namespace\": \"<string>\",\n              \"slug\": \"<string>\",\n              \"version\": \"<string>\"\n            },\n            \"functionSlug\": \"<string>\"\n          }\n        ],\n        \"config\": \"<array>\"\n      },\n      \"pipelineConfig\": {\n        \"notificationsConfig\": {\n          \"sendOnSuccessful\": true,\n          \"sendOnFailed\": true,\n          \"notificationEmailAddresses\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"pipelineName\": \"<string>\"\n      },\n      \"inputFile\": {\n        \"meta\": {\n          \"fileId\": \"<string>\",\n          \"source\": {\n            \"box\": {\n              \"id\": \"<string>\",\n              \"size\": 0,\n              \"filePath\": \"<string>\",\n              \"integrationSource\": \"<string>\"\n            },\n            \"type\": \"<string>\"\n          },\n          \"traceId\": \"<string>\",\n          \"sourceId\": \"<string>\",\n          \"sourceName\": \"<string>\",\n          \"sourceType\": \"<string>\",\n          \"integrationId\": \"<string>\",\n          \"integrationType\": \"<string>\"\n        },\n        \"type\": \"<string>\",\n        \"bucket\": \"<string>\",\n        \"fileId\": \"<string>\",\n        \"fileKey\": \"<string>\",\n        \"version\": \"<string>\",\n        \"customTags\": \"<array>\",\n        \"customMetadata\": {}\n      },\n      \"tasks\": [\n        {\n          \"slug\": \"<string>\",\n          \"input\": {\n            \"input_file\": {\n              \"meta\": {\n                \"fileId\": \"<string>\",\n                \"source\": {\n                  \"box\": {\n                    \"id\": \"<string>\",\n                    \"size\": 0,\n                    \"filePath\": \"<string>\",\n                    \"integrationSource\": \"<string>\"\n                  },\n                  \"type\": \"<string>\"\n                },\n                \"traceId\": \"<string>\",\n                \"sourceId\": \"<string>\",\n                \"sourceName\": \"<string>\",\n                \"sourceType\": \"<string>\",\n                \"integrationId\": \"<string>\",\n                \"integrationType\": \"<string>\"\n              },\n              \"type\": \"<string>\",\n              \"bucket\": \"<string>\",\n              \"fileId\": \"<string>\",\n              \"fileKey\": \"<string>\",\n              \"version\": \"<string>\",\n              \"customTags\": \"<array>\",\n              \"customMetadata\": {}\n            }\n          },\n          \"retry\": 0,\n          \"events\": [\n            {\n              \"at\": \"<string>\",\n              \"status\": \"<string>\"\n            },\n            {\n              \"at\": \"<string>\",\n              \"status\": \"<string>\"\n            }\n          ],\n          \"output\": {\n            \"type\": \"<string>\",\n            \"result\": [\n              {\n                \"type\": \"<string>\",\n                \"bucket\": \"<string>\",\n                \"fileId\": \"<string>\",\n                \"fileKey\": \"<string>\",\n                \"version\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"bucket\": \"<string>\",\n                \"fileId\": \"<string>\",\n                \"fileKey\": \"<string>\",\n                \"version\": \"<string>\"\n              }\n            ]\n          },\n          \"script\": {\n            \"list\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"slug\": \"<string>\",\n            \"docker\": {\n              \"image\": \"<string>\"\n            },\n            \"version\": \"<string>\",\n            \"language\": \"<string>\",\n            \"maxCount\": 0,\n            \"createdAt\": \"<string>\",\n            \"functions\": [\n              {\n                \"slug\": \"<string>\",\n                \"function\": \"<string>\"\n              },\n              {\n                \"slug\": \"<string>\",\n                \"function\": \"<string>\"\n              }\n            ],\n            \"hasSource\": true,\n            \"namespace\": \"<string>\",\n            \"timestamp\": 0,\n            \"runnerType\": \"<string>\",\n            \"buildLogSaved\": true,\n            \"buildDurationMs\": 0\n          },\n          \"status\": \"<string>\",\n          \"taskId\": \"<string>\",\n          \"options\": {},\n          \"createdAt\": \"<string>\",\n          \"containerId\": \"<string>\",\n          \"functionSlug\": \"<string>\",\n          \"lastUpdatedAt\": \"<string>\",\n          \"taskMemoryInMB\": 0,\n          \"cloudWatchUrl\": \"<string>\"\n        },\n        {\n          \"slug\": \"<string>\",\n          \"input\": {\n            \"input_file\": {\n              \"meta\": {\n                \"fileId\": \"<string>\",\n                \"source\": {\n                  \"box\": {\n                    \"id\": \"<string>\",\n                    \"size\": 0,\n                    \"filePath\": \"<string>\",\n                    \"integrationSource\": \"<string>\"\n                  },\n                  \"type\": \"<string>\"\n                },\n                \"traceId\": \"<string>\",\n                \"sourceId\": \"<string>\",\n                \"sourceName\": \"<string>\",\n                \"sourceType\": \"<string>\",\n                \"integrationId\": \"<string>\",\n                \"integrationType\": \"<string>\"\n              },\n              \"type\": \"<string>\",\n              \"bucket\": \"<string>\",\n              \"fileId\": \"<string>\",\n              \"fileKey\": \"<string>\",\n              \"version\": \"<string>\",\n              \"customTags\": \"<array>\",\n              \"customMetadata\": {}\n            }\n          },\n          \"retry\": 0,\n          \"events\": [\n            {\n              \"at\": \"<string>\",\n              \"status\": \"<string>\"\n            },\n            {\n              \"at\": \"<string>\",\n              \"status\": \"<string>\"\n            }\n          ],\n          \"output\": {\n            \"type\": \"<string>\",\n            \"result\": [\n              {\n                \"type\": \"<string>\",\n                \"bucket\": \"<string>\",\n                \"fileId\": \"<string>\",\n                \"fileKey\": \"<string>\",\n                \"version\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"bucket\": \"<string>\",\n                \"fileId\": \"<string>\",\n                \"fileKey\": \"<string>\",\n                \"version\": \"<string>\"\n              }\n            ]\n          },\n          \"script\": {\n            \"list\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"slug\": \"<string>\",\n            \"docker\": {\n              \"image\": \"<string>\"\n            },\n            \"version\": \"<string>\",\n            \"language\": \"<string>\",\n            \"maxCount\": 0,\n            \"createdAt\": \"<string>\",\n            \"functions\": [\n              {\n                \"slug\": \"<string>\",\n                \"function\": \"<string>\"\n              },\n              {\n                \"slug\": \"<string>\",\n                \"function\": \"<string>\"\n              }\n            ],\n            \"hasSource\": true,\n            \"namespace\": \"<string>\",\n            \"timestamp\": 0,\n            \"runnerType\": \"<string>\",\n            \"buildLogSaved\": true,\n            \"buildDurationMs\": 0\n          },\n          \"status\": \"<string>\",\n          \"taskId\": \"<string>\",\n          \"options\": {},\n          \"createdAt\": \"<string>\",\n          \"containerId\": \"<string>\",\n          \"functionSlug\": \"<string>\",\n          \"lastUpdatedAt\": \"<string>\",\n          \"taskMemoryInMB\": 0,\n          \"cloudWatchUrl\": \"<string>\"\n        }\n      ],\n      \"supersededTasks\": \"<array>\",\n      \"status\": \"<string>\",\n      \"events\": [\n        {\n          \"at\": \"<string>\",\n          \"status\": \"<string>\"\n        },\n        {\n          \"at\": \"<string>\",\n          \"status\": \"<string>\"\n        }\n      ],\n      \"createdAt\": \"<string>\",\n      \"lastUpdatedAt\": \"<string>\",\n      \"restarted\": true,\n      \"masterScriptLogs\": \"<array>\",\n      \"retryBehavior\": {},\n      \"output\": {\n        \"type\": \"<string>\",\n        \"result\": [\n          {\n            \"type\": \"<string>\",\n            \"bucket\": \"<string>\",\n            \"fileId\": \"<string>\",\n            \"fileKey\": \"<string>\",\n            \"version\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"bucket\": \"<string>\",\n            \"fileId\": \"<string>\",\n            \"fileKey\": \"<string>\",\n            \"version\": \"<string>\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"orgSlug\": \"<string>\",\n      \"pipelineId\": \"<string>\",\n      \"masterScriptNamespace\": \"<string>\",\n      \"masterScriptSlug\": \"<string>\",\n      \"masterScriptVersion\": \"<string>\",\n      \"protocolSlug\": \"<string>\",\n      \"protocolVersion\": \"<string>\",\n      \"protocol\": {\n        \"protocolSchema\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"steps\": [\n          {\n            \"slug\": \"<string>\",\n            \"description\": \"<string>\",\n            \"type\": \"<string>\",\n            \"script\": {\n              \"namespace\": \"<string>\",\n              \"slug\": \"<string>\",\n              \"version\": \"<string>\"\n            },\n            \"functionSlug\": \"<string>\"\n          },\n          {\n            \"slug\": \"<string>\",\n            \"description\": \"<string>\",\n            \"type\": \"<string>\",\n            \"script\": {\n              \"namespace\": \"<string>\",\n              \"slug\": \"<string>\",\n              \"version\": \"<string>\"\n            },\n            \"functionSlug\": \"<string>\"\n          }\n        ],\n        \"config\": \"<array>\"\n      },\n      \"pipelineConfig\": {\n        \"notificationsConfig\": {\n          \"sendOnSuccessful\": true,\n          \"sendOnFailed\": true,\n          \"notificationEmailAddresses\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"pipelineName\": \"<string>\"\n      },\n      \"inputFile\": {\n        \"meta\": {\n          \"fileId\": \"<string>\",\n          \"source\": {\n            \"box\": {\n              \"id\": \"<string>\",\n              \"size\": 0,\n              \"filePath\": \"<string>\",\n              \"integrationSource\": \"<string>\"\n            },\n            \"type\": \"<string>\"\n          },\n          \"traceId\": \"<string>\",\n          \"sourceId\": \"<string>\",\n          \"sourceName\": \"<string>\",\n          \"sourceType\": \"<string>\",\n          \"integrationId\": \"<string>\",\n          \"integrationType\": \"<string>\"\n        },\n        \"type\": \"<string>\",\n        \"bucket\": \"<string>\",\n        \"fileId\": \"<string>\",\n        \"fileKey\": \"<string>\",\n        \"version\": \"<string>\",\n        \"customTags\": \"<array>\",\n        \"customMetadata\": {}\n      },\n      \"tasks\": [\n        {\n          \"slug\": \"<string>\",\n          \"input\": {\n            \"input_file\": {\n              \"meta\": {\n                \"fileId\": \"<string>\",\n                \"source\": {\n                  \"box\": {\n                    \"id\": \"<string>\",\n                    \"size\": 0,\n                    \"filePath\": \"<string>\",\n                    \"integrationSource\": \"<string>\"\n                  },\n                  \"type\": \"<string>\"\n                },\n                \"traceId\": \"<string>\",\n                \"sourceId\": \"<string>\",\n                \"sourceName\": \"<string>\",\n                \"sourceType\": \"<string>\",\n                \"integrationId\": \"<string>\",\n                \"integrationType\": \"<string>\"\n              },\n              \"type\": \"<string>\",\n              \"bucket\": \"<string>\",\n              \"fileId\": \"<string>\",\n              \"fileKey\": \"<string>\",\n              \"version\": \"<string>\",\n              \"customTags\": \"<array>\",\n              \"customMetadata\": {}\n            }\n          },\n          \"retry\": 0,\n          \"events\": [\n            {\n              \"at\": \"<string>\",\n              \"status\": \"<string>\"\n            },\n            {\n              \"at\": \"<string>\",\n              \"status\": \"<string>\"\n            }\n          ],\n          \"output\": {\n            \"type\": \"<string>\",\n            \"result\": [\n              {\n                \"type\": \"<string>\",\n                \"bucket\": \"<string>\",\n                \"fileId\": \"<string>\",\n                \"fileKey\": \"<string>\",\n                \"version\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"bucket\": \"<string>\",\n                \"fileId\": \"<string>\",\n                \"fileKey\": \"<string>\",\n                \"version\": \"<string>\"\n              }\n            ]\n          },\n          \"script\": {\n            \"list\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"slug\": \"<string>\",\n            \"docker\": {\n              \"image\": \"<string>\"\n            },\n            \"version\": \"<string>\",\n            \"language\": \"<string>\",\n            \"maxCount\": 0,\n            \"createdAt\": \"<string>\",\n            \"functions\": [\n              {\n                \"slug\": \"<string>\",\n                \"function\": \"<string>\"\n              },\n              {\n                \"slug\": \"<string>\",\n                \"function\": \"<string>\"\n              }\n            ],\n            \"hasSource\": true,\n            \"namespace\": \"<string>\",\n            \"timestamp\": 0,\n            \"runnerType\": \"<string>\",\n            \"buildLogSaved\": true,\n            \"buildDurationMs\": 0\n          },\n          \"status\": \"<string>\",\n          \"taskId\": \"<string>\",\n          \"options\": {},\n          \"createdAt\": \"<string>\",\n          \"containerId\": \"<string>\",\n          \"functionSlug\": \"<string>\",\n          \"lastUpdatedAt\": \"<string>\",\n          \"taskMemoryInMB\": 0,\n          \"cloudWatchUrl\": \"<string>\"\n        },\n        {\n          \"slug\": \"<string>\",\n          \"input\": {\n            \"input_file\": {\n              \"meta\": {\n                \"fileId\": \"<string>\",\n                \"source\": {\n                  \"box\": {\n                    \"id\": \"<string>\",\n                    \"size\": 0,\n                    \"filePath\": \"<string>\",\n                    \"integrationSource\": \"<string>\"\n                  },\n                  \"type\": \"<string>\"\n                },\n                \"traceId\": \"<string>\",\n                \"sourceId\": \"<string>\",\n                \"sourceName\": \"<string>\",\n                \"sourceType\": \"<string>\",\n                \"integrationId\": \"<string>\",\n                \"integrationType\": \"<string>\"\n              },\n              \"type\": \"<string>\",\n              \"bucket\": \"<string>\",\n              \"fileId\": \"<string>\",\n              \"fileKey\": \"<string>\",\n              \"version\": \"<string>\",\n              \"customTags\": \"<array>\",\n              \"customMetadata\": {}\n            }\n          },\n          \"retry\": 0,\n          \"events\": [\n            {\n              \"at\": \"<string>\",\n              \"status\": \"<string>\"\n            },\n            {\n              \"at\": \"<string>\",\n              \"status\": \"<string>\"\n            }\n          ],\n          \"output\": {\n            \"type\": \"<string>\",\n            \"result\": [\n              {\n                \"type\": \"<string>\",\n                \"bucket\": \"<string>\",\n                \"fileId\": \"<string>\",\n                \"fileKey\": \"<string>\",\n                \"version\": \"<string>\"\n              },\n              {\n                \"type\": \"<string>\",\n                \"bucket\": \"<string>\",\n                \"fileId\": \"<string>\",\n                \"fileKey\": \"<string>\",\n                \"version\": \"<string>\"\n              }\n            ]\n          },\n          \"script\": {\n            \"list\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"slug\": \"<string>\",\n            \"docker\": {\n              \"image\": \"<string>\"\n            },\n            \"version\": \"<string>\",\n            \"language\": \"<string>\",\n            \"maxCount\": 0,\n            \"createdAt\": \"<string>\",\n            \"functions\": [\n              {\n                \"slug\": \"<string>\",\n                \"function\": \"<string>\"\n              },\n              {\n                \"slug\": \"<string>\",\n                \"function\": \"<string>\"\n              }\n            ],\n            \"hasSource\": true,\n            \"namespace\": \"<string>\",\n            \"timestamp\": 0,\n            \"runnerType\": \"<string>\",\n            \"buildLogSaved\": true,\n            \"buildDurationMs\": 0\n          },\n          \"status\": \"<string>\",\n          \"taskId\": \"<string>\",\n          \"options\": {},\n          \"createdAt\": \"<string>\",\n          \"containerId\": \"<string>\",\n          \"functionSlug\": \"<string>\",\n          \"lastUpdatedAt\": \"<string>\",\n          \"taskMemoryInMB\": 0,\n          \"cloudWatchUrl\": \"<string>\"\n        }\n      ],\n      \"supersededTasks\": \"<array>\",\n      \"status\": \"<string>\",\n      \"events\": [\n        {\n          \"at\": \"<string>\",\n          \"status\": \"<string>\"\n        },\n        {\n          \"at\": \"<string>\",\n          \"status\": \"<string>\"\n        }\n      ],\n      \"createdAt\": \"<string>\",\n      \"lastUpdatedAt\": \"<string>\",\n      \"restarted\": true,\n      \"masterScriptLogs\": \"<array>\",\n      \"retryBehavior\": {},\n      \"output\": {\n        \"type\": \"<string>\",\n        \"result\": [\n          {\n            \"type\": \"<string>\",\n            \"bucket\": \"<string>\",\n            \"fileId\": \"<string>\",\n            \"fileKey\": \"<string>\",\n            \"version\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"bucket\": \"<string>\",\n            \"fileId\": \"<string>\",\n            \"fileKey\": \"<string>\",\n            \"version\": \"<string>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:13:13.000Z",
+                      "updatedAt": "2026-07-28T03:13:13.000Z",
+                      "uid": "35240-0e308af0-8384-461d-9811-23c193428100"
+                    },
+                    {
+                      "id": "dc1a43a8-1d31-4afe-9b2f-2888d85445b5",
+                      "name": "400",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/workflow/search?size=<string>&from=<string>&filter=<string>&pipelineId=<string>&startTime=<dateTime>&endTime=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "workflow",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional.  Number of results to return starting from the page index given in the \u201cfrom\u201d parameter.  Default: 10 Max: 100",
+                              "key": "size",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional.  Paging index. Starts with zero. Default: 0",
+                              "key": "from",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional. Filter by the workflow completion status. Possible values are:  1. all - for all the workflows (pending, in-progress, completed, failed).  2.  failed - for the workflows that failed.  3. completed - for the workflows that completed successfully.  4. pending - for workflows waiting to be scheduled.  5.  in-progress - for workflows that are executing.  Default: all",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional. UUID of the pipeline. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved.",
+                              "key": "pipelineId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional.  If provided, service returns all the workflows created after this time. Value can be ISO format only with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                              "key": "startTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Optional. If provided, service returns all the workflows created before this time. Value can be ISO format only with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                              "key": "endTime",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"validation\": {\n    \"source\": \"<string>\",\n    \"keys\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T03:13:13.000Z",
+                      "updatedAt": "2026-07-28T03:13:13.000Z",
+                      "uid": "35240-dc1a43a8-1d31-4afe-9b2f-2888d85445b5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-10d4678d-de93-4612-8eda-db1cc9b675c4"
+                }
+              ],
+              "id": "4ea9063d-90fa-47f7-a2d7-dd4172644a78",
+              "createdAt": "2026-07-28T03:13:13.000Z",
+              "updatedAt": "2026-07-28T03:13:13.000Z",
+              "uid": "35240-4ea9063d-90fa-47f7-a2d7-dd4172644a78"
+            },
+            {
+              "name": "workflows-draft",
+              "item": [
+                {
+                  "name": "Search workflows draft",
+                  "id": "d40678ac-ee6d-4033-9bfa-6ac0b2136949",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/workflow/workflows-draft?page=1&limit=1000&filter=all&pipelineId=<string>&startTime=<dateTime>&endTime=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "workflow",
+                        "workflows-draft"
+                      ],
+                      "query": [
+                        {
+                          "description": "Results page number - the start index of results is calculated as (page - 1) * limit. Page parameter will return results in range [start index, start index + limit]. Default value is 1. Value 0 will cause error.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Page size - number of the workflow results to retrieve for a given page.",
+                          "key": "limit",
+                          "value": "1000"
+                        },
+                        {
+                          "description": "Filter by the workflow completion status. Possible values are: `all` - for all the workflows (completed and failed), `failed` - for the workflows that failed and `completed` - for the workflows that completed successfully.",
+                          "key": "filter",
+                          "value": "all"
+                        },
+                        {
+                          "description": "Optional parameter. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved.",
+                          "key": "pipelineId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional parameter. If provided, service returns all the workflows created after this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                          "key": "startTime",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional parameter. If provided, service returns all the workflows created before this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                          "key": "endTime",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    },
+                    "description": "Search data pipeline workflows"
+                  },
+                  "response": [
+                    {
+                      "id": "45d08158-0a35-4557-ade8-0fea02609df6",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/workflow/workflows-draft?page=1&limit=1000&filter=all&pipelineId=<string>&startTime=<dateTime>&endTime=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "workflow",
+                            "workflows-draft"
+                          ],
+                          "query": [
+                            {
+                              "description": "Results page number - the start index of results is calculated as (page - 1) * limit. Page parameter will return results in range [start index, start index + limit]. Default value is 1. Value 0 will cause error.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Page size - number of the workflow results to retrieve for a given page.",
+                              "key": "limit",
+                              "value": "1000"
+                            },
+                            {
+                              "description": "Filter by the workflow completion status. Possible values are: `all` - for all the workflows (completed and failed), `failed` - for the workflows that failed and `completed` - for the workflows that completed successfully.",
+                              "key": "filter",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optional parameter. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved.",
+                              "key": "pipelineId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional parameter. If provided, service returns all the workflows created after this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                              "key": "startTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Optional parameter. If provided, service returns all the workflows created before this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                              "key": "endTime",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"protocolSlug\": \"<string>\",\n    \"pipelineId\": \"<string>\",\n    \"protocolVersion\": \"<string>\",\n    \"orgSlug\": \"<string>\",\n    \"protocol\": {\n      \"name\": \"<string>\",\n      \"steps\": [\n        {\n          \"slug\": \"<string>\",\n          \"description\": \"<string>\",\n          \"type\": \"<string>\",\n          \"pattern\": \"<string>\",\n          \"script\": {\n            \"slug\": \"<string>\",\n            \"version\": \"<string>\"\n          },\n          \"inputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"outputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"slug\": \"<string>\",\n          \"description\": \"<string>\",\n          \"type\": \"<string>\",\n          \"pattern\": \"<string>\",\n          \"script\": {\n            \"slug\": \"<string>\",\n            \"version\": \"<string>\"\n          },\n          \"inputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"outputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"inputFile\": {\n      \"meta\": {\n        \"fileId\": \"<string>\",\n        \"sourceType\": \"<string>\",\n        \"source\": {\n          \"type\": \"<string>\",\n          \"egnyte\": {\n            \"url\": \"<string>\",\n            \"integrationId\": \"<string>\",\n            \"filePath\": \"<string>\",\n            \"fileName\": \"<string>\",\n            \"groupId\": \"<string>\",\n            \"entryId\": \"<string>\",\n            \"checksum\": \"<string>\",\n            \"versionId\": \"<string>\",\n            \"lastModifiedTime\": \"<string>\",\n            \"versionNum\": 0\n          }\n        }\n      },\n      \"fileKey\": \"<string>\",\n      \"bucket\": \"<string>\",\n      \"type\": \"<string>\",\n      \"checksum\": \"<string>\"\n    },\n    \"tasks\": [\n      {\n        \"logs\": [\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          }\n        ],\n        \"slug\": \"<string>\",\n        \"errors\": [\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          },\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          }\n        ],\n        \"status\": \"<string>\",\n        \"taskId\": \"<string>\",\n        \"createdAt\": 0,\n        \"lastUpdatedAt\": 0\n      },\n      {\n        \"logs\": [\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          }\n        ],\n        \"slug\": \"<string>\",\n        \"errors\": [\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          },\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          }\n        ],\n        \"status\": \"<string>\",\n        \"taskId\": \"<string>\",\n        \"createdAt\": 0,\n        \"lastUpdatedAt\": 0\n      }\n    ],\n    \"status\": \"<string>\",\n    \"createdAt\": 0,\n    \"lastUpdatedAt\": 0,\n    \"pipelineConfig\": {}\n  },\n  {\n    \"id\": \"<string>\",\n    \"protocolSlug\": \"<string>\",\n    \"pipelineId\": \"<string>\",\n    \"protocolVersion\": \"<string>\",\n    \"orgSlug\": \"<string>\",\n    \"protocol\": {\n      \"name\": \"<string>\",\n      \"steps\": [\n        {\n          \"slug\": \"<string>\",\n          \"description\": \"<string>\",\n          \"type\": \"<string>\",\n          \"pattern\": \"<string>\",\n          \"script\": {\n            \"slug\": \"<string>\",\n            \"version\": \"<string>\"\n          },\n          \"inputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"outputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"slug\": \"<string>\",\n          \"description\": \"<string>\",\n          \"type\": \"<string>\",\n          \"pattern\": \"<string>\",\n          \"script\": {\n            \"slug\": \"<string>\",\n            \"version\": \"<string>\"\n          },\n          \"inputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"outputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"inputFile\": {\n      \"meta\": {\n        \"fileId\": \"<string>\",\n        \"sourceType\": \"<string>\",\n        \"source\": {\n          \"type\": \"<string>\",\n          \"egnyte\": {\n            \"url\": \"<string>\",\n            \"integrationId\": \"<string>\",\n            \"filePath\": \"<string>\",\n            \"fileName\": \"<string>\",\n            \"groupId\": \"<string>\",\n            \"entryId\": \"<string>\",\n            \"checksum\": \"<string>\",\n            \"versionId\": \"<string>\",\n            \"lastModifiedTime\": \"<string>\",\n            \"versionNum\": 0\n          }\n        }\n      },\n      \"fileKey\": \"<string>\",\n      \"bucket\": \"<string>\",\n      \"type\": \"<string>\",\n      \"checksum\": \"<string>\"\n    },\n    \"tasks\": [\n      {\n        \"logs\": [\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          }\n        ],\n        \"slug\": \"<string>\",\n        \"errors\": [\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          },\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          }\n        ],\n        \"status\": \"<string>\",\n        \"taskId\": \"<string>\",\n        \"createdAt\": 0,\n        \"lastUpdatedAt\": 0\n      },\n      {\n        \"logs\": [\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          }\n        ],\n        \"slug\": \"<string>\",\n        \"errors\": [\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          },\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          }\n        ],\n        \"status\": \"<string>\",\n        \"taskId\": \"<string>\",\n        \"createdAt\": 0,\n        \"lastUpdatedAt\": 0\n      }\n    ],\n    \"status\": \"<string>\",\n    \"createdAt\": 0,\n    \"lastUpdatedAt\": 0,\n    \"pipelineConfig\": {}\n  }\n]",
+                      "createdAt": "2026-07-28T03:13:13.000Z",
+                      "updatedAt": "2026-07-28T03:13:13.000Z",
+                      "uid": "35240-45d08158-0a35-4557-ade8-0fea02609df6"
+                    },
+                    {
+                      "id": "09f7fb6c-c1b8-4e9c-a52d-7475b6766ceb",
+                      "name": "400",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/workflow/workflows-draft?page=1&limit=1000&filter=all&pipelineId=<string>&startTime=<dateTime>&endTime=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "workflow",
+                            "workflows-draft"
+                          ],
+                          "query": [
+                            {
+                              "description": "Results page number - the start index of results is calculated as (page - 1) * limit. Page parameter will return results in range [start index, start index + limit]. Default value is 1. Value 0 will cause error.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Page size - number of the workflow results to retrieve for a given page.",
+                              "key": "limit",
+                              "value": "1000"
+                            },
+                            {
+                              "description": "Filter by the workflow completion status. Possible values are: `all` - for all the workflows (completed and failed), `failed` - for the workflows that failed and `completed` - for the workflows that completed successfully.",
+                              "key": "filter",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optional parameter. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved.",
+                              "key": "pipelineId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional parameter. If provided, service returns all the workflows created after this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                              "key": "startTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Optional parameter. If provided, service returns all the workflows created before this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                              "key": "endTime",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T03:13:13.000Z",
+                      "updatedAt": "2026-07-28T03:13:13.000Z",
+                      "uid": "35240-09f7fb6c-c1b8-4e9c-a52d-7475b6766ceb"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-d40678ac-ee6d-4033-9bfa-6ac0b2136949"
+                }
+              ],
+              "id": "e7a69d0a-0e93-477a-9839-3b2f18971817",
+              "createdAt": "2026-07-28T03:13:13.000Z",
+              "updatedAt": "2026-07-28T03:13:13.000Z",
+              "uid": "35240-e7a69d0a-0e93-477a-9839-3b2f18971817"
+            },
+            {
+              "name": "workflows",
+              "item": [
+                {
+                  "name": "Search Workflows (Deprecated)",
+                  "id": "fb0721b0-0b7a-4720-92b6-298f58b9bb90",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/workflow/workflows?page=1&limit=1000&filter=all&pipelineId=<string>&startTime=<dateTime>&endTime=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "workflow",
+                        "workflows"
+                      ],
+                      "query": [
+                        {
+                          "description": "Results page number - the start index of results is calculated as (page - 1) * limit. Page parameter will return results in range [start index, start index + limit]. Default value is 1. Value 0 will cause error.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Page size - number of the workflow results to retrieve for a given page.",
+                          "key": "limit",
+                          "value": "1000"
+                        },
+                        {
+                          "description": "Filter by the workflow completion status. Possible values are: `all` - for all the workflows (completed and failed), `failed` - for the workflows that failed or were canceled, and `completed` - for the workflows that completed successfully.",
+                          "key": "filter",
+                          "value": "all"
+                        },
+                        {
+                          "description": "Optional parameter. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved.",
+                          "key": "pipelineId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional parameter. If provided, service returns all the workflows created after this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                          "key": "startTime",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional parameter. If provided, service returns all the workflows created before this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                          "key": "endTime",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    },
+                    "description": "Search data pipeline workflows"
+                  },
+                  "response": [
+                    {
+                      "id": "cd233c6a-9683-42ba-baa1-2a3a87dc0013",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/workflow/workflows?page=1&limit=1000&filter=all&pipelineId=<string>&startTime=<dateTime>&endTime=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "workflow",
+                            "workflows"
+                          ],
+                          "query": [
+                            {
+                              "description": "Results page number - the start index of results is calculated as (page - 1) * limit. Page parameter will return results in range [start index, start index + limit]. Default value is 1. Value 0 will cause error.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Page size - number of the workflow results to retrieve for a given page.",
+                              "key": "limit",
+                              "value": "1000"
+                            },
+                            {
+                              "description": "Filter by the workflow completion status. Possible values are: `all` - for all the workflows (completed and failed), `failed` - for the workflows that failed or were canceled, and `completed` - for the workflows that completed successfully.",
+                              "key": "filter",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optional parameter. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved.",
+                              "key": "pipelineId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional parameter. If provided, service returns all the workflows created after this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                              "key": "startTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Optional parameter. If provided, service returns all the workflows created before this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                              "key": "endTime",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"protocolSlug\": \"<string>\",\n    \"pipelineId\": \"<string>\",\n    \"protocolVersion\": \"<string>\",\n    \"orgSlug\": \"<string>\",\n    \"protocol\": {\n      \"name\": \"<string>\",\n      \"steps\": [\n        {\n          \"slug\": \"<string>\",\n          \"description\": \"<string>\",\n          \"type\": \"<string>\",\n          \"pattern\": \"<string>\",\n          \"script\": {\n            \"slug\": \"<string>\",\n            \"version\": \"<string>\"\n          },\n          \"inputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"outputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"slug\": \"<string>\",\n          \"description\": \"<string>\",\n          \"type\": \"<string>\",\n          \"pattern\": \"<string>\",\n          \"script\": {\n            \"slug\": \"<string>\",\n            \"version\": \"<string>\"\n          },\n          \"inputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"outputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"inputFile\": {\n      \"meta\": {\n        \"fileId\": \"<string>\",\n        \"sourceType\": \"<string>\",\n        \"source\": {\n          \"type\": \"<string>\",\n          \"egnyte\": {\n            \"url\": \"<string>\",\n            \"integrationId\": \"<string>\",\n            \"filePath\": \"<string>\",\n            \"fileName\": \"<string>\",\n            \"groupId\": \"<string>\",\n            \"entryId\": \"<string>\",\n            \"checksum\": \"<string>\",\n            \"versionId\": \"<string>\",\n            \"lastModifiedTime\": \"<string>\",\n            \"versionNum\": 0\n          }\n        }\n      },\n      \"fileKey\": \"<string>\",\n      \"bucket\": \"<string>\",\n      \"type\": \"<string>\",\n      \"checksum\": \"<string>\"\n    },\n    \"tasks\": [\n      {\n        \"logs\": [\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          }\n        ],\n        \"slug\": \"<string>\",\n        \"errors\": [\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          },\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          }\n        ],\n        \"status\": \"<string>\",\n        \"taskId\": \"<string>\",\n        \"createdAt\": 0,\n        \"lastUpdatedAt\": 0\n      },\n      {\n        \"logs\": [\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          }\n        ],\n        \"slug\": \"<string>\",\n        \"errors\": [\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          },\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          }\n        ],\n        \"status\": \"<string>\",\n        \"taskId\": \"<string>\",\n        \"createdAt\": 0,\n        \"lastUpdatedAt\": 0\n      }\n    ],\n    \"status\": \"<string>\",\n    \"createdAt\": 0,\n    \"lastUpdatedAt\": 0,\n    \"pipelineConfig\": {}\n  },\n  {\n    \"id\": \"<string>\",\n    \"protocolSlug\": \"<string>\",\n    \"pipelineId\": \"<string>\",\n    \"protocolVersion\": \"<string>\",\n    \"orgSlug\": \"<string>\",\n    \"protocol\": {\n      \"name\": \"<string>\",\n      \"steps\": [\n        {\n          \"slug\": \"<string>\",\n          \"description\": \"<string>\",\n          \"type\": \"<string>\",\n          \"pattern\": \"<string>\",\n          \"script\": {\n            \"slug\": \"<string>\",\n            \"version\": \"<string>\"\n          },\n          \"inputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"outputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"slug\": \"<string>\",\n          \"description\": \"<string>\",\n          \"type\": \"<string>\",\n          \"pattern\": \"<string>\",\n          \"script\": {\n            \"slug\": \"<string>\",\n            \"version\": \"<string>\"\n          },\n          \"inputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"outputMapping\": [\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"shouldUpload\": true,\n              \"value\": \"<string>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"inputFile\": {\n      \"meta\": {\n        \"fileId\": \"<string>\",\n        \"sourceType\": \"<string>\",\n        \"source\": {\n          \"type\": \"<string>\",\n          \"egnyte\": {\n            \"url\": \"<string>\",\n            \"integrationId\": \"<string>\",\n            \"filePath\": \"<string>\",\n            \"fileName\": \"<string>\",\n            \"groupId\": \"<string>\",\n            \"entryId\": \"<string>\",\n            \"checksum\": \"<string>\",\n            \"versionId\": \"<string>\",\n            \"lastModifiedTime\": \"<string>\",\n            \"versionNum\": 0\n          }\n        }\n      },\n      \"fileKey\": \"<string>\",\n      \"bucket\": \"<string>\",\n      \"type\": \"<string>\",\n      \"checksum\": \"<string>\"\n    },\n    \"tasks\": [\n      {\n        \"logs\": [\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          }\n        ],\n        \"slug\": \"<string>\",\n        \"errors\": [\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          },\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          }\n        ],\n        \"status\": \"<string>\",\n        \"taskId\": \"<string>\",\n        \"createdAt\": 0,\n        \"lastUpdatedAt\": 0\n      },\n      {\n        \"logs\": [\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"content\": \"<string>\",\n            \"sessionId\": \"<string>\"\n          }\n        ],\n        \"slug\": \"<string>\",\n        \"errors\": [\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          },\n          {\n            \"error\": {\n              \"error\": {\n                \"message\": \"<string>\"\n              },\n              \"message\": \"<string>\"\n            },\n            \"action\": \"<string>\",\n            \"exitCode\": 0,\n            \"sessionId\": \"<string>\",\n            \"humanReadableMsg\": \"<string>\"\n          }\n        ],\n        \"status\": \"<string>\",\n        \"taskId\": \"<string>\",\n        \"createdAt\": 0,\n        \"lastUpdatedAt\": 0\n      }\n    ],\n    \"status\": \"<string>\",\n    \"createdAt\": 0,\n    \"lastUpdatedAt\": 0,\n    \"pipelineConfig\": {}\n  }\n]",
+                      "createdAt": "2026-07-28T03:13:13.000Z",
+                      "updatedAt": "2026-07-28T03:13:13.000Z",
+                      "uid": "35240-cd233c6a-9683-42ba-baa1-2a3a87dc0013"
+                    },
+                    {
+                      "id": "0883a2f4-b44d-4970-b94a-ff4507618e9d",
+                      "name": "400",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/workflow/workflows?page=1&limit=1000&filter=all&pipelineId=<string>&startTime=<dateTime>&endTime=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "workflow",
+                            "workflows"
+                          ],
+                          "query": [
+                            {
+                              "description": "Results page number - the start index of results is calculated as (page - 1) * limit. Page parameter will return results in range [start index, start index + limit]. Default value is 1. Value 0 will cause error.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Page size - number of the workflow results to retrieve for a given page.",
+                              "key": "limit",
+                              "value": "1000"
+                            },
+                            {
+                              "description": "Filter by the workflow completion status. Possible values are: `all` - for all the workflows (completed and failed), `failed` - for the workflows that failed or were canceled, and `completed` - for the workflows that completed successfully.",
+                              "key": "filter",
+                              "value": "all"
+                            },
+                            {
+                              "description": "Optional parameter. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved.",
+                              "key": "pipelineId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional parameter. If provided, service returns all the workflows created after this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                              "key": "startTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Optional parameter. If provided, service returns all the workflows created before this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date.",
+                              "key": "endTime",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T03:13:13.000Z",
+                      "updatedAt": "2026-07-28T03:13:13.000Z",
+                      "uid": "35240-0883a2f4-b44d-4970-b94a-ff4507618e9d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-fb0721b0-0b7a-4720-92b6-298f58b9bb90"
+                }
+              ],
+              "id": "f5c880f7-8e59-42f5-bf13-f463c76733f2",
+              "createdAt": "2026-07-28T03:13:13.000Z",
+              "updatedAt": "2026-07-28T03:13:13.000Z",
+              "uid": "35240-f5c880f7-8e59-42f5-bf13-f463c76733f2"
+            },
+            {
+              "name": "statusByPipeline",
+              "item": [
+                {
+                  "name": "Status By Pipeline",
+                  "id": "79544b54-98a1-4cc1-b136-bfa62c596b87",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/workflow/statusByPipeline",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "workflow",
+                        "statusByPipeline"
+                      ]
+                    },
+                    "description": "Status of pipelines"
+                  },
+                  "response": [
+                    {
+                      "id": "3fd52ec4-0006-450d-90d1-b075bbf6d0fd",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/workflow/statusByPipeline",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "workflow",
+                            "statusByPipeline"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"results\": [\n    {\n      \"pipelineId\": \"<string>\",\n      \"statusCounts\": {\n        \"pending\": \"<integer>\",\n        \"processing\": \"<integer>\"\n      }\n    },\n    {\n      \"pipelineId\": \"<string>\",\n      \"statusCounts\": {\n        \"pending\": \"<integer>\",\n        \"processing\": \"<integer>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:13:13.000Z",
+                      "updatedAt": "2026-07-28T03:13:13.000Z",
+                      "uid": "35240-3fd52ec4-0006-450d-90d1-b075bbf6d0fd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-79544b54-98a1-4cc1-b136-bfa62c596b87"
+                }
+              ],
+              "id": "d1cd4521-a200-41a1-bdf6-c6f5b7c1b16d",
+              "createdAt": "2026-07-28T03:13:13.000Z",
+              "updatedAt": "2026-07-28T03:13:13.000Z",
+              "uid": "35240-d1cd4521-a200-41a1-bdf6-c6f5b7c1b16d"
+            }
+          ],
+          "id": "03a29bfd-484a-41e7-ab7a-0bb084cd584d",
+          "createdAt": "2026-07-28T03:13:13.000Z",
+          "updatedAt": "2026-07-28T03:13:13.000Z",
+          "uid": "35240-03a29bfd-484a-41e7-ab7a-0bb084cd584d"
+        }
+      ],
+      "id": "5d9c64e2-14ba-4228-a743-19dc9c9901d3",
+      "createdAt": "2026-07-28T03:13:13.000Z",
+      "updatedAt": "2026-07-28T03:13:13.000Z",
+      "uid": "35240-5d9c64e2-14ba-4228-a743-19dc9c9901d3"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

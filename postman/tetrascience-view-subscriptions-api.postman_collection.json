@@ -1,0 +1,619 @@
+{
+  "info": {
+    "_postman_id": "2190c115-1d28-40a0-9e29-37fb4e6d9585",
+    "name": "TetraScience Data and AI Cloud Access Groups View Subscriptions API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:12:57.000Z",
+    "updatedAt": "2026-07-28T03:12:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2190c115-1d28-40a0-9e29-37fb4e6d9585"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "externalevents",
+          "item": [
+            {
+              "name": "subscriptions",
+              "item": [
+                {
+                  "name": "{subscriptionId}",
+                  "item": [
+                    {
+                      "name": "Get a subscription by ID",
+                      "id": "818624b8-9d84-4a6d-849f-b6c4c7003fd9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/externalevents/subscriptions/:subscriptionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "externalevents",
+                            "subscriptions",
+                            ":subscriptionId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0d76037d-54b7-4a88-b343-5bef29f38709",
+                              "key": "subscriptionId",
+                              "value": "<string>",
+                              "description": "(Required) ID of the subscription"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "1a228382-5816-4521-86db-9729ae1eb139",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/externalevents/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "externalevents",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"orgSlug\": \"<string>\",\n  \"selectedEventTypes\": [\n    \"tetrascience.agents.filelog.fileUploadFailed.v1\"\n  ],\n  \"userDefinedName\": \"3*~'2p-uwCa*fP2\",\n  \"targetEndpoint\": \"arn:aws:events:*OYOb:KI{u'H%:L_,\\\\d\\\"#?NrV\",\n  \"targetType\": \"BUS\",\n  \"enabled\": \"<boolean>\",\n  \"createdAt\": \"<dateTime>\",\n  \"lastUpdatedAt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T03:12:58.000Z",
+                          "updatedAt": "2026-07-28T03:12:58.000Z",
+                          "uid": "35240-1a228382-5816-4521-86db-9729ae1eb139"
+                        },
+                        {
+                          "id": "693ef6aa-c2c3-4917-bde3-34f86817bf76",
+                          "name": "Incorrect input provided",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/externalevents/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "externalevents",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:12:58.000Z",
+                          "updatedAt": "2026-07-28T03:12:58.000Z",
+                          "uid": "35240-693ef6aa-c2c3-4917-bde3-34f86817bf76"
+                        },
+                        {
+                          "id": "c7f0b0c4-afa7-43fd-9231-5365c778a668",
+                          "name": "Not found or not visible to user",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/externalevents/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "externalevents",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:12:58.000Z",
+                          "updatedAt": "2026-07-28T03:12:58.000Z",
+                          "uid": "35240-c7f0b0c4-afa7-43fd-9231-5365c778a668"
+                        },
+                        {
+                          "id": "108d282c-c663-4004-bb97-0cfcf2d6a90a",
+                          "name": "Internal error managing rules on eventbridge",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/externalevents/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "externalevents",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:12:58.000Z",
+                          "updatedAt": "2026-07-28T03:12:58.000Z",
+                          "uid": "35240-108d282c-c663-4004-bb97-0cfcf2d6a90a"
+                        },
+                        {
+                          "id": "9c807a97-4951-452c-98a9-2c693c55333b",
+                          "name": "Could not retrieve information from AWS",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/externalevents/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "externalevents",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "subscriptionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:12:58.000Z",
+                          "updatedAt": "2026-07-28T03:12:58.000Z",
+                          "uid": "35240-9c807a97-4951-452c-98a9-2c693c55333b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:58.000Z",
+                      "updatedAt": "2026-07-28T03:12:58.000Z",
+                      "uid": "35240-818624b8-9d84-4a6d-849f-b6c4c7003fd9"
+                    }
+                  ],
+                  "id": "01947666-efcb-4efa-b384-466f47b71269",
+                  "createdAt": "2026-07-28T03:12:58.000Z",
+                  "updatedAt": "2026-07-28T03:12:58.000Z",
+                  "uid": "35240-01947666-efcb-4efa-b384-466f47b71269"
+                },
+                {
+                  "name": "Get subscriptions for your org",
+                  "id": "fa835d3e-0e10-45c0-b553-9ee4161082a2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/externalevents/subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "externalevents",
+                        "subscriptions"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "73eaa46e-a040-40e5-9556-380da0a55505",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/externalevents/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "externalevents",
+                            "subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"orgSlug\": \"<string>\",\n    \"selectedEventTypes\": [\n      \"tetrascience.agents.filelog.fileArchiveCompleted.v1\"\n    ],\n    \"userDefinedName\": \"9|hFdx/ekbFe+c0\",\n    \"targetEndpoint\": \"arn:aws:events:d,}5LBoVDL}:6:$'+\",\n    \"targetType\": \"BUS\",\n    \"enabled\": \"<boolean>\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"orgSlug\": \"<string>\",\n    \"selectedEventTypes\": [\n      \"tetrascience.agents.filelog.fileArchiveCompleted.v1\"\n    ],\n    \"userDefinedName\": \"JaG5zv*Lsk\",\n    \"targetEndpoint\": \"arn:aws:events:a%HFk~A!m:@:RNPpVC2GFm\",\n    \"targetType\": \"BUS\",\n    \"enabled\": \"<boolean>\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\"\n  }\n]",
+                      "createdAt": "2026-07-28T03:12:58.000Z",
+                      "updatedAt": "2026-07-28T03:12:58.000Z",
+                      "uid": "35240-73eaa46e-a040-40e5-9556-380da0a55505"
+                    },
+                    {
+                      "id": "64d4550f-468f-4c59-a982-a51ede84e7ef",
+                      "name": "Incorrect input provided",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/externalevents/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "externalevents",
+                            "subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T03:12:58.000Z",
+                      "updatedAt": "2026-07-28T03:12:58.000Z",
+                      "uid": "35240-64d4550f-468f-4c59-a982-a51ede84e7ef"
+                    },
+                    {
+                      "id": "1cfe8061-f940-471a-83ae-779d500f6b37",
+                      "name": "Not found or not visible to user",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/externalevents/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "externalevents",
+                            "subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T03:12:58.000Z",
+                      "updatedAt": "2026-07-28T03:12:58.000Z",
+                      "uid": "35240-1cfe8061-f940-471a-83ae-779d500f6b37"
+                    },
+                    {
+                      "id": "0482c348-b674-4d1b-92ec-dcbbe4dcd6c2",
+                      "name": "Internal error managing rules on eventbridge",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/externalevents/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "externalevents",
+                            "subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T03:12:58.000Z",
+                      "updatedAt": "2026-07-28T03:12:58.000Z",
+                      "uid": "35240-0482c348-b674-4d1b-92ec-dcbbe4dcd6c2"
+                    },
+                    {
+                      "id": "2591dbc1-acb9-41f6-9357-f625352b7b9e",
+                      "name": "Could not retrieve information from AWS",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/externalevents/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "externalevents",
+                            "subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T03:12:58.000Z",
+                      "updatedAt": "2026-07-28T03:12:58.000Z",
+                      "uid": "35240-2591dbc1-acb9-41f6-9357-f625352b7b9e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:12:58.000Z",
+                  "updatedAt": "2026-07-28T03:12:58.000Z",
+                  "uid": "35240-fa835d3e-0e10-45c0-b553-9ee4161082a2"
+                }
+              ],
+              "id": "5e9a449c-9f97-40d2-b036-2a6b36f87eb9",
+              "createdAt": "2026-07-28T03:12:58.000Z",
+              "updatedAt": "2026-07-28T03:12:58.000Z",
+              "uid": "35240-5e9a449c-9f97-40d2-b036-2a6b36f87eb9"
+            }
+          ],
+          "id": "6aefb138-43d7-4895-98a4-2695b9a44fc8",
+          "createdAt": "2026-07-28T03:12:58.000Z",
+          "updatedAt": "2026-07-28T03:12:58.000Z",
+          "uid": "35240-6aefb138-43d7-4895-98a4-2695b9a44fc8"
+        }
+      ],
+      "id": "21a86fac-9570-4999-849a-ffa1bc68d4ac",
+      "createdAt": "2026-07-28T03:12:58.000Z",
+      "updatedAt": "2026-07-28T03:12:58.000Z",
+      "uid": "35240-21a86fac-9570-4999-849a-ffa1bc68d4ac"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

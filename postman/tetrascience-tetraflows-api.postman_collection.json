@@ -1,0 +1,1800 @@
+{
+  "info": {
+    "_postman_id": "b97243f6-d5ad-4b47-895f-c30664726b38",
+    "name": "TetraScience Data and AI Cloud Access Groups tetraflows API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:12:53.000Z",
+    "updatedAt": "2026-07-28T03:12:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b97243f6-d5ad-4b47-895f-c30664726b38"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "artifacts",
+          "item": [
+            {
+              "name": "tetraflows",
+              "item": [
+                {
+                  "name": "{namespace}",
+                  "item": [
+                    {
+                      "name": "{slug}",
+                      "item": [
+                        {
+                          "name": "{version}",
+                          "item": [
+                            {
+                              "name": "files",
+                              "item": [
+                                {
+                                  "name": "{fileSlug}",
+                                  "item": [
+                                    {
+                                      "name": "Get contents for a tetraflow file",
+                                      "id": "d7b24aa2-5878-4094-89fb-d3af89ec3391",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "tetraflows",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files",
+                                            ":fileSlug"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "If set to true, return a download url",
+                                              "key": "download",
+                                              "value": "<boolean>"
+                                            },
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "b20960a6-cbf7-42d1-9a4b-7054ab1f1744",
+                                              "key": "namespace",
+                                              "value": "common\\p",
+                                              "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                            },
+                                            {
+                                              "id": "5d20b903-2adf-428e-9b1a-3a55d07e151b",
+                                              "key": "slug",
+                                              "value": "<string>",
+                                              "description": "(Required) Artifact slug"
+                                            },
+                                            {
+                                              "id": "52f9dd74-c533-4096-b522-7b9fc96e4634",
+                                              "key": "version",
+                                              "value": "vx.x.x",
+                                              "description": "(Required) Artifact version"
+                                            },
+                                            {
+                                              "id": "36c24fd6-a4b4-42d8-8777-44fe314bf0dc",
+                                              "key": "fileSlug",
+                                              "value": "tetraflowYml",
+                                              "description": "(Required) File slug corresponding to file within a tetraflow"
+                                            }
+                                          ]
+                                        },
+                                        "description": "Returns the file contents for a tetraflow file given a namespace, slug, version, and file slug"
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "79486650-2fca-442f-ba0e-329f0ab7766a",
+                                          "name": "Successfully fetched file",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "ts-auth-token",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v1",
+                                                "artifacts",
+                                                "tetraflows",
+                                                ":namespace",
+                                                ":slug",
+                                                ":version",
+                                                "files",
+                                                ":fileSlug"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "If set to true, return a download url",
+                                                  "key": "download",
+                                                  "value": "<boolean>"
+                                                },
+                                                {
+                                                  "description": "Include prerelease artifacts in search",
+                                                  "key": "include_prereleases",
+                                                  "value": "<boolean>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "namespace"
+                                                },
+                                                {
+                                                  "key": "slug"
+                                                },
+                                                {
+                                                  "key": "version"
+                                                },
+                                                {
+                                                  "key": "fileSlug"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"url\": \"<string>\"\n}",
+                                          "createdAt": "2026-07-28T03:12:54.000Z",
+                                          "updatedAt": "2026-07-28T03:12:54.000Z",
+                                          "uid": "35240-79486650-2fca-442f-ba0e-329f0ab7766a"
+                                        },
+                                        {
+                                          "id": "7484381b-ee63-48c7-8be6-8cd43df9943f",
+                                          "name": "Incorrect input provided",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "ts-auth-token",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v1",
+                                                "artifacts",
+                                                "tetraflows",
+                                                ":namespace",
+                                                ":slug",
+                                                ":version",
+                                                "files",
+                                                ":fileSlug"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "If set to true, return a download url",
+                                                  "key": "download",
+                                                  "value": "<boolean>"
+                                                },
+                                                {
+                                                  "description": "Include prerelease artifacts in search",
+                                                  "key": "include_prereleases",
+                                                  "value": "<boolean>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "namespace"
+                                                },
+                                                {
+                                                  "key": "slug"
+                                                },
+                                                {
+                                                  "key": "version"
+                                                },
+                                                {
+                                                  "key": "fileSlug"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Bad Request",
+                                          "code": 400,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{}",
+                                          "createdAt": "2026-07-28T03:12:54.000Z",
+                                          "updatedAt": "2026-07-28T03:12:54.000Z",
+                                          "uid": "35240-7484381b-ee63-48c7-8be6-8cd43df9943f"
+                                        },
+                                        {
+                                          "id": "899269f5-47cd-49d8-889d-6f86c265fa10",
+                                          "name": "Not found or not visible to user",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "ts-auth-token",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v1",
+                                                "artifacts",
+                                                "tetraflows",
+                                                ":namespace",
+                                                ":slug",
+                                                ":version",
+                                                "files",
+                                                ":fileSlug"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "If set to true, return a download url",
+                                                  "key": "download",
+                                                  "value": "<boolean>"
+                                                },
+                                                {
+                                                  "description": "Include prerelease artifacts in search",
+                                                  "key": "include_prereleases",
+                                                  "value": "<boolean>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "namespace"
+                                                },
+                                                {
+                                                  "key": "slug"
+                                                },
+                                                {
+                                                  "key": "version"
+                                                },
+                                                {
+                                                  "key": "fileSlug"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Not Found",
+                                          "code": 404,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{}",
+                                          "createdAt": "2026-07-28T03:12:54.000Z",
+                                          "updatedAt": "2026-07-28T03:12:54.000Z",
+                                          "uid": "35240-899269f5-47cd-49d8-889d-6f86c265fa10"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T03:12:54.000Z",
+                                      "updatedAt": "2026-07-28T03:12:54.000Z",
+                                      "uid": "35240-d7b24aa2-5878-4094-89fb-d3af89ec3391"
+                                    }
+                                  ],
+                                  "id": "56c0dc79-b020-4d97-af6d-8d1dd71263e1",
+                                  "createdAt": "2026-07-28T03:12:54.000Z",
+                                  "updatedAt": "2026-07-28T03:12:54.000Z",
+                                  "uid": "35240-56c0dc79-b020-4d97-af6d-8d1dd71263e1"
+                                },
+                                {
+                                  "name": "Get available file slugs for tetraflow",
+                                  "id": "d4e49bec-3a1d-480f-8693-82f572cec958",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "tetraflows",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version",
+                                        "files"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "f1abab72-3f0c-4927-9bf3-fd486ffedfb0",
+                                          "key": "namespace",
+                                          "value": "common\\p",
+                                          "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                        },
+                                        {
+                                          "id": "9745efce-83b3-4726-b3e0-57b7d3a049ea",
+                                          "key": "slug",
+                                          "value": "<string>",
+                                          "description": "(Required) Artifact slug"
+                                        },
+                                        {
+                                          "id": "6d98b297-7498-4406-9668-deabf7d12595",
+                                          "key": "version",
+                                          "value": "vx.x.x",
+                                          "description": "(Required) Artifact version"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns which file slugs are available to retrieve for this tetraflow"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "4216da27-2b9d-493a-89a1-6268a70be16c",
+                                      "name": "Successfully fetched available Tetraflow file slugs",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "tetraflows",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "[\n  \"readme\",\n  \"readme\"\n]",
+                                      "createdAt": "2026-07-28T03:12:54.000Z",
+                                      "updatedAt": "2026-07-28T03:12:54.000Z",
+                                      "uid": "35240-4216da27-2b9d-493a-89a1-6268a70be16c"
+                                    },
+                                    {
+                                      "id": "3639c35f-92b5-4c9f-a131-e359786c4855",
+                                      "name": "Incorrect input provided",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "tetraflows",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:12:54.000Z",
+                                      "updatedAt": "2026-07-28T03:12:54.000Z",
+                                      "uid": "35240-3639c35f-92b5-4c9f-a131-e359786c4855"
+                                    },
+                                    {
+                                      "id": "f33d0b17-9461-4e07-be00-33e509cd6dc2",
+                                      "name": "Not found or not visible to user",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "tetraflows",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:12:54.000Z",
+                                      "updatedAt": "2026-07-28T03:12:54.000Z",
+                                      "uid": "35240-f33d0b17-9461-4e07-be00-33e509cd6dc2"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:12:54.000Z",
+                                  "updatedAt": "2026-07-28T03:12:54.000Z",
+                                  "uid": "35240-d4e49bec-3a1d-480f-8693-82f572cec958"
+                                }
+                              ],
+                              "id": "c20e49d7-1191-4ed5-b1e5-2c4535745ffe",
+                              "createdAt": "2026-07-28T03:12:54.000Z",
+                              "updatedAt": "2026-07-28T03:12:54.000Z",
+                              "uid": "35240-c20e49d7-1191-4ed5-b1e5-2c4535745ffe"
+                            },
+                            {
+                              "name": "labels",
+                              "item": [
+                                {
+                                  "name": "Get labels for a tetraflow",
+                                  "id": "9a381241-e012-4fda-9db1-8cdebe290f44",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug/:version/labels?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "tetraflows",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version",
+                                        "labels"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "3d275060-faf3-4737-a1df-8cf80e4bfad3",
+                                          "key": "namespace",
+                                          "value": "common\\p",
+                                          "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                        },
+                                        {
+                                          "id": "284a34a6-39f3-4147-8577-87f2ddf8285a",
+                                          "key": "slug",
+                                          "value": "<string>",
+                                          "description": "(Required) Artifact slug"
+                                        },
+                                        {
+                                          "id": "b637a9de-f9ec-49e2-b118-bcc630aed0a0",
+                                          "key": "version",
+                                          "value": "vx.x.x",
+                                          "description": "(Required) Artifact version"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns a list of the labels associated with a tetraflow artifact"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "474c3671-f363-493a-bf9c-36cbc305502b",
+                                      "name": "Successfully fetched Labels",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug/:version/labels?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "tetraflows",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "labels"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "[\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  }\n]",
+                                      "createdAt": "2026-07-28T03:12:54.000Z",
+                                      "updatedAt": "2026-07-28T03:12:54.000Z",
+                                      "uid": "35240-474c3671-f363-493a-bf9c-36cbc305502b"
+                                    },
+                                    {
+                                      "id": "94e4c583-2dd2-4e83-b360-eca32a894c41",
+                                      "name": "Not found or not visible to user",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug/:version/labels?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "tetraflows",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "labels"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:12:54.000Z",
+                                      "updatedAt": "2026-07-28T03:12:54.000Z",
+                                      "uid": "35240-94e4c583-2dd2-4e83-b360-eca32a894c41"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:12:54.000Z",
+                                  "updatedAt": "2026-07-28T03:12:54.000Z",
+                                  "uid": "35240-9a381241-e012-4fda-9db1-8cdebe290f44"
+                                }
+                              ],
+                              "id": "6cbe1913-a131-4e50-8288-68c5d94cd36b",
+                              "createdAt": "2026-07-28T03:12:54.000Z",
+                              "updatedAt": "2026-07-28T03:12:54.000Z",
+                              "uid": "35240-6cbe1913-a131-4e50-8288-68c5d94cd36b"
+                            },
+                            {
+                              "name": "Get a single tetraflow artifact",
+                              "id": "019f653c-142b-4a1a-a435-cd715209df4e",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug/:version?include_prereleases=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "artifacts",
+                                    "tetraflows",
+                                    ":namespace",
+                                    ":slug",
+                                    ":version"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Include prerelease artifacts in search",
+                                      "key": "include_prereleases",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "b17fa536-d471-4fcb-b81c-6bb970cef6d9",
+                                      "key": "namespace",
+                                      "value": "common\\p",
+                                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                    },
+                                    {
+                                      "id": "bff3700b-2f15-4616-8e1f-c304946a417e",
+                                      "key": "slug",
+                                      "value": "<string>",
+                                      "description": "(Required) Artifact slug"
+                                    },
+                                    {
+                                      "id": "faa66a74-e3d2-4b8b-a3f4-dcc2e7c97a2c",
+                                      "key": "version",
+                                      "value": "vx.x.x",
+                                      "description": "(Required) Artifact version"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns a single tetraflows artifact matching the namespace, slug, and version"
+                              },
+                              "response": [
+                                {
+                                  "id": "6a7bf587-38b0-49be-a4c2-f7bc4736938c",
+                                  "name": "Successfully fetched TetraflowObject",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "ts-auth-token",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug/:version?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "tetraflows",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "namespace"
+                                        },
+                                        {
+                                          "key": "slug"
+                                        },
+                                        {
+                                          "key": "version"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"createdAt\": \"<dateTime>\",\n  \"lastUpdatedAt\": \"<dateTime>\",\n  \"namespace\": \"private-8L8/I| Nf\",\n  \"slug\": \"<string>\",\n  \"type\": \"tetraflow\",\n  \"version\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"otherVersions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"supportedPlatformVersion\": {\n    \"minPlatformVersion\": \"<string>\",\n    \"maxPlatformVersion\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T03:12:54.000Z",
+                                  "updatedAt": "2026-07-28T03:12:54.000Z",
+                                  "uid": "35240-6a7bf587-38b0-49be-a4c2-f7bc4736938c"
+                                },
+                                {
+                                  "id": "d06790c8-d680-422d-a64d-985eb21e2078",
+                                  "name": "Not found or not visible to user",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "ts-auth-token",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug/:version?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "tetraflows",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "namespace"
+                                        },
+                                        {
+                                          "key": "slug"
+                                        },
+                                        {
+                                          "key": "version"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{}",
+                                  "createdAt": "2026-07-28T03:12:54.000Z",
+                                  "updatedAt": "2026-07-28T03:12:54.000Z",
+                                  "uid": "35240-d06790c8-d680-422d-a64d-985eb21e2078"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:12:54.000Z",
+                              "updatedAt": "2026-07-28T03:12:54.000Z",
+                              "uid": "35240-019f653c-142b-4a1a-a435-cd715209df4e"
+                            }
+                          ],
+                          "id": "4d2a5795-d000-4d19-be92-2405244c3fcc",
+                          "createdAt": "2026-07-28T03:12:54.000Z",
+                          "updatedAt": "2026-07-28T03:12:54.000Z",
+                          "uid": "35240-4d2a5795-d000-4d19-be92-2405244c3fcc"
+                        },
+                        {
+                          "name": "List all tetraflow for namespace/slug",
+                          "id": "83c39e67-fc2f-44b4-9bcf-f4d4e957ed36",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug?latest_only=<boolean>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "tetraflows",
+                                ":namespace",
+                                ":slug"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only return the latest version of each artifact",
+                                  "key": "latest_only",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "160450ba-224f-4156-a049-c568f01af896",
+                                  "key": "namespace",
+                                  "value": "common\\p",
+                                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                },
+                                {
+                                  "id": "0cbfd11e-48b3-4ba3-b6ff-89a2a9154579",
+                                  "key": "slug",
+                                  "value": "<string>",
+                                  "description": "(Required) Artifact slug"
+                                }
+                              ]
+                            },
+                            "description": "Returns a list of all tetraflow artifacts given a namespace and slug"
+                          },
+                          "response": [
+                            {
+                              "id": "bd4817b5-b7fd-46f7-8a89-d88bc5f7800c",
+                              "name": "Successfully fetched TetraflowObject list",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug?latest_only=<boolean>&include_prereleases=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "artifacts",
+                                    "tetraflows",
+                                    ":namespace",
+                                    ":slug"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Only return the latest version of each artifact",
+                                      "key": "latest_only",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "Include prerelease artifacts in search",
+                                      "key": "include_prereleases",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"commonK($j~[+c\",\n    \"slug\": \"<string>\",\n    \"type\": \"tetraflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"common fr}B\",\n    \"slug\": \"<string>\",\n    \"type\": \"tetraflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                              "createdAt": "2026-07-28T03:12:54.000Z",
+                              "updatedAt": "2026-07-28T03:12:54.000Z",
+                              "uid": "35240-bd4817b5-b7fd-46f7-8a89-d88bc5f7800c"
+                            },
+                            {
+                              "id": "d5adf7ef-1c07-4499-9e66-ca2b3e7fd99a",
+                              "name": "Not found or not visible to user",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace/:slug?latest_only=<boolean>&include_prereleases=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "artifacts",
+                                    "tetraflows",
+                                    ":namespace",
+                                    ":slug"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Only return the latest version of each artifact",
+                                      "key": "latest_only",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "Include prerelease artifacts in search",
+                                      "key": "include_prereleases",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T03:12:54.000Z",
+                              "updatedAt": "2026-07-28T03:12:54.000Z",
+                              "uid": "35240-d5adf7ef-1c07-4499-9e66-ca2b3e7fd99a"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:12:54.000Z",
+                          "updatedAt": "2026-07-28T03:12:54.000Z",
+                          "uid": "35240-83c39e67-fc2f-44b4-9bcf-f4d4e957ed36"
+                        }
+                      ],
+                      "id": "64e9415d-504d-43bb-a315-ca8d5089bb2d",
+                      "createdAt": "2026-07-28T03:12:54.000Z",
+                      "updatedAt": "2026-07-28T03:12:54.000Z",
+                      "uid": "35240-64e9415d-504d-43bb-a315-ca8d5089bb2d"
+                    },
+                    {
+                      "name": "List all tetraflow for namespace",
+                      "id": "00e4f091-7b9b-484a-80ae-488663da17eb",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace?latest_only=<boolean>&include_prereleases=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "artifacts",
+                            "tetraflows",
+                            ":namespace"
+                          ],
+                          "query": [
+                            {
+                              "description": "Only return the latest version of each artifact",
+                              "key": "latest_only",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Include prerelease artifacts in search",
+                              "key": "include_prereleases",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "a06bd195-e086-4539-8e6e-940ab9fac7fb",
+                              "key": "namespace",
+                              "value": "common\\p",
+                              "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                            }
+                          ]
+                        },
+                        "description": "Returns a list of all tetraflow artifacts given a namespace"
+                      },
+                      "response": [
+                        {
+                          "id": "1c5a7e40-97fb-4251-91f4-07c399d97aa2",
+                          "name": "Successfully fetched TetraflowObject list",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace?latest_only=<boolean>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "tetraflows",
+                                ":namespace"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only return the latest version of each artifact",
+                                  "key": "latest_only",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"commonK($j~[+c\",\n    \"slug\": \"<string>\",\n    \"type\": \"tetraflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"common fr}B\",\n    \"slug\": \"<string>\",\n    \"type\": \"tetraflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                          "createdAt": "2026-07-28T03:12:54.000Z",
+                          "updatedAt": "2026-07-28T03:12:54.000Z",
+                          "uid": "35240-1c5a7e40-97fb-4251-91f4-07c399d97aa2"
+                        },
+                        {
+                          "id": "002714b1-2dcc-4663-ab9f-35c16057c740",
+                          "name": "Not found or not visible to user",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/tetraflows/:namespace?latest_only=<boolean>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "tetraflows",
+                                ":namespace"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only return the latest version of each artifact",
+                                  "key": "latest_only",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:12:54.000Z",
+                          "updatedAt": "2026-07-28T03:12:54.000Z",
+                          "uid": "35240-002714b1-2dcc-4663-ab9f-35c16057c740"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:54.000Z",
+                      "updatedAt": "2026-07-28T03:12:54.000Z",
+                      "uid": "35240-00e4f091-7b9b-484a-80ae-488663da17eb"
+                    }
+                  ],
+                  "id": "9922741c-ebbf-426a-aee0-46ba5ca991bf",
+                  "createdAt": "2026-07-28T03:12:54.000Z",
+                  "updatedAt": "2026-07-28T03:12:54.000Z",
+                  "uid": "35240-9922741c-ebbf-426a-aee0-46ba5ca991bf"
+                },
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Search for tetraflow artifacts",
+                      "id": "cbf7b4ce-8701-4d8f-acaf-ac7839178d8a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/artifacts/tetraflows/search?value=<string>&limit=<integer>&include_prereleases=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "artifacts",
+                            "tetraflows",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The search string",
+                              "key": "value",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of results to return",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Include prerelease artifacts in search",
+                              "key": "include_prereleases",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        },
+                        "description": "Search for items using specified criteria"
+                      },
+                      "response": [
+                        {
+                          "id": "fee9e174-7e0e-4326-9e3f-56d0a5fc8256",
+                          "name": "A list of items that match the search query",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/tetraflows/search?value=<string>&limit=<integer>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "tetraflows",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The search string",
+                                  "key": "value",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The maximum number of results to return",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"commonK($j~[+c\",\n    \"slug\": \"<string>\",\n    \"type\": \"tetraflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"common fr}B\",\n    \"slug\": \"<string>\",\n    \"type\": \"tetraflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                          "createdAt": "2026-07-28T03:12:54.000Z",
+                          "updatedAt": "2026-07-28T03:12:54.000Z",
+                          "uid": "35240-fee9e174-7e0e-4326-9e3f-56d0a5fc8256"
+                        },
+                        {
+                          "id": "586b5ffd-fa48-4aac-bdc2-6879762c16c5",
+                          "name": "Not found or not visible to user",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/tetraflows/search?value=<string>&limit=<integer>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "tetraflows",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The search string",
+                                  "key": "value",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The maximum number of results to return",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:12:54.000Z",
+                          "updatedAt": "2026-07-28T03:12:54.000Z",
+                          "uid": "35240-586b5ffd-fa48-4aac-bdc2-6879762c16c5"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:54.000Z",
+                      "updatedAt": "2026-07-28T03:12:54.000Z",
+                      "uid": "35240-cbf7b4ce-8701-4d8f-acaf-ac7839178d8a"
+                    }
+                  ],
+                  "id": "2b41b5e7-58bb-4452-9b78-9e968b9bfce0",
+                  "createdAt": "2026-07-28T03:12:54.000Z",
+                  "updatedAt": "2026-07-28T03:12:54.000Z",
+                  "uid": "35240-2b41b5e7-58bb-4452-9b78-9e968b9bfce0"
+                },
+                {
+                  "name": "List all tetraflow artifacts",
+                  "id": "dedc17f3-b55e-4df8-ab84-f18b17a38c27",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/artifacts/tetraflows?namespace_type=common&latest_only=<boolean>&include_prereleases=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "artifacts",
+                        "tetraflows"
+                      ],
+                      "query": [
+                        {
+                          "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')",
+                          "key": "namespace_type",
+                          "value": "common"
+                        },
+                        {
+                          "description": "Only return the latest version of each artifact",
+                          "key": "latest_only",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Include prerelease artifacts in search",
+                          "key": "include_prereleases",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of all tetraflow artifacts, optionally filtered by namespace type"
+                  },
+                  "response": [
+                    {
+                      "id": "7a2c493b-3334-4efc-8a26-bca78d979e6e",
+                      "name": "Successfully fetched TetraflowObject list",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/artifacts/tetraflows?namespace_type=common&latest_only=<boolean>&include_prereleases=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "artifacts",
+                            "tetraflows"
+                          ],
+                          "query": [
+                            {
+                              "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')",
+                              "key": "namespace_type",
+                              "value": "common"
+                            },
+                            {
+                              "description": "Only return the latest version of each artifact",
+                              "key": "latest_only",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Include prerelease artifacts in search",
+                              "key": "include_prereleases",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"commonK($j~[+c\",\n    \"slug\": \"<string>\",\n    \"type\": \"tetraflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"common fr}B\",\n    \"slug\": \"<string>\",\n    \"type\": \"tetraflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                      "createdAt": "2026-07-28T03:12:54.000Z",
+                      "updatedAt": "2026-07-28T03:12:54.000Z",
+                      "uid": "35240-7a2c493b-3334-4efc-8a26-bca78d979e6e"
+                    },
+                    {
+                      "id": "39c59545-e66c-4e53-a5d5-bf9c59f09489",
+                      "name": "Not found or not visible to user",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/artifacts/tetraflows?namespace_type=common&latest_only=<boolean>&include_prereleases=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "artifacts",
+                            "tetraflows"
+                          ],
+                          "query": [
+                            {
+                              "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')",
+                              "key": "namespace_type",
+                              "value": "common"
+                            },
+                            {
+                              "description": "Only return the latest version of each artifact",
+                              "key": "latest_only",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Include prerelease artifacts in search",
+                              "key": "include_prereleases",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T03:12:54.000Z",
+                      "updatedAt": "2026-07-28T03:12:54.000Z",
+                      "uid": "35240-39c59545-e66c-4e53-a5d5-bf9c59f09489"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:12:54.000Z",
+                  "updatedAt": "2026-07-28T03:12:54.000Z",
+                  "uid": "35240-dedc17f3-b55e-4df8-ab84-f18b17a38c27"
+                }
+              ],
+              "id": "20abb582-fbc4-4676-8c7c-6eac80c67936",
+              "createdAt": "2026-07-28T03:12:54.000Z",
+              "updatedAt": "2026-07-28T03:12:54.000Z",
+              "uid": "35240-20abb582-fbc4-4676-8c7c-6eac80c67936"
+            }
+          ],
+          "id": "75cf4f37-9ab8-49d4-b4b0-39c74ba54a38",
+          "createdAt": "2026-07-28T03:12:54.000Z",
+          "updatedAt": "2026-07-28T03:12:54.000Z",
+          "uid": "35240-75cf4f37-9ab8-49d4-b4b0-39c74ba54a38"
+        }
+      ],
+      "id": "71ba2899-b561-4c84-a0d9-b624753b6ead",
+      "createdAt": "2026-07-28T03:12:54.000Z",
+      "updatedAt": "2026-07-28T03:12:54.000Z",
+      "uid": "35240-71ba2899-b561-4c84-a0d9-b624753b6ead"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

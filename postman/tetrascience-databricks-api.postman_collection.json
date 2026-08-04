@@ -1,0 +1,476 @@
+{
+  "info": {
+    "_postman_id": "125dd84d-ed6f-4f75-97bf-be8eb32f0dc3",
+    "name": "TetraScience Data and AI Cloud Access Groups databricks API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:10:54.000Z",
+    "updatedAt": "2026-07-28T03:10:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-125dd84d-ed6f-4f75-97bf-be8eb32f0dc3"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "pipeline",
+          "item": [
+            {
+              "name": "clusterPolicies",
+              "item": [
+                {
+                  "name": "databricks",
+                  "item": [
+                    {
+                      "name": "List Databricks Cluster Policies",
+                      "id": "92dcff9e-75c0-4a1c-9e0c-2bbfedb49977",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/pipeline/clusterPolicies/databricks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "pipeline",
+                            "clusterPolicies",
+                            "databricks"
+                          ]
+                        },
+                        "description": "Returns a list of platform-level Databricks cluster policies filtered by prefix 'ts-platform-policy-*'"
+                      },
+                      "response": [
+                        {
+                          "id": "b93542f1-42cf-4053-bfef-cf6fbdaf08e8",
+                          "name": "Success",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pipeline/clusterPolicies/databricks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pipeline",
+                                "clusterPolicies",
+                                "databricks"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"policyId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  {\n    \"policyId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:10:55.000Z",
+                          "updatedAt": "2026-07-28T03:10:55.000Z",
+                          "uid": "35240-b93542f1-42cf-4053-bfef-cf6fbdaf08e8"
+                        },
+                        {
+                          "id": "41d2a3ca-8099-478c-a370-fbf091ad5b2e",
+                          "name": "Incorrect input provided",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pipeline/clusterPolicies/databricks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pipeline",
+                                "clusterPolicies",
+                                "databricks"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:10:55.000Z",
+                          "updatedAt": "2026-07-28T03:10:55.000Z",
+                          "uid": "35240-41d2a3ca-8099-478c-a370-fbf091ad5b2e"
+                        },
+                        {
+                          "id": "1c8ae8f2-c98a-4222-b0a7-52d8c17943c0",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pipeline/clusterPolicies/databricks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pipeline",
+                                "clusterPolicies",
+                                "databricks"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:10:55.000Z",
+                          "updatedAt": "2026-07-28T03:10:55.000Z",
+                          "uid": "35240-1c8ae8f2-c98a-4222-b0a7-52d8c17943c0"
+                        },
+                        {
+                          "id": "77b9d8d8-ba03-4040-a258-e71efb375e64",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pipeline/clusterPolicies/databricks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pipeline",
+                                "clusterPolicies",
+                                "databricks"
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:10:55.000Z",
+                          "updatedAt": "2026-07-28T03:10:55.000Z",
+                          "uid": "35240-77b9d8d8-ba03-4040-a258-e71efb375e64"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:10:55.000Z",
+                      "updatedAt": "2026-07-28T03:10:55.000Z",
+                      "uid": "35240-92dcff9e-75c0-4a1c-9e0c-2bbfedb49977"
+                    }
+                  ],
+                  "id": "efb5b248-4cfe-44bc-92d9-86b1ecbf7fee",
+                  "createdAt": "2026-07-28T03:10:55.000Z",
+                  "updatedAt": "2026-07-28T03:10:55.000Z",
+                  "uid": "35240-efb5b248-4cfe-44bc-92d9-86b1ecbf7fee"
+                }
+              ],
+              "id": "9d0f8563-2e0e-411b-aebb-d7d3a22fe2b6",
+              "createdAt": "2026-07-28T03:10:55.000Z",
+              "updatedAt": "2026-07-28T03:10:55.000Z",
+              "uid": "35240-9d0f8563-2e0e-411b-aebb-d7d3a22fe2b6"
+            },
+            {
+              "name": "clusters",
+              "item": [
+                {
+                  "name": "databricks",
+                  "item": [
+                    {
+                      "name": "List Databricks Clusters",
+                      "id": "0c7dfd4a-66d3-44e6-b7cc-3c896e946c60",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/pipeline/clusters/databricks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "pipeline",
+                            "clusters",
+                            "databricks"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "ae22cce4-3ae1-44cb-9924-299aa2a9c05b",
+                          "name": "Success",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pipeline/clusters/databricks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pipeline",
+                                "clusters",
+                                "databricks"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:10:55.000Z",
+                          "updatedAt": "2026-07-28T03:10:55.000Z",
+                          "uid": "35240-ae22cce4-3ae1-44cb-9924-299aa2a9c05b"
+                        },
+                        {
+                          "id": "ee058122-577b-4213-a1f9-f09b23ee423a",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pipeline/clusters/databricks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pipeline",
+                                "clusters",
+                                "databricks"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:10:55.000Z",
+                          "updatedAt": "2026-07-28T03:10:55.000Z",
+                          "uid": "35240-ee058122-577b-4213-a1f9-f09b23ee423a"
+                        },
+                        {
+                          "id": "318ac3b4-d0d8-45d0-9275-1a636b6304eb",
+                          "name": "Not found or not visible to user",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/pipeline/clusters/databricks",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "pipeline",
+                                "clusters",
+                                "databricks"
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:10:55.000Z",
+                          "updatedAt": "2026-07-28T03:10:55.000Z",
+                          "uid": "35240-318ac3b4-d0d8-45d0-9275-1a636b6304eb"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:10:55.000Z",
+                      "updatedAt": "2026-07-28T03:10:55.000Z",
+                      "uid": "35240-0c7dfd4a-66d3-44e6-b7cc-3c896e946c60"
+                    }
+                  ],
+                  "id": "547d06c4-18f3-4eec-a7d0-c71d07a0a09c",
+                  "createdAt": "2026-07-28T03:10:55.000Z",
+                  "updatedAt": "2026-07-28T03:10:55.000Z",
+                  "uid": "35240-547d06c4-18f3-4eec-a7d0-c71d07a0a09c"
+                }
+              ],
+              "id": "7ee311e7-0f8e-4eba-951f-6cd6a22da197",
+              "createdAt": "2026-07-28T03:10:55.000Z",
+              "updatedAt": "2026-07-28T03:10:55.000Z",
+              "uid": "35240-7ee311e7-0f8e-4eba-951f-6cd6a22da197"
+            }
+          ],
+          "id": "2afebdd6-a819-4547-8282-f88b046f6cb0",
+          "createdAt": "2026-07-28T03:10:55.000Z",
+          "updatedAt": "2026-07-28T03:10:55.000Z",
+          "uid": "35240-2afebdd6-a819-4547-8282-f88b046f6cb0"
+        }
+      ],
+      "id": "4add9f00-8c25-488c-ae1b-1ac33110b440",
+      "createdAt": "2026-07-28T03:10:55.000Z",
+      "updatedAt": "2026-07-28T03:10:55.000Z",
+      "uid": "35240-4add9f00-8c25-488c-ae1b-1ac33110b440"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

@@ -1,0 +1,2496 @@
+{
+  "info": {
+    "_postman_id": "dce6ef23-2548-464c-8ec5-3dde5e6168d8",
+    "name": "TetraScience Data and AI Cloud Access Groups Protocols API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:12:35.000Z",
+    "updatedAt": "2026-07-28T03:12:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-dce6ef23-2548-464c-8ec5-3dde5e6168d8"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "artifacts",
+          "item": [
+            {
+              "name": "ids",
+              "item": [
+                {
+                  "name": "{namespace}",
+                  "item": [
+                    {
+                      "name": "{slug}",
+                      "item": [
+                        {
+                          "name": "{version}",
+                          "item": [
+                            {
+                              "name": "files",
+                              "item": [
+                                {
+                                  "name": "Get available file slugs for IDS",
+                                  "id": "e7dd730e-3d60-4b72-95c3-6c3a369cfbc9",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/ids/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "ids",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version",
+                                        "files"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "068d00ff-0c0e-4dcc-93d2-fc3f8d505973",
+                                          "key": "namespace",
+                                          "value": "common\\",
+                                          "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                        },
+                                        {
+                                          "id": "b12c7877-f598-4c3f-85b6-e4e1b3136aa1",
+                                          "key": "slug",
+                                          "value": "<string>",
+                                          "description": "(Required) Artifact slug"
+                                        },
+                                        {
+                                          "id": "413231f7-3344-48b3-af7d-742a9aea7985",
+                                          "key": "version",
+                                          "value": "v50.x.x",
+                                          "description": "(Required) Artifact version"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns which file slugs are available to retrieve for this IDS"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "d5f9ae01-7c37-4852-8a0e-e8d4ce499129",
+                                      "name": "Successfully fetched available IDS file slugs",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/ids/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "ids",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "[\n  \"source\",\n  \"expected\"\n]",
+                                      "createdAt": "2026-07-28T03:12:35.000Z",
+                                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                                      "uid": "35240-d5f9ae01-7c37-4852-8a0e-e8d4ce499129"
+                                    },
+                                    {
+                                      "id": "d4239d0d-2f89-405a-99b4-3e6b94501d51",
+                                      "name": "Incorrect input provided",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/ids/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "ids",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:12:35.000Z",
+                                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                                      "uid": "35240-d4239d0d-2f89-405a-99b4-3e6b94501d51"
+                                    },
+                                    {
+                                      "id": "1e111e84-8f16-4530-a0c8-a192f140e54d",
+                                      "name": "Not found or not visible to user",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/ids/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "ids",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:12:35.000Z",
+                                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                                      "uid": "35240-1e111e84-8f16-4530-a0c8-a192f140e54d"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:12:35.000Z",
+                                  "updatedAt": "2026-07-28T03:12:35.000Z",
+                                  "uid": "35240-e7dd730e-3d60-4b72-95c3-6c3a369cfbc9"
+                                }
+                              ],
+                              "id": "7aeb4562-e1fd-43e8-8b20-619532aa413d",
+                              "createdAt": "2026-07-28T03:12:35.000Z",
+                              "updatedAt": "2026-07-28T03:12:35.000Z",
+                              "uid": "35240-7aeb4562-e1fd-43e8-8b20-619532aa413d"
+                            }
+                          ],
+                          "id": "c96eb296-00ef-4f6a-88f8-58998788c2fb",
+                          "createdAt": "2026-07-28T03:12:35.000Z",
+                          "updatedAt": "2026-07-28T03:12:35.000Z",
+                          "uid": "35240-c96eb296-00ef-4f6a-88f8-58998788c2fb"
+                        }
+                      ],
+                      "id": "684d9a64-87cf-4f8a-be79-d229c5b9b092",
+                      "createdAt": "2026-07-28T03:12:35.000Z",
+                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                      "uid": "35240-684d9a64-87cf-4f8a-be79-d229c5b9b092"
+                    }
+                  ],
+                  "id": "0681fca6-433c-440a-844e-f7843c0ed13f",
+                  "createdAt": "2026-07-28T03:12:35.000Z",
+                  "updatedAt": "2026-07-28T03:12:35.000Z",
+                  "uid": "35240-0681fca6-433c-440a-844e-f7843c0ed13f"
+                }
+              ],
+              "id": "7f7b3e19-a4be-40b1-8f5d-525911d2a57d",
+              "createdAt": "2026-07-28T03:12:35.000Z",
+              "updatedAt": "2026-07-28T03:12:35.000Z",
+              "uid": "35240-7f7b3e19-a4be-40b1-8f5d-525911d2a57d"
+            },
+            {
+              "name": "protocols",
+              "item": [
+                {
+                  "name": "{namespace}",
+                  "item": [
+                    {
+                      "name": "{slug}",
+                      "item": [
+                        {
+                          "name": "{version}",
+                          "item": [
+                            {
+                              "name": "files",
+                              "item": [
+                                {
+                                  "name": "{fileSlug}",
+                                  "item": [
+                                    {
+                                      "name": "Get contents for a protocol file",
+                                      "id": "0238fd1b-16f9-4efc-84d4-18570050d436",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "protocols",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files",
+                                            ":fileSlug"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "If set to true, return a download url",
+                                              "key": "download",
+                                              "value": "<boolean>"
+                                            },
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "c6fefc92-ec5d-4b60-9ce7-b79c812d0ef4",
+                                              "key": "namespace",
+                                              "value": "common\\",
+                                              "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                            },
+                                            {
+                                              "id": "2a0ed5a7-472d-47a0-be88-a5e739e7b5eb",
+                                              "key": "slug",
+                                              "value": "<string>",
+                                              "description": "(Required) Artifact slug"
+                                            },
+                                            {
+                                              "id": "de9dbb3d-2986-46d6-8dd6-5f8bfaaa3ed0",
+                                              "key": "version",
+                                              "value": "v50.x.x",
+                                              "description": "(Required) Artifact version"
+                                            },
+                                            {
+                                              "id": "e28f6937-3fa3-4019-b118-5b91757745e4",
+                                              "key": "fileSlug",
+                                              "value": "readme",
+                                              "description": "(Required) File slug corresponding to file within a protocol"
+                                            }
+                                          ]
+                                        },
+                                        "description": "Returns the file contents for a protocol file given a namespace, slug, version, and file slug"
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "82282d8e-22d1-4c4d-ba96-ac0d7c31f2dc",
+                                          "name": "Successfully fetched file",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "ts-auth-token",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v1",
+                                                "artifacts",
+                                                "protocols",
+                                                ":namespace",
+                                                ":slug",
+                                                ":version",
+                                                "files",
+                                                ":fileSlug"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "If set to true, return a download url",
+                                                  "key": "download",
+                                                  "value": "<boolean>"
+                                                },
+                                                {
+                                                  "description": "Include prerelease artifacts in search",
+                                                  "key": "include_prereleases",
+                                                  "value": "<boolean>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "namespace"
+                                                },
+                                                {
+                                                  "key": "slug"
+                                                },
+                                                {
+                                                  "key": "version"
+                                                },
+                                                {
+                                                  "key": "fileSlug"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"url\": \"<string>\"\n}",
+                                          "createdAt": "2026-07-28T03:12:35.000Z",
+                                          "updatedAt": "2026-07-28T03:12:35.000Z",
+                                          "uid": "35240-82282d8e-22d1-4c4d-ba96-ac0d7c31f2dc"
+                                        },
+                                        {
+                                          "id": "aba3801a-8543-42cb-8185-23f796376f84",
+                                          "name": "Incorrect input provided",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "ts-auth-token",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v1",
+                                                "artifacts",
+                                                "protocols",
+                                                ":namespace",
+                                                ":slug",
+                                                ":version",
+                                                "files",
+                                                ":fileSlug"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "If set to true, return a download url",
+                                                  "key": "download",
+                                                  "value": "<boolean>"
+                                                },
+                                                {
+                                                  "description": "Include prerelease artifacts in search",
+                                                  "key": "include_prereleases",
+                                                  "value": "<boolean>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "namespace"
+                                                },
+                                                {
+                                                  "key": "slug"
+                                                },
+                                                {
+                                                  "key": "version"
+                                                },
+                                                {
+                                                  "key": "fileSlug"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Bad Request",
+                                          "code": 400,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{}",
+                                          "createdAt": "2026-07-28T03:12:35.000Z",
+                                          "updatedAt": "2026-07-28T03:12:35.000Z",
+                                          "uid": "35240-aba3801a-8543-42cb-8185-23f796376f84"
+                                        },
+                                        {
+                                          "id": "b9b00869-3077-4a78-8902-a1d1a58a63e5",
+                                          "name": "Not found or not visible to user",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "ts-auth-token",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v1",
+                                                "artifacts",
+                                                "protocols",
+                                                ":namespace",
+                                                ":slug",
+                                                ":version",
+                                                "files",
+                                                ":fileSlug"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "If set to true, return a download url",
+                                                  "key": "download",
+                                                  "value": "<boolean>"
+                                                },
+                                                {
+                                                  "description": "Include prerelease artifacts in search",
+                                                  "key": "include_prereleases",
+                                                  "value": "<boolean>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "namespace"
+                                                },
+                                                {
+                                                  "key": "slug"
+                                                },
+                                                {
+                                                  "key": "version"
+                                                },
+                                                {
+                                                  "key": "fileSlug"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Not Found",
+                                          "code": 404,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{}",
+                                          "createdAt": "2026-07-28T03:12:35.000Z",
+                                          "updatedAt": "2026-07-28T03:12:35.000Z",
+                                          "uid": "35240-b9b00869-3077-4a78-8902-a1d1a58a63e5"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T03:12:35.000Z",
+                                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                                      "uid": "35240-0238fd1b-16f9-4efc-84d4-18570050d436"
+                                    }
+                                  ],
+                                  "id": "f3a48ae1-cd26-475c-80c2-0cf67c2eaf53",
+                                  "createdAt": "2026-07-28T03:12:35.000Z",
+                                  "updatedAt": "2026-07-28T03:12:35.000Z",
+                                  "uid": "35240-f3a48ae1-cd26-475c-80c2-0cf67c2eaf53"
+                                },
+                                {
+                                  "name": "Get available file slugs for protocol",
+                                  "id": "477bf3fc-bdb2-4443-8b24-b0074c73b8cd",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "protocols",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version",
+                                        "files"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "f6ee4f12-1d01-416d-bbe7-bf1706fcac7e",
+                                          "key": "namespace",
+                                          "value": "common\\",
+                                          "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                        },
+                                        {
+                                          "id": "0cc3ef78-c142-4309-b9d4-9290c8ac1ca1",
+                                          "key": "slug",
+                                          "value": "<string>",
+                                          "description": "(Required) Artifact slug"
+                                        },
+                                        {
+                                          "id": "c2016d7e-5d77-47b2-af9b-25b9db7a2e98",
+                                          "key": "version",
+                                          "value": "v50.x.x",
+                                          "description": "(Required) Artifact version"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns which file slugs are available to retrieve for this protocol"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "5358db30-8b33-4d08-b0c8-c2e610d5601a",
+                                      "name": "Successfully fetched available Protocol file slugs",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "protocols",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "[\n  \"readme\",\n  \"script\"\n]",
+                                      "createdAt": "2026-07-28T03:12:35.000Z",
+                                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                                      "uid": "35240-5358db30-8b33-4d08-b0c8-c2e610d5601a"
+                                    },
+                                    {
+                                      "id": "9848217a-e6d3-415e-b8f9-31832a1216f3",
+                                      "name": "Incorrect input provided",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "protocols",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:12:35.000Z",
+                                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                                      "uid": "35240-9848217a-e6d3-415e-b8f9-31832a1216f3"
+                                    },
+                                    {
+                                      "id": "c12746a2-299e-4ae6-824a-e0f36a63d9c1",
+                                      "name": "Not found or not visible to user",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "protocols",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:12:35.000Z",
+                                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                                      "uid": "35240-c12746a2-299e-4ae6-824a-e0f36a63d9c1"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:12:35.000Z",
+                                  "updatedAt": "2026-07-28T03:12:35.000Z",
+                                  "uid": "35240-477bf3fc-bdb2-4443-8b24-b0074c73b8cd"
+                                }
+                              ],
+                              "id": "2783c5f8-8380-476f-bac4-d936a025aa63",
+                              "createdAt": "2026-07-28T03:12:35.000Z",
+                              "updatedAt": "2026-07-28T03:12:35.000Z",
+                              "uid": "35240-2783c5f8-8380-476f-bac4-d936a025aa63"
+                            },
+                            {
+                              "name": "labels",
+                              "item": [
+                                {
+                                  "name": "Get labels for a protocol",
+                                  "id": "0946afdb-cdce-4c67-9c9b-5eafe3c08477",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version/labels?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "protocols",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version",
+                                        "labels"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "85141fd9-c116-412f-b83a-4f9a7aba20ac",
+                                          "key": "namespace",
+                                          "value": "common\\",
+                                          "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                        },
+                                        {
+                                          "id": "1df819d0-75d3-4397-9999-4cd5fa81a3a2",
+                                          "key": "slug",
+                                          "value": "<string>",
+                                          "description": "(Required) Artifact slug"
+                                        },
+                                        {
+                                          "id": "f4f86302-583b-414f-bbc8-51b270b65ab0",
+                                          "key": "version",
+                                          "value": "v50.x.x",
+                                          "description": "(Required) Artifact version"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns a list of the labels associated with a protocol artifact"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "4f817145-5948-4b4a-a95b-0186f8c9e951",
+                                      "name": "Successfully fetched Labels",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version/labels?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "protocols",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "labels"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "[\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  }\n]",
+                                      "createdAt": "2026-07-28T03:12:35.000Z",
+                                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                                      "uid": "35240-4f817145-5948-4b4a-a95b-0186f8c9e951"
+                                    },
+                                    {
+                                      "id": "3472f175-29fb-46ae-8b96-497b7818ecbb",
+                                      "name": "Not found or not visible to user",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version/labels?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "protocols",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "labels"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:12:35.000Z",
+                                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                                      "uid": "35240-3472f175-29fb-46ae-8b96-497b7818ecbb"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:12:35.000Z",
+                                  "updatedAt": "2026-07-28T03:12:35.000Z",
+                                  "uid": "35240-0946afdb-cdce-4c67-9c9b-5eafe3c08477"
+                                }
+                              ],
+                              "id": "828f2dd8-259e-402b-806b-bd0deb8d6e1f",
+                              "createdAt": "2026-07-28T03:12:35.000Z",
+                              "updatedAt": "2026-07-28T03:12:35.000Z",
+                              "uid": "35240-828f2dd8-259e-402b-806b-bd0deb8d6e1f"
+                            },
+                            {
+                              "name": "relationships",
+                              "item": [
+                                {
+                                  "name": "Get related artifacts",
+                                  "id": "259a9e5b-90dc-46b2-8018-0cd10d239e8f",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version/relationships?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "protocols",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version",
+                                        "relationships"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "f97e61ff-72ea-43e4-b9d2-9e0b7b0c7559",
+                                          "key": "namespace",
+                                          "value": "common\\",
+                                          "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                        },
+                                        {
+                                          "id": "311f8ecc-6b69-4774-84e2-4ef8a0293c80",
+                                          "key": "slug",
+                                          "value": "<string>",
+                                          "description": "(Required) Artifact slug"
+                                        },
+                                        {
+                                          "id": "f8b77667-ab7d-440f-bb81-13ce0dd6ea80",
+                                          "key": "version",
+                                          "value": "v50.x.x",
+                                          "description": "(Required) Artifact version"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns a list of the relationships a protocol artifact has with other artifacts"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "14d256ac-a6fd-4fce-a3c1-b47dc6f73e5c",
+                                      "name": "Successfully fetched Relationships",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version/relationships?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "protocols",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "relationships"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"ids\": [\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"commonXch/U\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"common-2+sO}M *\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ],\n  \"taskScripts\": [\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"client-\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"client-}g4Ua0j\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ],\n  \"protocols\": [\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"private-zN>7\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"private-+Y\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ],\n  \"connectors\": [\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"commondsl2Z@%&+\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"private-0c']\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-07-28T03:12:35.000Z",
+                                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                                      "uid": "35240-14d256ac-a6fd-4fce-a3c1-b47dc6f73e5c"
+                                    },
+                                    {
+                                      "id": "755f5cb2-3cd6-4cef-a78d-8345b74c4b75",
+                                      "name": "Not found or not visible to user",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version/relationships?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "protocols",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "relationships"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:12:35.000Z",
+                                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                                      "uid": "35240-755f5cb2-3cd6-4cef-a78d-8345b74c4b75"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:12:35.000Z",
+                                  "updatedAt": "2026-07-28T03:12:35.000Z",
+                                  "uid": "35240-259a9e5b-90dc-46b2-8018-0cd10d239e8f"
+                                }
+                              ],
+                              "id": "0a3b9044-eae9-4575-b66c-fc589a6192b4",
+                              "createdAt": "2026-07-28T03:12:35.000Z",
+                              "updatedAt": "2026-07-28T03:12:35.000Z",
+                              "uid": "35240-0a3b9044-eae9-4575-b66c-fc589a6192b4"
+                            },
+                            {
+                              "name": "Get single protocol",
+                              "id": "1bbe590d-06fc-4338-a19e-b69873c18cbe",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version?include_prereleases=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "artifacts",
+                                    "protocols",
+                                    ":namespace",
+                                    ":slug",
+                                    ":version"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Include prerelease artifacts in search",
+                                      "key": "include_prereleases",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "b9e9c8d2-f97c-4676-b9a1-88c8997fed0f",
+                                      "key": "namespace",
+                                      "value": "common\\",
+                                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                    },
+                                    {
+                                      "id": "97f968cb-8b2b-448a-8035-3dcc535bbbe3",
+                                      "key": "slug",
+                                      "value": "<string>",
+                                      "description": "(Required) Artifact slug"
+                                    },
+                                    {
+                                      "id": "1ed63c0d-fc68-4fb5-97ab-829a8e4cc6b2",
+                                      "key": "version",
+                                      "value": "v50.x.x",
+                                      "description": "(Required) Artifact version"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns a single protocol artifact matching the namespace, slug, and version"
+                              },
+                              "response": [
+                                {
+                                  "id": "ae60fe43-ad98-40a4-bf79-baf1f5184926",
+                                  "name": "Successfully fetched ProtocolObject",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "ts-auth-token",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "protocols",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "namespace"
+                                        },
+                                        {
+                                          "key": "slug"
+                                        },
+                                        {
+                                          "key": "version"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"createdAt\": \"<dateTime>\",\n  \"lastUpdatedAt\": \"<dateTime>\",\n  \"namespace\": \"common:v\",\n  \"protocolSchema\": \"v3\",\n  \"slug\": \"<string>\",\n  \"triggerTypeFile\": \"<boolean>\",\n  \"triggerTypeScheduled\": \"<boolean>\",\n  \"type\": \"protocol\",\n  \"version\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"otherVersions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"supportedPlatformVersion\": {\n    \"minPlatformVersion\": \"<string>\",\n    \"maxPlatformVersion\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T03:12:35.000Z",
+                                  "updatedAt": "2026-07-28T03:12:35.000Z",
+                                  "uid": "35240-ae60fe43-ad98-40a4-bf79-baf1f5184926"
+                                },
+                                {
+                                  "id": "69a28e6c-e98f-40c3-9727-731777c2b2f5",
+                                  "name": "Not found or not visible to user",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "ts-auth-token",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug/:version?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "protocols",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "namespace"
+                                        },
+                                        {
+                                          "key": "slug"
+                                        },
+                                        {
+                                          "key": "version"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{}",
+                                  "createdAt": "2026-07-28T03:12:35.000Z",
+                                  "updatedAt": "2026-07-28T03:12:35.000Z",
+                                  "uid": "35240-69a28e6c-e98f-40c3-9727-731777c2b2f5"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:12:35.000Z",
+                              "updatedAt": "2026-07-28T03:12:35.000Z",
+                              "uid": "35240-1bbe590d-06fc-4338-a19e-b69873c18cbe"
+                            }
+                          ],
+                          "id": "4b406f52-fbfa-458b-ad23-5b1593684fab",
+                          "createdAt": "2026-07-28T03:12:35.000Z",
+                          "updatedAt": "2026-07-28T03:12:35.000Z",
+                          "uid": "35240-4b406f52-fbfa-458b-ad23-5b1593684fab"
+                        },
+                        {
+                          "name": "List all protocols for namespace/slug",
+                          "id": "2eac2d7b-25b6-42b3-b7ef-fa747f340778",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug?latest_only=<boolean>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "protocols",
+                                ":namespace",
+                                ":slug"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only return the latest version of each artifact",
+                                  "key": "latest_only",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "3989c761-096e-4432-8f63-abc9b2deccf3",
+                                  "key": "namespace",
+                                  "value": "common\\",
+                                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                },
+                                {
+                                  "id": "09d7d975-3dd8-434b-93b6-b17216b0ddb7",
+                                  "key": "slug",
+                                  "value": "<string>",
+                                  "description": "(Required) Artifact slug"
+                                }
+                              ]
+                            },
+                            "description": "Returns a list of all protocol artifacts given a namespace and slug"
+                          },
+                          "response": [
+                            {
+                              "id": "5bdc510b-9dcf-44dd-8e68-bddbacdf6fc1",
+                              "name": "Successfully fetched ProtocolObject list",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug?latest_only=<boolean>&include_prereleases=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "artifacts",
+                                    "protocols",
+                                    ":namespace",
+                                    ":slug"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Only return the latest version of each artifact",
+                                      "key": "latest_only",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "Include prerelease artifacts in search",
+                                      "key": "include_prereleases",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"common5`T\",\n    \"protocolSchema\": \"tfv1\",\n    \"slug\": \"<string>\",\n    \"triggerTypeFile\": \"<boolean>\",\n    \"triggerTypeScheduled\": \"<boolean>\",\n    \"type\": \"protocol\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"commonb>?8\",\n    \"protocolSchema\": \"v3\",\n    \"slug\": \"<string>\",\n    \"triggerTypeFile\": \"<boolean>\",\n    \"triggerTypeScheduled\": \"<boolean>\",\n    \"type\": \"protocol\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                              "createdAt": "2026-07-28T03:12:35.000Z",
+                              "updatedAt": "2026-07-28T03:12:35.000Z",
+                              "uid": "35240-5bdc510b-9dcf-44dd-8e68-bddbacdf6fc1"
+                            },
+                            {
+                              "id": "35f59f15-6757-4c5f-ac3a-31b1df82e811",
+                              "name": "Not found or not visible to user",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace/:slug?latest_only=<boolean>&include_prereleases=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "artifacts",
+                                    "protocols",
+                                    ":namespace",
+                                    ":slug"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Only return the latest version of each artifact",
+                                      "key": "latest_only",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "Include prerelease artifacts in search",
+                                      "key": "include_prereleases",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T03:12:35.000Z",
+                              "updatedAt": "2026-07-28T03:12:35.000Z",
+                              "uid": "35240-35f59f15-6757-4c5f-ac3a-31b1df82e811"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:12:35.000Z",
+                          "updatedAt": "2026-07-28T03:12:35.000Z",
+                          "uid": "35240-2eac2d7b-25b6-42b3-b7ef-fa747f340778"
+                        }
+                      ],
+                      "id": "4042b6b7-58c3-4b3e-b424-e5809531d86d",
+                      "createdAt": "2026-07-28T03:12:35.000Z",
+                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                      "uid": "35240-4042b6b7-58c3-4b3e-b424-e5809531d86d"
+                    },
+                    {
+                      "name": "List all protocols for namespace",
+                      "id": "d671eb67-cef9-4784-a127-3c63374b444a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace?latest_only=<boolean>&include_prereleases=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "artifacts",
+                            "protocols",
+                            ":namespace"
+                          ],
+                          "query": [
+                            {
+                              "description": "Only return the latest version of each artifact",
+                              "key": "latest_only",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Include prerelease artifacts in search",
+                              "key": "include_prereleases",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "40d324aa-1001-4515-90c7-4f200be0cbed",
+                              "key": "namespace",
+                              "value": "common\\",
+                              "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                            }
+                          ]
+                        },
+                        "description": "Returns a list of all protocol artifacts given a namespace"
+                      },
+                      "response": [
+                        {
+                          "id": "fbb136a2-f32c-459d-951e-37d1fce327b7",
+                          "name": "Successfully fetched ProtocolObject list",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace?latest_only=<boolean>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "protocols",
+                                ":namespace"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only return the latest version of each artifact",
+                                  "key": "latest_only",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"common5`T\",\n    \"protocolSchema\": \"tfv1\",\n    \"slug\": \"<string>\",\n    \"triggerTypeFile\": \"<boolean>\",\n    \"triggerTypeScheduled\": \"<boolean>\",\n    \"type\": \"protocol\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"commonb>?8\",\n    \"protocolSchema\": \"v3\",\n    \"slug\": \"<string>\",\n    \"triggerTypeFile\": \"<boolean>\",\n    \"triggerTypeScheduled\": \"<boolean>\",\n    \"type\": \"protocol\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                          "createdAt": "2026-07-28T03:12:35.000Z",
+                          "updatedAt": "2026-07-28T03:12:35.000Z",
+                          "uid": "35240-fbb136a2-f32c-459d-951e-37d1fce327b7"
+                        },
+                        {
+                          "id": "6dbe93bf-8617-49a2-9442-49b4f3ff14fb",
+                          "name": "Not found or not visible to user",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/protocols/:namespace?latest_only=<boolean>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "protocols",
+                                ":namespace"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only return the latest version of each artifact",
+                                  "key": "latest_only",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:12:35.000Z",
+                          "updatedAt": "2026-07-28T03:12:35.000Z",
+                          "uid": "35240-6dbe93bf-8617-49a2-9442-49b4f3ff14fb"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:35.000Z",
+                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                      "uid": "35240-d671eb67-cef9-4784-a127-3c63374b444a"
+                    }
+                  ],
+                  "id": "ac172ba9-a165-4a79-b046-d1746ece7f00",
+                  "createdAt": "2026-07-28T03:12:35.000Z",
+                  "updatedAt": "2026-07-28T03:12:35.000Z",
+                  "uid": "35240-ac172ba9-a165-4a79-b046-d1746ece7f00"
+                },
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Search for items",
+                      "id": "4161c110-5fc9-4fc3-a9be-3de2c06e402e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/artifacts/protocols/search?value=<string>&limit=<integer>&include_prereleases=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "artifacts",
+                            "protocols",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The search string",
+                              "key": "value",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of results to return",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Include prerelease artifacts in search",
+                              "key": "include_prereleases",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        },
+                        "description": "Search for items using specified criteria"
+                      },
+                      "response": [
+                        {
+                          "id": "f853c028-bf3d-4d81-950b-5aa22a3defbd",
+                          "name": "A list of items that match the search query",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/protocols/search?value=<string>&limit=<integer>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "protocols",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The search string",
+                                  "key": "value",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The maximum number of results to return",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"common5`T\",\n    \"protocolSchema\": \"tfv1\",\n    \"slug\": \"<string>\",\n    \"triggerTypeFile\": \"<boolean>\",\n    \"triggerTypeScheduled\": \"<boolean>\",\n    \"type\": \"protocol\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"commonb>?8\",\n    \"protocolSchema\": \"v3\",\n    \"slug\": \"<string>\",\n    \"triggerTypeFile\": \"<boolean>\",\n    \"triggerTypeScheduled\": \"<boolean>\",\n    \"type\": \"protocol\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                          "createdAt": "2026-07-28T03:12:35.000Z",
+                          "updatedAt": "2026-07-28T03:12:35.000Z",
+                          "uid": "35240-f853c028-bf3d-4d81-950b-5aa22a3defbd"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:35.000Z",
+                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                      "uid": "35240-4161c110-5fc9-4fc3-a9be-3de2c06e402e"
+                    }
+                  ],
+                  "id": "1a02c40c-91c2-4a6c-b286-c5d4f35dc66a",
+                  "createdAt": "2026-07-28T03:12:35.000Z",
+                  "updatedAt": "2026-07-28T03:12:35.000Z",
+                  "uid": "35240-1a02c40c-91c2-4a6c-b286-c5d4f35dc66a"
+                },
+                {
+                  "name": "List all protocols",
+                  "id": "d05bc976-c29c-4dfd-bb94-d859a8ec7d6c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/artifacts/protocols?namespace_type=common&latest_only=<boolean>&include_prereleases=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "artifacts",
+                        "protocols"
+                      ],
+                      "query": [
+                        {
+                          "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')",
+                          "key": "namespace_type",
+                          "value": "common"
+                        },
+                        {
+                          "description": "Only return the latest version of each artifact",
+                          "key": "latest_only",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Include prerelease artifacts in search",
+                          "key": "include_prereleases",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of all protocol artifacts, optionally filtered by namespace type"
+                  },
+                  "response": [
+                    {
+                      "id": "d7708db4-758e-429a-aae6-bf626a9d4bbb",
+                      "name": "Successfully fetched ProtocolObject list",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/artifacts/protocols?namespace_type=common&latest_only=<boolean>&include_prereleases=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "artifacts",
+                            "protocols"
+                          ],
+                          "query": [
+                            {
+                              "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')",
+                              "key": "namespace_type",
+                              "value": "common"
+                            },
+                            {
+                              "description": "Only return the latest version of each artifact",
+                              "key": "latest_only",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Include prerelease artifacts in search",
+                              "key": "include_prereleases",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"common5`T\",\n    \"protocolSchema\": \"tfv1\",\n    \"slug\": \"<string>\",\n    \"triggerTypeFile\": \"<boolean>\",\n    \"triggerTypeScheduled\": \"<boolean>\",\n    \"type\": \"protocol\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"commonb>?8\",\n    \"protocolSchema\": \"v3\",\n    \"slug\": \"<string>\",\n    \"triggerTypeFile\": \"<boolean>\",\n    \"triggerTypeScheduled\": \"<boolean>\",\n    \"type\": \"protocol\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                      "createdAt": "2026-07-28T03:12:35.000Z",
+                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                      "uid": "35240-d7708db4-758e-429a-aae6-bf626a9d4bbb"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:12:35.000Z",
+                  "updatedAt": "2026-07-28T03:12:35.000Z",
+                  "uid": "35240-d05bc976-c29c-4dfd-bb94-d859a8ec7d6c"
+                }
+              ],
+              "id": "2828abbf-e259-4050-9557-3fbc8cb838ec",
+              "createdAt": "2026-07-28T03:12:35.000Z",
+              "updatedAt": "2026-07-28T03:12:35.000Z",
+              "uid": "35240-2828abbf-e259-4050-9557-3fbc8cb838ec"
+            },
+            {
+              "name": "task-scripts",
+              "item": [
+                {
+                  "name": "{namespace}",
+                  "item": [
+                    {
+                      "name": "{slug}",
+                      "item": [
+                        {
+                          "name": "{version}",
+                          "item": [
+                            {
+                              "name": "files",
+                              "item": [
+                                {
+                                  "name": "Get available file slugs for task-script",
+                                  "id": "3ccb6325-3905-4bb4-a101-349e3e870760",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "task-scripts",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version",
+                                        "files"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "ab6288b9-d1c6-4cb9-8560-75c97a9585c2",
+                                          "key": "namespace",
+                                          "value": "common\\",
+                                          "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                        },
+                                        {
+                                          "id": "eb6df10d-5d49-4a36-8a66-bee5505ceb62",
+                                          "key": "slug",
+                                          "value": "<string>",
+                                          "description": "(Required) Artifact slug"
+                                        },
+                                        {
+                                          "id": "17ce0358-4db1-4b0d-92d7-87c2bb37af38",
+                                          "key": "version",
+                                          "value": "v50.x.x",
+                                          "description": "(Required) Artifact version"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns which file slugs are available to retrieve for this task-script"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "2f814de1-db78-4372-80e1-c15ff798cd5f",
+                                      "name": "Successfully fetched available Task Script file slugs",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "task-scripts",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "[\n  \"source\",\n  \"manifest\"\n]",
+                                      "createdAt": "2026-07-28T03:12:35.000Z",
+                                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                                      "uid": "35240-2f814de1-db78-4372-80e1-c15ff798cd5f"
+                                    },
+                                    {
+                                      "id": "3f9aa0a3-1819-4683-8b67-0a16d85f3d3b",
+                                      "name": "Incorrect input provided",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "task-scripts",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:12:35.000Z",
+                                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                                      "uid": "35240-3f9aa0a3-1819-4683-8b67-0a16d85f3d3b"
+                                    },
+                                    {
+                                      "id": "70cb46a4-d18d-4cf6-8653-e497c0174ef6",
+                                      "name": "Not found or not visible to user",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "task-scripts",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:12:35.000Z",
+                                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                                      "uid": "35240-70cb46a4-d18d-4cf6-8653-e497c0174ef6"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:12:35.000Z",
+                                  "updatedAt": "2026-07-28T03:12:35.000Z",
+                                  "uid": "35240-3ccb6325-3905-4bb4-a101-349e3e870760"
+                                }
+                              ],
+                              "id": "23795e06-1286-4cb2-974f-9b4388bf1074",
+                              "createdAt": "2026-07-28T03:12:35.000Z",
+                              "updatedAt": "2026-07-28T03:12:35.000Z",
+                              "uid": "35240-23795e06-1286-4cb2-974f-9b4388bf1074"
+                            }
+                          ],
+                          "id": "a661d896-996b-409d-89ba-406cc8c48392",
+                          "createdAt": "2026-07-28T03:12:35.000Z",
+                          "updatedAt": "2026-07-28T03:12:35.000Z",
+                          "uid": "35240-a661d896-996b-409d-89ba-406cc8c48392"
+                        }
+                      ],
+                      "id": "e46a90d1-759f-4b64-be25-a92d9eb393a8",
+                      "createdAt": "2026-07-28T03:12:35.000Z",
+                      "updatedAt": "2026-07-28T03:12:35.000Z",
+                      "uid": "35240-e46a90d1-759f-4b64-be25-a92d9eb393a8"
+                    }
+                  ],
+                  "id": "6b684636-fa5d-45f1-b891-2c23f7a11f55",
+                  "createdAt": "2026-07-28T03:12:35.000Z",
+                  "updatedAt": "2026-07-28T03:12:35.000Z",
+                  "uid": "35240-6b684636-fa5d-45f1-b891-2c23f7a11f55"
+                }
+              ],
+              "id": "f34224c5-da11-4379-8196-69000acd2ccf",
+              "createdAt": "2026-07-28T03:12:35.000Z",
+              "updatedAt": "2026-07-28T03:12:35.000Z",
+              "uid": "35240-f34224c5-da11-4379-8196-69000acd2ccf"
+            }
+          ],
+          "id": "3ac25a1b-ac14-4f46-a3c7-fb63698edbbf",
+          "createdAt": "2026-07-28T03:12:35.000Z",
+          "updatedAt": "2026-07-28T03:12:35.000Z",
+          "uid": "35240-3ac25a1b-ac14-4f46-a3c7-fb63698edbbf"
+        }
+      ],
+      "id": "f40a1f06-2f0f-4de5-a357-eac1034ea141",
+      "createdAt": "2026-07-28T03:12:35.000Z",
+      "updatedAt": "2026-07-28T03:12:35.000Z",
+      "uid": "35240-f40a1f06-2f0f-4de5-a357-eac1034ea141"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

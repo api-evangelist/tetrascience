@@ -1,0 +1,3503 @@
+{
+  "info": {
+    "_postman_id": "4cf23ffe-9984-46b8-af1f-a6234df7d88d",
+    "name": "TetraScience Data and AI Cloud Access Groups Users API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:12:55.000Z",
+    "updatedAt": "2026-07-28T03:12:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4cf23ffe-9984-46b8-af1f-a6234df7d88d"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "users",
+          "item": [
+            {
+              "name": "me",
+              "item": [
+                {
+                  "name": "organizations",
+                  "item": [
+                    {
+                      "name": "Set default organization",
+                      "id": "fec923ac-740e-49e3-a7bb-0b93be790fc2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/me/organizations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            "me",
+                            "organizations"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "06eac256-bcc6-4d5f-84c6-01b1f384fda6",
+                          "name": "Successfully updated default organization",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/me/organizations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                "me",
+                                "organizations"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"orgSlug\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"role\": {\n    \"example\": \"Administrator\"\n  },\n  \"roleId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"status\": \"active\",\n  \"userId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"orgName\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-06eac256-bcc6-4d5f-84c6-01b1f384fda6"
+                        },
+                        {
+                          "id": "35037804-356a-449b-8dc6-c05090d9e782",
+                          "name": "Invalid token",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/me/organizations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                "me",
+                                "organizations"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-35037804-356a-449b-8dc6-c05090d9e782"
+                        },
+                        {
+                          "id": "9f08556f-0b0e-4742-9a24-4ccf056875cc",
+                          "name": "Caller is not authorized to perform this action",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/me/organizations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                "me",
+                                "organizations"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-9f08556f-0b0e-4742-9a24-4ccf056875cc"
+                        },
+                        {
+                          "id": "fc77b137-e476-4983-9bfa-2513aafeba3c",
+                          "name": "User/Organization not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/me/organizations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                "me",
+                                "organizations"
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-fc77b137-e476-4983-9bfa-2513aafeba3c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-fec923ac-740e-49e3-a7bb-0b93be790fc2"
+                    }
+                  ],
+                  "id": "efa3c6e1-44c5-484b-ae52-698512aff88a",
+                  "createdAt": "2026-07-28T03:12:56.000Z",
+                  "updatedAt": "2026-07-28T03:12:56.000Z",
+                  "uid": "35240-efa3c6e1-44c5-484b-ae52-698512aff88a"
+                },
+                {
+                  "name": "password",
+                  "item": [
+                    {
+                      "name": "Update current user's password",
+                      "id": "6f6bebf8-081b-4b2b-8c62-e873dff073e7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"password\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/password not found in the OpenAPI spec\"\n  },\n  \"newPassword\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/password not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/me/password",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            "me",
+                            "password"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "d4ce6291-2053-4269-8ad8-73f7ff6eaded",
+                          "name": "Password updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"password\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/password not found in the OpenAPI spec\"\n  },\n  \"newPassword\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/password not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/me/password",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                "me",
+                                "password"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-d4ce6291-2053-4269-8ad8-73f7ff6eaded"
+                        },
+                        {
+                          "id": "78dd93f4-b111-45d6-950b-f8e7d971aeee",
+                          "name": "Invalid token",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"password\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/password not found in the OpenAPI spec\"\n  },\n  \"newPassword\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/password not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/me/password",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                "me",
+                                "password"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-78dd93f4-b111-45d6-950b-f8e7d971aeee"
+                        },
+                        {
+                          "id": "524c26b5-c976-4096-bf32-5f1e8eb5c23a",
+                          "name": "Caller is not authorized to perform this action",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"password\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/password not found in the OpenAPI spec\"\n  },\n  \"newPassword\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/password not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/me/password",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                "me",
+                                "password"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-524c26b5-c976-4096-bf32-5f1e8eb5c23a"
+                        },
+                        {
+                          "id": "97c3530b-9502-4a9c-a593-517fb167e2f5",
+                          "name": "User not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"password\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/password not found in the OpenAPI spec\"\n  },\n  \"newPassword\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/password not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/me/password",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                "me",
+                                "password"
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-97c3530b-9502-4a9c-a593-517fb167e2f5"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-6f6bebf8-081b-4b2b-8c62-e873dff073e7"
+                    }
+                  ],
+                  "id": "bc1b7048-6595-4f84-8fb6-b4382c030323",
+                  "createdAt": "2026-07-28T03:12:56.000Z",
+                  "updatedAt": "2026-07-28T03:12:56.000Z",
+                  "uid": "35240-bc1b7048-6595-4f84-8fb6-b4382c030323"
+                },
+                {
+                  "name": "Get current user details",
+                  "id": "f52e0ee2-95ca-4a0d-9537-7acf49a18448",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/users/me",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "users",
+                        "me"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "6a76c3f6-7d08-41ca-bf78-4f1d221a8909",
+                      "name": "Responding with user details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/me",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            "me"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference #/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/post/responses/201/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-6a76c3f6-7d08-41ca-bf78-4f1d221a8909"
+                    },
+                    {
+                      "id": "b9925ea7-83c9-4249-9dcd-52f729bb493c",
+                      "name": "Invalid token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/me",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            "me"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-b9925ea7-83c9-4249-9dcd-52f729bb493c"
+                    },
+                    {
+                      "id": "723b21de-fe10-4827-aa8a-26c717967c75",
+                      "name": "Caller is not authorized to perform this action",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/me",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            "me"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-723b21de-fe10-4827-aa8a-26c717967c75"
+                    },
+                    {
+                      "id": "1612e5df-aa4b-40d6-a616-27d4b5f37984",
+                      "name": "User not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/me",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            "me"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-1612e5df-aa4b-40d6-a616-27d4b5f37984"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:12:56.000Z",
+                  "updatedAt": "2026-07-28T03:12:56.000Z",
+                  "uid": "35240-f52e0ee2-95ca-4a0d-9537-7acf49a18448"
+                }
+              ],
+              "id": "9dc6e18a-5937-474e-8ddc-d6cee63b30cc",
+              "createdAt": "2026-07-28T03:12:56.000Z",
+              "updatedAt": "2026-07-28T03:12:56.000Z",
+              "uid": "35240-9dc6e18a-5937-474e-8ddc-d6cee63b30cc"
+            },
+            {
+              "name": "{userId}",
+              "item": [
+                {
+                  "name": "roles",
+                  "item": [
+                    {
+                      "name": "Get user roles in the organization matching the orgSlug",
+                      "id": "fd50ea0c-2bdb-4897-98e5-b0b3f43e9139",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId",
+                            "roles"
+                          ],
+                          "variable": [
+                            {
+                              "id": "38b57d9c-852d-402d-8e2b-b1a9a9efd3d7",
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "a4644f37-86aa-43bc-8fc6-187afaf64ba1",
+                          "name": "Responding with user roles",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "roles"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"orgSlug\": {\n      \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n    },\n    \"organizationId\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"role\": {\n      \"example\": \"Administrator\"\n    },\n    \"roleId\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"status\": \"active\",\n    \"userId\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"orgName\": \"<string>\"\n  },\n  {\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"orgSlug\": {\n      \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n    },\n    \"organizationId\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"role\": {\n      \"example\": \"Administrator\"\n    },\n    \"roleId\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"status\": \"active\",\n    \"userId\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"orgName\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-a4644f37-86aa-43bc-8fc6-187afaf64ba1"
+                        },
+                        {
+                          "id": "bce5e39b-7815-46f7-ba99-d128faa24132",
+                          "name": "Invalid token",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "roles"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-bce5e39b-7815-46f7-ba99-d128faa24132"
+                        },
+                        {
+                          "id": "ff83be51-a5e4-4648-b4cc-c8289c284a93",
+                          "name": "Caller is not authorized to perform this action",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "roles"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-ff83be51-a5e4-4648-b4cc-c8289c284a93"
+                        },
+                        {
+                          "id": "940c1335-ce00-4d40-9c2b-a2f6be16463f",
+                          "name": "User not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "roles"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-940c1335-ce00-4d40-9c2b-a2f6be16463f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-fd50ea0c-2bdb-4897-98e5-b0b3f43e9139"
+                    },
+                    {
+                      "name": "Add new roles for a user",
+                      "id": "c6ae678f-5bcb-4b62-88ab-995bda07db7e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"roleIds\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId",
+                            "roles"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0bbe9a5b-94be-43a6-8845-2881c1025166",
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "a46ea3c1-bd31-46f1-bbb1-3de41c42f74a",
+                          "name": "Responding with user roles",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"roleIds\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "roles"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"orgSlug\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"role\": {\n    \"example\": \"Administrator\"\n  },\n  \"roleId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"status\": \"active\",\n  \"userId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"orgName\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-a46ea3c1-bd31-46f1-bbb1-3de41c42f74a"
+                        },
+                        {
+                          "id": "85b609fc-5cc4-4e51-b14e-ae1557568c94",
+                          "name": "Invalid token",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"roleIds\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "roles"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-85b609fc-5cc4-4e51-b14e-ae1557568c94"
+                        },
+                        {
+                          "id": "75eb0228-92c6-4a76-8869-dfbb26fc1719",
+                          "name": "Caller is not authorized to perform this action",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"roleIds\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "roles"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-75eb0228-92c6-4a76-8869-dfbb26fc1719"
+                        },
+                        {
+                          "id": "6ea5954b-c1a3-440d-8836-dea354f1f3aa",
+                          "name": "User not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"roleIds\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "roles"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-6ea5954b-c1a3-440d-8836-dea354f1f3aa"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-c6ae678f-5bcb-4b62-88ab-995bda07db7e"
+                    },
+                    {
+                      "name": "Update the roles for a user",
+                      "id": "b69ee8e5-712b-435f-9a42-6018e3634572",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"roleIds\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId",
+                            "roles"
+                          ],
+                          "variable": [
+                            {
+                              "id": "bfdb7775-a88c-439d-bd0e-649acd689a71",
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "c7826435-b82e-4a42-8d6c-a45fe7fd3219",
+                          "name": "Responding with updated list of user roles",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"roleIds\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "roles"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"orgSlug\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"role\": {\n    \"example\": \"Administrator\"\n  },\n  \"roleId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"status\": \"active\",\n  \"userId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"orgName\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-c7826435-b82e-4a42-8d6c-a45fe7fd3219"
+                        },
+                        {
+                          "id": "60477979-d68a-4309-a8c9-11969ad7a5aa",
+                          "name": "Invalid token",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"roleIds\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "roles"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-60477979-d68a-4309-a8c9-11969ad7a5aa"
+                        },
+                        {
+                          "id": "5ba9e56b-d6c5-48f7-91cd-26e18673b8ec",
+                          "name": "Caller is not authorized to perform this action",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"roleIds\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "roles"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-5ba9e56b-d6c5-48f7-91cd-26e18673b8ec"
+                        },
+                        {
+                          "id": "5b0ebabe-e549-404b-a051-d982d28fa3f3",
+                          "name": "User not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"roleIds\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/roles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "roles"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-5b0ebabe-e549-404b-a051-d982d28fa3f3"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-b69ee8e5-712b-435f-9a42-6018e3634572"
+                    }
+                  ],
+                  "id": "610babdd-4f47-40b2-b516-5389b3b76d10",
+                  "createdAt": "2026-07-28T03:12:56.000Z",
+                  "updatedAt": "2026-07-28T03:12:56.000Z",
+                  "uid": "35240-610babdd-4f47-40b2-b516-5389b3b76d10"
+                },
+                {
+                  "name": "token",
+                  "item": [
+                    {
+                      "name": "revoke",
+                      "item": [
+                        {
+                          "name": "Revoke user token",
+                          "id": "1b4fd0ff-2bcb-422d-a914-7789562aef93",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"userId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"token\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/token/revoke",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "token",
+                                "revoke"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "e6929793-2f69-4b52-9860-300bcd0bda18",
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "dda624d2-7c53-410e-ba2e-34d4d8a1571f",
+                              "name": "Responding with user token",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"userId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"token\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/users/:userId/token/revoke",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "users",
+                                    ":userId",
+                                    "token",
+                                    "revoke"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "userId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"token\": \"<string>\",\n  \"expiresAt\": {\n    \"value\": \"reference #/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt not found in the OpenAPI spec\"\n  }\n}",
+                              "createdAt": "2026-07-28T03:12:56.000Z",
+                              "updatedAt": "2026-07-28T03:12:56.000Z",
+                              "uid": "35240-dda624d2-7c53-410e-ba2e-34d4d8a1571f"
+                            },
+                            {
+                              "id": "df943ab7-7b43-40a7-b6de-bfa0dc48b5da",
+                              "name": "Invalid token",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"userId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"token\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/users/:userId/token/revoke",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "users",
+                                    ":userId",
+                                    "token",
+                                    "revoke"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "userId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:12:56.000Z",
+                              "updatedAt": "2026-07-28T03:12:56.000Z",
+                              "uid": "35240-df943ab7-7b43-40a7-b6de-bfa0dc48b5da"
+                            },
+                            {
+                              "id": "bf2adc15-cdc4-44d0-a62f-37a26c8a7f32",
+                              "name": "Caller is not authorized to perform this action",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"userId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"token\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/users/:userId/token/revoke",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "users",
+                                    ":userId",
+                                    "token",
+                                    "revoke"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "userId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:12:56.000Z",
+                              "updatedAt": "2026-07-28T03:12:56.000Z",
+                              "uid": "35240-bf2adc15-cdc4-44d0-a62f-37a26c8a7f32"
+                            },
+                            {
+                              "id": "265b6310-aff6-4f5c-91d0-b5ccdd47c1f2",
+                              "name": "User not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"userId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"token\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/users/:userId/token/revoke",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "users",
+                                    ":userId",
+                                    "token",
+                                    "revoke"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "userId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:12:56.000Z",
+                              "updatedAt": "2026-07-28T03:12:56.000Z",
+                              "uid": "35240-265b6310-aff6-4f5c-91d0-b5ccdd47c1f2"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-1b4fd0ff-2bcb-422d-a914-7789562aef93"
+                        }
+                      ],
+                      "id": "bf936e8f-e312-407b-bee7-f6ca85d3fb15",
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-bf936e8f-e312-407b-bee7-f6ca85d3fb15"
+                    },
+                    {
+                      "name": "Create user token",
+                      "id": "b338c9cf-b01e-4f15-90a8-ceaf7eee0a5a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"userId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"tokenExpiry\": 4,\n  \"tokenExpiryUnit\": \"hours\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId",
+                            "token"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b6bd8dd4-51c5-4f1d-8b6c-81af967c67ce",
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "588d9a94-4a70-4f55-a6f0-3dd9bef77d85",
+                          "name": "Responding with user token",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"userId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"tokenExpiry\": 4,\n  \"tokenExpiryUnit\": \"hours\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"token\": \"<string>\",\n  \"expiresAt\": {\n    \"value\": \"reference #/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-588d9a94-4a70-4f55-a6f0-3dd9bef77d85"
+                        },
+                        {
+                          "id": "631c3037-3353-4677-bcfa-325ec602ff3e",
+                          "name": "Invalid token",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"userId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"tokenExpiry\": 4,\n  \"tokenExpiryUnit\": \"hours\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-631c3037-3353-4677-bcfa-325ec602ff3e"
+                        },
+                        {
+                          "id": "a18d2c90-ad24-4457-bbee-3d962601460a",
+                          "name": "Caller is not authorized to perform this action",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"userId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"tokenExpiry\": 4,\n  \"tokenExpiryUnit\": \"hours\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-a18d2c90-ad24-4457-bbee-3d962601460a"
+                        },
+                        {
+                          "id": "18ae378d-f7e4-405a-af87-a6c24335ff07",
+                          "name": "User not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"userId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"tokenExpiry\": 4,\n  \"tokenExpiryUnit\": \"hours\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/token",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "token"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-18ae378d-f7e4-405a-af87-a6c24335ff07"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-b338c9cf-b01e-4f15-90a8-ceaf7eee0a5a"
+                    }
+                  ],
+                  "id": "82714b63-f0bb-44af-9ece-582934dc03d8",
+                  "createdAt": "2026-07-28T03:12:56.000Z",
+                  "updatedAt": "2026-07-28T03:12:56.000Z",
+                  "uid": "35240-82714b63-f0bb-44af-9ece-582934dc03d8"
+                },
+                {
+                  "name": "resetPassword",
+                  "item": [
+                    {
+                      "name": "Update a user's password",
+                      "id": "bae43323-c901-4faf-b307-5bbcb91cafb1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"password\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId/resetPassword",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId",
+                            "resetPassword"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fda16339-7cd6-4ebe-99a4-b7bf90b75c59",
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "f9c56ef7-29c2-48cb-9b11-f94314096fee",
+                          "name": "Password reset request handled successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"password\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/resetPassword",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "resetPassword"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference #/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/post/responses/201/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-f9c56ef7-29c2-48cb-9b11-f94314096fee"
+                        },
+                        {
+                          "id": "85c762e9-ef13-4ec5-a16c-1be3d7a81a17",
+                          "name": "Invalid token",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"password\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/resetPassword",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "resetPassword"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-85c762e9-ef13-4ec5-a16c-1be3d7a81a17"
+                        },
+                        {
+                          "id": "579d5ff1-a7f5-462f-8466-e98bac968d2f",
+                          "name": "Caller is not authorized to perform this action",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"password\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/resetPassword",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "resetPassword"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-579d5ff1-a7f5-462f-8466-e98bac968d2f"
+                        },
+                        {
+                          "id": "6d051fa9-a634-45e4-a191-6cbb1506344c",
+                          "name": "User not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"password\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/resetPassword",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "resetPassword"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-6d051fa9-a634-45e4-a191-6cbb1506344c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-bae43323-c901-4faf-b307-5bbcb91cafb1"
+                    }
+                  ],
+                  "id": "bb33ae5d-c9ce-4113-b7bb-7e28fa12651b",
+                  "createdAt": "2026-07-28T03:12:56.000Z",
+                  "updatedAt": "2026-07-28T03:12:56.000Z",
+                  "uid": "35240-bb33ae5d-c9ce-4113-b7bb-7e28fa12651b"
+                },
+                {
+                  "name": "status",
+                  "item": [
+                    {
+                      "name": "Update user status in the organization",
+                      "id": "bc8ac526-1cec-48b8-808f-ab2c8552086e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"status\": \"inactive\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId",
+                            "status"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9850ddd7-86ac-441d-aea3-1118119e43d4",
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "3c58dac7-2ed9-4080-98ca-3098263a67c5",
+                          "name": "Successfully updated user status",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"inactive\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"orgSlug\": {\n      \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n    },\n    \"organizationId\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"role\": {\n      \"example\": \"Administrator\"\n    },\n    \"roleId\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"status\": \"active\",\n    \"userId\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"orgName\": \"<string>\"\n  },\n  {\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"orgSlug\": {\n      \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n    },\n    \"organizationId\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"role\": {\n      \"example\": \"Administrator\"\n    },\n    \"roleId\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"status\": \"active\",\n    \"userId\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"orgName\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-3c58dac7-2ed9-4080-98ca-3098263a67c5"
+                        },
+                        {
+                          "id": "ac1f59d2-8554-491c-a1c5-b09f5170e994",
+                          "name": "Invalid token",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"inactive\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-ac1f59d2-8554-491c-a1c5-b09f5170e994"
+                        },
+                        {
+                          "id": "efce2679-bb72-4b29-8da0-35db9c736edc",
+                          "name": "Caller is not authorized to perform this action",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"inactive\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-efce2679-bb72-4b29-8da0-35db9c736edc"
+                        },
+                        {
+                          "id": "7d0624e2-d762-4981-8bcc-a473e7643d66",
+                          "name": "User not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"inactive\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-7d0624e2-d762-4981-8bcc-a473e7643d66"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-bc8ac526-1cec-48b8-808f-ab2c8552086e"
+                    }
+                  ],
+                  "id": "c15496b9-249b-4992-8a21-5ef74d3e8bf6",
+                  "createdAt": "2026-07-28T03:12:56.000Z",
+                  "updatedAt": "2026-07-28T03:12:56.000Z",
+                  "uid": "35240-c15496b9-249b-4992-8a21-5ef74d3e8bf6"
+                },
+                {
+                  "name": "unlock",
+                  "item": [
+                    {
+                      "name": "Unlock user",
+                      "id": "73545cb6-7e53-457e-8f83-b16e957c1486",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"password\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId/unlock",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId",
+                            "unlock"
+                          ],
+                          "variable": [
+                            {
+                              "id": "dac2ccd7-1909-45d9-9498-b395716c64e1",
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "83b50f88-5c2f-44ac-9f42-ece90f8fb895",
+                          "name": "Unlock user request handled successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"password\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/unlock",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "unlock"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference #/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/post/responses/201/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-83b50f88-5c2f-44ac-9f42-ece90f8fb895"
+                        },
+                        {
+                          "id": "e7a2f96b-d6f7-415b-8822-030c61718c68",
+                          "name": "Invalid token",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"password\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/unlock",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "unlock"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-e7a2f96b-d6f7-415b-8822-030c61718c68"
+                        },
+                        {
+                          "id": "5f14d1c4-d639-4ede-8d8d-87158b8d0633",
+                          "name": "Caller is not authorized to perform this action",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"password\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/unlock",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "unlock"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-5f14d1c4-d639-4ede-8d8d-87158b8d0633"
+                        },
+                        {
+                          "id": "84fde8c9-1042-480f-b44a-f7dc733c131a",
+                          "name": "User not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"password\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/users/:userId/unlock",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "users",
+                                ":userId",
+                                "unlock"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:56.000Z",
+                          "updatedAt": "2026-07-28T03:12:56.000Z",
+                          "uid": "35240-84fde8c9-1042-480f-b44a-f7dc733c131a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-73545cb6-7e53-457e-8f83-b16e957c1486"
+                    }
+                  ],
+                  "id": "8f04c071-6732-4cfd-8888-72ffcfbe2442",
+                  "createdAt": "2026-07-28T03:12:56.000Z",
+                  "updatedAt": "2026-07-28T03:12:56.000Z",
+                  "uid": "35240-8f04c071-6732-4cfd-8888-72ffcfbe2442"
+                },
+                {
+                  "name": "Get user by ID",
+                  "id": "27d81869-b001-4ebb-b139-440bb01e6e23",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/users/:userId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "users",
+                        ":userId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "83e994d5-f29f-4bea-993a-02c977bad81c",
+                          "key": "userId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "641e3e66-264c-4349-9044-3a4f2772bb1c",
+                      "name": "Responding with user details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference #/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/post/responses/201/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-641e3e66-264c-4349-9044-3a4f2772bb1c"
+                    },
+                    {
+                      "id": "6f45aa6c-12a3-41d9-be4d-84054cf56b21",
+                      "name": "Invalid token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-6f45aa6c-12a3-41d9-be4d-84054cf56b21"
+                    },
+                    {
+                      "id": "96930205-8fab-4afd-a9ca-f1eca1f0bee8",
+                      "name": "Caller is not authorized to perform this action",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-96930205-8fab-4afd-a9ca-f1eca1f0bee8"
+                    },
+                    {
+                      "id": "fc08a310-ed77-4d63-9ea3-f4edf600991b",
+                      "name": "User not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-fc08a310-ed77-4d63-9ea3-f4edf600991b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:12:56.000Z",
+                  "updatedAt": "2026-07-28T03:12:56.000Z",
+                  "uid": "35240-27d81869-b001-4ebb-b139-440bb01e6e23"
+                },
+                {
+                  "name": "Update user by ID",
+                  "id": "5e8cfe84-5eb8-44a5-bc1a-3d4483220bc4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/users/:userId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "users",
+                        ":userId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8fa42830-4ae6-4a8d-a17d-e4d62ca31f98",
+                          "key": "userId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "be221ffe-d3ad-4543-98b3-c85c88d06158",
+                      "name": "Responding with user details",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference #/paths/~1v1~1organizations~1%7BorganizationId%7D~1users/post/responses/201/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-be221ffe-d3ad-4543-98b3-c85c88d06158"
+                    },
+                    {
+                      "id": "8b6ce519-2269-49fb-9a39-c806f8a3a56b",
+                      "name": "Invalid token",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-8b6ce519-2269-49fb-9a39-c806f8a3a56b"
+                    },
+                    {
+                      "id": "5ff485c9-cac4-4f7a-913e-1ef6f3664a5b",
+                      "name": "Caller is not authorized to perform this action",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-5ff485c9-cac4-4f7a-913e-1ef6f3664a5b"
+                    },
+                    {
+                      "id": "40fe3563-c124-49ca-a1fb-7eb85eaf3b68",
+                      "name": "User not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:12:56.000Z",
+                      "updatedAt": "2026-07-28T03:12:56.000Z",
+                      "uid": "35240-40fe3563-c124-49ca-a1fb-7eb85eaf3b68"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:12:56.000Z",
+                  "updatedAt": "2026-07-28T03:12:56.000Z",
+                  "uid": "35240-5e8cfe84-5eb8-44a5-bc1a-3d4483220bc4"
+                }
+              ],
+              "id": "56d44ff8-8792-44aa-8695-6e01b7728e54",
+              "createdAt": "2026-07-28T03:12:56.000Z",
+              "updatedAt": "2026-07-28T03:12:56.000Z",
+              "uid": "35240-56d44ff8-8792-44aa-8695-6e01b7728e54"
+            }
+          ],
+          "id": "e68688c7-2f0c-4de9-a367-311dc906f2de",
+          "createdAt": "2026-07-28T03:12:56.000Z",
+          "updatedAt": "2026-07-28T03:12:56.000Z",
+          "uid": "35240-e68688c7-2f0c-4de9-a367-311dc906f2de"
+        }
+      ],
+      "id": "fda115f5-2e01-4669-a818-f451cc7bc0cc",
+      "createdAt": "2026-07-28T03:12:56.000Z",
+      "updatedAt": "2026-07-28T03:12:56.000Z",
+      "uid": "35240-fda115f5-2e01-4669-a818-f451cc7bc0cc"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

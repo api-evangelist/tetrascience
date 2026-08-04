@@ -1,0 +1,1162 @@
+{
+  "info": {
+    "_postman_id": "939afcee-5b7e-467e-89e3-1950e6ce88ec",
+    "name": "TetraScience Data and AI Cloud Access Groups Files API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:10:57.000Z",
+    "updatedAt": "2026-07-28T03:10:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-939afcee-5b7e-467e-89e3-1950e6ce88ec"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "datalake",
+          "item": [
+            {
+              "name": "delete",
+              "item": [
+                {
+                  "name": "Delete a File",
+                  "id": "1f8d6803-bd48-4ad2-a5cd-4a2f099fc733",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) JWT Token",
+                        "key": "ts-auth-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Your organization slug",
+                        "key": "x-org-slug",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/datalake/delete?fileId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "datalake",
+                        "delete"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ID of the file to delete.",
+                          "key": "fileId",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "This endpoint does soft delete. Soft delete means that file will remain in datalake but will be marked as deleted. This means that file will not appear in file search and Athena search"
+                  },
+                  "response": [
+                    {
+                      "id": "f1089657-1b29-4e2c-898e-b39dc52a244a",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) JWT Token",
+                            "key": "ts-auth-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Your organization slug",
+                            "key": "x-org-slug",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/datalake/delete?fileId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "datalake",
+                            "delete"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ID of the file to delete.",
+                              "key": "fileId",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"entity\": {\n    \"fileId\": \"<string>\",\n    \"filename\": \"<string>\",\n    \"orgSlug\": \"<string>\",\n    \"category\": \"<string>\",\n    \"sourceType\": \"<string>\",\n    \"source\": {\n      \"type\": \"<string>\",\n      \"egnyte\": {\n        \"integrationId\": \"<string>\",\n        \"filePath\": \"<string>\",\n        \"fileName\": \"<string>\",\n        \"groupId\": \"<string>\",\n        \"entryId\": \"<string>\",\n        \"checksum\": \"<string>\",\n        \"versionId\": \"<string>\",\n        \"lastModifiedTime\": \"<string>\",\n        \"versionNum\": 0\n      }\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T03:10:58.000Z",
+                      "updatedAt": "2026-07-28T03:10:58.000Z",
+                      "uid": "35240-f1089657-1b29-4e2c-898e-b39dc52a244a"
+                    },
+                    {
+                      "id": "dbc8ee77-b315-4b4a-8c0b-290ab955ff9b",
+                      "name": "404",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) JWT Token",
+                            "key": "ts-auth-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Your organization slug",
+                            "key": "x-org-slug",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/datalake/delete?fileId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "datalake",
+                            "delete"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ID of the file to delete.",
+                              "key": "fileId",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:10:58.000Z",
+                      "updatedAt": "2026-07-28T03:10:58.000Z",
+                      "uid": "35240-dbc8ee77-b315-4b4a-8c0b-290ab955ff9b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:10:58.000Z",
+                  "updatedAt": "2026-07-28T03:10:58.000Z",
+                  "uid": "35240-1f8d6803-bd48-4ad2-a5cd-4a2f099fc733"
+                }
+              ],
+              "id": "340c29b5-fe31-47ad-a478-9c6c8d15bf87",
+              "createdAt": "2026-07-28T03:10:58.000Z",
+              "updatedAt": "2026-07-28T03:10:58.000Z",
+              "uid": "35240-340c29b5-fe31-47ad-a478-9c6c8d15bf87"
+            },
+            {
+              "name": "retrieve",
+              "item": [
+                {
+                  "name": "Retrieve a File",
+                  "id": "b672b51b-ca32-460a-8213-933cf1f8d99c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) JWT Token",
+                        "key": "ts-auth-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Your organization slug",
+                        "key": "x-org-slug",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/datalake/retrieve?fileId=<string>&getPresigned=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "datalake",
+                        "retrieve"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ID of the file to retrieve.",
+                          "key": "fileId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A JSON object with temporary s3 url will returned instead of the actual file content (expires in 5 minutes)",
+                          "key": "getPresigned",
+                          "value": "false"
+                        }
+                      ]
+                    },
+                    "description": "This endpoint retrieves a specific file."
+                  },
+                  "response": [
+                    {
+                      "id": "4f7e6e41-9bff-439c-a5e9-4146fdf40d93",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) JWT Token",
+                            "key": "ts-auth-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Your organization slug",
+                            "key": "x-org-slug",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/datalake/retrieve?fileId=<string>&getPresigned=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "datalake",
+                            "retrieve"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ID of the file to retrieve.",
+                              "key": "fileId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A JSON object with temporary s3 url will returned instead of the actual file content (expires in 5 minutes)",
+                              "key": "getPresigned",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T03:10:58.000Z",
+                      "updatedAt": "2026-07-28T03:10:58.000Z",
+                      "uid": "35240-4f7e6e41-9bff-439c-a5e9-4146fdf40d93"
+                    },
+                    {
+                      "id": "2f60551f-d93b-4806-b05b-6dfd468eb51c",
+                      "name": "400",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) JWT Token",
+                            "key": "ts-auth-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Your organization slug",
+                            "key": "x-org-slug",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/datalake/retrieve?fileId=<string>&getPresigned=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "datalake",
+                            "retrieve"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ID of the file to retrieve.",
+                              "key": "fileId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A JSON object with temporary s3 url will returned instead of the actual file content (expires in 5 minutes)",
+                              "key": "getPresigned",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T03:10:58.000Z",
+                      "updatedAt": "2026-07-28T03:10:58.000Z",
+                      "uid": "35240-2f60551f-d93b-4806-b05b-6dfd468eb51c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:10:58.000Z",
+                  "updatedAt": "2026-07-28T03:10:58.000Z",
+                  "uid": "35240-b672b51b-ca32-460a-8213-933cf1f8d99c"
+                }
+              ],
+              "id": "66c05110-e1ac-41cc-a9fc-764130408e5c",
+              "createdAt": "2026-07-28T03:10:58.000Z",
+              "updatedAt": "2026-07-28T03:10:58.000Z",
+              "uid": "35240-66c05110-e1ac-41cc-a9fc-764130408e5c"
+            },
+            {
+              "name": "upload",
+              "item": [
+                {
+                  "name": "Upload a File",
+                  "id": "f9fe95e8-b56e-484c-bc24-00bb6958ddaa",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "JWT Token.",
+                        "key": "ts-auth-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Your organization's slug.",
+                        "key": "x-org-slug",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"file\": \"<binary>\",\n  \"filename\": \"<string>\",\n  \"meta\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sourceFileId\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"labels\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/datalake/upload",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "datalake",
+                        "upload"
+                      ]
+                    },
+                    "description": "This endpoint uploads a file to the Data Lake.\nThe maximum upload request size is 200 MB."
+                  },
+                  "response": [
+                    {
+                      "id": "5e6fc7fc-089f-4c8b-aeb6-a58a3afe9612",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "JWT Token.",
+                            "key": "ts-auth-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Your organization's slug.",
+                            "key": "x-org-slug",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"file\": \"<binary>\",\n  \"filename\": \"<string>\",\n  \"meta\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sourceFileId\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"labels\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/datalake/upload",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "datalake",
+                            "upload"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"examples\": {\n    \"Result\": {\n      \"value\": \"{\\n  \\\"fileId\\\": \\\"18d021da-b2ce-440c-9ec1-5b4ce93f4197\\n}\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T03:10:58.000Z",
+                      "updatedAt": "2026-07-28T03:10:58.000Z",
+                      "uid": "35240-5e6fc7fc-089f-4c8b-aeb6-a58a3afe9612"
+                    },
+                    {
+                      "id": "6f1846ec-7338-470c-91c3-7d28cc4754c5",
+                      "name": "400",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "JWT Token.",
+                            "key": "ts-auth-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Your organization's slug.",
+                            "key": "x-org-slug",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"file\": \"<binary>\",\n  \"filename\": \"<string>\",\n  \"meta\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sourceFileId\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"labels\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/datalake/upload",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "datalake",
+                            "upload"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T03:10:58.000Z",
+                      "updatedAt": "2026-07-28T03:10:58.000Z",
+                      "uid": "35240-6f1846ec-7338-470c-91c3-7d28cc4754c5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:10:58.000Z",
+                  "updatedAt": "2026-07-28T03:10:58.000Z",
+                  "uid": "35240-f9fe95e8-b56e-484c-bc24-00bb6958ddaa"
+                }
+              ],
+              "id": "582e4574-5301-482c-94fa-4cc8871083a6",
+              "createdAt": "2026-07-28T03:10:58.000Z",
+              "updatedAt": "2026-07-28T03:10:58.000Z",
+              "uid": "35240-582e4574-5301-482c-94fa-4cc8871083a6"
+            }
+          ],
+          "id": "ebd083ac-1076-4ee3-97b4-ff83383aa56d",
+          "createdAt": "2026-07-28T03:10:58.000Z",
+          "updatedAt": "2026-07-28T03:10:58.000Z",
+          "uid": "35240-ebd083ac-1076-4ee3-97b4-ff83383aa56d"
+        },
+        {
+          "name": "fileinfo",
+          "item": [
+            {
+              "name": "file",
+              "item": [
+                {
+                  "name": "{fileId}",
+                  "item": [
+                    {
+                      "name": "versions",
+                      "item": [
+                        {
+                          "name": "Get File Versions",
+                          "id": "46b134be-cde0-442d-b273-c31aec7e0300",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/fileinfo/file/:fileId/versions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "fileinfo",
+                                "file",
+                                ":fileId",
+                                "versions"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "dbee037a-c192-4450-a8bb-3034934ab4a3",
+                                  "key": "fileId",
+                                  "value": "<string>",
+                                  "description": "(Required) ID assigned to the file when it was created in the data lake. Type is uuid."
+                                }
+                              ]
+                            },
+                            "description": "Retrieve a file's version history, including all modifications, updates, and processing iterations. Timestamps and change details are included."
+                          },
+                          "response": [
+                            {
+                              "id": "b2689266-c32a-4920-82a7-d0d2d03843ae",
+                              "name": "200",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/fileinfo/file/:fileId/versions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "fileinfo",
+                                    "file",
+                                    ":fileId",
+                                    "versions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "fileId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"examples\": {\n    \"Result\": {\n      \"value\": \"[{\\n  \\\"orgSlug\\\": \\\"tetrascience\\\",\\n  \\\"fileId\\\": \\\"e3b2b43c-ffcd-4e7e-8681-37d3bafb0395\\\",\\n  \\\"traceId\\\": \\\"47616711-f2fc-4156-a807-9112f920b4eb\\\",\\n  \\\"rawFileId\\\": \\\"47616711-f2fc-4156-a807-9112f920b4eb\\\",\\n  \\\"category\\\": \\\"IDS\\\",\\n  \\\"ids\\\": \\\"common/dotmatics-register-compound:v1.0.0\\\",\\n  \\\"filePath\\\": \\\"/register/compound/1000023.json/0.json\\\",\\n  \\\"createdAt\\\": \\\"2020-03-23T02:55:36.000Z\\\",\\n  \\\"integration\\\": {\\n    \\\"id\\\": \\\"a0f94a3b-d83d-48d4-8007-9de047a6af92\\\",\\n    \\\"type\\\": \\\"datapipeline\\\"\\n  },\\n  \\\"source\\\": {\\n    \\\"id\\\": \\\"00f46847-6fb9-4ecd-b5ae-cc3876fbe8c7\\\",\\n    \\\"type\\\": \\\"dotmatics_register_compound\\\",\\n    \\\"name\\\": \\\"dotmatics data connector test 5\\\",\\n  },\\n  \\\"file\\\": {\\n    \\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n    \\\"path\\\": \\\"tetrascience/00f46847-6fb9-4ecd-b5ae-cc3876fbe8c7/IDS/register/compound/1000023.json/0.json\\\",\\n    \\\"checksum\\\": null,\\n    \\\"size\\\": 583,\\n    \\\"type\\\": null,\\n    \\\"version\\\": \\\"vq4p5o5eH.mRczEJtpR1tZ4rFh_RRdeU\\\"\\n  },\\n  \\\"metadata\\\": {\\n    \\\"instrument_name\\\": \\\"dotmatics-test5\\\"\\n  },\\n  \\\"tags\\\": [],\\n  \\\"deleted\\\": false,\\n  \\\"outdated\\\": false\\n}]\"\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T03:10:58.000Z",
+                              "updatedAt": "2026-07-28T03:10:58.000Z",
+                              "uid": "35240-b2689266-c32a-4920-82a7-d0d2d03843ae"
+                            },
+                            {
+                              "id": "e46fd13f-8ca4-4d57-830a-0c539c0041ea",
+                              "name": "401",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/fileinfo/file/:fileId/versions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "fileinfo",
+                                    "file",
+                                    ":fileId",
+                                    "versions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "fileId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:10:58.000Z",
+                              "updatedAt": "2026-07-28T03:10:58.000Z",
+                              "uid": "35240-e46fd13f-8ca4-4d57-830a-0c539c0041ea"
+                            },
+                            {
+                              "id": "75a6c9a3-dbbb-41b2-94e3-f86a9fd6a7f7",
+                              "name": "404",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/fileinfo/file/:fileId/versions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "fileinfo",
+                                    "file",
+                                    ":fileId",
+                                    "versions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "fileId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:10:58.000Z",
+                              "updatedAt": "2026-07-28T03:10:58.000Z",
+                              "uid": "35240-75a6c9a3-dbbb-41b2-94e3-f86a9fd6a7f7"
+                            },
+                            {
+                              "id": "7de8ec4d-5ff5-4c7e-9934-450b8ef3b095",
+                              "name": "500",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/fileinfo/file/:fileId/versions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "fileinfo",
+                                    "file",
+                                    ":fileId",
+                                    "versions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "fileId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:10:58.000Z",
+                              "updatedAt": "2026-07-28T03:10:58.000Z",
+                              "uid": "35240-7de8ec4d-5ff5-4c7e-9934-450b8ef3b095"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:10:58.000Z",
+                          "updatedAt": "2026-07-28T03:10:58.000Z",
+                          "uid": "35240-46b134be-cde0-442d-b273-c31aec7e0300"
+                        }
+                      ],
+                      "id": "fc0a5eb4-7f6c-445e-b339-2916286d0d8e",
+                      "createdAt": "2026-07-28T03:10:58.000Z",
+                      "updatedAt": "2026-07-28T03:10:58.000Z",
+                      "uid": "35240-fc0a5eb4-7f6c-445e-b339-2916286d0d8e"
+                    },
+                    {
+                      "name": "Get File Information",
+                      "id": "f0397ee1-8db8-4d03-aacd-d1c601aedc31",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/fileinfo/file/:fileId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "fileinfo",
+                            "file",
+                            ":fileId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c6a25033-27aa-4d8c-b2fb-1bd037cfca96",
+                              "key": "fileId",
+                              "value": "<string>",
+                              "description": "(Required) ID assigned to the file when it was created in the data lake. Type is uuid."
+                            }
+                          ]
+                        },
+                        "description": "Get detailed information about a specific file, including its metadata, storage location, source, and integration details."
+                      },
+                      "response": [
+                        {
+                          "id": "3cd12f9a-72dd-45c7-81bd-2ca05fb6391f",
+                          "name": "200",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/fileinfo/file/:fileId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "fileinfo",
+                                "file",
+                                ":fileId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "fileId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"examples\": {\n    \"Result\": {\n      \"value\": \"{\\n  \\\"orgSlug\\\": \\\"tetrascience\\\",\\n  \\\"fileId\\\": \\\"e3b2b43c-ffcd-4e7e-8681-37d3bafb0395\\\",\\n  \\\"traceId\\\": \\\"47616711-f2fc-4156-a807-9112f920b4eb\\\",\\n  \\\"rawFileId\\\": \\\"47616711-f2fc-4156-a807-9112f920b4eb\\\",\\n  \\\"category\\\": \\\"IDS\\\",\\n  \\\"ids\\\": \\\"common/dotmatics-register-compound:v1.0.0\\\",\\n  \\\"filePath\\\": \\\"/register/compound/1000023.json/0.json\\\",\\n  \\\"createdAt\\\": \\\"2020-03-23T02:55:36.000Z\\\",\\n  \\\"integration\\\": {\\n    \\\"id\\\": \\\"a0f94a3b-d83d-48d4-8007-9de047a6af92\\\",\\n    \\\"type\\\": \\\"datapipeline\\\"\\n  },\\n  \\\"source\\\": {\\n    \\\"id\\\": \\\"00f46847-6fb9-4ecd-b5ae-cc3876fbe8c7\\\",\\n    \\\"type\\\": \\\"dotmatics_register_compound\\\",\\n    \\\"name\\\": \\\"dotmatics data connector test 5\\\",\\n  },\\n  \\\"file\\\": {\\n    \\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n    \\\"path\\\": \\\"tetrascience/00f46847-6fb9-4ecd-b5ae-cc3876fbe8c7/IDS/register/compound/1000023.json/0.json\\\",\\n    \\\"checksum\\\": null,\\n    \\\"size\\\": 583,\\n    \\\"type\\\": null,\\n    \\\"version\\\": \\\"vq4p5o5eH.mRczEJtpR1tZ4rFh_RRdeU\\\"\\n  },\\n  \\\"metadata\\\": {\\n    \\\"instrument_name\\\": \\\"dotmatics-test5\\\"\\n  },\\n  \\\"tags\\\": [],\\n  \\\"deleted\\\": false,\\n  \\\"outdated\\\": false\\n}\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T03:10:58.000Z",
+                          "updatedAt": "2026-07-28T03:10:58.000Z",
+                          "uid": "35240-3cd12f9a-72dd-45c7-81bd-2ca05fb6391f"
+                        },
+                        {
+                          "id": "15dcefa1-d3f7-4a0c-9e03-19ce2df31fa5",
+                          "name": "401",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/fileinfo/file/:fileId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "fileinfo",
+                                "file",
+                                ":fileId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "fileId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:10:58.000Z",
+                          "updatedAt": "2026-07-28T03:10:58.000Z",
+                          "uid": "35240-15dcefa1-d3f7-4a0c-9e03-19ce2df31fa5"
+                        },
+                        {
+                          "id": "9e72dffa-a015-4342-969e-84d8d252d73d",
+                          "name": "404",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/fileinfo/file/:fileId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "fileinfo",
+                                "file",
+                                ":fileId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "fileId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:10:58.000Z",
+                          "updatedAt": "2026-07-28T03:10:58.000Z",
+                          "uid": "35240-9e72dffa-a015-4342-969e-84d8d252d73d"
+                        },
+                        {
+                          "id": "6524ff55-6ef4-4017-8afc-da10ce9efa3e",
+                          "name": "500",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/fileinfo/file/:fileId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "fileinfo",
+                                "file",
+                                ":fileId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "fileId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:10:58.000Z",
+                          "updatedAt": "2026-07-28T03:10:58.000Z",
+                          "uid": "35240-6524ff55-6ef4-4017-8afc-da10ce9efa3e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:10:58.000Z",
+                      "updatedAt": "2026-07-28T03:10:58.000Z",
+                      "uid": "35240-f0397ee1-8db8-4d03-aacd-d1c601aedc31"
+                    }
+                  ],
+                  "id": "940a875e-1366-4caf-9f01-fbdf8b9a9ebb",
+                  "createdAt": "2026-07-28T03:10:58.000Z",
+                  "updatedAt": "2026-07-28T03:10:58.000Z",
+                  "uid": "35240-940a875e-1366-4caf-9f01-fbdf8b9a9ebb"
+                }
+              ],
+              "id": "d7a43a02-e2f5-40c3-a12e-76027538aff1",
+              "createdAt": "2026-07-28T03:10:58.000Z",
+              "updatedAt": "2026-07-28T03:10:58.000Z",
+              "uid": "35240-d7a43a02-e2f5-40c3-a12e-76027538aff1"
+            }
+          ],
+          "id": "e99320f6-a720-49bf-85ff-a84bb3dc7e4b",
+          "createdAt": "2026-07-28T03:10:58.000Z",
+          "updatedAt": "2026-07-28T03:10:58.000Z",
+          "uid": "35240-e99320f6-a720-49bf-85ff-a84bb3dc7e4b"
+        }
+      ],
+      "id": "ff513927-f71b-470f-b4ae-7b64ad049dd7",
+      "createdAt": "2026-07-28T03:10:58.000Z",
+      "updatedAt": "2026-07-28T03:10:58.000Z",
+      "uid": "35240-ff513927-f71b-470f-b4ae-7b64ad049dd7"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

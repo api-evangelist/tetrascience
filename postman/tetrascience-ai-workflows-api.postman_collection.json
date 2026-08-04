@@ -1,0 +1,1800 @@
+{
+  "info": {
+    "_postman_id": "95a0b09c-d676-4b8a-97ae-cd8301114854",
+    "name": "TetraScience Data and AI Cloud Access Groups ai-workflows API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:10:22.000Z",
+    "updatedAt": "2026-07-28T03:10:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-95a0b09c-d676-4b8a-97ae-cd8301114854"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "artifacts",
+          "item": [
+            {
+              "name": "ai-workflows",
+              "item": [
+                {
+                  "name": "{namespace}",
+                  "item": [
+                    {
+                      "name": "{slug}",
+                      "item": [
+                        {
+                          "name": "{version}",
+                          "item": [
+                            {
+                              "name": "files",
+                              "item": [
+                                {
+                                  "name": "{fileSlug}",
+                                  "item": [
+                                    {
+                                      "name": "Get contents for a ai-workflow file",
+                                      "id": "b3ec9064-1a1b-4a17-b0a2-4153c5b182cc",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "ai-workflows",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files",
+                                            ":fileSlug"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "If set to true, return a download url",
+                                              "key": "download",
+                                              "value": "<boolean>"
+                                            },
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "abd7aaf4-7e8c-49d6-8f9f-9bdcc6bdb1d1",
+                                              "key": "namespace",
+                                              "value": "commonX<u",
+                                              "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                            },
+                                            {
+                                              "id": "5eb496bc-fe02-4a2b-a1a4-02631c17aea3",
+                                              "key": "slug",
+                                              "value": "<string>",
+                                              "description": "(Required) Artifact slug"
+                                            },
+                                            {
+                                              "id": "8b8205ee-29b2-40da-aac2-1a21ea55738c",
+                                              "key": "version",
+                                              "value": "vx.x.90",
+                                              "description": "(Required) Artifact version"
+                                            },
+                                            {
+                                              "id": "1d22f73f-8d11-4705-b173-64a89e330a14",
+                                              "key": "fileSlug",
+                                              "value": "build",
+                                              "description": "(Required) File slug corresponding to file within an ai-workflow"
+                                            }
+                                          ]
+                                        },
+                                        "description": "Returns the file contents for a ai-workflow file given a namespace, slug, version, and file slug"
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "83449b02-e91f-414b-87b4-ca49de592c0c",
+                                          "name": "Successfully fetched file",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "ts-auth-token",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v1",
+                                                "artifacts",
+                                                "ai-workflows",
+                                                ":namespace",
+                                                ":slug",
+                                                ":version",
+                                                "files",
+                                                ":fileSlug"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "If set to true, return a download url",
+                                                  "key": "download",
+                                                  "value": "<boolean>"
+                                                },
+                                                {
+                                                  "description": "Include prerelease artifacts in search",
+                                                  "key": "include_prereleases",
+                                                  "value": "<boolean>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "namespace"
+                                                },
+                                                {
+                                                  "key": "slug"
+                                                },
+                                                {
+                                                  "key": "version"
+                                                },
+                                                {
+                                                  "key": "fileSlug"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"url\": \"<string>\"\n}",
+                                          "createdAt": "2026-07-28T03:10:23.000Z",
+                                          "updatedAt": "2026-07-28T03:10:23.000Z",
+                                          "uid": "35240-83449b02-e91f-414b-87b4-ca49de592c0c"
+                                        },
+                                        {
+                                          "id": "8ba4e1e1-22bc-4386-8fbf-57f1e3ea5b88",
+                                          "name": "Incorrect input provided",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "ts-auth-token",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v1",
+                                                "artifacts",
+                                                "ai-workflows",
+                                                ":namespace",
+                                                ":slug",
+                                                ":version",
+                                                "files",
+                                                ":fileSlug"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "If set to true, return a download url",
+                                                  "key": "download",
+                                                  "value": "<boolean>"
+                                                },
+                                                {
+                                                  "description": "Include prerelease artifacts in search",
+                                                  "key": "include_prereleases",
+                                                  "value": "<boolean>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "namespace"
+                                                },
+                                                {
+                                                  "key": "slug"
+                                                },
+                                                {
+                                                  "key": "version"
+                                                },
+                                                {
+                                                  "key": "fileSlug"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Bad Request",
+                                          "code": 400,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{}",
+                                          "createdAt": "2026-07-28T03:10:23.000Z",
+                                          "updatedAt": "2026-07-28T03:10:23.000Z",
+                                          "uid": "35240-8ba4e1e1-22bc-4386-8fbf-57f1e3ea5b88"
+                                        },
+                                        {
+                                          "id": "03edf9ea-8e8b-4631-b2c1-1c274767018a",
+                                          "name": "Not found or not visible to user",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "ts-auth-token",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v1",
+                                                "artifacts",
+                                                "ai-workflows",
+                                                ":namespace",
+                                                ":slug",
+                                                ":version",
+                                                "files",
+                                                ":fileSlug"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "If set to true, return a download url",
+                                                  "key": "download",
+                                                  "value": "<boolean>"
+                                                },
+                                                {
+                                                  "description": "Include prerelease artifacts in search",
+                                                  "key": "include_prereleases",
+                                                  "value": "<boolean>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "namespace"
+                                                },
+                                                {
+                                                  "key": "slug"
+                                                },
+                                                {
+                                                  "key": "version"
+                                                },
+                                                {
+                                                  "key": "fileSlug"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Not Found",
+                                          "code": 404,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{}",
+                                          "createdAt": "2026-07-28T03:10:23.000Z",
+                                          "updatedAt": "2026-07-28T03:10:23.000Z",
+                                          "uid": "35240-03edf9ea-8e8b-4631-b2c1-1c274767018a"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T03:10:23.000Z",
+                                      "updatedAt": "2026-07-28T03:10:23.000Z",
+                                      "uid": "35240-b3ec9064-1a1b-4a17-b0a2-4153c5b182cc"
+                                    }
+                                  ],
+                                  "id": "67ecf233-c67c-467d-9b1d-5190f3d3ab72",
+                                  "createdAt": "2026-07-28T03:10:23.000Z",
+                                  "updatedAt": "2026-07-28T03:10:23.000Z",
+                                  "uid": "35240-67ecf233-c67c-467d-9b1d-5190f3d3ab72"
+                                },
+                                {
+                                  "name": "Get available file slugs for ai-workflow",
+                                  "id": "168464e3-8737-445a-853b-95053b2bdb64",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "ai-workflows",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version",
+                                        "files"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "249eb4f0-db87-4245-8ca5-6157d6aae6b9",
+                                          "key": "namespace",
+                                          "value": "commonX<u",
+                                          "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                        },
+                                        {
+                                          "id": "4c25759a-dacb-4565-a972-0a00397a40d6",
+                                          "key": "slug",
+                                          "value": "<string>",
+                                          "description": "(Required) Artifact slug"
+                                        },
+                                        {
+                                          "id": "800bb00c-3e3e-4d86-90e5-c1cc24e2b125",
+                                          "key": "version",
+                                          "value": "vx.x.90",
+                                          "description": "(Required) Artifact version"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns which file slugs are available to retrieve for this ai-workflow"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "6f98d55d-3d8c-4b5d-a46e-3cae1f4f1a54",
+                                      "name": "Successfully fetched available AiWorkflow file slugs",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "ai-workflows",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "[\n  \"source\",\n  \"manifest\"\n]",
+                                      "createdAt": "2026-07-28T03:10:23.000Z",
+                                      "updatedAt": "2026-07-28T03:10:23.000Z",
+                                      "uid": "35240-6f98d55d-3d8c-4b5d-a46e-3cae1f4f1a54"
+                                    },
+                                    {
+                                      "id": "bcc58710-bf7d-4d54-b556-6839cefa911a",
+                                      "name": "Incorrect input provided",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "ai-workflows",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:10:23.000Z",
+                                      "updatedAt": "2026-07-28T03:10:23.000Z",
+                                      "uid": "35240-bcc58710-bf7d-4d54-b556-6839cefa911a"
+                                    },
+                                    {
+                                      "id": "ce92ff26-e6f3-4a88-999e-6d59765f432e",
+                                      "name": "Not found or not visible to user",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug/:version/files?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "ai-workflows",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:10:23.000Z",
+                                      "updatedAt": "2026-07-28T03:10:23.000Z",
+                                      "uid": "35240-ce92ff26-e6f3-4a88-999e-6d59765f432e"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:10:23.000Z",
+                                  "updatedAt": "2026-07-28T03:10:23.000Z",
+                                  "uid": "35240-168464e3-8737-445a-853b-95053b2bdb64"
+                                }
+                              ],
+                              "id": "9d98aa07-9b85-428e-9629-de099cd6c04d",
+                              "createdAt": "2026-07-28T03:10:23.000Z",
+                              "updatedAt": "2026-07-28T03:10:23.000Z",
+                              "uid": "35240-9d98aa07-9b85-428e-9629-de099cd6c04d"
+                            },
+                            {
+                              "name": "labels",
+                              "item": [
+                                {
+                                  "name": "Get labels for a ai-workflow",
+                                  "id": "1c09d7e8-85fd-4062-9d46-c83f8eb58996",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug/:version/labels?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "ai-workflows",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version",
+                                        "labels"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "0b7ea46e-80dd-468f-84ee-e791b4a02518",
+                                          "key": "namespace",
+                                          "value": "commonX<u",
+                                          "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                        },
+                                        {
+                                          "id": "2280d599-7b65-4e7b-9430-420e77ca3bc2",
+                                          "key": "slug",
+                                          "value": "<string>",
+                                          "description": "(Required) Artifact slug"
+                                        },
+                                        {
+                                          "id": "6214ef70-c6bd-4c0d-95d3-0273281bfaad",
+                                          "key": "version",
+                                          "value": "vx.x.90",
+                                          "description": "(Required) Artifact version"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns a list of the labels associated with a ai-workflow artifact"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "52b6a3fc-395b-4867-86c7-6beaea95458f",
+                                      "name": "Successfully fetched Labels",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug/:version/labels?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "ai-workflows",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "labels"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "[\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  }\n]",
+                                      "createdAt": "2026-07-28T03:10:23.000Z",
+                                      "updatedAt": "2026-07-28T03:10:23.000Z",
+                                      "uid": "35240-52b6a3fc-395b-4867-86c7-6beaea95458f"
+                                    },
+                                    {
+                                      "id": "2c44a0f5-4595-42c4-9416-85ea2b739610",
+                                      "name": "Not found or not visible to user",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug/:version/labels?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "ai-workflows",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "labels"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:10:23.000Z",
+                                      "updatedAt": "2026-07-28T03:10:23.000Z",
+                                      "uid": "35240-2c44a0f5-4595-42c4-9416-85ea2b739610"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:10:23.000Z",
+                                  "updatedAt": "2026-07-28T03:10:23.000Z",
+                                  "uid": "35240-1c09d7e8-85fd-4062-9d46-c83f8eb58996"
+                                }
+                              ],
+                              "id": "6e01f179-2889-4652-9919-981e4ffd18bb",
+                              "createdAt": "2026-07-28T03:10:23.000Z",
+                              "updatedAt": "2026-07-28T03:10:23.000Z",
+                              "uid": "35240-6e01f179-2889-4652-9919-981e4ffd18bb"
+                            },
+                            {
+                              "name": "Get a single ai-workflow artifact",
+                              "id": "76199704-f643-4a3f-8a8a-87be3a71f40b",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug/:version?include_prereleases=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "artifacts",
+                                    "ai-workflows",
+                                    ":namespace",
+                                    ":slug",
+                                    ":version"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Include prerelease artifacts in search",
+                                      "key": "include_prereleases",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "e4229410-d190-4dda-a94a-f823a383bd3a",
+                                      "key": "namespace",
+                                      "value": "commonX<u",
+                                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                    },
+                                    {
+                                      "id": "695be8ee-1cba-4e8e-85fc-d1e942a122c6",
+                                      "key": "slug",
+                                      "value": "<string>",
+                                      "description": "(Required) Artifact slug"
+                                    },
+                                    {
+                                      "id": "ac47f364-c152-4118-87e7-558c8ad0d755",
+                                      "key": "version",
+                                      "value": "vx.x.90",
+                                      "description": "(Required) Artifact version"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns a single ai-workflow artifact matching the namespace, slug, and version"
+                              },
+                              "response": [
+                                {
+                                  "id": "75441fda-b659-4800-a87b-f2fca6ee3f85",
+                                  "name": "Successfully fetched AiWorkflowObject",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "ts-auth-token",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug/:version?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "ai-workflows",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "namespace"
+                                        },
+                                        {
+                                          "key": "slug"
+                                        },
+                                        {
+                                          "key": "version"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"createdAt\": \"<dateTime>\",\n  \"lastUpdatedAt\": \"<dateTime>\",\n  \"namespace\": \"client-\",\n  \"slug\": \"<string>\",\n  \"type\": \"ai-workflow\",\n  \"version\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"otherVersions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"supportedPlatformVersion\": {\n    \"minPlatformVersion\": \"<string>\",\n    \"maxPlatformVersion\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T03:10:23.000Z",
+                                  "updatedAt": "2026-07-28T03:10:23.000Z",
+                                  "uid": "35240-75441fda-b659-4800-a87b-f2fca6ee3f85"
+                                },
+                                {
+                                  "id": "6dafdbb1-56ea-4e88-bcc9-4606e3339af4",
+                                  "name": "Not found or not visible to user",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "ts-auth-token",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug/:version?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "ai-workflows",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "namespace"
+                                        },
+                                        {
+                                          "key": "slug"
+                                        },
+                                        {
+                                          "key": "version"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{}",
+                                  "createdAt": "2026-07-28T03:10:23.000Z",
+                                  "updatedAt": "2026-07-28T03:10:23.000Z",
+                                  "uid": "35240-6dafdbb1-56ea-4e88-bcc9-4606e3339af4"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:10:23.000Z",
+                              "updatedAt": "2026-07-28T03:10:23.000Z",
+                              "uid": "35240-76199704-f643-4a3f-8a8a-87be3a71f40b"
+                            }
+                          ],
+                          "id": "29b03e8b-9784-4411-9e45-aa636e662318",
+                          "createdAt": "2026-07-28T03:10:23.000Z",
+                          "updatedAt": "2026-07-28T03:10:23.000Z",
+                          "uid": "35240-29b03e8b-9784-4411-9e45-aa636e662318"
+                        },
+                        {
+                          "name": "List all ai-workflows for namespace/slug",
+                          "id": "ae3b8f82-a0ad-459e-9581-8fff0643b7fe",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug?latest_only=<boolean>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "ai-workflows",
+                                ":namespace",
+                                ":slug"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only return the latest version of each artifact",
+                                  "key": "latest_only",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "28806ab0-cfff-4e76-b4fd-41c23a6fed55",
+                                  "key": "namespace",
+                                  "value": "commonX<u",
+                                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                },
+                                {
+                                  "id": "fdf8ef9c-3ee4-42ec-96db-adf864d35e9f",
+                                  "key": "slug",
+                                  "value": "<string>",
+                                  "description": "(Required) Artifact slug"
+                                }
+                              ]
+                            },
+                            "description": "Returns a list of all ai-workflow artifacts given a namespace and slug"
+                          },
+                          "response": [
+                            {
+                              "id": "b9b1a912-9f5f-4ac1-9b33-1dbbbd46ae8c",
+                              "name": "Successfully fetched AiWorkflowObject list",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug?latest_only=<boolean>&include_prereleases=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "artifacts",
+                                    "ai-workflows",
+                                    ":namespace",
+                                    ":slug"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Only return the latest version of each artifact",
+                                      "key": "latest_only",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "Include prerelease artifacts in search",
+                                      "key": "include_prereleases",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"private-.tW*z\",\n    \"slug\": \"<string>\",\n    \"type\": \"ai-workflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"private-bP<S$t\",\n    \"slug\": \"<string>\",\n    \"type\": \"ai-workflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                              "createdAt": "2026-07-28T03:10:23.000Z",
+                              "updatedAt": "2026-07-28T03:10:23.000Z",
+                              "uid": "35240-b9b1a912-9f5f-4ac1-9b33-1dbbbd46ae8c"
+                            },
+                            {
+                              "id": "aa107fef-c431-4450-898d-8aa2f9645751",
+                              "name": "Not found or not visible to user",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace/:slug?latest_only=<boolean>&include_prereleases=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "artifacts",
+                                    "ai-workflows",
+                                    ":namespace",
+                                    ":slug"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Only return the latest version of each artifact",
+                                      "key": "latest_only",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "Include prerelease artifacts in search",
+                                      "key": "include_prereleases",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T03:10:23.000Z",
+                              "updatedAt": "2026-07-28T03:10:23.000Z",
+                              "uid": "35240-aa107fef-c431-4450-898d-8aa2f9645751"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:10:23.000Z",
+                          "updatedAt": "2026-07-28T03:10:23.000Z",
+                          "uid": "35240-ae3b8f82-a0ad-459e-9581-8fff0643b7fe"
+                        }
+                      ],
+                      "id": "bd881c4d-cf0c-448c-aa9c-0680a84e2428",
+                      "createdAt": "2026-07-28T03:10:23.000Z",
+                      "updatedAt": "2026-07-28T03:10:23.000Z",
+                      "uid": "35240-bd881c4d-cf0c-448c-aa9c-0680a84e2428"
+                    },
+                    {
+                      "name": "List all ai-workflows for namespace",
+                      "id": "4ff50903-4b26-43d5-8856-ac790b8a375a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace?latest_only=<boolean>&include_prereleases=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "artifacts",
+                            "ai-workflows",
+                            ":namespace"
+                          ],
+                          "query": [
+                            {
+                              "description": "Only return the latest version of each artifact",
+                              "key": "latest_only",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Include prerelease artifacts in search",
+                              "key": "include_prereleases",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "1b7be224-f286-42fe-b0d9-ead47a7cf01d",
+                              "key": "namespace",
+                              "value": "commonX<u",
+                              "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                            }
+                          ]
+                        },
+                        "description": "Returns a list of all ai-workflow artifacts given a namespace"
+                      },
+                      "response": [
+                        {
+                          "id": "97a9cacf-8612-49d9-931c-4465407d96c5",
+                          "name": "Successfully fetched AiWorkflowObject list",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace?latest_only=<boolean>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "ai-workflows",
+                                ":namespace"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only return the latest version of each artifact",
+                                  "key": "latest_only",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"private-.tW*z\",\n    \"slug\": \"<string>\",\n    \"type\": \"ai-workflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"private-bP<S$t\",\n    \"slug\": \"<string>\",\n    \"type\": \"ai-workflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                          "createdAt": "2026-07-28T03:10:23.000Z",
+                          "updatedAt": "2026-07-28T03:10:23.000Z",
+                          "uid": "35240-97a9cacf-8612-49d9-931c-4465407d96c5"
+                        },
+                        {
+                          "id": "f60868d5-974e-4c1d-aaca-c1df3be76426",
+                          "name": "Not found or not visible to user",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/:namespace?latest_only=<boolean>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "ai-workflows",
+                                ":namespace"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only return the latest version of each artifact",
+                                  "key": "latest_only",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:10:23.000Z",
+                          "updatedAt": "2026-07-28T03:10:23.000Z",
+                          "uid": "35240-f60868d5-974e-4c1d-aaca-c1df3be76426"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:10:23.000Z",
+                      "updatedAt": "2026-07-28T03:10:23.000Z",
+                      "uid": "35240-4ff50903-4b26-43d5-8856-ac790b8a375a"
+                    }
+                  ],
+                  "id": "bc0ac593-1709-4e75-988a-ca1afc9c34be",
+                  "createdAt": "2026-07-28T03:10:23.000Z",
+                  "updatedAt": "2026-07-28T03:10:23.000Z",
+                  "uid": "35240-bc0ac593-1709-4e75-988a-ca1afc9c34be"
+                },
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Search for ai-workflow artifacts",
+                      "id": "abc3a1d2-a15f-4ed5-b330-866322c8d0fe",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/search?value=<string>&limit=<integer>&include_prereleases=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "artifacts",
+                            "ai-workflows",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The search string",
+                              "key": "value",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of results to return",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Include prerelease artifacts in search",
+                              "key": "include_prereleases",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        },
+                        "description": "Search for items using specified criteria"
+                      },
+                      "response": [
+                        {
+                          "id": "f55bd93b-a928-4ccd-9659-f818751c1abb",
+                          "name": "A list of items that match the search query",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/search?value=<string>&limit=<integer>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "ai-workflows",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The search string",
+                                  "key": "value",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The maximum number of results to return",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"private-.tW*z\",\n    \"slug\": \"<string>\",\n    \"type\": \"ai-workflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"private-bP<S$t\",\n    \"slug\": \"<string>\",\n    \"type\": \"ai-workflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                          "createdAt": "2026-07-28T03:10:23.000Z",
+                          "updatedAt": "2026-07-28T03:10:23.000Z",
+                          "uid": "35240-f55bd93b-a928-4ccd-9659-f818751c1abb"
+                        },
+                        {
+                          "id": "447086de-bb72-473e-ac52-c702c5c28311",
+                          "name": "Not found or not visible to user",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/ai-workflows/search?value=<string>&limit=<integer>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "ai-workflows",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The search string",
+                                  "key": "value",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The maximum number of results to return",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:10:23.000Z",
+                          "updatedAt": "2026-07-28T03:10:23.000Z",
+                          "uid": "35240-447086de-bb72-473e-ac52-c702c5c28311"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:10:23.000Z",
+                      "updatedAt": "2026-07-28T03:10:23.000Z",
+                      "uid": "35240-abc3a1d2-a15f-4ed5-b330-866322c8d0fe"
+                    }
+                  ],
+                  "id": "427526aa-28a1-4382-84b4-f64b0a1333f8",
+                  "createdAt": "2026-07-28T03:10:23.000Z",
+                  "updatedAt": "2026-07-28T03:10:23.000Z",
+                  "uid": "35240-427526aa-28a1-4382-84b4-f64b0a1333f8"
+                },
+                {
+                  "name": "List all ai-workflow artifacts",
+                  "id": "12a76441-0527-410c-8f0e-3d9e0c6fb5d8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/artifacts/ai-workflows?namespace_type=private&latest_only=<boolean>&include_prereleases=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "artifacts",
+                        "ai-workflows"
+                      ],
+                      "query": [
+                        {
+                          "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')",
+                          "key": "namespace_type",
+                          "value": "private"
+                        },
+                        {
+                          "description": "Only return the latest version of each artifact",
+                          "key": "latest_only",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Include prerelease artifacts in search",
+                          "key": "include_prereleases",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of all ai-workflow artifacts, optionally filtered by namespace type"
+                  },
+                  "response": [
+                    {
+                      "id": "580fb175-c3dc-4fea-904f-f4e683935c73",
+                      "name": "Successfully fetched AiWorkflowObject list",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/artifacts/ai-workflows?namespace_type=private&latest_only=<boolean>&include_prereleases=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "artifacts",
+                            "ai-workflows"
+                          ],
+                          "query": [
+                            {
+                              "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')",
+                              "key": "namespace_type",
+                              "value": "private"
+                            },
+                            {
+                              "description": "Only return the latest version of each artifact",
+                              "key": "latest_only",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Include prerelease artifacts in search",
+                              "key": "include_prereleases",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"private-.tW*z\",\n    \"slug\": \"<string>\",\n    \"type\": \"ai-workflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"private-bP<S$t\",\n    \"slug\": \"<string>\",\n    \"type\": \"ai-workflow\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                      "createdAt": "2026-07-28T03:10:23.000Z",
+                      "updatedAt": "2026-07-28T03:10:23.000Z",
+                      "uid": "35240-580fb175-c3dc-4fea-904f-f4e683935c73"
+                    },
+                    {
+                      "id": "b8413510-730c-4521-99c3-dcb1fd5b68f9",
+                      "name": "Not found or not visible to user",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/artifacts/ai-workflows?namespace_type=private&latest_only=<boolean>&include_prereleases=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "artifacts",
+                            "ai-workflows"
+                          ],
+                          "query": [
+                            {
+                              "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')",
+                              "key": "namespace_type",
+                              "value": "private"
+                            },
+                            {
+                              "description": "Only return the latest version of each artifact",
+                              "key": "latest_only",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Include prerelease artifacts in search",
+                              "key": "include_prereleases",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T03:10:23.000Z",
+                      "updatedAt": "2026-07-28T03:10:23.000Z",
+                      "uid": "35240-b8413510-730c-4521-99c3-dcb1fd5b68f9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:10:23.000Z",
+                  "updatedAt": "2026-07-28T03:10:23.000Z",
+                  "uid": "35240-12a76441-0527-410c-8f0e-3d9e0c6fb5d8"
+                }
+              ],
+              "id": "f06fc0f1-f4be-469e-82d8-a5c335fcde02",
+              "createdAt": "2026-07-28T03:10:23.000Z",
+              "updatedAt": "2026-07-28T03:10:23.000Z",
+              "uid": "35240-f06fc0f1-f4be-469e-82d8-a5c335fcde02"
+            }
+          ],
+          "id": "ec82ede2-1c28-4888-8c60-0fee14eeda3f",
+          "createdAt": "2026-07-28T03:10:23.000Z",
+          "updatedAt": "2026-07-28T03:10:23.000Z",
+          "uid": "35240-ec82ede2-1c28-4888-8c60-0fee14eeda3f"
+        }
+      ],
+      "id": "f9186700-4846-4e84-a899-30d7bfabaad7",
+      "createdAt": "2026-07-28T03:10:23.000Z",
+      "updatedAt": "2026-07-28T03:10:23.000Z",
+      "uid": "35240-f9186700-4846-4e84-a899-30d7bfabaad7"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

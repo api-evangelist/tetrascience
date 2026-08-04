@@ -1,0 +1,228 @@
+{
+  "info": {
+    "_postman_id": "c1f3b545-fbfd-4578-8935-f4f069bc74b5",
+    "name": "TetraScience Data and AI Cloud Access Groups Audit Trail API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:10:27.000Z",
+    "updatedAt": "2026-07-28T03:10:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c1f3b545-fbfd-4578-8935-f4f069bc74b5"
+  },
+  "item": [
+    {
+      "name": "audit-trail",
+      "item": [
+        {
+          "name": "Get audit logs (Paginated)",
+          "id": "6adbe44c-f078-4968-a788-cc79cce2f0c9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/audit-trail?actor=<string>&entityName=<string>&entity=<string>&action=<string>&ids=<string>&id=<string>&changeReason=<string>&from=<dateTime>&to=<dateTime>&take=<number>&skip=<number>&format=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "audit-trail"
+              ],
+              "query": [
+                {
+                  "key": "actor",
+                  "value": "<string>"
+                },
+                {
+                  "key": "entityName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "entity",
+                  "value": "<string>"
+                },
+                {
+                  "key": "action",
+                  "value": "<string>"
+                },
+                {
+                  "key": "ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "key": "changeReason",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "from",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "to",
+                  "value": "<dateTime>"
+                },
+                {
+                  "key": "take",
+                  "value": "<number>"
+                },
+                {
+                  "key": "skip",
+                  "value": "<number>"
+                },
+                {
+                  "key": "format",
+                  "value": "json"
+                }
+              ]
+            },
+            "description": "Returns a paginated object of audit logs."
+          },
+          "response": [
+            {
+              "id": "3482f52e-cbf6-4aa6-bbe1-4889ef4a2413",
+              "name": "Complex object containing audit logs and paging information.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/audit-trail?actor=<string>&entityName=<string>&entity=<string>&action=<string>&ids=<string>&id=<string>&changeReason=<string>&from=<dateTime>&to=<dateTime>&take=<number>&skip=<number>&format=json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "audit-trail"
+                  ],
+                  "query": [
+                    {
+                      "key": "actor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entityName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "entity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "changeReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"skip\": \"<number>\",\n  \"take\": \"<number>\",\n  \"next\": \"<boolean>\",\n  \"logs\": [\n    {\n      \"id\": \"<uuid>\",\n      \"orgSlug\": \"<string>\",\n      \"ip\": \"<ipv4>\",\n      \"createdAt\": \"<dateTime>\",\n      \"entity\": {\n        \"id\": \"<uuid>\",\n        \"type\": \"user-setting\",\n        \"before\": {},\n        \"after\": {},\n        \"schemaVersion\": \"<number>\"\n      },\n      \"action\": \"enable\",\n      \"actor\": {\n        \"id\": \"<uuid>\",\n        \"type\": \"user\",\n        \"name\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"authToken\": {\n        \"ending\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"orgSlug\": \"<string>\",\n      \"ip\": \"<ipv4>\",\n      \"createdAt\": \"<dateTime>\",\n      \"entity\": {\n        \"id\": \"<uuid>\",\n        \"type\": \"db-credentials\",\n        \"before\": {},\n        \"after\": {},\n        \"schemaVersion\": \"<number>\"\n      },\n      \"action\": \"forgot-password-request\",\n      \"actor\": {\n        \"id\": \"<uuid>\",\n        \"type\": \"service-user\",\n        \"name\": \"<string>\",\n        \"email\": \"<email>\"\n      },\n      \"authToken\": {\n        \"ending\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:10:28.000Z",
+              "updatedAt": "2026-07-28T03:10:28.000Z",
+              "uid": "35240-3482f52e-cbf6-4aa6-bbe1-4889ef4a2413"
+            }
+          ],
+          "createdAt": "2026-07-28T03:10:28.000Z",
+          "updatedAt": "2026-07-28T03:10:28.000Z",
+          "uid": "35240-6adbe44c-f078-4968-a788-cc79cce2f0c9"
+        }
+      ],
+      "id": "4f2409f6-298d-41f6-a788-585b23345f3e",
+      "createdAt": "2026-07-28T03:10:28.000Z",
+      "updatedAt": "2026-07-28T03:10:28.000Z",
+      "uid": "35240-4f2409f6-298d-41f6-a788-585b23345f3e"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

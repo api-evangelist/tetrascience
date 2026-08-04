@@ -1,0 +1,499 @@
+{
+  "info": {
+    "_postman_id": "e29c3b55-fd4d-488f-9071-3924d13ce3b4",
+    "name": "TetraScience Data and AI Cloud Access Groups Logs API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:11:29.000Z",
+    "updatedAt": "2026-07-28T03:11:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e29c3b55-fd4d-488f-9071-3924d13ce3b4"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "datalake",
+          "item": [
+            {
+              "name": "queryActivityLog",
+              "item": [
+                {
+                  "name": "Query System Logs",
+                  "id": "e470526c-cc17-4459-8413-135353598423",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) JWT Token",
+                        "key": "ts-auth-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Your organization slug",
+                        "key": "x-org-slug",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/datalake/queryActivityLog?queryId=<string>&max=1000&next=<string>&take=8&skip=0&actor=<string>&targetType=<string>&targetName=<string>&action=<string>&actions=<string>&from=<dateTime>&to=<dateTime>&ids=<string>&ids=<string>&id=<string>&changeReason=<string>&targetIds=<string>&format=<string>&sortDirection=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "datalake",
+                        "queryActivityLog"
+                      ],
+                      "query": [
+                        {
+                          "description": "Query ID to retrieve more logs",
+                          "key": "queryId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of logs to return",
+                          "key": "max",
+                          "value": "1000"
+                        },
+                        {
+                          "description": "Next page token",
+                          "key": "next",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of logs to take",
+                          "key": "take",
+                          "value": "8"
+                        },
+                        {
+                          "description": "Number of logs to skip",
+                          "key": "skip",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Filter by actor name (case-insensitive partial match)",
+                          "key": "actor",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by target type (exact match)",
+                          "key": "targetType",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by target name (case-insensitive partial match)",
+                          "key": "targetName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by single action type",
+                          "key": "action",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by multiple action types (comma-separated)",
+                          "key": "actions",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter logs after this timestamp (ISO format)",
+                          "key": "from",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Filter logs before this timestamp (ISO format)",
+                          "key": "to",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Filter by array of IDs",
+                          "key": "ids",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by array of IDs",
+                          "key": "ids",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by target ID (case-insensitive partial match)",
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by change reason (case-insensitive partial match)",
+                          "key": "changeReason",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by multiple target IDs (comma-separated)",
+                          "key": "targetIds",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Format of the response (use \"csv\" to download a CSV file)",
+                          "key": "format",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Order of sorting by timestamp (\"asc\" for ASC, DESC by default)",
+                          "key": "sortDirection",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "This endpoint retrieves System Logs for user activity in the Data Lake. You can query logs based on various parameters to track user actions or file operations and changes."
+                  },
+                  "response": [
+                    {
+                      "id": "f6454708-c7b0-44be-bb12-0f7a6df4c91a",
+                      "name": "Successfully retrieved activity logs",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) JWT Token",
+                            "key": "ts-auth-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Your organization slug",
+                            "key": "x-org-slug",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/datalake/queryActivityLog?queryId=<string>&max=1000&next=<string>&take=8&skip=0&actor=<string>&targetType=<string>&targetName=<string>&action=<string>&actions=<string>&from=<dateTime>&to=<dateTime>&ids=<string>&id=<string>&changeReason=<string>&targetIds=<string>&format=<string>&sortDirection=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "datalake",
+                            "queryActivityLog"
+                          ],
+                          "query": [
+                            {
+                              "description": "Query ID to retrieve more logs",
+                              "key": "queryId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of logs to return",
+                              "key": "max",
+                              "value": "1000"
+                            },
+                            {
+                              "description": "Next page token",
+                              "key": "next",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of logs to take",
+                              "key": "take",
+                              "value": "8"
+                            },
+                            {
+                              "description": "Number of logs to skip",
+                              "key": "skip",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filter by actor name (case-insensitive partial match)",
+                              "key": "actor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by target type (exact match)",
+                              "key": "targetType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by target name (case-insensitive partial match)",
+                              "key": "targetName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by single action type",
+                              "key": "action",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by multiple action types (comma-separated)",
+                              "key": "actions",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter logs after this timestamp (ISO format)",
+                              "key": "from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Filter logs before this timestamp (ISO format)",
+                              "key": "to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Filter by array of IDs",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by target ID (case-insensitive partial match)",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by change reason (case-insensitive partial match)",
+                              "key": "changeReason",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by multiple target IDs (comma-separated)",
+                              "key": "targetIds",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Format of the response (use \"csv\" to download a CSV file)",
+                              "key": "format",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Order of sorting by timestamp (\"asc\" for ASC, DESC by default)",
+                              "key": "sortDirection",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"queryId\": \"<string>\",\n  \"logs\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"category\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"tenant_id\": \"<string>\",\n      \"org_slug\": \"<string>\",\n      \"actor\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"email\": \"<string>\"\n      },\n      \"action\": \"<string>\",\n      \"target\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"source\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"tracking\": {\n          \"ipaddress\": \"<string>\",\n          \"useragent\": \"<string>\",\n          \"token\": \"<string>\",\n          \"other\": \"<string>\"\n        }\n      },\n      \"tags\": {},\n      \"before\": {},\n      \"after\": {}\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"category\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"tenant_id\": \"<string>\",\n      \"org_slug\": \"<string>\",\n      \"actor\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"email\": \"<string>\"\n      },\n      \"action\": \"<string>\",\n      \"target\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"source\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"tracking\": {\n          \"ipaddress\": \"<string>\",\n          \"useragent\": \"<string>\",\n          \"token\": \"<string>\",\n          \"other\": \"<string>\"\n        }\n      },\n      \"tags\": {},\n      \"before\": {},\n      \"after\": {}\n    }\n  ],\n  \"hasMore\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T03:11:30.000Z",
+                      "updatedAt": "2026-07-28T03:11:30.000Z",
+                      "uid": "35240-f6454708-c7b0-44be-bb12-0f7a6df4c91a"
+                    },
+                    {
+                      "id": "4e95a527-68a8-4a1d-9600-1fc6c19cf3f0",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) JWT Token",
+                            "key": "ts-auth-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Your organization slug",
+                            "key": "x-org-slug",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/datalake/queryActivityLog?queryId=<string>&max=1000&next=<string>&take=8&skip=0&actor=<string>&targetType=<string>&targetName=<string>&action=<string>&actions=<string>&from=<dateTime>&to=<dateTime>&ids=<string>&id=<string>&changeReason=<string>&targetIds=<string>&format=<string>&sortDirection=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "datalake",
+                            "queryActivityLog"
+                          ],
+                          "query": [
+                            {
+                              "description": "Query ID to retrieve more logs",
+                              "key": "queryId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of logs to return",
+                              "key": "max",
+                              "value": "1000"
+                            },
+                            {
+                              "description": "Next page token",
+                              "key": "next",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of logs to take",
+                              "key": "take",
+                              "value": "8"
+                            },
+                            {
+                              "description": "Number of logs to skip",
+                              "key": "skip",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filter by actor name (case-insensitive partial match)",
+                              "key": "actor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by target type (exact match)",
+                              "key": "targetType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by target name (case-insensitive partial match)",
+                              "key": "targetName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by single action type",
+                              "key": "action",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by multiple action types (comma-separated)",
+                              "key": "actions",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter logs after this timestamp (ISO format)",
+                              "key": "from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Filter logs before this timestamp (ISO format)",
+                              "key": "to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Filter by array of IDs",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by target ID (case-insensitive partial match)",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by change reason (case-insensitive partial match)",
+                              "key": "changeReason",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by multiple target IDs (comma-separated)",
+                              "key": "targetIds",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Format of the response (use \"csv\" to download a CSV file)",
+                              "key": "format",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Order of sorting by timestamp (\"asc\" for ASC, DESC by default)",
+                              "key": "sortDirection",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:11:30.000Z",
+                      "updatedAt": "2026-07-28T03:11:30.000Z",
+                      "uid": "35240-4e95a527-68a8-4a1d-9600-1fc6c19cf3f0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:11:30.000Z",
+                  "updatedAt": "2026-07-28T03:11:30.000Z",
+                  "uid": "35240-e470526c-cc17-4459-8413-135353598423"
+                }
+              ],
+              "id": "845da664-d69e-46fe-92f3-5f1e5f6ba1e6",
+              "createdAt": "2026-07-28T03:11:30.000Z",
+              "updatedAt": "2026-07-28T03:11:30.000Z",
+              "uid": "35240-845da664-d69e-46fe-92f3-5f1e5f6ba1e6"
+            }
+          ],
+          "id": "967fbcee-5296-4e4e-8e53-672eba8d46ee",
+          "createdAt": "2026-07-28T03:11:30.000Z",
+          "updatedAt": "2026-07-28T03:11:30.000Z",
+          "uid": "35240-967fbcee-5296-4e4e-8e53-672eba8d46ee"
+        }
+      ],
+      "id": "aed84976-aa48-4283-ab1a-64d2ed35f383",
+      "createdAt": "2026-07-28T03:11:30.000Z",
+      "updatedAt": "2026-07-28T03:11:30.000Z",
+      "uid": "35240-aed84976-aa48-4283-ab1a-64d2ed35f383"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

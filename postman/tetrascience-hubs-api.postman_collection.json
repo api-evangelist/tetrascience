@@ -1,0 +1,283 @@
+{
+  "info": {
+    "_postman_id": "613a0ef5-d73b-40ff-89b0-008099bc7064",
+    "name": "TetraScience Data and AI Cloud Access Groups Hubs API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:11:02.000Z",
+    "updatedAt": "2026-07-28T03:11:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-613a0ef5-d73b-40ff-89b0-008099bc7064"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "data-acquisition",
+          "item": [
+            {
+              "name": "hubs",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "Get a Hub by id",
+                      "id": "4356a125-15e1-45b5-9420-68499c6013ab",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/data-acquisition/hubs/:id?include=connectors&include=connectors",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "data-acquisition",
+                            "hubs",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Include additional Hub fields. Passing 'connectors' includes the list of the Hub's Connectors.",
+                              "key": "include",
+                              "value": "connectors"
+                            },
+                            {
+                              "description": "Include additional Hub fields. Passing 'connectors' includes the list of the Hub's Connectors.",
+                              "key": "include",
+                              "value": "connectors"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "58120413-3c12-4c67-b2e9-d575e6e0b6b7",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get a Hub's details by id."
+                      },
+                      "response": [
+                        {
+                          "id": "49bfb6e5-eb3f-4d41-a350-fc86a28f1d5a",
+                          "name": "Successful response with a Hub's details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/data-acquisition/hubs/:id?include=connectors",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "data-acquisition",
+                                "hubs",
+                                ":id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Include additional Hub fields. Passing 'connectors' includes the list of the Hub's Connectors.",
+                                  "key": "include",
+                                  "value": "connectors"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"orgSlug\": \"<string>\",\n  \"description\": \"<string>\",\n  \"httpProxyHost\": \"<string>\",\n  \"httpProxyPort\": \"<number>\",\n  \"httpProxyUsername\": \"<string>\",\n  \"httpsProxyHost\": \"<string>\",\n  \"httpsProxyPort\": \"<number>\",\n  \"httpsProxyUsername\": \"<string>\",\n  \"noProxy\": \"<string>\",\n  \"l7ProxyForwardPort\": \"<number>\",\n  \"l7ProxyReverseHttpPort\": \"<number>\",\n  \"l7ProxyReverseHttpsPort\": \"<number>\",\n  \"l7ProxySocatPort\": \"<number>\",\n  \"l7ProxyReverseMqttPort\": \"<number>\",\n  \"l7ProxySocatMqttPort\": \"<number>\",\n  \"l7ProxyLocalnets\": \"<string>\",\n  \"l7ProxyDnsNameservers\": \"<string>\",\n  \"l7ProxyWhitelist\": \"<string>\",\n  \"l7ProxyMaximumMemoryMb\": \"<number>\",\n  \"enabled\": \"<boolean>\",\n  \"status\": {\n    \"network\": \"Offline\",\n    \"lastSeen\": \"<dateTime>\",\n    \"proxies\": {\n      \"l7\": {\n        \"startedAt\": \"<dateTime>\",\n        \"status\": \"RUNNING\"\n      },\n      \"l7ReverseNginx\": {\n        \"startedAt\": \"<dateTime>\",\n        \"status\": \"RUNNING\"\n      },\n      \"l7ReverseSocat\": {\n        \"startedAt\": \"<dateTime>\",\n        \"status\": \"RUNNING\"\n      },\n      \"metrics\": [\n        {\n          \"cpuUsed\": {\n            \"value\": \"<number>\",\n            \"unit\": \"Percent\"\n          },\n          \"memoryUsed\": {\n            \"value\": \"<number>\",\n            \"unit\": \"Bytes\"\n          },\n          \"memoryUsedPercentOfMax\": {\n            \"value\": \"<number>\",\n            \"unit\": \"Percent\"\n          },\n          \"memoryUsedPercentOfReservation\": {\n            \"value\": \"<number>\",\n            \"unit\": \"Percent\"\n          },\n          \"memoryMax\": {\n            \"value\": \"<number>\",\n            \"unit\": \"Bytes\"\n          }\n        },\n        {\n          \"cpuUsed\": {\n            \"value\": \"<number>\",\n            \"unit\": \"Percent\"\n          },\n          \"memoryUsed\": {\n            \"value\": \"<number>\",\n            \"unit\": \"Bytes\"\n          },\n          \"memoryUsedPercentOfMax\": {\n            \"value\": \"<number>\",\n            \"unit\": \"Percent\"\n          },\n          \"memoryUsedPercentOfReservation\": {\n            \"value\": \"<number>\",\n            \"unit\": \"Percent\"\n          },\n          \"memoryMax\": {\n            \"value\": \"<number>\",\n            \"unit\": \"Bytes\"\n          }\n        }\n      ]\n    },\n    \"metrics\": [\n      {\n        \"cpuUsedSystem\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Percent\"\n        },\n        \"cpuUsedUser\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Percent\"\n        },\n        \"diskFree\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        },\n        \"diskUsed\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Percent\"\n        },\n        \"memoryUsed\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        },\n        \"memoryFree\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        },\n        \"memoryBuffered\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        },\n        \"memoryCached\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        },\n        \"memoryAvailable\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        },\n        \"memoryTotal\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        },\n        \"memoryUsedPercentOfReservation\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Percent\"\n        },\n        \"memoryMax\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        }\n      },\n      {\n        \"cpuUsedSystem\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Percent\"\n        },\n        \"cpuUsedUser\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Percent\"\n        },\n        \"diskFree\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        },\n        \"diskUsed\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Percent\"\n        },\n        \"memoryUsed\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        },\n        \"memoryFree\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        },\n        \"memoryBuffered\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        },\n        \"memoryCached\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        },\n        \"memoryAvailable\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        },\n        \"memoryTotal\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        },\n        \"memoryUsedPercentOfReservation\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Percent\"\n        },\n        \"memoryMax\": {\n          \"value\": \"<number>\",\n          \"unit\": \"Bytes\"\n        }\n      }\n    ],\n    \"health\": {\n      \"breakdown\": [\n        {\n          \"name\": \"Disk\",\n          \"status\": \"CRITICAL\"\n        },\n        {\n          \"name\": \"ProxyMemory\",\n          \"status\": \"CRITICAL\"\n        }\n      ],\n      \"status\": \"WARNING\"\n    }\n  },\n  \"host\": {\n    \"ipAddress\": \"<string>\",\n    \"hostName\": \"<string>\",\n    \"platformName\": \"<string>\",\n    \"platformVersion\": \"<string>\"\n  },\n  \"updatedAt\": \"<dateTime>\",\n  \"createdAt\": \"<dateTime>\",\n  \"activationExpiresAt\": \"<dateTime>\",\n  \"ssmInstanceId\": \"<string>\",\n  \"ecsContainerInstanceArn\": \"<string>\",\n  \"connectors\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"artifact\": {\n        \"namespace\": \"<string>\",\n        \"slug\": \"<string>\",\n        \"version\": \"<string>\",\n        \"manifest\": 20138669\n      },\n      \"hostType\": \"hub\",\n      \"health\": \"<string>\",\n      \"healthErrorCode\": \"<string>\",\n      \"operatingStatus\": \"<string>\",\n      \"networkStatus\": \"<string>\",\n      \"lastSeenAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"artifact\": {\n        \"namespace\": \"<string>\",\n        \"slug\": \"<string>\",\n        \"version\": \"<string>\",\n        \"manifest\": -20826089.13148114\n      },\n      \"hostType\": \"cloud\",\n      \"health\": \"<string>\",\n      \"healthErrorCode\": \"<string>\",\n      \"operatingStatus\": \"<string>\",\n      \"networkStatus\": \"<string>\",\n      \"lastSeenAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:11:02.000Z",
+                          "updatedAt": "2026-07-28T03:11:02.000Z",
+                          "uid": "35240-49bfb6e5-eb3f-4d41-a350-fc86a28f1d5a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:11:02.000Z",
+                      "updatedAt": "2026-07-28T03:11:02.000Z",
+                      "uid": "35240-4356a125-15e1-45b5-9420-68499c6013ab"
+                    }
+                  ],
+                  "id": "7d0efef4-0e41-44fa-b757-9e0ce8416a18",
+                  "createdAt": "2026-07-28T03:11:02.000Z",
+                  "updatedAt": "2026-07-28T03:11:02.000Z",
+                  "uid": "35240-7d0efef4-0e41-44fa-b757-9e0ce8416a18"
+                },
+                {
+                  "name": "Get all Hubs",
+                  "id": "a0d4833c-285b-4e46-9be0-94ce58315644",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/data-acquisition/hubs?include=status&include=status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "data-acquisition",
+                        "hubs"
+                      ],
+                      "query": [
+                        {
+                          "description": "Include additional Hub fields. Passing 'status' includes network and health statuses.",
+                          "key": "include",
+                          "value": "status"
+                        },
+                        {
+                          "description": "Include additional Hub fields. Passing 'status' includes network and health statuses.",
+                          "key": "include",
+                          "value": "status"
+                        }
+                      ]
+                    },
+                    "description": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get a list of Hubs."
+                  },
+                  "response": [
+                    {
+                      "id": "8e3b08fd-7159-497e-8702-7f41c7cda3fb",
+                      "name": "Successful response with a list of all Hubs",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/data-acquisition/hubs?include=status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "data-acquisition",
+                            "hubs"
+                          ],
+                          "query": [
+                            {
+                              "description": "Include additional Hub fields. Passing 'status' includes network and health statuses.",
+                              "key": "include",
+                              "value": "status"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"hubs\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"orgSlug\": \"<string>\",\n      \"l7ProxyForwardPort\": \"<number>\",\n      \"l7ProxyReverseHttpPort\": \"<number>\",\n      \"l7ProxyReverseHttpsPort\": \"<number>\",\n      \"l7ProxySocatPort\": \"<number>\",\n      \"l7ProxyLocalnets\": \"<string>\",\n      \"l7ProxyMaximumMemoryMb\": \"<number>\",\n      \"enabled\": \"<boolean>\",\n      \"host\": {\n        \"ipAddress\": \"<string>\",\n        \"hostName\": \"<string>\",\n        \"platformName\": \"<string>\",\n        \"platformVersion\": \"<string>\"\n      },\n      \"updatedAt\": \"<dateTime>\",\n      \"createdAt\": \"<dateTime>\",\n      \"activationExpiresAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"httpProxyHost\": \"<string>\",\n      \"httpProxyPort\": \"<number>\",\n      \"httpProxyUsername\": \"<string>\",\n      \"httpsProxyHost\": \"<string>\",\n      \"httpsProxyPort\": \"<number>\",\n      \"httpsProxyUsername\": \"<string>\",\n      \"noProxy\": \"<string>\",\n      \"l7ProxyReverseMqttPort\": \"<number>\",\n      \"l7ProxySocatMqttPort\": \"<number>\",\n      \"l7ProxyDnsNameservers\": \"<string>\",\n      \"l7ProxyWhitelist\": \"<string>\",\n      \"status\": {\n        \"network\": \"Online\",\n        \"lastSeen\": \"<dateTime>\",\n        \"proxies\": {\n          \"l7\": {\n            \"startedAt\": \"<dateTime>\",\n            \"status\": \"RUNNING\"\n          },\n          \"l7ReverseNginx\": {\n            \"startedAt\": \"<dateTime>\",\n            \"status\": \"RUNNING\"\n          },\n          \"l7ReverseSocat\": {\n            \"startedAt\": \"<dateTime>\",\n            \"status\": \"STOPPED\"\n          },\n          \"metrics\": [\n            {\n              \"cpuUsed\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Percent\"\n              },\n              \"memoryUsed\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Bytes\"\n              },\n              \"memoryUsedPercentOfMax\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Percent\"\n              },\n              \"memoryUsedPercentOfReservation\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Percent\"\n              },\n              \"memoryMax\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Bytes\"\n              }\n            },\n            {\n              \"cpuUsed\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Percent\"\n              },\n              \"memoryUsed\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Bytes\"\n              },\n              \"memoryUsedPercentOfMax\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Percent\"\n              },\n              \"memoryUsedPercentOfReservation\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Percent\"\n              },\n              \"memoryMax\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Bytes\"\n              }\n            }\n          ]\n        },\n        \"metrics\": [\n          {\n            \"cpuUsedSystem\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"cpuUsedUser\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"diskFree\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"diskUsed\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"memoryUsed\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryFree\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryBuffered\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryCached\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryAvailable\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryTotal\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryUsedPercentOfReservation\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"memoryMax\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            }\n          },\n          {\n            \"cpuUsedSystem\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"cpuUsedUser\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"diskFree\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"diskUsed\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"memoryUsed\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryFree\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryBuffered\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryCached\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryAvailable\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryTotal\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryUsedPercentOfReservation\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"memoryMax\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            }\n          }\n        ],\n        \"health\": {\n          \"breakdown\": [\n            {\n              \"name\": \"CPU\",\n              \"status\": \"CRITICAL\"\n            },\n            {\n              \"name\": \"Availability\",\n              \"status\": \"CRITICAL\"\n            }\n          ],\n          \"status\": \"WARNING\"\n        }\n      },\n      \"ssmInstanceId\": \"<string>\",\n      \"ecsContainerInstanceArn\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"orgSlug\": \"<string>\",\n      \"l7ProxyForwardPort\": \"<number>\",\n      \"l7ProxyReverseHttpPort\": \"<number>\",\n      \"l7ProxyReverseHttpsPort\": \"<number>\",\n      \"l7ProxySocatPort\": \"<number>\",\n      \"l7ProxyLocalnets\": \"<string>\",\n      \"l7ProxyMaximumMemoryMb\": \"<number>\",\n      \"enabled\": \"<boolean>\",\n      \"host\": {\n        \"ipAddress\": \"<string>\",\n        \"hostName\": \"<string>\",\n        \"platformName\": \"<string>\",\n        \"platformVersion\": \"<string>\"\n      },\n      \"updatedAt\": \"<dateTime>\",\n      \"createdAt\": \"<dateTime>\",\n      \"activationExpiresAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"httpProxyHost\": \"<string>\",\n      \"httpProxyPort\": \"<number>\",\n      \"httpProxyUsername\": \"<string>\",\n      \"httpsProxyHost\": \"<string>\",\n      \"httpsProxyPort\": \"<number>\",\n      \"httpsProxyUsername\": \"<string>\",\n      \"noProxy\": \"<string>\",\n      \"l7ProxyReverseMqttPort\": \"<number>\",\n      \"l7ProxySocatMqttPort\": \"<number>\",\n      \"l7ProxyDnsNameservers\": \"<string>\",\n      \"l7ProxyWhitelist\": \"<string>\",\n      \"status\": {\n        \"network\": \"Online\",\n        \"lastSeen\": \"<dateTime>\",\n        \"proxies\": {\n          \"l7\": {\n            \"startedAt\": \"<dateTime>\",\n            \"status\": \"STOPPED\"\n          },\n          \"l7ReverseNginx\": {\n            \"startedAt\": \"<dateTime>\",\n            \"status\": \"STOPPED\"\n          },\n          \"l7ReverseSocat\": {\n            \"startedAt\": \"<dateTime>\",\n            \"status\": \"RUNNING\"\n          },\n          \"metrics\": [\n            {\n              \"cpuUsed\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Percent\"\n              },\n              \"memoryUsed\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Bytes\"\n              },\n              \"memoryUsedPercentOfMax\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Percent\"\n              },\n              \"memoryUsedPercentOfReservation\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Percent\"\n              },\n              \"memoryMax\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Bytes\"\n              }\n            },\n            {\n              \"cpuUsed\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Percent\"\n              },\n              \"memoryUsed\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Bytes\"\n              },\n              \"memoryUsedPercentOfMax\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Percent\"\n              },\n              \"memoryUsedPercentOfReservation\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Percent\"\n              },\n              \"memoryMax\": {\n                \"value\": \"<number>\",\n                \"unit\": \"Bytes\"\n              }\n            }\n          ]\n        },\n        \"metrics\": [\n          {\n            \"cpuUsedSystem\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"cpuUsedUser\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"diskFree\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"diskUsed\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"memoryUsed\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryFree\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryBuffered\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryCached\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryAvailable\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryTotal\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryUsedPercentOfReservation\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"memoryMax\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            }\n          },\n          {\n            \"cpuUsedSystem\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"cpuUsedUser\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"diskFree\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"diskUsed\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"memoryUsed\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryFree\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryBuffered\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryCached\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryAvailable\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryTotal\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            },\n            \"memoryUsedPercentOfReservation\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Percent\"\n            },\n            \"memoryMax\": {\n              \"value\": \"<number>\",\n              \"unit\": \"Bytes\"\n            }\n          }\n        ],\n        \"health\": {\n          \"breakdown\": [\n            {\n              \"name\": \"ProxyMemoryMax\",\n              \"status\": \"HEALTHY\"\n            },\n            {\n              \"name\": \"Availability\",\n              \"status\": \"HEALTHY\"\n            }\n          ],\n          \"status\": \"HEALTHY\"\n        }\n      },\n      \"ssmInstanceId\": \"<string>\",\n      \"ecsContainerInstanceArn\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:11:02.000Z",
+                      "updatedAt": "2026-07-28T03:11:02.000Z",
+                      "uid": "35240-8e3b08fd-7159-497e-8702-7f41c7cda3fb"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:11:02.000Z",
+                  "updatedAt": "2026-07-28T03:11:02.000Z",
+                  "uid": "35240-a0d4833c-285b-4e46-9be0-94ce58315644"
+                }
+              ],
+              "id": "d9ca1b83-c754-4b63-8cca-d106b8d97486",
+              "createdAt": "2026-07-28T03:11:02.000Z",
+              "updatedAt": "2026-07-28T03:11:02.000Z",
+              "uid": "35240-d9ca1b83-c754-4b63-8cca-d106b8d97486"
+            }
+          ],
+          "id": "11c36316-dbc9-4b7a-b1e2-c3d036c3c009",
+          "createdAt": "2026-07-28T03:11:02.000Z",
+          "updatedAt": "2026-07-28T03:11:02.000Z",
+          "uid": "35240-11c36316-dbc9-4b7a-b1e2-c3d036c3c009"
+        }
+      ],
+      "id": "7c6d053a-3ce8-430f-9f85-afe848be083b",
+      "createdAt": "2026-07-28T03:11:02.000Z",
+      "updatedAt": "2026-07-28T03:11:02.000Z",
+      "uid": "35240-7c6d053a-3ce8-430f-9f85-afe848be083b"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

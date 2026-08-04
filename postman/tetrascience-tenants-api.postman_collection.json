@@ -1,0 +1,1275 @@
+{
+  "info": {
+    "_postman_id": "bffd7958-0923-4bb5-838f-ad16b420a653",
+    "name": "TetraScience Data and AI Cloud Access Groups Tenants API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:12:52.000Z",
+    "updatedAt": "2026-07-28T03:12:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bffd7958-0923-4bb5-838f-ad16b420a653"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "tenants",
+          "item": [
+            {
+              "name": "{tenantId}",
+              "item": [
+                {
+                  "name": "organizations",
+                  "item": [
+                    {
+                      "name": "Get all organizations in a tenant",
+                      "id": "6330ad10-72c5-4fb7-8972-bf9949561692",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tenants/:tenantId/organizations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tenants",
+                            ":tenantId",
+                            "organizations"
+                          ],
+                          "variable": [
+                            {
+                              "id": "42daccb7-8e28-488c-92de-b4e08e790dc5",
+                              "key": "tenantId",
+                              "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Get all organizations in a tenant, needs to be system admin."
+                      },
+                      "response": [
+                        {
+                          "id": "38f5491f-e1fa-47f2-8cdd-22c25e4aaede",
+                          "name": "Successful",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/tenants/:tenantId/organizations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "tenants",
+                                ":tenantId",
+                                "organizations"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tenantId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"orgSlug\": {\n      \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n    },\n    \"name\": \"<string>\"\n  },\n  {\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"orgSlug\": {\n      \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n    },\n    \"name\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:12:53.000Z",
+                          "updatedAt": "2026-07-28T03:12:53.000Z",
+                          "uid": "35240-38f5491f-e1fa-47f2-8cdd-22c25e4aaede"
+                        },
+                        {
+                          "id": "2da502a5-211d-4337-93bd-5c7f66b865cb",
+                          "name": "Invalid token",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/tenants/:tenantId/organizations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "tenants",
+                                ":tenantId",
+                                "organizations"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tenantId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:53.000Z",
+                          "updatedAt": "2026-07-28T03:12:53.000Z",
+                          "uid": "35240-2da502a5-211d-4337-93bd-5c7f66b865cb"
+                        },
+                        {
+                          "id": "8aa141a2-09fa-4914-8981-e065579bae2c",
+                          "name": "Caller is not authorized to perform this action",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/tenants/:tenantId/organizations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "tenants",
+                                ":tenantId",
+                                "organizations"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tenantId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:53.000Z",
+                          "updatedAt": "2026-07-28T03:12:53.000Z",
+                          "uid": "35240-8aa141a2-09fa-4914-8981-e065579bae2c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:52.000Z",
+                      "updatedAt": "2026-07-28T03:12:52.000Z",
+                      "uid": "35240-6330ad10-72c5-4fb7-8972-bf9949561692"
+                    }
+                  ],
+                  "id": "2bafd983-f49b-4e4d-b698-1978a0c0f1bf",
+                  "createdAt": "2026-07-28T03:12:52.000Z",
+                  "updatedAt": "2026-07-28T03:12:52.000Z",
+                  "uid": "35240-2bafd983-f49b-4e4d-b698-1978a0c0f1bf"
+                },
+                {
+                  "name": "users",
+                  "item": [
+                    {
+                      "name": "Get all users in a tenant",
+                      "id": "10bba0da-057b-49e2-8719-9e8b87afc2cf",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tenants/:tenantId/users?email=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tenants",
+                            ":tenantId",
+                            "users"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional email parameter for filtering users",
+                              "key": "email",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "5b6170d3-38bb-4abe-9cba-b9407592a18f",
+                              "key": "tenantId",
+                              "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Get all users in a tenant, needs to be org or system admin."
+                      },
+                      "response": [
+                        {
+                          "id": "db182cb4-c296-4be2-8d3d-50f65a27b7a5",
+                          "name": "Successful",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/tenants/:tenantId/users?email=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "tenants",
+                                ":tenantId",
+                                "users"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional email parameter for filtering users",
+                                  "key": "email",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tenantId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": {\n      \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n    },\n    \"status\": \"inactive\"\n  },\n  {\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": {\n      \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n    },\n    \"status\": \"inactive\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:12:53.000Z",
+                          "updatedAt": "2026-07-28T03:12:53.000Z",
+                          "uid": "35240-db182cb4-c296-4be2-8d3d-50f65a27b7a5"
+                        },
+                        {
+                          "id": "d8c7bd45-f65c-4048-8d1f-1f39926959c9",
+                          "name": "Invalid token",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/tenants/:tenantId/users?email=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "tenants",
+                                ":tenantId",
+                                "users"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional email parameter for filtering users",
+                                  "key": "email",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tenantId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:53.000Z",
+                          "updatedAt": "2026-07-28T03:12:53.000Z",
+                          "uid": "35240-d8c7bd45-f65c-4048-8d1f-1f39926959c9"
+                        },
+                        {
+                          "id": "11ae9252-21c3-4b63-8b28-671ad3a5c1d7",
+                          "name": "Caller is not authorized to perform this action",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/tenants/:tenantId/users?email=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "tenants",
+                                ":tenantId",
+                                "users"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional email parameter for filtering users",
+                                  "key": "email",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tenantId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:12:53.000Z",
+                          "updatedAt": "2026-07-28T03:12:53.000Z",
+                          "uid": "35240-11ae9252-21c3-4b63-8b28-671ad3a5c1d7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:52.000Z",
+                      "updatedAt": "2026-07-28T03:12:52.000Z",
+                      "uid": "35240-10bba0da-057b-49e2-8719-9e8b87afc2cf"
+                    }
+                  ],
+                  "id": "9dd55604-51f5-4d72-a871-d21bfd78046b",
+                  "createdAt": "2026-07-28T03:12:52.000Z",
+                  "updatedAt": "2026-07-28T03:12:52.000Z",
+                  "uid": "35240-9dd55604-51f5-4d72-a871-d21bfd78046b"
+                },
+                {
+                  "name": "Get tenant information",
+                  "id": "02c7b025-8ea7-4c32-a48b-c5cc7a8f8642",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tenants/:tenantId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tenants",
+                        ":tenantId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c314a614-8860-4f36-9d68-fc7b0dd26306",
+                          "key": "tenantId",
+                          "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Get tenant by ID, needs to be org or system admin."
+                  },
+                  "response": [
+                    {
+                      "id": "ac16ede7-efe4-4c74-9d3f-0b57c5559bd1",
+                      "name": "Successful",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tenants/:tenantId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tenants",
+                            ":tenantId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "tenantId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"name\": \"<string>\",\n  \"subdomain\": \"<string>\",\n  \"disclaimer\": \"<string>\",\n  \"features\": {},\n  \"settings\": {\n    \"ssoEnabled\": \"<boolean>\",\n    \"defaultIdp\": \"<string>\",\n    \"namedUserClientId\": \"<string>\",\n    \"namedUserClientSecret\": \"<string>\",\n    \"ssoDomain\": \"<string>\",\n    \"ssoRedirectUri\": \"<string>\",\n    \"authTokenExpiration\": \"<string>\",\n    \"refreshTokenExpiration\": \"<string>\",\n    \"idleTimeout\": \"<string>\",\n    \"resetPassword\": \"<string>\",\n    \"passwordComplexity\": \"<string>\",\n    \"passwordExpiryDays\": \"<integer>\",\n    \"passwordExpiry\": \"<boolean>\",\n    \"accountLock\": \"<boolean>\",\n    \"maxFailedLogins\": \"<integer>\",\n    \"noPasswordReuse\": \"<boolean>\",\n    \"idpConfigs\": [\n      {\n        \"ssoMetadataUrl\": false\n      },\n      {\n        \"ssoMetadataUrl\": true\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T03:12:53.000Z",
+                      "updatedAt": "2026-07-28T03:12:53.000Z",
+                      "uid": "35240-ac16ede7-efe4-4c74-9d3f-0b57c5559bd1"
+                    },
+                    {
+                      "id": "10b7bdbc-f970-47db-9ed1-cc053ade2ceb",
+                      "name": "Invalid token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tenants/:tenantId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tenants",
+                            ":tenantId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "tenantId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:12:53.000Z",
+                      "updatedAt": "2026-07-28T03:12:53.000Z",
+                      "uid": "35240-10b7bdbc-f970-47db-9ed1-cc053ade2ceb"
+                    },
+                    {
+                      "id": "a4d11d01-4429-4880-9607-19ac089b4c51",
+                      "name": "Caller is not authorized to perform this action",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tenants/:tenantId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tenants",
+                            ":tenantId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "tenantId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:12:53.000Z",
+                      "updatedAt": "2026-07-28T03:12:53.000Z",
+                      "uid": "35240-a4d11d01-4429-4880-9607-19ac089b4c51"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:12:52.000Z",
+                  "updatedAt": "2026-07-28T03:12:52.000Z",
+                  "uid": "35240-02c7b025-8ea7-4c32-a48b-c5cc7a8f8642"
+                },
+                {
+                  "name": "Update tenant information",
+                  "id": "17f6e130-5d81-4206-870d-d5614b7937ea",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"disclaimer\": \"<string>\",\n  \"refreshTokenExpiration\": \"<number>\",\n  \"authTokenExpiration\": \"<number>\",\n  \"idleTimeout\": \"<number>\",\n  \"continuousVerificationEnabled\": \"<boolean>\",\n  \"ssoEnabled\": \"<boolean>\",\n  \"defaultIdp\": \"<string>\",\n  \"idpConfigs\": [\n    {\n      \"ssoMetadataUrl\": false\n    },\n    {\n      \"ssoMetadataUrl\": true\n    }\n  ],\n  \"passwordExpiryDays\": \"<number>\",\n  \"passwordComplexity\": \"<boolean>\",\n  \"noPasswordReuse\": \"<boolean>\",\n  \"passwordExpiry\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tenants/:tenantId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tenants",
+                        ":tenantId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "57ed5d59-7b0f-483e-8a2d-fda1249e7543",
+                          "key": "tenantId",
+                          "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Update tenant by ID, needs to be system admin."
+                  },
+                  "response": [
+                    {
+                      "id": "5fa231d7-5310-41e1-8be4-f09027d43830",
+                      "name": "Successful",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"disclaimer\": \"<string>\",\n  \"refreshTokenExpiration\": \"<number>\",\n  \"authTokenExpiration\": \"<number>\",\n  \"idleTimeout\": \"<number>\",\n  \"continuousVerificationEnabled\": \"<boolean>\",\n  \"ssoEnabled\": \"<boolean>\",\n  \"defaultIdp\": \"<string>\",\n  \"idpConfigs\": [\n    {\n      \"ssoMetadataUrl\": false\n    },\n    {\n      \"ssoMetadataUrl\": true\n    }\n  ],\n  \"passwordExpiryDays\": \"<number>\",\n  \"passwordComplexity\": \"<boolean>\",\n  \"noPasswordReuse\": \"<boolean>\",\n  \"passwordExpiry\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tenants/:tenantId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tenants",
+                            ":tenantId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "tenantId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"name\": \"<string>\",\n    \"subdomain\": \"<string>\",\n    \"disclaimer\": \"<string>\",\n    \"features\": {},\n    \"settings\": {\n      \"ssoEnabled\": \"<boolean>\",\n      \"defaultIdp\": \"<string>\",\n      \"namedUserClientId\": \"<string>\",\n      \"namedUserClientSecret\": \"<string>\",\n      \"ssoDomain\": \"<string>\",\n      \"ssoRedirectUri\": \"<string>\",\n      \"authTokenExpiration\": \"<string>\",\n      \"refreshTokenExpiration\": \"<string>\",\n      \"idleTimeout\": \"<string>\",\n      \"resetPassword\": \"<string>\",\n      \"passwordComplexity\": \"<string>\",\n      \"passwordExpiryDays\": \"<integer>\",\n      \"passwordExpiry\": \"<boolean>\",\n      \"accountLock\": \"<boolean>\",\n      \"maxFailedLogins\": \"<integer>\",\n      \"noPasswordReuse\": \"<boolean>\",\n      \"idpConfigs\": [\n        {\n          \"ssoMetadataUrl\": true\n        },\n        {\n          \"ssoMetadataUrl\": false\n        }\n      ]\n    }\n  },\n  {\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"name\": \"<string>\",\n    \"subdomain\": \"<string>\",\n    \"disclaimer\": \"<string>\",\n    \"features\": {},\n    \"settings\": {\n      \"ssoEnabled\": \"<boolean>\",\n      \"defaultIdp\": \"<string>\",\n      \"namedUserClientId\": \"<string>\",\n      \"namedUserClientSecret\": \"<string>\",\n      \"ssoDomain\": \"<string>\",\n      \"ssoRedirectUri\": \"<string>\",\n      \"authTokenExpiration\": \"<string>\",\n      \"refreshTokenExpiration\": \"<string>\",\n      \"idleTimeout\": \"<string>\",\n      \"resetPassword\": \"<string>\",\n      \"passwordComplexity\": \"<string>\",\n      \"passwordExpiryDays\": \"<integer>\",\n      \"passwordExpiry\": \"<boolean>\",\n      \"accountLock\": \"<boolean>\",\n      \"maxFailedLogins\": \"<integer>\",\n      \"noPasswordReuse\": \"<boolean>\",\n      \"idpConfigs\": [\n        {\n          \"ssoMetadataUrl\": 46573366\n        },\n        {\n          \"ssoMetadataUrl\": \"occaecat Excepteur laborum deseru\"\n        }\n      ]\n    }\n  }\n]",
+                      "createdAt": "2026-07-28T03:12:53.000Z",
+                      "updatedAt": "2026-07-28T03:12:53.000Z",
+                      "uid": "35240-5fa231d7-5310-41e1-8be4-f09027d43830"
+                    },
+                    {
+                      "id": "2002ca52-6af0-4d2f-945c-79dec5f5f1c5",
+                      "name": "Invalid token",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"disclaimer\": \"<string>\",\n  \"refreshTokenExpiration\": \"<number>\",\n  \"authTokenExpiration\": \"<number>\",\n  \"idleTimeout\": \"<number>\",\n  \"continuousVerificationEnabled\": \"<boolean>\",\n  \"ssoEnabled\": \"<boolean>\",\n  \"defaultIdp\": \"<string>\",\n  \"idpConfigs\": [\n    {\n      \"ssoMetadataUrl\": false\n    },\n    {\n      \"ssoMetadataUrl\": true\n    }\n  ],\n  \"passwordExpiryDays\": \"<number>\",\n  \"passwordComplexity\": \"<boolean>\",\n  \"noPasswordReuse\": \"<boolean>\",\n  \"passwordExpiry\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tenants/:tenantId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tenants",
+                            ":tenantId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "tenantId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:12:53.000Z",
+                      "updatedAt": "2026-07-28T03:12:53.000Z",
+                      "uid": "35240-2002ca52-6af0-4d2f-945c-79dec5f5f1c5"
+                    },
+                    {
+                      "id": "6321d5f2-9329-432c-9487-7f804e97ab0c",
+                      "name": "Caller is not authorized to perform this action",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"disclaimer\": \"<string>\",\n  \"refreshTokenExpiration\": \"<number>\",\n  \"authTokenExpiration\": \"<number>\",\n  \"idleTimeout\": \"<number>\",\n  \"continuousVerificationEnabled\": \"<boolean>\",\n  \"ssoEnabled\": \"<boolean>\",\n  \"defaultIdp\": \"<string>\",\n  \"idpConfigs\": [\n    {\n      \"ssoMetadataUrl\": false\n    },\n    {\n      \"ssoMetadataUrl\": true\n    }\n  ],\n  \"passwordExpiryDays\": \"<number>\",\n  \"passwordComplexity\": \"<boolean>\",\n  \"noPasswordReuse\": \"<boolean>\",\n  \"passwordExpiry\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tenants/:tenantId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tenants",
+                            ":tenantId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "tenantId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:12:53.000Z",
+                      "updatedAt": "2026-07-28T03:12:53.000Z",
+                      "uid": "35240-6321d5f2-9329-432c-9487-7f804e97ab0c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:12:52.000Z",
+                  "updatedAt": "2026-07-28T03:12:52.000Z",
+                  "uid": "35240-17f6e130-5d81-4206-870d-d5614b7937ea"
+                }
+              ],
+              "id": "31d16c42-9804-458e-b182-b7c82b50fd4f",
+              "createdAt": "2026-07-28T03:12:52.000Z",
+              "updatedAt": "2026-07-28T03:12:52.000Z",
+              "uid": "35240-31d16c42-9804-458e-b182-b7c82b50fd4f"
+            },
+            {
+              "name": "Get list of tenants",
+              "id": "937a3877-2f37-4fe0-9a10-a3b8bda7baf7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/tenants?subdomain=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "tenants"
+                  ],
+                  "query": [
+                    {
+                      "description": "Optional parameter to return a tenant by subdomain",
+                      "key": "subdomain",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Get all tenants, needs to be system admin."
+              },
+              "response": [
+                {
+                  "id": "882abe44-ccf7-4de4-8707-30887f4ab551",
+                  "name": "Successful",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tenants?subdomain=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tenants"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional parameter to return a tenant by subdomain",
+                          "key": "subdomain",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"name\": \"<string>\",\n    \"subdomain\": \"<string>\",\n    \"createdBy\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"modifiedBy\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"organizations\": [\n      {\n        \"id\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"orgSlug\": {\n          \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n        },\n        \"name\": \"<string>\",\n        \"emailDomain\": \"<string>\",\n        \"tenantId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        }\n      },\n      {\n        \"id\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"orgSlug\": {\n          \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n        },\n        \"name\": \"<string>\",\n        \"emailDomain\": \"<string>\",\n        \"tenantId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        }\n      }\n    ]\n  },\n  {\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"name\": \"<string>\",\n    \"subdomain\": \"<string>\",\n    \"createdBy\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"modifiedBy\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"organizations\": [\n      {\n        \"id\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"orgSlug\": {\n          \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n        },\n        \"name\": \"<string>\",\n        \"emailDomain\": \"<string>\",\n        \"tenantId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        }\n      },\n      {\n        \"id\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"orgSlug\": {\n          \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n        },\n        \"name\": \"<string>\",\n        \"emailDomain\": \"<string>\",\n        \"tenantId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        }\n      }\n    ]\n  }\n]",
+                  "createdAt": "2026-07-28T03:12:53.000Z",
+                  "updatedAt": "2026-07-28T03:12:53.000Z",
+                  "uid": "35240-882abe44-ccf7-4de4-8707-30887f4ab551"
+                },
+                {
+                  "id": "5896cc7b-c33f-4d20-a870-d5f3c027f97e",
+                  "name": "Invalid token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tenants?subdomain=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tenants"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional parameter to return a tenant by subdomain",
+                          "key": "subdomain",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:12:53.000Z",
+                  "updatedAt": "2026-07-28T03:12:53.000Z",
+                  "uid": "35240-5896cc7b-c33f-4d20-a870-d5f3c027f97e"
+                },
+                {
+                  "id": "32939cb8-db9c-4dd4-ae50-e1456c6251fd",
+                  "name": "Caller is not authorized to perform this action",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tenants?subdomain=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tenants"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional parameter to return a tenant by subdomain",
+                          "key": "subdomain",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:12:53.000Z",
+                  "updatedAt": "2026-07-28T03:12:53.000Z",
+                  "uid": "35240-32939cb8-db9c-4dd4-ae50-e1456c6251fd"
+                }
+              ],
+              "createdAt": "2026-07-28T03:12:52.000Z",
+              "updatedAt": "2026-07-28T03:12:52.000Z",
+              "uid": "35240-937a3877-2f37-4fe0-9a10-a3b8bda7baf7"
+            },
+            {
+              "name": "Create a new tenant.",
+              "id": "b3c65e5c-fca2-41c8-a40d-d500d1e46b10",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subdomain\": \"<string>\",\n  \"name\": \"<string>\",\n  \"disclaimer\": \"<string>\",\n  \"refreshTokenExpiration\": \"<number>\",\n  \"authTokenExpiration\": \"<number>\",\n  \"idleTimeout\": \"<number>\",\n  \"continuousVerificationEnabled\": \"<boolean>\",\n  \"ssoEnabled\": \"<boolean>\",\n  \"defaultIdp\": \"<string>\",\n  \"idpConfigs\": [\n    {\n      \"ssoMetadataUrl\": -40209149\n    },\n    {\n      \"ssoMetadataUrl\": false\n    }\n  ],\n  \"passwordExpiryDays\": \"<number>\",\n  \"passwordComplexity\": \"<boolean>\",\n  \"noPasswordReuse\": \"<boolean>\",\n  \"passwordExpiry\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/tenants",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "tenants"
+                  ]
+                },
+                "description": "Create a new tenant, must be system admin."
+              },
+              "response": [
+                {
+                  "id": "8ee3ec94-679f-4bee-8a21-d0867b453e1c",
+                  "name": "Successfully created tenant.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"subdomain\": \"<string>\",\n  \"name\": \"<string>\",\n  \"disclaimer\": \"<string>\",\n  \"refreshTokenExpiration\": \"<number>\",\n  \"authTokenExpiration\": \"<number>\",\n  \"idleTimeout\": \"<number>\",\n  \"continuousVerificationEnabled\": \"<boolean>\",\n  \"ssoEnabled\": \"<boolean>\",\n  \"defaultIdp\": \"<string>\",\n  \"idpConfigs\": [\n    {\n      \"ssoMetadataUrl\": -40209149\n    },\n    {\n      \"ssoMetadataUrl\": false\n    }\n  ],\n  \"passwordExpiryDays\": \"<number>\",\n  \"passwordComplexity\": \"<boolean>\",\n  \"noPasswordReuse\": \"<boolean>\",\n  \"passwordExpiry\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tenants",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tenants"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"name\": \"<string>\",\n  \"subdomain\": \"<string>\",\n  \"disclaimer\": \"<string>\",\n  \"features\": {},\n  \"settings\": {\n    \"ssoEnabled\": \"<boolean>\",\n    \"defaultIdp\": \"<string>\",\n    \"namedUserClientId\": \"<string>\",\n    \"namedUserClientSecret\": \"<string>\",\n    \"ssoDomain\": \"<string>\",\n    \"ssoRedirectUri\": \"<string>\",\n    \"authTokenExpiration\": \"<string>\",\n    \"refreshTokenExpiration\": \"<string>\",\n    \"idleTimeout\": \"<string>\",\n    \"resetPassword\": \"<string>\",\n    \"passwordComplexity\": \"<string>\",\n    \"passwordExpiryDays\": \"<integer>\",\n    \"passwordExpiry\": \"<boolean>\",\n    \"accountLock\": \"<boolean>\",\n    \"maxFailedLogins\": \"<integer>\",\n    \"noPasswordReuse\": \"<boolean>\",\n    \"idpConfigs\": [\n      {\n        \"ssoMetadataUrl\": false\n      },\n      {\n        \"ssoMetadataUrl\": true\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T03:12:53.000Z",
+                  "updatedAt": "2026-07-28T03:12:53.000Z",
+                  "uid": "35240-8ee3ec94-679f-4bee-8a21-d0867b453e1c"
+                },
+                {
+                  "id": "6e9fe8c1-ffa5-4781-a397-864bd5d7ad86",
+                  "name": "Invalid token",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"subdomain\": \"<string>\",\n  \"name\": \"<string>\",\n  \"disclaimer\": \"<string>\",\n  \"refreshTokenExpiration\": \"<number>\",\n  \"authTokenExpiration\": \"<number>\",\n  \"idleTimeout\": \"<number>\",\n  \"continuousVerificationEnabled\": \"<boolean>\",\n  \"ssoEnabled\": \"<boolean>\",\n  \"defaultIdp\": \"<string>\",\n  \"idpConfigs\": [\n    {\n      \"ssoMetadataUrl\": -40209149\n    },\n    {\n      \"ssoMetadataUrl\": false\n    }\n  ],\n  \"passwordExpiryDays\": \"<number>\",\n  \"passwordComplexity\": \"<boolean>\",\n  \"noPasswordReuse\": \"<boolean>\",\n  \"passwordExpiry\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tenants",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tenants"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:12:53.000Z",
+                  "updatedAt": "2026-07-28T03:12:53.000Z",
+                  "uid": "35240-6e9fe8c1-ffa5-4781-a397-864bd5d7ad86"
+                },
+                {
+                  "id": "73125427-72f8-4dcd-9527-bccbae0b1fd6",
+                  "name": "Caller is not authorized to perform this action",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"subdomain\": \"<string>\",\n  \"name\": \"<string>\",\n  \"disclaimer\": \"<string>\",\n  \"refreshTokenExpiration\": \"<number>\",\n  \"authTokenExpiration\": \"<number>\",\n  \"idleTimeout\": \"<number>\",\n  \"continuousVerificationEnabled\": \"<boolean>\",\n  \"ssoEnabled\": \"<boolean>\",\n  \"defaultIdp\": \"<string>\",\n  \"idpConfigs\": [\n    {\n      \"ssoMetadataUrl\": -40209149\n    },\n    {\n      \"ssoMetadataUrl\": false\n    }\n  ],\n  \"passwordExpiryDays\": \"<number>\",\n  \"passwordComplexity\": \"<boolean>\",\n  \"noPasswordReuse\": \"<boolean>\",\n  \"passwordExpiry\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tenants",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tenants"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:12:53.000Z",
+                  "updatedAt": "2026-07-28T03:12:53.000Z",
+                  "uid": "35240-73125427-72f8-4dcd-9527-bccbae0b1fd6"
+                },
+                {
+                  "id": "15cc2c9e-980c-4612-a427-4bd398713eff",
+                  "name": "Bad request, Tenant already exists.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"subdomain\": \"<string>\",\n  \"name\": \"<string>\",\n  \"disclaimer\": \"<string>\",\n  \"refreshTokenExpiration\": \"<number>\",\n  \"authTokenExpiration\": \"<number>\",\n  \"idleTimeout\": \"<number>\",\n  \"continuousVerificationEnabled\": \"<boolean>\",\n  \"ssoEnabled\": \"<boolean>\",\n  \"defaultIdp\": \"<string>\",\n  \"idpConfigs\": [\n    {\n      \"ssoMetadataUrl\": -40209149\n    },\n    {\n      \"ssoMetadataUrl\": false\n    }\n  ],\n  \"passwordExpiryDays\": \"<number>\",\n  \"passwordComplexity\": \"<boolean>\",\n  \"noPasswordReuse\": \"<boolean>\",\n  \"passwordExpiry\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tenants",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tenants"
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:12:53.000Z",
+                  "updatedAt": "2026-07-28T03:12:53.000Z",
+                  "uid": "35240-15cc2c9e-980c-4612-a427-4bd398713eff"
+                }
+              ],
+              "createdAt": "2026-07-28T03:12:52.000Z",
+              "updatedAt": "2026-07-28T03:12:52.000Z",
+              "uid": "35240-b3c65e5c-fca2-41c8-a40d-d500d1e46b10"
+            }
+          ],
+          "id": "326df9ba-8b2e-4ef8-b5b6-eaca696123c1",
+          "createdAt": "2026-07-28T03:12:52.000Z",
+          "updatedAt": "2026-07-28T03:12:52.000Z",
+          "uid": "35240-326df9ba-8b2e-4ef8-b5b6-eaca696123c1"
+        }
+      ],
+      "id": "4d25f539-1df4-40f6-9c3b-928dd09a3de2",
+      "createdAt": "2026-07-28T03:12:52.000Z",
+      "updatedAt": "2026-07-28T03:12:52.000Z",
+      "uid": "35240-4d25f539-1df4-40f6-9c3b-928dd09a3de2"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

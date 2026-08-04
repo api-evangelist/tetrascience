@@ -1,0 +1,1229 @@
+{
+  "info": {
+    "_postman_id": "5a3f049d-7ad4-446b-b83e-dd595cabfcf9",
+    "name": "TetraScience Data and AI Cloud Access Groups Data App Providers API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:10:52.000Z",
+    "updatedAt": "2026-07-28T03:10:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5a3f049d-7ad4-446b-b83e-dd595cabfcf9"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "dataapps",
+          "item": [
+            {
+              "name": "providers",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "Delete a Data App Provider",
+                      "id": "c0fca499-15c9-4869-ab0f-7f0b17f7bb9e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/dataapps/providers/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "dataapps",
+                            "providers",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "513e9ca6-a0d2-4153-9517-0a035dc462b1",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "fd9ec638-03fc-4614-890f-9f4e559a2973",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/providers/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "providers",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:10:53.000Z",
+                          "updatedAt": "2026-07-28T03:10:53.000Z",
+                          "uid": "35240-fd9ec638-03fc-4614-890f-9f4e559a2973"
+                        },
+                        {
+                          "id": "2f352e06-a2dd-44c7-b7cf-9e06b248b5e6",
+                          "name": "Service Unavailable",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/providers/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "providers",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:10:53.000Z",
+                          "updatedAt": "2026-07-28T03:10:53.000Z",
+                          "uid": "35240-2f352e06-a2dd-44c7-b7cf-9e06b248b5e6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:10:52.000Z",
+                      "updatedAt": "2026-07-28T03:10:52.000Z",
+                      "uid": "35240-c0fca499-15c9-4869-ab0f-7f0b17f7bb9e"
+                    },
+                    {
+                      "name": "Fetch a Data App Provider",
+                      "id": "ffcd3dc9-fca2-4196-a81e-c039adf688c6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/dataapps/providers/:id?orgId=<string>&includeArn=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "dataapps",
+                            "providers",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "orgId",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "includeArn",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "c02cfd6f-0a4f-406f-ac39-2de70c4e1cb6",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "c69e03de-0f01-4f20-9dd4-e5142d8a03f3",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/providers/:id?orgId=<string>&includeArn=false",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "providers",
+                                ":id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "orgId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "includeArn",
+                                  "value": "false"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"orgSlug\": \"<string>\",\n  \"type\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedBy\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"secrets\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"type\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"arn\": \"<string>\",\n      \"envName\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"type\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"arn\": \"<string>\",\n      \"envName\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:10:53.000Z",
+                          "updatedAt": "2026-07-28T03:10:53.000Z",
+                          "uid": "35240-c69e03de-0f01-4f20-9dd4-e5142d8a03f3"
+                        },
+                        {
+                          "id": "39314ae8-8112-400e-8084-a144326a28af",
+                          "name": "Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/providers/:id?orgId=<string>&includeArn=false",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "providers",
+                                ":id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "orgId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "includeArn",
+                                  "value": "false"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:10:53.000Z",
+                          "updatedAt": "2026-07-28T03:10:53.000Z",
+                          "uid": "35240-39314ae8-8112-400e-8084-a144326a28af"
+                        },
+                        {
+                          "id": "b0f96a84-47ed-44b7-841e-32bf4f45bf26",
+                          "name": "Service Unavailable",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/providers/:id?orgId=<string>&includeArn=false",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "providers",
+                                ":id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "orgId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "includeArn",
+                                  "value": "false"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:10:53.000Z",
+                          "updatedAt": "2026-07-28T03:10:53.000Z",
+                          "uid": "35240-b0f96a84-47ed-44b7-841e-32bf4f45bf26"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:10:52.000Z",
+                      "updatedAt": "2026-07-28T03:10:52.000Z",
+                      "uid": "35240-ffcd3dc9-fca2-4196-a81e-c039adf688c6"
+                    },
+                    {
+                      "name": "Update a Data App Provider",
+                      "id": "dc0698a6-e755-4dee-876b-31af5ba047d8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"secrets\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/dataapps/providers/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "dataapps",
+                            "providers",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1559d144-2151-4fe3-8198-1910a5acfc2c",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "53c79c38-961e-46b1-ac1d-a3c3a56b8ad1",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"secrets\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/providers/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "providers",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:10:53.000Z",
+                          "updatedAt": "2026-07-28T03:10:53.000Z",
+                          "uid": "35240-53c79c38-961e-46b1-ac1d-a3c3a56b8ad1"
+                        },
+                        {
+                          "id": "80b6a659-b94a-42b4-918a-904152c39a61",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"secrets\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/providers/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "providers",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:10:53.000Z",
+                          "updatedAt": "2026-07-28T03:10:53.000Z",
+                          "uid": "35240-80b6a659-b94a-42b4-918a-904152c39a61"
+                        },
+                        {
+                          "id": "5ed13a46-0687-4f0e-9d88-8c4c33169b44",
+                          "name": "Service Unavailable",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"secrets\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/providers/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "providers",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:10:53.000Z",
+                          "updatedAt": "2026-07-28T03:10:53.000Z",
+                          "uid": "35240-5ed13a46-0687-4f0e-9d88-8c4c33169b44"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:10:52.000Z",
+                      "updatedAt": "2026-07-28T03:10:52.000Z",
+                      "uid": "35240-dc0698a6-e755-4dee-876b-31af5ba047d8"
+                    }
+                  ],
+                  "id": "c5fd5e7d-9eba-4576-bfe5-5c6af22d0c25",
+                  "createdAt": "2026-07-28T03:10:52.000Z",
+                  "updatedAt": "2026-07-28T03:10:52.000Z",
+                  "uid": "35240-c5fd5e7d-9eba-4576-bfe5-5c6af22d0c25"
+                },
+                {
+                  "name": "templates",
+                  "item": [
+                    {
+                      "name": "Fetch all data app provider templates",
+                      "id": "70c6d056-3a00-4218-966c-953784a911ac",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/dataapps/providers/templates",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "dataapps",
+                            "providers",
+                            "templates"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "dd4b63e1-04be-4096-b642-690398e5201b",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/providers/templates",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "providers",
+                                "templates"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"iconUrl\": \"<string>\",\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"display\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": \"<boolean>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"display\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": \"<boolean>\"\n      }\n    ]\n  },\n  {\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"iconUrl\": \"<string>\",\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"display\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": \"<boolean>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"display\": \"<string>\",\n        \"type\": \"<string>\",\n        \"required\": \"<boolean>\"\n      }\n    ]\n  }\n]",
+                          "createdAt": "2026-07-28T03:10:53.000Z",
+                          "updatedAt": "2026-07-28T03:10:53.000Z",
+                          "uid": "35240-dd4b63e1-04be-4096-b642-690398e5201b"
+                        },
+                        {
+                          "id": "733393c5-a6ee-44d7-b757-eea4828ed7b4",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/providers/templates",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "providers",
+                                "templates"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:10:53.000Z",
+                          "updatedAt": "2026-07-28T03:10:53.000Z",
+                          "uid": "35240-733393c5-a6ee-44d7-b757-eea4828ed7b4"
+                        },
+                        {
+                          "id": "b43eeead-7931-458e-ba28-536bbfc313cb",
+                          "name": "Service Unavailable",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/providers/templates",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "providers",
+                                "templates"
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:10:53.000Z",
+                          "updatedAt": "2026-07-28T03:10:53.000Z",
+                          "uid": "35240-b43eeead-7931-458e-ba28-536bbfc313cb"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:10:52.000Z",
+                      "updatedAt": "2026-07-28T03:10:52.000Z",
+                      "uid": "35240-70c6d056-3a00-4218-966c-953784a911ac"
+                    }
+                  ],
+                  "id": "232b6b6b-1839-4d80-b9a7-d8c25206207c",
+                  "createdAt": "2026-07-28T03:10:52.000Z",
+                  "updatedAt": "2026-07-28T03:10:52.000Z",
+                  "uid": "35240-232b6b6b-1839-4d80-b9a7-d8c25206207c"
+                },
+                {
+                  "name": "Create a new Data App Provider",
+                  "id": "f28ed5a4-8fa7-4e30-bdc9-473f1ed37924",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"secrets\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/dataapps/providers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "dataapps",
+                        "providers"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "4f64a244-ea35-45d3-8339-6deaccbc8712",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"secrets\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/dataapps/providers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "dataapps",
+                            "providers"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:10:53.000Z",
+                      "updatedAt": "2026-07-28T03:10:53.000Z",
+                      "uid": "35240-4f64a244-ea35-45d3-8339-6deaccbc8712"
+                    },
+                    {
+                      "id": "c2bdb66d-6f9c-4213-a039-672226afc54a",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"secrets\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/dataapps/providers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "dataapps",
+                            "providers"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:10:53.000Z",
+                      "updatedAt": "2026-07-28T03:10:53.000Z",
+                      "uid": "35240-c2bdb66d-6f9c-4213-a039-672226afc54a"
+                    },
+                    {
+                      "id": "306d9cc2-c90b-4841-8583-e8c2abb1ee92",
+                      "name": "Service Unavailable",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"secrets\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\",\n      \"isExistingSecret\": \"<boolean>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/dataapps/providers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "dataapps",
+                            "providers"
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:10:53.000Z",
+                      "updatedAt": "2026-07-28T03:10:53.000Z",
+                      "uid": "35240-306d9cc2-c90b-4841-8583-e8c2abb1ee92"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:10:52.000Z",
+                  "updatedAt": "2026-07-28T03:10:52.000Z",
+                  "uid": "35240-f28ed5a4-8fa7-4e30-bdc9-473f1ed37924"
+                },
+                {
+                  "name": "Fetch all data app providers",
+                  "id": "c461bf3f-6e38-4c24-b5e5-06ddf9a8c277",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/dataapps/providers?limit=10&page=1&providerName=<string>&orgId=<string>&includeArn=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "dataapps",
+                        "providers"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of items to return",
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Page number for pagination (starts from 1)",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "The name of the provider to filter on",
+                          "key": "providerName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "orgId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Indicate if the secret ARNs should be included in the response",
+                          "key": "includeArn",
+                          "value": "false"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "18109ab7-5209-48b2-a4f1-08fece9e3bba",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/dataapps/providers?limit=10&page=1&providerName=<string>&orgId=<string>&includeArn=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "dataapps",
+                            "providers"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Page number for pagination (starts from 1)",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "The name of the provider to filter on",
+                              "key": "providerName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "orgId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Indicate if the secret ARNs should be included in the response",
+                              "key": "includeArn",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"data\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"orgSlug\": \"<string>\",\n        \"type\": \"<string>\",\n        \"iconUrl\": \"<string>\",\n        \"updatedAt\": \"<dateTime>\",\n        \"createdAt\": \"<dateTime>\",\n        \"updatedBy\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"secrets\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"type\": \"<string>\",\n            \"required\": \"<boolean>\",\n            \"arn\": \"<string>\",\n            \"envName\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"type\": \"<string>\",\n            \"required\": \"<boolean>\",\n            \"arn\": \"<string>\",\n            \"envName\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"orgSlug\": \"<string>\",\n        \"type\": \"<string>\",\n        \"iconUrl\": \"<string>\",\n        \"updatedAt\": \"<dateTime>\",\n        \"createdAt\": \"<dateTime>\",\n        \"updatedBy\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"secrets\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"type\": \"<string>\",\n            \"required\": \"<boolean>\",\n            \"arn\": \"<string>\",\n            \"envName\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"type\": \"<string>\",\n            \"required\": \"<boolean>\",\n            \"arn\": \"<string>\",\n            \"envName\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"count\": \"<integer>\"\n  },\n  {\n    \"data\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"orgSlug\": \"<string>\",\n        \"type\": \"<string>\",\n        \"iconUrl\": \"<string>\",\n        \"updatedAt\": \"<dateTime>\",\n        \"createdAt\": \"<dateTime>\",\n        \"updatedBy\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"secrets\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"type\": \"<string>\",\n            \"required\": \"<boolean>\",\n            \"arn\": \"<string>\",\n            \"envName\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"type\": \"<string>\",\n            \"required\": \"<boolean>\",\n            \"arn\": \"<string>\",\n            \"envName\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"orgSlug\": \"<string>\",\n        \"type\": \"<string>\",\n        \"iconUrl\": \"<string>\",\n        \"updatedAt\": \"<dateTime>\",\n        \"createdAt\": \"<dateTime>\",\n        \"updatedBy\": \"<string>\",\n        \"createdBy\": \"<string>\",\n        \"secrets\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"type\": \"<string>\",\n            \"required\": \"<boolean>\",\n            \"arn\": \"<string>\",\n            \"envName\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\",\n            \"type\": \"<string>\",\n            \"required\": \"<boolean>\",\n            \"arn\": \"<string>\",\n            \"envName\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"count\": \"<integer>\"\n  }\n]",
+                      "createdAt": "2026-07-28T03:10:53.000Z",
+                      "updatedAt": "2026-07-28T03:10:53.000Z",
+                      "uid": "35240-18109ab7-5209-48b2-a4f1-08fece9e3bba"
+                    },
+                    {
+                      "id": "026fb627-0f49-4eae-b130-7fb8ebec44ca",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/dataapps/providers?limit=10&page=1&providerName=<string>&orgId=<string>&includeArn=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "dataapps",
+                            "providers"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Page number for pagination (starts from 1)",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "The name of the provider to filter on",
+                              "key": "providerName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "orgId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Indicate if the secret ARNs should be included in the response",
+                              "key": "includeArn",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:10:53.000Z",
+                      "updatedAt": "2026-07-28T03:10:53.000Z",
+                      "uid": "35240-026fb627-0f49-4eae-b130-7fb8ebec44ca"
+                    },
+                    {
+                      "id": "2e02554a-ee2d-4cc3-8e01-ae161fe510ab",
+                      "name": "Service Unavailable",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/dataapps/providers?limit=10&page=1&providerName=<string>&orgId=<string>&includeArn=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "dataapps",
+                            "providers"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Page number for pagination (starts from 1)",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "The name of the provider to filter on",
+                              "key": "providerName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "orgId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Indicate if the secret ARNs should be included in the response",
+                              "key": "includeArn",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:10:53.000Z",
+                      "updatedAt": "2026-07-28T03:10:53.000Z",
+                      "uid": "35240-2e02554a-ee2d-4cc3-8e01-ae161fe510ab"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:10:52.000Z",
+                  "updatedAt": "2026-07-28T03:10:52.000Z",
+                  "uid": "35240-c461bf3f-6e38-4c24-b5e5-06ddf9a8c277"
+                }
+              ],
+              "id": "839ea5c3-0b15-4136-89e4-ab362e7f2033",
+              "createdAt": "2026-07-28T03:10:52.000Z",
+              "updatedAt": "2026-07-28T03:10:52.000Z",
+              "uid": "35240-839ea5c3-0b15-4136-89e4-ab362e7f2033"
+            }
+          ],
+          "id": "d4e7f976-1b3d-4e3a-b212-740e5e0fc5e9",
+          "createdAt": "2026-07-28T03:10:52.000Z",
+          "updatedAt": "2026-07-28T03:10:52.000Z",
+          "uid": "35240-d4e7f976-1b3d-4e3a-b212-740e5e0fc5e9"
+        }
+      ],
+      "id": "b3fe4de4-571a-42e8-b451-5c31a71360a3",
+      "createdAt": "2026-07-28T03:10:52.000Z",
+      "updatedAt": "2026-07-28T03:10:52.000Z",
+      "uid": "35240-b3fe4de4-571a-42e8-b451-5c31a71360a3"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

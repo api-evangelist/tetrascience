@@ -1,0 +1,1064 @@
+{
+  "info": {
+    "_postman_id": "504d694f-a499-4784-9eda-b97ae04b64f5",
+    "name": "TetraScience Data and AI Cloud Access Groups Search API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:12:50.000Z",
+    "updatedAt": "2026-07-28T03:12:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-504d694f-a499-4784-9eda-b97ae04b64f5"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "datalake",
+          "item": [
+            {
+              "name": "searchEql",
+              "item": [
+                {
+                  "name": "Search files via Elasticsearch Query Language",
+                  "id": "5492565f-2351-4257-92bc-4855525518fe",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) JWT Token for authentication",
+                        "key": "ts-auth-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Your organization slug",
+                        "key": "x-org-slug",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"animbf3\": -72963911.1317145\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/datalake/searchEql?index=<string>&index=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "datalake",
+                        "searchEql"
+                      ],
+                      "query": [
+                        {
+                          "key": "index",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "index",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Execute advanced search queries using Elasticsearch Query Language to find files based on metadata, content, labels, and processing attributes. Use this for complex search operations that require precise filtering."
+                  },
+                  "response": [
+                    {
+                      "id": "0a8df728-c2f3-4e0f-bd5c-97cd3e77b5b7",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) JWT Token for authentication",
+                            "key": "ts-auth-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Your organization slug",
+                            "key": "x-org-slug",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"animbf3\": -72963911.1317145\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/datalake/searchEql?index=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "datalake",
+                            "searchEql"
+                          ],
+                          "query": [
+                            {
+                              "key": "index",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"took\": 0,\n  \"timed_out\": true,\n  \"_shards\": {\n    \"total\": 0,\n    \"successful\": 0,\n    \"skipped\": 0,\n    \"failed\": 0\n  },\n  \"hits\": {\n    \"total\": 0,\n    \"max_score\": 0,\n    \"hits\": [\n      {\n        \"_index\": \"<string>\",\n        \"_type\": \"<string>\",\n        \"_id\": \"<string>\",\n        \"_score\": 0,\n        \"_source\": {\n          \"fileId\": \"<string>\",\n          \"orgSlug\": \"<string>\",\n          \"category\": \"<string>\",\n          \"sourceType\": \"<string>\",\n          \"source\": {\n            \"type\": \"<string>\",\n            \"egnyte\": {\n              \"integrationId\": \"<string>\",\n              \"filePath\": \"<string>\",\n              \"fileName\": \"<string>\",\n              \"groupId\": \"<string>\",\n              \"entryId\": \"<string>\",\n              \"checksum\": \"<string>\",\n              \"versionId\": \"<string>\",\n              \"lastModifiedTime\": \"<string>\",\n              \"versionNum\": 0\n            }\n          },\n          \"createdAt\": \"<string>\"\n        }\n      },\n      {\n        \"_index\": \"<string>\",\n        \"_type\": \"<string>\",\n        \"_id\": \"<string>\",\n        \"_score\": 0,\n        \"_source\": {\n          \"fileId\": \"<string>\",\n          \"orgSlug\": \"<string>\",\n          \"category\": \"<string>\",\n          \"sourceType\": \"<string>\",\n          \"source\": {\n            \"type\": \"<string>\",\n            \"egnyte\": {\n              \"integrationId\": \"<string>\",\n              \"filePath\": \"<string>\",\n              \"fileName\": \"<string>\",\n              \"groupId\": \"<string>\",\n              \"entryId\": \"<string>\",\n              \"checksum\": \"<string>\",\n              \"versionId\": \"<string>\",\n              \"lastModifiedTime\": \"<string>\",\n              \"versionNum\": 0\n            }\n          },\n          \"createdAt\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T03:12:51.000Z",
+                      "updatedAt": "2026-07-28T03:12:51.000Z",
+                      "uid": "35240-0a8df728-c2f3-4e0f-bd5c-97cd3e77b5b7"
+                    },
+                    {
+                      "id": "84f4dbf9-8b91-441f-8592-5decc258fd36",
+                      "name": "400",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) JWT Token for authentication",
+                            "key": "ts-auth-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Your organization slug",
+                            "key": "x-org-slug",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"animbf3\": -72963911.1317145\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/datalake/searchEql?index=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "datalake",
+                            "searchEql"
+                          ],
+                          "query": [
+                            {
+                              "key": "index",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T03:12:51.000Z",
+                      "updatedAt": "2026-07-28T03:12:51.000Z",
+                      "uid": "35240-84f4dbf9-8b91-441f-8592-5decc258fd36"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:12:50.000Z",
+                  "updatedAt": "2026-07-28T03:12:50.000Z",
+                  "uid": "35240-5492565f-2351-4257-92bc-4855525518fe"
+                }
+              ],
+              "id": "e36a8f75-34a5-4178-a6ce-dfbf7d255f5b",
+              "createdAt": "2026-07-28T03:12:50.000Z",
+              "updatedAt": "2026-07-28T03:12:50.000Z",
+              "uid": "35240-e36a8f75-34a5-4178-a6ce-dfbf7d255f5b"
+            }
+          ],
+          "id": "5d277945-957d-4c08-aac8-46d0010c45d5",
+          "createdAt": "2026-07-28T03:12:50.000Z",
+          "updatedAt": "2026-07-28T03:12:50.000Z",
+          "uid": "35240-5d277945-957d-4c08-aac8-46d0010c45d5"
+        },
+        {
+          "name": "fileinfo",
+          "item": [
+            {
+              "name": "search",
+              "item": [
+                {
+                  "name": "Search Files (GET) (Deprecated)",
+                  "id": "8a595fb0-1095-432a-8f15-4ea883d1719a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/fileinfo/search?category=<string>&from=0&fromDate=<date>&excludeTags=<string>&excludeTags=<string>&ids=<string>&integrationId=<string>&integrationType=<string>&metadata.[key]=<string>&pipelineId=<string>&rawFileId=<string>&size=100&sort=asc&sourceId=<string>&sourceType=<string>&traceId=<string>&tags=<string>&tags=<string>&toDate=<date>&workflowId (Added version TDP 3.1.0)=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "fileinfo",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "File category. Values are RAW, IDS, and PROCESSED.",
+                          "key": "category",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Display files started from a specified number in the results array. By default, files are displayed from the start of the array (the number 0). This parameter is included if the result set is large, pagination might be required. This parameter is typically used in conjunction with size.",
+                          "key": "from",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Search for files created on or after a specific date.",
+                          "key": "fromDate",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Lists the tags that should be excluded. Files that have the specified tags associated with them do not appear in search results.",
+                          "key": "excludeTags",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Lists the tags that should be excluded. Files that have the specified tags associated with them do not appear in search results.",
+                          "key": "excludeTags",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Name, type, and version of the schema used to create the IDS file.  Format is {namespace}/{idsType}:{idsVersion}.",
+                          "key": "ids",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "UUID for the integration.",
+                          "key": "integrationId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Integration type.  Values are EGNYTE, BOX, DOTMATICS, HRB CELLARIO, DATAHUB, PIPELINE, RAW, and API.",
+                          "key": "integrationType",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Searches for files that have specific metadata.",
+                          "key": "metadata.[key]",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "UUID for the pipeline.",
+                          "key": "pipelineId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "UUID for the RAW file that this file was generated from.",
+                          "key": "rawFileId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Indicates the number of results to return in the request.  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with from.",
+                          "key": "size",
+                          "value": "100"
+                        },
+                        {
+                          "description": "Indicates the sort order for the search results.  Sort occurs on the date (createAt timestamp, which occurred when the file was created in the data lake. Options: desc, asc",
+                          "key": "sort",
+                          "value": "asc"
+                        },
+                        {
+                          "description": "UUID for the source.",
+                          "key": "sourceId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Type of source, which is typically the name of the instrument or other lab equipment used to generate the data or report.",
+                          "key": "sourceType",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "UUID generated when the RAW file is first uploaded to the data lake. All files derived from the RAW file, such as an IDS file, have the same traceId.",
+                          "key": "traceId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Lists tags that the user added to the file.",
+                          "key": "tags",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Lists tags that the user added to the file.",
+                          "key": "tags",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Search for files created on or before a specific date.",
+                          "key": "toDate",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "ID for the pipeline workflow.",
+                          "key": "workflowId (Added version TDP 3.1.0)",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "\ud83d\udea7 IMPORTANT The Search Files (GET) endpoint is on a deprecation path and does not support searching for files by metadata. It's recommended that you use the [/searchEql endpoint](<https://developers.tetrascience.com/reference/dl-fi-dl-search-files-via-elasticsearch-query>) instead. For more information, see [Search Files, Search Workflow, and Paginate through All Pipeline Details API Endpoints Deprecation](<https://developers.tetrascience.com/docs/tdp-deprecation-notices#search-files-search-workflow-and-paginate-through-all-pipeline-details-api-endpoints-deprecation>)."
+                  },
+                  "response": [
+                    {
+                      "id": "f90142b2-a354-4ce7-9f5f-a3dc403c3fdd",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/fileinfo/search?category=<string>&from=0&fromDate=<date>&excludeTags=<string>&ids=<string>&integrationId=<string>&integrationType=<string>&metadata.[key]=<string>&pipelineId=<string>&rawFileId=<string>&size=100&sort=asc&sourceId=<string>&sourceType=<string>&traceId=<string>&tags=<string>&toDate=<date>&workflowId (Added version TDP 3.1.0)=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "fileinfo",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "File category. Values are RAW, IDS, and PROCESSED.",
+                              "key": "category",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Display files started from a specified number in the results array. By default, files are displayed from the start of the array (the number 0). This parameter is included if the result set is large, pagination might be required. This parameter is typically used in conjunction with size.",
+                              "key": "from",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Search for files created on or after a specific date.",
+                              "key": "fromDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Lists the tags that should be excluded. Files that have the specified tags associated with them do not appear in search results.",
+                              "key": "excludeTags",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Name, type, and version of the schema used to create the IDS file.  Format is {namespace}/{idsType}:{idsVersion}.",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "UUID for the integration.",
+                              "key": "integrationId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Integration type.  Values are EGNYTE, BOX, DOTMATICS, HRB CELLARIO, DATAHUB, PIPELINE, RAW, and API.",
+                              "key": "integrationType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Searches for files that have specific metadata.",
+                              "key": "metadata.[key]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "UUID for the pipeline.",
+                              "key": "pipelineId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "UUID for the RAW file that this file was generated from.",
+                              "key": "rawFileId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Indicates the number of results to return in the request.  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with from.",
+                              "key": "size",
+                              "value": "100"
+                            },
+                            {
+                              "description": "Indicates the sort order for the search results.  Sort occurs on the date (createAt timestamp, which occurred when the file was created in the data lake. Options: desc, asc",
+                              "key": "sort",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "UUID for the source.",
+                              "key": "sourceId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Type of source, which is typically the name of the instrument or other lab equipment used to generate the data or report.",
+                              "key": "sourceType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "UUID generated when the RAW file is first uploaded to the data lake. All files derived from the RAW file, such as an IDS file, have the same traceId.",
+                              "key": "traceId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Lists tags that the user added to the file.",
+                              "key": "tags",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Search for files created on or before a specific date.",
+                              "key": "toDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "ID for the pipeline workflow.",
+                              "key": "workflowId (Added version TDP 3.1.0)",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"from\": 0,\n  \"size\": 0,\n  \"sort\": \"<string>\",\n  \"hasNext\": true,\n  \"hits\": [\n    {\n      \"fileId\": \"<string>\",\n      \"filePath\": \"<string>\",\n      \"orgSlug\": \"<string>\",\n      \"traceId\": \"<string>\",\n      \"file\": {\n        \"bucket\": \"<string>\",\n        \"path\": \"<string>\",\n        \"checksum\": \"<string>\",\n        \"size\": 0,\n        \"type\": {},\n        \"version\": \"<string>\"\n      },\n      \"createdAt\": \"<string>\",\n      \"category\": \"<string>\",\n      \"integration\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"workflowId\": \"<string>\",\n        \"masterScript\": \"<string>\",\n        \"taskScript\": \"<string>\",\n        \"taskSlug\": \"<string>\",\n        \"taskExecutionId\": \"<string>\"\n      },\n      \"source\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"datapipeline\": {\n          \"workflowId\": \"<string>\",\n          \"taskExecutionId\": \"<string>\",\n          \"taskSlug\": \"<string>\",\n          \"taskScript\": \"<string>\",\n          \"masterScript\": \"<string>\",\n          \"inputFileId\": \"<string>\"\n        }\n      },\n      \"rawFileId\": \"<string>\",\n      \"ids\": \"<string>\",\n      \"metadata\": {\n        \"Version\": \"<string>\",\n        \"CREATED_FOR\": \"<string>\",\n        \"cheeeng\": \"<string>\"\n      },\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"deleted\": true,\n      \"outdated\": true\n    },\n    {\n      \"fileId\": \"<string>\",\n      \"filePath\": \"<string>\",\n      \"orgSlug\": \"<string>\",\n      \"traceId\": \"<string>\",\n      \"file\": {\n        \"bucket\": \"<string>\",\n        \"path\": \"<string>\",\n        \"checksum\": \"<string>\",\n        \"size\": 0,\n        \"type\": {},\n        \"version\": \"<string>\"\n      },\n      \"createdAt\": \"<string>\",\n      \"category\": \"<string>\",\n      \"integration\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"workflowId\": \"<string>\",\n        \"masterScript\": \"<string>\",\n        \"taskScript\": \"<string>\",\n        \"taskSlug\": \"<string>\",\n        \"taskExecutionId\": \"<string>\"\n      },\n      \"source\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"datapipeline\": {\n          \"workflowId\": \"<string>\",\n          \"taskExecutionId\": \"<string>\",\n          \"taskSlug\": \"<string>\",\n          \"taskScript\": \"<string>\",\n          \"masterScript\": \"<string>\",\n          \"inputFileId\": \"<string>\"\n        }\n      },\n      \"rawFileId\": \"<string>\",\n      \"ids\": \"<string>\",\n      \"metadata\": {\n        \"Version\": \"<string>\",\n        \"CREATED_FOR\": \"<string>\",\n        \"cheeeng\": \"<string>\"\n      },\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"deleted\": true,\n      \"outdated\": true\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:12:51.000Z",
+                      "updatedAt": "2026-07-28T03:12:51.000Z",
+                      "uid": "35240-f90142b2-a354-4ce7-9f5f-a3dc403c3fdd"
+                    },
+                    {
+                      "id": "29e90539-d8e3-4969-8e5c-3466c62dc3a3",
+                      "name": "401",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/fileinfo/search?category=<string>&from=0&fromDate=<date>&excludeTags=<string>&ids=<string>&integrationId=<string>&integrationType=<string>&metadata.[key]=<string>&pipelineId=<string>&rawFileId=<string>&size=100&sort=asc&sourceId=<string>&sourceType=<string>&traceId=<string>&tags=<string>&toDate=<date>&workflowId (Added version TDP 3.1.0)=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "fileinfo",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "File category. Values are RAW, IDS, and PROCESSED.",
+                              "key": "category",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Display files started from a specified number in the results array. By default, files are displayed from the start of the array (the number 0). This parameter is included if the result set is large, pagination might be required. This parameter is typically used in conjunction with size.",
+                              "key": "from",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Search for files created on or after a specific date.",
+                              "key": "fromDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Lists the tags that should be excluded. Files that have the specified tags associated with them do not appear in search results.",
+                              "key": "excludeTags",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Name, type, and version of the schema used to create the IDS file.  Format is {namespace}/{idsType}:{idsVersion}.",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "UUID for the integration.",
+                              "key": "integrationId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Integration type.  Values are EGNYTE, BOX, DOTMATICS, HRB CELLARIO, DATAHUB, PIPELINE, RAW, and API.",
+                              "key": "integrationType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Searches for files that have specific metadata.",
+                              "key": "metadata.[key]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "UUID for the pipeline.",
+                              "key": "pipelineId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "UUID for the RAW file that this file was generated from.",
+                              "key": "rawFileId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Indicates the number of results to return in the request.  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with from.",
+                              "key": "size",
+                              "value": "100"
+                            },
+                            {
+                              "description": "Indicates the sort order for the search results.  Sort occurs on the date (createAt timestamp, which occurred when the file was created in the data lake. Options: desc, asc",
+                              "key": "sort",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "UUID for the source.",
+                              "key": "sourceId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Type of source, which is typically the name of the instrument or other lab equipment used to generate the data or report.",
+                              "key": "sourceType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "UUID generated when the RAW file is first uploaded to the data lake. All files derived from the RAW file, such as an IDS file, have the same traceId.",
+                              "key": "traceId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Lists tags that the user added to the file.",
+                              "key": "tags",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Search for files created on or before a specific date.",
+                              "key": "toDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "ID for the pipeline workflow.",
+                              "key": "workflowId (Added version TDP 3.1.0)",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:12:51.000Z",
+                      "updatedAt": "2026-07-28T03:12:51.000Z",
+                      "uid": "35240-29e90539-d8e3-4969-8e5c-3466c62dc3a3"
+                    },
+                    {
+                      "id": "943010d4-7187-4524-ae10-93a1fbcb8722",
+                      "name": "500",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/fileinfo/search?category=<string>&from=0&fromDate=<date>&excludeTags=<string>&ids=<string>&integrationId=<string>&integrationType=<string>&metadata.[key]=<string>&pipelineId=<string>&rawFileId=<string>&size=100&sort=asc&sourceId=<string>&sourceType=<string>&traceId=<string>&tags=<string>&toDate=<date>&workflowId (Added version TDP 3.1.0)=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "fileinfo",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "File category. Values are RAW, IDS, and PROCESSED.",
+                              "key": "category",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Display files started from a specified number in the results array. By default, files are displayed from the start of the array (the number 0). This parameter is included if the result set is large, pagination might be required. This parameter is typically used in conjunction with size.",
+                              "key": "from",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Search for files created on or after a specific date.",
+                              "key": "fromDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Lists the tags that should be excluded. Files that have the specified tags associated with them do not appear in search results.",
+                              "key": "excludeTags",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Name, type, and version of the schema used to create the IDS file.  Format is {namespace}/{idsType}:{idsVersion}.",
+                              "key": "ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "UUID for the integration.",
+                              "key": "integrationId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Integration type.  Values are EGNYTE, BOX, DOTMATICS, HRB CELLARIO, DATAHUB, PIPELINE, RAW, and API.",
+                              "key": "integrationType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Searches for files that have specific metadata.",
+                              "key": "metadata.[key]",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "UUID for the pipeline.",
+                              "key": "pipelineId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "UUID for the RAW file that this file was generated from.",
+                              "key": "rawFileId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Indicates the number of results to return in the request.  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with from.",
+                              "key": "size",
+                              "value": "100"
+                            },
+                            {
+                              "description": "Indicates the sort order for the search results.  Sort occurs on the date (createAt timestamp, which occurred when the file was created in the data lake. Options: desc, asc",
+                              "key": "sort",
+                              "value": "asc"
+                            },
+                            {
+                              "description": "UUID for the source.",
+                              "key": "sourceId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Type of source, which is typically the name of the instrument or other lab equipment used to generate the data or report.",
+                              "key": "sourceType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "UUID generated when the RAW file is first uploaded to the data lake. All files derived from the RAW file, such as an IDS file, have the same traceId.",
+                              "key": "traceId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Lists tags that the user added to the file.",
+                              "key": "tags",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Search for files created on or before a specific date.",
+                              "key": "toDate",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "ID for the pipeline workflow.",
+                              "key": "workflowId (Added version TDP 3.1.0)",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:12:51.000Z",
+                      "updatedAt": "2026-07-28T03:12:51.000Z",
+                      "uid": "35240-943010d4-7187-4524-ae10-93a1fbcb8722"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:12:50.000Z",
+                  "updatedAt": "2026-07-28T03:12:50.000Z",
+                  "uid": "35240-8a595fb0-1095-432a-8f15-4ea883d1719a"
+                },
+                {
+                  "name": "Search Files (POST) (Deprecated)",
+                  "id": "55184d5f-7fbc-41d8-9bde-71b99e47c861",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"category\": \"<string>\",\n  \"from\": 0,\n  \"fromDate\": \"<date>\",\n  \"excludeTags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ids\": \"<string>\",\n  \"integrationId\": \"<string>\",\n  \"integrationType\": \"<string>\",\n  \"metadata\": {},\n  \"pipelineId\": \"<string>\",\n  \"rawFileId\": \"<string>\",\n  \"size\": 100,\n  \"sort\": \"asc\",\n  \"sourceId\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"toDate\": \"<date>\",\n  \"traceId\": \"<string>\",\n  \"workflowId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/fileinfo/search",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "fileinfo",
+                        "search"
+                      ]
+                    },
+                    "description": "\ud83d\udea7 IMPORTANT The Search Files (POST) endpoint is on a deprecation path and does not support searching for files by metadata. It's recommended that you use the [/searchEql endpoint](<https://developers.tetrascience.com/reference/dl-fi-dl-search-files-via-elasticsearch-query>) instead. For more information, see [Search Files, Search Workflow, and Paginate through All Pipeline Details API Endpoints Deprecation](<https://developers.tetrascience.com/docs/tdp-deprecation-notices#search-files-search-workflow-and-paginate-through-all-pipeline-details-api-endpoints-deprecation>)."
+                  },
+                  "response": [
+                    {
+                      "id": "4ae9719e-7ac9-4c07-8dc5-bff10e26cd21",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"category\": \"<string>\",\n  \"from\": 0,\n  \"fromDate\": \"<date>\",\n  \"excludeTags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ids\": \"<string>\",\n  \"integrationId\": \"<string>\",\n  \"integrationType\": \"<string>\",\n  \"metadata\": {},\n  \"pipelineId\": \"<string>\",\n  \"rawFileId\": \"<string>\",\n  \"size\": 100,\n  \"sort\": \"asc\",\n  \"sourceId\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"toDate\": \"<date>\",\n  \"traceId\": \"<string>\",\n  \"workflowId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/fileinfo/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "fileinfo",
+                            "search"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"from\": 0,\n  \"size\": 0,\n  \"sort\": \"<string>\",\n  \"hasNext\": true,\n  \"hits\": [\n    {\n      \"fileId\": \"<string>\",\n      \"filePath\": \"<string>\",\n      \"orgSlug\": \"<string>\",\n      \"traceId\": \"<string>\",\n      \"file\": {\n        \"bucket\": \"<string>\",\n        \"path\": \"<string>\",\n        \"checksum\": \"<string>\",\n        \"size\": 0,\n        \"type\": {},\n        \"version\": \"<string>\"\n      },\n      \"createdAt\": \"<string>\",\n      \"category\": \"<string>\",\n      \"integration\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"workflowId\": \"<string>\",\n        \"masterScript\": \"<string>\",\n        \"taskScript\": \"<string>\",\n        \"taskSlug\": \"<string>\",\n        \"taskExecutionId\": \"<string>\"\n      },\n      \"source\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"datapipeline\": {\n          \"workflowId\": \"<string>\",\n          \"taskExecutionId\": \"<string>\",\n          \"taskSlug\": \"<string>\",\n          \"taskScript\": \"<string>\",\n          \"masterScript\": \"<string>\",\n          \"inputFileId\": \"<string>\"\n        }\n      },\n      \"rawFileId\": \"<string>\",\n      \"ids\": \"<string>\",\n      \"metadata\": {\n        \"Version\": \"<string>\",\n        \"CREATED_FOR\": \"<string>\",\n        \"cheeeng\": \"<string>\"\n      },\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"deleted\": true,\n      \"outdated\": true\n    },\n    {\n      \"fileId\": \"<string>\",\n      \"filePath\": \"<string>\",\n      \"orgSlug\": \"<string>\",\n      \"traceId\": \"<string>\",\n      \"file\": {\n        \"bucket\": \"<string>\",\n        \"path\": \"<string>\",\n        \"checksum\": \"<string>\",\n        \"size\": 0,\n        \"type\": {},\n        \"version\": \"<string>\"\n      },\n      \"createdAt\": \"<string>\",\n      \"category\": \"<string>\",\n      \"integration\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"workflowId\": \"<string>\",\n        \"masterScript\": \"<string>\",\n        \"taskScript\": \"<string>\",\n        \"taskSlug\": \"<string>\",\n        \"taskExecutionId\": \"<string>\"\n      },\n      \"source\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"datapipeline\": {\n          \"workflowId\": \"<string>\",\n          \"taskExecutionId\": \"<string>\",\n          \"taskSlug\": \"<string>\",\n          \"taskScript\": \"<string>\",\n          \"masterScript\": \"<string>\",\n          \"inputFileId\": \"<string>\"\n        }\n      },\n      \"rawFileId\": \"<string>\",\n      \"ids\": \"<string>\",\n      \"metadata\": {\n        \"Version\": \"<string>\",\n        \"CREATED_FOR\": \"<string>\",\n        \"cheeeng\": \"<string>\"\n      },\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"deleted\": true,\n      \"outdated\": true\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:12:51.000Z",
+                      "updatedAt": "2026-07-28T03:12:51.000Z",
+                      "uid": "35240-4ae9719e-7ac9-4c07-8dc5-bff10e26cd21"
+                    },
+                    {
+                      "id": "367d6713-b585-4717-8e00-67302ff2499c",
+                      "name": "401",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"category\": \"<string>\",\n  \"from\": 0,\n  \"fromDate\": \"<date>\",\n  \"excludeTags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ids\": \"<string>\",\n  \"integrationId\": \"<string>\",\n  \"integrationType\": \"<string>\",\n  \"metadata\": {},\n  \"pipelineId\": \"<string>\",\n  \"rawFileId\": \"<string>\",\n  \"size\": 100,\n  \"sort\": \"asc\",\n  \"sourceId\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"toDate\": \"<date>\",\n  \"traceId\": \"<string>\",\n  \"workflowId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/fileinfo/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "fileinfo",
+                            "search"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:12:51.000Z",
+                      "updatedAt": "2026-07-28T03:12:51.000Z",
+                      "uid": "35240-367d6713-b585-4717-8e00-67302ff2499c"
+                    },
+                    {
+                      "id": "d81cba3f-31b0-4b0f-a55e-9aacf42a33c7",
+                      "name": "500",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"category\": \"<string>\",\n  \"from\": 0,\n  \"fromDate\": \"<date>\",\n  \"excludeTags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ids\": \"<string>\",\n  \"integrationId\": \"<string>\",\n  \"integrationType\": \"<string>\",\n  \"metadata\": {},\n  \"pipelineId\": \"<string>\",\n  \"rawFileId\": \"<string>\",\n  \"size\": 100,\n  \"sort\": \"asc\",\n  \"sourceId\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"toDate\": \"<date>\",\n  \"traceId\": \"<string>\",\n  \"workflowId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/fileinfo/search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "fileinfo",
+                            "search"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:12:51.000Z",
+                      "updatedAt": "2026-07-28T03:12:51.000Z",
+                      "uid": "35240-d81cba3f-31b0-4b0f-a55e-9aacf42a33c7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:12:50.000Z",
+                  "updatedAt": "2026-07-28T03:12:50.000Z",
+                  "uid": "35240-55184d5f-7fbc-41d8-9bde-71b99e47c861"
+                }
+              ],
+              "id": "782586ac-8a7a-4a8b-9d75-61de89084395",
+              "createdAt": "2026-07-28T03:12:50.000Z",
+              "updatedAt": "2026-07-28T03:12:50.000Z",
+              "uid": "35240-782586ac-8a7a-4a8b-9d75-61de89084395"
+            }
+          ],
+          "id": "eaa3aff7-0bb1-45a1-8b2e-4d96a9b48117",
+          "createdAt": "2026-07-28T03:12:50.000Z",
+          "updatedAt": "2026-07-28T03:12:50.000Z",
+          "uid": "35240-eaa3aff7-0bb1-45a1-8b2e-4d96a9b48117"
+        }
+      ],
+      "id": "b21b7153-ff94-44bd-91e3-e452d22ed35d",
+      "createdAt": "2026-07-28T03:12:50.000Z",
+      "updatedAt": "2026-07-28T03:12:50.000Z",
+      "uid": "35240-b21b7153-ff94-44bd-91e3-e452d22ed35d"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

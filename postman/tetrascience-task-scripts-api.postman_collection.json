@@ -1,0 +1,1620 @@
+{
+  "info": {
+    "_postman_id": "8015305b-60fa-4c47-89e1-ada3fa17d54a",
+    "name": "TetraScience Data and AI Cloud Access Groups Task Scripts API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:12:51.000Z",
+    "updatedAt": "2026-07-28T03:12:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8015305b-60fa-4c47-89e1-ada3fa17d54a"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "artifacts",
+          "item": [
+            {
+              "name": "task-scripts",
+              "item": [
+                {
+                  "name": "{namespace}",
+                  "item": [
+                    {
+                      "name": "{slug}",
+                      "item": [
+                        {
+                          "name": "{version}",
+                          "item": [
+                            {
+                              "name": "files",
+                              "item": [
+                                {
+                                  "name": "{fileSlug}",
+                                  "item": [
+                                    {
+                                      "name": "Get contents of a task-script file",
+                                      "id": "502e892b-57ba-4e13-939e-c660045778f7",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "task-scripts",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "files",
+                                            ":fileSlug"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "If set to true, return a download url",
+                                              "key": "download",
+                                              "value": "<boolean>"
+                                            },
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "bb3f66f5-33f5-4e7e-a370-a96c9e218553",
+                                              "key": "namespace",
+                                              "value": "commonA#c",
+                                              "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                            },
+                                            {
+                                              "id": "1cbd76f8-ed4a-4895-8681-d31c92bf8929",
+                                              "key": "slug",
+                                              "value": "<string>",
+                                              "description": "(Required) Artifact slug"
+                                            },
+                                            {
+                                              "id": "7982d891-6dd5-403b-9790-84930321cbdd",
+                                              "key": "version",
+                                              "value": "vx.071570.x",
+                                              "description": "(Required) Artifact version"
+                                            },
+                                            {
+                                              "id": "3a36747b-b130-4427-9986-2c33200c34f0",
+                                              "key": "fileSlug",
+                                              "value": "readme",
+                                              "description": "(Required) File slug corresponding to file within a task-script"
+                                            }
+                                          ]
+                                        },
+                                        "description": "Returns the file contents for a task-script file given a namespace, slug, version, and file slug"
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "bf4e7c3b-d6e7-41d1-9dd3-f6cbb09c3474",
+                                          "name": "Successfully fetched file",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "ts-auth-token",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v1",
+                                                "artifacts",
+                                                "task-scripts",
+                                                ":namespace",
+                                                ":slug",
+                                                ":version",
+                                                "files",
+                                                ":fileSlug"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "If set to true, return a download url",
+                                                  "key": "download",
+                                                  "value": "<boolean>"
+                                                },
+                                                {
+                                                  "description": "Include prerelease artifacts in search",
+                                                  "key": "include_prereleases",
+                                                  "value": "<boolean>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "namespace"
+                                                },
+                                                {
+                                                  "key": "slug"
+                                                },
+                                                {
+                                                  "key": "version"
+                                                },
+                                                {
+                                                  "key": "fileSlug"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"url\": \"<string>\"\n}",
+                                          "createdAt": "2026-07-28T03:12:52.000Z",
+                                          "updatedAt": "2026-07-28T03:12:52.000Z",
+                                          "uid": "35240-bf4e7c3b-d6e7-41d1-9dd3-f6cbb09c3474"
+                                        },
+                                        {
+                                          "id": "29f524fe-199e-468e-ad5e-33b5a2348bf4",
+                                          "name": "Incorrect input provided",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "ts-auth-token",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v1",
+                                                "artifacts",
+                                                "task-scripts",
+                                                ":namespace",
+                                                ":slug",
+                                                ":version",
+                                                "files",
+                                                ":fileSlug"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "If set to true, return a download url",
+                                                  "key": "download",
+                                                  "value": "<boolean>"
+                                                },
+                                                {
+                                                  "description": "Include prerelease artifacts in search",
+                                                  "key": "include_prereleases",
+                                                  "value": "<boolean>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "namespace"
+                                                },
+                                                {
+                                                  "key": "slug"
+                                                },
+                                                {
+                                                  "key": "version"
+                                                },
+                                                {
+                                                  "key": "fileSlug"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Bad Request",
+                                          "code": 400,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{}",
+                                          "createdAt": "2026-07-28T03:12:52.000Z",
+                                          "updatedAt": "2026-07-28T03:12:52.000Z",
+                                          "uid": "35240-29f524fe-199e-468e-ad5e-33b5a2348bf4"
+                                        },
+                                        {
+                                          "id": "92bd27cf-d6be-40fc-acfc-188e5e2545ab",
+                                          "name": "Not found or not visible to user",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "ts-auth-token",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version/files/:fileSlug?download=<boolean>&include_prereleases=<boolean>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "v1",
+                                                "artifacts",
+                                                "task-scripts",
+                                                ":namespace",
+                                                ":slug",
+                                                ":version",
+                                                "files",
+                                                ":fileSlug"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "If set to true, return a download url",
+                                                  "key": "download",
+                                                  "value": "<boolean>"
+                                                },
+                                                {
+                                                  "description": "Include prerelease artifacts in search",
+                                                  "key": "include_prereleases",
+                                                  "value": "<boolean>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "namespace"
+                                                },
+                                                {
+                                                  "key": "slug"
+                                                },
+                                                {
+                                                  "key": "version"
+                                                },
+                                                {
+                                                  "key": "fileSlug"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Not Found",
+                                          "code": 404,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{}",
+                                          "createdAt": "2026-07-28T03:12:52.000Z",
+                                          "updatedAt": "2026-07-28T03:12:52.000Z",
+                                          "uid": "35240-92bd27cf-d6be-40fc-acfc-188e5e2545ab"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T03:12:51.000Z",
+                                      "updatedAt": "2026-07-28T03:12:51.000Z",
+                                      "uid": "35240-502e892b-57ba-4e13-939e-c660045778f7"
+                                    }
+                                  ],
+                                  "id": "a69d0ec5-606b-44ea-9cd3-adbf773c1d9a",
+                                  "createdAt": "2026-07-28T03:12:51.000Z",
+                                  "updatedAt": "2026-07-28T03:12:51.000Z",
+                                  "uid": "35240-a69d0ec5-606b-44ea-9cd3-adbf773c1d9a"
+                                }
+                              ],
+                              "id": "89159418-1dee-4860-86f7-9649ec175205",
+                              "createdAt": "2026-07-28T03:12:51.000Z",
+                              "updatedAt": "2026-07-28T03:12:51.000Z",
+                              "uid": "35240-89159418-1dee-4860-86f7-9649ec175205"
+                            },
+                            {
+                              "name": "labels",
+                              "item": [
+                                {
+                                  "name": "Get labels for a task-script",
+                                  "id": "b2b59662-a9e2-4d94-b322-39044f042605",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version/labels?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "task-scripts",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version",
+                                        "labels"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "0a538266-2d27-443b-8538-4cb39bf3c610",
+                                          "key": "namespace",
+                                          "value": "commonA#c",
+                                          "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                        },
+                                        {
+                                          "id": "3c3f1f12-e808-4cde-ad4e-2d939fa223c5",
+                                          "key": "slug",
+                                          "value": "<string>",
+                                          "description": "(Required) Artifact slug"
+                                        },
+                                        {
+                                          "id": "0e2b9606-566f-4ac9-bf24-5c13b00f0991",
+                                          "key": "version",
+                                          "value": "vx.071570.x",
+                                          "description": "(Required) Artifact version"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns a list of the labels associated with a task-script artifact"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "1ea71aca-af04-40ad-9cce-d494cb73b757",
+                                      "name": "Successfully fetched Labels",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version/labels?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "task-scripts",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "labels"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "[\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  }\n]",
+                                      "createdAt": "2026-07-28T03:12:52.000Z",
+                                      "updatedAt": "2026-07-28T03:12:52.000Z",
+                                      "uid": "35240-1ea71aca-af04-40ad-9cce-d494cb73b757"
+                                    },
+                                    {
+                                      "id": "b9cd9929-5804-4833-9c33-2afb8722319c",
+                                      "name": "Not found or not visible to user",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version/labels?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "task-scripts",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "labels"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:12:52.000Z",
+                                      "updatedAt": "2026-07-28T03:12:52.000Z",
+                                      "uid": "35240-b9cd9929-5804-4833-9c33-2afb8722319c"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:12:51.000Z",
+                                  "updatedAt": "2026-07-28T03:12:51.000Z",
+                                  "uid": "35240-b2b59662-a9e2-4d94-b322-39044f042605"
+                                }
+                              ],
+                              "id": "3d40f9d7-2ff2-4730-9784-bc6ef65fe193",
+                              "createdAt": "2026-07-28T03:12:51.000Z",
+                              "updatedAt": "2026-07-28T03:12:51.000Z",
+                              "uid": "35240-3d40f9d7-2ff2-4730-9784-bc6ef65fe193"
+                            },
+                            {
+                              "name": "relationships",
+                              "item": [
+                                {
+                                  "name": "Get artifacts related to task-script",
+                                  "id": "b5898ace-46a8-43a4-8043-1d234493598c",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version/relationships?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "task-scripts",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version",
+                                        "relationships"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "81cac30a-1dc7-4792-a50c-d9089501e41b",
+                                          "key": "namespace",
+                                          "value": "commonA#c",
+                                          "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                        },
+                                        {
+                                          "id": "9d943a80-501b-4d40-9329-b416a339431d",
+                                          "key": "slug",
+                                          "value": "<string>",
+                                          "description": "(Required) Artifact slug"
+                                        },
+                                        {
+                                          "id": "632b92b3-d4c0-4104-b516-bbaa4f740516",
+                                          "key": "version",
+                                          "value": "vx.071570.x",
+                                          "description": "(Required) Artifact version"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns a list of the relationships a task-script artifact has with other artifacts"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "8620681c-fdc6-4ffa-8fd6-6b797f90d084",
+                                      "name": "Successfully fetched Relationships",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version/relationships?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "task-scripts",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "relationships"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"ids\": [\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"commona2l|Sf~,\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"commonqv\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ],\n  \"taskScripts\": [\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"commonDV$_j\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"private-C' {=vamw'\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ],\n  \"protocols\": [\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"private-`}DhRJmv+\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"private-u4}\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ],\n  \"connectors\": [\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"common\\\\Tl|PV\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"namespace\": \"private-yUp?Dkzj\",\n      \"slug\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-07-28T03:12:52.000Z",
+                                      "updatedAt": "2026-07-28T03:12:52.000Z",
+                                      "uid": "35240-8620681c-fdc6-4ffa-8fd6-6b797f90d084"
+                                    },
+                                    {
+                                      "id": "8e3ba044-12dc-4f72-9691-9a555d2d040d",
+                                      "name": "Not found or not visible to user",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "ts-auth-token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version/relationships?include_prereleases=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "artifacts",
+                                            "task-scripts",
+                                            ":namespace",
+                                            ":slug",
+                                            ":version",
+                                            "relationships"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Include prerelease artifacts in search",
+                                              "key": "include_prereleases",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "namespace"
+                                            },
+                                            {
+                                              "key": "slug"
+                                            },
+                                            {
+                                              "key": "version"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T03:12:52.000Z",
+                                      "updatedAt": "2026-07-28T03:12:52.000Z",
+                                      "uid": "35240-8e3ba044-12dc-4f72-9691-9a555d2d040d"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:12:51.000Z",
+                                  "updatedAt": "2026-07-28T03:12:51.000Z",
+                                  "uid": "35240-b5898ace-46a8-43a4-8043-1d234493598c"
+                                }
+                              ],
+                              "id": "39f3fd81-613e-4520-8da6-61191393d5f0",
+                              "createdAt": "2026-07-28T03:12:51.000Z",
+                              "updatedAt": "2026-07-28T03:12:51.000Z",
+                              "uid": "35240-39f3fd81-613e-4520-8da6-61191393d5f0"
+                            },
+                            {
+                              "name": "Get single task-script",
+                              "id": "9f835a4f-5c4a-449e-9671-e8a498aefd4c",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version?include_prereleases=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "artifacts",
+                                    "task-scripts",
+                                    ":namespace",
+                                    ":slug",
+                                    ":version"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Include prerelease artifacts in search",
+                                      "key": "include_prereleases",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "fb51caf6-4517-4d2e-8427-3e3871dd31e1",
+                                      "key": "namespace",
+                                      "value": "commonA#c",
+                                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                    },
+                                    {
+                                      "id": "fddca80d-c310-4000-a004-b3470816f180",
+                                      "key": "slug",
+                                      "value": "<string>",
+                                      "description": "(Required) Artifact slug"
+                                    },
+                                    {
+                                      "id": "6b96c1ba-9497-48ea-aa07-f80f9f7be978",
+                                      "key": "version",
+                                      "value": "vx.071570.x",
+                                      "description": "(Required) Artifact version"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns a single task-script artifact matching the namespace, slug, and version"
+                              },
+                              "response": [
+                                {
+                                  "id": "b9278216-20cf-4fe7-ba89-cd8028bf84a9",
+                                  "name": "Successfully fetched TaskScriptObject",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "ts-auth-token",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "task-scripts",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "namespace"
+                                        },
+                                        {
+                                          "key": "slug"
+                                        },
+                                        {
+                                          "key": "version"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"createdAt\": \"<dateTime>\",\n  \"hash\": \"<string>\",\n  \"lastUpdatedAt\": \"<dateTime>\",\n  \"namespace\": \"private-s1{N\",\n  \"sdkVersion\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"type\": \"task-script\",\n  \"version\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"otherVersions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"supportedPlatformVersion\": {\n    \"minPlatformVersion\": \"<string>\",\n    \"maxPlatformVersion\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T03:12:52.000Z",
+                                  "updatedAt": "2026-07-28T03:12:52.000Z",
+                                  "uid": "35240-b9278216-20cf-4fe7-ba89-cd8028bf84a9"
+                                },
+                                {
+                                  "id": "47c166da-0063-46d5-87bc-246bfcf6be7b",
+                                  "name": "Not found or not visible to user",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "ts-auth-token",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug/:version?include_prereleases=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "artifacts",
+                                        "task-scripts",
+                                        ":namespace",
+                                        ":slug",
+                                        ":version"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Include prerelease artifacts in search",
+                                          "key": "include_prereleases",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "namespace"
+                                        },
+                                        {
+                                          "key": "slug"
+                                        },
+                                        {
+                                          "key": "version"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{}",
+                                  "createdAt": "2026-07-28T03:12:52.000Z",
+                                  "updatedAt": "2026-07-28T03:12:52.000Z",
+                                  "uid": "35240-47c166da-0063-46d5-87bc-246bfcf6be7b"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:12:51.000Z",
+                              "updatedAt": "2026-07-28T03:12:51.000Z",
+                              "uid": "35240-9f835a4f-5c4a-449e-9671-e8a498aefd4c"
+                            }
+                          ],
+                          "id": "8bcebd74-71d5-4131-aa2e-00397ef54235",
+                          "createdAt": "2026-07-28T03:12:51.000Z",
+                          "updatedAt": "2026-07-28T03:12:51.000Z",
+                          "uid": "35240-8bcebd74-71d5-4131-aa2e-00397ef54235"
+                        },
+                        {
+                          "name": "List all task-scripts for a namespace/slug",
+                          "id": "7351201e-da5b-4678-b675-f3d293b12e45",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug?latest_only=<boolean>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "task-scripts",
+                                ":namespace",
+                                ":slug"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only return the latest version of each artifact",
+                                  "key": "latest_only",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "4d1320e3-8ab6-402d-bed5-ddececf805cc",
+                                  "key": "namespace",
+                                  "value": "commonA#c",
+                                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                                },
+                                {
+                                  "id": "a49a49ba-00e6-4413-a715-da0a4a85b2b4",
+                                  "key": "slug",
+                                  "value": "<string>",
+                                  "description": "(Required) Artifact slug"
+                                }
+                              ]
+                            },
+                            "description": "Returns a list of all task-script artifacts given a namespace and slug"
+                          },
+                          "response": [
+                            {
+                              "id": "ce763eb9-2b55-44c5-8674-518bd57c39bc",
+                              "name": "Successfully fetched TaskScriptObject list",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug?latest_only=<boolean>&include_prereleases=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "artifacts",
+                                    "task-scripts",
+                                    ":namespace",
+                                    ":slug"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Only return the latest version of each artifact",
+                                      "key": "latest_only",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "Include prerelease artifacts in search",
+                                      "key": "include_prereleases",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"hash\": \"<string>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"commonQcn4\",\n    \"sdkVersion\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"type\": \"task-script\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"hash\": \"<string>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"private-;&w_>'utN\",\n    \"sdkVersion\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"type\": \"task-script\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                              "createdAt": "2026-07-28T03:12:52.000Z",
+                              "updatedAt": "2026-07-28T03:12:52.000Z",
+                              "uid": "35240-ce763eb9-2b55-44c5-8674-518bd57c39bc"
+                            },
+                            {
+                              "id": "0f327262-33d0-4980-a0bb-4cdf9bd53c67",
+                              "name": "Not found or not visible to user",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace/:slug?latest_only=<boolean>&include_prereleases=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "artifacts",
+                                    "task-scripts",
+                                    ":namespace",
+                                    ":slug"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Only return the latest version of each artifact",
+                                      "key": "latest_only",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "Include prerelease artifacts in search",
+                                      "key": "include_prereleases",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T03:12:52.000Z",
+                              "updatedAt": "2026-07-28T03:12:52.000Z",
+                              "uid": "35240-0f327262-33d0-4980-a0bb-4cdf9bd53c67"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:12:51.000Z",
+                          "updatedAt": "2026-07-28T03:12:51.000Z",
+                          "uid": "35240-7351201e-da5b-4678-b675-f3d293b12e45"
+                        }
+                      ],
+                      "id": "fee3786f-3b10-4003-b3c3-45be95c0c48a",
+                      "createdAt": "2026-07-28T03:12:51.000Z",
+                      "updatedAt": "2026-07-28T03:12:51.000Z",
+                      "uid": "35240-fee3786f-3b10-4003-b3c3-45be95c0c48a"
+                    },
+                    {
+                      "name": "List all task-scripts for a namespace",
+                      "id": "ce108315-d4d2-4503-b9cd-44f297c15f48",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace?latest_only=<boolean>&include_prereleases=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "artifacts",
+                            "task-scripts",
+                            ":namespace"
+                          ],
+                          "query": [
+                            {
+                              "description": "Only return the latest version of each artifact",
+                              "key": "latest_only",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Include prerelease artifacts in search",
+                              "key": "include_prereleases",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "7043f935-b96d-49e4-8861-a7cc3d9933ef",
+                              "key": "namespace",
+                              "value": "commonA#c",
+                              "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                            }
+                          ]
+                        },
+                        "description": "Returns a list of all task-script artifacts given a namespace"
+                      },
+                      "response": [
+                        {
+                          "id": "5e006d19-cd80-4f27-8f7f-e9d2d472cacc",
+                          "name": "Successfully fetched TaskScriptObject list",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace?latest_only=<boolean>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "task-scripts",
+                                ":namespace"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only return the latest version of each artifact",
+                                  "key": "latest_only",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"hash\": \"<string>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"commonQcn4\",\n    \"sdkVersion\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"type\": \"task-script\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"hash\": \"<string>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"private-;&w_>'utN\",\n    \"sdkVersion\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"type\": \"task-script\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                          "createdAt": "2026-07-28T03:12:52.000Z",
+                          "updatedAt": "2026-07-28T03:12:52.000Z",
+                          "uid": "35240-5e006d19-cd80-4f27-8f7f-e9d2d472cacc"
+                        },
+                        {
+                          "id": "eabe9623-f060-4184-9967-2bcc0073b29d",
+                          "name": "Not found or not visible to user",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/task-scripts/:namespace?latest_only=<boolean>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "task-scripts",
+                                ":namespace"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only return the latest version of each artifact",
+                                  "key": "latest_only",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:12:52.000Z",
+                          "updatedAt": "2026-07-28T03:12:52.000Z",
+                          "uid": "35240-eabe9623-f060-4184-9967-2bcc0073b29d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:51.000Z",
+                      "updatedAt": "2026-07-28T03:12:51.000Z",
+                      "uid": "35240-ce108315-d4d2-4503-b9cd-44f297c15f48"
+                    }
+                  ],
+                  "id": "b3fa9f23-df22-4e28-9616-bc809f663090",
+                  "createdAt": "2026-07-28T03:12:51.000Z",
+                  "updatedAt": "2026-07-28T03:12:51.000Z",
+                  "uid": "35240-b3fa9f23-df22-4e28-9616-bc809f663090"
+                },
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Search for items",
+                      "id": "e937b47b-3e10-443d-a027-48bb39093bfa",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/artifacts/task-scripts/search?value=<string>&limit=<integer>&include_prereleases=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "artifacts",
+                            "task-scripts",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The search string",
+                              "key": "value",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of results to return",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Include prerelease artifacts in search",
+                              "key": "include_prereleases",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        },
+                        "description": "Search for items using specified criteria"
+                      },
+                      "response": [
+                        {
+                          "id": "cc64eb35-bd54-4e4e-8fec-b03dc975431d",
+                          "name": "A list of items that match the search query",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/artifacts/task-scripts/search?value=<string>&limit=<integer>&include_prereleases=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "artifacts",
+                                "task-scripts",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The search string",
+                                  "key": "value",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The maximum number of results to return",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Include prerelease artifacts in search",
+                                  "key": "include_prereleases",
+                                  "value": "<boolean>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"hash\": \"<string>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"commonQcn4\",\n    \"sdkVersion\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"type\": \"task-script\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"hash\": \"<string>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"private-;&w_>'utN\",\n    \"sdkVersion\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"type\": \"task-script\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                          "createdAt": "2026-07-28T03:12:52.000Z",
+                          "updatedAt": "2026-07-28T03:12:52.000Z",
+                          "uid": "35240-cc64eb35-bd54-4e4e-8fec-b03dc975431d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:12:51.000Z",
+                      "updatedAt": "2026-07-28T03:12:51.000Z",
+                      "uid": "35240-e937b47b-3e10-443d-a027-48bb39093bfa"
+                    }
+                  ],
+                  "id": "f71bb7f9-ad59-40d5-bebc-4431f557cc1d",
+                  "createdAt": "2026-07-28T03:12:51.000Z",
+                  "updatedAt": "2026-07-28T03:12:51.000Z",
+                  "uid": "35240-f71bb7f9-ad59-40d5-bebc-4431f557cc1d"
+                },
+                {
+                  "name": "List all task-scripts",
+                  "id": "7c5f587c-9f24-4286-aa7f-ba2c7ecb0d98",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/artifacts/task-scripts?namespace_type=client&latest_only=<boolean>&include_prereleases=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "artifacts",
+                        "task-scripts"
+                      ],
+                      "query": [
+                        {
+                          "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')",
+                          "key": "namespace_type",
+                          "value": "client"
+                        },
+                        {
+                          "description": "Only return the latest version of each artifact",
+                          "key": "latest_only",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Include prerelease artifacts in search",
+                          "key": "include_prereleases",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of all task-script artifacts, optionally filtered by namespace type"
+                  },
+                  "response": [
+                    {
+                      "id": "bf1f577e-5b9b-4fe3-93a4-598b1b139d70",
+                      "name": "Successfully fetched TaskScriptObject list",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/artifacts/task-scripts?namespace_type=client&latest_only=<boolean>&include_prereleases=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "artifacts",
+                            "task-scripts"
+                          ],
+                          "query": [
+                            {
+                              "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')",
+                              "key": "namespace_type",
+                              "value": "client"
+                            },
+                            {
+                              "description": "Only return the latest version of each artifact",
+                              "key": "latest_only",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Include prerelease artifacts in search",
+                              "key": "include_prereleases",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"hash\": \"<string>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"commonQcn4\",\n    \"sdkVersion\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"type\": \"task-script\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  },\n  {\n    \"createdAt\": \"<dateTime>\",\n    \"hash\": \"<string>\",\n    \"lastUpdatedAt\": \"<dateTime>\",\n    \"namespace\": \"private-;&w_>'utN\",\n    \"sdkVersion\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"type\": \"task-script\",\n    \"version\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"otherVersions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"<string>\",\n      \"maxPlatformVersion\": \"<string>\"\n    }\n  }\n]",
+                      "createdAt": "2026-07-28T03:12:52.000Z",
+                      "updatedAt": "2026-07-28T03:12:52.000Z",
+                      "uid": "35240-bf1f577e-5b9b-4fe3-93a4-598b1b139d70"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:12:51.000Z",
+                  "updatedAt": "2026-07-28T03:12:51.000Z",
+                  "uid": "35240-7c5f587c-9f24-4286-aa7f-ba2c7ecb0d98"
+                }
+              ],
+              "id": "1a545c3e-180f-476e-b0a0-1a41fbda6643",
+              "createdAt": "2026-07-28T03:12:51.000Z",
+              "updatedAt": "2026-07-28T03:12:51.000Z",
+              "uid": "35240-1a545c3e-180f-476e-b0a0-1a41fbda6643"
+            }
+          ],
+          "id": "e87f8b14-d297-48f3-8043-0e026b1cea9f",
+          "createdAt": "2026-07-28T03:12:51.000Z",
+          "updatedAt": "2026-07-28T03:12:51.000Z",
+          "uid": "35240-e87f8b14-d297-48f3-8043-0e026b1cea9f"
+        }
+      ],
+      "id": "bd7111a7-5c39-4fb1-a35c-12aa62864aec",
+      "createdAt": "2026-07-28T03:12:51.000Z",
+      "updatedAt": "2026-07-28T03:12:51.000Z",
+      "uid": "35240-bd7111a7-5c39-4fb1-a35c-12aa62864aec"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

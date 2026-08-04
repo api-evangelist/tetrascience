@@ -1,0 +1,1312 @@
+{
+  "info": {
+    "_postman_id": "ed246092-a15a-4e32-b8f8-68f46360d40c",
+    "name": "TetraScience Data and AI Cloud Access Groups Commands API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:10:29.000Z",
+    "updatedAt": "2026-07-28T03:10:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ed246092-a15a-4e32-b8f8-68f46360d40c"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "commands",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "history",
+                  "item": [
+                    {
+                      "name": "Get command history",
+                      "id": "c51581d4-b14d-45fe-b4ae-04e2df3f1358",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/commands/:id/history",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "commands",
+                            ":id",
+                            "history"
+                          ],
+                          "variable": [
+                            {
+                              "id": "28bc9119-56ba-432c-b46d-22dc5aa28619",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Command id"
+                            }
+                          ]
+                        },
+                        "description": "Use this endpoint to obtain all the changes of a given command. It should return all status changes including who made the change and when the change was made."
+                      },
+                      "response": [
+                        {
+                          "id": "c3b8bc2b-310c-4488-a829-ef6ec775c79d",
+                          "name": "200",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/commands/:id/history",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "commands",
+                                ":id",
+                                "history"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"history\": [\n    {\n      \"id\": \"<string>\",\n      \"commandId\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"updatedBy\": \"<string>\",\n      \"updatedAt\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"commandId\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"updatedBy\": \"<string>\",\n      \"updatedAt\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:10:30.000Z",
+                          "updatedAt": "2026-07-28T03:10:30.000Z",
+                          "uid": "35240-c3b8bc2b-310c-4488-a829-ef6ec775c79d"
+                        },
+                        {
+                          "id": "547c658a-cb71-4a32-9d2c-7bfcd4355047",
+                          "name": "404",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/commands/:id/history",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "commands",
+                                ":id",
+                                "history"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:10:30.000Z",
+                          "updatedAt": "2026-07-28T03:10:30.000Z",
+                          "uid": "35240-547c658a-cb71-4a32-9d2c-7bfcd4355047"
+                        },
+                        {
+                          "id": "15b3238a-20f7-4001-ba9d-0752db2b3380",
+                          "name": "500",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/commands/:id/history",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "commands",
+                                ":id",
+                                "history"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:10:30.000Z",
+                          "updatedAt": "2026-07-28T03:10:30.000Z",
+                          "uid": "35240-15b3238a-20f7-4001-ba9d-0752db2b3380"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:10:30.000Z",
+                      "updatedAt": "2026-07-28T03:10:30.000Z",
+                      "uid": "35240-c51581d4-b14d-45fe-b4ae-04e2df3f1358"
+                    }
+                  ],
+                  "id": "74ce35c1-9252-4180-a30f-3d5ee49878b0",
+                  "createdAt": "2026-07-28T03:10:30.000Z",
+                  "updatedAt": "2026-07-28T03:10:30.000Z",
+                  "uid": "35240-74ce35c1-9252-4180-a30f-3d5ee49878b0"
+                },
+                {
+                  "name": "Get one command",
+                  "id": "151ca9d7-6a12-4f77-a00e-4cbab4e17d19",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/commands/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "commands",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3dff5508-72b1-462f-a7db-fd7bddf17799",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Command ID"
+                        }
+                      ]
+                    },
+                    "description": "Use this endpoint to obtain all the details for one single command. You will need to supply the command id as the path variable. This endpoint returns details like the command id, creation time, expiration time, the action, actual request body, and more."
+                  },
+                  "response": [
+                    {
+                      "id": "ace273a7-9b77-4215-9083-7b80330174ea",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/commands/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "commands",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"orgSlug\": \"<string>\",\n  \"targetId\": \"<string>\",\n  \"action\": \"<string>\",\n  \"expiresAt\": \"<string>\",\n  \"metadata\": {\n    \"key1\": \"<string>\",\n    \"key2\": \"<string>\"\n  },\n  \"status\": \"<string>\",\n  \"requestBody\": {\n    \"body\": {\n      \"url\": \"<string>\",\n      \"body\": {\n        \"raw\": \"<string>\",\n        \"mode\": \"<string>\"\n      },\n      \"method\": \"<string>\",\n      \"headers\": \"<array>\",\n      \"ignore_tls_certificate\": true\n    },\n    \"action\": \"<string>\",\n    \"targetId\": \"<string>\",\n    \"commandId\": \"<string>\",\n    \"createdAt\": \"<string>\",\n    \"expiresAt\": \"<string>\"\n  },\n  \"responseBody\": {\n    \"body\": \"<string>\"\n  },\n  \"createdByEntity\": {},\n  \"requestPayloadDelivery\": \"referenced\",\n  \"createdBy\": \"<string>\",\n  \"createdAt\": \"<string>\",\n  \"updatedAt\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:10:30.000Z",
+                      "updatedAt": "2026-07-28T03:10:30.000Z",
+                      "uid": "35240-ace273a7-9b77-4215-9083-7b80330174ea"
+                    },
+                    {
+                      "id": "85bdffe6-b255-41f0-a477-9e85e77f3a0b",
+                      "name": "404",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/commands/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "commands",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:10:30.000Z",
+                      "updatedAt": "2026-07-28T03:10:30.000Z",
+                      "uid": "35240-85bdffe6-b255-41f0-a477-9e85e77f3a0b"
+                    },
+                    {
+                      "id": "a4c3e4d0-9565-4e5d-a3a5-52320223e6bf",
+                      "name": "500",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/commands/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "commands",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:10:30.000Z",
+                      "updatedAt": "2026-07-28T03:10:30.000Z",
+                      "uid": "35240-a4c3e4d0-9565-4e5d-a3a5-52320223e6bf"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:10:30.000Z",
+                  "updatedAt": "2026-07-28T03:10:30.000Z",
+                  "uid": "35240-151ca9d7-6a12-4f77-a00e-4cbab4e17d19"
+                }
+              ],
+              "id": "c3e38ee7-57b1-4137-8fc2-620623edd029",
+              "createdAt": "2026-07-28T03:10:30.000Z",
+              "updatedAt": "2026-07-28T03:10:30.000Z",
+              "uid": "35240-c3e38ee7-57b1-4137-8fc2-620623edd029"
+            },
+            {
+              "name": "actions",
+              "item": [
+                {
+                  "name": "List command actions",
+                  "id": "d9c41721-5b48-475f-ab11-9fec0c61cc8a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/commands/actions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "commands",
+                        "actions"
+                      ]
+                    },
+                    "description": "Use this endpoint to list all distinct on-premises command actions.\n\nNote that this API does not control command actions, so this result may contain erroneous or unsent actions."
+                  },
+                  "response": [
+                    {
+                      "id": "6036a324-3dc9-4e89-ac66-a5cc9961625e",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/commands/actions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "commands",
+                            "actions"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                      "createdAt": "2026-07-28T03:10:30.000Z",
+                      "updatedAt": "2026-07-28T03:10:30.000Z",
+                      "uid": "35240-6036a324-3dc9-4e89-ac66-a5cc9961625e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:10:30.000Z",
+                  "updatedAt": "2026-07-28T03:10:30.000Z",
+                  "uid": "35240-d9c41721-5b48-475f-ab11-9fec0c61cc8a"
+                }
+              ],
+              "id": "267674a9-f141-4582-8654-d2429044eced",
+              "createdAt": "2026-07-28T03:10:30.000Z",
+              "updatedAt": "2026-07-28T03:10:30.000Z",
+              "uid": "35240-267674a9-f141-4582-8654-d2429044eced"
+            },
+            {
+              "name": "Create command",
+              "id": "65a6ac65-05ee-47ad-8790-89abe67f23c4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetId\": \"<string>\",\n  \"action\": \"<string>\",\n  \"expiresAt\": \"2021-01-31T23:58:43.749Z\",\n  \"payload\": {\n    \"ute\": 34130040,\n    \"do_b39\": 39845180\n  },\n  \"metadata\": {\n    \"ut_4d_\": 69303681,\n    \"inc\": 54538204.24335992\n  },\n  \"payloadDelivery\": \"embedded\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/commands",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "commands"
+                  ]
+                },
+                "description": "Use this endpoint to create a new command for an on-premises connector/agent. It also automatically sends command to SQS queue for execution. Once it is in the queue, the connector/agent listening on the target queue picks up the command,  tries to execute it, and sends the response back to the command service.\nThe maximum create command request size is 10 MB."
+              },
+              "response": [
+                {
+                  "id": "196cfe12-2076-46c3-804a-4a6f37bd370e",
+                  "name": "200",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"targetId\": \"<string>\",\n  \"action\": \"<string>\",\n  \"expiresAt\": \"2021-01-31T23:58:43.749Z\",\n  \"payload\": {\n    \"ute\": 34130040,\n    \"do_b39\": 39845180\n  },\n  \"metadata\": {\n    \"ut_4d_\": 69303681,\n    \"inc\": 54538204.24335992\n  },\n  \"payloadDelivery\": \"embedded\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/commands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "commands"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"orgSlug\": \"<string>\",\n  \"targetId\": \"<string>\",\n  \"action\": \"<string>\",\n  \"expiresAt\": \"<string>\",\n  \"metadata\": {},\n  \"status\": \"<string>\",\n  \"requestBody\": {\n    \"body\": {\n      \"url\": \"<string>\",\n      \"body\": {\n        \"raw\": \"<string>\",\n        \"mode\": \"<string>\"\n      },\n      \"method\": \"<string>\",\n      \"headers\": [\n        {\n          \"Authorization\": \"<string>\"\n        },\n        {\n          \"Authorization\": \"<string>\"\n        }\n      ],\n      \"ignore_tls_certificate\": true\n    },\n    \"action\": \"<string>\",\n    \"targetId\": \"<string>\",\n    \"commandId\": \"<string>\",\n    \"createdAt\": \"<string>\",\n    \"expiresAt\": \"<string>\"\n  },\n  \"responseBody\": {},\n  \"requestPayloadDelivery\": \"embedded\",\n  \"createdByEntity\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"createdAt\": \"<string>\",\n  \"updatedAt\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:10:30.000Z",
+                  "updatedAt": "2026-07-28T03:10:30.000Z",
+                  "uid": "35240-196cfe12-2076-46c3-804a-4a6f37bd370e"
+                },
+                {
+                  "id": "00ffa3c6-323e-4e6b-b2de-e7a9d0d31c97",
+                  "name": "400",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"targetId\": \"<string>\",\n  \"action\": \"<string>\",\n  \"expiresAt\": \"2021-01-31T23:58:43.749Z\",\n  \"payload\": {\n    \"ute\": 34130040,\n    \"do_b39\": 39845180\n  },\n  \"metadata\": {\n    \"ut_4d_\": 69303681,\n    \"inc\": 54538204.24335992\n  },\n  \"payloadDelivery\": \"embedded\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/commands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "commands"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:10:30.000Z",
+                  "updatedAt": "2026-07-28T03:10:30.000Z",
+                  "uid": "35240-00ffa3c6-323e-4e6b-b2de-e7a9d0d31c97"
+                },
+                {
+                  "id": "c340800d-4f49-4e5c-8a47-5a3ea06a209b",
+                  "name": "500",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"targetId\": \"<string>\",\n  \"action\": \"<string>\",\n  \"expiresAt\": \"2021-01-31T23:58:43.749Z\",\n  \"payload\": {\n    \"ute\": 34130040,\n    \"do_b39\": 39845180\n  },\n  \"metadata\": {\n    \"ut_4d_\": 69303681,\n    \"inc\": 54538204.24335992\n  },\n  \"payloadDelivery\": \"embedded\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/commands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "commands"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:10:30.000Z",
+                  "updatedAt": "2026-07-28T03:10:30.000Z",
+                  "uid": "35240-c340800d-4f49-4e5c-8a47-5a3ea06a209b"
+                }
+              ],
+              "createdAt": "2026-07-28T03:10:30.000Z",
+              "updatedAt": "2026-07-28T03:10:30.000Z",
+              "uid": "35240-65a6ac65-05ee-47ad-8790-89abe67f23c4"
+            },
+            {
+              "name": "Purge queue",
+              "id": "0678e98a-5282-4eff-8bb4-0a877d95cf00",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/commands?targetId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "commands"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Agent or connector ID for which queue should be purged",
+                      "key": "targetId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Use this method to purge all existing commands from the target queue. This command can be useful when testing new pipelines and command creation and the queue is blocked by a large number of unexecuted commands. When you fire this endpoint, all commands are deleted from the queue, and the command status is changed to PURGED.  Also, during the purge, the queue for the given target is blocked and does not receive new commands."
+              },
+              "response": [
+                {
+                  "id": "9a945c98-acc0-429a-8315-3ae20fed3b1d",
+                  "name": "200",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/commands?targetId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "commands"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Agent or connector ID for which queue should be purged",
+                          "key": "targetId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"purged\": [\n    {\n      \"commandId\": \"<string>\"\n    },\n    {\n      \"commandId\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:10:30.000Z",
+                  "updatedAt": "2026-07-28T03:10:30.000Z",
+                  "uid": "35240-9a945c98-acc0-429a-8315-3ae20fed3b1d"
+                },
+                {
+                  "id": "929d2440-56c4-4c62-9dea-7c229accbcd2",
+                  "name": "400",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/commands?targetId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "commands"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Agent or connector ID for which queue should be purged",
+                          "key": "targetId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:10:30.000Z",
+                  "updatedAt": "2026-07-28T03:10:30.000Z",
+                  "uid": "35240-929d2440-56c4-4c62-9dea-7c229accbcd2"
+                },
+                {
+                  "id": "f1d02fd3-cde6-4b70-87a8-e1680eabaf48",
+                  "name": "500",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/commands?targetId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "commands"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Agent or connector ID for which queue should be purged",
+                          "key": "targetId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:10:30.000Z",
+                  "updatedAt": "2026-07-28T03:10:30.000Z",
+                  "uid": "35240-f1d02fd3-cde6-4b70-87a8-e1680eabaf48"
+                }
+              ],
+              "createdAt": "2026-07-28T03:10:30.000Z",
+              "updatedAt": "2026-07-28T03:10:30.000Z",
+              "uid": "35240-0678e98a-5282-4eff-8bb4-0a877d95cf00"
+            },
+            {
+              "name": "Search commands",
+              "id": "de93d2e1-4a19-46f2-b73f-0fef2acdac3e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/commands?targetId=<string>&action=<string>&status=<string>&fromDate=<string>&toDate=<string>&createdAtBefore=<string>&createdAtAfter=<string>&expiresAtBefore=<string>&expiresAtAfter=<string>&updatedAtBefore=<string>&updatedAtAfter=<string>&from=<integer>&size=<integer>&sortBy=<string>&sort=<string>&metadata=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "commands"
+                  ],
+                  "query": [
+                    {
+                      "description": "ID of the target that received and processed command(s). Supports one or more values, such as `targetId=71003689-9619-43aa-809a-a693ede72e8b&targetId=740b1e83-eaf0-4e03-b134-97fb575a8c4c`",
+                      "key": "targetId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Action label, such as TetraScience.Connector.sdc.CreateMeasurementOrder.  Supports one or more values, such as  `action=TetraScience.Connector.sdc.CreateMeasurementOrder&action=TetraScience.Connector.ValidateConfig`",
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Command status: CREATED, UNSENT, PENDING, EXPIRED, PURGED, ERROR, PROCESSING, REJECTED, SUCCESS, FAILURE. Supports one or more values, such as  `status=FAILURE&status=SUCCESS`",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Deprecated name for `createdAtAfter`",
+                      "key": "fromDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Deprecated name for `createdAtBefore`",
+                      "key": "toDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Commands created on or before a given date (ISO timestamp)",
+                      "key": "createdAtBefore",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Commands created on or after a given date (ISO timestamp)",
+                      "key": "createdAtAfter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Commands expiring on or before a given date (ISO timestamp)",
+                      "key": "expiresAtBefore",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Commands expiring on or after a given date (ISO timestamp)",
+                      "key": "expiresAtAfter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Commands updated on or before a given date (ISO timestamp)",
+                      "key": "updatedAtBefore",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Commands updated on or after a given date (ISO timestamp)",
+                      "key": "updatedAtAfter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Display commands started from specified number in the results array.  By default, commands are displayed from the start of the array (the number 0).  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with size.",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Indicates the number of results to return in the request.  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with from.",
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Sort field: createdAt | updatedAt | expiresAt.",
+                      "key": "sortBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort order: asc | desc",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metadata key-value pairs, such as metadata.vendor=tetra. Pairs must be exact matches of existing metadata values.",
+                      "key": "metadata",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Use this endpoint to search all on-premises commands based on various filters. This endpoint is useful when you want to filter out commands, get all successful, or unsuccessful commands, get all commands that are sent to some agent/connector, commands that are created within a certain time range and more."
+              },
+              "response": [
+                {
+                  "id": "d8dac82f-350c-44c8-a69c-80ec4de50451",
+                  "name": "200",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/commands?targetId=<string>&action=<string>&status=<string>&fromDate=<string>&toDate=<string>&createdAtBefore=<string>&createdAtAfter=<string>&expiresAtBefore=<string>&expiresAtAfter=<string>&updatedAtBefore=<string>&updatedAtAfter=<string>&from=<integer>&size=<integer>&sortBy=<string>&sort=<string>&metadata=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "commands"
+                      ],
+                      "query": [
+                        {
+                          "description": "ID of the target that received and processed command(s). Supports one or more values, such as `targetId=71003689-9619-43aa-809a-a693ede72e8b&targetId=740b1e83-eaf0-4e03-b134-97fb575a8c4c`",
+                          "key": "targetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Action label, such as TetraScience.Connector.sdc.CreateMeasurementOrder.  Supports one or more values, such as  `action=TetraScience.Connector.sdc.CreateMeasurementOrder&action=TetraScience.Connector.ValidateConfig`",
+                          "key": "action",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Command status: CREATED, UNSENT, PENDING, EXPIRED, PURGED, ERROR, PROCESSING, REJECTED, SUCCESS, FAILURE. Supports one or more values, such as  `status=FAILURE&status=SUCCESS`",
+                          "key": "status",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Deprecated name for `createdAtAfter`",
+                          "key": "fromDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Deprecated name for `createdAtBefore`",
+                          "key": "toDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Commands created on or before a given date (ISO timestamp)",
+                          "key": "createdAtBefore",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Commands created on or after a given date (ISO timestamp)",
+                          "key": "createdAtAfter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Commands expiring on or before a given date (ISO timestamp)",
+                          "key": "expiresAtBefore",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Commands expiring on or after a given date (ISO timestamp)",
+                          "key": "expiresAtAfter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Commands updated on or before a given date (ISO timestamp)",
+                          "key": "updatedAtBefore",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Commands updated on or after a given date (ISO timestamp)",
+                          "key": "updatedAtAfter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Display commands started from specified number in the results array.  By default, commands are displayed from the start of the array (the number 0).  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with size.",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Indicates the number of results to return in the request.  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with from.",
+                          "key": "size",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Sort field: createdAt | updatedAt | expiresAt.",
+                          "key": "sortBy",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort order: asc | desc",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Metadata key-value pairs, such as metadata.vendor=tetra. Pairs must be exact matches of existing metadata values.",
+                          "key": "metadata",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"hits\": [\n    {\n      \"id\": \"<string>\",\n      \"orgSlug\": \"<string>\",\n      \"targetId\": \"<string>\",\n      \"action\": \"<string>\",\n      \"expiresAt\": \"<string>\",\n      \"metadata\": {\n        \"key1\": \"<string>\",\n        \"key2\": \"<string>\"\n      },\n      \"status\": \"<string>\",\n      \"requestBody\": {\n        \"body\": {\n          \"url\": \"<string>\",\n          \"body\": {\n            \"raw\": \"<string>\",\n            \"mode\": \"<string>\"\n          },\n          \"method\": \"<string>\",\n          \"headers\": \"<array>\",\n          \"ignore_tls_certificate\": true\n        },\n        \"action\": \"<string>\",\n        \"targetId\": \"<string>\",\n        \"commandId\": \"<string>\",\n        \"createdAt\": \"<string>\",\n        \"expiresAt\": \"<string>\"\n      },\n      \"responseBody\": {\n        \"body\": \"<string>\",\n        \"headers\": [\n          {\n            \"date\": \"<string>\"\n          },\n          {\n            \"date\": \"<string>\"\n          }\n        ],\n        \"statusCode\": 0\n      },\n      \"requestPayloadDelivery\": \"embedded\",\n      \"createdByEntity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<string>\",\n      \"updatedAt\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"orgSlug\": \"<string>\",\n      \"targetId\": \"<string>\",\n      \"action\": \"<string>\",\n      \"expiresAt\": \"<string>\",\n      \"metadata\": {\n        \"key1\": \"<string>\",\n        \"key2\": \"<string>\"\n      },\n      \"status\": \"<string>\",\n      \"requestBody\": {\n        \"body\": {\n          \"url\": \"<string>\",\n          \"body\": {\n            \"raw\": \"<string>\",\n            \"mode\": \"<string>\"\n          },\n          \"method\": \"<string>\",\n          \"headers\": \"<array>\",\n          \"ignore_tls_certificate\": true\n        },\n        \"action\": \"<string>\",\n        \"targetId\": \"<string>\",\n        \"commandId\": \"<string>\",\n        \"createdAt\": \"<string>\",\n        \"expiresAt\": \"<string>\"\n      },\n      \"responseBody\": {\n        \"body\": \"<string>\",\n        \"headers\": [\n          {\n            \"date\": \"<string>\"\n          },\n          {\n            \"date\": \"<string>\"\n          }\n        ],\n        \"statusCode\": 0\n      },\n      \"requestPayloadDelivery\": \"embedded\",\n      \"createdByEntity\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<string>\",\n      \"updatedAt\": \"<string>\"\n    }\n  ],\n  \"hasNext\": true,\n  \"from\": 0,\n  \"size\": 0,\n  \"sort\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:10:30.000Z",
+                  "updatedAt": "2026-07-28T03:10:30.000Z",
+                  "uid": "35240-d8dac82f-350c-44c8-a69c-80ec4de50451"
+                },
+                {
+                  "id": "f98e488d-e6f9-4a5b-ad8d-6c826c2a5ed0",
+                  "name": "500",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/commands?targetId=<string>&action=<string>&status=<string>&fromDate=<string>&toDate=<string>&createdAtBefore=<string>&createdAtAfter=<string>&expiresAtBefore=<string>&expiresAtAfter=<string>&updatedAtBefore=<string>&updatedAtAfter=<string>&from=<integer>&size=<integer>&sortBy=<string>&sort=<string>&metadata=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "commands"
+                      ],
+                      "query": [
+                        {
+                          "description": "ID of the target that received and processed command(s). Supports one or more values, such as `targetId=71003689-9619-43aa-809a-a693ede72e8b&targetId=740b1e83-eaf0-4e03-b134-97fb575a8c4c`",
+                          "key": "targetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Action label, such as TetraScience.Connector.sdc.CreateMeasurementOrder.  Supports one or more values, such as  `action=TetraScience.Connector.sdc.CreateMeasurementOrder&action=TetraScience.Connector.ValidateConfig`",
+                          "key": "action",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Command status: CREATED, UNSENT, PENDING, EXPIRED, PURGED, ERROR, PROCESSING, REJECTED, SUCCESS, FAILURE. Supports one or more values, such as  `status=FAILURE&status=SUCCESS`",
+                          "key": "status",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Deprecated name for `createdAtAfter`",
+                          "key": "fromDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Deprecated name for `createdAtBefore`",
+                          "key": "toDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Commands created on or before a given date (ISO timestamp)",
+                          "key": "createdAtBefore",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Commands created on or after a given date (ISO timestamp)",
+                          "key": "createdAtAfter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Commands expiring on or before a given date (ISO timestamp)",
+                          "key": "expiresAtBefore",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Commands expiring on or after a given date (ISO timestamp)",
+                          "key": "expiresAtAfter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Commands updated on or before a given date (ISO timestamp)",
+                          "key": "updatedAtBefore",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Commands updated on or after a given date (ISO timestamp)",
+                          "key": "updatedAtAfter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Display commands started from specified number in the results array.  By default, commands are displayed from the start of the array (the number 0).  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with size.",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Indicates the number of results to return in the request.  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with from.",
+                          "key": "size",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Sort field: createdAt | updatedAt | expiresAt.",
+                          "key": "sortBy",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort order: asc | desc",
+                          "key": "sort",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Metadata key-value pairs, such as metadata.vendor=tetra. Pairs must be exact matches of existing metadata values.",
+                          "key": "metadata",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": 0,\n  \"error\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:10:30.000Z",
+                  "updatedAt": "2026-07-28T03:10:30.000Z",
+                  "uid": "35240-f98e488d-e6f9-4a5b-ad8d-6c826c2a5ed0"
+                }
+              ],
+              "createdAt": "2026-07-28T03:10:30.000Z",
+              "updatedAt": "2026-07-28T03:10:30.000Z",
+              "uid": "35240-de93d2e1-4a19-46f2-b73f-0fef2acdac3e"
+            }
+          ],
+          "id": "4b5676d2-dadd-447c-b720-7e3ad2308d5d",
+          "createdAt": "2026-07-28T03:10:30.000Z",
+          "updatedAt": "2026-07-28T03:10:30.000Z",
+          "uid": "35240-4b5676d2-dadd-447c-b720-7e3ad2308d5d"
+        }
+      ],
+      "id": "5f9bea42-24b0-47b5-a774-011eaf6113b7",
+      "createdAt": "2026-07-28T03:10:30.000Z",
+      "updatedAt": "2026-07-28T03:10:30.000Z",
+      "uid": "35240-5f9bea42-24b0-47b5-a774-011eaf6113b7"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

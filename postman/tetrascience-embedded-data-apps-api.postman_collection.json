@@ -1,0 +1,561 @@
+{
+  "info": {
+    "_postman_id": "a73afb8f-be4d-4671-852d-18960cc27040",
+    "name": "TetraScience Data and AI Cloud Access Groups Embedded Data Apps API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:10:56.000Z",
+    "updatedAt": "2026-07-28T03:10:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a73afb8f-be4d-4671-852d-18960cc27040"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "dataapps",
+          "item": [
+            {
+              "name": "apps",
+              "item": [
+                {
+                  "name": "manage",
+                  "item": [
+                    {
+                      "name": "Install, update, or uninstall Data Apps",
+                      "id": "5e528207-8509-428a-825d-07f916b5b83f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  {\n    \"action\": \"CREATE\",\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"type\": \"CONTAINER\",\n    \"deploymentType\": \"SERVER\",\n    \"version\": \"<string>\",\n    \"namespace\": \"<string>\",\n    \"labels\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"providerIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/dataapps/apps/manage",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "dataapps",
+                            "apps",
+                            "manage"
+                          ]
+                        },
+                        "description": "Perform one or more install, update, or uninstall operations on embedded Data Apps. Submit an array of operations to manage which Data Apps are enabled in your organization. This endpoint supports automated governance workflows from CI/CD pipelines, GitHub Actions, or ServiceNow."
+                      },
+                      "response": [
+                        {
+                          "id": "8afe9b3f-7d72-4163-8c50-d1eb9c32b1ba",
+                          "name": "All operations completed successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"action\": \"CREATE\",\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"type\": \"CONTAINER\",\n    \"deploymentType\": \"SERVER\",\n    \"version\": \"<string>\",\n    \"namespace\": \"<string>\",\n    \"labels\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"providerIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/apps/manage",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "apps",
+                                "manage"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:10:57.000Z",
+                          "updatedAt": "2026-07-28T03:10:57.000Z",
+                          "uid": "35240-8afe9b3f-7d72-4163-8c50-d1eb9c32b1ba"
+                        },
+                        {
+                          "id": "fba0fded-b0aa-417b-b8a3-830089180382",
+                          "name": "Validation error. Common causes: missing required fields (action, version, namespace, slug, or name for CREATE/UPDATE), or invalid field values.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"action\": \"CREATE\",\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"type\": \"CONTAINER\",\n    \"deploymentType\": \"SERVER\",\n    \"version\": \"<string>\",\n    \"namespace\": \"<string>\",\n    \"labels\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"providerIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/apps/manage",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "apps",
+                                "manage"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:10:57.000Z",
+                          "updatedAt": "2026-07-28T03:10:57.000Z",
+                          "uid": "35240-fba0fded-b0aa-417b-b8a3-830089180382"
+                        },
+                        {
+                          "id": "e3d0c9f5-074b-49c2-b2d8-3cd19784c8b5",
+                          "name": "Data App management is not enabled for this organization.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"action\": \"CREATE\",\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"type\": \"CONTAINER\",\n    \"deploymentType\": \"SERVER\",\n    \"version\": \"<string>\",\n    \"namespace\": \"<string>\",\n    \"labels\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"providerIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/apps/manage",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "apps",
+                                "manage"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:10:57.000Z",
+                          "updatedAt": "2026-07-28T03:10:57.000Z",
+                          "uid": "35240-e3d0c9f5-074b-49c2-b2d8-3cd19784c8b5"
+                        },
+                        {
+                          "id": "f72d70cd-fe50-42b9-b540-01faba3048b2",
+                          "name": "Data App management service is temporarily unavailable. Retry with backoff.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"action\": \"CREATE\",\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"type\": \"CONTAINER\",\n    \"deploymentType\": \"SERVER\",\n    \"version\": \"<string>\",\n    \"namespace\": \"<string>\",\n    \"labels\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"providerIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/apps/manage",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "apps",
+                                "manage"
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:10:57.000Z",
+                          "updatedAt": "2026-07-28T03:10:57.000Z",
+                          "uid": "35240-f72d70cd-fe50-42b9-b540-01faba3048b2"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:10:57.000Z",
+                      "updatedAt": "2026-07-28T03:10:57.000Z",
+                      "uid": "35240-5e528207-8509-428a-825d-07f916b5b83f"
+                    },
+                    {
+                      "name": "List available Data Apps for installation",
+                      "id": "861c1b4f-dac3-4871-9aa6-86a4795fa9ba",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/dataapps/apps/manage?limit=10&page=1&search=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "dataapps",
+                            "apps",
+                            "manage"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Page number for pagination (starts from 1)",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Search term to filter data apps by name or slug",
+                              "key": "search",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves the catalog of Data Apps available for installation in your organization, including their current installation status. Use this as the discovery endpoint for automated governance workflows \u2014 browse available apps and check requirements before installing."
+                      },
+                      "response": [
+                        {
+                          "id": "726b0e1d-fd3b-4d08-afb2-242440d05015",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/apps/manage?limit=10&page=1&search=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "apps",
+                                "manage"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Maximum number of items to return",
+                                  "key": "limit",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "Page number for pagination (starts from 1)",
+                                  "key": "page",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Search term to filter data apps by name or slug",
+                                  "key": "search",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"dataApps\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"iconUrl\": \"<string>\",\n      \"type\": \"<string>\",\n      \"artifactType\": \"CONTAINER\",\n      \"deploymentType\": \"SERVER\",\n      \"version\": \"<string>\",\n      \"otherVersions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"platformRequirements\": [\n        {\n          \"type\": \"ids\",\n          \"namespace\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"version\": \"<string>\"\n        },\n        {\n          \"type\": \"tetraflow\",\n          \"namespace\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"version\": \"<string>\"\n        }\n      ],\n      \"serviceRequirements\": [\n        {\n          \"type\": \"ais\",\n          \"minVersion\": \"<string>\",\n          \"maxVersion\": \"<string>\"\n        },\n        {\n          \"type\": \"ais\",\n          \"minVersion\": \"<string>\",\n          \"maxVersion\": \"<string>\"\n        }\n      ],\n      \"supportedPlatformVersion\": {\n        \"minVersion\": \"<string>\",\n        \"maxVersion\": \"<string>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"iconUrl\": \"<string>\",\n      \"type\": \"<string>\",\n      \"artifactType\": \"TETRASPHERE\",\n      \"deploymentType\": \"SERVER\",\n      \"version\": \"<string>\",\n      \"otherVersions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"platformRequirements\": [\n        {\n          \"type\": \"ids\",\n          \"namespace\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"version\": \"<string>\"\n        },\n        {\n          \"type\": \"ids\",\n          \"namespace\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"version\": \"<string>\"\n        }\n      ],\n      \"serviceRequirements\": [\n        {\n          \"type\": \"ais\",\n          \"minVersion\": \"<string>\",\n          \"maxVersion\": \"<string>\"\n        },\n        {\n          \"type\": \"ais\",\n          \"minVersion\": \"<string>\",\n          \"maxVersion\": \"<string>\"\n        }\n      ],\n      \"supportedPlatformVersion\": {\n        \"minVersion\": \"<string>\",\n        \"maxVersion\": \"<string>\"\n      }\n    }\n  ],\n  \"count\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:10:57.000Z",
+                          "updatedAt": "2026-07-28T03:10:57.000Z",
+                          "uid": "35240-726b0e1d-fd3b-4d08-afb2-242440d05015"
+                        },
+                        {
+                          "id": "ce0ebc5d-f873-49fb-9c04-98811c7adf14",
+                          "name": "Bad Request - Invalid query parameters",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/apps/manage?limit=10&page=1&search=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "apps",
+                                "manage"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Maximum number of items to return",
+                                  "key": "limit",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "Page number for pagination (starts from 1)",
+                                  "key": "page",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Search term to filter data apps by name or slug",
+                                  "key": "search",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:10:57.000Z",
+                          "updatedAt": "2026-07-28T03:10:57.000Z",
+                          "uid": "35240-ce0ebc5d-f873-49fb-9c04-98811c7adf14"
+                        },
+                        {
+                          "id": "c01cd824-b4a2-4b3a-ba35-eea309c4676a",
+                          "name": "Service Unavailable - Managed Data Apps settings are currently unavailable",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/apps/manage?limit=10&page=1&search=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "apps",
+                                "manage"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Maximum number of items to return",
+                                  "key": "limit",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "Page number for pagination (starts from 1)",
+                                  "key": "page",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Search term to filter data apps by name or slug",
+                                  "key": "search",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:10:57.000Z",
+                          "updatedAt": "2026-07-28T03:10:57.000Z",
+                          "uid": "35240-c01cd824-b4a2-4b3a-ba35-eea309c4676a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:10:57.000Z",
+                      "updatedAt": "2026-07-28T03:10:57.000Z",
+                      "uid": "35240-861c1b4f-dac3-4871-9aa6-86a4795fa9ba"
+                    }
+                  ],
+                  "id": "a00481aa-2151-4eb4-8780-58e3b5c34724",
+                  "createdAt": "2026-07-28T03:10:57.000Z",
+                  "updatedAt": "2026-07-28T03:10:57.000Z",
+                  "uid": "35240-a00481aa-2151-4eb4-8780-58e3b5c34724"
+                }
+              ],
+              "id": "0c49fe6b-be26-456f-b3c0-bacb50eec029",
+              "createdAt": "2026-07-28T03:10:57.000Z",
+              "updatedAt": "2026-07-28T03:10:57.000Z",
+              "uid": "35240-0c49fe6b-be26-456f-b3c0-bacb50eec029"
+            }
+          ],
+          "id": "727939af-51db-45f9-bce7-930f4ab5cb79",
+          "createdAt": "2026-07-28T03:10:57.000Z",
+          "updatedAt": "2026-07-28T03:10:57.000Z",
+          "uid": "35240-727939af-51db-45f9-bce7-930f4ab5cb79"
+        }
+      ],
+      "id": "7009ba3f-fb33-4bde-8814-e830f9c9eae6",
+      "createdAt": "2026-07-28T03:10:57.000Z",
+      "updatedAt": "2026-07-28T03:10:57.000Z",
+      "uid": "35240-7009ba3f-fb33-4bde-8814-e830f9c9eae6"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

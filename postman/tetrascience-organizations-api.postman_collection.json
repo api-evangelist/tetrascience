@@ -1,0 +1,1411 @@
+{
+  "info": {
+    "_postman_id": "04ece100-a382-48cc-8f49-c59077479158",
+    "name": "TetraScience Data and AI Cloud Access Groups Organizations API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:11:30.000Z",
+    "updatedAt": "2026-07-28T03:11:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-04ece100-a382-48cc-8f49-c59077479158"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "{organizationId}",
+              "item": [
+                {
+                  "name": "users",
+                  "item": [
+                    {
+                      "name": "{userId}",
+                      "item": [
+                        {
+                          "name": "Delete user from organization",
+                          "id": "117bf385-a63c-40fc-81b8-35380905afef",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organizationId/users/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organizationId",
+                                "users",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "defd0025-ab33-4e79-a149-9c203a8655ba",
+                                  "key": "organizationId",
+                                  "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "7f1c58ed-2466-4a67-befb-71601e174c3f",
+                                  "key": "userId",
+                                  "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Remove a user from the organization, revoking all access and permissions. User account data and audit trails are preserved for compliance purposes."
+                          },
+                          "response": [
+                            {
+                              "id": "85a7da21-2cce-421d-9a7a-8757eb16b2d1",
+                              "name": "User deleted successfully",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organizationId/users/:userId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organizationId",
+                                    "users",
+                                    ":userId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizationId"
+                                    },
+                                    {
+                                      "key": "userId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:11:31.000Z",
+                              "updatedAt": "2026-07-28T03:11:31.000Z",
+                              "uid": "35240-85a7da21-2cce-421d-9a7a-8757eb16b2d1"
+                            },
+                            {
+                              "id": "32ab0012-6ca5-420c-a5d8-1847d7a99172",
+                              "name": "Invalid token",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organizationId/users/:userId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organizationId",
+                                    "users",
+                                    ":userId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizationId"
+                                    },
+                                    {
+                                      "key": "userId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:11:31.000Z",
+                              "updatedAt": "2026-07-28T03:11:31.000Z",
+                              "uid": "35240-32ab0012-6ca5-420c-a5d8-1847d7a99172"
+                            },
+                            {
+                              "id": "b104ebcc-93dd-4b40-9ba7-5f5cca1127ca",
+                              "name": "Caller is not authorized to perform this action",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/organizations/:organizationId/users/:userId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "organizations",
+                                    ":organizationId",
+                                    "users",
+                                    ":userId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizationId"
+                                    },
+                                    {
+                                      "key": "userId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:11:31.000Z",
+                              "updatedAt": "2026-07-28T03:11:31.000Z",
+                              "uid": "35240-b104ebcc-93dd-4b40-9ba7-5f5cca1127ca"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:11:31.000Z",
+                          "updatedAt": "2026-07-28T03:11:31.000Z",
+                          "uid": "35240-117bf385-a63c-40fc-81b8-35380905afef"
+                        }
+                      ],
+                      "id": "873ebf61-2861-4894-8b0c-a8ee9dc8dd7a",
+                      "createdAt": "2026-07-28T03:11:31.000Z",
+                      "updatedAt": "2026-07-28T03:11:31.000Z",
+                      "uid": "35240-873ebf61-2861-4894-8b0c-a8ee9dc8dd7a"
+                    },
+                    {
+                      "name": "Add a user to Organization",
+                      "id": "67a275fa-114b-4ed4-bd27-a6c4eb9cc70a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n  },\n  \"role\": \"member\",\n  \"password\": \"<string>\",\n  \"status\": \"active\",\n  \"authType\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organizationId/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organizationId",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "id": "21941cab-f4b8-48f5-bf2a-ac915ef2ebbc",
+                              "key": "organizationId",
+                              "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Add a new user to the organization or invite existing users. Assigns default roles and sends invitation emails as configured."
+                      },
+                      "response": [
+                        {
+                          "id": "6e3b2ca7-34d2-4d8a-91fc-c8e181d9aeb7",
+                          "name": "Added new user.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n  },\n  \"role\": \"member\",\n  \"password\": \"<string>\",\n  \"status\": \"active\",\n  \"authType\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organizationId/users",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organizationId",
+                                "users"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organizationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"authType\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n  },\n  \"email\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n  },\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"lastActivity\": \"<string>\",\n  \"status\": \"active\",\n  \"systemRole\": \"<string>\",\n  \"roles\": [\n    {\n      \"id\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n      },\n      \"orgSlug\": {\n        \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n      },\n      \"organizationId\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n      },\n      \"role\": {\n        \"example\": \"Administrator\"\n      },\n      \"roleId\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n      },\n      \"status\": \"inactive\",\n      \"userId\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n      },\n      \"orgName\": \"<string>\"\n    },\n    {\n      \"id\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n      },\n      \"orgSlug\": {\n        \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n      },\n      \"organizationId\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n      },\n      \"role\": {\n        \"example\": \"Administrator\"\n      },\n      \"roleId\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n      },\n      \"status\": \"inactive\",\n      \"userId\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n      },\n      \"orgName\": \"<string>\"\n    }\n  ],\n  \"tokens\": [\n    {\n      \"id\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n      },\n      \"userId\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n      },\n      \"token\": \"<string>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"createdAt\": \"<dateTime>\",\n      \"createdBy\": {\n        \"id\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\"\n      }\n    },\n    {\n      \"id\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n      },\n      \"userId\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n      },\n      \"token\": \"<string>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"createdAt\": \"<dateTime>\",\n      \"createdBy\": {\n        \"id\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\"\n      }\n    }\n  ],\n  \"athenaCredentialsUpdatedAt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T03:11:31.000Z",
+                          "updatedAt": "2026-07-28T03:11:31.000Z",
+                          "uid": "35240-6e3b2ca7-34d2-4d8a-91fc-c8e181d9aeb7"
+                        },
+                        {
+                          "id": "d9e6c85d-d45e-4dac-9332-289ea5c25c46",
+                          "name": "Bad request, details in response.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "text/plain"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n  },\n  \"role\": \"member\",\n  \"password\": \"<string>\",\n  \"status\": \"active\",\n  \"authType\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organizationId/users",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organizationId",
+                                "users"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organizationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "text/plain"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-07-28T03:11:31.000Z",
+                          "updatedAt": "2026-07-28T03:11:31.000Z",
+                          "uid": "35240-d9e6c85d-d45e-4dac-9332-289ea5c25c46"
+                        },
+                        {
+                          "id": "75b9afa8-efce-4043-81c9-b1b4e0f5cd3f",
+                          "name": "Invalid token",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n  },\n  \"role\": \"member\",\n  \"password\": \"<string>\",\n  \"status\": \"active\",\n  \"authType\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organizationId/users",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organizationId",
+                                "users"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organizationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:11:31.000Z",
+                          "updatedAt": "2026-07-28T03:11:31.000Z",
+                          "uid": "35240-75b9afa8-efce-4043-81c9-b1b4e0f5cd3f"
+                        },
+                        {
+                          "id": "54f8124d-fe7d-40a5-841d-d4bbb53a2d60",
+                          "name": "Caller is not authorized to perform this action",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": {\n    \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n  },\n  \"role\": \"member\",\n  \"password\": \"<string>\",\n  \"status\": \"active\",\n  \"authType\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organizationId/users",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organizationId",
+                                "users"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organizationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:11:31.000Z",
+                          "updatedAt": "2026-07-28T03:11:31.000Z",
+                          "uid": "35240-54f8124d-fe7d-40a5-841d-d4bbb53a2d60"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:11:31.000Z",
+                      "updatedAt": "2026-07-28T03:11:31.000Z",
+                      "uid": "35240-67a275fa-114b-4ed4-bd27-a6c4eb9cc70a"
+                    },
+                    {
+                      "name": "Get Users for Organization",
+                      "id": "0eea0b89-946d-45d7-aaad-98ed69d622d5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organizationId/users?userStatus=inactive&role=admin&value=reference %23/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec&authType=password&from=<number>&size=<number>&value=reference %23/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec&firstName=<string>&lastName=<string>&include=connector-users&include=task-script-users&withCredentials=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organizationId",
+                            "users"
+                          ],
+                          "query": [
+                            {
+                              "key": "userStatus",
+                              "value": "inactive"
+                            },
+                            {
+                              "key": "role",
+                              "value": "admin"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "value",
+                              "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec"
+                            },
+                            {
+                              "key": "authType",
+                              "value": "password"
+                            },
+                            {
+                              "key": "from",
+                              "value": "<number>"
+                            },
+                            {
+                              "key": "size",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "Email address of the user (exact match)",
+                              "key": "value",
+                              "value": "reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec"
+                            },
+                            {
+                              "description": "Exact match on user first name",
+                              "key": "firstName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Exact match on user last name",
+                              "key": "lastName",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "include",
+                              "value": "connector-users"
+                            },
+                            {
+                              "key": "include",
+                              "value": "task-script-users"
+                            },
+                            {
+                              "key": "withCredentials",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "7ec43cfe-b19c-43f6-94e7-2e7e7dc79c36",
+                              "key": "organizationId",
+                              "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "List all users within an organization including their roles, status, last activity, and access permissions for administrative oversight."
+                      },
+                      "response": [
+                        {
+                          "id": "ccefb28a-0a7b-4dba-b000-64cc97a307f3",
+                          "name": "Responding with list of users",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organizationId/users?userStatus=inactive&role=admin&value=reference %23/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec&authType=password&from=<number>&size=<number>&firstName=<string>&lastName=<string>&include=task-script-users&withCredentials=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organizationId",
+                                "users"
+                              ],
+                              "query": [
+                                {
+                                  "key": "userStatus",
+                                  "value": "inactive"
+                                },
+                                {
+                                  "key": "role",
+                                  "value": "admin"
+                                },
+                                {
+                                  "description": "(Required) ",
+                                  "key": "value",
+                                  "value": "reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec"
+                                },
+                                {
+                                  "key": "authType",
+                                  "value": "password"
+                                },
+                                {
+                                  "key": "from",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "key": "size",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Exact match on user first name",
+                                  "key": "firstName",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Exact match on user last name",
+                                  "key": "lastName",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "include",
+                                  "value": "task-script-users"
+                                },
+                                {
+                                  "key": "withCredentials",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organizationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"authType\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n    },\n    \"email\": {\n      \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n    },\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"lastActivity\": \"<string>\",\n    \"status\": \"active\",\n    \"systemRole\": \"<string>\",\n    \"roles\": [\n      {\n        \"id\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"orgSlug\": {\n          \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n        },\n        \"organizationId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"role\": {\n          \"example\": \"Administrator\"\n        },\n        \"roleId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"status\": \"active\",\n        \"userId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"orgName\": \"<string>\"\n      },\n      {\n        \"id\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"orgSlug\": {\n          \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n        },\n        \"organizationId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"role\": {\n          \"example\": \"Administrator\"\n        },\n        \"roleId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"status\": \"inactive\",\n        \"userId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"orgName\": \"<string>\"\n      }\n    ],\n    \"tokens\": [\n      {\n        \"id\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"userId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"token\": \"<string>\",\n        \"expiresAt\": \"<dateTime>\",\n        \"createdAt\": \"<dateTime>\",\n        \"createdBy\": {\n          \"id\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\"\n        }\n      },\n      {\n        \"id\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"userId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"token\": \"<string>\",\n        \"expiresAt\": \"<dateTime>\",\n        \"createdAt\": \"<dateTime>\",\n        \"createdBy\": {\n          \"id\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\"\n        }\n      }\n    ],\n    \"athenaCredentialsUpdatedAt\": \"<dateTime>\"\n  },\n  {\n    \"authType\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n    },\n    \"email\": {\n      \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n    },\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"lastActivity\": \"<string>\",\n    \"status\": \"active\",\n    \"systemRole\": \"<string>\",\n    \"roles\": [\n      {\n        \"id\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"orgSlug\": {\n          \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n        },\n        \"organizationId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"role\": {\n          \"example\": \"Administrator\"\n        },\n        \"roleId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"status\": \"active\",\n        \"userId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"orgName\": \"<string>\"\n      },\n      {\n        \"id\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"orgSlug\": {\n          \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n        },\n        \"organizationId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"role\": {\n          \"example\": \"Administrator\"\n        },\n        \"roleId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"status\": \"active\",\n        \"userId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"orgName\": \"<string>\"\n      }\n    ],\n    \"tokens\": [\n      {\n        \"id\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"userId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"token\": \"<string>\",\n        \"expiresAt\": \"<dateTime>\",\n        \"createdAt\": \"<dateTime>\",\n        \"createdBy\": {\n          \"id\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\"\n        }\n      },\n      {\n        \"id\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"userId\": {\n          \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n        },\n        \"token\": \"<string>\",\n        \"expiresAt\": \"<dateTime>\",\n        \"createdAt\": \"<dateTime>\",\n        \"createdBy\": {\n          \"id\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\"\n        }\n      }\n    ],\n    \"athenaCredentialsUpdatedAt\": \"<dateTime>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:11:31.000Z",
+                          "updatedAt": "2026-07-28T03:11:31.000Z",
+                          "uid": "35240-ccefb28a-0a7b-4dba-b000-64cc97a307f3"
+                        },
+                        {
+                          "id": "52f6a598-a1e6-44a6-9dd7-9e6fd6689f0f",
+                          "name": "Invalid token",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organizationId/users?userStatus=inactive&role=admin&value=reference %23/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec&authType=password&from=<number>&size=<number>&firstName=<string>&lastName=<string>&include=task-script-users&withCredentials=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organizationId",
+                                "users"
+                              ],
+                              "query": [
+                                {
+                                  "key": "userStatus",
+                                  "value": "inactive"
+                                },
+                                {
+                                  "key": "role",
+                                  "value": "admin"
+                                },
+                                {
+                                  "description": "(Required) ",
+                                  "key": "value",
+                                  "value": "reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec"
+                                },
+                                {
+                                  "key": "authType",
+                                  "value": "password"
+                                },
+                                {
+                                  "key": "from",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "key": "size",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Exact match on user first name",
+                                  "key": "firstName",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Exact match on user last name",
+                                  "key": "lastName",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "include",
+                                  "value": "task-script-users"
+                                },
+                                {
+                                  "key": "withCredentials",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organizationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:11:31.000Z",
+                          "updatedAt": "2026-07-28T03:11:31.000Z",
+                          "uid": "35240-52f6a598-a1e6-44a6-9dd7-9e6fd6689f0f"
+                        },
+                        {
+                          "id": "7982d99d-df99-4cf4-924c-8d6ca7cb6df8",
+                          "name": "Caller is not authorized to perform this action",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/organizations/:organizationId/users?userStatus=inactive&role=admin&value=reference %23/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec&authType=password&from=<number>&size=<number>&firstName=<string>&lastName=<string>&include=task-script-users&withCredentials=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "organizations",
+                                ":organizationId",
+                                "users"
+                              ],
+                              "query": [
+                                {
+                                  "key": "userStatus",
+                                  "value": "inactive"
+                                },
+                                {
+                                  "key": "role",
+                                  "value": "admin"
+                                },
+                                {
+                                  "description": "(Required) ",
+                                  "key": "value",
+                                  "value": "reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec"
+                                },
+                                {
+                                  "key": "authType",
+                                  "value": "password"
+                                },
+                                {
+                                  "key": "from",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "key": "size",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Exact match on user first name",
+                                  "key": "firstName",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Exact match on user last name",
+                                  "key": "lastName",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "include",
+                                  "value": "task-script-users"
+                                },
+                                {
+                                  "key": "withCredentials",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organizationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:11:31.000Z",
+                          "updatedAt": "2026-07-28T03:11:31.000Z",
+                          "uid": "35240-7982d99d-df99-4cf4-924c-8d6ca7cb6df8"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:11:31.000Z",
+                      "updatedAt": "2026-07-28T03:11:31.000Z",
+                      "uid": "35240-0eea0b89-946d-45d7-aaad-98ed69d622d5"
+                    }
+                  ],
+                  "id": "e0419228-822b-4379-9eea-9a798caf9b48",
+                  "createdAt": "2026-07-28T03:11:31.000Z",
+                  "updatedAt": "2026-07-28T03:11:31.000Z",
+                  "uid": "35240-e0419228-822b-4379-9eea-9a798caf9b48"
+                },
+                {
+                  "name": "Get organization by ID",
+                  "id": "afd40a81-0109-4641-9962-e1d4ed36c436",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/organizations/:organizationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "organizations",
+                        ":organizationId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e8cc30af-0362-4f49-a0a7-2b5d58bd1735",
+                          "key": "organizationId",
+                          "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Retrieve organization details including settings, features, subdomain, and administrative configuration for management purposes."
+                  },
+                  "response": [
+                    {
+                      "id": "3cbd7d74-b3f1-4efd-90a1-a5fc4405411f",
+                      "name": "Responding with Organization details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organizationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organizationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "organizationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"createdAt\": \"<dateTime>\",\n  \"createdBy\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"features\": {\n    \"ssoGroupMapping\": {\n      \"admin\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"member\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"readonly\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"auditTrail\": {\n      \"enabled\": \"<boolean>\",\n      \"changeReasonEnabled\": \"<boolean>\"\n    },\n    \"continuousVerification\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"modifiedAt\": \"<dateTime>\",\n  \"modifiedBy\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"name\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"subDomain\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:11:31.000Z",
+                      "updatedAt": "2026-07-28T03:11:31.000Z",
+                      "uid": "35240-3cbd7d74-b3f1-4efd-90a1-a5fc4405411f"
+                    },
+                    {
+                      "id": "07654e80-7aff-47e9-b52a-a4d560427668",
+                      "name": "Invalid token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organizationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organizationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "organizationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:11:31.000Z",
+                      "updatedAt": "2026-07-28T03:11:31.000Z",
+                      "uid": "35240-07654e80-7aff-47e9-b52a-a4d560427668"
+                    },
+                    {
+                      "id": "20a61ca7-1644-40c6-b5e4-579f7c2d8d72",
+                      "name": "Caller is not authorized to perform this action",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organizationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organizationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "organizationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:11:31.000Z",
+                      "updatedAt": "2026-07-28T03:11:31.000Z",
+                      "uid": "35240-20a61ca7-1644-40c6-b5e4-579f7c2d8d72"
+                    },
+                    {
+                      "id": "de8ae8e3-e592-4413-ab7c-6bb2f6b26df8",
+                      "name": "Organization not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organizationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organizationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "organizationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:11:31.000Z",
+                      "updatedAt": "2026-07-28T03:11:31.000Z",
+                      "uid": "35240-de8ae8e3-e592-4413-ab7c-6bb2f6b26df8"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:11:31.000Z",
+                  "updatedAt": "2026-07-28T03:11:31.000Z",
+                  "uid": "35240-afd40a81-0109-4641-9962-e1d4ed36c436"
+                },
+                {
+                  "name": "Update organization by ID",
+                  "id": "eade7008-1863-4496-932b-999cd5127a69",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"orgSlug\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"name\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"emailDomain\": \"<string>\",\n  \"authType\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n  },\n  \"description\": \"<string>\",\n  \"logo\": \"<string>\",\n  \"features\": {\n    \"ssoGroupMapping\": {\n      \"admin\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"member\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"readonly\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"auditTrail\": {\n      \"enabled\": \"<boolean>\",\n      \"changeReasonEnabled\": \"<boolean>\"\n    },\n    \"continuousVerification\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"tenantId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/organizations/:organizationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "organizations",
+                        ":organizationId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a12580e1-d544-4b25-a6ab-52a6301995f9",
+                          "key": "organizationId",
+                          "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Update organization properties including name, description, logo, authentication type, email domain, and feature settings. Requires organization or system admin privileges."
+                  },
+                  "response": [
+                    {
+                      "id": "7d9c1608-4ce5-4712-bbf2-d8cf58e97045",
+                      "name": "Responding with Organization details",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"orgSlug\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"name\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"emailDomain\": \"<string>\",\n  \"authType\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n  },\n  \"description\": \"<string>\",\n  \"logo\": \"<string>\",\n  \"features\": {\n    \"ssoGroupMapping\": {\n      \"admin\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"member\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"readonly\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"auditTrail\": {\n      \"enabled\": \"<boolean>\",\n      \"changeReasonEnabled\": \"<boolean>\"\n    },\n    \"continuousVerification\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"tenantId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organizationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organizationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "organizationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"createdAt\": \"<dateTime>\",\n  \"createdBy\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"features\": {\n    \"ssoGroupMapping\": {\n      \"admin\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"member\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"readonly\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"auditTrail\": {\n      \"enabled\": \"<boolean>\",\n      \"changeReasonEnabled\": \"<boolean>\"\n    },\n    \"continuousVerification\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"modifiedAt\": \"<dateTime>\",\n  \"modifiedBy\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"name\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"subDomain\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:11:31.000Z",
+                      "updatedAt": "2026-07-28T03:11:31.000Z",
+                      "uid": "35240-7d9c1608-4ce5-4712-bbf2-d8cf58e97045"
+                    },
+                    {
+                      "id": "7fe022df-cc76-46ce-afbb-b94c8194d0df",
+                      "name": "Invalid token",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"orgSlug\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"name\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"emailDomain\": \"<string>\",\n  \"authType\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n  },\n  \"description\": \"<string>\",\n  \"logo\": \"<string>\",\n  \"features\": {\n    \"ssoGroupMapping\": {\n      \"admin\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"member\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"readonly\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"auditTrail\": {\n      \"enabled\": \"<boolean>\",\n      \"changeReasonEnabled\": \"<boolean>\"\n    },\n    \"continuousVerification\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"tenantId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organizationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organizationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "organizationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:11:31.000Z",
+                      "updatedAt": "2026-07-28T03:11:31.000Z",
+                      "uid": "35240-7fe022df-cc76-46ce-afbb-b94c8194d0df"
+                    },
+                    {
+                      "id": "4b37b446-93e1-456c-a86d-fe5934f14149",
+                      "name": "Caller is not authorized to perform this action",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"orgSlug\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"name\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"emailDomain\": \"<string>\",\n  \"authType\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n  },\n  \"description\": \"<string>\",\n  \"logo\": \"<string>\",\n  \"features\": {\n    \"ssoGroupMapping\": {\n      \"admin\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"member\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"readonly\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"auditTrail\": {\n      \"enabled\": \"<boolean>\",\n      \"changeReasonEnabled\": \"<boolean>\"\n    },\n    \"continuousVerification\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"tenantId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organizationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organizationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "organizationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:11:31.000Z",
+                      "updatedAt": "2026-07-28T03:11:31.000Z",
+                      "uid": "35240-4b37b446-93e1-456c-a86d-fe5934f14149"
+                    },
+                    {
+                      "id": "bf418870-5bb1-4c9d-b2f4-22dc89c84794",
+                      "name": "Organization not found.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"orgSlug\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"name\": {\n    \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n  },\n  \"emailDomain\": \"<string>\",\n  \"authType\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n  },\n  \"description\": \"<string>\",\n  \"logo\": \"<string>\",\n  \"features\": {\n    \"ssoGroupMapping\": {\n      \"admin\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"member\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"readonly\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"auditTrail\": {\n      \"enabled\": \"<boolean>\",\n      \"changeReasonEnabled\": \"<boolean>\"\n    },\n    \"continuousVerification\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"tenantId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/organizations/:organizationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "organizations",
+                            ":organizationId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "organizationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:11:31.000Z",
+                      "updatedAt": "2026-07-28T03:11:31.000Z",
+                      "uid": "35240-bf418870-5bb1-4c9d-b2f4-22dc89c84794"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:11:31.000Z",
+                  "updatedAt": "2026-07-28T03:11:31.000Z",
+                  "uid": "35240-eade7008-1863-4496-932b-999cd5127a69"
+                }
+              ],
+              "id": "5b861af8-5a36-4c5b-aa2f-866ce68d74a1",
+              "createdAt": "2026-07-28T03:11:31.000Z",
+              "updatedAt": "2026-07-28T03:11:31.000Z",
+              "uid": "35240-5b861af8-5a36-4c5b-aa2f-866ce68d74a1"
+            }
+          ],
+          "id": "b49f1d49-ae31-41f0-a7fd-a2fe8bdd5092",
+          "createdAt": "2026-07-28T03:11:31.000Z",
+          "updatedAt": "2026-07-28T03:11:31.000Z",
+          "uid": "35240-b49f1d49-ae31-41f0-a7fd-a2fe8bdd5092"
+        }
+      ],
+      "id": "3f8b8ede-b07d-49ff-bcf5-071536497dda",
+      "createdAt": "2026-07-28T03:11:31.000Z",
+      "updatedAt": "2026-07-28T03:11:31.000Z",
+      "uid": "35240-3f8b8ede-b07d-49ff-bcf5-071536497dda"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

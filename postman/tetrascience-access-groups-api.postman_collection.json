@@ -1,0 +1,969 @@
+{
+  "info": {
+    "_postman_id": "87e94add-ca44-4a5e-9cce-9ebf3ae25439",
+    "name": "TetraScience Data and AI Cloud Access Groups API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:09:15.000Z",
+    "updatedAt": "2026-07-28T03:09:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-87e94add-ca44-4a5e-9cce-9ebf3ae25439"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "accessGroups",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "user",
+                  "item": [
+                    {
+                      "name": "{userId}",
+                      "item": [
+                        {
+                          "name": "Remove a User from an Access Group",
+                          "id": "e7f84fc5-62c7-47d9-9868-d1789efff7ca",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accessGroups/:id/user/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accessGroups",
+                                ":id",
+                                "user",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "a383c3a1-6722-43c0-a08b-9986310d7aea",
+                                  "key": "id",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "22be4b26-cf64-4024-9a5d-51d572c81129",
+                                  "key": "userId",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Remove a user from an [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization)."
+                          },
+                          "response": [
+                            {
+                              "id": "1059f441-c3d7-4807-8dee-f0e45c315196",
+                              "name": "User removed from the access group.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accessGroups/:id/user/:userId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accessGroups",
+                                    ":id",
+                                    "user",
+                                    ":userId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    },
+                                    {
+                                      "key": "userId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:09:16.000Z",
+                              "updatedAt": "2026-07-28T03:09:16.000Z",
+                              "uid": "35240-1059f441-c3d7-4807-8dee-f0e45c315196"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:09:16.000Z",
+                          "updatedAt": "2026-07-28T03:09:16.000Z",
+                          "uid": "35240-e7f84fc5-62c7-47d9-9868-d1789efff7ca"
+                        }
+                      ],
+                      "id": "24c3c39c-bed5-4f0c-837b-b3ca21d3cd23",
+                      "createdAt": "2026-07-28T03:09:15.000Z",
+                      "updatedAt": "2026-07-28T03:09:15.000Z",
+                      "uid": "35240-24c3c39c-bed5-4f0c-837b-b3ca21d3cd23"
+                    },
+                    {
+                      "name": "Add a User to an Access Group",
+                      "id": "c5c3a3a6-af9c-41c5-8a08-5a6594b98a6e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"userId\": \"<uuid>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accessGroups/:id/user",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accessGroups",
+                            ":id",
+                            "user"
+                          ],
+                          "variable": [
+                            {
+                              "id": "bdce0801-d1e3-45a0-896e-1488c0a6ba68",
+                              "key": "id",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Add a user to an [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization)."
+                      },
+                      "response": [
+                        {
+                          "id": "23b150fe-4e27-44ce-9f42-cbd1fd0a7467",
+                          "name": "User added to the group.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"userId\": \"<uuid>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accessGroups/:id/user",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accessGroups",
+                                ":id",
+                                "user"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:09:16.000Z",
+                          "updatedAt": "2026-07-28T03:09:16.000Z",
+                          "uid": "35240-23b150fe-4e27-44ce-9f42-cbd1fd0a7467"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:09:16.000Z",
+                      "updatedAt": "2026-07-28T03:09:16.000Z",
+                      "uid": "35240-c5c3a3a6-af9c-41c5-8a08-5a6594b98a6e"
+                    }
+                  ],
+                  "id": "08b1587c-2ee8-4cd0-a1c7-cfe82c403e4a",
+                  "createdAt": "2026-07-28T03:09:15.000Z",
+                  "updatedAt": "2026-07-28T03:09:15.000Z",
+                  "uid": "35240-08b1587c-2ee8-4cd0-a1c7-cfe82c403e4a"
+                },
+                {
+                  "name": "users",
+                  "item": [
+                    {
+                      "name": "Add or Remove Users from an Access Group",
+                      "id": "07b3090d-19b0-4b6f-b97a-1161ac05eef3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"add\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"remove\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accessGroups/:id/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accessGroups",
+                            ":id",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2c848ae9-e295-4453-be8d-5ed98cb32dba",
+                              "key": "id",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Add or remove users from an [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization)."
+                      },
+                      "response": [
+                        {
+                          "id": "ebca2a95-08f2-4172-9c25-1a60bd3abf64",
+                          "name": "Users list updated.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"add\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"remove\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accessGroups/:id/users",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accessGroups",
+                                ":id",
+                                "users"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:09:16.000Z",
+                          "updatedAt": "2026-07-28T03:09:16.000Z",
+                          "uid": "35240-ebca2a95-08f2-4172-9c25-1a60bd3abf64"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:09:16.000Z",
+                      "updatedAt": "2026-07-28T03:09:16.000Z",
+                      "uid": "35240-07b3090d-19b0-4b6f-b97a-1161ac05eef3"
+                    }
+                  ],
+                  "id": "d53e9fd1-a560-4f76-b41e-7fe1bfa6788d",
+                  "createdAt": "2026-07-28T03:09:15.000Z",
+                  "updatedAt": "2026-07-28T03:09:15.000Z",
+                  "uid": "35240-d53e9fd1-a560-4f76-b41e-7fe1bfa6788d"
+                },
+                {
+                  "name": "Delete an Access Group",
+                  "id": "928c8929-e0ad-4694-bc6f-e6b87c2eae31",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accessGroups/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accessGroups",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3deb6946-046d-45e7-9bd6-bf7dc70690dc",
+                          "key": "id",
+                          "value": "<uuid>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Delete an [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization)."
+                  },
+                  "response": [
+                    {
+                      "id": "9cb8b0b2-8005-4e09-a188-6e3526c1f507",
+                      "name": "Access group deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accessGroups/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accessGroups",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:09:16.000Z",
+                      "updatedAt": "2026-07-28T03:09:16.000Z",
+                      "uid": "35240-9cb8b0b2-8005-4e09-a188-6e3526c1f507"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:09:16.000Z",
+                  "updatedAt": "2026-07-28T03:09:16.000Z",
+                  "uid": "35240-928c8929-e0ad-4694-bc6f-e6b87c2eae31"
+                },
+                {
+                  "name": "Get Access Group Details",
+                  "id": "ad2eaab2-79d8-4c20-9fe4-4dced52ed975",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accessGroups/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accessGroups",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c63db559-ae9c-43e9-a229-4dde0973fbbc",
+                          "key": "id",
+                          "value": "<uuid>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Get the details of a specific [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization)."
+                  },
+                  "response": [
+                    {
+                      "id": "152fda41-807e-41a1-a71f-cbee789a6917",
+                      "name": "Group information.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accessGroups/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accessGroups",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"orgSlug\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"rules\": {\n    \"minim5\": {\n      \"filters\": {\n        \"type\": \"or\",\n        \"id\": \"<string>\",\n        \"value\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          }\n        ]\n      }\n    }\n  },\n  \"createdAt\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"userIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T03:09:16.000Z",
+                      "updatedAt": "2026-07-28T03:09:16.000Z",
+                      "uid": "35240-152fda41-807e-41a1-a71f-cbee789a6917"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:09:16.000Z",
+                  "updatedAt": "2026-07-28T03:09:16.000Z",
+                  "uid": "35240-ad2eaab2-79d8-4c20-9fe4-4dced52ed975"
+                },
+                {
+                  "name": "Edit an Access Group",
+                  "id": "30038311-d264-4d81-96e5-1bd0cf2ce93d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"rules\": {\n    \"dolor_5c\": {\n      \"filters\": {\n        \"type\": \"or\",\n        \"id\": \"<string>\",\n        \"value\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          }\n        ]\n      }\n    },\n    \"consectetur_b2\": {\n      \"filters\": {\n        \"type\": \"or\",\n        \"id\": \"<string>\",\n        \"value\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          }\n        ]\n      }\n    }\n  },\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accessGroups/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accessGroups",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "795a09f3-42cf-48fc-a4e5-2f788512d856",
+                          "key": "id",
+                          "value": "<uuid>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Edit an [access group's](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization) name, description, status, and [data access rules](https://developers.tetrascience.com/docs/managing-organization-details#create-access-groups)."
+                  },
+                  "response": [
+                    {
+                      "id": "a94fc2b8-9298-454e-918c-4e5c06d09666",
+                      "name": "The updated access group.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "ts-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"rules\": {\n    \"dolor_5c\": {\n      \"filters\": {\n        \"type\": \"or\",\n        \"id\": \"<string>\",\n        \"value\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          }\n        ]\n      }\n    },\n    \"consectetur_b2\": {\n      \"filters\": {\n        \"type\": \"or\",\n        \"id\": \"<string>\",\n        \"value\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          }\n        ]\n      }\n    }\n  },\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accessGroups/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accessGroups",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"orgSlug\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"rules\": {\n    \"minim5\": {\n      \"filters\": {\n        \"type\": \"or\",\n        \"id\": \"<string>\",\n        \"value\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          }\n        ]\n      }\n    }\n  },\n  \"createdAt\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"userIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T03:09:16.000Z",
+                      "updatedAt": "2026-07-28T03:09:16.000Z",
+                      "uid": "35240-a94fc2b8-9298-454e-918c-4e5c06d09666"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:09:16.000Z",
+                  "updatedAt": "2026-07-28T03:09:16.000Z",
+                  "uid": "35240-30038311-d264-4d81-96e5-1bd0cf2ce93d"
+                }
+              ],
+              "id": "7557c11f-4488-4e7e-bc07-630af85bb5cd",
+              "createdAt": "2026-07-28T03:09:15.000Z",
+              "updatedAt": "2026-07-28T03:09:15.000Z",
+              "uid": "35240-7557c11f-4488-4e7e-bc07-630af85bb5cd"
+            },
+            {
+              "name": "user",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "List Access Groups that a User Belongs To",
+                      "id": "55c5dc52-f40d-4c34-9fcc-275a17f70e4c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accessGroups/user/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accessGroups",
+                            "user",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "400cd37f-dc83-45fd-a09e-059d7cc7bd34",
+                              "key": "id",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Get a list of all [access groups](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization) that a user belongs to."
+                      },
+                      "response": [
+                        {
+                          "id": "248c01ef-34c0-4d9c-9009-163a05b86fa7",
+                          "name": "A list of groups that the user is in.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accessGroups/user/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accessGroups",
+                                "user",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-07-28T03:09:16.000Z",
+                          "updatedAt": "2026-07-28T03:09:16.000Z",
+                          "uid": "35240-248c01ef-34c0-4d9c-9009-163a05b86fa7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:09:16.000Z",
+                      "updatedAt": "2026-07-28T03:09:16.000Z",
+                      "uid": "35240-55c5dc52-f40d-4c34-9fcc-275a17f70e4c"
+                    }
+                  ],
+                  "id": "45d1b243-290b-4d6a-aa5d-482c445ee57e",
+                  "createdAt": "2026-07-28T03:09:15.000Z",
+                  "updatedAt": "2026-07-28T03:09:15.000Z",
+                  "uid": "35240-45d1b243-290b-4d6a-aa5d-482c445ee57e"
+                }
+              ],
+              "id": "999dccfa-fbed-48a1-a9fd-709bb1013454",
+              "createdAt": "2026-07-28T03:09:15.000Z",
+              "updatedAt": "2026-07-28T03:09:15.000Z",
+              "uid": "35240-999dccfa-fbed-48a1-a9fd-709bb1013454"
+            },
+            {
+              "name": "List Access Groups for an Organization",
+              "id": "b4a3600d-42ad-4e9f-b199-0fe30d5f6fdf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/accessGroups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "accessGroups"
+                  ]
+                },
+                "description": "Get a list of all [access groups](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization) for an organization."
+              },
+              "response": [
+                {
+                  "id": "ae43484f-c1ee-4bec-995b-1ed428cdc749",
+                  "name": "List all of an organization's access groups.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accessGroups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accessGroups"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-07-28T03:09:16.000Z",
+                  "updatedAt": "2026-07-28T03:09:16.000Z",
+                  "uid": "35240-ae43484f-c1ee-4bec-995b-1ed428cdc749"
+                }
+              ],
+              "createdAt": "2026-07-28T03:09:16.000Z",
+              "updatedAt": "2026-07-28T03:09:16.000Z",
+              "uid": "35240-b4a3600d-42ad-4e9f-b199-0fe30d5f6fdf"
+            },
+            {
+              "name": "Create a New Access Group",
+              "id": "c74f7c88-121b-40ad-a015-30d4b5d67e9d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"rules\": {\n    \"dolor_5c\": {\n      \"filters\": {\n        \"type\": \"or\",\n        \"id\": \"<string>\",\n        \"value\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          }\n        ]\n      }\n    },\n    \"consectetur_b2\": {\n      \"filters\": {\n        \"type\": \"or\",\n        \"id\": \"<string>\",\n        \"value\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          }\n        ]\n      }\n    }\n  },\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/accessGroups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "accessGroups"
+                  ]
+                },
+                "description": "Create a new [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization)."
+              },
+              "response": [
+                {
+                  "id": "93f4e379-2d1a-49c0-8be2-4391cf09eb04",
+                  "name": "The newly created group.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "ts-auth-token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"rules\": {\n    \"dolor_5c\": {\n      \"filters\": {\n        \"type\": \"or\",\n        \"id\": \"<string>\",\n        \"value\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          }\n        ]\n      }\n    },\n    \"consectetur_b2\": {\n      \"filters\": {\n        \"type\": \"or\",\n        \"id\": \"<string>\",\n        \"value\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          }\n        ]\n      }\n    }\n  },\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accessGroups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accessGroups"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"orgSlug\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"rules\": {\n    \"minim5\": {\n      \"filters\": {\n        \"type\": \"or\",\n        \"id\": \"<string>\",\n        \"value\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/FilterOrConfig detected>\"\n          }\n        ]\n      }\n    }\n  },\n  \"createdAt\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"userIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:09:16.000Z",
+                  "updatedAt": "2026-07-28T03:09:16.000Z",
+                  "uid": "35240-93f4e379-2d1a-49c0-8be2-4391cf09eb04"
+                }
+              ],
+              "createdAt": "2026-07-28T03:09:16.000Z",
+              "updatedAt": "2026-07-28T03:09:16.000Z",
+              "uid": "35240-c74f7c88-121b-40ad-a015-30d4b5d67e9d"
+            }
+          ],
+          "id": "f88fb385-92ba-4733-aeca-709a6d40e498",
+          "createdAt": "2026-07-28T03:09:15.000Z",
+          "updatedAt": "2026-07-28T03:09:15.000Z",
+          "uid": "35240-f88fb385-92ba-4733-aeca-709a6d40e498"
+        }
+      ],
+      "id": "d8777f64-e570-4bd9-af31-aab64622e6a7",
+      "createdAt": "2026-07-28T03:09:15.000Z",
+      "updatedAt": "2026-07-28T03:09:15.000Z",
+      "uid": "35240-d8777f64-e570-4bd9-af31-aab64622e6a7"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}

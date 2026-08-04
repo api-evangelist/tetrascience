@@ -1,0 +1,619 @@
+{
+  "info": {
+    "_postman_id": "79c03701-1554-4795-86d8-b2d09ed27995",
+    "name": "TetraScience Data and AI Cloud Access Groups Linked Data Apps API",
+    "description": "Programmatic access to the TetraScience Scientific Data and AI Platform \u2014 manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:11:05.000Z",
+    "updatedAt": "2026-07-28T03:11:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-79c03701-1554-4795-86d8-b2d09ed27995"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "dataapps",
+          "item": [
+            {
+              "name": "apps",
+              "item": [
+                {
+                  "name": "linked",
+                  "item": [
+                    {
+                      "name": "{id}",
+                      "item": [
+                        {
+                          "name": "Delete Linked Data App",
+                          "id": "dc19d0c9-d94e-43bb-89aa-3f28e64e4d07",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/apps/linked/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "apps",
+                                "linked",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "37800a9f-d73b-400e-afff-27dc28869329",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "0c3e14df-e247-4c73-aac7-9e622e0e4a4f",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/dataapps/apps/linked/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "dataapps",
+                                    "apps",
+                                    "linked",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:11:06.000Z",
+                              "updatedAt": "2026-07-28T03:11:06.000Z",
+                              "uid": "35240-0c3e14df-e247-4c73-aac7-9e622e0e4a4f"
+                            },
+                            {
+                              "id": "8db5ee82-409e-4bfb-b1ab-98ce69e2985d",
+                              "name": "Service Unavailable",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/dataapps/apps/linked/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "dataapps",
+                                    "apps",
+                                    "linked",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Service Unavailable",
+                              "code": 503,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:11:06.000Z",
+                              "updatedAt": "2026-07-28T03:11:06.000Z",
+                              "uid": "35240-8db5ee82-409e-4bfb-b1ab-98ce69e2985d"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:11:06.000Z",
+                          "updatedAt": "2026-07-28T03:11:06.000Z",
+                          "uid": "35240-dc19d0c9-d94e-43bb-89aa-3f28e64e4d07"
+                        },
+                        {
+                          "name": "Update Linked Data App",
+                          "id": "668b908f-102d-4f42-a687-e5266ff0d445",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<string>\",\n  \"iconUrl\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/apps/linked/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "apps",
+                                "linked",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "93ab1317-b313-4f0d-94f1-a0337848faa1",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "a8e6c338-b178-49a1-a07d-7e619bdb80e7",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<string>\",\n  \"iconUrl\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/dataapps/apps/linked/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "dataapps",
+                                    "apps",
+                                    "linked",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:11:06.000Z",
+                              "updatedAt": "2026-07-28T03:11:06.000Z",
+                              "uid": "35240-a8e6c338-b178-49a1-a07d-7e619bdb80e7"
+                            },
+                            {
+                              "id": "ee18c70c-bcc8-4270-8199-8d7ad413d24e",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<string>\",\n  \"iconUrl\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/dataapps/apps/linked/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "dataapps",
+                                    "apps",
+                                    "linked",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:11:06.000Z",
+                              "updatedAt": "2026-07-28T03:11:06.000Z",
+                              "uid": "35240-ee18c70c-bcc8-4270-8199-8d7ad413d24e"
+                            },
+                            {
+                              "id": "bb491d94-a6e1-47ae-8d9c-6012a625d340",
+                              "name": "Internal Server Error",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "ts-auth-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<string>\",\n  \"iconUrl\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/dataapps/apps/linked/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "dataapps",
+                                    "apps",
+                                    "linked",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:11:06.000Z",
+                              "updatedAt": "2026-07-28T03:11:06.000Z",
+                              "uid": "35240-bb491d94-a6e1-47ae-8d9c-6012a625d340"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:11:06.000Z",
+                          "updatedAt": "2026-07-28T03:11:06.000Z",
+                          "uid": "35240-668b908f-102d-4f42-a687-e5266ff0d445"
+                        }
+                      ],
+                      "id": "12de0279-c50b-4823-869e-395c24b4406b",
+                      "createdAt": "2026-07-28T03:11:05.000Z",
+                      "updatedAt": "2026-07-28T03:11:05.000Z",
+                      "uid": "35240-12de0279-c50b-4823-869e-395c24b4406b"
+                    },
+                    {
+                      "name": "Create Linked Data App",
+                      "id": "b2e94229-651c-46f5-a75f-285145246f96",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<string>\",\n  \"iconUrl\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/dataapps/apps/linked",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "dataapps",
+                            "apps",
+                            "linked"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e55f2e3c-29a1-4d6b-899e-04fd4e51617a",
+                          "name": "Created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<string>\",\n  \"iconUrl\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/apps/linked",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "apps",
+                                "linked"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:11:06.000Z",
+                          "updatedAt": "2026-07-28T03:11:06.000Z",
+                          "uid": "35240-e55f2e3c-29a1-4d6b-899e-04fd4e51617a"
+                        },
+                        {
+                          "id": "69bee4d2-6133-4374-b767-82b0cc451d94",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<string>\",\n  \"iconUrl\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/apps/linked",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "apps",
+                                "linked"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:11:06.000Z",
+                          "updatedAt": "2026-07-28T03:11:06.000Z",
+                          "uid": "35240-69bee4d2-6133-4374-b767-82b0cc451d94"
+                        },
+                        {
+                          "id": "2f99b8af-70cb-491f-b190-3863f0ede106",
+                          "name": "Internal Server Errors",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "ts-auth-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<string>\",\n  \"iconUrl\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/dataapps/apps/linked",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "dataapps",
+                                "apps",
+                                "linked"
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:11:06.000Z",
+                          "updatedAt": "2026-07-28T03:11:06.000Z",
+                          "uid": "35240-2f99b8af-70cb-491f-b190-3863f0ede106"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:11:06.000Z",
+                      "updatedAt": "2026-07-28T03:11:06.000Z",
+                      "uid": "35240-b2e94229-651c-46f5-a75f-285145246f96"
+                    }
+                  ],
+                  "id": "82614b7a-a10c-4079-837c-165952292a1f",
+                  "createdAt": "2026-07-28T03:11:05.000Z",
+                  "updatedAt": "2026-07-28T03:11:05.000Z",
+                  "uid": "35240-82614b7a-a10c-4079-837c-165952292a1f"
+                }
+              ],
+              "id": "3be7c092-1c06-4d29-8703-9b4dcfa5b1ae",
+              "createdAt": "2026-07-28T03:11:05.000Z",
+              "updatedAt": "2026-07-28T03:11:05.000Z",
+              "uid": "35240-3be7c092-1c06-4d29-8703-9b4dcfa5b1ae"
+            }
+          ],
+          "id": "5bc75d89-cb28-4a8c-bf3b-d2981a3fa06c",
+          "createdAt": "2026-07-28T03:11:05.000Z",
+          "updatedAt": "2026-07-28T03:11:05.000Z",
+          "uid": "35240-5bc75d89-cb28-4a8c-bf3b-d2981a3fa06c"
+        }
+      ],
+      "id": "63cddd70-512c-4fd2-9a85-76412d3729a1",
+      "createdAt": "2026-07-28T03:11:05.000Z",
+      "updatedAt": "2026-07-28T03:11:05.000Z",
+      "uid": "35240-63cddd70-512c-4fd2-9a85-76412d3729a1"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tetrascience.com"
+    }
+  ]
+}
