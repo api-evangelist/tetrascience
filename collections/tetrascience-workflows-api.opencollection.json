@@ -1,0 +1,203 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Workflows API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workflows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Single Workflow Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/workflow/:workflowId",
+            "params": [
+              {
+                "name": "workflowId",
+                "value": "",
+                "type": "path",
+                "description": "Required. UUID of the workflow."
+              }
+            ]
+          },
+          "docs": "Search data pipeline workflows"
+        },
+        {
+          "info": {
+            "name": "Search Workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/workflow/search",
+            "params": [
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Optional.  Number of results to return starting from the page index given in the “from” parameter.  Default: 10 Max: 100"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Optional.  Paging index. Starts with zero. Default: 0"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filter by the workflow completion status. Possible values are:  1. all - for all the workflows (pending, in-progress, completed, failed).  2.  failed - for the workflows that failed.  3. completed - for the workflows that completed successfully.  4. pending - for workflows waiting to be scheduled.  5.  in-progress - for workflows that are executing.  Default: all"
+              },
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "query",
+                "description": "Optional. UUID of the pipeline. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "Optional.  If provided, service returns all the workflows created after this time. Value can be ISO format only with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "Optional. If provided, service returns all the workflows created before this time. Value can be ISO format only with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date."
+              }
+            ]
+          },
+          "docs": "Search data pipeline workflows"
+        },
+        {
+          "info": {
+            "name": "Search workflows draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/workflow/workflows-draft",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Results page number - the start index of results is calculated as (page - 1) * limit. Page parameter will return results in range [start index, start index + limit]. Default value is 1. Value 0 will cause error."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Page size - number of the workflow results to retrieve for a given page."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the workflow completion status. Possible values are: `all` - for all the workflows (completed and failed), `failed` - for the workflows that failed and `completed` - for the workflows that completed successfully."
+              },
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. If provided, service returns all the workflows created after this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. If provided, service returns all the workflows created before this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date."
+              }
+            ]
+          },
+          "docs": "Search data pipeline workflows"
+        },
+        {
+          "info": {
+            "name": "Search Workflows (Deprecated)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/workflow/workflows",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Results page number - the start index of results is calculated as (page - 1) * limit. Page parameter will return results in range [start index, start index + limit]. Default value is 1. Value 0 will cause error."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Page size - number of the workflow results to retrieve for a given page."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the workflow completion status. Possible values are: `all` - for all the workflows (completed and failed), `failed` - for the workflows that failed or were canceled, and `completed` - for the workflows that completed successfully."
+              },
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. If provided, service returns all the workflows created after this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter. If provided, service returns all the workflows created before this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date."
+              }
+            ]
+          },
+          "docs": "Search data pipeline workflows"
+        },
+        {
+          "info": {
+            "name": "Status By Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/workflow/statusByPipeline"
+          },
+          "docs": "Status of pipelines"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

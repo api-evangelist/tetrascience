@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Login API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Login",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get login config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/login/config"
+          },
+          "docs": "Retrieve global login configuration including SSO availability, configured identity providers, and platform features. Use this to check if SSO is enabled and which identity providers are configured."
+        },
+        {
+          "info": {
+            "name": "SSO login",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/login/sso",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Authenticate users via Single Sign-On (SSO) using an authorization code from an identity provider. Use this for SSO login flows to obtain user tokens for API access."
+        },
+        {
+          "info": {
+            "name": "Get login config (Subdomain based)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/:subdomain/login/config",
+            "params": [
+              {
+                "name": "subdomain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get tenant-specific login configuration for a subdomain including SSO availability, configured identity providers, and tenant features."
+        },
+        {
+          "info": {
+            "name": "SSO login (Subdomain based)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/:subdomain/login/sso",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "SSO login (Subdomain based)"
+        },
+        {
+          "info": {
+            "name": "Send a password reset email to the user by email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/login/forgot-password-request",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate a password reset process by sending a reset email to the user. Use this when users forget their password and need to reset it securely."
+        },
+        {
+          "info": {
+            "name": "Login user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticate user credentials with email and password. Use this for standard username/password login flows to obtain user tokens for API access."
+        },
+        {
+          "info": {
+            "name": "Update expired password",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tetrascience.com/login/update-expired",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Allow users to update their password if it has expired. Use this when users need to set a new password after their current one has expired."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

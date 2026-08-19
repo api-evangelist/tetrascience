@@ -1,0 +1,2085 @@
+{
+  "item": [
+    {
+      "id": "6518fca0-c150-49c3-b4d9-47b87e815ea8",
+      "name": "Schemas",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5b04151f-6487-4d41-9346-880940c04d17",
+          "name": "List Schemas",
+          "request": {
+            "name": "List Schemas",
+            "description": {
+              "content": "Retrieves schema information for all IDS (Intermediate Data Schema) in the organization.\n\n**Performance Notice**: This endpoint may timeout with large datasets (500+ schemas). For better performance, use the targeted alternatives below.\n\n**Recommended Alternatives**:\n1. **List available IDS (if needed)**: `GET /v1/artifacts/ids`\n2. **Get specific components**:\n- Schema: `GET /v1/artifacts/ids/{namespace}/{slug}/{version}/files/schema`\n- Mapping: `GET /v1/artifacts/ids/{namespace}/{slug}/{version}/files/mapping`\n- Expected: `GET /v1/artifacts/ids/{namespace}/{slug}/{version}/files/expected`\n- README: `GET /v1/artifacts/ids/{namespace}/{slug}/{version}/files/readme`\n\n**When to use alternatives**: If you need specific schema details or are working with organizations that have many IDS definitions.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "datalake",
+                "schemas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Return only IDS of a given type. Example: `plate-reader`. If omitted, will return the all the IDS the api key has access to."
+                },
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Return a specific version. This must be used with `type`. Example: `v1.0.0`. If omitted, will return all the versions."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to return (nested paths are also supported). Example: `namespace,slug,version,schema.description`. If omitted, will return full structure. Not-existing fields will be ignored."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) JWT Token",
+                "key": "ts-auth-token",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Your organization slug",
+                "key": "x-org-slug",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8bdc73f-ab0c-4ddb-8dd5-29f6924c76ac",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "datalake",
+                    "schemas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) JWT Token",
+                    "key": "ts-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your organization slug",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"[\\n  {\\n    \\\"namespace\\\": \\\"common\\\",\\n    \\\"slug\\\": \\\"some-identificator\\\",\\n    \\\"version\\\": \\\"v1.0.0\\\",\\n    \\\"schema\\\": {\\n      \\\"type\\\": \\\"object\\\",\\n      \\\"properties\\\": {\\n        \\\"assay_name\\\": {\\n          \\\"type\\\": \\\"string\\\"\\n        },\\n        \\\"temperature\\\": {\\n          \\\"type\\\": \\\"number\\\"\\n        },\\n        \\\"timestamp\\\": {\\n          \\\"type\\\": \\\"string\\\",\\n          \\\"format\\\": \\\"date-time\\\"\\n        },\\n        \\\"readout\\\": {\\n          \\\"type\\\": \\\"array\\\",\\n          \\\"items\\\": {\\n            \\\"type\\\": \\\"number\\\"\\n          }\\n        }\\n      }\\n    },\\n    \\\"expected\\\": {},\\n    \\\"elasticsearch\\\": {},\\n    \\\"athena\\\": {},\\n    \\\"readme\\\": \\\"Some text\\\"\\n  }\\n]\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d009cd1c-4732-4a65-895c-509f7c5db5fe",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "datalake",
+                    "schemas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) JWT Token",
+                    "key": "ts-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your organization slug",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c8cd595-d402-4eb3-a7a3-e1268d15c685",
+          "name": "List all schemas for namespace",
+          "request": {
+            "name": "List all schemas for namespace",
+            "description": {
+              "content": "Returns a list of all schema artifacts given a namespace",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "schemas",
+                ":namespace"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "latest_only",
+                  "value": "<boolean>",
+                  "description": "Only return the latest version of each artifact"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fcdb545-a80a-41e6-a507-a70a75b2d197",
+              "name": "Successfully fetched SchemaObject list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    ":namespace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"schema\",\n    \"namespace\": \"private-test\",\n    \"slug\": \"tabular\",\n    \"version\": \"v0.5.0\",\n    \"createdAt\": \"2024-04-25T15:15:34.269Z\",\n    \"lastUpdatedAt\": \"2023-04-25T17:15:34.269Z\",\n    \"name\": \"Tabular schema\",\n    \"description\": \"A tabular schema\",\n    \"otherVersions\": [\n      \"v0.1.0\",\n      \"v0.5.0\"\n    ]\n  },\n  {\n    \"type\": \"schema\",\n    \"namespace\": \"private-test\",\n    \"slug\": \"tabular\",\n    \"version\": \"v0.5.0\",\n    \"createdAt\": \"2024-04-25T15:15:34.269Z\",\n    \"lastUpdatedAt\": \"2023-04-25T17:15:34.269Z\",\n    \"name\": \"Tabular schema\",\n    \"description\": \"A tabular schema\",\n    \"otherVersions\": [\n      \"v0.1.0\",\n      \"v0.5.0\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98f76506-14af-4534-98e6-17a33759e550",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    ":namespace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b3ce8c5-1c5d-43fe-9cce-e8e807cf4c0a",
+          "name": "List all schemas for namespace/slug",
+          "request": {
+            "name": "List all schemas for namespace/slug",
+            "description": {
+              "content": "Returns a list of all schema artifacts given a namespace and slug",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "schemas",
+                ":namespace",
+                ":slug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "latest_only",
+                  "value": "<boolean>",
+                  "description": "Only return the latest version of each artifact"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e2a16d70-2fb2-4710-a67d-765fae6791fa",
+              "name": "Successfully fetched SchemaObject list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    ":namespace",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"schema\",\n    \"namespace\": \"private-test\",\n    \"slug\": \"tabular\",\n    \"version\": \"v0.5.0\",\n    \"createdAt\": \"2024-04-25T15:15:34.269Z\",\n    \"lastUpdatedAt\": \"2023-04-25T17:15:34.269Z\",\n    \"name\": \"Tabular schema\",\n    \"description\": \"A tabular schema\",\n    \"otherVersions\": [\n      \"v0.1.0\",\n      \"v0.5.0\"\n    ]\n  },\n  {\n    \"type\": \"schema\",\n    \"namespace\": \"private-test\",\n    \"slug\": \"tabular\",\n    \"version\": \"v0.5.0\",\n    \"createdAt\": \"2024-04-25T15:15:34.269Z\",\n    \"lastUpdatedAt\": \"2023-04-25T17:15:34.269Z\",\n    \"name\": \"Tabular schema\",\n    \"description\": \"A tabular schema\",\n    \"otherVersions\": [\n      \"v0.1.0\",\n      \"v0.5.0\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05c3f6a8-3287-4e58-94b4-f810068ef297",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    ":namespace",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7bae9fe-87db-4f6a-b3f9-fd4557e6113d",
+          "name": "Get contents for a schemas file",
+          "request": {
+            "name": "Get contents for a schemas file",
+            "description": {
+              "content": "Returns the file contents for a schemas file given a namespace, slug, version, and file slug",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "schemas",
+                ":namespace",
+                ":slug",
+                ":version",
+                "files",
+                ":fileSlug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "download",
+                  "value": "<boolean>",
+                  "description": "If set to true, return a download url"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Artifact version"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fileSlug",
+                  "description": "(Required) File slug corresponding to file within a schema"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd84201a-92cc-4870-86d7-ce4a53a25ef4",
+              "name": "Successfully fetched file",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files",
+                    ":fileSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileSlug",
+                      "description": "(Required) File slug corresponding to file within a schema"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8493cfe3-8a99-4621-9548-a27696f2ea2f",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files",
+                    ":fileSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileSlug",
+                      "description": "(Required) File slug corresponding to file within a schema"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d9b4173-188a-434b-a4c9-99c8910f3bef",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files",
+                    ":fileSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileSlug",
+                      "description": "(Required) File slug corresponding to file within a schema"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0acd82d1-7eed-4781-9061-0b999db80466",
+          "name": "Get a single schemas artifact",
+          "request": {
+            "name": "Get a single schemas artifact",
+            "description": {
+              "content": "Returns a single schemas artifact matching the namespace, slug, and version",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "schemas",
+                ":namespace",
+                ":slug",
+                ":version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Artifact version"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3244ad2a-8e35-466f-9cd4-03f160f0a878",
+              "name": "Successfully fetched SchemaObject",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    ":namespace",
+                    ":slug",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"schema\",\n  \"namespace\": \"private-test\",\n  \"slug\": \"tabular\",\n  \"version\": \"v0.5.0\",\n  \"createdAt\": \"2024-04-25T15:15:34.269Z\",\n  \"lastUpdatedAt\": \"2023-04-25T17:15:34.269Z\",\n  \"name\": \"Tabular schema\",\n  \"description\": \"A tabular schema\",\n  \"otherVersions\": [\n    \"v0.1.0\",\n    \"v0.5.0\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18369e22-2a39-4804-8fb0-11f9d0e257c2",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    ":namespace",
+                    ":slug",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b1e9e72-3569-439d-b0a5-fda1629a200c",
+          "name": "Get available file slugs for schemas",
+          "request": {
+            "name": "Get available file slugs for schemas",
+            "description": {
+              "content": "Returns which file slugs are available to retrieve for this schemas",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "schemas",
+                ":namespace",
+                ":slug",
+                ":version",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Artifact version"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8993a742-0a37-445d-88ea-1fa01aa7c5ba",
+              "name": "Successfully fetched available Schema file slugs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"schema\",\n  \"manifest\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb748cd1-1121-43b7-bc2c-4a808ae9ca6b",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7da4cf4d-5907-42d8-a6cd-b774c4180206",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66a52c0d-1d21-4f0f-b5b3-bf9e39329ff9",
+          "name": "Get labels for a schemas",
+          "request": {
+            "name": "Get labels for a schemas",
+            "description": {
+              "content": "Returns a list of the labels associated with a schemas artifact",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "schemas",
+                ":namespace",
+                ":slug",
+                ":version",
+                "labels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Artifact version"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae9fdf40-86ff-485d-8940-062ebea09413",
+              "name": "Successfully fetched Labels",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"label1\",\n    \"value\": \"value1\"\n  },\n  {\n    \"name\": \"another-label\",\n    \"value\": \"another-value\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9b27a5c-6e5a-4af0-9707-1d45d53927ea",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a098e46-cef2-495f-b421-8136d84cae55",
+          "name": "List all schema artifacts",
+          "request": {
+            "name": "List all schema artifacts",
+            "description": {
+              "content": "Returns a list of all schema artifacts, optionally filtered by namespace type",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "schemas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "namespace_type",
+                  "value": "<string>",
+                  "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')"
+                },
+                {
+                  "disabled": false,
+                  "key": "latest_only",
+                  "value": "<boolean>",
+                  "description": "Only return the latest version of each artifact"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9265d88a-b29c-4b92-97f7-a2e405da2293",
+              "name": "Successfully fetched SchemaObject list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "namespace_type",
+                      "value": "client"
+                    },
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"schema\",\n    \"namespace\": \"private-test\",\n    \"slug\": \"tabular\",\n    \"version\": \"v0.5.0\",\n    \"createdAt\": \"2024-04-25T15:15:34.269Z\",\n    \"lastUpdatedAt\": \"2023-04-25T17:15:34.269Z\",\n    \"name\": \"Tabular schema\",\n    \"description\": \"A tabular schema\",\n    \"otherVersions\": [\n      \"v0.1.0\",\n      \"v0.5.0\"\n    ]\n  },\n  {\n    \"type\": \"schema\",\n    \"namespace\": \"private-test\",\n    \"slug\": \"tabular\",\n    \"version\": \"v0.5.0\",\n    \"createdAt\": \"2024-04-25T15:15:34.269Z\",\n    \"lastUpdatedAt\": \"2023-04-25T17:15:34.269Z\",\n    \"name\": \"Tabular schema\",\n    \"description\": \"A tabular schema\",\n    \"otherVersions\": [\n      \"v0.1.0\",\n      \"v0.5.0\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49da6bdb-29aa-4877-95b4-fe6a93f37d19",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "namespace_type",
+                      "value": "client"
+                    },
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51a8ba7a-01d6-4112-86b4-21ddb3b8de62",
+          "name": "Search for schema artifacts",
+          "request": {
+            "name": "Search for schema artifacts",
+            "description": {
+              "content": "Search for items using specified criteria",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "schemas",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "<string>",
+                  "description": "(Required) The search string"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a4c59213-9963-4ba2-ab7a-bd302f890222",
+              "name": "A list of items that match the search query",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"schema\",\n    \"namespace\": \"private-test\",\n    \"slug\": \"tabular\",\n    \"version\": \"v0.5.0\",\n    \"createdAt\": \"2024-04-25T15:15:34.269Z\",\n    \"lastUpdatedAt\": \"2023-04-25T17:15:34.269Z\",\n    \"name\": \"Tabular schema\",\n    \"description\": \"A tabular schema\",\n    \"otherVersions\": [\n      \"v0.1.0\",\n      \"v0.5.0\"\n    ]\n  },\n  {\n    \"type\": \"schema\",\n    \"namespace\": \"private-test\",\n    \"slug\": \"tabular\",\n    \"version\": \"v0.5.0\",\n    \"createdAt\": \"2024-04-25T15:15:34.269Z\",\n    \"lastUpdatedAt\": \"2023-04-25T17:15:34.269Z\",\n    \"name\": \"Tabular schema\",\n    \"description\": \"A tabular schema\",\n    \"otherVersions\": [\n      \"v0.1.0\",\n      \"v0.5.0\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d56c4d1d-43a5-4577-9e9b-cff2a51210bf",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "schemas",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b57aa582-3f2d-49ad-ad4b-ff032fe8ebeb",
+    "name": "TetraScience Data and AI Cloud Access Groups Schemas API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

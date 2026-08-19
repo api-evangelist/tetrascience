@@ -1,0 +1,534 @@
+{
+  "item": [
+    {
+      "id": "a9722409-1bd2-434e-b3ed-1718fc7ee3ac",
+      "name": "Embedded Data Apps",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8c18dd05-78ff-4680-99c6-037213a9e83d",
+          "name": "Install, update, or uninstall Data Apps",
+          "request": {
+            "name": "Install, update, or uninstall Data Apps",
+            "description": {
+              "content": "Perform one or more install, update, or uninstall operations on embedded Data Apps. Submit an array of operations to manage which Data Apps are enabled in your organization. This endpoint supports automated governance workflows from CI/CD pipelines, GitHub Actions, or ServiceNow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "dataapps",
+                "apps",
+                "manage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"action\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"type\": \"CONTAINER\",\n    \"deploymentType\": \"SERVER\",\n    \"version\": \"<string>\",\n    \"namespace\": \"<string>\",\n    \"labels\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"providerIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2c80b72-37a3-46e2-88cd-ed0ba88c4704",
+              "name": "All operations completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dataapps",
+                    "apps",
+                    "manage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"action\": \"CREATE\",\n    \"name\": \"Akta Visualizer\",\n    \"slug\": \"akta-visualizer\",\n    \"namespace\": \"common\",\n    \"version\": \"v1.0.0\",\n    \"type\": \"CONTAINER\",\n    \"deploymentType\": \"SERVER\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c9708304-f5db-48de-b029-e6c8a8bd5e5b",
+              "name": "Validation error. Common causes: missing required fields (action, version, namespace, slug, or name for CREATE/UPDATE), or invalid field values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dataapps",
+                    "apps",
+                    "manage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"action\": \"CREATE\",\n    \"name\": \"Akta Visualizer\",\n    \"slug\": \"akta-visualizer\",\n    \"namespace\": \"common\",\n    \"version\": \"v1.0.0\",\n    \"type\": \"CONTAINER\",\n    \"deploymentType\": \"SERVER\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a592fee7-03b1-4756-bd39-4fa5542aac66",
+              "name": "Data App management is not enabled for this organization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dataapps",
+                    "apps",
+                    "manage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"action\": \"CREATE\",\n    \"name\": \"Akta Visualizer\",\n    \"slug\": \"akta-visualizer\",\n    \"namespace\": \"common\",\n    \"version\": \"v1.0.0\",\n    \"type\": \"CONTAINER\",\n    \"deploymentType\": \"SERVER\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "429db928-5fbb-4537-af07-0f9e355af0e8",
+              "name": "Data App management service is temporarily unavailable. Retry with backoff.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dataapps",
+                    "apps",
+                    "manage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"action\": \"CREATE\",\n    \"name\": \"Akta Visualizer\",\n    \"slug\": \"akta-visualizer\",\n    \"namespace\": \"common\",\n    \"version\": \"v1.0.0\",\n    \"type\": \"CONTAINER\",\n    \"deploymentType\": \"SERVER\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8107098-b486-488b-ae2d-10c0aeac4500",
+          "name": "List available Data Apps for installation",
+          "request": {
+            "name": "List available Data Apps for installation",
+            "description": {
+              "content": "Retrieves the catalog of Data Apps available for installation in your organization, including their current installation status. Use this as the discovery endpoint for automated governance workflows — browse available apps and check requirements before installing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "dataapps",
+                "apps",
+                "manage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (starts from 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search term to filter data apps by name or slug"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eec24316-2df8-4164-9b1c-2d167fad28c7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dataapps",
+                    "apps",
+                    "manage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataApps\": [\n    {\n      \"name\": \"Threads\",\n      \"description\": \"A Streamlit-powered dashboard to manage threads. A thread is a way capture work-to-be-done by one or more individuals.\",\n      \"slug\": \"threads\",\n      \"version\": \"v0.8.0\",\n      \"namespace\": \"common\",\n      \"iconUrl\": \"https://example.com/icon.png\",\n      \"otherVersions\": [],\n      \"type\": \"CONTAINER\",\n      \"artifactType\": \"CONTAINER\",\n      \"deploymentType\": \"SERVER\",\n      \"platformRequirements\": [],\n      \"serviceRequirements\": [\n        {\n          \"type\": \"ais\",\n          \"minVersion\": \"v1.0.0\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Chromatography Insights\",\n      \"description\": \"A Streamlit-powered dashboard to visualize chromatography insights\",\n      \"slug\": \"chromatography-insights\",\n      \"version\": \"v1.7.0\",\n      \"namespace\": \"common\",\n      \"iconUrl\": \"https://example.com/icon.png\",\n      \"type\": \"CONTAINER\",\n      \"artifactType\": \"CONTAINER\",\n      \"deploymentType\": \"SERVER\",\n      \"platformRequirements\": [\n        {\n          \"type\": \"ids\",\n          \"namespace\": \"common\",\n          \"slug\": \"lcuv-empower\",\n          \"version\": \">=15.0.0 <16.1.0\"\n        },\n        {\n          \"type\": \"ids\",\n          \"namespace\": \"common\",\n          \"slug\": \"lcuv-chromeleon\",\n          \"version\": \"v6.0.0\"\n        },\n        {\n          \"type\": \"tetraflow\",\n          \"namespace\": \"common\",\n          \"slug\": \"chromatography-insights\",\n          \"version\": \"v1.6.1\"\n        }\n      ],\n      \"serviceRequirements\": []\n    }\n  ],\n  \"count\": 25\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f311e25-fb0d-4f0b-b476-53bf35d2195a",
+              "name": "Bad Request - Invalid query parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dataapps",
+                    "apps",
+                    "manage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"\\\"search\\\" is not allowed to be empty\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14f40d16-c40b-4130-9181-2c86510e6584",
+              "name": "Service Unavailable - Managed Data Apps settings are currently unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dataapps",
+                    "apps",
+                    "manage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a01ba48d-f6a5-436a-bbe8-8461220b274c",
+    "name": "TetraScience Data and AI Cloud Access Groups Embedded Data Apps API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

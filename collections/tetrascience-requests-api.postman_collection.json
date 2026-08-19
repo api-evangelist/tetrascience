@@ -1,0 +1,1789 @@
+{
+  "item": [
+    {
+      "id": "f7c234c9-65e8-4241-96f2-2d9060468289",
+      "name": "Requests",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9836b705-5746-49c1-88a8-c1a0a19dc288",
+          "name": "Request to create a new subscription",
+          "request": {
+            "name": "Request to create a new subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "externalevents",
+                "requests",
+                "creation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"selectedEventTypes\": [\n    \"<string>\"\n  ],\n  \"userDefinedName\": \"<string>\",\n  \"targetEndpoint\": \"<string>\",\n  \"targetType\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f18803b1-5d50-49ed-8564-22ea10ea3478",
+              "name": "Request created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"selectedEventTypes\": [\n    \"<string>\"\n  ],\n  \"userDefinedName\": \"<string>\",\n  \"targetEndpoint\": \"<string>\",\n  \"targetType\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2015-09-02T07:22:47.811Z\",\n  \"id\": \"string\",\n  \"input\": {\n    \"id\": \"string\",\n    \"orgSlug\": \"string\",\n    \"selectedEventTypes\": [\n      \"tetrascience.agents.filelog.fileScanned.v1\"\n    ],\n    \"userDefinedName\": \"d t\",\n    \"targetEndpoint\": \"arn:aws:events:YStqZ:w3#}6ipj@:\\\\97Y:\\\\X=9|\",\n    \"targetType\": \"BUS\",\n    \"enabled\": false\n  },\n  \"lastUpdatedAt\": \"2018-01-18T17:42:06.141Z\",\n  \"orgSlug\": \"string\",\n  \"status\": \"queued\",\n  \"type\": \"create\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc8f6da3-8644-4970-b421-8a837b3b832f",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"selectedEventTypes\": [\n    \"<string>\"\n  ],\n  \"userDefinedName\": \"<string>\",\n  \"targetEndpoint\": \"<string>\",\n  \"targetType\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47580b22-2b58-47ba-a65b-cd9aae7d98f1",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"selectedEventTypes\": [\n    \"<string>\"\n  ],\n  \"userDefinedName\": \"<string>\",\n  \"targetEndpoint\": \"<string>\",\n  \"targetType\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4cb0526-2041-473b-ac71-9e2b1bb76e3b",
+              "name": "Internal error managing rules on eventbridge",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"selectedEventTypes\": [\n    \"<string>\"\n  ],\n  \"userDefinedName\": \"<string>\",\n  \"targetEndpoint\": \"<string>\",\n  \"targetType\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Internal DB Error\",\n  \"message\": \"Internal error with teh database\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb03854c-e02b-43eb-ba5e-df7bb4e3726e",
+              "name": "Internal error managing rules on eventbridge",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "creation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"selectedEventTypes\": [\n    \"<string>\"\n  ],\n  \"userDefinedName\": \"<string>\",\n  \"targetEndpoint\": \"<string>\",\n  \"targetType\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Internal Eventbridge Error\",\n  \"message\": \"Internal error managing rules on eventbridge\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8aeec1f3-f29f-4593-8bc3-4087f5c937eb",
+          "name": "Delete a request by ID",
+          "request": {
+            "name": "Delete a request by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "externalevents",
+                "requests",
+                ":requestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "requestId",
+                  "description": "(Required) ID of the request"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6ad3b37-47d8-4f7f-928b-8ca7150fd206",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) ID of the request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2015-09-02T07:22:47.811Z\",\n  \"id\": \"string\",\n  \"input\": {\n    \"id\": \"string\",\n    \"orgSlug\": \"string\",\n    \"selectedEventTypes\": [\n      \"tetrascience.agents.filelog.fileScanned.v1\"\n    ],\n    \"userDefinedName\": \"d t\",\n    \"targetEndpoint\": \"arn:aws:events:YStqZ:w3#}6ipj@:\\\\97Y:\\\\X=9|\",\n    \"targetType\": \"BUS\",\n    \"enabled\": false\n  },\n  \"lastUpdatedAt\": \"2018-01-18T17:42:06.141Z\",\n  \"orgSlug\": \"string\",\n  \"status\": \"queued\",\n  \"type\": \"create\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7039101c-b2d4-494c-8f73-a2f71128b210",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) ID of the request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8346b401-e33b-426b-83eb-4d12c35ad67b",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) ID of the request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31a10ea5-8b5b-4319-bd20-5171b5f9598d",
+              "name": "This request cannot yet be deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) ID of the request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2015-09-02T07:22:47.811Z\",\n  \"id\": \"string\",\n  \"input\": {\n    \"id\": \"string\",\n    \"orgSlug\": \"string\",\n    \"selectedEventTypes\": [\n      \"tetrascience.agents.filelog.fileScanned.v1\"\n    ],\n    \"userDefinedName\": \"d t\",\n    \"targetEndpoint\": \"arn:aws:events:YStqZ:w3#}6ipj@:\\\\97Y:\\\\X=9|\",\n    \"targetType\": \"BUS\",\n    \"enabled\": false\n  },\n  \"lastUpdatedAt\": \"2018-01-18T17:42:06.141Z\",\n  \"orgSlug\": \"string\",\n  \"status\": \"queued\",\n  \"type\": \"create\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "561ecb02-29cb-4995-b76e-12818e724b5e",
+              "name": "Internal error managing rules on eventbridge",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) ID of the request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Internal DB Error\",\n  \"message\": \"Internal error with teh database\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91223a73-b823-4a5f-9d33-a3870ac28416",
+          "name": "Get a request by ID",
+          "request": {
+            "name": "Get a request by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "externalevents",
+                "requests",
+                ":requestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "requestId",
+                  "description": "(Required) ID of the request"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2aca9a4c-2cdf-403d-9dfb-2429790cd30a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) ID of the request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2015-09-02T07:22:47.811Z\",\n  \"id\": \"string\",\n  \"input\": {\n    \"id\": \"string\",\n    \"orgSlug\": \"string\",\n    \"selectedEventTypes\": [\n      \"tetrascience.agents.filelog.fileScanned.v1\"\n    ],\n    \"userDefinedName\": \"d t\",\n    \"targetEndpoint\": \"arn:aws:events:YStqZ:w3#}6ipj@:\\\\97Y:\\\\X=9|\",\n    \"targetType\": \"BUS\",\n    \"enabled\": false\n  },\n  \"lastUpdatedAt\": \"2018-01-18T17:42:06.141Z\",\n  \"orgSlug\": \"string\",\n  \"status\": \"queued\",\n  \"type\": \"create\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d4a5c0d-17c9-4bf5-a790-7beeea8c3b99",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) ID of the request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a392c5bf-0e44-47de-94db-a72416cf6e29",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) ID of the request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0eda48fc-619a-405c-8263-d269f06b6162",
+              "name": "Internal error managing rules on eventbridge",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) ID of the request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Internal DB Error\",\n  \"message\": \"Internal error with teh database\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1561222e-6e1e-4330-8050-3e1756e1a5b8",
+          "name": "Request to delete a subscription",
+          "request": {
+            "name": "Request to delete a subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "externalevents",
+                "requests",
+                "deletion"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "59f01b57-00ca-4f82-9bcc-62f1c86754b2",
+              "name": "Request created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "deletion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2015-09-02T07:22:47.811Z\",\n  \"id\": \"string\",\n  \"input\": {\n    \"id\": \"string\",\n    \"orgSlug\": \"string\",\n    \"selectedEventTypes\": [\n      \"tetrascience.agents.filelog.fileScanned.v1\"\n    ],\n    \"userDefinedName\": \"d t\",\n    \"targetEndpoint\": \"arn:aws:events:YStqZ:w3#}6ipj@:\\\\97Y:\\\\X=9|\",\n    \"targetType\": \"BUS\",\n    \"enabled\": false\n  },\n  \"lastUpdatedAt\": \"2018-01-18T17:42:06.141Z\",\n  \"orgSlug\": \"string\",\n  \"status\": \"queued\",\n  \"type\": \"create\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12a57792-71db-493c-b211-ed8a5a07c923",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "deletion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fb6cdaf-a241-4500-8189-26a68458077f",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "deletion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "931c6a15-6570-4564-a37f-6863983d01e9",
+              "name": "Internal error managing rules on eventbridge",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "deletion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Internal DB Error\",\n  \"message\": \"Internal error with teh database\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8ac87f6-3f58-411c-b12f-f44be9537147",
+              "name": "Internal error managing rules on eventbridge",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "deletion"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Internal Eventbridge Error\",\n  \"message\": \"Internal error managing rules on eventbridge\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92aee94d-f2b6-4acd-b442-2e373a12eae6",
+          "name": "Get recent requests",
+          "request": {
+            "name": "Get recent requests",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "externalevents",
+                "requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "601de47b-afe6-4cb5-94dd-c132d8340c59",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"1978-02-09T03:24:16.029Z\",\n    \"id\": \"string\",\n    \"input\": {\n      \"id\": \"string\",\n      \"orgSlug\": \"string\",\n      \"selectedEventTypes\": [\n        \"tetrascience.agents.common.heartbeat.v1\"\n      ],\n      \"userDefinedName\": \"jNu!niivVh\",\n      \"targetEndpoint\": \"arn:aws:events:V\\\\Y>q(!Ke:I,S:%v\",\n      \"targetType\": \"BUS\",\n      \"enabled\": false\n    },\n    \"lastUpdatedAt\": \"2001-07-12T15:57:50.109Z\",\n    \"orgSlug\": \"string\",\n    \"status\": \"queued\",\n    \"type\": \"create\"\n  },\n  {\n    \"createdAt\": \"1982-01-18T17:12:18.512Z\",\n    \"id\": \"string\",\n    \"input\": {\n      \"id\": \"string\",\n      \"orgSlug\": \"string\",\n      \"selectedEventTypes\": [\n        \"tetrascience.agents.filelog.scanError.v1\"\n      ],\n      \"userDefinedName\": \"\\\"')*\",\n      \"targetEndpoint\": \"arn:aws:events:AkkcS/IV:R^XW:lqMjYnZi~\",\n      \"targetType\": \"BUS\",\n      \"enabled\": true\n    },\n    \"lastUpdatedAt\": \"2019-03-18T04:30:20.143Z\",\n    \"orgSlug\": \"string\",\n    \"status\": \"queued\",\n    \"type\": \"create\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4189aec3-6f8f-49f4-81ed-32cfd7d85c93",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "850560d5-3830-4196-826c-996f8939f4ac",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4bea57f-af92-4817-9ac2-f797c56c0a4b",
+              "name": "Internal error managing rules on eventbridge",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Internal DB Error\",\n  \"message\": \"Internal error with teh database\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "084eb422-1d39-49c4-88ce-54903f97a9f6",
+          "name": "Request to update a subscription",
+          "request": {
+            "name": "Request to update a subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "externalevents",
+                "requests",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"update\": {\n    \"selectedEventTypes\": [\n      \"<string>\"\n    ],\n    \"userDefinedName\": \"<string>\",\n    \"targetEndpoint\": \"<string>\",\n    \"targetType\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb37ee2a-de7f-412e-8a49-0017c6bef184",
+              "name": "Request created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"update\": {\n    \"selectedEventTypes\": [\n      \"tetrascience.agents.filelog.fileArchiveFailed.v1\"\n    ],\n    \"userDefinedName\": \"I#nk\",\n    \"targetEndpoint\": \"arn:aws:events:k:oiY!::!ysIj:(r^{3p~e\",\n    \"targetType\": \"BUS\",\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2015-09-02T07:22:47.811Z\",\n  \"id\": \"string\",\n  \"input\": {\n    \"id\": \"string\",\n    \"orgSlug\": \"string\",\n    \"selectedEventTypes\": [\n      \"tetrascience.agents.filelog.fileScanned.v1\"\n    ],\n    \"userDefinedName\": \"d t\",\n    \"targetEndpoint\": \"arn:aws:events:YStqZ:w3#}6ipj@:\\\\97Y:\\\\X=9|\",\n    \"targetType\": \"BUS\",\n    \"enabled\": false\n  },\n  \"lastUpdatedAt\": \"2018-01-18T17:42:06.141Z\",\n  \"orgSlug\": \"string\",\n  \"status\": \"queued\",\n  \"type\": \"create\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2d6951d-26d6-49bb-a6af-93c181a2714e",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"update\": {\n    \"selectedEventTypes\": [\n      \"tetrascience.agents.filelog.fileArchiveFailed.v1\"\n    ],\n    \"userDefinedName\": \"I#nk\",\n    \"targetEndpoint\": \"arn:aws:events:k:oiY!::!ysIj:(r^{3p~e\",\n    \"targetType\": \"BUS\",\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c3c0f0d-8c79-437f-937c-cd5209f836ff",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"update\": {\n    \"selectedEventTypes\": [\n      \"tetrascience.agents.filelog.fileArchiveFailed.v1\"\n    ],\n    \"userDefinedName\": \"I#nk\",\n    \"targetEndpoint\": \"arn:aws:events:k:oiY!::!ysIj:(r^{3p~e\",\n    \"targetType\": \"BUS\",\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d6835e1-9dd1-47b6-8878-920b6d6b5c9f",
+              "name": "Internal error managing rules on eventbridge",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"update\": {\n    \"selectedEventTypes\": [\n      \"tetrascience.agents.filelog.fileArchiveFailed.v1\"\n    ],\n    \"userDefinedName\": \"I#nk\",\n    \"targetEndpoint\": \"arn:aws:events:k:oiY!::!ysIj:(r^{3p~e\",\n    \"targetType\": \"BUS\",\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Internal DB Error\",\n  \"message\": \"Internal error with teh database\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7893adbe-f295-486b-bd2a-0a833afea7cc",
+              "name": "Internal error managing rules on eventbridge",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "externalevents",
+                    "requests",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"update\": {\n    \"selectedEventTypes\": [\n      \"tetrascience.agents.filelog.fileArchiveFailed.v1\"\n    ],\n    \"userDefinedName\": \"I#nk\",\n    \"targetEndpoint\": \"arn:aws:events:k:oiY!::!ysIj:(r^{3p~e\",\n    \"targetType\": \"BUS\",\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Internal Eventbridge Error\",\n  \"message\": \"Internal error managing rules on eventbridge\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2d39aa84-c99d-4183-b537-8ee6671fabde",
+    "name": "TetraScience Data and AI Cloud Access Groups Requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

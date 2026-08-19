@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Roles API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Roles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get role by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/roles/:roleId",
+            "params": [
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get role by ID"
+        },
+        {
+          "info": {
+            "name": "Update role by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tetrascience.com/v1/roles/:roleId",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update role by ID"
+        },
+        {
+          "info": {
+            "name": "Delete role by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tetrascience.com/v1/roles/:roleId"
+          },
+          "docs": "Delete role by ID"
+        },
+        {
+          "info": {
+            "name": "Get all policies supported in the system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/roles/policies"
+          },
+          "docs": "Get all policies supported in the system"
+        },
+        {
+          "info": {
+            "name": "Get users with the role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/roles/:roleId/users",
+            "params": [
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query",
+                "description": "Page number"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Page size"
+              }
+            ]
+          },
+          "docs": "Get users with the role"
+        },
+        {
+          "info": {
+            "name": "Add / remove users to role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/roles/:roleId/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add / remove users to role"
+        },
+        {
+          "info": {
+            "name": "List all roles in an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/roles"
+          },
+          "docs": "List all roles in an organization"
+        },
+        {
+          "info": {
+            "name": "Create a new role in an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/roles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new role in an organization"
+        },
+        {
+          "info": {
+            "name": "Update SSO group mapping for role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tetrascience.com/v1/roles/:roleId/ssoMapping",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update SSO group mapping for role"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,357 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Schemas API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Schemas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/datalake/schemas",
+            "headers": [
+              {
+                "name": "ts-auth-token",
+                "value": ""
+              },
+              {
+                "name": "x-org-slug",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Return only IDS of a given type. Example: `plate-reader`. If omitted, will return the all the IDS the api key has access to."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Return a specific version. This must be used with `type`. Example: `v1.0.0`. If omitted, will return all the versions."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return (nested paths are also supported). Example: `namespace,slug,version,schema.description`. If omitted, will return full structure. Not-existing fields will be ignored."
+              }
+            ]
+          },
+          "docs": "Retrieves schema information for all IDS (Intermediate Data Schema) in the organization.\n\n**Performance Notice**: This endpoint may timeout with large datasets (500+ schemas). For better performance, use the targeted alternatives below.\n\n**Recommended Alternatives**:\n1. **List available IDS (if needed)**: `GET /v1/artifacts/ids`\n2. **Get specific components**:\n- Schema: `GET /v1/artifacts/ids/{namespace}/{slug}/{version}/files/schema`\n- Mapping: `GET /v1/artifacts/ids/{namespace}/{slug}/{version"
+        },
+        {
+          "info": {
+            "name": "List all schemas for namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/schemas/:namespace",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all schema artifacts given a namespace"
+        },
+        {
+          "info": {
+            "name": "List all schemas for namespace/slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/schemas/:namespace/:slug",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all schema artifacts given a namespace and slug"
+        },
+        {
+          "info": {
+            "name": "Get contents for a schemas file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/schemas/:namespace/:slug/:version/files/:fileSlug",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "fileSlug",
+                "value": "build",
+                "type": "path",
+                "description": "File slug corresponding to file within a schema"
+              },
+              {
+                "name": "download",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, return a download url"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns the file contents for a schemas file given a namespace, slug, version, and file slug"
+        },
+        {
+          "info": {
+            "name": "Get a single schemas artifact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/schemas/:namespace/:slug/:version",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a single schemas artifact matching the namespace, slug, and version"
+        },
+        {
+          "info": {
+            "name": "Get available file slugs for schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/schemas/:namespace/:slug/:version/files",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns which file slugs are available to retrieve for this schemas"
+        },
+        {
+          "info": {
+            "name": "Get labels for a schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/schemas/:namespace/:slug/:version/labels",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of the labels associated with a schemas artifact"
+        },
+        {
+          "info": {
+            "name": "List all schema artifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/schemas",
+            "params": [
+              {
+                "name": "namespace_type",
+                "value": "client",
+                "type": "query",
+                "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all schema artifacts, optionally filtered by namespace type"
+        },
+        {
+          "info": {
+            "name": "Search for schema artifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/artifacts/schemas/search",
+            "params": [
+              {
+                "name": "value",
+                "value": "",
+                "type": "query",
+                "description": "The search string"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Search for items using specified criteria"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

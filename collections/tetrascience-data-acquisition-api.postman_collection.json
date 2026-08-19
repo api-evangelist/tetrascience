@@ -1,0 +1,1746 @@
+{
+  "item": [
+    {
+      "id": "3a75fc41-68b5-4ba1-b64f-1f8771a363e2",
+      "name": "Data Acquisition",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "64319b06-25cf-4365-881d-66d1154d1184",
+          "name": "Agent Temp AWS Credentials",
+          "request": {
+            "name": "Agent Temp AWS Credentials",
+            "description": {
+              "content": "This endpoint returns temporary credentials for a given organization based on Data Hub policy. When using those credentials, client can upload files to their Amazon S3 bucket and write log to Amazon CloudWatch. Returned credentials have expiration time 60 minutes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data-acquisition",
+                "agent",
+                "credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agentId\": \"<string>\",\n  \"agentVersion\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f4a970fb-b19c-4cc2-908d-d3ae33a4e858",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agentId\": \"<string>\",\n  \"agentVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"AccessKeyId\\\": \\\"EXAMPLEAWSACCESSKEYID\\\",\\n    \\\"SecretAccessKey\\\": \\\"EXAMPLEAWSSECRETACCESSKEY/REDACTED\\\",\\n    \\\"SessionToken\\\": \\\"EXAMPLE_AWS_SESSION_TOKEN_REDACTED\\\",\\n    \\\"Expiration\\\": \\\"2020-07-01T19:12:22.000Z\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9da5b9f8-dcad-406c-a138-9bccc3be8335",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agentId\": \"<string>\",\n  \"agentVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 404,\\n    \\\"error\\\": \\\"Not Found\\\",\\n    \\\"message\\\": \\\"Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33808415-e488-45c9-bfcf-c54044d90723",
+          "name": "Agent Configuration",
+          "request": {
+            "name": "Agent Configuration",
+            "description": {
+              "content": "This endpoint returns all the parameters that client needs in order to upload files directly to Amazon S3 and upload log directly to Amazon CloudWatch. Using these values and temporary credentials obtained from `/v1/data-acquisition/agent/credentials` client can upload files to S3 into their bucket and log to CloudWatch into their log groups.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data-acquisition",
+                "agent",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agentId\": \"<string>\",\n  \"agentVersion\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "db838aeb-b963-4814-b188-540d5e1dc6a4",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agentId\": \"<string>\",\n  \"agentVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"orgSlug\\\": \\\"mgtest\\\",\\n    \\\"integrationId\\\": \\\"844dc7e9-a4c4-429c-b364-b54bf531c078\\\",\\n    \\\"agentId\\\": \\\"0db83bc0-0921-414c-ad1c-05d47af3dd44\\\",\\n    \\\"agentName\\\": \\\"test agent\\\",\\n    \\\"region\\\": \\\"us-east-2\\\",\\n    \\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n    \\\"streamBucket\\\": \\\"ts-platform-dev-stream\\\",\\n    \\\"backupBucket\\\": \\\"ts-platform-dev-backup\\\",\\n    \\\"kmsKey\\\": \\\"alias/customer-key-development-mgtest\\\",\\n    \\\"integrationType\\\": \\\"user_defined\\\",\\n    \\\"metadata\\\": {},\\n    \\\"tags\\\": [],\\n    \\\"logGroupName\\\": \\\"/agents/mgtest/0db83bc0-0921-414c-ad1c-05d47af3dd44\\\",\\n    \\\"rpcSourceQueueUrl\\\": \\\"https://sqs.us-east-2.amazonaws/706717599419/onprem-0db83bc0-0921-414c-ad1c-05d47af3dd44.fifo\\\",\\n    \\\"rpcPlatformQueueUrl\\\": \\\"https://sqs.us-east-2.amazonaws/706717599419/onprem-development-command-service-inbound\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6836e97-3f50-4b24-9ebc-88af8a19aa05",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agentId\": \"<string>\",\n  \"agentVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 404,\\n    \\\"error\\\": \\\"Not Found\\\",\\n    \\\"message\\\": \\\"Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f41219c-22c4-4463-8b79-a0bc420b7a32",
+          "name": "Agent Status (Heart Beat)",
+          "request": {
+            "name": "Agent Status (Heart Beat)",
+            "description": {
+              "content": "This endpoint allows TetraScience Agent to send heartbeats to the Tetrascience platform periodically. Platform will return the agent's name. It's recommended to send a heartbeat every 30 seconds.\n\nIt requires a user-defined agent set up in the TetraScience Web UI.\n\nRequired fields:\n- agentId\n- agentVersion\n\nOptional fields:\n- agent\n- sourceType - If agent defines various source types, like file-log agent, this should be an array of objects with `filePath` and `type` values. Otherwise, it should be single item array that contains object with field `type`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data-acquisition",
+                "agent",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agentId\": \"<string>\",\n  \"agentVersion\": \"<string>\",\n  \"agent\": \"TetraScience.Agent.user-defined\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c078af5c-f03c-4207-b8d6-d6ed5d1ac219",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agentId\": \"<string>\",\n  \"agentVersion\": \"<string>\",\n  \"agent\": \"TetraScience.Agent.user-defined\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"agentName\\\": \\\"test\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "663197a3-be42-44ec-a1ad-2408b48e9f69",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agentId\": \"<string>\",\n  \"agentVersion\": \"<string>\",\n  \"agent\": \"TetraScience.Agent.user-defined\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 404,\\n    \\\"error\\\": \\\"Not Found\\\",\\n    \\\"message\\\": \\\"Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c56beca1-cbe5-4f17-bd5a-8bf0fc44abc8",
+          "name": "Agent Status Setting Update",
+          "request": {
+            "name": "Agent Status Setting Update",
+            "description": {
+              "content": "This endpoint allows TetraScience Agent to send status setting update to platform. Tetrascience agents have start/stop button. When start button is clicked, agent should hit endpoint with `statusSetting=STARTED`. Opposite, when stop button is clicked, agent should hit endpoint with `statusSetting=STOPPED`.\n\n It requires a user-defined agent set up in the TetraScience Web UI",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data-acquisition",
+                "agent",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agentId\": \"<string>\",\n  \"agentVersion\": \"<string>\",\n  \"agent\": \"TetraScience.Agent.user-defined\",\n  \"statusSetting\": \"STARTED\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c2815b7d-407e-474c-87d3-c05dce438e80",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agentId\": \"<string>\",\n  \"agentVersion\": \"<string>\",\n  \"agent\": \"TetraScience.Agent.user-defined\",\n  \"statusSetting\": \"STARTED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"agentName\\\": \\\"test\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5461ac20-df1d-4953-a99a-094c67c6f6d5",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agentId\": \"<string>\",\n  \"agentVersion\": \"<string>\",\n  \"agent\": \"TetraScience.Agent.user-defined\",\n  \"statusSetting\": \"STARTED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 404,\\n    \\\"error\\\": \\\"Not Found\\\",\\n    \\\"message\\\": \\\"Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8c94531-7337-471d-b24c-8763727bc683",
+          "name": "Agent System Metric Upload",
+          "request": {
+            "name": "Agent System Metric Upload",
+            "description": {
+              "content": "TetraScience Agent can periodically upload system metrics of itself and the host environment the Agent is running. It requires a user-defined agent set up in the TetraScience Web UI. Uploaded system metric file should be new line delimited JSON file. See below for more details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data-acquisition",
+                "agent",
+                "systemmetric"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "agentId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) This is the sourceId for a user-defined integration.  Need to copy from the TetraScience Web UI where the user-defined integration is created.  For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field."
+                },
+                {
+                  "key": "agentVersion",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The Agent version, such as \"v1.0.0\"."
+                },
+                {
+                  "key": "systemmetric",
+                  "type": "file",
+                  "description": "(Required) The system metric file to upload."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a7de1156-6438-4a73-b5d3-db87cb0f6ca9",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "systemmetric"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) This is the sourceId for a user-defined integration.  Need to copy from the TetraScience Web UI where the user-defined integration is created.  For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field.",
+                        "type": "text/plain"
+                      },
+                      "key": "agentId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The Agent version, such as \"v1.0.0\".",
+                        "type": "text/plain"
+                      },
+                      "key": "agentVersion",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The system metric file to upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "systemmetric",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"message\\\": \\\"OK\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0300bfd-686c-464e-a639-d16cb45b261a",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "systemmetric"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) This is the sourceId for a user-defined integration.  Need to copy from the TetraScience Web UI where the user-defined integration is created.  For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field.",
+                        "type": "text/plain"
+                      },
+                      "key": "agentId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The Agent version, such as \"v1.0.0\".",
+                        "type": "text/plain"
+                      },
+                      "key": "agentVersion",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The system metric file to upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "systemmetric",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 404,\\n    \\\"error\\\": \\\"Not Found\\\",\\n    \\\"message\\\": \\\"Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "378e7a73-c9a5-4c69-953f-6437a6e25c0d",
+          "name": "File Upload",
+          "request": {
+            "name": "File Upload",
+            "description": {
+              "content": "This endpoint uploads a file to TetraScience Cloud.  It requires a user-defined agent set up in the TetraScience Web UI.  API users can use it to upload, manage their files, and trigger pipelines.\n\n\nMaximum payload size: 500MB\n\nValidations performed by this endpoint:\n\n1. `agentId` must be a valid ID of the user defined agent (UDA)\n2. param `sourceType` must contain only lower case alphanumerical characters and dashes\n3. params `metadata` and `tags` must contain only ASCII characters; `tags` values cannot contain comma and values must be unique\n4. params `metadata` and `tags` together as JSON objects must have less than 1.5KB of text (1536 characters)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data-acquisition",
+                "agent",
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "agentId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) This is the sourceId for a user-defined integration.  Need to copy from the TetraScience Web UI where the user-defined integration is created.  For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field."
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) Content of a single file to upload"
+                },
+                {
+                  "key": "filePath",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Required. An example of `filePath` can be `/experiment_2/sample a/result.pdf`"
+                },
+                {
+                  "key": "agent",
+                  "value": "TetraScience.Agent.user-defined",
+                  "type": "text",
+                  "description": "Type of agent, in the form `TetraScience.Agent.file-log`, `TetraScience.Agent.empower`, etc. If provided, object in data lake will have the metadata value `agent` in the form of `agent agentVersion` (for example, `TetraScience.Agent.file-log v4.3.0') (This can only be one of TetraScience.Agent.file-log,TetraScience.Agent.empower,TetraScience.Agent.unicorn,TetraScience.Agent.labx,TetraScience.Agent.chromeleon,TetraScience.Agent.user-defined)"
+                },
+                {
+                  "key": "agentVersion",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Version of the agent that's uploading the file (for example, `v4.3.0`)"
+                },
+                {
+                  "key": "sourceType",
+                  "value": "unknown",
+                  "type": "text",
+                  "description": "If provided, this field will overwrite the sourceType configured in the TetraScience Web UI. Default value: `unknown`  A valid sourceType string can contain only alphanumeric characters in lower case letters and dash. Any other character will trigger validation error."
+                },
+                {
+                  "key": "fileCategory",
+                  "value": "RAW",
+                  "type": "text",
+                  "description": "The file category of the uploaded file, included in the datalake path. (This can only be one of RAW,PROCESSED)"
+                },
+                {
+                  "key": "fileId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "If provided, it must be a valid and unique UUID. If not provided, platform will generate unique UUID value."
+                },
+                {
+                  "key": "traceId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "A valid UUID, if provided. If not present, system will use the `fileId` value"
+                },
+                {
+                  "key": "payloadGzip",
+                  "value": "false",
+                  "type": "text",
+                  "description": "If set to `true`, indicates the file content is gzip compressed. If false or omitted, the content will be gzipped during upload. Default value: `false`."
+                },
+                {
+                  "key": "metadata",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "JSON string as `{\"key\", \"value\"}`. The metadata and value will overwrite metadata defined for the user-defined integration in the TetraScience Web UI. Validations: fields and values must contain only ASCII characters; values must be either string or null values."
+                },
+                {
+                  "key": "tags",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "JSON string as `[\"tag 1\", \"tag 2\"]`. Validations: values must contain only ASCII characters; value must not have comma (,); values must be unique"
+                },
+                {
+                  "key": "labels",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "JSON string as `[{\"name\":\"label name\", \"value\":\"label value\"}]`. The labels will join the agent defined labels. Validations: Names can include any unicode characters, except line breaks. They cannot be empty, and they have a maximun length of 128 characters. Values can include any unicode characters, except line breaks, and they cannot be empty."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e9513d18-47be-40b4-9633-16eb3582697c",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) This is the sourceId for a user-defined integration.  Need to copy from the TetraScience Web UI where the user-defined integration is created.  For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field.",
+                        "type": "text/plain"
+                      },
+                      "key": "agentId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Content of a single file to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Required. An example of `filePath` can be `/experiment_2/sample a/result.pdf`",
+                        "type": "text/plain"
+                      },
+                      "key": "filePath",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Type of agent, in the form `TetraScience.Agent.file-log`, `TetraScience.Agent.empower`, etc. If provided, object in data lake will have the metadata value `agent` in the form of `agent agentVersion` (for example, `TetraScience.Agent.file-log v4.3.0') (This can only be one of TetraScience.Agent.file-log,TetraScience.Agent.empower,TetraScience.Agent.unicorn,TetraScience.Agent.labx,TetraScience.Agent.chromeleon,TetraScience.Agent.user-defined)",
+                        "type": "text/plain"
+                      },
+                      "key": "agent",
+                      "value": "TetraScience.Agent.user-defined",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Version of the agent that's uploading the file (for example, `v4.3.0`)",
+                        "type": "text/plain"
+                      },
+                      "key": "agentVersion",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If provided, this field will overwrite the sourceType configured in the TetraScience Web UI. Default value: `unknown`  A valid sourceType string can contain only alphanumeric characters in lower case letters and dash. Any other character will trigger validation error.",
+                        "type": "text/plain"
+                      },
+                      "key": "sourceType",
+                      "value": "unknown",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The file category of the uploaded file, included in the datalake path. (This can only be one of RAW,PROCESSED)",
+                        "type": "text/plain"
+                      },
+                      "key": "fileCategory",
+                      "value": "RAW",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If provided, it must be a valid and unique UUID. If not provided, platform will generate unique UUID value.",
+                        "type": "text/plain"
+                      },
+                      "key": "fileId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A valid UUID, if provided. If not present, system will use the `fileId` value",
+                        "type": "text/plain"
+                      },
+                      "key": "traceId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If set to `true`, indicates the file content is gzip compressed. If false or omitted, the content will be gzipped during upload. Default value: `false`.",
+                        "type": "text/plain"
+                      },
+                      "key": "payloadGzip",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON string as `{\"key\", \"value\"}`. The metadata and value will overwrite metadata defined for the user-defined integration in the TetraScience Web UI. Validations: fields and values must contain only ASCII characters; values must be either string or null values.",
+                        "type": "text/plain"
+                      },
+                      "key": "metadata",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON string as `[\"tag 1\", \"tag 2\"]`. Validations: values must contain only ASCII characters; value must not have comma (,); values must be unique",
+                        "type": "text/plain"
+                      },
+                      "key": "tags",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON string as `[{\"name\":\"label name\", \"value\":\"label value\"}]`. The labels will join the agent defined labels. Validations: Names can include any unicode characters, except line breaks. They cannot be empty, and they have a maximun length of 128 characters. Values can include any unicode characters, except line breaks, and they cannot be empty.",
+                        "type": "text/plain"
+                      },
+                      "key": "labels",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"type\\\": \\\"s3file\\\",\\n    \\\"fileKey\\\": \\\"demo/1cd9ffeb-1e10-45d2-a8d6-61a88c829e5c/RAW/test/raw.json\\\",\\n    \\\"bucket\\\": \\\"ts-platform-env-datalake\\\",\\n    \\\"version\\\": \\\"grXOL0hSiCeKu094tBw.mu4LXQErWzGT\\\",\\n    \\\"fileId\\\": \\\"c4c6cfdf-67d0-4672-a1a6-0b9f558d0156\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "354827ae-71d5-4e81-b561-7714ab34340c",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) This is the sourceId for a user-defined integration.  Need to copy from the TetraScience Web UI where the user-defined integration is created.  For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field.",
+                        "type": "text/plain"
+                      },
+                      "key": "agentId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Content of a single file to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Required. An example of `filePath` can be `/experiment_2/sample a/result.pdf`",
+                        "type": "text/plain"
+                      },
+                      "key": "filePath",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Type of agent, in the form `TetraScience.Agent.file-log`, `TetraScience.Agent.empower`, etc. If provided, object in data lake will have the metadata value `agent` in the form of `agent agentVersion` (for example, `TetraScience.Agent.file-log v4.3.0') (This can only be one of TetraScience.Agent.file-log,TetraScience.Agent.empower,TetraScience.Agent.unicorn,TetraScience.Agent.labx,TetraScience.Agent.chromeleon,TetraScience.Agent.user-defined)",
+                        "type": "text/plain"
+                      },
+                      "key": "agent",
+                      "value": "TetraScience.Agent.user-defined",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Version of the agent that's uploading the file (for example, `v4.3.0`)",
+                        "type": "text/plain"
+                      },
+                      "key": "agentVersion",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If provided, this field will overwrite the sourceType configured in the TetraScience Web UI. Default value: `unknown`  A valid sourceType string can contain only alphanumeric characters in lower case letters and dash. Any other character will trigger validation error.",
+                        "type": "text/plain"
+                      },
+                      "key": "sourceType",
+                      "value": "unknown",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The file category of the uploaded file, included in the datalake path. (This can only be one of RAW,PROCESSED)",
+                        "type": "text/plain"
+                      },
+                      "key": "fileCategory",
+                      "value": "RAW",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If provided, it must be a valid and unique UUID. If not provided, platform will generate unique UUID value.",
+                        "type": "text/plain"
+                      },
+                      "key": "fileId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A valid UUID, if provided. If not present, system will use the `fileId` value",
+                        "type": "text/plain"
+                      },
+                      "key": "traceId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If set to `true`, indicates the file content is gzip compressed. If false or omitted, the content will be gzipped during upload. Default value: `false`.",
+                        "type": "text/plain"
+                      },
+                      "key": "payloadGzip",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON string as `{\"key\", \"value\"}`. The metadata and value will overwrite metadata defined for the user-defined integration in the TetraScience Web UI. Validations: fields and values must contain only ASCII characters; values must be either string or null values.",
+                        "type": "text/plain"
+                      },
+                      "key": "metadata",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON string as `[\"tag 1\", \"tag 2\"]`. Validations: values must contain only ASCII characters; value must not have comma (,); values must be unique",
+                        "type": "text/plain"
+                      },
+                      "key": "tags",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON string as `[{\"name\":\"label name\", \"value\":\"label value\"}]`. The labels will join the agent defined labels. Validations: Names can include any unicode characters, except line breaks. They cannot be empty, and they have a maximun length of 128 characters. Values can include any unicode characters, except line breaks, and they cannot be empty.",
+                        "type": "text/plain"
+                      },
+                      "key": "labels",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 404,\\n    \\\"error\\\": \\\"Not Found\\\",\\n    \\\"message\\\": \\\"Source with config source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c71985de-400f-46ec-9537-4b9fa6b8b086",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) This is the sourceId for a user-defined integration.  Need to copy from the TetraScience Web UI where the user-defined integration is created.  For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field.",
+                        "type": "text/plain"
+                      },
+                      "key": "agentId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Content of a single file to upload",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Required. An example of `filePath` can be `/experiment_2/sample a/result.pdf`",
+                        "type": "text/plain"
+                      },
+                      "key": "filePath",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Type of agent, in the form `TetraScience.Agent.file-log`, `TetraScience.Agent.empower`, etc. If provided, object in data lake will have the metadata value `agent` in the form of `agent agentVersion` (for example, `TetraScience.Agent.file-log v4.3.0') (This can only be one of TetraScience.Agent.file-log,TetraScience.Agent.empower,TetraScience.Agent.unicorn,TetraScience.Agent.labx,TetraScience.Agent.chromeleon,TetraScience.Agent.user-defined)",
+                        "type": "text/plain"
+                      },
+                      "key": "agent",
+                      "value": "TetraScience.Agent.user-defined",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Version of the agent that's uploading the file (for example, `v4.3.0`)",
+                        "type": "text/plain"
+                      },
+                      "key": "agentVersion",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If provided, this field will overwrite the sourceType configured in the TetraScience Web UI. Default value: `unknown`  A valid sourceType string can contain only alphanumeric characters in lower case letters and dash. Any other character will trigger validation error.",
+                        "type": "text/plain"
+                      },
+                      "key": "sourceType",
+                      "value": "unknown",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The file category of the uploaded file, included in the datalake path. (This can only be one of RAW,PROCESSED)",
+                        "type": "text/plain"
+                      },
+                      "key": "fileCategory",
+                      "value": "RAW",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If provided, it must be a valid and unique UUID. If not provided, platform will generate unique UUID value.",
+                        "type": "text/plain"
+                      },
+                      "key": "fileId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A valid UUID, if provided. If not present, system will use the `fileId` value",
+                        "type": "text/plain"
+                      },
+                      "key": "traceId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If set to `true`, indicates the file content is gzip compressed. If false or omitted, the content will be gzipped during upload. Default value: `false`.",
+                        "type": "text/plain"
+                      },
+                      "key": "payloadGzip",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON string as `{\"key\", \"value\"}`. The metadata and value will overwrite metadata defined for the user-defined integration in the TetraScience Web UI. Validations: fields and values must contain only ASCII characters; values must be either string or null values.",
+                        "type": "text/plain"
+                      },
+                      "key": "metadata",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON string as `[\"tag 1\", \"tag 2\"]`. Validations: values must contain only ASCII characters; value must not have comma (,); values must be unique",
+                        "type": "text/plain"
+                      },
+                      "key": "tags",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON string as `[{\"name\":\"label name\", \"value\":\"label value\"}]`. The labels will join the agent defined labels. Validations: Names can include any unicode characters, except line breaks. They cannot be empty, and they have a maximun length of 128 characters. Values can include any unicode characters, except line breaks, and they cannot be empty.",
+                        "type": "text/plain"
+                      },
+                      "key": "labels",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 422,\\n    \\\"error\\\": \\\"Unprocessable Entity\\\",\\n    \\\"message\\\": \\\"Param sourceType contains invalid character or upper case letter\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d73a552c-28c0-4f26-a660-aa4d15dde307",
+          "name": "Agent Log Upload",
+          "request": {
+            "name": "Agent Log Upload",
+            "description": {
+              "content": "This endpoint uploads agents log to TetraScience Cloud. It requires a user-defined agent set up in the TetraScience Web UI.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data-acquisition",
+                "agent",
+                "log"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "agentId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) This is the sourceId for a user-defined integration.  Need to copy from the TetraScience Web UI where the user-defined integration is created.  For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field."
+                },
+                {
+                  "key": "agentVersion",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The Agent version, such as \"v1.0.0\"."
+                },
+                {
+                  "key": "log",
+                  "type": "file",
+                  "description": "(Required) The log file to upload."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4aab5947-9dd2-4699-94a8-e03e7511b437",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) This is the sourceId for a user-defined integration.  Need to copy from the TetraScience Web UI where the user-defined integration is created.  For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field.",
+                        "type": "text/plain"
+                      },
+                      "key": "agentId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The Agent version, such as \"v1.0.0\".",
+                        "type": "text/plain"
+                      },
+                      "key": "agentVersion",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The log file to upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "log",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"message\\\": \\\"OK\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f727a5a-116d-42f7-80d9-bce72b3363c1",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "agent",
+                    "log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) This is the sourceId for a user-defined integration.  Need to copy from the TetraScience Web UI where the user-defined integration is created.  For existing TetraScience Agent who can connect to TetraScience Cloud directly, provide the agentId to this field.",
+                        "type": "text/plain"
+                      },
+                      "key": "agentId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The Agent version, such as \"v1.0.0\".",
+                        "type": "text/plain"
+                      },
+                      "key": "agentVersion",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The log file to upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "log",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 404,\\n    \\\"error\\\": \\\"Not Found\\\",\\n    \\\"message\\\": \\\"Source with source ID 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda does not exist\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "655b317f-ad35-4906-b1e8-03ea2b5fe701",
+    "name": "TetraScience Data and AI Cloud Access Groups Data Acquisition API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

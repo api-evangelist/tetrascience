@@ -1,0 +1,1535 @@
+{
+  "item": [
+    {
+      "id": "0a7e8926-e708-436c-af87-4af600a3636c",
+      "name": "Attributes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7a36503d-6513-4113-a9e4-0e59c5da4b31",
+          "name": "Add Labels (POST)",
+          "request": {
+            "name": "Add Labels (POST)",
+            "description": {
+              "content": "Add custom labels to a file for categorization, organization, and enhanced searchability within the Data Lake. Use this endpoint when you need to tag files for better organization and filtering.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "fileinfo",
+                "files",
+                ":fileId",
+                "labels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "noPropagate",
+                  "value": "false",
+                  "description": "Prevents label operation from triggering pipelines."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "fileId",
+                  "description": "(Required) ID assigned to the file when it was created in the data lake. Type is uuid."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-org-slug",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4768fab4-6d72-4f6b-a46e-133a5dadbd80",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fileinfo",
+                    "files",
+                    ":fileId",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "noPropagate",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "fileId",
+                      "description": "(Required) ID assigned to the file when it was created in the data lake. Type is uuid."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"[{\\n    \\\"name\\\":\\\"<name>\\\",\\n      \\\"value\\\":\\\"<value>\\\"\\n    }]\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c7d25aa-2c21-4608-9af4-d9924368c265",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fileinfo",
+                    "files",
+                    ":fileId",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "noPropagate",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "fileId",
+                      "description": "(Required) ID assigned to the file when it was created in the data lake. Type is uuid."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 401,\\n    \\\"error\\\": \\\"Unauthorized\\\",\\n    \\\"message\\\": \\\"Invalid token\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c06d2e3e-0f73-4c44-b08c-489b64ce96ce",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fileinfo",
+                    "files",
+                    ":fileId",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "noPropagate",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "fileId",
+                      "description": "(Required) ID assigned to the file when it was created in the data lake. Type is uuid."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 404,\\n    \\\"error\\\": \\\"Not Found\\\",\\n    \\\"message\\\": \\\"Not Found\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a5f4a1e-9e48-49de-b87e-fa0c7a753a76",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fileinfo",
+                    "files",
+                    ":fileId",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "noPropagate",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "fileId",
+                      "description": "(Required) ID assigned to the file when it was created in the data lake. Type is uuid."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 500,\\n    \\\"error\\\": \\\"Internal Server Error\\\",\\n    \\\"message\\\": \\\"Internal Server Error\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4514182f-d79c-4b54-aab7-d4c51da231e0",
+          "name": "Delete Labels (DELETE)",
+          "request": {
+            "name": "Delete Labels (DELETE)",
+            "description": {
+              "content": "Remove specific labels from a file to either update categorization or correct labeling mistakes. Use this endpoint when you need to clean up incorrect labels or reorganize file categorization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "fileinfo",
+                "files",
+                ":fileId",
+                "labels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "labelId",
+                  "value": "<float>",
+                  "description": "(Required) ID Assigned to the Label. You can find this by running the Get File Information endpoint: https://developers.tetrascience.com/reference/get-file-information"
+                },
+                {
+                  "disabled": false,
+                  "key": "labelId",
+                  "value": "<float>",
+                  "description": "(Required) ID Assigned to the Label. You can find this by running the Get File Information endpoint: https://developers.tetrascience.com/reference/get-file-information"
+                },
+                {
+                  "disabled": false,
+                  "key": "noPropagate",
+                  "value": "false",
+                  "description": "Prevents label operation from triggering pipelines."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "fileId",
+                  "description": "(Required) ID assigned to the file when it was created in the data lake. Type is uuid."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "x-org-slug",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b671e23-ef6a-44ba-b11f-642f8d65ff6f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fileinfo",
+                    "files",
+                    ":fileId",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "labelId",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "labelId",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "noPropagate",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "fileId",
+                      "description": "(Required) ID assigned to the file when it was created in the data lake. Type is uuid."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dbe1a8a0-59a5-414f-b4a7-49a044d2f110",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fileinfo",
+                    "files",
+                    ":fileId",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "labelId",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "labelId",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "noPropagate",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "fileId",
+                      "description": "(Required) ID assigned to the file when it was created in the data lake. Type is uuid."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 401,\\n    \\\"error\\\": \\\"Unauthorized\\\",\\n    \\\"message\\\": \\\"Invalid token\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9be90b2a-fa78-48e7-8ee4-bb278dc4722f",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fileinfo",
+                    "files",
+                    ":fileId",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "labelId",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "labelId",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "noPropagate",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "fileId",
+                      "description": "(Required) ID assigned to the file when it was created in the data lake. Type is uuid."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 404,\\n    \\\"error\\\": \\\"Not Found\\\",\\n    \\\"message\\\": \\\"Not Found\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70d199cb-cd5a-4295-a058-b939522b73f6",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fileinfo",
+                    "files",
+                    ":fileId",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "labelId",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "labelId",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "noPropagate",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "fileId",
+                      "description": "(Required) ID assigned to the file when it was created in the data lake. Type is uuid."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 500,\\n    \\\"error\\\": \\\"Internal Server Error\\\",\\n    \\\"message\\\": \\\"Internal Server Error\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cdf61a36-bcf1-4a04-a5cb-aafca4db0ca5",
+          "name": "Add metadata and tags to a file",
+          "request": {
+            "name": "Add metadata and tags to a file",
+            "description": {
+              "content": "This endpoint appends tags to a target file in the datalake or modifies the value of a metadata key. This endpoint requires either `fileId` or `bucket`, `fileKey` and `version` to be provided in order to uniquely identify a file.\n**Note:** Applying metadata or tags to files larger than 5 GB isn't supported and will return a `500` error. For large files, you should [apply labels](https://developers.tetrascience.com/reference/dl-fi-add-labels) instead. This limitation is because of a hard limit on the [`CopyObject` API operation in Amazon Storage Service (Amazon S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/copy-object.html), which has a maximum source size of 5 GB. When a file's tags or metadata are updated, the TDP copies the Amazon S3 object with new metadata, and this copy operation fails for files 5 GB or larger. For more information, see [Attributes](https://developers.tetrascience.com/docs/basic-concepts-metadata-tags-and-labels).\nTarget file query is determined by field `originalFile`. Target file is queried in two ways:\n1. by `fileId` (UUID of a file in datalake)\n2. by `bucket`, `fileKey` and `version`\n\nEndpoint finds target file by given file query and creates new version with updated metadata and tags. If payload contains neither `metadata` nor `tags`, endpoint will return existing file from datalake.\n\nParameters `metadata` and `tags` description:\n\n1. `metadata` is JSON object, e.g. { \"key1\": \"value\", \"key2\": \"2\" }\n2. `metadata` can have empty string values\n3. `metadata` entry field can be null and in that case it will remove custom metadata value on target file\n4. `tags` is JSON array, e.g.  [\"a\", \"b\"]\nHere is an example payload for this endpoint:\n{\n  \"originalFile\": {\n    \"fileKey\": \"tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json\",\n    \"bucket\": \"ts-platform-dev-datalake\",\n    \"version\": \"dUzbISdeNgKXuSsv.lUT73qr7lYoby_u\",\n    \"type\": \"s3file\"\n  },\n  \"metadata\": {\n    \"a\": \"a\",\n    \"b\": \"\",\n    \"c\": \"Test\"\n  },\n  \"tags\": [\"Boston\", \"San Fran\", \"123\"]\n}\nIt will append any existing metadata/tags with the ones listed in the payload.\n\nValidations performed by this endpoint:\n\n1. if parameter `fileId` is not provided, then all three parameters (`bucket`, `fileKey` and `version`) must be provided\n2. if any one of parameters `bucket`, `fileKey` and `version` is not provided, then parameter `fileId` must be provided\n3. `metadata` keys can only include letters, numbers, spaces, and the symbols `+`, `-`, or `_`\n4. `metadata` values can only include letters, numbers, spaces, and the symbols `+`, `-`, `_`, `/`, `.` or `,`\n5. `tags` must contain only letters, numbers, spaces, and the symbols `+`, `-`, `.`, `/` or ` _` and they must be unique\n6. `metadata` and `tags` together as JSON objects must have less than 1.5KB of text (1536 characters)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "datalake",
+                "metadata-tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) JWT Token.",
+                "key": "ts-auth-token",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Your organization's slug.",
+                "key": "x-org-slug",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": true,\n  \"key_1\": 4.19845145215425,\n  \"key_2\": 5703,\n  \"key_3\": 5966\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "76fda734-bca6-496e-a8de-faf3e2fde605",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "datalake",
+                    "metadata-tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) JWT Token.",
+                    "key": "ts-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your organization's slug.",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": false,\n  \"key_1\": \"string\",\n  \"key_2\": 8604.028676814121,\n  \"key_3\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"fileId\\\": \\\"f46c1b61-ad7c-477f-8dc6-87790445a730\\\",\\n    \\\"fileKey\\\": \\\"tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json\\\",\\n    \\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n    \\\"version\\\": \\\"DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ\\\",\\n    \\\"type\\\": \\\"s3file\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2beb738-c0fd-4bd2-86d6-6dbbac609ca1",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "datalake",
+                    "metadata-tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) JWT Token.",
+                    "key": "ts-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your organization's slug.",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": false,\n  \"key_1\": \"string\",\n  \"key_2\": 8604.028676814121,\n  \"key_3\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "{\n    \"statusCode\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Error validating payload\",\n    \"validations\": [\n        {\n            \"message\": \"\\\"b\\\" must be a string\",\n            \"path\": \"metadata.b\",\n            \"type\": \"string.base\",\n            \"context\": {\n                \"value\": 1234123,\n                \"key\": \"b\"\n            }\n        }\n    ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f9c5dc3-a7a8-41de-aa07-792e77d01fab",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "datalake",
+                    "metadata-tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) JWT Token.",
+                    "key": "ts-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your organization's slug.",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": false,\n  \"key_1\": \"string\",\n  \"key_2\": 8604.028676814121,\n  \"key_3\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 404,\\n    \\\"error\\\": \\\"Not Found\\\",\\n    \\\"message\\\": \\\"File not found: ts-platform-dev-datalake1/tetrascience/tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json in version DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d0f50d6-f0ad-40d7-9c37-c928e8b38d2b",
+          "name": "Retrieve metadata and tags of a file",
+          "request": {
+            "name": "Retrieve metadata and tags of a file",
+            "description": {
+              "content": "This endpoint returns metadata and tags of a target file in datalake. This endpoint require either `fileId` or `bucket`, `fileKey` and `version` to be provided in order to uniquely identify file.\n\nValidations performed by this endpoint:\n\n1. if parameter `fileId` is not provided, then `bucket, `fileKey` and `version` parameters must be provided\n2. if parameters `bucket`, `fileKey` and `version` are not provided, parameter `fileId` must be provided",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "datalake",
+                "metadata-tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fileId",
+                  "value": "<string>",
+                  "description": "UUIDv4 of the target file in datalake"
+                },
+                {
+                  "disabled": false,
+                  "key": "bucket",
+                  "value": "<string>",
+                  "description": "S3 bucket of the target file in datalake"
+                },
+                {
+                  "disabled": false,
+                  "key": "fileKey",
+                  "value": "<string>",
+                  "description": "S3 key of the target file in datalake"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "s3file"
+                },
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Version of the target file in datalake"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) JWT Token.",
+                "key": "ts-auth-token",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Your organization's slug.",
+                "key": "x-org-slug",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc03a4d3-2661-4401-94b1-aa50f406cb1b",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "datalake",
+                    "metadata-tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bucket",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fileKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "s3file"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) JWT Token.",
+                    "key": "ts-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your organization's slug.",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"metadata\\\": {\\n        \\\"b\\\": \\\"null\\\",\\n        \\\"c\\\": \\\"Test\\\"\\n    },\\n    \\\"tags\\\": [\\n        \\\"Boston\\\",\\n        \\\"San Fran\\\",\\n        \\\"123\\\"\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd8cea13-8759-4db5-a5de-5b8a2d386034",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "datalake",
+                    "metadata-tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bucket",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fileKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "s3file"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) JWT Token.",
+                    "key": "ts-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your organization's slug.",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 404,\\n    \\\"error\\\": \\\"Not Found\\\",\\n    \\\"message\\\": \\\"File not found: ts-platform-dev-datalake1/tetrascience/tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json in version DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8cfd25a8-9341-4e2c-a41d-c9416892c044",
+          "name": "Update metadata and tags to a file",
+          "request": {
+            "name": "Update metadata and tags to a file",
+            "description": {
+              "content": "This endpoint replaces metadata and tags to a target file in the datalake. This endpoint require either `fileId` or `bucket`, `fileKey` and `version` to be provided in order to uniquely identify file.\n\nTarget file query is determined by field `originalFile`. Target file is queried in two ways:\n1. by `fileId` (UUID of a file in datalake)\n2. by `bucket`, `fileKey` and `version`\n\nEndpoint finds target file by given file query and creates new version with updated metadata and tags. If payload doesn't contain neither `metadata` nor `tags`, endpoint will remove all metadata and tags.\n\nParameters `metadata` and `tags` description:\n\n1. `metadata` is JSON object, e.g. { \"key1\": \"value\", \"key2\": \"2\" }\n2. `metadata` can have empty string values\n3. `metadata` entry field can be null and in that case it will remove custom metadata value on target file\n4. `tags` is JSON array, e.g.  [\"a\", \"b\"]\nHere is an example payload for this endpoint:\n{\n  \"originalFile\": {\n    \"fileKey\": \"tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json\",\n    \"bucket\": \"ts-platform-dev-datalake\",\n    \"version\": \"dUzbISdeNgKXuSsv.lUT73qr7lYoby_u\",\n    \"type\": \"s3file\"\n  },\n  \"metadata\": {\n    \"a\": \"a\",\n    \"b\": \"\",\n    \"c\": \"Test\"\n  },\n  \"tags\": [\"Boston\", \"San Fran\", \"123\"]\n}\nIt will replace any existing metadata/tags with the ones listed in the payload.\n\nValidations performed by this endpoint:\n\n1. if parameter `fileId` is not provided, then all three parameters `bucket`, `fileKey` and `version` be provided\n2. if any of parameters `bucket`, `fileKey` and `version` is not provided, then parameter `fileId` must be provided\n3. `metadata` keys can only include letters, numbers, spaces, and the symbols `+`, `-`, or `_`\n4. `metadata` values can only include letters, numbers, spaces, and the symbols `+`, `-`, `_`, `/`, `.` or `,`\n5. `tags` must contain only letters, numbers, spaces, and the symbols `+`, `-`, `.`, `/` or ` _` and they must be unique\n6. `metadata` and `tags` together as JSON objects must have less than 1.5KB of text (1536 characters)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "datalake",
+                "metadata-tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) JWT Token.",
+                "key": "ts-auth-token",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Your organization's slug.",
+                "key": "x-org-slug",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": true,\n  \"key_1\": 4.19845145215425,\n  \"key_2\": 5703,\n  \"key_3\": 5966\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "38c04865-5929-4f24-9d7f-80862fa1689b",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "datalake",
+                    "metadata-tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) JWT Token.",
+                    "key": "ts-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your organization's slug.",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": false,\n  \"key_1\": \"string\",\n  \"key_2\": 8604.028676814121,\n  \"key_3\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"fileId\\\": \\\"f46c1b61-ad7c-477f-8dc6-87790445a730\\\",\\n    \\\"fileKey\\\": \\\"tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json\\\",\\n    \\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n    \\\"version\\\": \\\"DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ\\\",\\n    \\\"type\\\": \\\"s3file\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "602da808-c0a8-4a5f-9e0b-d00f7fff69c8",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "datalake",
+                    "metadata-tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) JWT Token.",
+                    "key": "ts-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your organization's slug.",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": false,\n  \"key_1\": \"string\",\n  \"key_2\": 8604.028676814121,\n  \"key_3\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "{\n    \"statusCode\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Error validating payload\",\n    \"validations\": [\n        {\n            \"message\": \"\\\"b\\\" must be a string\",\n            \"path\": \"metadata.b\",\n            \"type\": \"string.base\",\n            \"context\": {\n                \"value\": 1234123,\n                \"key\": \"b\"\n            }\n        }\n    ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "39962761-d180-4a6a-9e23-9d423847d41e",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "datalake",
+                    "metadata-tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) JWT Token.",
+                    "key": "ts-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your organization's slug.",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": false,\n  \"key_1\": \"string\",\n  \"key_2\": 8604.028676814121,\n  \"key_3\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 404,\\n    \\\"error\\\": \\\"Not Found\\\",\\n    \\\"message\\\": \\\"File not found: ts-platform-dev-datalake1/tetrascience/tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json in version DupNjjfIab3JqWMCaDJPmx2XlG6GxBwJ\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b7bd6567-e676-4682-9eaa-463296a81329",
+    "name": "TetraScience Data and AI Cloud Access Groups Attributes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

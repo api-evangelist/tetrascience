@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Data App Providers API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data App Providers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch all data app providers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/dataapps/providers",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination (starts from 1)"
+              },
+              {
+                "name": "providerName",
+                "value": "",
+                "type": "query",
+                "description": "The name of the provider to filter on"
+              },
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "includeArn",
+                "value": "",
+                "type": "query",
+                "description": "Indicate if the secret ARNs should be included in the response"
+              }
+            ]
+          },
+          "docs": "Fetch all data app providers"
+        },
+        {
+          "info": {
+            "name": "Create a new Data App Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/dataapps/providers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Data App Provider"
+        },
+        {
+          "info": {
+            "name": "Fetch a Data App Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/dataapps/providers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "includeArn",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch a Data App Provider"
+        },
+        {
+          "info": {
+            "name": "Update a Data App Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tetrascience.com/v1/dataapps/providers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Data App Provider"
+        },
+        {
+          "info": {
+            "name": "Delete a Data App Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tetrascience.com/v1/dataapps/providers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Data App Provider"
+        },
+        {
+          "info": {
+            "name": "Fetch all data app provider templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/dataapps/providers/templates"
+          },
+          "docs": "Fetch all data app provider templates"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,229 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Data Acquisition API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Acquisition",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Agent Temp AWS Credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/data-acquisition/agent/credentials",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint returns temporary credentials for a given organization based on Data Hub policy. When using those credentials, client can upload files to their Amazon S3 bucket and write log to Amazon CloudWatch. Returned credentials have expiration time 60 minutes."
+        },
+        {
+          "info": {
+            "name": "Agent Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/data-acquisition/agent/config",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint returns all the parameters that client needs in order to upload files directly to Amazon S3 and upload log directly to Amazon CloudWatch. Using these values and temporary credentials obtained from `/v1/data-acquisition/agent/credentials` client can upload files to S3 into their bucket and log to CloudWatch into their log groups."
+        },
+        {
+          "info": {
+            "name": "Agent Status (Heart Beat)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/data-acquisition/agent/status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint allows TetraScience Agent to send heartbeats to the Tetrascience platform periodically. Platform will return the agent's name. It's recommended to send a heartbeat every 30 seconds.\n\nIt requires a user-defined agent set up in the TetraScience Web UI.\n\nRequired fields:\n- agentId\n- agentVersion\n\nOptional fields:\n- agent\n- sourceType - If agent defines various source types, like file-log agent, this should be an array of objects with `filePath` and `type` values. Otherwise, it should "
+        },
+        {
+          "info": {
+            "name": "Agent Status Setting Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tetrascience.com/v1/data-acquisition/agent/status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint allows TetraScience Agent to send status setting update to platform. Tetrascience agents have start/stop button. When start button is clicked, agent should hit endpoint with `statusSetting=STARTED`. Opposite, when stop button is clicked, agent should hit endpoint with `statusSetting=STOPPED`.\n\n It requires a user-defined agent set up in the TetraScience Web UI"
+        },
+        {
+          "info": {
+            "name": "Agent System Metric Upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/data-acquisition/agent/systemmetric",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "agentId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "agentVersion",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "systemmetric",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "TetraScience Agent can periodically upload system metrics of itself and the host environment the Agent is running. It requires a user-defined agent set up in the TetraScience Web UI. Uploaded system metric file should be new line delimited JSON file. See below for more details."
+        },
+        {
+          "info": {
+            "name": "File Upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/data-acquisition/agent/upload",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "agentId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "agent",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "agentVersion",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "sourceType",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "fileCategory",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "fileId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "traceId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "filePath",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "payloadGzip",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "metadata",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "tags",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "labels",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "This endpoint uploads a file to TetraScience Cloud.  It requires a user-defined agent set up in the TetraScience Web UI.  API users can use it to upload, manage their files, and trigger pipelines.\n\n\nMaximum payload size: 500MB\n\nValidations performed by this endpoint:\n\n1. `agentId` must be a valid ID of the user defined agent (UDA)\n2. param `sourceType` must contain only lower case alphanumerical characters and dashes\n3. params `metadata` and `tags` must contain only ASCII characters; `tags` valu"
+        },
+        {
+          "info": {
+            "name": "Agent Log Upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/data-acquisition/agent/log",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "agentId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "agentVersion",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "log",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "This endpoint uploads agents log to TetraScience Cloud. It requires a user-defined agent set up in the TetraScience Web UI."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

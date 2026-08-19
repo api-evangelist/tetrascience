@@ -1,0 +1,200 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Attributes API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Attributes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add Labels (POST)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/fileinfo/files/:fileId/labels",
+            "headers": [
+              {
+                "name": "x-org-slug",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path",
+                "description": "ID assigned to the file when it was created in the data lake. Type is uuid."
+              },
+              {
+                "name": "noPropagate",
+                "value": "",
+                "type": "query",
+                "description": "Prevents label operation from triggering pipelines."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add custom labels to a file for categorization, organization, and enhanced searchability within the Data Lake. Use this endpoint when you need to tag files for better organization and filtering."
+        },
+        {
+          "info": {
+            "name": "Delete Labels (DELETE)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tetrascience.com/v1/fileinfo/files/:fileId/labels",
+            "headers": [
+              {
+                "name": "x-org-slug",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path",
+                "description": "ID assigned to the file when it was created in the data lake. Type is uuid."
+              },
+              {
+                "name": "labelId",
+                "value": "",
+                "type": "query",
+                "description": "ID Assigned to the Label. You can find this by running the Get File Information endpoint: https://developers.tetrascience.com/reference/get-file-information"
+              },
+              {
+                "name": "noPropagate",
+                "value": "",
+                "type": "query",
+                "description": "Prevents label operation from triggering pipelines."
+              }
+            ]
+          },
+          "docs": "Remove specific labels from a file to either update categorization or correct labeling mistakes. Use this endpoint when you need to clean up incorrect labels or reorganize file categorization."
+        },
+        {
+          "info": {
+            "name": "Retrieve metadata and tags of a file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/datalake/metadata-tags",
+            "headers": [
+              {
+                "name": "ts-auth-token",
+                "value": ""
+              },
+              {
+                "name": "x-org-slug",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "query",
+                "description": "UUIDv4 of the target file in datalake"
+              },
+              {
+                "name": "bucket",
+                "value": "",
+                "type": "query",
+                "description": "S3 bucket of the target file in datalake"
+              },
+              {
+                "name": "fileKey",
+                "value": "",
+                "type": "query",
+                "description": "S3 key of the target file in datalake"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Version of the target file in datalake"
+              }
+            ]
+          },
+          "docs": "This endpoint returns metadata and tags of a target file in datalake. This endpoint require either `fileId` or `bucket`, `fileKey` and `version` to be provided in order to uniquely identify file.\n\nValidations performed by this endpoint:\n\n1. if parameter `fileId` is not provided, then `bucket, `fileKey` and `version` parameters must be provided\n2. if parameters `bucket`, `fileKey` and `version` are not provided, parameter `fileId` must be provided"
+        },
+        {
+          "info": {
+            "name": "Add metadata and tags to a file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/datalake/metadata-tags",
+            "headers": [
+              {
+                "name": "ts-auth-token",
+                "value": ""
+              },
+              {
+                "name": "x-org-slug",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint appends tags to a target file in the datalake or modifies the value of a metadata key. This endpoint requires either `fileId` or `bucket`, `fileKey` and `version` to be provided in order to uniquely identify a file.\n**Note:** Applying metadata or tags to files larger than 5 GB isn't supported and will return a `500` error. For large files, you should [apply labels](https://developers.tetrascience.com/reference/dl-fi-add-labels) instead. This limitation is because of a hard limit on"
+        },
+        {
+          "info": {
+            "name": "Update metadata and tags to a file",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tetrascience.com/v1/datalake/metadata-tags",
+            "headers": [
+              {
+                "name": "ts-auth-token",
+                "value": ""
+              },
+              {
+                "name": "x-org-slug",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint replaces metadata and tags to a target file in the datalake. This endpoint require either `fileId` or `bucket`, `fileKey` and `version` to be provided in order to uniquely identify file.\n\nTarget file query is determined by field `originalFile`. Target file is queried in two ways:\n1. by `fileId` (UUID of a file in datalake)\n2. by `bucket`, `fileKey` and `version`\n\nEndpoint finds target file by given file query and creates new version with updated metadata and tags. If payload doesn'"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

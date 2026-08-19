@@ -1,0 +1,924 @@
+{
+  "item": [
+    {
+      "id": "b05e56b0-a892-4224-985e-f2cdbee02cbc",
+      "name": "Workflows",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8067db03-3315-4ed4-b166-2394d746df4b",
+          "name": "Get Single Workflow Details",
+          "request": {
+            "name": "Get Single Workflow Details",
+            "description": {
+              "content": "Search data pipeline workflows",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workflow",
+                ":workflowId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowId",
+                  "description": "(Required) Required. UUID of the workflow."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9583c1aa-d174-40fe-89aa-f616f44db806",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workflow",
+                    ":workflowId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowId",
+                      "description": "(Required) Required. UUID of the workflow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n\\t\\\"id\\\": \\\"ea3e0f87-4ba2-4a10-83f3-db30760fd652\\\",\\n\\t\\\"orgSlug\\\": \\\"your_org\\\",\\n\\t\\\"pipelineId\\\": \\\"8592187a-d3ed-4410-8ffb-ee47826bebf7\\\",\\n\\t\\\"masterScriptNamespace\\\": \\\"private-your_org\\\",\\n\\t\\\"masterScriptSlug\\\": \\\"hg-prot-covid-data\\\",\\n\\t\\\"masterScriptVersion\\\": \\\"v2.1.0\\\",\\n\\t\\\"protocolSlug\\\": \\\"hg-prot-covid-data\\\",\\n\\t\\\"protocolVersion\\\": \\\"v2.1.0\\\",\\n\\t\\\"protocol\\\": {\\n\\t\\t\\\"protocolSchema\\\": \\\"v2\\\",\\n\\t\\t\\\"name\\\": \\\"HG Protocol COVID-JSON to IDS\\\",\\n\\t\\t\\\"description\\\": \\\"\\\",\\n\\t\\t\\\"steps\\\": [\\n\\t\\t\\t{\\n\\t\\t\\t\\t\\\"slug\\\": \\\"first-step-covid-json-ids\\\",\\n\\t\\t\\t\\t\\\"description\\\": \\\"Generates COVID data row (IDS JSON) for each state.\\\",\\n\\t\\t\\t\\t\\\"type\\\": \\\"generator\\\",\\n\\t\\t\\t\\t\\\"script\\\": {\\n\\t\\t\\t\\t\\t\\\"namespace\\\": \\\"private-your_org\\\",\\n\\t\\t\\t\\t\\t\\\"slug\\\": \\\"hg-tscr-covid-data\\\",\\n\\t\\t\\t\\t\\t\\\"version\\\": \\\"v2.0.1\\\"\\n\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\\"functionSlug\\\": \\\"main\\\"\\n\\t\\t\\t}\\n\\t\\t],\\n\\t\\t\\\"config\\\": [\\n\\t\\t]\\n\\t},\\n\\t\\\"pipelineConfig\\\": {\\n\\t\\t\\\"notificationsConfig\\\": {\\n\\t\\t\\t\\\"sendOnSuccessful\\\": true,\\n\\t\\t\\t\\\"sendOnFailed\\\": true,\\n\\t\\t\\t\\\"notificationEmailAddresses\\\": [\\n\\t\\t\\t\\t\\\"example1@your_org.com\\\",\\n\\t\\t\\t\\t\\\"example2@your_org.com\\\"\\n\\t\\t\\t]\\n\\t\\t},\\n\\t\\t\\\"pipelineName\\\": \\\"HG-Covid-Data\\\"\\n\\t},\\n\\t\\\"inputFile\\\": {\\n\\t\\t\\\"meta\\\": {\\n\\t\\t\\t\\\"fileId\\\": \\\"650bc88a-e90c-48c7-a349-65dcc756b0a4\\\",\\n\\t\\t\\t\\\"source\\\": {\\n\\t\\t\\t\\t\\\"box\\\": {\\n\\t\\t\\t\\t\\t\\\"id\\\": \\\"56d9293c-2dc7-4133-b21b-c1468aefb41f\\\",\\n\\t\\t\\t\\t\\t\\\"size\\\": 2648411,\\n\\t\\t\\t\\t\\t\\\"filePath\\\": \\\"/All Files/your_org/testdata/statesdata/test_states_tseries_2021_12_09.json\\\",\\n\\t\\t\\t\\t\\t\\\"integrationSource\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\"\\n\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\\"type\\\": \\\"box\\\"\\n\\t\\t\\t},\\n\\t\\t\\t\\\"traceId\\\": \\\"650bc88a-e90c-48c7-a349-65dcc756b0a4\\\",\\n\\t\\t\\t\\\"sourceId\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\",\\n\\t\\t\\t\\\"sourceName\\\": \\\"HG-Box-Covid-Data-States\\\",\\n\\t\\t\\t\\\"sourceType\\\": \\\"box\\\",\\n\\t\\t\\t\\\"integrationId\\\": \\\"56d9293c-2dc7-4133-b21b-c1468aefb41f\\\",\\n\\t\\t\\t\\\"integrationType\\\": \\\"box\\\"\\n\\t\\t},\\n\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\\"fileId\\\": \\\"650bc88a-e90c-48c7-a349-65dcc756b0a4\\\",\\n\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/RAW/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json\\\",\\n\\t\\t\\\"version\\\": \\\"YXWfnGtFnxXaRshIkphKpeIWjKM5YMrL\\\",\\n\\t\\t\\\"customTags\\\": [\\n\\t\\t],\\n\\t\\t\\\"customMetadata\\\": {\\n\\t\\t}\\n\\t},\\n\\t\\\"tasks\\\": [\\n\\t\\t{\\n\\t\\t\\t\\\"slug\\\": \\\"first-step-covid-json-ids\\\",\\n\\t\\t\\t\\\"input\\\": {\\n\\t\\t\\t\\t\\\"input_file\\\": {\\n\\t\\t\\t\\t\\t\\\"meta\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"650bc88a-e90c-48c7-a349-65dcc756b0a4\\\",\\n\\t\\t\\t\\t\\t\\t\\\"source\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"box\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"id\\\": \\\"56d9293c-2dc7-4133-b21b-c1468aefb41f\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"size\\\": 2648411,\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"filePath\\\": \\\"/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationSource\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\"\\n\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"box\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\\"traceId\\\": \\\"650bc88a-e90c-48c7-a349-65dcc756b0a4\\\",\\n\\t\\t\\t\\t\\t\\t\\\"sourceId\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\",\\n\\t\\t\\t\\t\\t\\t\\\"sourceName\\\": \\\"HG-Box-Covid-Data-States\\\",\\n\\t\\t\\t\\t\\t\\t\\\"sourceType\\\": \\\"box\\\",\\n\\t\\t\\t\\t\\t\\t\\\"integrationId\\\": \\\"56d9293c-2dc7-4133-b21b-c1468aefb41f\\\",\\n\\t\\t\\t\\t\\t\\t\\\"integrationType\\\": \\\"box\\\"\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"650bc88a-e90c-48c7-a349-65dcc756b0a4\\\",\\n\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/RAW/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json\\\",\\n\\t\\t\\t\\t\\t\\\"version\\\": \\\"YXWfnGtFnxXaRshIkphKpeIWjKM5YMrL\\\",\\n\\t\\t\\t\\t\\t\\\"customTags\\\": [\\n\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\\"customMetadata\\\": {\\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t}\\n\\t\\t\\t},\\n\\t\\t\\t\\\"retry\\\": 0,\\n\\t\\t\\t\\\"events\\\": [\\n\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-08T16:17:59.579+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"status\\\": \\\"pending\\\"\\n\\t\\t\\t\\t},\\n\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-08T16:18:23.973+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"status\\\": \\\"in-progress\\\"\\n\\t\\t\\t\\t},\\n\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-08T16:18:48.996+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"status\\\": \\\"completed\\\"\\n\\t\\t\\t\\t}\\n\\t\\t\\t],\\n\\t\\t\\t\\\"output\\\": {\\n\\t\\t\\t\\t\\\"type\\\": \\\"success\\\",\\n\\t\\t\\t\\t\\\"result\\\": [\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"6908a751-62d1-4851-b502-818f7c836df1\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-AK-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"9sNbqVb879.geEUVp03EfCDpK8j9gz1Z\\\"\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"8df8418a-06e0-4499-be19-e783165cad01\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-AL-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"KXS6kfQLrlmc42kUTeY6B70uAeDdSjl0\\\"\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"49dbbb9a-f251-4749-838e-6c035804b5f5\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-AR-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"2S.kPfOMSQm6E38yiJJWso3notx10uAH\\\"\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"200b01d4-b1ab-476b-b439-652d781aec9b\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-AZ-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"PyPvk3k1wmEsivVHJIMBmOjB3tDxfPR.\\\"\\n\\t\\t\\t\\t\\t},\\n\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"20d94e00-07aa-46f0-90ab-0c1c4ef3aac6\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-WY-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"ShtbhPlrvyfrPv0_jUUnw4M212ebGc1c\\\"\\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t]\\n\\t\\t\\t},\\n\\t\\t\\t\\\"script\\\": {\\n\\t\\t\\t\\t\\\"list\\\": [\\n\\t\\t\\t\\t\\t\\\"requirements.txt\\\",\\n\\t\\t\\t\\t\\t\\\"README-internal.md\\\",\\n\\t\\t\\t\\t\\t\\\"config.json\\\",\\n\\t\\t\\t\\t\\t\\\"README.md\\\",\\n\\t\\t\\t\\t\\t\\\"Pipfile\\\",\\n\\t\\t\\t\\t\\t\\\"main.py\\\",\\n\\t\\t\\t\\t\\t\\\"Pipfile.lock\\\",\\n\\t\\t\\t\\t\\t\\\"__test__/test_business_logic.py\\\",\\n\\t\\t\\t\\t\\t\\\"__test__/test_config.py\\\",\\n\\t\\t\\t\\t\\t\\\"__test__/test_integration.py\\\",\\n\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_business_logic.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_config.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_integration.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\\"__test__/data/expected.json\\\",\\n\\t\\t\\t\\t\\t\\\"__test__/data/input.json\\\",\\n\\t\\t\\t\\t\\t\\\"__pycache__/main.cpython-37.pyc\\\"\\n\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\\"slug\\\": \\\"hg-tscr-covid-data\\\",\\n\\t\\t\\t\\t\\\"docker\\\": {\\n\\t\\t\\t\\t\\t\\\"image\\\": \\\"706717599419.dkr.ecr.us-east-2.amazonaws.com/ts-platform-development-task-private-your_org-hg-tscr-covid-data@sha256:334e32f0810dfdeb3324f63f85c9b6aa7c67fdd4023b317eb67a3a7bdd5be706\\\"\\n\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\\"version\\\": \\\"v2.0.1\\\",\\n\\t\\t\\t\\t\\\"language\\\": \\\"python\\\",\\n\\t\\t\\t\\t\\\"maxCount\\\": 30,\\n\\t\\t\\t\\t\\\"createdAt\\\": \\\"2022-02-08T15:41:05.234Z\\\",\\n\\t\\t\\t\\t\\\"functions\\\": [\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"main\\\",\\n\\t\\t\\t\\t\\t\\t\\\"function\\\": \\\"main.main\\\"\\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\\"hasSource\\\": true,\\n\\t\\t\\t\\t\\\"namespace\\\": \\\"private-your_org\\\",\\n\\t\\t\\t\\t\\\"timestamp\\\": 1644334642884,\\n\\t\\t\\t\\t\\\"runnerType\\\": \\\"ecs\\\",\\n\\t\\t\\t\\t\\\"buildLogSaved\\\": true,\\n\\t\\t\\t\\t\\\"buildDurationMs\\\": 63528\\n\\t\\t\\t},\\n\\t\\t\\t\\\"status\\\": \\\"completed\\\",\\n\\t\\t\\t\\\"taskId\\\": \\\"a9c6e221-bd6e-4554-9ebd-54a231079591\\\",\\n\\t\\t\\t\\\"options\\\": {\\n\\t\\t\\t},\\n\\t\\t\\t\\\"createdAt\\\": \\\"2022-02-08T16:17:59.563+00:00\\\",\\n\\t\\t\\t\\\"containerId\\\": \\\"5e1a47e9-6d3a-428e-8988-e85746f3756b\\\",\\n\\t\\t\\t\\\"functionSlug\\\": \\\"main\\\",\\n\\t\\t\\t\\\"lastUpdatedAt\\\": \\\"2022-02-08T16:18:49.010+00:00\\\",\\n\\t\\t\\t\\\"taskMemoryInMB\\\": 512,\\n\\t\\t\\t\\\"cloudWatchUrl\\\": \\\"https://us-east-2.console.aws.amazon.com/cloudwatch/home?region=us-east-2#logs-insights:queryDetail=~(end~'2022-02-08T16*3a23*3a49.010Z~start~'2022-02-08T16*3a12*3a59.563Z~timeType~'ABSOLUTE~tz~'Local~editorString~'filter*20*60taskId*60*3d*27a9c6e221-bd6e-4554-9ebd-54a231079591*27*20and*20*60containerId*60*3d*275e1a47e9-6d3a-428e-8988-e85746f3756b*27*0a*7c*20fields*20*40timestamp*2c*20*40message*0a*7c*20sort*20*40timestamp*20asc~source~(~'*2fecs*2ftaskscripts*2fts-platform*2fcontainers))\\\"\\n\\t\\t}\\n\\t],\\n\\t\\\"supersededTasks\\\": [\\n\\t],\\n\\t\\\"status\\\": \\\"completed\\\",\\n\\t\\\"events\\\": [\\n\\t\\t{\\n\\t\\t\\t\\\"at\\\": \\\"2022-02-08T16:17:59.463+00:00\\\",\\n\\t\\t\\t\\\"status\\\": \\\"in-progress\\\"\\n\\t\\t},\\n\\t\\t{\\n\\t\\t\\t\\\"at\\\": \\\"2022-02-08T16:18:49.023+00:00\\\",\\n\\t\\t\\t\\\"status\\\": \\\"completed\\\"\\n\\t\\t}\\n\\t],\\n\\t\\\"createdAt\\\": \\\"2022-02-08T16:17:59.142Z\\\",\\n\\t\\\"lastUpdatedAt\\\": \\\"2022-02-08T16:18:49.024Z\\\",\\n\\t\\\"restarted\\\": false,\\n\\t\\\"masterScriptLogs\\\": [\\n\\t],\\n\\t\\\"retryBehavior\\\": null,\\n\\t\\\"output\\\": {\\n\\t\\t\\\"type\\\": \\\"success\\\",\\n\\t\\t\\\"result\\\": [\\n\\t\\t\\t{\\n\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\\"fileId\\\": \\\"6908a751-62d1-4851-b502-818f7c836df1\\\",\\n\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-AK-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\\"version\\\": \\\"9sNbqVb879.geEUVp03EfCDpK8j9gz1Z\\\"\\n\\t\\t\\t},\\n\\t\\t\\t{\\n\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\\"fileId\\\": \\\"8df8418a-06e0-4499-be19-e783165cad01\\\",\\n\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-AL-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\\"version\\\": \\\"KXS6kfQLrlmc42kUTeY6B70uAeDdSjl0\\\"\\n\\t\\t\\t},\\n\\t\\t\\t{\\n\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\\"fileId\\\": \\\"49dbbb9a-f251-4749-838e-6c035804b5f5\\\",\\n\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-AR-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\\"version\\\": \\\"2S.kPfOMSQm6E38yiJJWso3notx10uAH\\\"\\n\\t\\t\\t},\\n\\t\\t\\t{\\n\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\\"fileId\\\": \\\"200b01d4-b1ab-476b-b439-652d781aec9b\\\",\\n\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-AZ-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\\"version\\\": \\\"PyPvk3k1wmEsivVHJIMBmOjB3tDxfPR.\\\"\\n\\t\\t\\t},\\n\\n\\t\\t\\t{\\n\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\\"fileId\\\": \\\"20d94e00-07aa-46f0-90ab-0c1c4ef3aac6\\\",\\n\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-WY-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\\"version\\\": \\\"ShtbhPlrvyfrPv0_jUUnw4M212ebGc1c\\\"\\n\\t\\t\\t}\\n\\t\\t]\\n\\t}\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a455cd7b-5eab-4ed8-a68e-019be3c14120",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workflow",
+                    ":workflowId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowId",
+                      "description": "(Required) Required. UUID of the workflow."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 404,\\n    \\\"error\\\": \\\"Not Found\\\",\\n    \\\"message\\\": \\\"WorkflowID 38bc1925-cd38-4232-a8cd-16c1baffa0d0 not found\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c8c32b9-4ba4-4281-b78a-9751e2fdd178",
+          "name": "Search Workflow",
+          "request": {
+            "name": "Search Workflow",
+            "description": {
+              "content": "Search data pipeline workflows",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workflow",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<string>",
+                  "description": "Optional.  Number of results to return starting from the page index given in the “from” parameter.  Default: 10 Max: 100"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "Optional.  Paging index. Starts with zero. Default: 0"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Optional. Filter by the workflow completion status. Possible values are:  1. all - for all the workflows (pending, in-progress, completed, failed).  2.  failed - for the workflows that failed.  3. completed - for the workflows that completed successfully.  4. pending - for workflows waiting to be scheduled.  5.  in-progress - for workflows that are executing.  Default: all"
+                },
+                {
+                  "disabled": false,
+                  "key": "pipelineId",
+                  "value": "<string>",
+                  "description": "Optional. UUID of the pipeline. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved."
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<dateTime>",
+                  "description": "Optional.  If provided, service returns all the workflows created after this time. Value can be ISO format only with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<dateTime>",
+                  "description": "Optional. If provided, service returns all the workflows created before this time. Value can be ISO format only with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62ffb1ac-91ca-4287-8002-ac76742ba510",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workflow",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pipelineId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n\\t\\\"from\\\": 0,\\n\\t\\\"size\\\": 2,\\n\\t\\\"hasNext\\\": true,\\n\\t\\\"hits\\\": [\\n\\t\\t{\\n\\t\\t\\t\\\"id\\\": \\\"ea3e0f87-4ba2-4a10-83f3-db30760fd652\\\",\\n\\t\\t\\t\\\"orgSlug\\\": \\\"your_org\\\",\\n\\t\\t\\t\\\"pipelineId\\\": \\\"8592187a-d3ed-4410-8ffb-ee47826bebf7\\\",\\n\\t\\t\\t\\\"masterScriptNamespace\\\": \\\"private-your_org\\\",\\n\\t\\t\\t\\\"masterScriptSlug\\\": \\\"hg-prot-covid-data\\\",\\n\\t\\t\\t\\\"masterScriptVersion\\\": \\\"v2.1.0\\\",\\n\\t\\t\\t\\\"protocolSlug\\\": \\\"hg-prot-covid-data\\\",\\n\\t\\t\\t\\\"protocolVersion\\\": \\\"v2.1.0\\\",\\n\\t\\t\\t\\\"protocol\\\": {\\n\\t\\t\\t\\t\\\"protocolSchema\\\": \\\"v2\\\",\\n\\t\\t\\t\\t\\\"name\\\": \\\"HG Protocol COVID-JSON to IDS\\\",\\n\\t\\t\\t\\t\\\"description\\\": \\\"\\\",\\n\\t\\t\\t\\t\\\"steps\\\": [\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"first-step-covid-json-ids\\\",\\n\\t\\t\\t\\t\\t\\t\\\"description\\\": \\\"Generates COVID data row (IDS JSON) for each state.\\\",\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"generator\\\",\\n\\t\\t\\t\\t\\t\\t\\\"script\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"namespace\\\": \\\"private-your_org\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"hg-tscr-covid-data\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"v2.0.1\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\\"functionSlug\\\": \\\"main\\\"\\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\\"config\\\": [\\n\\t\\t\\t\\t]\\n\\t\\t\\t},\\n\\t\\t\\t\\\"pipelineConfig\\\": {\\n\\t\\t\\t\\t\\\"notificationsConfig\\\": {\\n\\t\\t\\t\\t\\t\\\"sendOnSuccessful\\\": true,\\n\\t\\t\\t\\t\\t\\\"sendOnFailed\\\": true,\\n\\t\\t\\t\\t\\t\\\"notificationEmailAddresses\\\": [\\n\\t\\t\\t\\t\\t\\t\\\"example1@your_org.com\\\",\\n\\t\\t\\t\\t\\t\\t\\\"example2@your_org.com\\\"\\n\\t\\t\\t\\t\\t]\\n\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\\"pipelineName\\\": \\\"HG-Covid-Data\\\"\\n\\t\\t\\t},\\n\\t\\t\\t\\\"inputFile\\\": {\\n\\t\\t\\t\\t\\\"meta\\\": {\\n\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"650bc88a-e90c-48c7-a349-65dcc756b0a4\\\",\\n\\t\\t\\t\\t\\t\\\"source\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"box\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"id\\\": \\\"56d9293c-2dc7-4133-b21b-c1468aefb41f\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"size\\\": 2648411,\\n\\t\\t\\t\\t\\t\\t\\t\\\"filePath\\\": \\\"/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"integrationSource\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"box\\\"\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"traceId\\\": \\\"650bc88a-e90c-48c7-a349-65dcc756b0a4\\\",\\n\\t\\t\\t\\t\\t\\\"sourceId\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\",\\n\\t\\t\\t\\t\\t\\\"sourceName\\\": \\\"HG-Box-Covid-Data-States\\\",\\n\\t\\t\\t\\t\\t\\\"sourceType\\\": \\\"box\\\",\\n\\t\\t\\t\\t\\t\\\"integrationId\\\": \\\"56d9293c-2dc7-4133-b21b-c1468aefb41f\\\",\\n\\t\\t\\t\\t\\t\\\"integrationType\\\": \\\"box\\\"\\n\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\\"fileId\\\": \\\"650bc88a-e90c-48c7-a349-65dcc756b0a4\\\",\\n\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/RAW/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json\\\",\\n\\t\\t\\t\\t\\\"version\\\": \\\"YXWfnGtFnxXaRshIkphKpeIWjKM5YMrL\\\",\\n\\t\\t\\t\\t\\\"customTags\\\": [\\n\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\\"customMetadata\\\": {\\n\\t\\t\\t\\t}\\n\\t\\t\\t},\\n\\t\\t\\t\\\"tasks\\\": [\\n\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\\"slug\\\": \\\"first-step-covid-json-ids\\\",\\n\\t\\t\\t\\t\\t\\\"input\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"input_file\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"meta\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"650bc88a-e90c-48c7-a349-65dcc756b0a4\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"source\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"box\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"id\\\": \\\"56d9293c-2dc7-4133-b21b-c1468aefb41f\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"size\\\": 2648411,\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"filePath\\\": \\\"/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationSource\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\"\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"box\\\"\\n\\t\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"traceId\\\": \\\"650bc88a-e90c-48c7-a349-65dcc756b0a4\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceId\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceName\\\": \\\"HG-Box-Covid-Data-States\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceType\\\": \\\"box\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationId\\\": \\\"56d9293c-2dc7-4133-b21b-c1468aefb41f\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationType\\\": \\\"box\\\"\\n\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"650bc88a-e90c-48c7-a349-65dcc756b0a4\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/RAW/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"YXWfnGtFnxXaRshIkphKpeIWjKM5YMrL\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"customTags\\\": [\\n\\t\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\t\\\"customMetadata\\\": {\\n\\t\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"retry\\\": 0,\\n\\t\\t\\t\\t\\t\\\"events\\\": [\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-08T16:17:59.579+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"pending\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-08T16:18:23.973+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"in-progress\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-08T16:18:48.996+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"completed\\\"\\n\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\\"output\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"success\\\",\\n\\t\\t\\t\\t\\t\\t\\\"result\\\": [\\n\\t\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"6908a751-62d1-4851-b502-818f7c836df1\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-AK-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"9sNbqVb879.geEUVp03EfCDpK8j9gz1Z\\\"\\n\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"8df8418a-06e0-4499-be19-e783165cad01\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-AL-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"KXS6kfQLrlmc42kUTeY6B70uAeDdSjl0\\\"\\n\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"49dbbb9a-f251-4749-838e-6c035804b5f5\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-AR-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"2S.kPfOMSQm6E38yiJJWso3notx10uAH\\\"\\n\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"20d94e00-07aa-46f0-90ab-0c1c4ef3aac6\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-WY-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"ShtbhPlrvyfrPv0_jUUnw4M212ebGc1c\\\"\\n\\t\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t\\t]\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"script\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"list\\\": [\\n\\t\\t\\t\\t\\t\\t\\t\\\"requirements.txt\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"README-internal.md\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"config.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"README.md\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"Pipfile\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"main.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"Pipfile.lock\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_business_logic.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_config.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_integration.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_business_logic.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_config.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_integration.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/data/expected.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/data/input.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__pycache__/main.cpython-37.pyc\\\"\\n\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"hg-tscr-covid-data\\\",\\n\\t\\t\\t\\t\\t\\t\\\"docker\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"image\\\": \\\"706717599419.dkr.ecr.us-east-2.amazonaws.com/ts-platform-development-task-private-your_org-hg-tscr-covid-data@sha256:334e32f0810dfdeb3324f63f85c9b6aa7c67fdd4023b317eb67a3a7bdd5be706\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"v2.0.1\\\",\\n\\t\\t\\t\\t\\t\\t\\\"language\\\": \\\"python\\\",\\n\\t\\t\\t\\t\\t\\t\\\"maxCount\\\": 30,\\n\\t\\t\\t\\t\\t\\t\\\"createdAt\\\": \\\"2022-02-08T15:41:05.234Z\\\",\\n\\t\\t\\t\\t\\t\\t\\\"functions\\\": [\\n\\t\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"main\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"function\\\": \\\"main.main\\\"\\n\\t\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\\"hasSource\\\": true,\\n\\t\\t\\t\\t\\t\\t\\\"namespace\\\": \\\"private-your_org\\\",\\n\\t\\t\\t\\t\\t\\t\\\"timestamp\\\": 1644334642884,\\n\\t\\t\\t\\t\\t\\t\\\"runnerType\\\": \\\"ecs\\\",\\n\\t\\t\\t\\t\\t\\t\\\"buildLogSaved\\\": true,\\n\\t\\t\\t\\t\\t\\t\\\"buildDurationMs\\\": 63528\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"status\\\": \\\"completed\\\",\\n\\t\\t\\t\\t\\t\\\"taskId\\\": \\\"a9c6e221-bd6e-4554-9ebd-54a231079591\\\",\\n\\t\\t\\t\\t\\t\\\"options\\\": {\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"createdAt\\\": \\\"2022-02-08T16:17:59.563+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"containerId\\\": \\\"5e1a47e9-6d3a-428e-8988-e85746f3756b\\\",\\n\\t\\t\\t\\t\\t\\\"functionSlug\\\": \\\"main\\\",\\n\\t\\t\\t\\t\\t\\\"lastUpdatedAt\\\": \\\"2022-02-08T16:18:49.010+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"taskMemoryInMB\\\": 512,\\n\\t\\t\\t\\t\\t\\\"cloudWatchUrl\\\": \\\"https://us-east-2.console.aws.amazon.com/cloudwatch/home?region=us-east-2#logs-insights:queryDetail=~(end~'2022-02-08T16*3a23*3a49.010Z~start~'2022-02-08T16*3a12*3a59.563Z~timeType~'ABSOLUTE~tz~'Local~editorString~'filter*20*60taskId*60*3d*27a9c6e221-bd6e-4554-9ebd-54a231079591*27*20and*20*60containerId*60*3d*275e1a47e9-6d3a-428e-8988-e85746f3756b*27*0a*7c*20fields*20*40timestamp*2c*20*40message*0a*7c*20sort*20*40timestamp*20asc~source~(~'*2fecs*2ftaskscripts*2fts-platform*2fcontainers))\\\"\\n\\t\\t\\t\\t}\\n\\t\\t\\t],\\n\\t\\t\\t\\\"supersededTasks\\\": [\\n\\t\\t\\t],\\n\\t\\t\\t\\\"status\\\": \\\"completed\\\",\\n\\t\\t\\t\\\"events\\\": [\\n\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-08T16:17:59.463+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"status\\\": \\\"in-progress\\\"\\n\\t\\t\\t\\t},\\n\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-08T16:18:49.023+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"status\\\": \\\"completed\\\"\\n\\t\\t\\t\\t}\\n\\t\\t\\t],\\n\\t\\t\\t\\\"createdAt\\\": \\\"2022-02-08T16:17:59.142Z\\\",\\n\\t\\t\\t\\\"lastUpdatedAt\\\": \\\"2022-02-08T16:18:49.024Z\\\",\\n\\t\\t\\t\\\"restarted\\\": false,\\n\\t\\t\\t\\\"masterScriptLogs\\\": [\\n\\t\\t\\t],\\n\\t\\t\\t\\\"retryBehavior\\\": null,\\n\\t\\t\\t\\\"output\\\": {\\n\\t\\t\\t\\t\\\"type\\\": \\\"success\\\",\\n\\t\\t\\t\\t\\\"result\\\": [\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"6908a751-62d1-4851-b502-818f7c836df1\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-AK-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"9sNbqVb879.geEUVp03EfCDpK8j9gz1Z\\\"\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"8df8418a-06e0-4499-be19-e783165cad01\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-AL-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"KXS6kfQLrlmc42kUTeY6B70uAeDdSjl0\\\"\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"49dbbb9a-f251-4749-838e-6c035804b5f5\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-AR-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"2S.kPfOMSQm6E38yiJJWso3notx10uAH\\\"\\n\\t\\t\\t\\t\\t},\\n\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"20d94e00-07aa-46f0-90ab-0c1c4ef3aac6\\\",\\n\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/IDS/All Files/your_org/coviddata/statesdata/covid_states_tseries_2021_12_09.json/covid-state-tseries-WY-2021-12-08.json\\\",\\n\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"ShtbhPlrvyfrPv0_jUUnw4M212ebGc1c\\\"\\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t]\\n\\t\\t\\t}\\n\\t\\t},\\n\\t\\t{\\n\\t\\t\\t\\\"id\\\": \\\"2fb033db-3762-4559-b8d4-39a0db8422cf\\\",\\n\\t\\t\\t\\\"orgSlug\\\": \\\"your_org\\\",\\n\\t\\t\\t\\\"pipelineId\\\": \\\"8592187a-d3ed-4410-8ffb-ee47826bebf7\\\",\\n\\t\\t\\t\\\"masterScriptNamespace\\\": \\\"private-your_org\\\",\\n\\t\\t\\t\\\"masterScriptSlug\\\": \\\"hg-prot-covid-data\\\",\\n\\t\\t\\t\\\"masterScriptVersion\\\": \\\"v2.1.0\\\",\\n\\t\\t\\t\\\"protocolSlug\\\": \\\"hg-prot-covid-data\\\",\\n\\t\\t\\t\\\"protocolVersion\\\": \\\"v2.1.0\\\",\\n\\t\\t\\t\\\"protocol\\\": {\\n\\t\\t\\t\\t\\\"protocolSchema\\\": \\\"v2\\\",\\n\\t\\t\\t\\t\\\"name\\\": \\\"HG Protocol COVID-JSON to IDS\\\",\\n\\t\\t\\t\\t\\\"description\\\": \\\"\\\",\\n\\t\\t\\t\\t\\\"steps\\\": [\\n\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"first-step-covid-json-ids\\\",\\n\\t\\t\\t\\t\\t\\t\\\"description\\\": \\\"Generates COVID data row (IDS JSON) for each state.\\\",\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"generator\\\",\\n\\t\\t\\t\\t\\t\\t\\\"script\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"namespace\\\": \\\"private-your_org\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"hg-tscr-covid-data\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"v2.0.1\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\\"functionSlug\\\": \\\"main\\\"\\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\\"config\\\": [\\n\\t\\t\\t\\t]\\n\\t\\t\\t},\\n\\t\\t\\t\\\"pipelineConfig\\\": {\\n\\t\\t\\t\\t\\\"notificationsConfig\\\": {\\n\\t\\t\\t\\t\\t\\\"sendOnSuccessful\\\": true,\\n\\t\\t\\t\\t\\t\\\"sendOnFailed\\\": true,\\n\\t\\t\\t\\t\\t\\\"notificationEmailAddresses\\\": [\\n\\t\\t\\t\\t\\t\\t\\\"example1@your_org.com\\\",\\n\\t\\t\\t\\t\\t\\t\\\"example2@your_org.com\\\"\\n\\t\\t\\t\\t\\t]\\n\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\\"pipelineName\\\": \\\"HG-Covid-Data\\\"\\n\\t\\t\\t},\\n\\t\\t\\t\\\"inputFile\\\": {\\n\\t\\t\\t\\t\\\"meta\\\": {\\n\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\\"source\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"api\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"id\\\": \\\"6f166302-df8a-4044-ab4b-7ddd3eefb50b\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"size\\\": 14862,\\n\\t\\t\\t\\t\\t\\t\\t\\\"filePath\\\": \\\"/All Files/your_org/coviddata/statesdata/CovidData_states_11_03_2021.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"integrationSource\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"api\\\"\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"traceId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\\"sourceId\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\",\\n\\t\\t\\t\\t\\t\\\"sourceName\\\": \\\"HG-Box-Covid-Data-States\\\",\\n\\t\\t\\t\\t\\t\\\"sourceType\\\": \\\"box\\\",\\n\\t\\t\\t\\t\\t\\\"integrationId\\\": \\\"6f166302-df8a-4044-ab4b-7ddd3eefb50b\\\",\\n\\t\\t\\t\\t\\t\\\"integrationType\\\": \\\"api\\\"\\n\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\\"fileId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/RAW/All Files/your_org/coviddata/statesdata/CovidData_states_11_03_2021.json\\\",\\n\\t\\t\\t\\t\\\"version\\\": \\\"Y7_UBtoF11Bvv75LsuCZ1K73.u04K3Dx\\\",\\n\\t\\t\\t\\t\\\"customTags\\\": [\\n\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\\"customMetadata\\\": {\\n\\t\\t\\t\\t}\\n\\t\\t\\t},\\n\\t\\t\\t\\\"tasks\\\": [\\n\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\\"slug\\\": \\\"first-step-covid-json-ids\\\",\\n\\t\\t\\t\\t\\t\\\"input\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"input_file\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"meta\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"source\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"api\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"id\\\": \\\"6f166302-df8a-4044-ab4b-7ddd3eefb50b\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"size\\\": 14862,\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"filePath\\\": \\\"/All Files/your_org/coviddata/statesdata/CovidData_states_11_03_2021.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationSource\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\"\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"api\\\"\\n\\t\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"traceId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceId\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceName\\\": \\\"HG-Box-Covid-Data-States\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceType\\\": \\\"box\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationId\\\": \\\"6f166302-df8a-4044-ab4b-7ddd3eefb50b\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationType\\\": \\\"api\\\"\\n\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/RAW/All Files/your_org/coviddata/statesdata/CovidData_states_11_03_2021.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"Y7_UBtoF11Bvv75LsuCZ1K73.u04K3Dx\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"customTags\\\": [\\n\\t\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\t\\\"customMetadata\\\": {\\n\\t\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"retry\\\": 3,\\n\\t\\t\\t\\t\\t\\\"events\\\": [\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:26.526+00:00\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:26.541+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"pending\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:26.549+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"in-progress\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:27.108+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"failed\\\"\\n\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\\"output\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"error\\\",\\n\\t\\t\\t\\t\\t\\t\\\"result\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"message\\\": \\\"'actualsTimeseries'\\\"\\n\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"script\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"list\\\": [\\n\\t\\t\\t\\t\\t\\t\\t\\\"requirements.txt\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"README-internal.md\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"config.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"README.md\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"Pipfile\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"main.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"Pipfile.lock\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_business_logic.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_config.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_integration.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_business_logic.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_config.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_integration.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/data/expected.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/data/input.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__pycache__/main.cpython-37.pyc\\\"\\n\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"hg-tscr-covid-data\\\",\\n\\t\\t\\t\\t\\t\\t\\\"docker\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"image\\\": \\\"706717599419.dkr.ecr.us-east-2.amazonaws.com/ts-platform-development-task-private-your_org-hg-tscr-covid-data@sha256:947d1b9fa98aac20eb9e36ae89c8aed971c521e437c628248af5da3769a2845a\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"v2.0.1\\\",\\n\\t\\t\\t\\t\\t\\t\\\"language\\\": \\\"python\\\",\\n\\t\\t\\t\\t\\t\\t\\\"maxCount\\\": 30,\\n\\t\\t\\t\\t\\t\\t\\\"createdAt\\\": \\\"2022-02-04T16:11:54.239Z\\\",\\n\\t\\t\\t\\t\\t\\t\\\"functions\\\": [\\n\\t\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"main\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"function\\\": \\\"main.main\\\"\\n\\t\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\\"hasSource\\\": true,\\n\\t\\t\\t\\t\\t\\t\\\"namespace\\\": \\\"private-your_org\\\",\\n\\t\\t\\t\\t\\t\\t\\\"timestamp\\\": 1643990906049,\\n\\t\\t\\t\\t\\t\\t\\\"runnerType\\\": \\\"ecs\\\",\\n\\t\\t\\t\\t\\t\\t\\\"buildLogSaved\\\": true,\\n\\t\\t\\t\\t\\t\\t\\\"buildDurationMs\\\": 72462\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"status\\\": \\\"failed\\\",\\n\\t\\t\\t\\t\\t\\\"taskId\\\": \\\"cb3545d0-4dcd-4cb6-adc5-079f6c4002db\\\",\\n\\t\\t\\t\\t\\t\\\"options\\\": {\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"createdAt\\\": \\\"2022-02-07T20:01:26.526+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"containerId\\\": \\\"a9b6f2de-453f-4897-a72f-fcb528f6aee3\\\",\\n\\t\\t\\t\\t\\t\\\"functionSlug\\\": \\\"main\\\",\\n\\t\\t\\t\\t\\t\\\"lastUpdatedAt\\\": \\\"2022-02-07T20:01:27.114+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"taskMemoryInMB\\\": 512,\\n\\t\\t\\t\\t\\t\\\"cloudWatchUrl\\\": \\\"https://us-east-2.console.aws.amazon.com/cloudwatch/home?region=us-east-2#logs-insights:queryDetail=~(end~'2022-02-07T20*3a06*3a27.114Z~start~'2022-02-07T19*3a56*3a26.526Z~timeType~'ABSOLUTE~tz~'Local~editorString~'filter*20*60taskId*60*3d*27cb3545d0-4dcd-4cb6-adc5-079f6c4002db*27*20and*20*60containerId*60*3d*27a9b6f2de-453f-4897-a72f-fcb528f6aee3*27*0a*7c*20fields*20*40timestamp*2c*20*40message*0a*7c*20sort*20*40timestamp*20asc~source~(~'*2fecs*2ftaskscripts*2fts-platform*2fcontainers))\\\"\\n\\t\\t\\t\\t}\\n\\t\\t\\t],\\n\\t\\t\\t\\\"supersededTasks\\\": [\\n\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\\"slug\\\": \\\"first-step-covid-json-ids\\\",\\n\\t\\t\\t\\t\\t\\\"input\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"input_file\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"meta\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"source\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"api\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"id\\\": \\\"6f166302-df8a-4044-ab4b-7ddd3eefb50b\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"size\\\": 14862,\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"filePath\\\": \\\"/All Files/your_org/coviddata/statesdata/CovidData_states_11_03_2021.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationSource\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\"\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"api\\\"\\n\\t\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"traceId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceId\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceName\\\": \\\"HG-Box-Covid-Data-States\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceType\\\": \\\"box\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationId\\\": \\\"6f166302-df8a-4044-ab4b-7ddd3eefb50b\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationType\\\": \\\"api\\\"\\n\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/RAW/All Files/your_org/coviddata/statesdata/CovidData_states_11_03_2021.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"Y7_UBtoF11Bvv75LsuCZ1K73.u04K3Dx\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"customTags\\\": [\\n\\t\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\t\\\"customMetadata\\\": {\\n\\t\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"retry\\\": 0,\\n\\t\\t\\t\\t\\t\\\"events\\\": [\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:01.990+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"pending\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:24.704+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"in-progress\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:25.264+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"failed\\\"\\n\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\\"output\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"error\\\",\\n\\t\\t\\t\\t\\t\\t\\\"result\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"message\\\": \\\"'actualsTimeseries'\\\"\\n\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"script\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"list\\\": [\\n\\t\\t\\t\\t\\t\\t\\t\\\"requirements.txt\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"README-internal.md\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"config.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"README.md\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"Pipfile\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"main.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"Pipfile.lock\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_business_logic.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_config.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_integration.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_business_logic.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_config.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_integration.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/data/expected.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/data/input.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__pycache__/main.cpython-37.pyc\\\"\\n\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"hg-tscr-covid-data\\\",\\n\\t\\t\\t\\t\\t\\t\\\"docker\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"image\\\": \\\"706717599419.dkr.ecr.us-east-2.amazonaws.com/ts-platform-development-task-private-your_org-hg-tscr-covid-data@sha256:947d1b9fa98aac20eb9e36ae89c8aed971c521e437c628248af5da3769a2845a\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"v2.0.1\\\",\\n\\t\\t\\t\\t\\t\\t\\\"language\\\": \\\"python\\\",\\n\\t\\t\\t\\t\\t\\t\\\"maxCount\\\": 30,\\n\\t\\t\\t\\t\\t\\t\\\"createdAt\\\": \\\"2022-02-04T16:11:54.239Z\\\",\\n\\t\\t\\t\\t\\t\\t\\\"functions\\\": [\\n\\t\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"main\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"function\\\": \\\"main.main\\\"\\n\\t\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\\"hasSource\\\": true,\\n\\t\\t\\t\\t\\t\\t\\\"namespace\\\": \\\"private-your_org\\\",\\n\\t\\t\\t\\t\\t\\t\\\"timestamp\\\": 1643990906049,\\n\\t\\t\\t\\t\\t\\t\\\"runnerType\\\": \\\"ecs\\\",\\n\\t\\t\\t\\t\\t\\t\\\"buildLogSaved\\\": true,\\n\\t\\t\\t\\t\\t\\t\\\"buildDurationMs\\\": 72462\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"status\\\": \\\"failed\\\",\\n\\t\\t\\t\\t\\t\\\"taskId\\\": \\\"14aaadfc-f75e-4a26-bef3-2b9339ec0bc3\\\",\\n\\t\\t\\t\\t\\t\\\"options\\\": {\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"createdAt\\\": \\\"2022-02-07T20:01:01.977+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"containerId\\\": \\\"a9b6f2de-453f-4897-a72f-fcb528f6aee3\\\",\\n\\t\\t\\t\\t\\t\\\"functionSlug\\\": \\\"main\\\",\\n\\t\\t\\t\\t\\t\\\"lastUpdatedAt\\\": \\\"2022-02-07T20:01:25.269+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"taskMemoryInMB\\\": 512\\n\\t\\t\\t\\t},\\n\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\\"slug\\\": \\\"first-step-covid-json-ids\\\",\\n\\t\\t\\t\\t\\t\\\"input\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"input_file\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"meta\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"source\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"api\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"id\\\": \\\"6f166302-df8a-4044-ab4b-7ddd3eefb50b\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"size\\\": 14862,\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"filePath\\\": \\\"/All Files/your_org/coviddata/statesdata/CovidData_states_11_03_2021.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationSource\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\"\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"api\\\"\\n\\t\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"traceId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceId\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceName\\\": \\\"HG-Box-Covid-Data-States\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceType\\\": \\\"box\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationId\\\": \\\"6f166302-df8a-4044-ab4b-7ddd3eefb50b\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationType\\\": \\\"api\\\"\\n\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/RAW/All Files/your_org/coviddata/statesdata/CovidData_states_11_03_2021.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"Y7_UBtoF11Bvv75LsuCZ1K73.u04K3Dx\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"customTags\\\": [\\n\\t\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\t\\\"customMetadata\\\": {\\n\\t\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"retry\\\": 1,\\n\\t\\t\\t\\t\\t\\\"events\\\": [\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:25.334+00:00\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:25.347+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"pending\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:25.356+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"in-progress\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:25.859+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"failed\\\"\\n\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\\"output\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"error\\\",\\n\\t\\t\\t\\t\\t\\t\\\"result\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"message\\\": \\\"'actualsTimeseries'\\\"\\n\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"script\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"list\\\": [\\n\\t\\t\\t\\t\\t\\t\\t\\\"requirements.txt\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"README-internal.md\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"config.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"README.md\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"Pipfile\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"main.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"Pipfile.lock\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_business_logic.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_config.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_integration.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_business_logic.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_config.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_integration.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/data/expected.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/data/input.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__pycache__/main.cpython-37.pyc\\\"\\n\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"hg-tscr-covid-data\\\",\\n\\t\\t\\t\\t\\t\\t\\\"docker\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"image\\\": \\\"706717599419.dkr.ecr.us-east-2.amazonaws.com/ts-platform-development-task-private-your_org-hg-tscr-covid-data@sha256:947d1b9fa98aac20eb9e36ae89c8aed971c521e437c628248af5da3769a2845a\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"v2.0.1\\\",\\n\\t\\t\\t\\t\\t\\t\\\"language\\\": \\\"python\\\",\\n\\t\\t\\t\\t\\t\\t\\\"maxCount\\\": 30,\\n\\t\\t\\t\\t\\t\\t\\\"createdAt\\\": \\\"2022-02-04T16:11:54.239Z\\\",\\n\\t\\t\\t\\t\\t\\t\\\"functions\\\": [\\n\\t\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"main\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"function\\\": \\\"main.main\\\"\\n\\t\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\\"hasSource\\\": true,\\n\\t\\t\\t\\t\\t\\t\\\"namespace\\\": \\\"private-your_org\\\",\\n\\t\\t\\t\\t\\t\\t\\\"timestamp\\\": 1643990906049,\\n\\t\\t\\t\\t\\t\\t\\\"runnerType\\\": \\\"ecs\\\",\\n\\t\\t\\t\\t\\t\\t\\\"buildLogSaved\\\": true,\\n\\t\\t\\t\\t\\t\\t\\\"buildDurationMs\\\": 72462\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"status\\\": \\\"failed\\\",\\n\\t\\t\\t\\t\\t\\\"taskId\\\": \\\"c276e3a1-7c38-4347-b2ec-1a4507d6b574\\\",\\n\\t\\t\\t\\t\\t\\\"options\\\": {\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"createdAt\\\": \\\"2022-02-07T20:01:25.334+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"containerId\\\": \\\"a9b6f2de-453f-4897-a72f-fcb528f6aee3\\\",\\n\\t\\t\\t\\t\\t\\\"functionSlug\\\": \\\"main\\\",\\n\\t\\t\\t\\t\\t\\\"lastUpdatedAt\\\": \\\"2022-02-07T20:01:25.866+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"taskMemoryInMB\\\": 512\\n\\t\\t\\t\\t},\\n\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\\"slug\\\": \\\"first-step-covid-json-ids\\\",\\n\\t\\t\\t\\t\\t\\\"input\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"input_file\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"meta\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"source\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"api\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"id\\\": \\\"6f166302-df8a-4044-ab4b-7ddd3eefb50b\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"size\\\": 14862,\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"filePath\\\": \\\"/All Files/your_org/coviddata/statesdata/CovidData_states_11_03_2021.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationSource\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\"\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"api\\\"\\n\\t\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"traceId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceId\\\": \\\"4095be8f-40c6-487d-99ce-bef42682c36b\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceName\\\": \\\"HG-Box-Covid-Data-States\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"sourceType\\\": \\\"box\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationId\\\": \\\"6f166302-df8a-4044-ab4b-7ddd3eefb50b\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"integrationType\\\": \\\"api\\\"\\n\\t\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"s3file\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"bucket\\\": \\\"ts-platform-dev-datalake\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"fileId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"fileKey\\\": \\\"your_org/4095be8f-40c6-487d-99ce-bef42682c36b/RAW/All Files/your_org/coviddata/statesdata/CovidData_states_11_03_2021.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"Y7_UBtoF11Bvv75LsuCZ1K73.u04K3Dx\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"customTags\\\": [\\n\\t\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\t\\\"customMetadata\\\": {\\n\\t\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"retry\\\": 2,\\n\\t\\t\\t\\t\\t\\\"events\\\": [\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:25.913+00:00\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:25.925+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"pending\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:25.935+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"in-progress\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:26.469+00:00\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"status\\\": \\\"failed\\\"\\n\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\\"output\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"type\\\": \\\"error\\\",\\n\\t\\t\\t\\t\\t\\t\\\"result\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"message\\\": \\\"'actualsTimeseries'\\\"\\n\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"script\\\": {\\n\\t\\t\\t\\t\\t\\t\\\"list\\\": [\\n\\t\\t\\t\\t\\t\\t\\t\\\"requirements.txt\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"README-internal.md\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"config.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"README.md\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"Pipfile\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"main.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"Pipfile.lock\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_business_logic.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_config.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/test_integration.py\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_business_logic.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_config.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/__pycache__/test_integration.cpython-37.pyc\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/data/expected.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__test__/data/input.json\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\\"__pycache__/main.cpython-37.pyc\\\"\\n\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"hg-tscr-covid-data\\\",\\n\\t\\t\\t\\t\\t\\t\\\"docker\\\": {\\n\\t\\t\\t\\t\\t\\t\\t\\\"image\\\": \\\"706717599419.dkr.ecr.us-east-2.amazonaws.com/ts-platform-development-task-private-your_org-hg-tscr-covid-data@sha256:947d1b9fa98aac20eb9e36ae89c8aed971c521e437c628248af5da3769a2845a\\\"\\n\\t\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\t\\\"version\\\": \\\"v2.0.1\\\",\\n\\t\\t\\t\\t\\t\\t\\\"language\\\": \\\"python\\\",\\n\\t\\t\\t\\t\\t\\t\\\"maxCount\\\": 30,\\n\\t\\t\\t\\t\\t\\t\\\"createdAt\\\": \\\"2022-02-04T16:11:54.239Z\\\",\\n\\t\\t\\t\\t\\t\\t\\\"functions\\\": [\\n\\t\\t\\t\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"slug\\\": \\\"main\\\",\\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"function\\\": \\\"main.main\\\"\\n\\t\\t\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\t\\t],\\n\\t\\t\\t\\t\\t\\t\\\"hasSource\\\": true,\\n\\t\\t\\t\\t\\t\\t\\\"namespace\\\": \\\"private-your_org\\\",\\n\\t\\t\\t\\t\\t\\t\\\"timestamp\\\": 1643990906049,\\n\\t\\t\\t\\t\\t\\t\\\"runnerType\\\": \\\"ecs\\\",\\n\\t\\t\\t\\t\\t\\t\\\"buildLogSaved\\\": true,\\n\\t\\t\\t\\t\\t\\t\\\"buildDurationMs\\\": 72462\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"status\\\": \\\"failed\\\",\\n\\t\\t\\t\\t\\t\\\"taskId\\\": \\\"38555e50-499f-49fb-b97b-e239327f5ada\\\",\\n\\t\\t\\t\\t\\t\\\"options\\\": {\\n\\t\\t\\t\\t\\t},\\n\\t\\t\\t\\t\\t\\\"createdAt\\\": \\\"2022-02-07T20:01:25.913+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"containerId\\\": \\\"a9b6f2de-453f-4897-a72f-fcb528f6aee3\\\",\\n\\t\\t\\t\\t\\t\\\"functionSlug\\\": \\\"main\\\",\\n\\t\\t\\t\\t\\t\\\"lastUpdatedAt\\\": \\\"2022-02-07T20:01:26.477+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"taskMemoryInMB\\\": 512\\n\\t\\t\\t\\t}\\n\\t\\t\\t],\\n\\t\\t\\t\\\"status\\\": \\\"failed\\\",\\n\\t\\t\\t\\\"events\\\": [\\n\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:01.863+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"status\\\": \\\"in-progress\\\"\\n\\t\\t\\t\\t},\\n\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\\"at\\\": \\\"2022-02-07T20:01:27.169+00:00\\\",\\n\\t\\t\\t\\t\\t\\\"status\\\": \\\"failed\\\"\\n\\t\\t\\t\\t}\\n\\t\\t\\t],\\n\\t\\t\\t\\\"createdAt\\\": \\\"2022-02-07T20:01:01.305Z\\\",\\n\\t\\t\\t\\\"lastUpdatedAt\\\": \\\"2022-02-07T20:01:27.169Z\\\",\\n\\t\\t\\t\\\"restarted\\\": false,\\n\\t\\t\\t\\\"masterScriptLogs\\\": [\\n\\t\\t\\t\\t{\\n\\t\\t\\t\\t\\t\\\"level\\\": \\\"error\\\",\\n\\t\\t\\t\\t\\t\\\"message\\\": \\\"Error: Task first-step-covid-json-ids failed\\\\n    at WorkflowRunner._runTask (/usr/src/app/services/orchestrator/src/workflow-runner.js:207:28)\\\\n    at runMicrotasks (<anonymous>)\\\\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)\\\\n    at async WorkflowRunner._runTask (/usr/src/app/lib/util-logger/index.js:81:20)\\\\n    at async evalmachine.<anonymous>:16:18\\\\n    at async WorkflowRunner.run (/usr/src/app/services/orchestrator/src/workflow-runner.js:98:22)\\\\n    at async wrapWithLog.args2LogArgs (/usr/src/app/services/orchestrator/src/workflow-handlers.js:105:20)\\\\n    at async /usr/src/app/lib/util-logger/index.js:81:20\\\\n    at async /usr/src/app/services/orchestrator/src/sqs-consumer.js:224:9\\\\n    at async Consumer.sema.sema [as _handleMessage] (/usr/src/app/services/orchestrator/src/sqs-consumer.js:34:9)\\\\n    at async /usr/src/app/lib/util-sqs/index.js:100:17\\\",\\n\\t\\t\\t\\t\\t\\\"traceId\\\": \\\"3691e31b-6953-40de-aa4e-0dba99b4db19\\\",\\n\\t\\t\\t\\t\\t\\\"timestamp\\\": \\\"2022-02-07T20:01:27.168Z\\\"\\n\\t\\t\\t\\t}\\n\\t\\t\\t],\\n\\t\\t\\t\\\"retryBehavior\\\": null,\\n\\t\\t\\t\\\"output\\\": {\\n\\t\\t\\t\\t\\\"type\\\": \\\"error\\\",\\n\\t\\t\\t\\t\\\"result\\\": {\\n\\t\\t\\t\\t\\t\\\"message\\\": \\\"Error: Task first-step-covid-json-ids failed\\\\n    at WorkflowRunner._runTask (/usr/src/app/services/orchestrator/src/workflow-runner.js:207:28)\\\\n    at runMicrotasks (<anonymous>)\\\\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)\\\\n    at async WorkflowRunner._runTask (/usr/src/app/lib/util-logger/index.js:81:20)\\\\n    at async evalmachine.<anonymous>:16:18\\\\n    at async WorkflowRunner.run (/usr/src/app/services/orchestrator/src/workflow-runner.js:98:22)\\\\n    at async wrapWithLog.args2LogArgs (/usr/src/app/services/orchestrator/src/workflow-handlers.js:105:20)\\\\n    at async /usr/src/app/lib/util-logger/index.js:81:20\\\\n    at async /usr/src/app/services/orchestrator/src/sqs-consumer.js:224:9\\\\n    at async Consumer.sema.sema [as _handleMessage] (/usr/src/app/services/orchestrator/src/sqs-consumer.js:34:9)\\\\n    at async /usr/src/app/lib/util-sqs/index.js:100:17\\\"\\n\\t\\t\\t\\t}\\n\\t\\t\\t}\\n\\t\\t}\\n\\t]\\n}\\n\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79a4e945-31c5-4ff1-822e-f0de27cf7de0",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workflow",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pipelineId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 400,\\n    \\\"error\\\": \\\"Bad Request\\\",\\n    \\\"message\\\": \\\"\\\\\\\"from\\\\\\\" must be greater than or equal to 0\\\",\\n    \\\"validation\\\": {\\n        \\\"source\\\": \\\"query\\\",\\n        \\\"keys\\\": [\\n            \\\"from\\\"\\n        ]\\n    }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "594fbe0c-19eb-48d5-bd2a-4f02a30571cc",
+          "name": "Search workflows draft",
+          "request": {
+            "name": "Search workflows draft",
+            "description": {
+              "content": "Search data pipeline workflows",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workflow",
+                "workflows-draft"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Results page number - the start index of results is calculated as (page - 1) * limit. Page parameter will return results in range [start index, start index + limit]. Default value is 1. Value 0 will cause error."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000",
+                  "description": "Page size - number of the workflow results to retrieve for a given page."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "all",
+                  "description": "Filter by the workflow completion status. Possible values are: `all` - for all the workflows (completed and failed), `failed` - for the workflows that failed and `completed` - for the workflows that completed successfully."
+                },
+                {
+                  "disabled": false,
+                  "key": "pipelineId",
+                  "value": "<string>",
+                  "description": "Optional parameter. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved."
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<dateTime>",
+                  "description": "Optional parameter. If provided, service returns all the workflows created after this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<dateTime>",
+                  "description": "Optional parameter. If provided, service returns all the workflows created before this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "27b24ae6-0685-41b0-9a4f-cca6a3951701",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workflow",
+                    "workflows-draft"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "all"
+                    },
+                    {
+                      "key": "pipelineId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"[\\n    {\\n        \\\"id\\\": \\\"ab3d4e44-483e-446f-9e76-92ab4d01f903\\\",\\n        \\\"protocolSlug\\\": \\\"leaf-nodes-excel-and-csv-to-adf\\\",\\n        \\\"pipelineId\\\": \\\"a592d372-3bdf-417e-b650-4e3c02cec688\\\",\\n        \\\"protocolVersion\\\": \\\"v1.0.0\\\",\\n        \\\"orgSlug\\\": \\\"demo\\\",\\n        \\\"protocol\\\": {\\n            \\\"name\\\": \\\"Convert leaf nodes Excel into ADF\\\",\\n            \\\"steps\\\": [\\n                {\\n                    \\\"slug\\\": \\\"parse-leaf-nodes-excel-or-csv-to-json\\\",\\n                    \\\"description\\\": \\\"Parse a leaf node Excel into a json file, such that ADF/SHACL generation can be automated. \\\",\\n                    \\\"type\\\": \\\"parser\\\",\\n                    \\\"pattern\\\": \\\"map\\\",\\n                    \\\"script\\\": {\\n                        \\\"slug\\\": \\\"parse-leaf-nodes-excel-or-csv-to-json\\\",\\n                        \\\"version\\\": \\\"v1.0.0\\\"\\n                    },\\n                    \\\"inputMapping\\\": [\\n                        {\\n                            \\\"key\\\": \\\"tempDir\\\",\\n                            \\\"value\\\": \\\"/$context/session/fileDir\\\"\\n                        }\\n                    ],\\n                    \\\"outputMapping\\\": [\\n                        {\\n                            \\\"key\\\": \\\"leafNodesJson\\\",\\n                            \\\"shouldUpload\\\": true,\\n                            \\\"value\\\": \\\"/$session/leafNodesJson\\\"\\n                        }\\n                    ]\\n                }\\n            ]\\n        },\\n        \\\"inputFile\\\": {\\n            \\\"meta\\\": {\\n                \\\"fileId\\\": \\\"7beb45c3-2d07-4ad7-bf49-8efa29a52e44\\\",\\n                \\\"sourceType\\\": \\\"egnyte\\\",\\n                \\\"source\\\": {\\n                    \\\"type\\\": \\\"egnyte\\\",\\n                    \\\"egnyte\\\": {\\n                        \\\"url\\\": \\\"https://apptetrascience.qa-egnyte.com\\\",\\n                        \\\"integrationId\\\": \\\"febf8cab-0103-4320-ad63-7eab9f26d025\\\",\\n                        \\\"filePath\\\": \\\"/Private/demo/test/Structured Spreadsheet for RAMAN Data Cube automation 20180802.xlsx\\\",\\n                        \\\"fileName\\\": \\\"Structured Spreadsheet for RAMAN Data Cube automation 20180802.xlsx\\\",\\n                        \\\"groupId\\\": \\\"df754531-48bf-441b-8a6b-329f55914c51\\\",\\n                        \\\"entryId\\\": \\\"051d5fc1-be3e-4219-bc90-303b3a1e89df\\\",\\n                        \\\"checksum\\\": \\\"bbb609cb3fed2bcc2bec44de062c450115322f9b35bbf74f988d1d789326767bb59cf8f68a229c1e5808c8b51d6d22a631dc44ad49ae62c54056a89807367bb6\\\",\\n                        \\\"versionId\\\": \\\"051d5fc1-be3e-4219-bc90-303b3a1e89df\\\",\\n                        \\\"lastModifiedTime\\\": \\\"2018-09-17T17:47:42.000Z\\\",\\n                        \\\"versionNum\\\": 1\\n                    }\\n                }\\n            },\\n            \\\"fileKey\\\": \\\"demo/7beb45c3-2d07-4ad7-bf49-8efa29a52e44/1538761419866-Structured Spreadsheet for RAMAN Data Cube automation 20180802.xlsx\\\",\\n            \\\"bucket\\\": \\\"files-service\\\",\\n            \\\"type\\\": \\\"s3file\\\",\\n            \\\"checksum\\\": \\\"d219c4945c3167d4547640d211908640\\\"\\n        },\\n        \\\"tasks\\\": [\\n            {\\n                \\\"logs\\\": [\\n                    {\\n                        \\\"type\\\": \\\"content\\\",\\n                        \\\"content\\\": \\\"\\\",\\n                        \\\"sessionId\\\": \\\"5fc6004f-f9df-4f57-8455-49fd99e4bbc6\\\"\\n                    }\\n                ],\\n                \\\"slug\\\": \\\"parse-leaf-nodes-excel-or-csv-to-json\\\",\\n                \\\"errors\\\": [\\n                    {\\n                        \\\"error\\\": {\\n                            \\\"error\\\": {\\n                                \\\"message\\\": \\\"Parsing error\\\"\\n                            },\\n                            \\\"message\\\": \\\"Script failed. Please check the log file\\\"\\n                        },\\n                        \\\"action\\\": \\\"run-script\\\",\\n                        \\\"exitCode\\\": 1,\\n                        \\\"sessionId\\\": \\\"5fc6004f-f9df-4f57-8455-49fd99e4bbc6\\\",\\n                        \\\"humanReadableMsg\\\": \\\"Script failed. Please check the log file\\\"\\n                    }\\n                ],\\n                \\\"status\\\": \\\"failed\\\",\\n                \\\"taskId\\\": \\\"72e9f8fe-bbc6-49f7-b609-8c48e6b98447\\\",\\n                \\\"createdAt\\\": 1538761420014,\\n                \\\"lastUpdatedAt\\\": 1538761426013\\n            }\\n        ],\\n        \\\"status\\\": \\\"failed\\\",\\n        \\\"createdAt\\\": 1538761420014,\\n        \\\"lastUpdatedAt\\\": 1538761426013,\\n        \\\"pipelineConfig\\\": {}\\n    }\\n]\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd2c7b7c-63de-4fed-9c96-9006534bb8b0",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workflow",
+                    "workflows-draft"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "all"
+                    },
+                    {
+                      "key": "pipelineId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "340dfe41-5679-4385-9dc6-d2886135ddca",
+          "name": "Search Workflows (Deprecated)",
+          "request": {
+            "name": "Search Workflows (Deprecated)",
+            "description": {
+              "content": "Search data pipeline workflows",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workflow",
+                "workflows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Results page number - the start index of results is calculated as (page - 1) * limit. Page parameter will return results in range [start index, start index + limit]. Default value is 1. Value 0 will cause error."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000",
+                  "description": "Page size - number of the workflow results to retrieve for a given page."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "all",
+                  "description": "Filter by the workflow completion status. Possible values are: `all` - for all the workflows (completed and failed), `failed` - for the workflows that failed or were canceled, and `completed` - for the workflows that completed successfully."
+                },
+                {
+                  "disabled": false,
+                  "key": "pipelineId",
+                  "value": "<string>",
+                  "description": "Optional parameter. If provided, only the workflows associated with this pipelineid are retrieved. Otherwise, the workflows from all the pipelines are retrieved."
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<dateTime>",
+                  "description": "Optional parameter. If provided, service returns all the workflows created after this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<dateTime>",
+                  "description": "Optional parameter. If provided, service returns all the workflows created before this time. Value can be Unix time in milliseconds or date in ISO format with or without hours, minutes, seconds. If value is just a date without hours, minutes and second, timestamp will be defaulted to 00:00:00 for given date."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "981446bf-8c68-41a1-9c5b-7793503cc568",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workflow",
+                    "workflows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "all"
+                    },
+                    {
+                      "key": "pipelineId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"[\\n    {\\n        \\\"id\\\": \\\"ab3d4e44-483e-446f-9e76-92ab4d01f903\\\",\\n        \\\"protocolSlug\\\": \\\"leaf-nodes-excel-and-csv-to-adf\\\",\\n        \\\"pipelineId\\\": \\\"a592d372-3bdf-417e-b650-4e3c02cec688\\\",\\n        \\\"protocolVersion\\\": \\\"v1.0.0\\\",\\n        \\\"orgSlug\\\": \\\"demo\\\",\\n        \\\"protocol\\\": {\\n            \\\"name\\\": \\\"Convert leaf nodes Excel into ADF\\\",\\n            \\\"steps\\\": [\\n                {\\n                    \\\"slug\\\": \\\"parse-leaf-nodes-excel-or-csv-to-json\\\",\\n                    \\\"description\\\": \\\"Parse a leaf node Excel into a json file, such that ADF/SHACL generation can be automated. \\\",\\n                    \\\"type\\\": \\\"parser\\\",\\n                    \\\"pattern\\\": \\\"map\\\",\\n                    \\\"script\\\": {\\n                        \\\"slug\\\": \\\"parse-leaf-nodes-excel-or-csv-to-json\\\",\\n                        \\\"version\\\": \\\"v1.0.0\\\"\\n                    },\\n                    \\\"inputMapping\\\": [\\n                        {\\n                            \\\"key\\\": \\\"tempDir\\\",\\n                            \\\"value\\\": \\\"/$context/session/fileDir\\\"\\n                        }\\n                    ],\\n                    \\\"outputMapping\\\": [\\n                        {\\n                            \\\"key\\\": \\\"leafNodesJson\\\",\\n                            \\\"shouldUpload\\\": true,\\n                            \\\"value\\\": \\\"/$session/leafNodesJson\\\"\\n                        }\\n                    ]\\n                }\\n            ]\\n        },\\n        \\\"inputFile\\\": {\\n            \\\"meta\\\": {\\n                \\\"fileId\\\": \\\"7beb45c3-2d07-4ad7-bf49-8efa29a52e44\\\",\\n                \\\"sourceType\\\": \\\"egnyte\\\",\\n                \\\"source\\\": {\\n                    \\\"type\\\": \\\"egnyte\\\",\\n                    \\\"egnyte\\\": {\\n                        \\\"url\\\": \\\"https://apptetrascience.qa-egnyte.com\\\",\\n                        \\\"integrationId\\\": \\\"febf8cab-0103-4320-ad63-7eab9f26d025\\\",\\n                        \\\"filePath\\\": \\\"/Private/demo/test/Structured Spreadsheet for RAMAN Data Cube automation 20180802.xlsx\\\",\\n                        \\\"fileName\\\": \\\"Structured Spreadsheet for RAMAN Data Cube automation 20180802.xlsx\\\",\\n                        \\\"groupId\\\": \\\"df754531-48bf-441b-8a6b-329f55914c51\\\",\\n                        \\\"entryId\\\": \\\"051d5fc1-be3e-4219-bc90-303b3a1e89df\\\",\\n                        \\\"checksum\\\": \\\"bbb609cb3fed2bcc2bec44de062c450115322f9b35bbf74f988d1d789326767bb59cf8f68a229c1e5808c8b51d6d22a631dc44ad49ae62c54056a89807367bb6\\\",\\n                        \\\"versionId\\\": \\\"051d5fc1-be3e-4219-bc90-303b3a1e89df\\\",\\n                        \\\"lastModifiedTime\\\": \\\"2018-09-17T17:47:42.000Z\\\",\\n                        \\\"versionNum\\\": 1\\n                    }\\n                }\\n            },\\n            \\\"fileKey\\\": \\\"demo/7beb45c3-2d07-4ad7-bf49-8efa29a52e44/1538761419866-Structured Spreadsheet for RAMAN Data Cube automation 20180802.xlsx\\\",\\n            \\\"bucket\\\": \\\"files-service\\\",\\n            \\\"type\\\": \\\"s3file\\\",\\n            \\\"checksum\\\": \\\"d219c4945c3167d4547640d211908640\\\"\\n        },\\n        \\\"tasks\\\": [\\n            {\\n                \\\"logs\\\": [\\n                    {\\n                        \\\"type\\\": \\\"content\\\",\\n                        \\\"content\\\": \\\"\\\",\\n                        \\\"sessionId\\\": \\\"5fc6004f-f9df-4f57-8455-49fd99e4bbc6\\\"\\n                    }\\n                ],\\n                \\\"slug\\\": \\\"parse-leaf-nodes-excel-or-csv-to-json\\\",\\n                \\\"errors\\\": [\\n                    {\\n                        \\\"error\\\": {\\n                            \\\"error\\\": {\\n                                \\\"message\\\": \\\"Parsing error\\\"\\n                            },\\n                            \\\"message\\\": \\\"Script failed. Please check the log file\\\"\\n                        },\\n                        \\\"action\\\": \\\"run-script\\\",\\n                        \\\"exitCode\\\": 1,\\n                        \\\"sessionId\\\": \\\"5fc6004f-f9df-4f57-8455-49fd99e4bbc6\\\",\\n                        \\\"humanReadableMsg\\\": \\\"Script failed. Please check the log file\\\"\\n                    }\\n                ],\\n                \\\"status\\\": \\\"failed\\\",\\n                \\\"taskId\\\": \\\"72e9f8fe-bbc6-49f7-b609-8c48e6b98447\\\",\\n                \\\"createdAt\\\": 1538761420014,\\n                \\\"lastUpdatedAt\\\": 1538761426013\\n            }\\n        ],\\n        \\\"status\\\": \\\"failed\\\",\\n        \\\"createdAt\\\": 1538761420014,\\n        \\\"lastUpdatedAt\\\": 1538761426013,\\n        \\\"pipelineConfig\\\": {}\\n    }\\n]\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "faecf55c-ba8a-449c-b82c-1425b828eef0",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workflow",
+                    "workflows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "all"
+                    },
+                    {
+                      "key": "pipelineId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75b07bef-fafc-4f28-8220-951a9c484293",
+          "name": "Status By Pipeline",
+          "request": {
+            "name": "Status By Pipeline",
+            "description": {
+              "content": "Status of pipelines",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workflow",
+                "statusByPipeline"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15df163c-7a2b-4f15-8ec4-71c134ed35af",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workflow",
+                    "statusByPipeline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"results\\\": [\\n    {\\n        \\\"pipelineId\\\": \\\"2795061c-d7f5-4cbb-9fbf-39e5d559c18a\\\",\\n        \\\"statusCounts\\\": {\\n            \\\"pending\\\": 11118,\\n            \\\"processing\\\": 0\\n        }\\n    },\\n    {\\n        \\\"pipelineId\\\": \\\"c0ffba0e-0c2f-47b7-9663-9ed7a174db97\\\",\\n        \\\"statusCounts\\\": {\\n            \\\"pending\\\": 11118,\\n            \\\"processing\\\": 0\\n        }\\n    },\\n    {\\n        \\\"pipelineId\\\": \\\"0fc238c4-93e6-43a8-9709-0f022c96452b\\\",\\n        \\\"statusCounts\\\": {\\n            \\\"pending\\\": 11723,\\n            \\\"processing\\\": 60\\n        }\\n    },\\n    {\\n        \\\"pipelineId\\\": \\\"ef36087c-cb03-4224-b8f1-6adde0cc0fe9\\\",\\n        \\\"statusCounts\\\": {\\n            \\\"pending\\\": 2,\\n            \\\"processing\\\": 0\\n        }\\n    },\\n    {\\n        \\\"pipelineId\\\": \\\"6336dd52-0995-4dee-a76d-56c0805d7130\\\",\\n        \\\"statusCounts\\\": {\\n            \\\"pending\\\": 11742,\\n            \\\"processing\\\": 60\\n        }\\n    },\\n    {\\n        \\\"pipelineId\\\": \\\"aa1f120d-5b35-4cfc-8f0d-dc8b22924360\\\",\\n        \\\"statusCounts\\\": {\\n            \\\"pending\\\": 3,\\n            \\\"processing\\\": 0\\n        }\\n    },\\n    {\\n        \\\"pipelineId\\\": \\\"8592187a-d3ed-4410-8ffb-ee47826bebf7\\\",\\n        \\\"statusCounts\\\": {\\n            \\\"pending\\\": 1,\\n            \\\"processing\\\": 0\\n        }\\n    },\\n    {\\n        \\\"pipelineId\\\": \\\"de39c8cf-a9a9-40f2-8a5c-4f00ca6de418\\\",\\n        \\\"statusCounts\\\": {\\n            \\\"pending\\\": 11118,\\n            \\\"processing\\\": 0\\n        }\\n    }\\n  ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1d5e8dec-c04b-4e7e-a47e-5ea90eb3369f",
+    "name": "TetraScience Data and AI Cloud Access Groups Workflows API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

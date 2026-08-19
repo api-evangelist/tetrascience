@@ -1,0 +1,194 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Search API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search files via Elasticsearch Query Language",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/datalake/searchEql",
+            "headers": [
+              {
+                "name": "ts-auth-token",
+                "value": ""
+              },
+              {
+                "name": "x-org-slug",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "index",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute advanced search queries using Elasticsearch Query Language to find files based on metadata, content, labels, and processing attributes. Use this for complex search operations that require precise filtering."
+        },
+        {
+          "info": {
+            "name": "Search Files (GET) (Deprecated)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/fileinfo/search",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "File category. Values are RAW, IDS, and PROCESSED."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Display files started from a specified number in the results array. By default, files are displayed from the start of the array (the number 0). This parameter is included if the result set is large, pagination might be required. This parameter is typically used in conjunction with size."
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query",
+                "description": "Search for files created on or after a specific date."
+              },
+              {
+                "name": "excludeTags",
+                "value": "",
+                "type": "query",
+                "description": "Lists the tags that should be excluded. Files that have the specified tags associated with them do not appear in search results."
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Name, type, and version of the schema used to create the IDS file.  Format is {namespace}/{idsType}:{idsVersion}."
+              },
+              {
+                "name": "integrationId",
+                "value": "",
+                "type": "query",
+                "description": "UUID for the integration."
+              },
+              {
+                "name": "integrationType",
+                "value": "",
+                "type": "query",
+                "description": "Integration type.  Values are EGNYTE, BOX, DOTMATICS, HRB CELLARIO, DATAHUB, PIPELINE, RAW, and API."
+              },
+              {
+                "name": "metadata.[key]",
+                "value": "",
+                "type": "query",
+                "description": "Searches for files that have specific metadata."
+              },
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "query",
+                "description": "UUID for the pipeline."
+              },
+              {
+                "name": "rawFileId",
+                "value": "",
+                "type": "query",
+                "description": "UUID for the RAW file that this file was generated from."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Indicates the number of results to return in the request.  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with from."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Indicates the sort order for the search results.  Sort occurs on the date (createAt timestamp, which occurred when the file was created in the data lake. Options: desc, asc"
+              },
+              {
+                "name": "sourceId",
+                "value": "",
+                "type": "query",
+                "description": "UUID for the source."
+              },
+              {
+                "name": "sourceType",
+                "value": "",
+                "type": "query",
+                "description": "Type of source, which is typically the name of the instrument or other lab equipment used to generate the data or report."
+              },
+              {
+                "name": "traceId",
+                "value": "",
+                "type": "query",
+                "description": "UUID generated when the RAW file is first uploaded to the data lake. All files derived from the RAW file, such as an IDS file, have the same traceId."
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Lists tags that the user added to the file."
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query",
+                "description": "Search for files created on or before a specific date."
+              },
+              {
+                "name": "workflowId (Added version TDP 3.1.0)",
+                "value": "",
+                "type": "query",
+                "description": "ID for the pipeline workflow."
+              }
+            ]
+          },
+          "docs": "🚧 IMPORTANT The Search Files (GET) endpoint is on a deprecation path and does not support searching for files by metadata. It's recommended that you use the [/searchEql endpoint](<https://developers.tetrascience.com/reference/dl-fi-dl-search-files-via-elasticsearch-query>) instead. For more information, see [Search Files, Search Workflow, and Paginate through All Pipeline Details API Endpoints Deprecation](<https://developers.tetrascience.com/docs/tdp-deprecation-notices#search-files-search-wor"
+        },
+        {
+          "info": {
+            "name": "Search Files (POST) (Deprecated)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/fileinfo/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "🚧 IMPORTANT The Search Files (POST) endpoint is on a deprecation path and does not support searching for files by metadata. It's recommended that you use the [/searchEql endpoint](<https://developers.tetrascience.com/reference/dl-fi-dl-search-files-via-elasticsearch-query>) instead. For more information, see [Search Files, Search Workflow, and Paginate through All Pipeline Details API Endpoints Deprecation](<https://developers.tetrascience.com/docs/tdp-deprecation-notices#search-files-search-wo"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,157 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Logs API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query System Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/datalake/queryActivityLog",
+            "headers": [
+              {
+                "name": "ts-auth-token",
+                "value": ""
+              },
+              {
+                "name": "x-org-slug",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "queryId",
+                "value": "",
+                "type": "query",
+                "description": "Query ID to retrieve more logs"
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of logs to return"
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Next page token"
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query",
+                "description": "Number of logs to take"
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of logs to skip"
+              },
+              {
+                "name": "actor",
+                "value": "",
+                "type": "query",
+                "description": "Filter by actor name (case-insensitive partial match)"
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by target type (exact match)"
+              },
+              {
+                "name": "targetName",
+                "value": "",
+                "type": "query",
+                "description": "Filter by target name (case-insensitive partial match)"
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Filter by single action type"
+              },
+              {
+                "name": "actions",
+                "value": "",
+                "type": "query",
+                "description": "Filter by multiple action types (comma-separated)"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs after this timestamp (ISO format)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs before this timestamp (ISO format)"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter by array of IDs"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by target ID (case-insensitive partial match)"
+              },
+              {
+                "name": "changeReason",
+                "value": "",
+                "type": "query",
+                "description": "Filter by change reason (case-insensitive partial match)"
+              },
+              {
+                "name": "targetIds",
+                "value": "",
+                "type": "query",
+                "description": "Filter by multiple target IDs (comma-separated)"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Format of the response (use \"csv\" to download a CSV file)"
+              },
+              {
+                "name": "sortDirection",
+                "value": "",
+                "type": "query",
+                "description": "Order of sorting by timestamp (\"asc\" for ASC, DESC by default)"
+              }
+            ]
+          },
+          "docs": "This endpoint retrieves System Logs for user activity in the Data Lake. You can query logs based on various parameters to track user actions or file operations and changes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

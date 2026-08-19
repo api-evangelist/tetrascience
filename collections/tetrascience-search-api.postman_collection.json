@@ -1,0 +1,1015 @@
+{
+  "item": [
+    {
+      "id": "77d5ce17-d088-4b81-99b8-c22e83103f98",
+      "name": "Search",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d718ffed-c753-4915-999a-f1aeb4655ef1",
+          "name": "Search files via Elasticsearch Query Language",
+          "request": {
+            "name": "Search files via Elasticsearch Query Language",
+            "description": {
+              "content": "Execute advanced search queries using Elasticsearch Query Language to find files based on metadata, content, labels, and processing attributes. Use this for complex search operations that require precise filtering.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "datalake",
+                "searchEql"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "index",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "index",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) JWT Token for authentication",
+                "key": "ts-auth-token",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Your organization slug",
+                "key": "x-org-slug",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": true,\n  \"key_1\": 6519.468974176253,\n  \"key_2\": false,\n  \"key_3\": \"string\",\n  \"key_4\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ac17be14-3cc7-4d3b-8b1f-d233c683fb8b",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "datalake",
+                    "searchEql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "index",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "index",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) JWT Token for authentication",
+                    "key": "ts-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your organization slug",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": \"string\",\n  \"key_1\": 9356,\n  \"key_2\": false,\n  \"key_3\": 6767.693185650531\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"took\\\": 4,\\n    \\\"timed_out\\\": false,\\n    \\\"_shards\\\": {\\n        \\\"total\\\": 10,\\n        \\\"successful\\\": 10,\\n        \\\"skipped\\\": 0,\\n        \\\"failed\\\": 0\\n    },\\n    \\\"hits\\\": {\\n        \\\"total\\\": 1,\\n        \\\"max_score\\\": 0.2876821,\\n        \\\"hits\\\": [\\n            {\\n                \\\"_index\\\": \\\"client-uat_raw\\\",\\n                \\\"_type\\\": \\\"entity\\\",\\n                \\\"_id\\\": \\\"N2FRhmUBsUUn35dwY3Z5\\\",\\n                \\\"_score\\\": 0.2876821,\\n                \\\"_source\\\": {\\n                    \\\"fileId\\\": \\\"256dd68f-747c-4135-88e7-6b7dda3ae3e0\\\",\\n                    \\\"orgSlug\\\": \\\"kaleido-uat\\\",\\n                    \\\"category\\\": \\\"raw\\\",\\n                    \\\"sourceType\\\": \\\"egnyte\\\",\\n                    \\\"source\\\": {\\n                        \\\"type\\\": \\\"egnyte\\\",\\n                        \\\"egnyte\\\": {\\n                            \\\"integrationId\\\": \\\"a94b6a27-59e9-4d1d-a014-dbc810f688dd\\\",\\n                            \\\"filePath\\\": \\\"/Shared/client-uat/abc.txt\\\",\\n                            \\\"fileName\\\": \\\"abc.txt\\\",\\n                            \\\"groupId\\\": \\\"6bec083d-ae58-4e29-a3ae-87049a0bc72f\\\",\\n                            \\\"entryId\\\": \\\"61e316d4-94fc-48bd-83bf-911172c68964\\\",\\n                            \\\"checksum\\\": \\\"59ea1c161e1f789b27dfee620f16fdca3da1f4b04cda2480a539cb13540421c245e27314307182aae83e3ad0472e30ac5504c3476573b13ebd55be90daa05fd2\\\",\\n                            \\\"versionId\\\": \\\"61e316d4-94fc-48bd-83bf-911172c68964\\\",\\n                            \\\"lastModifiedTime\\\": \\\"2018-08-23T00:42:42.000Z\\\",\\n                            \\\"versionNum\\\": 2\\n                        }\\n                    },\\n                    \\\"createdAt\\\": \\\"2018-08-29T15:33:25.469Z\\\"\\n                }\\n            }\\n        ]\\n    }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e7cd606-2152-45fa-b098-375e081edd00",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "datalake",
+                    "searchEql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "index",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "index",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) JWT Token for authentication",
+                    "key": "ts-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your organization slug",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": \"string\",\n  \"key_1\": 9356,\n  \"key_2\": false,\n  \"key_3\": 6767.693185650531\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24f41301-0c2c-443e-8cac-fe395a75ad47",
+          "name": "Search Files (GET) (Deprecated)",
+          "request": {
+            "name": "Search Files (GET) (Deprecated)",
+            "description": {
+              "content": "🚧 IMPORTANT The Search Files (GET) endpoint is on a deprecation path and does not support searching for files by metadata. It's recommended that you use the [/searchEql endpoint](<https://developers.tetrascience.com/reference/dl-fi-dl-search-files-via-elasticsearch-query>) instead. For more information, see [Search Files, Search Workflow, and Paginate through All Pipeline Details API Endpoints Deprecation](<https://developers.tetrascience.com/docs/tdp-deprecation-notices#search-files-search-workflow-and-paginate-through-all-pipeline-details-api-endpoints-deprecation>).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "fileinfo",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "File category. Values are RAW, IDS, and PROCESSED."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "0",
+                  "description": "Display files started from a specified number in the results array. By default, files are displayed from the start of the array (the number 0). This parameter is included if the result set is large, pagination might be required. This parameter is typically used in conjunction with size."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<date>",
+                  "description": "Search for files created on or after a specific date."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeTags",
+                  "value": "<string>",
+                  "description": "Lists the tags that should be excluded. Files that have the specified tags associated with them do not appear in search results."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeTags",
+                  "value": "<string>",
+                  "description": "Lists the tags that should be excluded. Files that have the specified tags associated with them do not appear in search results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Name, type, and version of the schema used to create the IDS file.  Format is {namespace}/{idsType}:{idsVersion}."
+                },
+                {
+                  "disabled": false,
+                  "key": "integrationId",
+                  "value": "<string>",
+                  "description": "UUID for the integration."
+                },
+                {
+                  "disabled": false,
+                  "key": "integrationType",
+                  "value": "<string>",
+                  "description": "Integration type.  Values are EGNYTE, BOX, DOTMATICS, HRB CELLARIO, DATAHUB, PIPELINE, RAW, and API."
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata.[key]",
+                  "value": "<string>",
+                  "description": "Searches for files that have specific metadata."
+                },
+                {
+                  "disabled": false,
+                  "key": "pipelineId",
+                  "value": "<string>",
+                  "description": "UUID for the pipeline."
+                },
+                {
+                  "disabled": false,
+                  "key": "rawFileId",
+                  "value": "<string>",
+                  "description": "UUID for the RAW file that this file was generated from."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "100",
+                  "description": "Indicates the number of results to return in the request.  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with from."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "asc",
+                  "description": "Indicates the sort order for the search results.  Sort occurs on the date (createAt timestamp, which occurred when the file was created in the data lake. Options: desc, asc"
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceId",
+                  "value": "<string>",
+                  "description": "UUID for the source."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceType",
+                  "value": "<string>",
+                  "description": "Type of source, which is typically the name of the instrument or other lab equipment used to generate the data or report."
+                },
+                {
+                  "disabled": false,
+                  "key": "traceId",
+                  "value": "<string>",
+                  "description": "UUID generated when the RAW file is first uploaded to the data lake. All files derived from the RAW file, such as an IDS file, have the same traceId."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Lists tags that the user added to the file."
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Lists tags that the user added to the file."
+                },
+                {
+                  "disabled": false,
+                  "key": "toDate",
+                  "value": "<date>",
+                  "description": "Search for files created on or before a specific date."
+                },
+                {
+                  "disabled": false,
+                  "key": "workflowId (Added version TDP 3.1.0)",
+                  "value": "<string>",
+                  "description": "ID for the pipeline workflow."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eeb3c6fd-8ede-4df3-862f-7a9bbd4aa1d1",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fileinfo",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "0"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "excludeTags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeTags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "integrationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "integrationType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metadata.[key]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pipelineId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rawFileId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "sourceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "traceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "workflowId (Added version TDP 3.1.0)",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"from\\\": 0,\\n    \\\"size\\\": 1,\\n    \\\"sort\\\": \\\"asc\\\",\\n    \\\"hasNext\\\": false,\\n    \\\"hits\\\": [\\n        {\\n            \\\"fileId\\\": \\\"ac2750f0-f252-4083-90d1-7825d2b1691f\\\",\\n            \\\"filePath\\\": \\\"/my-machine-name/UNICORN_HDAServer12.1/Default/Folders/DefaultHome/Cheng/01/sample_01 - SPPD-17-0050 BHIC 09APR17 New Resin Run 1 001.json/0.json\\\",\\n            \\\"orgSlug\\\": \\\"tetrascience\\\",\\n            \\\"traceId\\\": \\\"6f1b19f7-fa44-43fe-9d32-ad30ac3069a1\\\",\\n            \\\"file\\\": {\\n                \\\"bucket\\\": \\\"myBucketName\\\",\\n                \\\"path\\\": \\\"tetrascience/7abaa520-726d-4182-9e17-8c830f29ae0e/IDS/my-machine-name/UNICORN_HDAServer12.1/Default/Folders/DefaultHome/Cheng/01/sample_01 - SPPD-17-0050 BHIC 09APR17 New Resin Run 1 001.json/0.json\\\",\\n                \\\"checksum\\\": \\\"690a567e4d58c1ea87e5cb1d8c4fd54a-2\\\",\\n                \\\"size\\\": 5984603,\\n                \\\"type\\\": null,\\n                \\\"version\\\": \\\"v3.A3soqFFydk2V1PXBwXcyJgV17sUuh\\\"\\n            },\\n            \\\"createdAt\\\": \\\"2021-08-21T23:13:04.000Z\\\",\\n            \\\"category\\\": \\\"IDS\\\",\\n            \\\"integration\\\": {\\n                \\\"id\\\": \\\"d61bcba5-3ebb-4149-a59d-16f4c20b4b86\\\",\\n                \\\"type\\\": \\\"datapipeline\\\",\\n                \\\"name\\\": \\\"Liang Unicorn v2.6.0 Test 05-04-2020\\\",\\n                \\\"workflowId\\\": \\\"eeac26b1-5034-4a1d-a97f-0c8b8cd2ea1e\\\",\\n                \\\"masterScript\\\": \\\"common/akta-raw-to-ids:v3.0.0\\\",\\n                \\\"taskScript\\\": \\\"common/akta-raw-to-ids:v3.0.0\\\",\\n                \\\"taskSlug\\\": \\\"akta-raw-to-ids\\\",\\n                \\\"taskExecutionId\\\": \\\"12202ae7-a796-4dc8-b048-0da994b38ec2\\\"\\n            },\\n            \\\"source\\\": {\\n                \\\"id\\\": \\\"7abaa520-726d-4182-9e17-8c830f29ae0e\\\",\\n                \\\"type\\\": \\\"unicorn-hda\\\",\\n                \\\"name\\\": \\\"UNICORN-TEST-AGENT-2\\\",\\n                \\\"datapipeline\\\": {\\n                    \\\"workflowId\\\": \\\"eeac26b1-5034-4a1d-a97f-0c8b8cd2ea1e\\\",\\n                    \\\"taskExecutionId\\\": \\\"12202ae7-a796-4dc8-b048-0da994b38ec2\\\",\\n                    \\\"taskSlug\\\": \\\"akta-raw-to-ids\\\",\\n                    \\\"taskScript\\\": \\\"common/akta-raw-to-ids:v3.0.0\\\",\\n                    \\\"masterScript\\\": \\\"common/akta-raw-to-ids:v3.0.0\\\",\\n                    \\\"inputFileId\\\": \\\"6f1b19f7-fa44-43fe-9d32-ad30ac3069a1\\\"\\n                }\\n            },\\n            \\\"rawFileId\\\": \\\"6f1b19f7-fa44-43fe-9d32-ad30ac3069a1\\\",\\n            \\\"ids\\\": \\\"common/akta:v3.0.0\\\",\\n            \\\"metadata\\\": {\\n                \\\"Version\\\": \\\"v330\\\",\\n                \\\"CREATED_FOR\\\": \\\"PQ\\\",\\n                \\\"cheeeng\\\": \\\"sss\\\"\\n            },\\n            \\\"tags\\\": [\\n                \\\"PQ\\\",\\n                \\\"ssss\\\"\\n            ],\\n            \\\"deleted\\\": false,\\n            \\\"outdated\\\": false\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea0bd4a8-8196-40ce-b3c3-fc5d547b1fe8",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fileinfo",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "0"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "excludeTags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeTags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "integrationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "integrationType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metadata.[key]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pipelineId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rawFileId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "sourceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "traceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "workflowId (Added version TDP 3.1.0)",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 401,\\n    \\\"error\\\": \\\"Unauthorized\\\",\\n    \\\"message\\\": \\\"Invalid token\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d021f0b-e018-4c28-8c51-05718955137e",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fileinfo",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "0"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "excludeTags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeTags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "integrationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "integrationType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metadata.[key]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pipelineId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rawFileId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "sourceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "traceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "workflowId (Added version TDP 3.1.0)",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 500,\\n    \\\"error\\\": \\\"Internal Server Error\\\",\\n    \\\"message\\\": \\\"Internal Server Error\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24fd5f04-1e64-4e1b-b018-f4b967f66915",
+          "name": "Search Files (POST) (Deprecated)",
+          "request": {
+            "name": "Search Files (POST) (Deprecated)",
+            "description": {
+              "content": "🚧 IMPORTANT The Search Files (POST) endpoint is on a deprecation path and does not support searching for files by metadata. It's recommended that you use the [/searchEql endpoint](<https://developers.tetrascience.com/reference/dl-fi-dl-search-files-via-elasticsearch-query>) instead. For more information, see [Search Files, Search Workflow, and Paginate through All Pipeline Details API Endpoints Deprecation](<https://developers.tetrascience.com/docs/tdp-deprecation-notices#search-files-search-workflow-and-paginate-through-all-pipeline-details-api-endpoints-deprecation>).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "fileinfo",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category\": \"<string>\",\n  \"from\": 0,\n  \"fromDate\": \"<date>\",\n  \"excludeTags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ids\": \"<string>\",\n  \"integrationId\": \"<string>\",\n  \"integrationType\": \"<string>\",\n  \"metadata\": {},\n  \"pipelineId\": \"<string>\",\n  \"rawFileId\": \"<string>\",\n  \"size\": 100,\n  \"sort\": \"asc\",\n  \"sourceId\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"toDate\": \"<date>\",\n  \"traceId\": \"<string>\",\n  \"workflowId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f3f7b217-1386-4dfb-9ce5-670eef3f23e4",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fileinfo",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"<string>\",\n  \"from\": 0,\n  \"fromDate\": \"<date>\",\n  \"excludeTags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ids\": \"<string>\",\n  \"integrationId\": \"<string>\",\n  \"integrationType\": \"<string>\",\n  \"metadata\": {},\n  \"pipelineId\": \"<string>\",\n  \"rawFileId\": \"<string>\",\n  \"size\": 100,\n  \"sort\": \"asc\",\n  \"sourceId\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"toDate\": \"<date>\",\n  \"traceId\": \"<string>\",\n  \"workflowId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"from\\\": 0,\\n    \\\"size\\\": 1,\\n    \\\"sort\\\": \\\"asc\\\",\\n    \\\"hasNext\\\": false,\\n    \\\"hits\\\": [\\n        {\\n            \\\"fileId\\\": \\\"ac2750f0-f252-4083-90d1-7825d2b1691f\\\",\\n            \\\"filePath\\\": \\\"/my-machine-name/UNICORN_HDAServer12.1/Default/Folders/DefaultHome/Cheng/01/sample_01 - SPPD-17-0050 BHIC 09APR17 New Resin Run 1 001.json/0.json\\\",\\n            \\\"orgSlug\\\": \\\"tetrascience\\\",\\n            \\\"traceId\\\": \\\"6f1b19f7-fa44-43fe-9d32-ad30ac3069a1\\\",\\n            \\\"file\\\": {\\n                \\\"bucket\\\": \\\"myBucketName\\\",\\n                \\\"path\\\": \\\"tetrascience/7abaa520-726d-4182-9e17-8c830f29ae0e/IDS/my-machine-name/UNICORN_HDAServer12.1/Default/Folders/DefaultHome/Cheng/01/sample_01 - SPPD-17-0050 BHIC 09APR17 New Resin Run 1 001.json/0.json\\\",\\n                \\\"checksum\\\": \\\"690a567e4d58c1ea87e5cb1d8c4fd54a-2\\\",\\n                \\\"size\\\": 5984603,\\n                \\\"type\\\": null,\\n                \\\"version\\\": \\\"v3.A3soqFFydk2V1PXBwXcyJgV17sUuh\\\"\\n            },\\n            \\\"createdAt\\\": \\\"2021-08-21T23:13:04.000Z\\\",\\n            \\\"category\\\": \\\"IDS\\\",\\n            \\\"integration\\\": {\\n                \\\"id\\\": \\\"d61bcba5-3ebb-4149-a59d-16f4c20b4b86\\\",\\n                \\\"type\\\": \\\"datapipeline\\\",\\n                \\\"name\\\": \\\"Liang Unicorn v2.6.0 Test 05-04-2020\\\",\\n                \\\"workflowId\\\": \\\"eeac26b1-5034-4a1d-a97f-0c8b8cd2ea1e\\\",\\n                \\\"masterScript\\\": \\\"common/akta-raw-to-ids:v3.0.0\\\",\\n                \\\"taskScript\\\": \\\"common/akta-raw-to-ids:v3.0.0\\\",\\n                \\\"taskSlug\\\": \\\"akta-raw-to-ids\\\",\\n                \\\"taskExecutionId\\\": \\\"12202ae7-a796-4dc8-b048-0da994b38ec2\\\"\\n            },\\n            \\\"source\\\": {\\n                \\\"id\\\": \\\"7abaa520-726d-4182-9e17-8c830f29ae0e\\\",\\n                \\\"type\\\": \\\"unicorn-hda\\\",\\n                \\\"name\\\": \\\"UNICORN-TEST-AGENT-2\\\",\\n                \\\"datapipeline\\\": {\\n                    \\\"workflowId\\\": \\\"eeac26b1-5034-4a1d-a97f-0c8b8cd2ea1e\\\",\\n                    \\\"taskExecutionId\\\": \\\"12202ae7-a796-4dc8-b048-0da994b38ec2\\\",\\n                    \\\"taskSlug\\\": \\\"akta-raw-to-ids\\\",\\n                    \\\"taskScript\\\": \\\"common/akta-raw-to-ids:v3.0.0\\\",\\n                    \\\"masterScript\\\": \\\"common/akta-raw-to-ids:v3.0.0\\\",\\n                    \\\"inputFileId\\\": \\\"6f1b19f7-fa44-43fe-9d32-ad30ac3069a1\\\"\\n                }\\n            },\\n            \\\"rawFileId\\\": \\\"6f1b19f7-fa44-43fe-9d32-ad30ac3069a1\\\",\\n            \\\"ids\\\": \\\"common/akta:v3.0.0\\\",\\n            \\\"metadata\\\": {\\n                \\\"Version\\\": \\\"v330\\\",\\n                \\\"CREATED_FOR\\\": \\\"PQ\\\",\\n                \\\"cheeeng\\\": \\\"sss\\\"\\n            },\\n            \\\"tags\\\": [\\n                \\\"PQ\\\",\\n                \\\"ssss\\\"\\n            ],\\n            \\\"deleted\\\": false,\\n            \\\"outdated\\\": false\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "338968e1-955d-400f-b887-d83514a578a9",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fileinfo",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"<string>\",\n  \"from\": 0,\n  \"fromDate\": \"<date>\",\n  \"excludeTags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ids\": \"<string>\",\n  \"integrationId\": \"<string>\",\n  \"integrationType\": \"<string>\",\n  \"metadata\": {},\n  \"pipelineId\": \"<string>\",\n  \"rawFileId\": \"<string>\",\n  \"size\": 100,\n  \"sort\": \"asc\",\n  \"sourceId\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"toDate\": \"<date>\",\n  \"traceId\": \"<string>\",\n  \"workflowId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 401,\\n    \\\"error\\\": \\\"Unauthorized\\\",\\n    \\\"message\\\": \\\"Invalid token\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f889284-e740-45ae-9ee4-b2c117f62c2c",
+              "name": "500",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fileinfo",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"<string>\",\n  \"from\": 0,\n  \"fromDate\": \"<date>\",\n  \"excludeTags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ids\": \"<string>\",\n  \"integrationId\": \"<string>\",\n  \"integrationType\": \"<string>\",\n  \"metadata\": {},\n  \"pipelineId\": \"<string>\",\n  \"rawFileId\": \"<string>\",\n  \"size\": 100,\n  \"sort\": \"asc\",\n  \"sourceId\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"toDate\": \"<date>\",\n  \"traceId\": \"<string>\",\n  \"workflowId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"statusCode\\\": 500,\\n    \\\"error\\\": \\\"Internal Server Error\\\",\\n    \\\"message\\\": \\\"Internal Server Error\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ad8f4823-7ca0-4c47-ba39-7d482b7d532c",
+    "name": "TetraScience Data and AI Cloud Access Groups Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

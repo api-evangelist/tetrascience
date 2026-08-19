@@ -1,0 +1,2282 @@
+{
+  "item": [
+    {
+      "id": "a8c2a7df-6bb8-4903-a3eb-7fd57081d50a",
+      "name": "Roles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a0ad24ff-a9fb-4806-a699-31a6df5602f8",
+          "name": "Delete role by ID",
+          "request": {
+            "name": "Delete role by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "roles",
+                ":roleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                  "key": "roleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00047def-f68c-4718-83d3-ffb286720281",
+              "name": "Role deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0c68f6cb-f882-4bd8-ad88-3447d9ec3da8",
+              "name": "Invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "709c2a05-99ac-44f6-a1f9-1611c0038e16",
+              "name": "Caller is not authorized to perform this action",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "230e35c8-7103-4601-aeb4-23dee8b891fb",
+              "name": "Role not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9e9ceab-1338-4693-823b-efbb2fdbfc75",
+          "name": "Get role by ID",
+          "request": {
+            "name": "Get role by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "roles",
+                ":roleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                  "key": "roleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a5ea954-4f38-4a9d-bdf0-3a7e5cef01d6",
+              "name": "Responding with role",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ],\n  \"enabled\": false,\n  \"createdAt\": {\n    \"value\": \"reference #/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt not found in the OpenAPI spec\"\n  },\n  \"policyScopes\": [\n    \"developer\",\n    \"developer\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f02eae3f-22e9-47cc-a331-555e1fe2ae8a",
+              "name": "Invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "44756a19-64f4-4fa0-812b-c3cdc801c8cc",
+              "name": "Caller is not authorized to perform this action",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "614edc68-0c55-4ede-a3bd-3b44cdb64b9a",
+              "name": "Role not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a706480c-b6a3-442e-abbe-3287ce18b257",
+          "name": "Update role by ID",
+          "request": {
+            "name": "Update role by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "roles",
+                ":roleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                  "key": "roleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "03d9ac90-f961-40fb-a37f-38690bd7395f",
+              "name": "Responding with updated role",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"policyScopes\": [\n    \"developer\",\n    \"developer\"\n  ],\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ],\n  \"enabled\": false,\n  \"createdAt\": {\n    \"value\": \"reference #/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt not found in the OpenAPI spec\"\n  },\n  \"policyScopes\": [\n    \"developer\",\n    \"developer\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae9fc670-851f-4202-882a-55668d809759",
+              "name": "Invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"policyScopes\": [\n    \"developer\",\n    \"developer\"\n  ],\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b92d9757-f8da-484c-b3b6-437815ef31da",
+              "name": "Caller is not authorized to perform this action",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"policyScopes\": [\n    \"developer\",\n    \"developer\"\n  ],\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f936e83-4796-4d3e-b4ed-5842ef7b3752",
+              "name": "Role not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"policyScopes\": [\n    \"developer\",\n    \"developer\"\n  ],\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5729ed43-8192-4942-843d-7e7bfcfd3d7f",
+          "name": "Get all policies supported in the system",
+          "request": {
+            "name": "Get all policies supported in the system",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "roles",
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "341cef5e-69fe-4800-99ba-2701b15600f7",
+              "name": "Responding with list of policies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"Developer\",\n    \"scope\": \"developer\"\n  },\n  {\n    \"name\": \"Developer\",\n    \"scope\": \"developer\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82b640b4-e9c5-4d08-ba04-cf82a41d58db",
+              "name": "Invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a3f36694-a3a9-43b4-bdd7-39aacde87d32",
+              "name": "Caller is not authorized to perform this action",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "428b328b-eb9b-4889-8979-f0271dbd5661",
+          "name": "Get users with the role",
+          "request": {
+            "name": "Get users with the role",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "roles",
+                ":roleId",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "1",
+                  "description": "Page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25",
+                  "description": "Page size"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                  "key": "roleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f117fe39-91be-48fb-83b9-3bb908637f54",
+              "name": "Responding with list of users",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 100,\n  \"count\": 25,\n  \"users\": [\n    {\n      \"authType\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n      },\n      \"email\": {\n        \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n      },\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"id\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n      },\n      \"lastActivity\": \"string\",\n      \"status\": \"active\",\n      \"systemRole\": \"string\",\n      \"roles\": [\n        {\n          \"id\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"orgSlug\": {\n            \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n          },\n          \"organizationId\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"role\": {},\n          \"roleId\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"status\": \"inactive\",\n          \"userId\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"orgName\": \"string\"\n        },\n        {\n          \"id\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"orgSlug\": {\n            \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n          },\n          \"organizationId\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"role\": {},\n          \"roleId\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"status\": \"inactive\",\n          \"userId\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"orgName\": \"string\"\n        }\n      ]\n    },\n    {\n      \"authType\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/authType not found in the OpenAPI spec\"\n      },\n      \"email\": {\n        \"value\": \"reference #/paths/~1login/post/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n      },\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"id\": {\n        \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n      },\n      \"lastActivity\": \"string\",\n      \"status\": \"inactive\",\n      \"systemRole\": \"string\",\n      \"roles\": [\n        {\n          \"id\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"orgSlug\": {\n            \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n          },\n          \"organizationId\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"role\": {},\n          \"roleId\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"status\": \"inactive\",\n          \"userId\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"orgName\": \"string\"\n        },\n        {\n          \"id\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"orgSlug\": {\n            \"value\": \"reference #/paths/~1%7Bsubdomain%7D~1login~1config/get/parameters/0/schema not found in the OpenAPI spec\"\n          },\n          \"organizationId\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"role\": {},\n          \"roleId\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"status\": \"inactive\",\n          \"userId\": {\n            \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n          },\n          \"orgName\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "457b1206-2306-4cbf-b10a-0f7300b99a04",
+              "name": "Invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8eae534f-32a9-43fa-9d8d-c2c82b1a32fb",
+              "name": "Caller is not authorized to perform this action",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d236922a-a6fa-4ba7-85b8-be4cac0980ce",
+              "name": "Role not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8422bf0-7fe8-4d67-a18c-d0f30b3e883d",
+          "name": "Add / remove users to role",
+          "request": {
+            "name": "Add / remove users to role",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "roles",
+                ":roleId",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                  "key": "roleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userIdsToAdd\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ],\n  \"userIdsToRemove\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4aff20ce-6df8-43a3-a27a-e4e6233c29f9",
+              "name": "Users added / removed from role successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userIdsToAdd\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ],\n  \"userIdsToRemove\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "49137f45-8969-4396-a972-d8f588ed8532",
+              "name": "Invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userIdsToAdd\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ],\n  \"userIdsToRemove\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e882fd51-1fdf-47d5-aa4e-03a075e828a1",
+              "name": "Caller is not authorized to perform this action",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userIdsToAdd\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ],\n  \"userIdsToRemove\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a21a1eb-e3a2-45f6-9233-2c2793bfd4eb",
+              "name": "Role not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userIdsToAdd\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ],\n  \"userIdsToRemove\": [\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "315dbbd6-fe5e-41e3-ac30-85ea7322ff6e",
+          "name": "List all roles in an organization",
+          "request": {
+            "name": "List all roles in an organization",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aabcbadc-69ec-4a94-9931-253eae45bb57",
+              "name": "Responding with list of roles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"organizationId\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"ssoGroupMappings\": [\n      \"idp-group-name\",\n      \"idp-group-name\"\n    ],\n    \"enabled\": true,\n    \"createdAt\": {\n      \"value\": \"reference #/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt not found in the OpenAPI spec\"\n    },\n    \"policyScopes\": [\n      \"developer\",\n      \"developer\"\n    ]\n  },\n  {\n    \"id\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"organizationId\": {\n      \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n    },\n    \"ssoGroupMappings\": [\n      \"idp-group-name\",\n      \"idp-group-name\"\n    ],\n    \"enabled\": false,\n    \"createdAt\": {\n      \"value\": \"reference #/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt not found in the OpenAPI spec\"\n    },\n    \"policyScopes\": [\n      \"developer\",\n      \"developer\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a125e58-1dee-435e-8a79-aca824def239",
+              "name": "Invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f4ba9e3-b5ad-4e9c-bae0-3041b141697a",
+              "name": "Caller is not authorized to perform this action",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d6add8b-ad8f-4717-959e-3834aac7e685",
+              "name": "Organization not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "adad74f6-cb35-4884-9b02-75f75b122013",
+          "name": "Create a new role in an organization",
+          "request": {
+            "name": "Create a new role in an organization",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"ssoGroupMappings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"policyScopes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eb4cd8af-8250-490a-a0ee-9f3921f76134",
+              "name": "Responding with created role",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"policyScopes\": [\n    \"developer\",\n    \"developer\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ],\n  \"enabled\": false,\n  \"createdAt\": {\n    \"value\": \"reference #/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt not found in the OpenAPI spec\"\n  },\n  \"policyScopes\": [\n    \"developer\",\n    \"developer\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27b201e3-cc1b-4c8d-a432-8d0ec0ef1d3c",
+              "name": "Invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"policyScopes\": [\n    \"developer\",\n    \"developer\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4998b819-28f8-4f6a-81e3-2c3191d69e9f",
+              "name": "Caller is not authorized to perform this action",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"policyScopes\": [\n    \"developer\",\n    \"developer\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a0afea33-0dc6-435b-a158-f7aff38a32d8",
+              "name": "Organization not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"policyScopes\": [\n    \"developer\",\n    \"developer\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9155a06-f9b4-441a-823a-7180fdf39993",
+          "name": "Update SSO group mapping for role",
+          "request": {
+            "name": "Update SSO group mapping for role",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "roles",
+                ":roleId",
+                "ssoMapping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                  "key": "roleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ssoGroupMappings\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d5df212-557b-4c2d-a5aa-9b14ef7b3423",
+              "name": "Responding with updated role",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId",
+                    "ssoMapping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"organizationId\": {\n    \"value\": \"reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec\"\n  },\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ],\n  \"enabled\": true,\n  \"createdAt\": {\n    \"value\": \"reference #/paths/~1v1~1organizations~1%7BorganizationId%7D/get/responses/200/content/application~1json/schema/properties/createdAt not found in the OpenAPI spec\"\n  },\n  \"policyScopes\": [\n    \"developer\",\n    \"developer\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7365afb2-785e-4aa4-a540-52f9f491ec67",
+              "name": "Invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId",
+                    "ssoMapping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6c01b15-3c09-44e9-a5a4-62ebdbb64107",
+              "name": "Caller is not authorized to perform this action",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId",
+                    "ssoMapping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7c6b6421-5451-4dc2-b794-fe99c2ffa961",
+              "name": "Role not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "roles",
+                    ":roleId",
+                    "ssoMapping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "reference #/paths/~1login~1update-expired/put/responses/200/content/application~1json/schema/properties/id not found in the OpenAPI spec",
+                      "key": "roleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ssoGroupMappings\": [\n    \"idp-group-name\",\n    \"idp-group-name\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b886b9b4-bd6e-49be-a431-f6a40cceba75",
+    "name": "TetraScience Data and AI Cloud Access Groups Roles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

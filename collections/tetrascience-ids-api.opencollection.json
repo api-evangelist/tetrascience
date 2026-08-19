@@ -1,0 +1,316 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups IDS API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "IDS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all IDSes for namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/ids/:namespace",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all IDS artifacts given a namespace"
+        },
+        {
+          "info": {
+            "name": "Returns a list of IDS artifacts given a namespace and slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/ids/:namespace/:slug",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all IDS artifacts given a namespace and slug"
+        },
+        {
+          "info": {
+            "name": "Get contents for an IDS file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/ids/:namespace/:slug/:version/files/:fileSlug",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "fileSlug",
+                "value": "build",
+                "type": "path",
+                "description": "File slug corresponding to file within an IDS"
+              },
+              {
+                "name": "download",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, return a download url"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns the file contents for an IDS file given a namespace, slug, version, and file slug"
+        },
+        {
+          "info": {
+            "name": "Get single IDS",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/ids/:namespace/:slug/:version",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a single IDS artifact matching the namespace, slug, and version"
+        },
+        {
+          "info": {
+            "name": "Get labels for an IDS",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/ids/:namespace/:slug/:version/labels",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of the labels associated with a IDS artifact"
+        },
+        {
+          "info": {
+            "name": "Get artifacts related to IDS",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/ids/:namespace/:slug/:version/relationships",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of the relationships a IDS artifact has with other artifacts"
+        },
+        {
+          "info": {
+            "name": "List all ids artifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/ids",
+            "params": [
+              {
+                "name": "namespace_type",
+                "value": "client",
+                "type": "query",
+                "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all IDS artifacts, optionally filtered by namespace type"
+        },
+        {
+          "info": {
+            "name": "Search for items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/artifacts/ids/search",
+            "params": [
+              {
+                "name": "value",
+                "value": "",
+                "type": "query",
+                "description": "The search string"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Search for items using specified criteria"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

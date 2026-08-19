@@ -1,0 +1,4742 @@
+{
+  "item": [
+    {
+      "id": "ccb37e23-49a6-4dd8-aad3-d6e75b14571b",
+      "name": "Connectors",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d7ee2f60-94b7-4d58-b9ba-46b4593f38ef",
+          "name": "Get all Connectors",
+          "request": {
+            "name": "Get all Connectors",
+            "description": {
+              "content": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get a list of Connectors.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data-acquisition",
+                "connectors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de5a3f37-04bd-481a-abce-21c53d50c03b",
+              "name": "Successful response with a list of all Connectors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectors\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"orgSlug\": \"string\",\n      \"artifact\": {\n        \"namespace\": \"string\",\n        \"slug\": \"string\",\n        \"version\": \"string\",\n        \"manifest\": \"string\"\n      },\n      \"hostType\": \"cloud\",\n      \"metadata\": {},\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"commandQueue\": \"string\",\n      \"clusterArn\": \"string\",\n      \"taskDefinitionArn\": \"string\",\n      \"health\": \"N/A\",\n      \"operatingStatus\": \"IDLE\",\n      \"networkStatus\": \"Offline\",\n      \"lastSeenAt\": \"2008-07-25T11:25:21.563Z\",\n      \"updatedAt\": \"1978-06-23T07:45:32.329Z\",\n      \"createdAt\": \"1975-10-23T13:22:55.136Z\",\n      \"description\": \"string\",\n      \"hub\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"orgSlug\": \"string\",\n        \"l7ProxyForwardPort\": 7364.11747938897,\n        \"l7ProxyReverseHttpPort\": 5437.017261723464,\n        \"l7ProxyReverseHttpsPort\": 954.6851777315679,\n        \"l7ProxySocatPort\": 5248.787497474653,\n        \"l7ProxyLocalnets\": \"string\",\n        \"l7ProxyMaximumMemoryMb\": 7433.032917893938,\n        \"enabled\": true,\n        \"host\": {\n          \"ipAddress\": \"string\",\n          \"hostName\": \"string\",\n          \"platformName\": \"string\",\n          \"platformVersion\": \"string\"\n        },\n        \"updatedAt\": \"2009-01-12T04:27:28.239Z\",\n        \"createdAt\": \"1973-02-22T23:54:12.084Z\",\n        \"activationExpiresAt\": \"2023-05-08T14:33:27.699Z\",\n        \"description\": \"string\",\n        \"httpProxyHost\": \"string\",\n        \"httpProxyPort\": 6428.034414898828,\n        \"httpProxyUsername\": \"string\",\n        \"httpsProxyHost\": \"string\",\n        \"httpsProxyPort\": 2898.0312817132326,\n        \"httpsProxyUsername\": \"string\",\n        \"noProxy\": \"string\",\n        \"l7ProxyReverseMqttPort\": 9789.589811772814,\n        \"l7ProxySocatMqttPort\": 7663.583187199113,\n        \"l7ProxyDnsNameservers\": \"string\",\n        \"l7ProxyWhitelist\": \"string\",\n        \"status\": {\n          \"network\": \"Online\",\n          \"lastSeen\": \"2014-05-25T10:23:37.269Z\",\n          \"proxies\": {\n            \"l7\": {\n              \"startedAt\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"l7ReverseNginx\": {\n              \"startedAt\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"l7ReverseSocat\": {\n              \"startedAt\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"metrics\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"metrics\": [\n            {\n              \"cpuUsedSystem\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cpuUsedUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"diskFree\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"diskUsed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryUsed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryFree\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryBuffered\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryCached\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryAvailable\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryTotal\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryUsedPercentOfReservation\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryMax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"cpuUsedSystem\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cpuUsedUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"diskFree\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"diskUsed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryUsed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryFree\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryBuffered\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryCached\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryAvailable\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryTotal\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryUsedPercentOfReservation\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryMax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"health\": {\n            \"breakdown\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"status\": \"CRITICAL\"\n          }\n        },\n        \"ssmInstanceId\": \"string\",\n        \"ecsContainerInstanceArn\": \"string\"\n      },\n      \"healthErrorCode\": \"string\",\n      \"config\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"orgSlug\": \"string\",\n      \"artifact\": {\n        \"namespace\": \"string\",\n        \"slug\": \"string\",\n        \"version\": \"string\",\n        \"manifest\": 5235.556554147477\n      },\n      \"hostType\": \"hub\",\n      \"metadata\": {},\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"commandQueue\": \"string\",\n      \"clusterArn\": \"string\",\n      \"taskDefinitionArn\": \"string\",\n      \"health\": \"CRITICAL\",\n      \"operatingStatus\": \"IDLE\",\n      \"networkStatus\": \"Offline\",\n      \"lastSeenAt\": \"1952-03-22T05:09:16.900Z\",\n      \"updatedAt\": \"1948-10-09T02:33:41.106Z\",\n      \"createdAt\": \"1982-05-09T08:07:26.003Z\",\n      \"description\": \"string\",\n      \"hub\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"orgSlug\": \"string\",\n        \"l7ProxyForwardPort\": 3678.372556220281,\n        \"l7ProxyReverseHttpPort\": 9857.956275860108,\n        \"l7ProxyReverseHttpsPort\": 7237.603495330192,\n        \"l7ProxySocatPort\": 8630.793980159724,\n        \"l7ProxyLocalnets\": \"string\",\n        \"l7ProxyMaximumMemoryMb\": 5851.485945055905,\n        \"enabled\": true,\n        \"host\": {\n          \"ipAddress\": \"string\",\n          \"hostName\": \"string\",\n          \"platformName\": \"string\",\n          \"platformVersion\": \"string\"\n        },\n        \"updatedAt\": \"2003-04-17T13:02:49.467Z\",\n        \"createdAt\": \"1972-05-26T09:52:12.489Z\",\n        \"activationExpiresAt\": \"1994-08-24T10:15:24.229Z\",\n        \"description\": \"string\",\n        \"httpProxyHost\": \"string\",\n        \"httpProxyPort\": 8183.892762004145,\n        \"httpProxyUsername\": \"string\",\n        \"httpsProxyHost\": \"string\",\n        \"httpsProxyPort\": 1566.9612601486838,\n        \"httpsProxyUsername\": \"string\",\n        \"noProxy\": \"string\",\n        \"l7ProxyReverseMqttPort\": 1505.0444694660237,\n        \"l7ProxySocatMqttPort\": 905.2655550155154,\n        \"l7ProxyDnsNameservers\": \"string\",\n        \"l7ProxyWhitelist\": \"string\",\n        \"status\": {\n          \"network\": \"Never Seen\",\n          \"lastSeen\": \"1967-04-27T09:37:39.083Z\",\n          \"proxies\": {\n            \"l7\": {\n              \"startedAt\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"l7ReverseNginx\": {\n              \"startedAt\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"l7ReverseSocat\": {\n              \"startedAt\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"metrics\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"metrics\": [\n            {\n              \"cpuUsedSystem\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cpuUsedUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"diskFree\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"diskUsed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryUsed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryFree\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryBuffered\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryCached\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryAvailable\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryTotal\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryUsedPercentOfReservation\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryMax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"cpuUsedSystem\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cpuUsedUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"diskFree\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"diskUsed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryUsed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryFree\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryBuffered\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryCached\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryAvailable\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryTotal\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryUsedPercentOfReservation\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"memoryMax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"health\": {\n            \"breakdown\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"status\": \"HEALTHY\"\n          }\n        },\n        \"ssmInstanceId\": \"string\",\n        \"ecsContainerInstanceArn\": \"string\"\n      },\n      \"healthErrorCode\": \"string\",\n      \"config\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f9f84a8-4311-4995-954b-27479c09d05e",
+          "name": "Get a Connector by id",
+          "request": {
+            "name": "Get a Connector by id",
+            "description": {
+              "content": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get a Connector's details by id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data-acquisition",
+                "connectors",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "resolveSecrets",
+                  "value": "<boolean>",
+                  "description": "If true, resolves secrets in the Connector's config. Requires organization admin permissions."
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Include additional Connector fields. 'config' includes the Connector's config. 'artifact' includes the Connector artifact's details."
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Include additional Connector fields. 'config' includes the Connector's config. 'artifact' includes the Connector artifact's details."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The Connector's id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a42038d5-9486-4715-8d19-2a1dc8e6ace7",
+              "name": "Successful response with a Connector's details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "connectors",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "resolveSecrets",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "config"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Connector's id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"orgSlug\": \"string\",\n  \"artifact\": {\n    \"namespace\": \"string\",\n    \"slug\": \"string\",\n    \"version\": \"string\",\n    \"manifest\": \"string\"\n  },\n  \"hostType\": \"cloud\",\n  \"metadata\": {},\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"labels\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"commandQueue\": \"string\",\n  \"clusterArn\": \"string\",\n  \"taskDefinitionArn\": \"string\",\n  \"health\": \"WARNING\",\n  \"operatingStatus\": \"string\",\n  \"networkStatus\": \"Offline\",\n  \"lastSeenAt\": \"1948-01-26T19:16:18.201Z\",\n  \"updatedAt\": \"1984-05-16T14:04:41.573Z\",\n  \"createdAt\": \"1984-06-30T01:08:11.477Z\",\n  \"description\": \"string\",\n  \"hub\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"orgSlug\": \"string\",\n    \"l7ProxyForwardPort\": 5371.434432226139,\n    \"l7ProxyReverseHttpPort\": 2870.8699092979596,\n    \"l7ProxyReverseHttpsPort\": 2669.821301692843,\n    \"l7ProxySocatPort\": 2712.649771779312,\n    \"l7ProxyLocalnets\": \"string\",\n    \"l7ProxyMaximumMemoryMb\": 4444.405795799456,\n    \"enabled\": false,\n    \"host\": {\n      \"ipAddress\": \"string\",\n      \"hostName\": \"string\",\n      \"platformName\": \"string\",\n      \"platformVersion\": \"string\"\n    },\n    \"updatedAt\": \"2004-10-04T01:14:55.290Z\",\n    \"createdAt\": \"1983-06-09T18:39:58.601Z\",\n    \"activationExpiresAt\": \"1992-08-26T01:56:11.730Z\",\n    \"description\": \"string\",\n    \"httpProxyHost\": \"string\",\n    \"httpProxyPort\": 1582.2423057232993,\n    \"httpProxyUsername\": \"string\",\n    \"httpsProxyHost\": \"string\",\n    \"httpsProxyPort\": 1211.029942049786,\n    \"httpsProxyUsername\": \"string\",\n    \"noProxy\": \"string\",\n    \"l7ProxyReverseMqttPort\": 2797.0296074500566,\n    \"l7ProxySocatMqttPort\": 1196.387058829439,\n    \"l7ProxyDnsNameservers\": \"string\",\n    \"l7ProxyWhitelist\": \"string\",\n    \"status\": {\n      \"network\": \"Offline\",\n      \"lastSeen\": \"1999-12-14T19:41:41.685Z\",\n      \"proxies\": {\n        \"l7\": {\n          \"startedAt\": \"1956-01-25T14:32:36.736Z\",\n          \"status\": \"STOPPED\"\n        },\n        \"l7ReverseNginx\": {\n          \"startedAt\": \"1947-05-06T00:50:14.587Z\",\n          \"status\": \"RUNNING\"\n        },\n        \"l7ReverseSocat\": {\n          \"startedAt\": \"1972-03-31T14:28:22.073Z\",\n          \"status\": \"STOPPED\"\n        },\n        \"metrics\": [\n          {\n            \"cpuUsed\": {\n              \"value\": 1443.4488615255182,\n              \"unit\": \"Percent\"\n            },\n            \"memoryUsed\": {\n              \"value\": 5685.431499918178,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryUsedPercentOfMax\": {\n              \"value\": 4202.891129130385,\n              \"unit\": \"Percent\"\n            },\n            \"memoryUsedPercentOfReservation\": {\n              \"value\": 7021.000196707537,\n              \"unit\": \"Percent\"\n            },\n            \"memoryMax\": {\n              \"value\": 4400.242942193615,\n              \"unit\": \"Bytes\"\n            }\n          },\n          {\n            \"cpuUsed\": {\n              \"value\": 7501.895610744421,\n              \"unit\": \"Percent\"\n            },\n            \"memoryUsed\": {\n              \"value\": 5785.7160811926915,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryUsedPercentOfMax\": {\n              \"value\": 1820.3442733903107,\n              \"unit\": \"Percent\"\n            },\n            \"memoryUsedPercentOfReservation\": {\n              \"value\": 1251.0974237898831,\n              \"unit\": \"Percent\"\n            },\n            \"memoryMax\": {\n              \"value\": 1091.3156929119393,\n              \"unit\": \"Bytes\"\n            }\n          }\n        ]\n      },\n      \"metrics\": [\n        {\n          \"cpuUsedSystem\": {\n            \"value\": 2631.9045790417617,\n            \"unit\": \"Percent\"\n          },\n          \"cpuUsedUser\": {\n            \"value\": 229.00367721524483,\n            \"unit\": \"Percent\"\n          },\n          \"diskFree\": {\n            \"value\": 6392.487477004482,\n            \"unit\": \"Bytes\"\n          },\n          \"diskUsed\": {\n            \"value\": 4804.256107066425,\n            \"unit\": \"Percent\"\n          },\n          \"memoryUsed\": {\n            \"value\": 582.854297289016,\n            \"unit\": \"Bytes\"\n          },\n          \"memoryFree\": {\n            \"value\": 2816.9345893145182,\n            \"unit\": \"Bytes\"\n          },\n          \"memoryBuffered\": {\n            \"value\": 4064.3699382009977,\n            \"unit\": \"Bytes\"\n          },\n          \"memoryCached\": {\n            \"value\": 9672.245559385708,\n            \"unit\": \"Bytes\"\n          },\n          \"memoryAvailable\": {\n            \"value\": 7056.656039711977,\n            \"unit\": \"Bytes\"\n          },\n          \"memoryTotal\": {\n            \"value\": 9033.710670740287,\n            \"unit\": \"Bytes\"\n          },\n          \"memoryUsedPercentOfReservation\": {\n            \"value\": 8565.024577377135,\n            \"unit\": \"Percent\"\n          },\n          \"memoryMax\": {\n            \"value\": 2157.9657587072966,\n            \"unit\": \"Bytes\"\n          }\n        },\n        {\n          \"cpuUsedSystem\": {\n            \"value\": 7437.50711721145,\n            \"unit\": \"Percent\"\n          },\n          \"cpuUsedUser\": {\n            \"value\": 547.6114702106883,\n            \"unit\": \"Percent\"\n          },\n          \"diskFree\": {\n            \"value\": 7491.8549146642845,\n            \"unit\": \"Bytes\"\n          },\n          \"diskUsed\": {\n            \"value\": 1512.5507700724327,\n            \"unit\": \"Percent\"\n          },\n          \"memoryUsed\": {\n            \"value\": 2829.061051691387,\n            \"unit\": \"Bytes\"\n          },\n          \"memoryFree\": {\n            \"value\": 1612.0671344764437,\n            \"unit\": \"Bytes\"\n          },\n          \"memoryBuffered\": {\n            \"value\": 7216.202993818311,\n            \"unit\": \"Bytes\"\n          },\n          \"memoryCached\": {\n            \"value\": 1680.6955451145823,\n            \"unit\": \"Bytes\"\n          },\n          \"memoryAvailable\": {\n            \"value\": 6606.4331189215545,\n            \"unit\": \"Bytes\"\n          },\n          \"memoryTotal\": {\n            \"value\": 1494.2289597366166,\n            \"unit\": \"Bytes\"\n          },\n          \"memoryUsedPercentOfReservation\": {\n            \"value\": 3182.803238835603,\n            \"unit\": \"Percent\"\n          },\n          \"memoryMax\": {\n            \"value\": 5502.349787824167,\n            \"unit\": \"Bytes\"\n          }\n        }\n      ],\n      \"health\": {\n        \"breakdown\": [\n          {\n            \"name\": \"ProxyAvailability\",\n            \"status\": \"WARNING\"\n          },\n          {\n            \"name\": \"Availability\",\n            \"status\": \"CRITICAL\"\n          }\n        ],\n        \"status\": \"WARNING\"\n      }\n    },\n    \"ssmInstanceId\": \"string\",\n    \"ecsContainerInstanceArn\": \"string\"\n  },\n  \"healthErrorCode\": \"string\",\n  \"config\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37a7d1b3-1960-4730-bec6-52fcec9e92c8",
+          "name": "Get a Connector's metrics",
+          "request": {
+            "name": "Get a Connector's metrics",
+            "description": {
+              "content": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get the metrics reported by a Connector, including resource usage and file upload and error rates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data-acquisition",
+                "connectors",
+                ":id",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The Connector's id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "289863b7-b4e2-4cdb-bfdb-3694c7985c1b",
+              "name": "Successful response with the metrics reported by a Connector",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "connectors",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Connector's id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metrics\": [\n    {\n      \"name\": \"string\",\n      \"values\": [\n        {\n          \"time\": \"1955-01-24T17:09:57.288Z\",\n          \"value\": 1041.5006038844742\n        },\n        {\n          \"time\": \"1986-10-31T20:03:06.333Z\",\n          \"value\": 868.9853227927547\n        }\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"values\": [\n        {\n          \"time\": \"2018-09-29T15:19:44.138Z\",\n          \"value\": 7888.221098306206\n        },\n        {\n          \"time\": \"1963-09-09T07:14:02.886Z\",\n          \"value\": 2208.3041589367303\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b764974-ae1e-443f-9797-38a1b1e3ffdf",
+          "name": "Get a Connector's reported files",
+          "request": {
+            "name": "Get a Connector's reported files",
+            "description": {
+              "content": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get metadata about the files reported by a Connector, including those that have not yet been uploaded or that have failed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data-acquisition",
+                "connectors",
+                ":id",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fileIds",
+                  "value": "<string>",
+                  "description": "A list of file ids to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "fileIds",
+                  "value": "<string>",
+                  "description": "A list of file ids to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeFileIds",
+                  "value": "<string>",
+                  "description": "A list of file ids to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeFileIds",
+                  "value": "<string>",
+                  "description": "A list of file ids to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "uniqueExternalIds",
+                  "value": "<string>",
+                  "description": "A list of unique external ids to filter by. Used by Connectors to deduplicate external files."
+                },
+                {
+                  "disabled": false,
+                  "key": "uniqueExternalIds",
+                  "value": "<string>",
+                  "description": "A list of unique external ids to filter by. Used by Connectors to deduplicate external files."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeUniqueExternalIds",
+                  "value": "<string>",
+                  "description": "A list of unique external ids to exclude from the response. Used by Connectors to deduplicate external files."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeUniqueExternalIds",
+                  "value": "<string>",
+                  "description": "A list of unique external ids to exclude from the response. Used by Connectors to deduplicate external files."
+                },
+                {
+                  "disabled": false,
+                  "key": "statuses",
+                  "value": "<string>",
+                  "description": "A list of file statuses to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "statuses",
+                  "value": "<string>",
+                  "description": "A list of file statuses to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxErrors",
+                  "value": "<number>",
+                  "description": "The maximum number of errors to filter by. Used by Connectors to limit file upload retries."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdBefore",
+                  "value": "<dateTime>",
+                  "description": "The maximum creation date to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAfter",
+                  "value": "<dateTime>",
+                  "description": "The minimum creation date to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedBefore",
+                  "value": "<dateTime>",
+                  "description": "The maximum update date to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAfter",
+                  "value": "<dateTime>",
+                  "description": "The minimum update date to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderBy",
+                  "value": "<string>",
+                  "description": "The field to order by."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderDirection",
+                  "value": "<string>",
+                  "description": "The order direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "take",
+                  "value": "50",
+                  "description": "The number of files to take. Default is 50."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "The number of files to skip."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The Connector's id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "16cb93be-2f85-4ca6-ab8b-b01e47cbe4a2",
+              "name": "Successful response with a list of files reported by a Connector",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "connectors",
+                    ":id",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fileIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeFileIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeFileIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "uniqueExternalIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "uniqueExternalIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeUniqueExternalIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeUniqueExternalIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxErrors",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedBefore",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAfter",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "50"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Connector's id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"files\": [\n    {\n      \"id\": \"string\",\n      \"uniqueExternalId\": \"string\",\n      \"filepath\": \"string\",\n      \"status\": \"PENDING\",\n      \"metadata\": {},\n      \"errorCount\": 1602.7402884384355,\n      \"updatedAt\": \"1976-07-14T14:25:09.884Z\",\n      \"createdAt\": \"1976-07-19T16:05:07.419Z\",\n      \"errorMessage\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"uniqueExternalId\": \"string\",\n      \"filepath\": \"string\",\n      \"status\": \"ERROR\",\n      \"metadata\": {},\n      \"errorCount\": 3051.756224801664,\n      \"updatedAt\": \"2023-02-05T05:57:38.161Z\",\n      \"createdAt\": \"1988-08-01T12:51:52.907Z\",\n      \"errorMessage\": \"string\"\n    }\n  ],\n  \"total\": 5240.053979715642\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1776be7-8c88-478d-a959-389bbc4df50b",
+          "name": "Get statistics about a Connector's files",
+          "request": {
+            "name": "Get statistics about a Connector's files",
+            "description": {
+              "content": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get the file statistics reported by a Connector, including the total number of files and the number of files in each status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data-acquisition",
+                "connectors",
+                ":id",
+                "files",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The Connector's id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69a9d45a-2edc-47cc-bf1f-a8b2fc0572fc",
+              "name": "Successful response with the file stats reported by a Connector",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "connectors",
+                    ":id",
+                    "files",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Connector's id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 2133.851847376379,\n  \"success\": 5349.337292828586,\n  \"pending\": 2383.0768215120756,\n  \"processing\": 6849.597527639429,\n  \"error\": 2067.256955890311,\n  \"skipped\": 4662.497269348643\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "670ffb99-c05a-4712-8ead-72c1621a6f71",
+          "name": "List all Connectors for namespace",
+          "request": {
+            "name": "List all Connectors for namespace",
+            "description": {
+              "content": "Returns a list of all Connector artifacts given a namespace",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "connectors",
+                ":namespace"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "latest_only",
+                  "value": "<boolean>",
+                  "description": "Only return the latest version of each artifact"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a53a4b5-8eaa-4117-8c34-990b9299c7d6",
+              "name": "Successfully fetched ConnectorObject list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"1975-11-27T11:16:12.008Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"1955-04-23T10:23:25.695Z\",\n    \"namespace\": \"common@L0\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  },\n  {\n    \"createdAt\": \"2001-12-17T04:43:25.535Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"1993-01-17T05:56:33.159Z\",\n    \"namespace\": \"client-<~7Y2|/?9\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92ee577a-ce87-4919-b129-5d637c35f750",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c1c5edb-0477-422c-9d82-8e4b01124af8",
+          "name": "Returns a list of Connector artifacts given a namespace and slug",
+          "request": {
+            "name": "Returns a list of Connector artifacts given a namespace and slug",
+            "description": {
+              "content": "Returns a list of all Connector artifacts given a namespace and slug",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "connectors",
+                ":namespace",
+                ":slug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "latest_only",
+                  "value": "<boolean>",
+                  "description": "Only return the latest version of each artifact"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0ad1e75a-8555-4588-8c28-36397296444d",
+              "name": "Successfully fetched ConnectorObject list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"2010-09-02T14:13:18.170Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"1954-08-05T21:49:36.767Z\",\n    \"namespace\": \"private-=\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  },\n  {\n    \"createdAt\": \"1967-06-07T09:13:04.476Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"2003-03-07T17:20:13.730Z\",\n    \"namespace\": \"client-V{\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70c6943d-0637-482f-a168-7264491c7e64",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9db5793a-38e5-4b6f-8579-586a472f15e6",
+          "name": "Get contents for an Connector file",
+          "request": {
+            "name": "Get contents for an Connector file",
+            "description": {
+              "content": "Returns the file contents for an Connector file given a namespace, slug, version, and file slug",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "connectors",
+                ":namespace",
+                ":slug",
+                ":version",
+                "files",
+                ":fileSlug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "download",
+                  "value": "<boolean>",
+                  "description": "If set to true, return a download url"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Artifact version"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fileSlug",
+                  "description": "(Required) File slug corresponding to file within a Connector"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5705a4c-2891-4e55-bc8b-5eb864aace4a",
+              "name": "Successfully fetched file",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files",
+                    ":fileSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileSlug",
+                      "description": "(Required) File slug corresponding to file within a Connector"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa9853f0-c1da-43ae-bd82-e3654788b3b4",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files",
+                    ":fileSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileSlug",
+                      "description": "(Required) File slug corresponding to file within a Connector"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32199b75-4b95-4e4b-bf79-1bd24c71fd57",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files",
+                    ":fileSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileSlug",
+                      "description": "(Required) File slug corresponding to file within a Connector"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea4b0903-4b01-4de5-8e49-3f1e90e58d58",
+          "name": "Get single Connector",
+          "request": {
+            "name": "Get single Connector",
+            "description": {
+              "content": "Returns a single Connector artifact matching the namespace, slug, and version",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "connectors",
+                ":namespace",
+                ":slug",
+                ":version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Artifact version"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d40ae66a-9751-4373-9e60-fa349d40e3cc",
+              "name": "Successfully fetched ConnectorObject",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace",
+                    ":slug",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2003-06-30T02:20:51.972Z\",\n  \"iconPresignedUrl\": \"string\",\n  \"lastUpdatedAt\": \"2004-08-20T08:43:49.905Z\",\n  \"namespace\": \"common9ZFZQ\",\n  \"slug\": \"string\",\n  \"type\": \"connector\",\n  \"version\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"otherVersions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"supportedPlatformVersion\": {\n    \"minPlatformVersion\": \"string\",\n    \"maxPlatformVersion\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b87e7fe-3d2b-4cdd-a5a4-0014520d896d",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace",
+                    ":slug",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1cf0e6b5-eab9-43eb-ab2a-8d04e2155a1a",
+          "name": "Get available file slugs for Connector",
+          "request": {
+            "name": "Get available file slugs for Connector",
+            "description": {
+              "content": "Returns which file slugs are available to retrieve for this Connector",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "connectors",
+                ":namespace",
+                ":slug",
+                ":version",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Artifact version"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9870ae1d-6fa0-4837-9237-ceadbf22e629",
+              "name": "Successfully fetched available Connector file slugs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"build\",\n  \"image\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e07d9f65-0962-40a0-8c2d-47a1bbc172d7",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2b65867-6e61-4a37-9aa9-431ed4cb24b2",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e32c48c0-be5b-490a-9c47-0e03807601ce",
+          "name": "Get labels for an Connector",
+          "request": {
+            "name": "Get labels for an Connector",
+            "description": {
+              "content": "Returns a list of the labels associated with a Connector artifact",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "connectors",
+                ":namespace",
+                ":slug",
+                ":version",
+                "labels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Artifact version"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad6fb952-8a2e-4f4d-8720-dad2202f04ee",
+              "name": "Successfully fetched Labels",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"label1\",\n    \"value\": \"value1\"\n  },\n  {\n    \"name\": \"another-label\",\n    \"value\": \"another-value\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "337a6c39-f419-4bc3-bd8b-19a91e0b5ce5",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21e768e8-92b9-4d30-b191-263882cab614",
+          "name": "Get artifacts related to Connector",
+          "request": {
+            "name": "Get artifacts related to Connector",
+            "description": {
+              "content": "Returns a list of the relationships a Connector artifact has with other artifacts",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "connectors",
+                ":namespace",
+                ":slug",
+                ":version",
+                "relationships"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Artifact version"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24b4ed65-adb7-415b-af04-cd0d7c2079af",
+              "name": "Successfully fetched Relationships",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "relationships"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ids\": [\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    },\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    }\n  ],\n  \"taskScripts\": [\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    },\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    }\n  ],\n  \"protocols\": [\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    },\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    }\n  ],\n  \"connectors\": [\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    },\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b41bc98-6e14-4e22-a522-4cae47742709",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "relationships"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c24e48c1-76e6-4093-8cf4-35083ec70c39",
+          "name": "List all connectors artifacts",
+          "request": {
+            "name": "List all connectors artifacts",
+            "description": {
+              "content": "Returns a list of all Connector artifacts, optionally filtered by namespace type",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "connectors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "namespace_type",
+                  "value": "<string>",
+                  "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')"
+                },
+                {
+                  "disabled": false,
+                  "key": "latest_only",
+                  "value": "<boolean>",
+                  "description": "Only return the latest version of each artifact"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "530c6186-eea4-4771-bb9d-c1926b194e04",
+              "name": "Successfully fetched ConnectorObject list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "namespace_type",
+                      "value": "client"
+                    },
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"2010-09-02T14:13:18.170Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"1954-08-05T21:49:36.767Z\",\n    \"namespace\": \"private-=\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  },\n  {\n    \"createdAt\": \"1967-06-07T09:13:04.476Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"2003-03-07T17:20:13.730Z\",\n    \"namespace\": \"client-V{\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ff3ef0c-c3fb-4996-8aa2-849b07fcb63a",
+          "name": "List all Data Apps for namespace",
+          "request": {
+            "name": "List all Data Apps for namespace",
+            "description": {
+              "content": "Returns a list of all Data App artifacts given a namespace",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "data-apps",
+                ":namespace"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "latest_only",
+                  "value": "<boolean>",
+                  "description": "Only return the latest version of each artifact"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38d2ca8e-190b-40d0-ac02-c2b28dde64f0",
+              "name": "Successfully fetched ConnectorObject list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"2010-09-02T14:13:18.170Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"1954-08-05T21:49:36.767Z\",\n    \"namespace\": \"private-=\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  },\n  {\n    \"createdAt\": \"1967-06-07T09:13:04.476Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"2003-03-07T17:20:13.730Z\",\n    \"namespace\": \"client-V{\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ed21905-2d68-423e-9318-0f871eddea8f",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "355bceba-4556-4900-8a94-af6aae0a450d",
+          "name": "Returns a list of Data App artifacts given a namespace and slug",
+          "request": {
+            "name": "Returns a list of Data App artifacts given a namespace and slug",
+            "description": {
+              "content": "Returns a list of all Data App artifacts given a namespace and slug",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "data-apps",
+                ":namespace",
+                ":slug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "latest_only",
+                  "value": "<boolean>",
+                  "description": "Only return the latest version of each artifact"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0bf4dacc-155b-43da-a11b-7fae38820aec",
+              "name": "Successfully fetched ConnectorObject list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"2010-09-02T14:13:18.170Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"1954-08-05T21:49:36.767Z\",\n    \"namespace\": \"private-=\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  },\n  {\n    \"createdAt\": \"1967-06-07T09:13:04.476Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"2003-03-07T17:20:13.730Z\",\n    \"namespace\": \"client-V{\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0e528f0-9e31-456e-bd6f-8106cfdc36a6",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b413226-3d9e-423f-87f7-f142eff8db41",
+          "name": "Get contents for a Data App file",
+          "request": {
+            "name": "Get contents for a Data App file",
+            "description": {
+              "content": "Returns the file contents for an Data App file given a namespace, slug, version, and file slug",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "data-apps",
+                ":namespace",
+                ":slug",
+                ":version",
+                "files",
+                ":fileSlug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "download",
+                  "value": "<boolean>",
+                  "description": "If set to true, return a download url"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Artifact version"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fileSlug",
+                  "description": "(Required) File slug corresponding to file within a Connector"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e415138-964d-4b5a-9db4-83d5a0f70deb",
+              "name": "Successfully fetched file",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files",
+                    ":fileSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileSlug",
+                      "description": "(Required) File slug corresponding to file within a Connector"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d183a34a-091a-4593-bd46-0953eac02eec",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files",
+                    ":fileSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileSlug",
+                      "description": "(Required) File slug corresponding to file within a Connector"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c96638f5-359d-4942-ae5c-7a71fc09ec3f",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files",
+                    ":fileSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileSlug",
+                      "description": "(Required) File slug corresponding to file within a Connector"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f43383a-6633-4db3-800b-c69c70b86663",
+          "name": "Get single Data App",
+          "request": {
+            "name": "Get single Data App",
+            "description": {
+              "content": "Returns a single Data App artifact matching the namespace, slug, and version",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "data-apps",
+                ":namespace",
+                ":slug",
+                ":version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Artifact version"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0adb5b8b-fb66-4a9a-b328-ca6410e49a1d",
+              "name": "Successfully fetched ConnectorObject",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace",
+                    ":slug",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"2003-06-30T02:20:51.972Z\",\n  \"iconPresignedUrl\": \"string\",\n  \"lastUpdatedAt\": \"2004-08-20T08:43:49.905Z\",\n  \"namespace\": \"common9ZFZQ\",\n  \"slug\": \"string\",\n  \"type\": \"connector\",\n  \"version\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"otherVersions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"supportedPlatformVersion\": {\n    \"minPlatformVersion\": \"string\",\n    \"maxPlatformVersion\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16d59216-1343-4dcd-982f-f89ef75946c2",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace",
+                    ":slug",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9da60ef9-9d3b-4d74-92d5-31a84e9451c8",
+          "name": "Get available file slugs for Data App",
+          "request": {
+            "name": "Get available file slugs for Data App",
+            "description": {
+              "content": "Returns which file slugs are available to retrieve for this Data App",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "data-apps",
+                ":namespace",
+                ":slug",
+                ":version",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Artifact version"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfc7c468-e6da-4363-b2a3-b4fc227133cc",
+              "name": "Successfully fetched available Connector file slugs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"source\",\n  \"readme\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e7322d7-c3ce-4392-a22e-4117959937dc",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "143ec29c-eb8f-47d0-8fba-2f324532dec9",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff44366d-da1a-404c-8769-dbed01358aa7",
+          "name": "Get labels for a Data App",
+          "request": {
+            "name": "Get labels for a Data App",
+            "description": {
+              "content": "Returns a list of the labels associated with a Data App artifact",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "data-apps",
+                ":namespace",
+                ":slug",
+                ":version",
+                "labels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Artifact version"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49bd931b-cc30-4ff1-9def-fb941c2a1a14",
+              "name": "Successfully fetched Labels",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"label1\",\n    \"value\": \"value1\"\n  },\n  {\n    \"name\": \"another-label\",\n    \"value\": \"another-value\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21ab9291-95a4-4464-a868-f22fe71df6c8",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8cfbed00-c18e-415b-a063-89ffbbaa9038",
+          "name": "Get artifacts related to Data App",
+          "request": {
+            "name": "Get artifacts related to Data App",
+            "description": {
+              "content": "Returns a list of the relationships a Data App artifact has with other artifacts",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "data-apps",
+                ":namespace",
+                ":slug",
+                ":version",
+                "relationships"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Artifact slug"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) Artifact version"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f2e5ba50-81e4-4cc0-a0d1-7c5550f77383",
+              "name": "Successfully fetched Relationships",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "relationships"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ids\": [\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    },\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    }\n  ],\n  \"taskScripts\": [\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    },\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    }\n  ],\n  \"protocols\": [\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    },\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    }\n  ],\n  \"connectors\": [\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    },\n    {\n      \"type\": \"ids\",\n      \"namespace\": \"common\",\n      \"slug\": \"akta\",\n      \"version\": \"v1.1.0\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65aa6624-c016-4c46-913d-ce2f5e3a3bb6",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    ":namespace",
+                    ":slug",
+                    ":version",
+                    "relationships"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Artifact namespace. Should be common, private-*, or client-*"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Artifact slug"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) Artifact version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09cfbd87-7291-4c49-8584-f69a5103bb60",
+          "name": "List all connectors artifacts of sub-type data-app",
+          "request": {
+            "name": "List all connectors artifacts of sub-type data-app",
+            "description": {
+              "content": "Returns a list of all Connector artifacts that can be deployed as a data app, optionally filtered by namespace type",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "data-apps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "namespace_type",
+                  "value": "<string>",
+                  "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')"
+                },
+                {
+                  "disabled": false,
+                  "key": "latest_only",
+                  "value": "<boolean>",
+                  "description": "Only return the latest version of each artifact"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0cd316ed-6089-4a87-9ae0-73fabc7cf65e",
+              "name": "Successfully fetched ConnectorObject list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "namespace_type",
+                      "value": "client"
+                    },
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"2010-09-02T14:13:18.170Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"1954-08-05T21:49:36.767Z\",\n    \"namespace\": \"private-=\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  },\n  {\n    \"createdAt\": \"1967-06-07T09:13:04.476Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"2003-03-07T17:20:13.730Z\",\n    \"namespace\": \"client-V{\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e297edf5-4872-4743-bca8-6bc592809a30",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "namespace_type",
+                      "value": "client"
+                    },
+                    {
+                      "key": "latest_only",
+                      "value": "true"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4723d566-cc80-44bd-ba4f-2c27d7d4b585",
+          "name": "Search for items",
+          "request": {
+            "name": "Search for items",
+            "description": {
+              "content": "Search for items using specified criteria",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "connectors",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "<string>",
+                  "description": "(Required) The search string"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f7dd79a2-e4a7-46f6-a771-fc1193a9e3a8",
+              "name": "A list of items that match the search query",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "connectors",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"1975-11-27T11:16:12.008Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"1955-04-23T10:23:25.695Z\",\n    \"namespace\": \"common@L0\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  },\n  {\n    \"createdAt\": \"2001-12-17T04:43:25.535Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"1993-01-17T05:56:33.159Z\",\n    \"namespace\": \"client-<~7Y2|/?9\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "877576ae-940d-49df-96d5-914f1b46a91d",
+          "name": "Search for items",
+          "request": {
+            "name": "Search for items",
+            "description": {
+              "content": "Search for items using specified criteria",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "artifacts",
+                "data-apps",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "<string>",
+                  "description": "(Required) The search string"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_prereleases",
+                  "value": "<boolean>",
+                  "description": "Include prerelease artifacts in search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e871c25b-1a26-49ec-8519-3acbc3ee4fbe",
+              "name": "A list of items that match the search query",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"createdAt\": \"1975-11-27T11:16:12.008Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"1955-04-23T10:23:25.695Z\",\n    \"namespace\": \"common@L0\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  },\n  {\n    \"createdAt\": \"2001-12-17T04:43:25.535Z\",\n    \"iconPresignedUrl\": \"string\",\n    \"lastUpdatedAt\": \"1993-01-17T05:56:33.159Z\",\n    \"namespace\": \"client-<~7Y2|/?9\",\n    \"slug\": \"string\",\n    \"type\": \"connector\",\n    \"version\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"otherVersions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supportedPlatformVersion\": {\n      \"minPlatformVersion\": \"string\",\n      \"maxPlatformVersion\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a67deaad-4485-40b8-bed8-db8c84cc2c6d",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "artifacts",
+                    "data-apps",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_prereleases",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c41823fc-9875-46dc-94ba-47a931bf051c",
+    "name": "TetraScience Data and AI Cloud Access Groups Connectors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,2049 @@
+{
+  "item": [
+    {
+      "id": "e8abaf72-c47e-4fb1-ae6c-0c07ce5c0003",
+      "name": "Agents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6208d526-3d72-429e-977a-a63a57aeba3b",
+          "name": "Enable or disable command queue.",
+          "request": {
+            "name": "Enable or disable command queue.",
+            "description": {
+              "content": "Use this endpoint to enable or disable the command queue of an agent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "agents",
+                ":agentId",
+                "command-queue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "agentId",
+                  "description": "(Required) The ID of the agent."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d3ae2b6b-3341-4e3d-9cca-b1560c22febd",
+              "name": "Successful response with updated command queue details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "command-queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "agentId",
+                      "description": "(Required) The ID of the agent."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"enabled\": true,\n  \"name\": \"https://sqs.us-east-2.amazonaws.com/706717599419/onprem-9b9f275c-a60d-454f-8c6c-1ea094e3fd38.fifo\",\n  \"visibilityTimeout\": 600\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b93a6baa-e07e-47cf-b9e5-7b10a3528151",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "command-queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "agentId",
+                      "description": "(Required) The ID of the agent."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"Can not enable command queue within 60s after disabling the command queue.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d91a1d8-f1e1-42aa-8ff3-bb208c3dae47",
+          "name": "Get command queue",
+          "request": {
+            "name": "Get command queue",
+            "description": {
+              "content": "Use this endpoint to get details about the command queue of an agent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "agents",
+                ":agentId",
+                "command-queue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "agentId",
+                  "description": "(Required) The ID of the agent"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d9f3f6c6-cb2d-4c77-8940-ac780d7b9b04",
+              "name": "Successful response with command queue details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "command-queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "agentId",
+                      "description": "(Required) The ID of the agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"enabled\": true,\n  \"name\": \"https://sqs.us-east-2.amazonaws.com/706717599419/onprem-9b9f275c-a60d-454f-8c6c-1ea094e3fd38.fifo\",\n  \"visibilityTimeout\": 600\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7b5aa4a-1a43-4892-85b6-c8a801ff8777",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "command-queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "agentId",
+                      "description": "(Required) The ID of the agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"Error validating payload\",\n  \"validation\": [\n    {\n      \"message\": \"agentId must be a valid GUID\"\n    },\n    {\n      \"message\": \"agentId must be a valid GUID\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "520b6c66-1e40-4072-9893-d9a4cd6335af",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "command-queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "agentId",
+                      "description": "(Required) The ID of the agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Agent with id 9b9f275c-a60d-454f-8c6c-1ea094e3fd37 not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac5dc7a8-d126-4fff-b877-12921b6a95ed",
+          "name": "Create an agent",
+          "request": {
+            "name": "Create an agent",
+            "description": {
+              "content": "Use this endpoint to create a new agent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "agents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"integrationType\": \"<string>\",\n  \"integrationId\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"datahubId\": \"<uuid>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": true,\n    \"key_2\": true\n  },\n  \"labels\": {\n    \"labelsToAdd\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f51ec23d-91b0-4b55-b810-e26f37e81904",
+              "name": "Successful response with agent details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Agent name\",\n  \"type\": \"file-log\",\n  \"integrationType\": \"<string>\",\n  \"integrationId\": \"6f166302-df8a-4044-ab4b-7ddd3eefb50b\",\n  \"description\": \"Agent description\",\n  \"sourceType\": \"\",\n  \"datahubId\": \"<uuid>\",\n  \"tags\": [\n    \"tag1\"\n  ],\n  \"metadata\": {\n    \"metadataKey\": \"metadataValue\"\n  },\n  \"labels\": {\n    \"labelsToAdd\": [\n      {\n        \"name\": \"labelKey\",\n        \"value\": \"labelValue\"\n      },\n      {\n        \"name\": \"labelKey\",\n        \"value\": \"labelValue\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"9b9f275c-a60d-454f-8c6c-1ea094e3fd38\",\n  \"name\": \"File-Log Agent\",\n  \"description\": \"description\",\n  \"sourceType\": \"string\",\n  \"type\": \"file-log\",\n  \"integrationType\": \"api\",\n  \"integrationId\": \"6f166302-df8a-4044-ab4b-7ddd3eefb50b\",\n  \"datahubId\": \"2c7a4116-0679-230b-734d-918343e55163\",\n  \"sourceId\": \"9201d7a7-2282-4ef2-b295-a1d1d1927b9a\",\n  \"isEnabled\": true,\n  \"tags\": [\n    \"tag1\"\n  ],\n  \"metadata\": {\n    \"key_0\": 922,\n    \"key_1\": 9519,\n    \"key_2\": 5768\n  },\n  \"config\": {\n    \"group_user\": {\n      \"user_name\": \"user1\",\n      \"password\": \"-1943064076\"\n    },\n    \"agent_configuration\": {\n      \"s3_direct_upload\": true,\n      \"receive_commands\": true,\n      \"destination_id\": \"2e72c40f-432e-46a9-a027-e70686e8cd39\",\n      \"agent_id\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\",\n      \"org_slug\": \"tetrascience\",\n      \"Authentication\": \"-1943064076\",\n      \"advanced_setting\": {\n        \"heart_beat_interval\": 30,\n        \"agent_log_upload_job_interval\": 30,\n        \"compression_type\": \"Zip\",\n        \"retry_limit\": 3,\n        \"tdpApiUrlOverride\": \"https://api.tetrascience.com\",\n        \"validateAwsCertificate\": true,\n        \"proxyUseCustom\": true,\n        \"proxyHost\": \"proxy.example.com\",\n        \"proxyPort\": 8080,\n        \"proxyBypassList\": \"example.com,example.org\",\n        \"proxyUsername\": \"proxyuser\",\n        \"proxyPassword\": \"-1943064076\",\n        \"proxyUseSystem\": false\n      }\n    },\n    \"services_enabled\": [\n      \"fileWatcher\"\n    ],\n    \"services_configuration\": {\n      \"fileWatcher\": {\n        \"use_path_configuration\": true,\n        \"paths\": [\n          {\n            \"file_watch_mode\": \"file\",\n            \"source_type\": \"unknown\",\n            \"interval\": 30,\n            \"start_date\": \"2023-03-27\",\n            \"path\": \"C:\\\\FLA\\\\test1\",\n            \"patterns\": [\n              \"*.*\"\n            ],\n            \"metadata\": {\n              \"meta1\": \"value1\"\n            },\n            \"tags\": \"tag1,tag2\",\n            \"labels\": [\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ],\n            \"archive\": {\n              \"path\": \"c:\\\\archive\",\n              \"wait_time\": 1,\n              \"wait_time_unit\": \"Days\",\n              \"archive_without_checksum\": false,\n              \"dry_run\": false,\n              \"delete\": {\n                \"wait_time\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"wait_time_unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            \"fetch_os_created_user\": false,\n            \"symlink_behavior\": \"Ignore\"\n          },\n          {\n            \"file_watch_mode\": \"file\",\n            \"source_type\": \"unknown\",\n            \"interval\": 30,\n            \"start_date\": \"2023-03-27\",\n            \"path\": \"C:\\\\FLA\\\\test1\",\n            \"patterns\": [\n              \"*.*\"\n            ],\n            \"metadata\": {\n              \"meta1\": \"value1\"\n            },\n            \"tags\": \"tag1,tag2\",\n            \"labels\": [\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ],\n            \"archive\": {\n              \"path\": \"c:\\\\archive\",\n              \"wait_time\": 1,\n              \"wait_time_unit\": \"Days\",\n              \"archive_without_checksum\": false,\n              \"dry_run\": false,\n              \"delete\": {\n                \"wait_time\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"wait_time_unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            \"fetch_os_created_user\": false,\n            \"symlink_behavior\": \"Legacy\"\n          }\n        ]\n      }\n    },\n    \"windows_scheduled_task\": {\n      \"enabled\": true,\n      \"time\": \"1:00pm\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b10ebbeb-d91a-438b-a528-f3445338d048",
+              "name": "Bad Request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Agent name\",\n  \"type\": \"file-log\",\n  \"integrationType\": \"<string>\",\n  \"integrationId\": \"6f166302-df8a-4044-ab4b-7ddd3eefb50b\",\n  \"description\": \"Agent description\",\n  \"sourceType\": \"\",\n  \"datahubId\": \"<uuid>\",\n  \"tags\": [\n    \"tag1\"\n  ],\n  \"metadata\": {\n    \"metadataKey\": \"metadataValue\"\n  },\n  \"labels\": {\n    \"labelsToAdd\": [\n      {\n        \"name\": \"labelKey\",\n        \"value\": \"labelValue\"\n      },\n      {\n        \"name\": \"labelKey\",\n        \"value\": \"labelValue\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"Error validating payload\",\n  \"validation\": [\n    {\n      \"message\": \"\\\"datahubId\\\" is required\"\n    },\n    {\n      \"message\": \"\\\"datahubId\\\" is required\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a8f7f42-ad25-4a6c-a7ed-567f1c9f6bf4",
+          "name": "Get agents",
+          "request": {
+            "name": "Get agents",
+            "description": {
+              "content": "Use this endpoint to get a list of agents.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "agents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Each agent returned will include its associated labels when the value is 'labels'. Otherwise this parameter is ignored"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d19cfc36-1969-450a-b6d8-ea69b1baa54c",
+              "name": "Successful response with a list of all agents.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "labels"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"9b9f275c-a60d-454f-8c6c-1ea094e3fd38\",\n    \"name\": \"FLA Agent\",\n    \"description\": \"description\",\n    \"sourceType\": \"string\",\n    \"type\": \"file-log\",\n    \"integrationType\": \"api\",\n    \"integrationId\": \"6f166302-df8a-4044-ab4b-7ddd3eefb50b\",\n    \"datahubId\": \"770fa201-aa67-ec77-e09d-32b393e6d4a5\",\n    \"sourceId\": \"9201d7a7-2282-4ef2-b295-a1d1d1927b9a\",\n    \"isEnabled\": true,\n    \"tags\": [\n      \"tag1\"\n    ],\n    \"metadata\": {\n      \"metadataKey\": \"metadataValue\"\n    },\n    \"labels\": [\n      {\n        \"name\": \"vendor\",\n        \"value\": \"Beckman Coulter\"\n      },\n      {\n        \"name\": \"vendor\",\n        \"value\": \"Beckman Coulter\"\n      }\n    ],\n    \"config\": {\n      \"group_user\": {\n        \"user_name\": \"user1\",\n        \"password\": \"-1943064076\"\n      },\n      \"agent_configuration\": {\n        \"s3_direct_upload\": true,\n        \"receive_commands\": true,\n        \"destination_id\": \"2e72c40f-432e-46a9-a027-e70686e8cd39\",\n        \"agent_id\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\",\n        \"org_slug\": \"tetrascience\",\n        \"Authentication\": \"-1943064076\",\n        \"advanced_setting\": {\n          \"heart_beat_interval\": 30,\n          \"agent_log_upload_job_interval\": 30,\n          \"compression_type\": \"SevenZip\",\n          \"retry_limit\": 3,\n          \"tdpApiUrlOverride\": \"https://api.tetrascience.com\",\n          \"validateAwsCertificate\": true,\n          \"proxyUseCustom\": true,\n          \"proxyHost\": \"proxy.example.com\",\n          \"proxyPort\": 8080,\n          \"proxyBypassList\": \"example.com,example.org\",\n          \"proxyUsername\": \"proxyuser\",\n          \"proxyPassword\": \"-1943064076\",\n          \"proxyUseSystem\": false\n        }\n      },\n      \"services_enabled\": [\n        \"fileWatcher\"\n      ],\n      \"services_configuration\": {\n        \"fileWatcher\": {\n          \"use_path_configuration\": true,\n          \"paths\": [\n            {\n              \"file_watch_mode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"source_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"interval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"start_date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"path\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"patterns\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"metadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tags\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"labels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"archive\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fetch_os_created_user\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"symlink_behavior\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"file_watch_mode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"source_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"interval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"start_date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"path\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"patterns\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"metadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tags\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"labels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"archive\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fetch_os_created_user\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"symlink_behavior\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      },\n      \"windows_scheduled_task\": {\n        \"enabled\": true,\n        \"time\": \"1:00pm\"\n      }\n    },\n    \"configStatus\": \"SUCCESS\",\n    \"configStatusUpdatedAt\": \"2023-08-28T14:43:59.753Z\",\n    \"configStatusError\": \"string\",\n    \"configChangedBy\": \"local\",\n    \"configChangedAt\": \"2023-09-05T16:25:01.697Z\",\n    \"createdAt\": \"2023-04-04T14:01:30.136Z\",\n    \"updatedAt\": \"2023-10-10T16:29:08.573Z\",\n    \"orgSlug\": \"tetrascience\",\n    \"status\": \"Online\",\n    \"version\": \"v4.3.1\",\n    \"liveType\": \"file-log\",\n    \"host\": {\n      \"ip\": \"10.60.4.128\",\n      \"name\": \"EC2AMAZ-53HU01M\"\n    },\n    \"queue\": {\n      \"enabled\": true,\n      \"name\": \"https://sqs.us-east-2.amazonaws.com/706717599419/onprem-9b9f275c-a60d-454f-8c6c-1ea094e3fd38.fifo\",\n      \"visibilityTimeout\": 600\n    }\n  },\n  {\n    \"id\": \"9b9f275c-a60d-454f-8c6c-1ea094e3fd38\",\n    \"name\": \"FLA Agent\",\n    \"description\": \"description\",\n    \"sourceType\": \"string\",\n    \"type\": \"file-log\",\n    \"integrationType\": \"api\",\n    \"integrationId\": \"6f166302-df8a-4044-ab4b-7ddd3eefb50b\",\n    \"datahubId\": \"65959de6-915a-e7ee-ca0a-fbad17de49bb\",\n    \"sourceId\": \"9201d7a7-2282-4ef2-b295-a1d1d1927b9a\",\n    \"isEnabled\": true,\n    \"tags\": [\n      \"tag1\"\n    ],\n    \"metadata\": {\n      \"metadataKey\": \"metadataValue\"\n    },\n    \"labels\": [\n      {\n        \"name\": \"vendor\",\n        \"value\": \"Beckman Coulter\"\n      },\n      {\n        \"name\": \"vendor\",\n        \"value\": \"Beckman Coulter\"\n      }\n    ],\n    \"config\": {\n      \"group_user\": {\n        \"user_name\": \"user1\",\n        \"password\": \"-1943064076\"\n      },\n      \"agent_configuration\": {\n        \"s3_direct_upload\": true,\n        \"receive_commands\": true,\n        \"destination_id\": \"2e72c40f-432e-46a9-a027-e70686e8cd39\",\n        \"agent_id\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\",\n        \"org_slug\": \"tetrascience\",\n        \"Authentication\": \"-1943064076\",\n        \"advanced_setting\": {\n          \"heart_beat_interval\": 30,\n          \"agent_log_upload_job_interval\": 30,\n          \"compression_type\": \"SevenZip\",\n          \"retry_limit\": 3,\n          \"tdpApiUrlOverride\": \"https://api.tetrascience.com\",\n          \"validateAwsCertificate\": true,\n          \"proxyUseCustom\": true,\n          \"proxyHost\": \"proxy.example.com\",\n          \"proxyPort\": 8080,\n          \"proxyBypassList\": \"example.com,example.org\",\n          \"proxyUsername\": \"proxyuser\",\n          \"proxyPassword\": \"-1943064076\",\n          \"proxyUseSystem\": false\n        }\n      },\n      \"services_enabled\": [\n        \"fileWatcher\"\n      ],\n      \"services_configuration\": {\n        \"fileWatcher\": {\n          \"use_path_configuration\": true,\n          \"paths\": [\n            {\n              \"file_watch_mode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"source_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"interval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"start_date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"path\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"patterns\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"metadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tags\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"labels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"archive\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fetch_os_created_user\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"symlink_behavior\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"file_watch_mode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"source_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"interval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"start_date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"path\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"patterns\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"metadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tags\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"labels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"archive\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fetch_os_created_user\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"symlink_behavior\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      },\n      \"windows_scheduled_task\": {\n        \"enabled\": true,\n        \"time\": \"1:00pm\"\n      }\n    },\n    \"configStatus\": \"SUCCESS\",\n    \"configStatusUpdatedAt\": \"2023-08-28T14:43:59.753Z\",\n    \"configStatusError\": \"string\",\n    \"configChangedBy\": \"local\",\n    \"configChangedAt\": \"2023-09-05T16:25:01.697Z\",\n    \"createdAt\": \"2023-04-04T14:01:30.136Z\",\n    \"updatedAt\": \"2023-10-10T16:29:08.573Z\",\n    \"orgSlug\": \"tetrascience\",\n    \"status\": \"Online\",\n    \"version\": \"v4.3.1\",\n    \"liveType\": \"file-log\",\n    \"host\": {\n      \"ip\": \"10.60.4.128\",\n      \"name\": \"EC2AMAZ-53HU01M\"\n    },\n    \"queue\": {\n      \"enabled\": true,\n      \"name\": \"https://sqs.us-east-2.amazonaws.com/706717599419/onprem-9b9f275c-a60d-454f-8c6c-1ea094e3fd38.fifo\",\n      \"visibilityTimeout\": 600\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac487584-e9a9-4ec1-bd02-749f9492f473",
+          "name": "Enable or disable an agent",
+          "request": {
+            "name": "Enable or disable an agent",
+            "description": {
+              "content": "Use this endpoint to enable or disable an agent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "agents",
+                ":agentId",
+                "enabled"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "agentId",
+                  "description": "(Required) The ID of the agent."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3580f83b-41a8-4739-a990-f9c75e66d4f3",
+              "name": "Agent isEnabled property updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "enabled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "agentId",
+                      "description": "(Required) The ID of the agent."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "106f109b-bf17-4b3f-b27f-77d8b982c06d",
+          "name": "Get File-Log agent configuration list",
+          "request": {
+            "name": "Get File-Log agent configuration list",
+            "description": {
+              "content": "Use this endpoint to get the past configurations of a File-Log agent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "agents",
+                ":agentId",
+                "configuration",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of items per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "by",
+                  "value": "all",
+                  "description": "Filter by agent config type"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "all",
+                  "description": "Filter by agent config by its command status"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "desc",
+                  "description": "Sorting order by creation date"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agentId",
+                  "description": "(Required) Agent ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86020a48-0dc9-4047-88ca-44756e194cba",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "configuration",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "by",
+                      "value": "all"
+                    },
+                    {
+                      "key": "status",
+                      "value": "all"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": 1,\n  \"size\": 10,\n  \"hasNext\": true,\n  \"hits\": [\n    {\n      \"id\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\",\n      \"config\": {\n        \"group_user\": {\n          \"user_name\": \"user1\",\n          \"password\": \"-1943064076\"\n        },\n        \"agent_configuration\": {\n          \"s3_direct_upload\": true,\n          \"receive_commands\": true,\n          \"destination_id\": \"2e72c40f-432e-46a9-a027-e70686e8cd39\",\n          \"agent_id\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\",\n          \"org_slug\": \"tetrascience\",\n          \"Authentication\": \"-1943064076\",\n          \"advanced_setting\": {\n            \"heart_beat_interval\": 30,\n            \"agent_log_upload_job_interval\": 30,\n            \"compression_type\": \"Zip\",\n            \"retry_limit\": 3,\n            \"tdpApiUrlOverride\": \"https://api.tetrascience.com\",\n            \"validateAwsCertificate\": true,\n            \"proxyUseCustom\": true,\n            \"proxyHost\": \"proxy.example.com\",\n            \"proxyPort\": 8080,\n            \"proxyBypassList\": \"example.com,example.org\",\n            \"proxyUsername\": \"proxyuser\",\n            \"proxyPassword\": \"-1943064076\",\n            \"proxyUseSystem\": false\n          }\n        },\n        \"services_enabled\": [\n          \"fileWatcher\"\n        ],\n        \"services_configuration\": {\n          \"fileWatcher\": {\n            \"use_path_configuration\": true,\n            \"paths\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"windows_scheduled_task\": {\n          \"enabled\": true,\n          \"time\": \"1:00pm\"\n        }\n      },\n      \"by\": \"cloud\",\n      \"at\": \"2023-08-28T14:43:46.381Z\",\n      \"commandStatus\": \"SUCCESS\",\n      \"commandId\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\"\n    },\n    {\n      \"id\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\",\n      \"config\": {\n        \"group_user\": {\n          \"user_name\": \"user1\",\n          \"password\": \"-1943064076\"\n        },\n        \"agent_configuration\": {\n          \"s3_direct_upload\": true,\n          \"receive_commands\": true,\n          \"destination_id\": \"2e72c40f-432e-46a9-a027-e70686e8cd39\",\n          \"agent_id\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\",\n          \"org_slug\": \"tetrascience\",\n          \"Authentication\": \"-1943064076\",\n          \"advanced_setting\": {\n            \"heart_beat_interval\": 30,\n            \"agent_log_upload_job_interval\": 30,\n            \"compression_type\": \"SevenZip\",\n            \"retry_limit\": 3,\n            \"tdpApiUrlOverride\": \"https://api.tetrascience.com\",\n            \"validateAwsCertificate\": true,\n            \"proxyUseCustom\": true,\n            \"proxyHost\": \"proxy.example.com\",\n            \"proxyPort\": 8080,\n            \"proxyBypassList\": \"example.com,example.org\",\n            \"proxyUsername\": \"proxyuser\",\n            \"proxyPassword\": \"-1943064076\",\n            \"proxyUseSystem\": false\n          }\n        },\n        \"services_enabled\": [\n          \"fileWatcher\"\n        ],\n        \"services_configuration\": {\n          \"fileWatcher\": {\n            \"use_path_configuration\": true,\n            \"paths\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"windows_scheduled_task\": {\n          \"enabled\": true,\n          \"time\": \"1:00pm\"\n        }\n      },\n      \"by\": \"cloud\",\n      \"at\": \"2023-08-28T14:43:46.381Z\",\n      \"commandStatus\": \"SUCCESS\",\n      \"commandId\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc8b7c52-a09a-4399-9fc6-8e7a0dc3de56",
+          "name": "Get File-Log agent configuration",
+          "request": {
+            "name": "Get File-Log agent configuration",
+            "description": {
+              "content": "Use this endpoint to get the latest configuration, of the type requested, of a File Log Agent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "agents",
+                ":agentId",
+                "configuration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Type of the configuration to be returned, 'cloud' or 'local'. If the parameter is not provided, The endpoint will default to 'local' type."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agentId",
+                  "description": "(Required) Agent ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa08832b-2cd7-4ac4-90e4-42980ffff615",
+              "name": "Successful response with the latest agent configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\",\n  \"config\": {\n    \"group_user\": {\n      \"user_name\": \"user1\",\n      \"password\": \"-1943064076\"\n    },\n    \"agent_configuration\": {\n      \"s3_direct_upload\": true,\n      \"receive_commands\": true,\n      \"destination_id\": \"2e72c40f-432e-46a9-a027-e70686e8cd39\",\n      \"agent_id\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\",\n      \"org_slug\": \"tetrascience\",\n      \"Authentication\": \"-1943064076\",\n      \"advanced_setting\": {\n        \"heart_beat_interval\": 30,\n        \"agent_log_upload_job_interval\": 30,\n        \"compression_type\": \"Zip\",\n        \"retry_limit\": 3,\n        \"tdpApiUrlOverride\": \"https://api.tetrascience.com\",\n        \"validateAwsCertificate\": true,\n        \"proxyUseCustom\": true,\n        \"proxyHost\": \"proxy.example.com\",\n        \"proxyPort\": 8080,\n        \"proxyBypassList\": \"example.com,example.org\",\n        \"proxyUsername\": \"proxyuser\",\n        \"proxyPassword\": \"-1943064076\",\n        \"proxyUseSystem\": false\n      }\n    },\n    \"services_enabled\": [\n      \"fileWatcher\"\n    ],\n    \"services_configuration\": {\n      \"fileWatcher\": {\n        \"use_path_configuration\": true,\n        \"paths\": [\n          {\n            \"file_watch_mode\": \"file\",\n            \"source_type\": \"unknown\",\n            \"interval\": 30,\n            \"start_date\": \"2023-03-27\",\n            \"path\": \"C:\\\\FLA\\\\test1\",\n            \"patterns\": [\n              \"*.*\"\n            ],\n            \"metadata\": {\n              \"meta1\": \"value1\"\n            },\n            \"tags\": \"tag1,tag2\",\n            \"labels\": [\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ],\n            \"archive\": {\n              \"path\": \"c:\\\\archive\",\n              \"wait_time\": 1,\n              \"wait_time_unit\": \"Days\",\n              \"archive_without_checksum\": false,\n              \"dry_run\": false,\n              \"delete\": {\n                \"wait_time\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"wait_time_unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            \"fetch_os_created_user\": false,\n            \"symlink_behavior\": \"Legacy\"\n          },\n          {\n            \"file_watch_mode\": \"file\",\n            \"source_type\": \"unknown\",\n            \"interval\": 30,\n            \"start_date\": \"2023-03-27\",\n            \"path\": \"C:\\\\FLA\\\\test1\",\n            \"patterns\": [\n              \"*.*\"\n            ],\n            \"metadata\": {\n              \"meta1\": \"value1\"\n            },\n            \"tags\": \"tag1,tag2\",\n            \"labels\": [\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ],\n            \"archive\": {\n              \"path\": \"c:\\\\archive\",\n              \"wait_time\": 1,\n              \"wait_time_unit\": \"Days\",\n              \"archive_without_checksum\": false,\n              \"dry_run\": false,\n              \"delete\": {\n                \"wait_time\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"wait_time_unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            \"fetch_os_created_user\": false,\n            \"symlink_behavior\": \"Ignore\"\n          }\n        ]\n      }\n    },\n    \"windows_scheduled_task\": {\n      \"enabled\": true,\n      \"time\": \"1:00pm\"\n    }\n  },\n  \"by\": \"cloud\",\n  \"at\": \"2023-08-28T14:43:46.381Z\",\n  \"commandStatus\": \"SUCCESS\",\n  \"commandId\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86918879-e80d-431b-8dd4-db1ab51ca8a7",
+          "name": "Remotely configure a running File-Log agent",
+          "request": {
+            "name": "Remotely configure a running File-Log agent",
+            "description": {
+              "content": "-| This endpoint allows configuration of a running File-Log Agent with paths.  The File-Log Agent must be version 4.1.0 or greater, and configured to Receive Commands. Additionally, the Command Queue must be enabled for this Agent on TDP.\nThis will remove any paths not included in the JSON. To preserve existing paths, you must include them each time you POST.\nIf the target's command queue doesn't exist or is not accessible, the API will return a 400 error code and doesn't create the command.\nFor more details, see https://developers.tetrascience.com/docs/configuring-the-file-log-agent-in-the-cloud.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "agents",
+                ":agentId",
+                "configuration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agentId",
+                  "description": "(Required) Agent ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"services_enabled\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"services_configuration\": {\n    \"fileWatcher\": {\n      \"use_path_configuration\": \"<boolean>\",\n      \"paths\": [\n        {\n          \"file_watch_mode\": \"<string>\",\n          \"source_type\": \"<string>\",\n          \"interval\": \"<integer>\",\n          \"start_date\": \"<date>\",\n          \"path\": \"<string>\",\n          \"patterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"metadata\": \"<object>\",\n          \"tags\": \"<string>\",\n          \"labels\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"archive\": {\n            \"path\": \"<string>\",\n            \"wait_time\": \"<integer>\",\n            \"wait_time_unit\": \"<string>\",\n            \"archive_without_checksum\": \"<boolean>\",\n            \"dry_run\": \"<boolean>\",\n            \"delete\": {\n              \"wait_time\": \"<integer>\",\n              \"wait_time_unit\": \"<string>\"\n            }\n          },\n          \"fetch_os_created_user\": \"<boolean>\",\n          \"symlink_behavior\": \"<string>\"\n        },\n        {\n          \"file_watch_mode\": \"<string>\",\n          \"source_type\": \"<string>\",\n          \"interval\": \"<integer>\",\n          \"start_date\": \"<date>\",\n          \"path\": \"<string>\",\n          \"patterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"metadata\": \"<object>\",\n          \"tags\": \"<string>\",\n          \"labels\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"archive\": {\n            \"path\": \"<string>\",\n            \"wait_time\": \"<integer>\",\n            \"wait_time_unit\": \"<string>\",\n            \"archive_without_checksum\": \"<boolean>\",\n            \"dry_run\": \"<boolean>\",\n            \"delete\": {\n              \"wait_time\": \"<integer>\",\n              \"wait_time_unit\": \"<string>\"\n            }\n          },\n          \"fetch_os_created_user\": \"<boolean>\",\n          \"symlink_behavior\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"destination_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f130d5e0-2fe5-43ae-b55e-ff7fc2f75216",
+              "name": "Successful response with the id to the command that executed the update",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"services_enabled\": [\n    \"fileWatcher\"\n  ],\n  \"services_configuration\": {\n    \"fileWatcher\": {\n      \"use_path_configuration\": true,\n      \"paths\": [\n        {\n          \"file_watch_mode\": \"file\",\n          \"source_type\": \"unknown\",\n          \"interval\": 30,\n          \"start_date\": \"2023-03-27\",\n          \"path\": \"C:\\\\FLA\\\\test1\",\n          \"patterns\": [\n            \"*.*\"\n          ],\n          \"metadata\": {\n            \"meta1\": \"value1\"\n          },\n          \"tags\": \"tag1,tag2\",\n          \"labels\": [\n            {\n              \"name\": \"vendor\",\n              \"value\": \"Beckman Coulter\"\n            },\n            {\n              \"name\": \"vendor\",\n              \"value\": \"Beckman Coulter\"\n            }\n          ],\n          \"archive\": {\n            \"path\": \"c:\\\\archive\",\n            \"wait_time\": 1,\n            \"wait_time_unit\": \"Days\",\n            \"archive_without_checksum\": false,\n            \"dry_run\": false,\n            \"delete\": {\n              \"wait_time\": 7,\n              \"wait_time_unit\": \"Days\"\n            }\n          },\n          \"fetch_os_created_user\": false,\n          \"symlink_behavior\": \"Ignore\"\n        },\n        {\n          \"file_watch_mode\": \"file\",\n          \"source_type\": \"unknown\",\n          \"interval\": 30,\n          \"start_date\": \"2023-03-27\",\n          \"path\": \"C:\\\\FLA\\\\test1\",\n          \"patterns\": [\n            \"*.*\"\n          ],\n          \"metadata\": {\n            \"meta1\": \"value1\"\n          },\n          \"tags\": \"tag1,tag2\",\n          \"labels\": [\n            {\n              \"name\": \"vendor\",\n              \"value\": \"Beckman Coulter\"\n            },\n            {\n              \"name\": \"vendor\",\n              \"value\": \"Beckman Coulter\"\n            }\n          ],\n          \"archive\": {\n            \"path\": \"c:\\\\archive\",\n            \"wait_time\": 1,\n            \"wait_time_unit\": \"Days\",\n            \"archive_without_checksum\": false,\n            \"dry_run\": false,\n            \"delete\": {\n              \"wait_time\": 7,\n              \"wait_time_unit\": \"Days\"\n            }\n          },\n          \"fetch_os_created_user\": false,\n          \"symlink_behavior\": \"Legacy\"\n        }\n      ]\n    }\n  },\n  \"destination_id\": \"2e72c40f-432e-46a9-a027-e70686e8cd39\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commandId\": \"729dec7d-26f6-4ac2-b1c0-2ae918e270dc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6483602f-5677-4cb0-aae7-3e7404371ca8",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"services_enabled\": [\n    \"fileWatcher\"\n  ],\n  \"services_configuration\": {\n    \"fileWatcher\": {\n      \"use_path_configuration\": true,\n      \"paths\": [\n        {\n          \"file_watch_mode\": \"file\",\n          \"source_type\": \"unknown\",\n          \"interval\": 30,\n          \"start_date\": \"2023-03-27\",\n          \"path\": \"C:\\\\FLA\\\\test1\",\n          \"patterns\": [\n            \"*.*\"\n          ],\n          \"metadata\": {\n            \"meta1\": \"value1\"\n          },\n          \"tags\": \"tag1,tag2\",\n          \"labels\": [\n            {\n              \"name\": \"vendor\",\n              \"value\": \"Beckman Coulter\"\n            },\n            {\n              \"name\": \"vendor\",\n              \"value\": \"Beckman Coulter\"\n            }\n          ],\n          \"archive\": {\n            \"path\": \"c:\\\\archive\",\n            \"wait_time\": 1,\n            \"wait_time_unit\": \"Days\",\n            \"archive_without_checksum\": false,\n            \"dry_run\": false,\n            \"delete\": {\n              \"wait_time\": 7,\n              \"wait_time_unit\": \"Days\"\n            }\n          },\n          \"fetch_os_created_user\": false,\n          \"symlink_behavior\": \"Ignore\"\n        },\n        {\n          \"file_watch_mode\": \"file\",\n          \"source_type\": \"unknown\",\n          \"interval\": 30,\n          \"start_date\": \"2023-03-27\",\n          \"path\": \"C:\\\\FLA\\\\test1\",\n          \"patterns\": [\n            \"*.*\"\n          ],\n          \"metadata\": {\n            \"meta1\": \"value1\"\n          },\n          \"tags\": \"tag1,tag2\",\n          \"labels\": [\n            {\n              \"name\": \"vendor\",\n              \"value\": \"Beckman Coulter\"\n            },\n            {\n              \"name\": \"vendor\",\n              \"value\": \"Beckman Coulter\"\n            }\n          ],\n          \"archive\": {\n            \"path\": \"c:\\\\archive\",\n            \"wait_time\": 1,\n            \"wait_time_unit\": \"Days\",\n            \"archive_without_checksum\": false,\n            \"dry_run\": false,\n            \"delete\": {\n              \"wait_time\": 7,\n              \"wait_time_unit\": \"Days\"\n            }\n          },\n          \"fetch_os_created_user\": false,\n          \"symlink_behavior\": \"Legacy\"\n        }\n      ]\n    }\n  },\n  \"destination_id\": \"2e72c40f-432e-46a9-a027-e70686e8cd39\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"Cloud configuration is supported only by Online agents\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f60fa2dc-6ff1-453d-820c-5d2341101dbe",
+              "name": "Agent not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"services_enabled\": [\n    \"fileWatcher\"\n  ],\n  \"services_configuration\": {\n    \"fileWatcher\": {\n      \"use_path_configuration\": true,\n      \"paths\": [\n        {\n          \"file_watch_mode\": \"file\",\n          \"source_type\": \"unknown\",\n          \"interval\": 30,\n          \"start_date\": \"2023-03-27\",\n          \"path\": \"C:\\\\FLA\\\\test1\",\n          \"patterns\": [\n            \"*.*\"\n          ],\n          \"metadata\": {\n            \"meta1\": \"value1\"\n          },\n          \"tags\": \"tag1,tag2\",\n          \"labels\": [\n            {\n              \"name\": \"vendor\",\n              \"value\": \"Beckman Coulter\"\n            },\n            {\n              \"name\": \"vendor\",\n              \"value\": \"Beckman Coulter\"\n            }\n          ],\n          \"archive\": {\n            \"path\": \"c:\\\\archive\",\n            \"wait_time\": 1,\n            \"wait_time_unit\": \"Days\",\n            \"archive_without_checksum\": false,\n            \"dry_run\": false,\n            \"delete\": {\n              \"wait_time\": 7,\n              \"wait_time_unit\": \"Days\"\n            }\n          },\n          \"fetch_os_created_user\": false,\n          \"symlink_behavior\": \"Ignore\"\n        },\n        {\n          \"file_watch_mode\": \"file\",\n          \"source_type\": \"unknown\",\n          \"interval\": 30,\n          \"start_date\": \"2023-03-27\",\n          \"path\": \"C:\\\\FLA\\\\test1\",\n          \"patterns\": [\n            \"*.*\"\n          ],\n          \"metadata\": {\n            \"meta1\": \"value1\"\n          },\n          \"tags\": \"tag1,tag2\",\n          \"labels\": [\n            {\n              \"name\": \"vendor\",\n              \"value\": \"Beckman Coulter\"\n            },\n            {\n              \"name\": \"vendor\",\n              \"value\": \"Beckman Coulter\"\n            }\n          ],\n          \"archive\": {\n            \"path\": \"c:\\\\archive\",\n            \"wait_time\": 1,\n            \"wait_time_unit\": \"Days\",\n            \"archive_without_checksum\": false,\n            \"dry_run\": false,\n            \"delete\": {\n              \"wait_time\": 7,\n              \"wait_time_unit\": \"Days\"\n            }\n          },\n          \"fetch_os_created_user\": false,\n          \"symlink_behavior\": \"Legacy\"\n        }\n      ]\n    }\n  },\n  \"destination_id\": \"2e72c40f-432e-46a9-a027-e70686e8cd39\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Agent with id 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a3b9424-d39b-4a12-8946-37f6cbcb4fd2",
+          "name": "Get agent",
+          "request": {
+            "name": "Get agent",
+            "description": {
+              "content": "Use this endpoint to get the details of a single agent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "agents",
+                ":agentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "agentId",
+                  "description": "(Required) The ID of the agent."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd471b98-55fa-47ab-93b9-aaa61c011e47",
+              "name": "Successful response with agent details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "agentId",
+                      "description": "(Required) The ID of the agent."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"9b9f275c-a60d-454f-8c6c-1ea094e3fd38\",\n  \"name\": \"FLA Agent\",\n  \"description\": \"description\",\n  \"sourceType\": \"string\",\n  \"type\": \"file-log\",\n  \"integrationType\": \"api\",\n  \"integrationId\": \"6f166302-df8a-4044-ab4b-7ddd3eefb50b\",\n  \"datahubId\": \"26ac2a19-67a7-25a2-100a-f1a6185403bc\",\n  \"sourceId\": \"9201d7a7-2282-4ef2-b295-a1d1d1927b9a\",\n  \"isEnabled\": true,\n  \"tags\": [\n    \"tag1\"\n  ],\n  \"metadata\": {\n    \"metadataKey\": \"metadataValue\"\n  },\n  \"labels\": [\n    {\n      \"name\": \"vendor\",\n      \"value\": \"Beckman Coulter\"\n    },\n    {\n      \"name\": \"vendor\",\n      \"value\": \"Beckman Coulter\"\n    }\n  ],\n  \"config\": {\n    \"group_user\": {\n      \"user_name\": \"user1\",\n      \"password\": \"-1943064076\"\n    },\n    \"agent_configuration\": {\n      \"s3_direct_upload\": true,\n      \"receive_commands\": true,\n      \"destination_id\": \"2e72c40f-432e-46a9-a027-e70686e8cd39\",\n      \"agent_id\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\",\n      \"org_slug\": \"tetrascience\",\n      \"Authentication\": \"-1943064076\",\n      \"advanced_setting\": {\n        \"heart_beat_interval\": 30,\n        \"agent_log_upload_job_interval\": 30,\n        \"compression_type\": \"SevenZip\",\n        \"retry_limit\": 3,\n        \"tdpApiUrlOverride\": \"https://api.tetrascience.com\",\n        \"validateAwsCertificate\": true,\n        \"proxyUseCustom\": true,\n        \"proxyHost\": \"proxy.example.com\",\n        \"proxyPort\": 8080,\n        \"proxyBypassList\": \"example.com,example.org\",\n        \"proxyUsername\": \"proxyuser\",\n        \"proxyPassword\": \"-1943064076\",\n        \"proxyUseSystem\": false\n      }\n    },\n    \"services_enabled\": [\n      \"fileWatcher\"\n    ],\n    \"services_configuration\": {\n      \"fileWatcher\": {\n        \"use_path_configuration\": true,\n        \"paths\": [\n          {\n            \"file_watch_mode\": \"file\",\n            \"source_type\": \"unknown\",\n            \"interval\": 30,\n            \"start_date\": \"2023-03-27\",\n            \"path\": \"C:\\\\FLA\\\\test1\",\n            \"patterns\": [\n              \"*.*\"\n            ],\n            \"metadata\": {\n              \"meta1\": \"value1\"\n            },\n            \"tags\": \"tag1,tag2\",\n            \"labels\": [\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ],\n            \"archive\": {\n              \"path\": \"c:\\\\archive\",\n              \"wait_time\": 1,\n              \"wait_time_unit\": \"Days\",\n              \"archive_without_checksum\": false,\n              \"dry_run\": false,\n              \"delete\": {\n                \"wait_time\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"wait_time_unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            \"fetch_os_created_user\": false,\n            \"symlink_behavior\": \"Ignore\"\n          },\n          {\n            \"file_watch_mode\": \"file\",\n            \"source_type\": \"unknown\",\n            \"interval\": 30,\n            \"start_date\": \"2023-03-27\",\n            \"path\": \"C:\\\\FLA\\\\test1\",\n            \"patterns\": [\n              \"*.*\"\n            ],\n            \"metadata\": {\n              \"meta1\": \"value1\"\n            },\n            \"tags\": \"tag1,tag2\",\n            \"labels\": [\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ],\n            \"archive\": {\n              \"path\": \"c:\\\\archive\",\n              \"wait_time\": 1,\n              \"wait_time_unit\": \"Days\",\n              \"archive_without_checksum\": false,\n              \"dry_run\": false,\n              \"delete\": {\n                \"wait_time\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"wait_time_unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            \"fetch_os_created_user\": false,\n            \"symlink_behavior\": \"Ignore\"\n          }\n        ]\n      }\n    },\n    \"windows_scheduled_task\": {\n      \"enabled\": true,\n      \"time\": \"1:00pm\"\n    }\n  },\n  \"configStatus\": \"SUCCESS\",\n  \"configStatusUpdatedAt\": \"2023-08-28T14:43:59.753Z\",\n  \"configStatusError\": \"string\",\n  \"configChangedBy\": \"local\",\n  \"configChangedAt\": \"2023-09-05T16:25:01.697Z\",\n  \"createdAt\": \"2023-04-04T14:01:30.136Z\",\n  \"updatedAt\": \"2023-10-10T16:29:08.573Z\",\n  \"orgSlug\": \"tetrascience\",\n  \"status\": \"Online\",\n  \"version\": \"v4.3.1\",\n  \"liveType\": \"file-log\",\n  \"host\": {\n    \"ip\": \"10.60.4.128\",\n    \"name\": \"EC2AMAZ-53HU01M\"\n  },\n  \"queue\": {\n    \"enabled\": true,\n    \"name\": \"https://sqs.us-east-2.amazonaws.com/706717599419/onprem-9b9f275c-a60d-454f-8c6c-1ea094e3fd38.fifo\",\n    \"visibilityTimeout\": 600\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ec197d0-84f6-4131-b92a-16312d4016c5",
+          "name": "Update an agent",
+          "request": {
+            "name": "Update an agent",
+            "description": {
+              "content": "Use this endpoint to update a single agent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "agents",
+                ":agentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "agentId",
+                  "description": "(Required) The ID of the agent."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"integrationType\": \"<string>\",\n  \"integrationId\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"sourceType\": \"<string>\",\n  \"datahubId\": \"<uuid>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {\n    \"key_0\": true,\n    \"key_1\": \"string\",\n    \"key_2\": 6532.834752601229\n  },\n  \"labels\": {\n    \"labelsToAdd\": [\n      [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    ],\n    \"labelsToDrop\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7da52cc0-c59b-45d4-9bec-7513de27d3e9",
+              "name": "Successful response with agent details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "agentId",
+                      "description": "(Required) The ID of the agent."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"file-log\",\n  \"integrationType\": \"<string>\",\n  \"integrationId\": \"6f166302-df8a-4044-ab4b-7ddd3eefb50b\",\n  \"description\": \"<string>\",\n  \"sourceType\": \"\",\n  \"datahubId\": \"<uuid>\",\n  \"tags\": [\n    \"tag1\"\n  ],\n  \"metadata\": {\n    \"metadataKey\": \"metadataValue\"\n  },\n  \"labels\": {\n    \"labelsToAdd\": [\n      [\n        {\n          \"name\": \"labelKey\",\n          \"value\": \"labelValue\"\n        },\n        {\n          \"name\": \"labelKey\",\n          \"value\": \"labelValue\"\n        }\n      ],\n      [\n        {\n          \"name\": \"labelKey\",\n          \"value\": \"labelValue\"\n        },\n        {\n          \"name\": \"labelKey\",\n          \"value\": \"labelValue\"\n        }\n      ]\n    ],\n    \"labelsToDrop\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"9b9f275c-a60d-454f-8c6c-1ea094e3fd38\",\n  \"name\": \"FLA Agent\",\n  \"description\": \"description\",\n  \"sourceType\": \"string\",\n  \"type\": \"file-log\",\n  \"integrationType\": \"api\",\n  \"integrationId\": \"6f166302-df8a-4044-ab4b-7ddd3eefb50b\",\n  \"datahubId\": \"214e0cd6-0e99-cc9a-c7b7-5ec303344744\",\n  \"sourceId\": \"9201d7a7-2282-4ef2-b295-a1d1d1927b9a\",\n  \"isEnabled\": true,\n  \"tags\": [\n    \"tag1\"\n  ],\n  \"metadata\": {\n    \"metadataKey\": \"metadataValue\"\n  },\n  \"labels\": [\n    {\n      \"name\": \"vendor\",\n      \"value\": \"Beckman Coulter\"\n    },\n    {\n      \"name\": \"vendor\",\n      \"value\": \"Beckman Coulter\"\n    }\n  ],\n  \"config\": {\n    \"group_user\": {\n      \"user_name\": \"user1\",\n      \"password\": \"-1943064076\"\n    },\n    \"agent_configuration\": {\n      \"s3_direct_upload\": true,\n      \"receive_commands\": true,\n      \"destination_id\": \"2e72c40f-432e-46a9-a027-e70686e8cd39\",\n      \"agent_id\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\",\n      \"org_slug\": \"tetrascience\",\n      \"Authentication\": \"-1943064076\",\n      \"advanced_setting\": {\n        \"heart_beat_interval\": 30,\n        \"agent_log_upload_job_interval\": 30,\n        \"compression_type\": \"Zip\",\n        \"retry_limit\": 3,\n        \"tdpApiUrlOverride\": \"https://api.tetrascience.com\",\n        \"validateAwsCertificate\": true,\n        \"proxyUseCustom\": true,\n        \"proxyHost\": \"proxy.example.com\",\n        \"proxyPort\": 8080,\n        \"proxyBypassList\": \"example.com,example.org\",\n        \"proxyUsername\": \"proxyuser\",\n        \"proxyPassword\": \"-1943064076\",\n        \"proxyUseSystem\": false\n      }\n    },\n    \"services_enabled\": [\n      \"fileWatcher\"\n    ],\n    \"services_configuration\": {\n      \"fileWatcher\": {\n        \"use_path_configuration\": true,\n        \"paths\": [\n          {\n            \"file_watch_mode\": \"file\",\n            \"source_type\": \"unknown\",\n            \"interval\": 30,\n            \"start_date\": \"2023-03-27\",\n            \"path\": \"C:\\\\FLA\\\\test1\",\n            \"patterns\": [\n              \"*.*\"\n            ],\n            \"metadata\": {\n              \"meta1\": \"value1\"\n            },\n            \"tags\": \"tag1,tag2\",\n            \"labels\": [\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ],\n            \"archive\": {\n              \"path\": \"c:\\\\archive\",\n              \"wait_time\": 1,\n              \"wait_time_unit\": \"Days\",\n              \"archive_without_checksum\": false,\n              \"dry_run\": false,\n              \"delete\": {\n                \"wait_time\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"wait_time_unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            \"fetch_os_created_user\": false,\n            \"symlink_behavior\": \"Ignore\"\n          },\n          {\n            \"file_watch_mode\": \"file\",\n            \"source_type\": \"unknown\",\n            \"interval\": 30,\n            \"start_date\": \"2023-03-27\",\n            \"path\": \"C:\\\\FLA\\\\test1\",\n            \"patterns\": [\n              \"*.*\"\n            ],\n            \"metadata\": {\n              \"meta1\": \"value1\"\n            },\n            \"tags\": \"tag1,tag2\",\n            \"labels\": [\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ],\n            \"archive\": {\n              \"path\": \"c:\\\\archive\",\n              \"wait_time\": 1,\n              \"wait_time_unit\": \"Days\",\n              \"archive_without_checksum\": false,\n              \"dry_run\": false,\n              \"delete\": {\n                \"wait_time\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"wait_time_unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            \"fetch_os_created_user\": false,\n            \"symlink_behavior\": \"Ignore\"\n          }\n        ]\n      }\n    },\n    \"windows_scheduled_task\": {\n      \"enabled\": true,\n      \"time\": \"1:00pm\"\n    }\n  },\n  \"configStatus\": \"SUCCESS\",\n  \"configStatusUpdatedAt\": \"2023-08-28T14:43:59.753Z\",\n  \"configStatusError\": \"string\",\n  \"configChangedBy\": \"local\",\n  \"configChangedAt\": \"2023-09-05T16:25:01.697Z\",\n  \"createdAt\": \"2023-04-04T14:01:30.136Z\",\n  \"updatedAt\": \"2023-10-10T16:29:08.573Z\",\n  \"orgSlug\": \"tetrascience\",\n  \"status\": \"Online\",\n  \"version\": \"v4.3.1\",\n  \"liveType\": \"file-log\",\n  \"host\": {\n    \"ip\": \"10.60.4.128\",\n    \"name\": \"EC2AMAZ-53HU01M\"\n  },\n  \"queue\": {\n    \"enabled\": true,\n    \"name\": \"https://sqs.us-east-2.amazonaws.com/706717599419/onprem-9b9f275c-a60d-454f-8c6c-1ea094e3fd38.fifo\",\n    \"visibilityTimeout\": 600\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a6cc834-8f3b-4da1-b993-54a6f9a506d3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "agentId",
+                      "description": "(Required) The ID of the agent."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"file-log\",\n  \"integrationType\": \"<string>\",\n  \"integrationId\": \"6f166302-df8a-4044-ab4b-7ddd3eefb50b\",\n  \"description\": \"<string>\",\n  \"sourceType\": \"\",\n  \"datahubId\": \"<uuid>\",\n  \"tags\": [\n    \"tag1\"\n  ],\n  \"metadata\": {\n    \"metadataKey\": \"metadataValue\"\n  },\n  \"labels\": {\n    \"labelsToAdd\": [\n      [\n        {\n          \"name\": \"labelKey\",\n          \"value\": \"labelValue\"\n        },\n        {\n          \"name\": \"labelKey\",\n          \"value\": \"labelValue\"\n        }\n      ],\n      [\n        {\n          \"name\": \"labelKey\",\n          \"value\": \"labelValue\"\n        },\n        {\n          \"name\": \"labelKey\",\n          \"value\": \"labelValue\"\n        }\n      ]\n    ],\n    \"labelsToDrop\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"Agent type change is not allowed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98c09c78-41e5-488a-8dc9-7a010c621906",
+          "name": "Change agent connector",
+          "request": {
+            "name": "Change agent connector",
+            "description": {
+              "content": "Use this endpoint to change the connector of an agent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "agents",
+                ":agentId",
+                "connector"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "agentId",
+                  "description": "(Required) The ID of the agent."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integrationType\": \"<string>\",\n  \"datahubId\": \"<uuid>\",\n  \"integrationId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7542d221-5144-4605-9e18-36981d0b78e1",
+              "name": "Agent connector updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "agentId",
+                      "description": "(Required) The ID of the agent."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrationType\": \"datahub\",\n  \"datahubId\": \"46568316-feda-4a04-889e-792064ded110\",\n  \"integrationId\": \"222b2fcb-03ab-4875-a420-77bb35fd8f63\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d02b8f48-b3f9-47e1-8b62-1c72c222e35d",
+          "name": "Deprecated - Get File-Log agent configuration",
+          "request": {
+            "name": "Deprecated - Get File-Log agent configuration",
+            "description": {
+              "content": "This endpoint has been deprecated in favor of /v1/agents/{agentId}/configuration. Both endpoints are identical.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "agents",
+                ":agentId",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Type of the configuration to be returned, 'cloud' or 'local'. If this parameter is not provided, the endpoint will default to 'local'."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agentId",
+                  "description": "(Required) Agent ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2aac2e6b-ba89-4203-81fa-d39d859b92ce",
+              "name": "Successful response with the latest agent configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\",\n  \"config\": {\n    \"group_user\": {\n      \"user_name\": \"user1\",\n      \"password\": \"-1943064076\"\n    },\n    \"agent_configuration\": {\n      \"s3_direct_upload\": true,\n      \"receive_commands\": true,\n      \"destination_id\": \"2e72c40f-432e-46a9-a027-e70686e8cd39\",\n      \"agent_id\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\",\n      \"org_slug\": \"tetrascience\",\n      \"Authentication\": \"-1943064076\",\n      \"advanced_setting\": {\n        \"heart_beat_interval\": 30,\n        \"agent_log_upload_job_interval\": 30,\n        \"compression_type\": \"Zip\",\n        \"retry_limit\": 3,\n        \"tdpApiUrlOverride\": \"https://api.tetrascience.com\",\n        \"validateAwsCertificate\": true,\n        \"proxyUseCustom\": true,\n        \"proxyHost\": \"proxy.example.com\",\n        \"proxyPort\": 8080,\n        \"proxyBypassList\": \"example.com,example.org\",\n        \"proxyUsername\": \"proxyuser\",\n        \"proxyPassword\": \"-1943064076\",\n        \"proxyUseSystem\": false\n      }\n    },\n    \"services_enabled\": [\n      \"fileWatcher\"\n    ],\n    \"services_configuration\": {\n      \"fileWatcher\": {\n        \"use_path_configuration\": true,\n        \"paths\": [\n          {\n            \"file_watch_mode\": \"file\",\n            \"source_type\": \"unknown\",\n            \"interval\": 30,\n            \"start_date\": \"2023-03-27\",\n            \"path\": \"C:\\\\FLA\\\\test1\",\n            \"patterns\": [\n              \"*.*\"\n            ],\n            \"metadata\": {\n              \"meta1\": \"value1\"\n            },\n            \"tags\": \"tag1,tag2\",\n            \"labels\": [\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ],\n            \"archive\": {\n              \"path\": \"c:\\\\archive\",\n              \"wait_time\": 1,\n              \"wait_time_unit\": \"Days\",\n              \"archive_without_checksum\": false,\n              \"dry_run\": false,\n              \"delete\": {\n                \"wait_time\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"wait_time_unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            \"fetch_os_created_user\": false,\n            \"symlink_behavior\": \"Legacy\"\n          },\n          {\n            \"file_watch_mode\": \"file\",\n            \"source_type\": \"unknown\",\n            \"interval\": 30,\n            \"start_date\": \"2023-03-27\",\n            \"path\": \"C:\\\\FLA\\\\test1\",\n            \"patterns\": [\n              \"*.*\"\n            ],\n            \"metadata\": {\n              \"meta1\": \"value1\"\n            },\n            \"tags\": \"tag1,tag2\",\n            \"labels\": [\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ],\n            \"archive\": {\n              \"path\": \"c:\\\\archive\",\n              \"wait_time\": 1,\n              \"wait_time_unit\": \"Days\",\n              \"archive_without_checksum\": false,\n              \"dry_run\": false,\n              \"delete\": {\n                \"wait_time\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"wait_time_unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            \"fetch_os_created_user\": false,\n            \"symlink_behavior\": \"Ignore\"\n          }\n        ]\n      }\n    },\n    \"windows_scheduled_task\": {\n      \"enabled\": true,\n      \"time\": \"1:00pm\"\n    }\n  },\n  \"by\": \"cloud\",\n  \"at\": \"2023-08-28T14:43:46.381Z\",\n  \"commandStatus\": \"SUCCESS\",\n  \"commandId\": \"f82d2230-eed1-443c-9ed8-2e1fef9039c2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ed360ce-4f36-4c9c-b78e-06a7889f18f0",
+          "name": "Deprecated - Remotely configure a running File-Log agent",
+          "request": {
+            "name": "Deprecated - Remotely configure a running File-Log agent",
+            "description": {
+              "content": "-| This endpoint has been deprecated in favor of /v1/agents/{agentId}/configuration. Both endpoints are identical.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "agents",
+                ":agentId",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agentId",
+                  "description": "(Required) Agent ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"services_enabled\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"services_configuration\": {\n    \"fileWatcher\": {\n      \"use_path_configuration\": \"<boolean>\",\n      \"paths\": [\n        {\n          \"file_watch_mode\": \"<string>\",\n          \"source_type\": \"<string>\",\n          \"interval\": \"<integer>\",\n          \"start_date\": \"<date>\",\n          \"path\": \"<string>\",\n          \"patterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"metadata\": \"<object>\",\n          \"tags\": \"<string>\",\n          \"labels\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"archive\": {\n            \"path\": \"<string>\",\n            \"wait_time\": \"<integer>\",\n            \"wait_time_unit\": \"<string>\",\n            \"archive_without_checksum\": \"<boolean>\",\n            \"dry_run\": \"<boolean>\",\n            \"delete\": {\n              \"wait_time\": \"<integer>\",\n              \"wait_time_unit\": \"<string>\"\n            }\n          },\n          \"fetch_os_created_user\": \"<boolean>\",\n          \"symlink_behavior\": \"<string>\"\n        },\n        {\n          \"file_watch_mode\": \"<string>\",\n          \"source_type\": \"<string>\",\n          \"interval\": \"<integer>\",\n          \"start_date\": \"<date>\",\n          \"path\": \"<string>\",\n          \"patterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"metadata\": \"<object>\",\n          \"tags\": \"<string>\",\n          \"labels\": [\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"archive\": {\n            \"path\": \"<string>\",\n            \"wait_time\": \"<integer>\",\n            \"wait_time_unit\": \"<string>\",\n            \"archive_without_checksum\": \"<boolean>\",\n            \"dry_run\": \"<boolean>\",\n            \"delete\": {\n              \"wait_time\": \"<integer>\",\n              \"wait_time_unit\": \"<string>\"\n            }\n          },\n          \"fetch_os_created_user\": \"<boolean>\",\n          \"symlink_behavior\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"destination_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8aea3999-1fc8-4c98-bc18-3dad76a00890",
+              "name": "Successful response with the id to the command that executed the update",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commandId\": \"729dec7d-26f6-4ac2-b1c0-2ae918e270dc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90972e10-970e-4770-a422-e8b759b345ba",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"Cloud configuration is supported only by Online agents\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "473e2682-05c6-4a54-8a11-2228e9dd48bf",
+              "name": "Agent not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    ":agentId",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found\",\n  \"message\": \"Agent with id 47ab98d5-cccb-4a7d-86f4-0ff8f7c11bda not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f53d1b2a-5656-472d-978a-eeed8448bedb",
+    "name": "TetraScience Data and AI Cloud Access Groups Agents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

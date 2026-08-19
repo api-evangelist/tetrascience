@@ -1,0 +1,218 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Commands API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Commands",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search commands",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/commands",
+            "params": [
+              {
+                "name": "targetId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the target that received and processed command(s). Supports one or more values, such as `targetId=71003689-9619-43aa-809a-a693ede72e8b&targetId=740b1e83-eaf0-4e03-b134-97fb575a8c4c`"
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action label, such as TetraScience.Connector.sdc.CreateMeasurementOrder.  Supports one or more values, such as  `action=TetraScience.Connector.sdc.CreateMeasurementOrder&action=TetraScience.Connector.ValidateConfig`"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Command status: CREATED, UNSENT, PENDING, EXPIRED, PURGED, ERROR, PROCESSING, REJECTED, SUCCESS, FAILURE. Supports one or more values, such as  `status=FAILURE&status=SUCCESS`"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated name for `createdAtAfter`"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated name for `createdAtBefore`"
+              },
+              {
+                "name": "createdAtBefore",
+                "value": "",
+                "type": "query",
+                "description": "Commands created on or before a given date (ISO timestamp)"
+              },
+              {
+                "name": "createdAtAfter",
+                "value": "",
+                "type": "query",
+                "description": "Commands created on or after a given date (ISO timestamp)"
+              },
+              {
+                "name": "expiresAtBefore",
+                "value": "",
+                "type": "query",
+                "description": "Commands expiring on or before a given date (ISO timestamp)"
+              },
+              {
+                "name": "expiresAtAfter",
+                "value": "",
+                "type": "query",
+                "description": "Commands expiring on or after a given date (ISO timestamp)"
+              },
+              {
+                "name": "updatedAtBefore",
+                "value": "",
+                "type": "query",
+                "description": "Commands updated on or before a given date (ISO timestamp)"
+              },
+              {
+                "name": "updatedAtAfter",
+                "value": "",
+                "type": "query",
+                "description": "Commands updated on or after a given date (ISO timestamp)"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Display commands started from specified number in the results array.  By default, commands are displayed from the start of the array (the number 0).  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with size."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Indicates the number of results to return in the request.  This parameter is included if the result set is large, pagination might be required.   This parameter is typically used in conjunction with from."
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Sort field: createdAt | updatedAt | expiresAt."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order: asc | desc"
+              },
+              {
+                "name": "metadata",
+                "value": "",
+                "type": "query",
+                "description": "Metadata key-value pairs, such as metadata.vendor=tetra. Pairs must be exact matches of existing metadata values."
+              }
+            ]
+          },
+          "docs": "Use this endpoint to search all on-premises commands based on various filters. This endpoint is useful when you want to filter out commands, get all successful, or unsuccessful commands, get all commands that are sent to some agent/connector, commands that are created within a certain time range and more."
+        },
+        {
+          "info": {
+            "name": "Create command",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/commands",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this endpoint to create a new command for an on-premises connector/agent. It also automatically sends command to SQS queue for execution. Once it is in the queue, the connector/agent listening on the target queue picks up the command,  tries to execute it, and sends the response back to the command service.\nThe maximum create command request size is 10 MB."
+        },
+        {
+          "info": {
+            "name": "Purge queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tetrascience.com/v1/commands",
+            "params": [
+              {
+                "name": "targetId",
+                "value": "",
+                "type": "query",
+                "description": "Agent or connector ID for which queue should be purged"
+              }
+            ]
+          },
+          "docs": "Use this method to purge all existing commands from the target queue. This command can be useful when testing new pipelines and command creation and the queue is blocked by a large number of unexecuted commands. When you fire this endpoint, all commands are deleted from the queue, and the command status is changed to PURGED.  Also, during the purge, the queue for the given target is blocked and does not receive new commands."
+        },
+        {
+          "info": {
+            "name": "Get command history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/commands/:id/history",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Command id"
+              }
+            ]
+          },
+          "docs": "Use this endpoint to obtain all the changes of a given command. It should return all status changes including who made the change and when the change was made."
+        },
+        {
+          "info": {
+            "name": "Get one command",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/commands/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Command ID"
+              }
+            ]
+          },
+          "docs": "Use this endpoint to obtain all the details for one single command. You will need to supply the command id as the path variable. This endpoint returns details like the command id, creation time, expiration time, the action, actual request body, and more."
+        },
+        {
+          "info": {
+            "name": "List command actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/commands/actions"
+          },
+          "docs": "Use this endpoint to list all distinct on-premises command actions.\n\nNote that this API does not control command actions, so this result may contain erroneous or unsent actions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

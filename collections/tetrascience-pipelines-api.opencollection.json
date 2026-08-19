@@ -1,0 +1,435 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Pipelines API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pipelines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a Bulk Processing Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/pipeline/:pipelineId/create-pipeline-bulk-processing-job",
+            "params": [
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the pipeline"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Bulk Processing Job"
+        },
+        {
+          "info": {
+            "name": "Create New Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/pipeline/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create New Pipeline"
+        },
+        {
+          "info": {
+            "name": "Get Details of a Single Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/pipeline/:pipelineId",
+            "params": [
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the pipeline"
+              }
+            ]
+          },
+          "docs": "Search data pipeline workflows"
+        },
+        {
+          "info": {
+            "name": "Get Pipline Revision Contents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/pipeline/:pipelineId/revisions/:revisionNumber",
+            "params": [
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the pipeline"
+              },
+              {
+                "name": "revisionNumber",
+                "value": "",
+                "type": "path",
+                "description": "The number of the revision to get"
+              }
+            ]
+          },
+          "docs": "Get Pipline Revision Contents"
+        },
+        {
+          "info": {
+            "name": "List Pipeline Revision History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/pipeline/:pipelineId/revisions",
+            "params": [
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the pipeline"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. Defaults to 30"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The first element in the dataset to query from. The cursor is a revision number"
+              }
+            ]
+          },
+          "docs": "List Pipeline Revision History"
+        },
+        {
+          "info": {
+            "name": "Import a Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/pipeline/import",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Import a Pipeline"
+        },
+        {
+          "info": {
+            "name": "List Pipeline IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/pipeline/pipelines/id-only"
+          },
+          "docs": "List Pipeline IDs"
+        },
+        {
+          "info": {
+            "name": "List Databricks Cluster Policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/pipeline/clusterPolicies/databricks"
+          },
+          "docs": "Returns a list of platform-level Databricks cluster policies filtered by prefix 'ts-platform-policy-*'"
+        },
+        {
+          "info": {
+            "name": "List Databricks Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/pipeline/clusters/databricks"
+          },
+          "docs": "List Databricks Clusters"
+        },
+        {
+          "info": {
+            "name": "Paginate Through all Pipeline Details (Deprecated)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/pipeline/list",
+            "params": [
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of pipelines to return"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Page number to start from (0-indexed)"
+              }
+            ]
+          },
+          "docs": "Lists all of the pipelines in a paginated list"
+        },
+        {
+          "info": {
+            "name": "Get Platform Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/pipeline/platform/info",
+            "params": [
+              {
+                "name": "groups",
+                "value": "",
+                "type": "query",
+                "description": "Groups from which platform information should be retrieved"
+              }
+            ]
+          },
+          "docs": "Get information about the current platform deployment. May be useful for the platform UI."
+        },
+        {
+          "info": {
+            "name": "Process List of Files with Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/pipeline/process/:pipelineId",
+            "params": [
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the pipeline"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint processes a list of files by using a specified pipeline. It processes the latest version of each file only."
+        },
+        {
+          "info": {
+            "name": "Process Files - draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/pipeline/pipelines/:pipelineID/reprocess",
+            "params": [
+              {
+                "name": "pipelineID",
+                "value": "",
+                "type": "path",
+                "description": "Pipeline UUID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search data pipeline workflows"
+        },
+        {
+          "info": {
+            "name": "Get Count of Pipelines Accessible Via Access Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/pipeline/rules-check",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Count of Pipelines Accessible Via Access Rule"
+        },
+        {
+          "info": {
+            "name": "Search Pipelines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/pipeline/search",
+            "params": [
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of pipelines to return"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Page number to start from (0-indexed)"
+              },
+              {
+                "name": "pipelineStatus",
+                "value": "",
+                "type": "query",
+                "description": "Status"
+              },
+              {
+                "name": "pipelineNameOrId",
+                "value": "",
+                "type": "query",
+                "description": "Name or ID"
+              },
+              {
+                "name": "artifactType",
+                "value": "",
+                "type": "query",
+                "description": "Tetraflow or Protocol"
+              },
+              {
+                "name": "protocolNamespace",
+                "value": "",
+                "type": "query",
+                "description": "Namespace of protocol"
+              },
+              {
+                "name": "protocolName",
+                "value": "",
+                "type": "query",
+                "description": "Name of protocol"
+              },
+              {
+                "name": "protocolVersion",
+                "value": "",
+                "type": "query",
+                "description": "Version of protocol"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "Time when pipeline started"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "Time when pipeline ended"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort results by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Ordering of"
+              },
+              {
+                "name": "labelKey",
+                "value": "",
+                "type": "query",
+                "description": "Filter pipelines by label key. If provided, response contains pipelines with assigned matching label keys."
+              },
+              {
+                "name": "labelValue",
+                "value": "",
+                "type": "query",
+                "description": "Filter pipelines by label value. Requires labelKey to be provided. If both labelKey and labelValue are provided, response contains pipelines with assigned matching key-value label pairs."
+              }
+            ]
+          },
+          "docs": "Search pipelines"
+        },
+        {
+          "info": {
+            "name": "Set Pipeline Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/pipeline/:pipelineId/status",
+            "params": [
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the pipeline"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set Pipeline Status"
+        },
+        {
+          "info": {
+            "name": "Update Existing Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/pipeline/update/:pipelineId",
+            "params": [
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the pipeline"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Existing Pipeline"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

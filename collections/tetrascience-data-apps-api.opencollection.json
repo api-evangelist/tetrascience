@@ -1,0 +1,425 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Data Apps API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Apps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check how many data apps match the provided access control rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/dataapps/rules-check",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check how many data apps match the provided access control rules"
+        },
+        {
+          "info": {
+            "name": "Clear the selected data app and auth cookies",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tetrascience.com/v1/dataapps/apps/container/cookies"
+          },
+          "docs": "Clear the selected data app and auth cookies"
+        },
+        {
+          "info": {
+            "name": "Fetch connector key value by key for a data app",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/dataapps/kv/:appSlug/:key",
+            "params": [
+              {
+                "name": "appSlug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "artifact_type",
+                "value": "",
+                "type": "query",
+                "description": "Required artifact type filter used during authorization and app lookup."
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query",
+                "description": "Required artifact namespace filter used during authorization and app lookup."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "Connector key. Commas are not allowed."
+              }
+            ]
+          },
+          "docs": "Fetch connector key value by key for a data app"
+        },
+        {
+          "info": {
+            "name": "Delete connector key value by key for a data app",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tetrascience.com/v1/dataapps/kv/:appSlug/:key",
+            "params": [
+              {
+                "name": "appSlug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "artifact_type",
+                "value": "",
+                "type": "query",
+                "description": "Required artifact type filter used during authorization and app lookup."
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query",
+                "description": "Required artifact namespace filter used during authorization and app lookup."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "Connector key. Commas are not allowed."
+              }
+            ]
+          },
+          "docs": "Delete connector key value by key for a data app"
+        },
+        {
+          "info": {
+            "name": "Download container logs for a specific data app",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/dataapps/apps/:id/logs/download",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Relative time range for logs (30s, 10m, 30m, 1h, 12h, 1d, 3d, 1w for download)"
+              }
+            ]
+          },
+          "docs": "Download container logs for a specific data app"
+        },
+        {
+          "info": {
+            "name": "Execute a DML query on external or lakehouse schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/dataapps/data/executeDML",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a DML query on external or lakehouse schemas"
+        },
+        {
+          "info": {
+            "name": "List installed Data Apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/dataapps/apps",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination (starts from 1)"
+              },
+              {
+                "name": "includeLabels",
+                "value": "",
+                "type": "query",
+                "description": "Include labels for each data app"
+              },
+              {
+                "name": "labelKey",
+                "value": "",
+                "type": "query",
+                "description": "Filter data apps by label key"
+              },
+              {
+                "name": "labelValue",
+                "value": "",
+                "type": "query",
+                "description": "Filter data apps by label value (requires labelKey)"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter data apps by type (CONNECTED or CONTAINER)"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search term to filter data apps by name, description, or slug"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort results by"
+              },
+              {
+                "name": "sortDirection",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction (asc or desc)"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of Data Apps currently installed in your organization. Supports filtering by type, labels, and search term."
+        },
+        {
+          "info": {
+            "name": "Fetch container data app by connector or data app ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/dataapps/apps/container/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch container data app by connector or data app ID"
+        },
+        {
+          "info": {
+            "name": "Fetch container logs for a specific data app",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/dataapps/apps/:id/logs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Log fetch mode: \"time\" for time-based, \"count\" for last N messages"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Relative time range for logs (30s, 10m, 30m, 1h, 12h, 1d, 3d, 1w). Used when mode=time"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of most recent log messages to return. Used when mode=count"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of log events per request (for pagination)"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Token for pagination"
+              }
+            ]
+          },
+          "docs": "Fetch container logs for a specific data app"
+        },
+        {
+          "info": {
+            "name": "Get Data App details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/dataapps/apps/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Data App ID"
+              }
+            ]
+          },
+          "docs": "Retrieves complete details of a single installed Data App, including metadata, deployment configuration, platform requirements, assigned labels, and associated providers."
+        },
+        {
+          "info": {
+            "name": "Fetch next chunk for an executed DML statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/dataapps/data/fetchDMLResult",
+            "params": [
+              {
+                "name": "statementId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "chunkIndex",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch next chunk for an executed DML statement"
+        },
+        {
+          "info": {
+            "name": "List connector key value keys for a data app",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/dataapps/kv/:appSlug",
+            "params": [
+              {
+                "name": "appSlug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "artifact_type",
+                "value": "",
+                "type": "query",
+                "description": "Required artifact type filter used during authorization and app lookup."
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query",
+                "description": "Required artifact namespace filter used during authorization and app lookup."
+              }
+            ]
+          },
+          "docs": "List connector key value keys for a data app"
+        },
+        {
+          "info": {
+            "name": "Save connector key values for a data app",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tetrascience.com/v1/dataapps/kv/:appSlug",
+            "params": [
+              {
+                "name": "appSlug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "artifact_type",
+                "value": "",
+                "type": "query",
+                "description": "Required artifact type filter used during authorization and app lookup."
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query",
+                "description": "Required artifact namespace filter used during authorization and app lookup."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Save connector key values for a data app"
+        },
+        {
+          "info": {
+            "name": "Update Data App labels for access control",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tetrascience.com/v1/dataapps/apps/:id/labels",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Data App ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces all labels assigned to a Data App. Labels drive EARS (Entitlement and Access Rights Service) access control policies — use them to control which users and teams can see and interact with a Data App. Pass an empty array to clear all labels."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

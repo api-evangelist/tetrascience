@@ -1,0 +1,335 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Agents API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get command queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/agents/:agentId/command-queue",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the agent"
+              }
+            ]
+          },
+          "docs": "Use this endpoint to get details about the command queue of an agent"
+        },
+        {
+          "info": {
+            "name": "Enable or disable command queue.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tetrascience.com/v1/agents/:agentId/command-queue",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the agent."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this endpoint to enable or disable the command queue of an agent."
+        },
+        {
+          "info": {
+            "name": "Get agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/agents",
+            "params": [
+              {
+                "name": "include",
+                "value": "labels",
+                "type": "query",
+                "description": "Each agent returned will include its associated labels when the value is 'labels'. Otherwise this parameter is ignored"
+              }
+            ]
+          },
+          "docs": "Use this endpoint to get a list of agents."
+        },
+        {
+          "info": {
+            "name": "Create an agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/agents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this endpoint to create a new agent."
+        },
+        {
+          "info": {
+            "name": "Enable or disable an agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tetrascience.com/v1/agents/:agentId/enabled",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the agent."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this endpoint to enable or disable an agent"
+        },
+        {
+          "info": {
+            "name": "Get File-Log agent configuration list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/agents/:agentId/configuration/list",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "Agent ID"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              },
+              {
+                "name": "by",
+                "value": "",
+                "type": "query",
+                "description": "Filter by agent config type"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by agent config by its command status"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sorting order by creation date"
+              }
+            ]
+          },
+          "docs": "Use this endpoint to get the past configurations of a File-Log agent"
+        },
+        {
+          "info": {
+            "name": "Get File-Log agent configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/agents/:agentId/configuration",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "Agent ID"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Type of the configuration to be returned, 'cloud' or 'local'. If the parameter is not provided, The endpoint will default to 'local' type."
+              }
+            ]
+          },
+          "docs": "Use this endpoint to get the latest configuration, of the type requested, of a File Log Agent"
+        },
+        {
+          "info": {
+            "name": "Remotely configure a running File-Log agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/agents/:agentId/configuration",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "Agent ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "-| This endpoint allows configuration of a running File-Log Agent with paths.  The File-Log Agent must be version 4.1.0 or greater, and configured to Receive Commands. Additionally, the Command Queue must be enabled for this Agent on TDP.\nThis will remove any paths not included in the JSON. To preserve existing paths, you must include them each time you POST.\nIf the target's command queue doesn't exist or is not accessible, the API will return a 400 error code and doesn't create the command.\nFor"
+        },
+        {
+          "info": {
+            "name": "Get agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/agents/:agentId",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the agent."
+              }
+            ]
+          },
+          "docs": "Use this endpoint to get the details of a single agent."
+        },
+        {
+          "info": {
+            "name": "Update an agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tetrascience.com/v1/agents/:agentId",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the agent."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this endpoint to update a single agent"
+        },
+        {
+          "info": {
+            "name": "Change agent connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tetrascience.com/v1/agents/:agentId/connector",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the agent."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this endpoint to change the connector of an agent"
+        },
+        {
+          "info": {
+            "name": "Deprecated - Get File-Log agent configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/agents/:agentId/config",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "Agent ID"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Type of the configuration to be returned, 'cloud' or 'local'. If this parameter is not provided, the endpoint will default to 'local'."
+              }
+            ]
+          },
+          "docs": "This endpoint has been deprecated in favor of /v1/agents/{agentId}/configuration. Both endpoints are identical."
+        },
+        {
+          "info": {
+            "name": "Deprecated - Remotely configure a running File-Log agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/agents/:agentId/config",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "Agent ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "-| This endpoint has been deprecated in favor of /v1/agents/{agentId}/configuration. Both endpoints are identical."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,195 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Access Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Access Group Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/accessGroups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the details of a specific [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization)."
+        },
+        {
+          "info": {
+            "name": "Edit an Access Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tetrascience.com/v1/accessGroups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit an [access group's](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization) name, description, status, and [data access rules](https://developers.tetrascience.com/docs/managing-organization-details#create-access-groups)."
+        },
+        {
+          "info": {
+            "name": "Delete an Access Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tetrascience.com/v1/accessGroups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization)."
+        },
+        {
+          "info": {
+            "name": "Remove a User from an Access Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tetrascience.com/v1/accessGroups/:id/user/:userId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a user from an [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization)."
+        },
+        {
+          "info": {
+            "name": "List Access Groups for an Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/accessGroups"
+          },
+          "docs": "Get a list of all [access groups](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization) for an organization."
+        },
+        {
+          "info": {
+            "name": "Create a New Access Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/accessGroups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization)."
+        },
+        {
+          "info": {
+            "name": "List Access Groups that a User Belongs To",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/accessGroups/user/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a list of all [access groups](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization) that a user belongs to."
+        },
+        {
+          "info": {
+            "name": "Add a User to an Access Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/accessGroups/:id/user",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a user to an [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization)."
+        },
+        {
+          "info": {
+            "name": "Add or Remove Users from an Access Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/accessGroups/:id/users",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add or remove users from an [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

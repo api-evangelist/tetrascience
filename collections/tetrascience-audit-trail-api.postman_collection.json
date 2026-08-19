@@ -1,0 +1,240 @@
+{
+  "item": [
+    {
+      "id": "f4703c63-169e-4101-beb4-c81722c8e356",
+      "name": "Audit Trail",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b78db07f-bc4a-416a-97e8-c615d5c28f59",
+          "name": "Get audit logs (Paginated)",
+          "request": {
+            "name": "Get audit logs (Paginated)",
+            "description": {
+              "content": "Returns a paginated object of audit logs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "audit-trail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "actor",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "entityName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "entity",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "changeReason",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "take",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4d8de4a0-115c-446c-aad0-7e7f94ca106a",
+              "name": "Complex object containing audit logs and paging information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit-trail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "actor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entityName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "changeReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"skip\": 9625.780748786437,\n  \"take\": 9266.101588641004,\n  \"next\": true,\n  \"logs\": [\n    {\n      \"id\": \"a0d360d6-8185-a0e2-7eac-f73bc754b52b\",\n      \"orgSlug\": \"tetrascience\",\n      \"ip\": \"178.75.55.33\",\n      \"createdAt\": \"1952-05-03T13:18:25.604Z\",\n      \"entity\": {\n        \"id\": \"26f0fca9-bf53-7e98-dd43-cba2dd7613e4\",\n        \"type\": \"datahub-agent\",\n        \"before\": {},\n        \"after\": {},\n        \"schemaVersion\": 9404.1081217129\n      },\n      \"action\": \"change-role\",\n      \"actor\": {\n        \"id\": \"0ded40cf-37c1-67af-a215-183853285d65\",\n        \"type\": \"local-user\",\n        \"name\": \"Administrator\",\n        \"email\": \"Fi1@acZwqD.mq\"\n      },\n      \"authToken\": {\n        \"ending\": \"string\"\n      }\n    },\n    {\n      \"id\": \"0949468f-adb9-16d1-f0ed-28fa053582ef\",\n      \"orgSlug\": \"tetrascience\",\n      \"ip\": \"122.118.11.111\",\n      \"createdAt\": \"2002-08-17T19:58:17.421Z\",\n      \"entity\": {\n        \"id\": \"a716abb9-1f59-5df9-bc39-bb8fbe6e8f6f\",\n        \"type\": \"iot-source\",\n        \"before\": {},\n        \"after\": {},\n        \"schemaVersion\": 2360.956839499451\n      },\n      \"action\": \"change-password\",\n      \"actor\": {\n        \"id\": \"71255aac-e478-5a1e-bdc3-84133c338de3\",\n        \"type\": \"service-user\",\n        \"name\": \"Administrator\",\n        \"email\": \"oxnHT-JMr5X@ABbaKezvYrg.vi\"\n      },\n      \"authToken\": {\n        \"ending\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9dd9b7be-b100-4387-ac7b-bdcc6502bd59",
+    "name": "TetraScience Data and AI Cloud Access Groups Audit Trail API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

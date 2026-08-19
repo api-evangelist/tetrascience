@@ -1,0 +1,316 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups tetraspheres API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "tetraspheres",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all tetraspheres for namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/tetraspheres/:namespace",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all tetrasphere artifacts given a namespace"
+        },
+        {
+          "info": {
+            "name": "List all tetraspheres for namespace/slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/tetraspheres/:namespace/:slug",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all tetrasphere artifacts given a namespace and slug"
+        },
+        {
+          "info": {
+            "name": "Get contents for a tetrasphere file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/tetraspheres/:namespace/:slug/:version/files/:fileSlug",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "fileSlug",
+                "value": "build",
+                "type": "path",
+                "description": "File slug corresponding to file within a tetrasphere"
+              },
+              {
+                "name": "download",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, return a download url"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns the file contents for a tetrasphere file given a namespace, slug, version, and file slug"
+        },
+        {
+          "info": {
+            "name": "Get a single tetrasphere artifact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/tetraspheres/:namespace/:slug/:version",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a single tetrasphere artifact matching the namespace, slug, and version"
+        },
+        {
+          "info": {
+            "name": "Get available file slugs for tetrasphere",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/tetraspheres/:namespace/:slug/:version/files",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns which file slugs are available to retrieve for this tetrasphere"
+        },
+        {
+          "info": {
+            "name": "Get labels for a tetrasphere",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/tetraspheres/:namespace/:slug/:version/labels",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of the labels associated with a tetrasphere artifact"
+        },
+        {
+          "info": {
+            "name": "List all tetrasphere artifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/tetraspheres",
+            "params": [
+              {
+                "name": "namespace_type",
+                "value": "client",
+                "type": "query",
+                "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all tetrasphere artifacts, optionally filtered by namespace type"
+        },
+        {
+          "info": {
+            "name": "Search for tetrasphere artifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/artifacts/tetraspheres/search",
+            "params": [
+              {
+                "name": "value",
+                "value": "",
+                "type": "query",
+                "description": "The search string"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Search for items using specified criteria"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

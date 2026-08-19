@@ -1,0 +1,153 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Files API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete a File",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tetrascience.com/v1/datalake/delete",
+            "headers": [
+              {
+                "name": "ts-auth-token",
+                "value": ""
+              },
+              {
+                "name": "x-org-slug",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the file to delete."
+              }
+            ]
+          },
+          "docs": "This endpoint does soft delete. Soft delete means that file will remain in datalake but will be marked as deleted. This means that file will not appear in file search and Athena search"
+        },
+        {
+          "info": {
+            "name": "Retrieve a File",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/datalake/retrieve",
+            "headers": [
+              {
+                "name": "ts-auth-token",
+                "value": ""
+              },
+              {
+                "name": "x-org-slug",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the file to retrieve."
+              },
+              {
+                "name": "getPresigned",
+                "value": "",
+                "type": "query",
+                "description": "A JSON object with temporary s3 url will returned instead of the actual file content (expires in 5 minutes)"
+              }
+            ]
+          },
+          "docs": "This endpoint retrieves a specific file."
+        },
+        {
+          "info": {
+            "name": "Upload a File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/datalake/upload",
+            "headers": [
+              {
+                "name": "ts-auth-token",
+                "value": ""
+              },
+              {
+                "name": "x-org-slug",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint uploads a file to the Data Lake.\nThe maximum upload request size is 200 MB."
+        },
+        {
+          "info": {
+            "name": "Get File Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/fileinfo/file/:fileId",
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path",
+                "description": "ID assigned to the file when it was created in the data lake. Type is uuid."
+              }
+            ]
+          },
+          "docs": "Get detailed information about a specific file, including its metadata, storage location, source, and integration details."
+        },
+        {
+          "info": {
+            "name": "Get File Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/fileinfo/file/:fileId/versions",
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path",
+                "description": "ID assigned to the file when it was created in the data lake. Type is uuid."
+              }
+            ]
+          },
+          "docs": "Retrieve a file's version history, including all modifications, updates, and processing iterations. Timestamps and change details are included."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

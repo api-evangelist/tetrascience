@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Hubs API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hubs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all Hubs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/data-acquisition/hubs",
+            "params": [
+              {
+                "name": "include",
+                "value": "status",
+                "type": "query",
+                "description": "Include additional Hub fields. Passing 'status' includes network and health statuses."
+              }
+            ]
+          },
+          "docs": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get a list of Hubs."
+        },
+        {
+          "info": {
+            "name": "Get a Hub by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/data-acquisition/hubs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include additional Hub fields. Passing 'connectors' includes the list of the Hub's Connectors."
+              }
+            ]
+          },
+          "docs": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get a Hub's details by id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

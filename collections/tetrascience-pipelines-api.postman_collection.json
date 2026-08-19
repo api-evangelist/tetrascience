@@ -1,0 +1,3563 @@
+{
+  "item": [
+    {
+      "id": "1246e6a2-78b3-4e57-883f-3393f975d674",
+      "name": "Pipelines",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f953af90-e9a5-484d-b8ce-52c5141c9469",
+          "name": "Create a Bulk Processing Job",
+          "request": {
+            "name": "Create a Bulk Processing Job",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                ":pipelineId",
+                "create-pipeline-bulk-processing-job"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "pipelineId",
+                  "description": "(Required) The ID of the pipeline"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pipelineProcessingTypes\": [\n    \"<string>\"\n  ],\n  \"startDate\": \"\",\n  \"endDate\": \"\",\n  \"autoProcess\": true,\n  \"name\": \"<string>\",\n  \"concurrentNumber\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "29dee36c-ce61-4169-9a2a-c2a76a66f7ba",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId",
+                    "create-pipeline-bulk-processing-job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pipelineProcessingTypes\": [\n    \"<string>\"\n  ],\n  \"startDate\": \"\",\n  \"endDate\": \"\",\n  \"autoProcess\": true,\n  \"name\": \"<string>\",\n  \"concurrentNumber\": 1000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a46e864f-78bc-4087-9ad4-57c38ddb4cdf",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId",
+                    "create-pipeline-bulk-processing-job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pipelineProcessingTypes\": [\n    \"<string>\"\n  ],\n  \"startDate\": \"\",\n  \"endDate\": \"\",\n  \"autoProcess\": true,\n  \"name\": \"<string>\",\n  \"concurrentNumber\": 1000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c8a3cc3-dbb0-4f3d-9abc-b07ca0eaa99c",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId",
+                    "create-pipeline-bulk-processing-job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pipelineProcessingTypes\": [\n    \"<string>\"\n  ],\n  \"startDate\": \"\",\n  \"endDate\": \"\",\n  \"autoProcess\": true,\n  \"name\": \"<string>\",\n  \"concurrentNumber\": 1000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a83324c-7aa3-4791-a26e-ce03eb28fafd",
+              "name": "Bulk processing job already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId",
+                    "create-pipeline-bulk-processing-job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pipelineProcessingTypes\": [\n    \"<string>\"\n  ],\n  \"startDate\": \"\",\n  \"endDate\": \"\",\n  \"autoProcess\": true,\n  \"name\": \"<string>\",\n  \"concurrentNumber\": 1000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b876d4e-7e91-4e74-a2ad-516d31561887",
+              "name": "Internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId",
+                    "create-pipeline-bulk-processing-job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pipelineProcessingTypes\": [\n    \"<string>\"\n  ],\n  \"startDate\": \"\",\n  \"endDate\": \"\",\n  \"autoProcess\": true,\n  \"name\": \"<string>\",\n  \"concurrentNumber\": 1000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b610335-99d9-4658-9bfe-d769b2e8a2eb",
+          "name": "Create New Pipeline",
+          "request": {
+            "name": "Create New Pipeline",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"triggerCondition\": {},\n  \"triggerType\": \"<string>\",\n  \"description\": \"<null>\",\n  \"protocolSlug\": \"<null>\",\n  \"protocolVersion\": \"<null>\",\n  \"priority\": 5,\n  \"retryBehavior\": \"<null>\",\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": \"<integer>\",\n    \"maxRetries\": \"<integer>\"\n  },\n  \"standby\": \"<null>\",\n  \"status\": \"<null>\",\n  \"taskScriptTimeoutMins\": \"<null>\",\n  \"maxParallelWorkflows\": 0,\n  \"createdAt\": \"<string>\",\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"key_1\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": \"<null>\",\n  \"clusterPolicyId\": \"<null>\",\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"<string>\",\n  \"masterScriptVersion\": \"<string>\",\n  \"masterScriptSlug\": \"<string>\",\n  \"inlineArtifact\": \"<object>\",\n  \"id\": \"<uuid>\",\n  \"orgSlug\": \"<string>\",\n  \"message\": \"<string>\",\n  \"updatedAt\": \"<string>\",\n  \"labels\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0a82f3b6-8739-4e9c-8e5f-ba01a274705c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"string\",\n  \"triggerCondition\": {},\n  \"triggerType\": \"custom\",\n  \"description\": null,\n  \"protocolSlug\": null,\n  \"protocolVersion\": null,\n  \"priority\": 5,\n  \"retryBehavior\": null,\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": 4612,\n    \"maxRetries\": 4353\n  },\n  \"standby\": null,\n  \"status\": null,\n  \"taskScriptTimeoutMins\": null,\n  \"maxParallelWorkflows\": 0,\n  \"createdAt\": \"string\",\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": null,\n  \"clusterPolicyId\": null,\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"string\",\n  \"masterScriptVersion\": \"string\",\n  \"masterScriptSlug\": \"string\",\n  \"inlineArtifact\": {},\n  \"id\": \"933c3bae-f4f8-c903-ea12-1ec0ff999795\",\n  \"orgSlug\": \"string\",\n  \"message\": \"string\",\n  \"updatedAt\": \"string\",\n  \"labels\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"triggerCondition\": {},\n  \"triggerType\": \"custom\",\n  \"description\": null,\n  \"protocolSlug\": null,\n  \"protocolVersion\": null,\n  \"priority\": 5,\n  \"retryBehavior\": null,\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": 4896,\n    \"maxRetries\": 8469\n  },\n  \"standby\": null,\n  \"status\": null,\n  \"taskScriptTimeoutMins\": null,\n  \"maxParallelWorkflows\": 0,\n  \"createdAt\": \"string\",\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": null,\n  \"clusterPolicyId\": null,\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"string\",\n  \"masterScriptVersion\": \"string\",\n  \"masterScriptSlug\": \"string\",\n  \"inlineArtifact\": {},\n  \"id\": \"30c2b341-e63a-3dd6-4767-ad5c031c1b8c\",\n  \"orgSlug\": \"string\",\n  \"revision\": 7438.546644520564,\n  \"updatedAt\": \"string\",\n  \"protocolSchema\": \"v2\",\n  \"labels\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55858f38-9812-4414-b086-497305caaa4a",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"string\",\n  \"triggerCondition\": {},\n  \"triggerType\": \"custom\",\n  \"description\": null,\n  \"protocolSlug\": null,\n  \"protocolVersion\": null,\n  \"priority\": 5,\n  \"retryBehavior\": null,\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": 4612,\n    \"maxRetries\": 4353\n  },\n  \"standby\": null,\n  \"status\": null,\n  \"taskScriptTimeoutMins\": null,\n  \"maxParallelWorkflows\": 0,\n  \"createdAt\": \"string\",\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": null,\n  \"clusterPolicyId\": null,\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"string\",\n  \"masterScriptVersion\": \"string\",\n  \"masterScriptSlug\": \"string\",\n  \"inlineArtifact\": {},\n  \"id\": \"933c3bae-f4f8-c903-ea12-1ec0ff999795\",\n  \"orgSlug\": \"string\",\n  \"message\": \"string\",\n  \"updatedAt\": \"string\",\n  \"labels\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7251d472-7df7-4eae-b58b-4c5060ae496a",
+          "name": "Get Details of a Single Pipeline",
+          "request": {
+            "name": "Get Details of a Single Pipeline",
+            "description": {
+              "content": "Search data pipeline workflows",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                ":pipelineId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipelineId",
+                  "description": "(Required) The ID of the pipeline"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5222e76f-0185-4924-921c-fb99702b4527",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"triggerCondition\": {},\n  \"triggerType\": \"custom\",\n  \"description\": null,\n  \"protocolSlug\": null,\n  \"protocolVersion\": null,\n  \"priority\": 5,\n  \"retryBehavior\": null,\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": 4896,\n    \"maxRetries\": 8469\n  },\n  \"standby\": null,\n  \"status\": null,\n  \"taskScriptTimeoutMins\": null,\n  \"maxParallelWorkflows\": 0,\n  \"createdAt\": \"string\",\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": null,\n  \"clusterPolicyId\": null,\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"string\",\n  \"masterScriptVersion\": \"string\",\n  \"masterScriptSlug\": \"string\",\n  \"inlineArtifact\": {},\n  \"id\": \"30c2b341-e63a-3dd6-4767-ad5c031c1b8c\",\n  \"orgSlug\": \"string\",\n  \"revision\": 7438.546644520564,\n  \"updatedAt\": \"string\",\n  \"protocolSchema\": \"v2\",\n  \"labels\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3e3e182-ed78-417c-9456-6b552c730fd7",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17577fda-4800-4c14-9c26-56005dff0f5d",
+          "name": "Get Pipline Revision Contents",
+          "request": {
+            "name": "Get Pipline Revision Contents",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                ":pipelineId",
+                "revisions",
+                ":revisionNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "pipelineId",
+                  "description": "(Required) The ID of the pipeline"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "revisionNumber",
+                  "description": "(Required) The number of the revision to get"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d37cdf83-2ee8-4bfd-98cc-f2264b59c6e9",
+              "name": "The pipeline at the time of the requested revision number",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId",
+                    "revisions",
+                    ":revisionNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revisionNumber",
+                      "description": "(Required) The number of the revision to get"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdAt\": \"string\",\n  \"message\": \"string\",\n  \"name\": \"string\",\n  \"number\": 6164.244740776554,\n  \"pipelineId\": \"string\",\n  \"userId\": \"string\",\n  \"description\": null,\n  \"protocolSlug\": null,\n  \"protocolVersion\": null,\n  \"priority\": 5,\n  \"retryBehavior\": null,\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": 3647,\n    \"maxRetries\": 5871\n  },\n  \"standby\": null,\n  \"status\": null,\n  \"taskScriptTimeoutMins\": null,\n  \"maxParallelWorkflows\": 0,\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"key_0\": 3869,\n      \"key_1\": false,\n      \"key_2\": true,\n      \"key_3\": \"string\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": null,\n  \"clusterPolicyId\": null,\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"string\",\n  \"masterScriptVersion\": \"string\",\n  \"masterScriptSlug\": \"string\",\n  \"inlineArtifact\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4656fd86-329a-4b04-934a-60d47acd7671",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId",
+                    "revisions",
+                    ":revisionNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revisionNumber",
+                      "description": "(Required) The number of the revision to get"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "677577a7-fd87-4317-857c-39d3cf3fbf26",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId",
+                    "revisions",
+                    ":revisionNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "revisionNumber",
+                      "description": "(Required) The number of the revision to get"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88a1bf1b-1d1a-41df-a0ed-14c6d1781ef3",
+          "name": "List Pipeline Revision History",
+          "request": {
+            "name": "List Pipeline Revision History",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                ":pipelineId",
+                "revisions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum number of results to return. Defaults to 30"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<integer>",
+                  "description": "The first element in the dataset to query from. The cursor is a revision number"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "pipelineId",
+                  "description": "(Required) The ID of the pipeline"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06fdf449-0192-48cd-a9f1-8d71911ff066",
+              "name": "A list of revisions and a cursor pointing to the next set of revisions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId",
+                    "revisions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"revisions\": [\n    {\n      \"message\": \"string\",\n      \"pipelineId\": \"string\",\n      \"number\": 6299.404550723331,\n      \"userId\": \"string\",\n      \"createdAt\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"pipelineId\": \"string\",\n      \"number\": 6519.865882375646,\n      \"userId\": \"string\",\n      \"createdAt\": \"string\"\n    }\n  ],\n  \"next\": 1077.3551341623854\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98fcc2c1-d696-4215-beaf-8c058dd1eb64",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId",
+                    "revisions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d633572-2076-41ea-941e-b559844078a3",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId",
+                    "revisions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5665bfc-dd1f-4a53-a53f-4892e6b6b466",
+          "name": "Import a Pipeline",
+          "request": {
+            "name": "Import a Pipeline",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                "import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"triggerCondition\": {},\n  \"triggerType\": \"<string>\",\n  \"description\": \"<null>\",\n  \"protocolSlug\": \"<null>\",\n  \"protocolVersion\": \"<null>\",\n  \"priority\": 5,\n  \"retryBehavior\": \"<null>\",\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": \"<integer>\",\n    \"maxRetries\": \"<integer>\"\n  },\n  \"standby\": \"<null>\",\n  \"status\": \"<null>\",\n  \"taskScriptTimeoutMins\": \"<null>\",\n  \"maxParallelWorkflows\": 0,\n  \"createdAt\": \"<string>\",\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"key_1\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": \"<null>\",\n  \"clusterPolicyId\": \"<null>\",\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"<string>\",\n  \"masterScriptVersion\": \"<string>\",\n  \"masterScriptSlug\": \"<string>\",\n  \"inlineArtifact\": \"<object>\",\n  \"id\": \"<uuid>\",\n  \"orgSlug\": \"<string>\",\n  \"message\": \"<string>\",\n  \"updatedAt\": \"<string>\",\n  \"labels\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4eb0fc95-cc5b-4a6a-a61e-76639a9756dc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"string\",\n  \"triggerCondition\": {},\n  \"triggerType\": \"custom\",\n  \"description\": null,\n  \"protocolSlug\": null,\n  \"protocolVersion\": null,\n  \"priority\": 5,\n  \"retryBehavior\": null,\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": 4612,\n    \"maxRetries\": 4353\n  },\n  \"standby\": null,\n  \"status\": null,\n  \"taskScriptTimeoutMins\": null,\n  \"maxParallelWorkflows\": 0,\n  \"createdAt\": \"string\",\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": null,\n  \"clusterPolicyId\": null,\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"string\",\n  \"masterScriptVersion\": \"string\",\n  \"masterScriptSlug\": \"string\",\n  \"inlineArtifact\": {},\n  \"id\": \"933c3bae-f4f8-c903-ea12-1ec0ff999795\",\n  \"orgSlug\": \"string\",\n  \"message\": \"string\",\n  \"updatedAt\": \"string\",\n  \"labels\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"triggerCondition\": {},\n  \"triggerType\": \"custom\",\n  \"description\": null,\n  \"protocolSlug\": null,\n  \"protocolVersion\": null,\n  \"priority\": 5,\n  \"retryBehavior\": null,\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": 4896,\n    \"maxRetries\": 8469\n  },\n  \"standby\": null,\n  \"status\": null,\n  \"taskScriptTimeoutMins\": null,\n  \"maxParallelWorkflows\": 0,\n  \"createdAt\": \"string\",\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": null,\n  \"clusterPolicyId\": null,\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"string\",\n  \"masterScriptVersion\": \"string\",\n  \"masterScriptSlug\": \"string\",\n  \"inlineArtifact\": {},\n  \"id\": \"30c2b341-e63a-3dd6-4767-ad5c031c1b8c\",\n  \"orgSlug\": \"string\",\n  \"revision\": 7438.546644520564,\n  \"updatedAt\": \"string\",\n  \"protocolSchema\": \"v2\",\n  \"labels\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "269beccc-5b25-4906-af45-b36b82ee1837",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"string\",\n  \"triggerCondition\": {},\n  \"triggerType\": \"custom\",\n  \"description\": null,\n  \"protocolSlug\": null,\n  \"protocolVersion\": null,\n  \"priority\": 5,\n  \"retryBehavior\": null,\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": 4612,\n    \"maxRetries\": 4353\n  },\n  \"standby\": null,\n  \"status\": null,\n  \"taskScriptTimeoutMins\": null,\n  \"maxParallelWorkflows\": 0,\n  \"createdAt\": \"string\",\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": null,\n  \"clusterPolicyId\": null,\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"string\",\n  \"masterScriptVersion\": \"string\",\n  \"masterScriptSlug\": \"string\",\n  \"inlineArtifact\": {},\n  \"id\": \"933c3bae-f4f8-c903-ea12-1ec0ff999795\",\n  \"orgSlug\": \"string\",\n  \"message\": \"string\",\n  \"updatedAt\": \"string\",\n  \"labels\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63ec23f6-0147-4831-b8cb-b85b8ffbf9da",
+          "name": "List Pipeline IDs",
+          "request": {
+            "name": "List Pipeline IDs",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                "pipelines",
+                "id-only"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19f13890-8d23-420d-b2be-89fe8232e849",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "pipelines",
+                    "id-only"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36a0da5d-2626-45b5-8967-d0901cdebd67",
+          "name": "List Databricks Cluster Policies",
+          "request": {
+            "name": "List Databricks Cluster Policies",
+            "description": {
+              "content": "Returns a list of platform-level Databricks cluster policies filtered by prefix 'ts-platform-policy-*'",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                "clusterPolicies",
+                "databricks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b83467ee-2f88-4923-9a49-48e3853ff8b4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "clusterPolicies",
+                    "databricks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"policyId\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\"\n  },\n  {\n    \"policyId\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7609b53a-58fc-420e-92f2-b71390db81ef",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "clusterPolicies",
+                    "databricks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af8417b9-ce5d-4f50-811a-d9e43ba3313c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "clusterPolicies",
+                    "databricks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unauthorized\",\n  \"message\": \"Missing authentication.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7180445a-8a59-4fed-b14a-69df7e3c2eb3",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "clusterPolicies",
+                    "databricks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be1d11cc-ab29-4211-bbfb-696780282804",
+          "name": "List Databricks Clusters",
+          "request": {
+            "name": "List Databricks Clusters",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                "clusters",
+                "databricks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c96841d-8c48-44a4-b885-cff6e2ef8a62",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "clusters",
+                    "databricks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77358274-858f-422e-8a10-b5e29ccb216b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "clusters",
+                    "databricks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unauthorized\",\n  \"message\": \"Missing authentication.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c17a07a-65e1-4b0c-a991-83ff40b0cfc0",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "clusters",
+                    "databricks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05720765-4ad3-48d0-90d6-362756a0c21b",
+          "name": "Paginate Through all Pipeline Details (Deprecated)",
+          "request": {
+            "name": "Paginate Through all Pipeline Details (Deprecated)",
+            "description": {
+              "content": "Lists all of the pipelines in a paginated list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "100",
+                  "description": "Number of pipelines to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "0",
+                  "description": "Page number to start from (0-indexed)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfa98b6b-41b1-48f2-9950-8134779e5dfa",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "100"
+                    },
+                    {
+                      "key": "from",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"size\": 1709,\n  \"hasNext\": true,\n  \"from\": 3573,\n  \"hits\": [\n    {\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"triggerCondition\": {},\n      \"triggerType\": \"custom\",\n      \"description\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"protocolSlug\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"protocolVersion\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"priority\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"retryBehavior\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"retryConfiguration\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"standby\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"status\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taskScriptTimeoutMins\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"maxParallelWorkflows\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"createdAt\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"pipelineConfig\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"stepsConfig\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"artifactType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clusterId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clusterPolicyId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"runOnDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"masterScriptNamespace\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"masterScriptVersion\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"masterScriptSlug\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"inlineArtifact\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"id\": \"c09707f1-13dc-83f5-e10d-325662ded351\",\n      \"orgSlug\": \"string\",\n      \"revision\": 1534.5672765515005,\n      \"updatedAt\": \"string\",\n      \"protocolSchema\": \"v2\",\n      \"labels\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"triggerCondition\": {},\n      \"triggerType\": \"custom\",\n      \"description\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"protocolSlug\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"protocolVersion\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"priority\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"retryBehavior\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"retryConfiguration\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"standby\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"status\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taskScriptTimeoutMins\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"maxParallelWorkflows\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"createdAt\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"pipelineConfig\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"stepsConfig\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"artifactType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clusterId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clusterPolicyId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"runOnDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"masterScriptNamespace\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"masterScriptVersion\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"masterScriptSlug\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"inlineArtifact\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"id\": \"25de9ad5-c6c3-abdf-017a-23c1802a9541\",\n      \"orgSlug\": \"string\",\n      \"revision\": 3506.8026065469694,\n      \"updatedAt\": \"string\",\n      \"protocolSchema\": \"v3\",\n      \"labels\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6db30025-d96d-4db8-bb6b-0b0bcf65d406",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "100"
+                    },
+                    {
+                      "key": "from",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21c68d10-7991-4e18-9a81-8b5ca12e6a0d",
+          "name": "Get Platform Information",
+          "request": {
+            "name": "Get Platform Information",
+            "description": {
+              "content": "Get information about the current platform deployment. May be useful for the platform UI.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                "platform",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "groups",
+                  "value": "<string>",
+                  "description": "Groups from which platform information should be retrieved"
+                },
+                {
+                  "disabled": false,
+                  "key": "groups",
+                  "value": "<string>",
+                  "description": "Groups from which platform information should be retrieved"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df655197-09d7-4a8e-a1af-d6208067bcd8",
+              "name": "An object containing the requested information fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "platform",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groups",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groups",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"retry\": {\n    \"maxRetryCountLimit\": 4075,\n    \"maxRetryDelaySeconds\": 1505,\n    \"maxRetryCountDefault\": 6277\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b4ce569-a11c-4efb-ba7e-cd759ceabf34",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "platform",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groups",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groups",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43923fe5-99ca-44e1-8d6d-e6ce77814e62",
+          "name": "Process List of Files with Pipeline",
+          "request": {
+            "name": "Process List of Files with Pipeline",
+            "description": {
+              "content": "This endpoint processes a list of files by using a specified pipeline. It processes the latest version of each file only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                "process",
+                ":pipelineId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "pipelineId",
+                  "description": "(Required) The ID of the pipeline"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fileIds\": [\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "164a72a7-ce85-40e2-85e8-0be9bba194fb",
+              "name": "Complete",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "process",
+                    ":pipelineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileIds\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": [\n    {\n      \"fileId\": \"string\",\n      \"workflowId\": \"string\"\n    },\n    {\n      \"fileId\": \"string\",\n      \"workflowId\": \"string\"\n    }\n  ],\n  \"error\": [\n    {\n      \"fileId\": \"string\",\n      \"error\": \"string\"\n    },\n    {\n      \"fileId\": \"string\",\n      \"error\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "986d5706-9f3b-4691-b8ec-6f45e81dbcc4",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "process",
+                    ":pipelineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileIds\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ef05079-1269-49ed-868d-833254814f91",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "process",
+                    ":pipelineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileIds\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be27558b-9dbd-42a6-b501-cbe099df0864",
+          "name": "Process Files - draft",
+          "request": {
+            "name": "Process Files - draft",
+            "description": {
+              "content": "Search data pipeline workflows",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                "pipelines",
+                ":pipelineID",
+                "reprocess"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipelineID",
+                  "description": "(Required) Pipeline UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fields\": \"<json>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fd618918-a975-43ea-b69a-e7e5e128f67e",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "pipelines",
+                    ":pipelineID",
+                    "reprocess"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipelineID",
+                      "description": "(Required) Pipeline UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fields\": \"<json>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"successful\\\": [\\n        {\\n            \\\"fileId\\\": \\\"6e79b51f-e4b7-4440-996c-10516a02be98\\\",\\n            \\\"workflowId\\\": \\\"966f2740-42c6-4ea9-a1ef-5f78e857e4fc\\\"\\n        },\\n        {\\n            \\\"fileId\\\": \\\"1126ad94-dc57-4123-9622-68bd73381a74\\\",\\n            \\\"workflowId\\\": \\\"1a480937-fef0-4f99-b4e9-a09e2b8eb8ce\\\"\\n        },\\n        {\\n            \\\"fileId\\\": \\\"b253b40f-1dca-4e3a-a511-a80a83300c54\\\",\\n            \\\"workflowId\\\": \\\"18fb2609-404d-4727-80f5-9df350bfd6fe\\\"\\n        },\\n        {\\n            \\\"fileId\\\": \\\"29285cb8-bd94-44a5-b0a5-e7a58d677585\\\",\\n            \\\"workflowId\\\": \\\"205b299c-a9e6-435e-911f-b88193c182ab\\\"\\n        },\\n        {\\n            \\\"fileId\\\": \\\"4b98ec54-f875-47e3-930f-475155c5dd84\\\",\\n            \\\"workflowId\\\": \\\"dcb0e80a-ac3c-490d-8757-a3ea4f369fb9\\\"\\n        }\\n    ],\\n    \\\"errored\\\": [\\n        {\\n            \\\"fileId\\\": \\\"29285cb8-bd94-44a5-b0a5-111111111111\\\",\\n            \\\"error\\\": \\\"Not Found\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84086ca1-a92c-4111-a64f-c3474bc585ef",
+          "name": "Get Count of Pipelines Accessible Via Access Rule",
+          "request": {
+            "name": "Get Count of Pipelines Accessible Via Access Rule",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                "rules-check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filters\": {\n    \"type\": \"<string>\",\n    \"id\": \"<string>\",\n    \"value\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/PipelineFilterLogicalConfig detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/PipelineFilterLogicalConfig detected>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d3299b6e-e9eb-4d58-8e3c-2b0090ed40d4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "rules-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filters\": {\n    \"type\": \"and\",\n    \"id\": \"string\",\n    \"value\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/PipelineFilterLogicalConfig detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/PipelineFilterLogicalConfig detected>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pipelinesCount\": 6373\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "289a5f50-f76d-43ea-befe-95284a4e9ad5",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "rules-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filters\": {\n    \"type\": \"and\",\n    \"id\": \"string\",\n    \"value\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/PipelineFilterLogicalConfig detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/PipelineFilterLogicalConfig detected>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bc279ba-cb1f-4571-9b43-782164c27698",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "rules-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filters\": {\n    \"type\": \"and\",\n    \"id\": \"string\",\n    \"value\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/PipelineFilterLogicalConfig detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/PipelineFilterLogicalConfig detected>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unauthorized\",\n  \"message\": \"Missing authentication.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90d24c5d-d0d8-4b66-beda-257802d01d4b",
+          "name": "Search Pipelines",
+          "request": {
+            "name": "Search Pipelines",
+            "description": {
+              "content": "Search pipelines",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "100",
+                  "description": "Number of pipelines to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "0",
+                  "description": "Page number to start from (0-indexed)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pipelineStatus",
+                  "value": "<string>",
+                  "description": "Status"
+                },
+                {
+                  "disabled": false,
+                  "key": "pipelineNameOrId",
+                  "value": "<string>",
+                  "description": "Name or ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "artifactType",
+                  "value": "all",
+                  "description": "Tetraflow or Protocol"
+                },
+                {
+                  "disabled": false,
+                  "key": "protocolNamespace",
+                  "value": "<string>",
+                  "description": "Namespace of protocol"
+                },
+                {
+                  "disabled": false,
+                  "key": "protocolName",
+                  "value": "<string>",
+                  "description": "Name of protocol"
+                },
+                {
+                  "disabled": false,
+                  "key": "protocolVersion",
+                  "value": "<string>",
+                  "description": "Version of protocol"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<string>",
+                  "description": "Time when pipeline started"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<string>",
+                  "description": "Time when pipeline ended"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "lastConfigUpdate",
+                  "description": "Field to sort results by"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "Ordering of"
+                },
+                {
+                  "disabled": false,
+                  "key": "labelKey",
+                  "value": "<string>",
+                  "description": "Filter pipelines by label key. If provided, response contains pipelines with assigned matching label keys."
+                },
+                {
+                  "disabled": false,
+                  "key": "labelValue",
+                  "value": "<string>",
+                  "description": "Filter pipelines by label value. Requires labelKey to be provided. If both labelKey and labelValue are provided, response contains pipelines with assigned matching key-value label pairs."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dfa0e1de-d329-4209-9987-636bbf860bdb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "100"
+                    },
+                    {
+                      "key": "from",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pipelineStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pipelineNameOrId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "artifactType",
+                      "value": "all"
+                    },
+                    {
+                      "key": "protocolNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "protocolName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "protocolVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "lastConfigUpdate"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labelKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labelValue",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"size\": 8987,\n  \"hasNext\": false,\n  \"from\": 6843,\n  \"totalCount\": 2382,\n  \"hits\": [\n    {\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"triggerCondition\": {},\n      \"triggerType\": \"custom\",\n      \"description\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"protocolSlug\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"protocolVersion\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"priority\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"retryBehavior\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"retryConfiguration\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"standby\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"status\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taskScriptTimeoutMins\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"maxParallelWorkflows\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"createdAt\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"pipelineConfig\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"stepsConfig\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"artifactType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clusterId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clusterPolicyId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"runOnDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"masterScriptNamespace\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"masterScriptVersion\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"masterScriptSlug\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"inlineArtifact\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"id\": \"f7f29476-f4e3-683a-f3c4-bc080628caa0\",\n      \"orgSlug\": \"string\",\n      \"revision\": 3723.1257340061384,\n      \"updatedAt\": \"string\",\n      \"protocolSchema\": \"v2\",\n      \"labels\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"name\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"triggerCondition\": {},\n      \"triggerType\": \"custom\",\n      \"description\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"protocolSlug\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"protocolVersion\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"priority\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"retryBehavior\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"retryConfiguration\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"standby\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"status\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"taskScriptTimeoutMins\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"maxParallelWorkflows\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"createdAt\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"pipelineConfig\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"stepsConfig\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"artifactType\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clusterId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clusterPolicyId\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"runOnDeleted\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"masterScriptNamespace\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"masterScriptVersion\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"masterScriptSlug\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"inlineArtifact\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"id\": \"bf63833f-1ecf-bda4-1563-841bc203dab2\",\n      \"orgSlug\": \"string\",\n      \"revision\": 8753.745645871717,\n      \"updatedAt\": \"string\",\n      \"protocolSchema\": \"v2\",\n      \"labels\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55fc8e6d-cfcc-4a32-b2dc-99a44a82c014",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "100"
+                    },
+                    {
+                      "key": "from",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pipelineStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pipelineNameOrId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "artifactType",
+                      "value": "all"
+                    },
+                    {
+                      "key": "protocolNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "protocolName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "protocolVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "lastConfigUpdate"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labelKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labelValue",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "259c1bf4-f0e5-458d-9510-e64eb4b63d51",
+          "name": "Set Pipeline Status",
+          "request": {
+            "name": "Set Pipeline Status",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                ":pipelineId",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "pipelineId",
+                  "description": "(Required) The ID of the pipeline"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d89fb465-0bbe-4496-98e2-75428c506d51",
+              "name": "No Data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "508cb433-fb45-49c0-8f34-a88d545655d0",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d417bac5-28f9-4a08-9ed3-aa4ed3586484",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    ":pipelineId",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ce11a25-7e75-43cf-ad56-37a80fea7f8b",
+          "name": "Update Existing Pipeline",
+          "request": {
+            "name": "Update Existing Pipeline",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pipeline",
+                "update",
+                ":pipelineId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "pipelineId",
+                  "description": "(Required) The ID of the pipeline"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"triggerCondition\": {},\n  \"triggerType\": \"<string>\",\n  \"description\": \"<null>\",\n  \"protocolSlug\": \"<null>\",\n  \"protocolVersion\": \"<null>\",\n  \"priority\": 5,\n  \"retryBehavior\": \"<null>\",\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": \"<integer>\",\n    \"maxRetries\": \"<integer>\"\n  },\n  \"standby\": \"<null>\",\n  \"status\": \"<null>\",\n  \"taskScriptTimeoutMins\": \"<null>\",\n  \"maxParallelWorkflows\": 0,\n  \"createdAt\": \"<string>\",\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"key_1\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": \"<null>\",\n  \"clusterPolicyId\": \"<null>\",\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"<string>\",\n  \"masterScriptVersion\": \"<string>\",\n  \"masterScriptSlug\": \"<string>\",\n  \"inlineArtifact\": \"<object>\",\n  \"id\": \"<uuid>\",\n  \"orgSlug\": \"<string>\",\n  \"message\": \"<string>\",\n  \"updatedAt\": \"<string>\",\n  \"labels\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c1b0062d-d6ea-4884-bcce-6ed8e0d06d3e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "update",
+                    ":pipelineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"string\",\n  \"triggerCondition\": {},\n  \"triggerType\": \"custom\",\n  \"description\": null,\n  \"protocolSlug\": null,\n  \"protocolVersion\": null,\n  \"priority\": 5,\n  \"retryBehavior\": null,\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": 4612,\n    \"maxRetries\": 4353\n  },\n  \"standby\": null,\n  \"status\": null,\n  \"taskScriptTimeoutMins\": null,\n  \"maxParallelWorkflows\": 0,\n  \"createdAt\": \"string\",\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": null,\n  \"clusterPolicyId\": null,\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"string\",\n  \"masterScriptVersion\": \"string\",\n  \"masterScriptSlug\": \"string\",\n  \"inlineArtifact\": {},\n  \"id\": \"933c3bae-f4f8-c903-ea12-1ec0ff999795\",\n  \"orgSlug\": \"string\",\n  \"message\": \"string\",\n  \"updatedAt\": \"string\",\n  \"labels\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"triggerCondition\": {},\n  \"triggerType\": \"custom\",\n  \"description\": null,\n  \"protocolSlug\": null,\n  \"protocolVersion\": null,\n  \"priority\": 5,\n  \"retryBehavior\": null,\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": 4896,\n    \"maxRetries\": 8469\n  },\n  \"standby\": null,\n  \"status\": null,\n  \"taskScriptTimeoutMins\": null,\n  \"maxParallelWorkflows\": 0,\n  \"createdAt\": \"string\",\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": null,\n  \"clusterPolicyId\": null,\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"string\",\n  \"masterScriptVersion\": \"string\",\n  \"masterScriptSlug\": \"string\",\n  \"inlineArtifact\": {},\n  \"id\": \"30c2b341-e63a-3dd6-4767-ad5c031c1b8c\",\n  \"orgSlug\": \"string\",\n  \"revision\": 7438.546644520564,\n  \"updatedAt\": \"string\",\n  \"protocolSchema\": \"v2\",\n  \"labels\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5198b9a-c1b7-47ea-8eed-0991d9e2aaaa",
+              "name": "Incorrect input provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "update",
+                    ":pipelineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"string\",\n  \"triggerCondition\": {},\n  \"triggerType\": \"custom\",\n  \"description\": null,\n  \"protocolSlug\": null,\n  \"protocolVersion\": null,\n  \"priority\": 5,\n  \"retryBehavior\": null,\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": 4612,\n    \"maxRetries\": 4353\n  },\n  \"standby\": null,\n  \"status\": null,\n  \"taskScriptTimeoutMins\": null,\n  \"maxParallelWorkflows\": 0,\n  \"createdAt\": \"string\",\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": null,\n  \"clusterPolicyId\": null,\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"string\",\n  \"masterScriptVersion\": \"string\",\n  \"masterScriptSlug\": \"string\",\n  \"inlineArtifact\": {},\n  \"id\": \"933c3bae-f4f8-c903-ea12-1ec0ff999795\",\n  \"orgSlug\": \"string\",\n  \"message\": \"string\",\n  \"updatedAt\": \"string\",\n  \"labels\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid parameters provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9533595-8cc3-431f-8579-01c1be5f1f92",
+              "name": "Not found or not visible to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pipeline",
+                    "update",
+                    ":pipelineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "pipelineId",
+                      "description": "(Required) The ID of the pipeline"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"string\",\n  \"triggerCondition\": {},\n  \"triggerType\": \"custom\",\n  \"description\": null,\n  \"protocolSlug\": null,\n  \"protocolVersion\": null,\n  \"priority\": 5,\n  \"retryBehavior\": null,\n  \"retryConfiguration\": {\n    \"baseDelaySeconds\": 4612,\n    \"maxRetries\": 4353\n  },\n  \"standby\": null,\n  \"status\": null,\n  \"taskScriptTimeoutMins\": null,\n  \"maxParallelWorkflows\": 0,\n  \"createdAt\": \"string\",\n  \"pipelineConfig\": {\n    \"key_0\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  },\n  \"stepsConfig\": {},\n  \"artifactType\": \"protocol\",\n  \"clusterId\": null,\n  \"clusterPolicyId\": null,\n  \"runOnDeleted\": false,\n  \"masterScriptNamespace\": \"string\",\n  \"masterScriptVersion\": \"string\",\n  \"masterScriptSlug\": \"string\",\n  \"inlineArtifact\": {},\n  \"id\": \"933c3bae-f4f8-c903-ea12-1ec0ff999795\",\n  \"orgSlug\": \"string\",\n  \"message\": \"string\",\n  \"updatedAt\": \"string\",\n  \"labels\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Not Found\",\n  \"message\": \"Subscription not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f3bce97f-21da-4c8b-8219-cbb96ff61c43",
+    "name": "TetraScience Data and AI Cloud Access Groups Pipelines API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups clusters API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Databricks Cluster Policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/pipeline/clusterPolicies/databricks"
+          },
+          "docs": "Returns a list of platform-level Databricks cluster policies filtered by prefix 'ts-platform-policy-*'"
+        },
+        {
+          "info": {
+            "name": "List Databricks Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/pipeline/clusters/databricks"
+          },
+          "docs": "List Databricks Clusters"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

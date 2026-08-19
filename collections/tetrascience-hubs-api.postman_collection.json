@@ -1,0 +1,275 @@
+{
+  "item": [
+    {
+      "id": "02665aca-f9fb-4a7a-91cb-cc0f6f85cbd1",
+      "name": "Hubs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "443c0fde-96f7-49c2-8d97-8b191035a1dd",
+          "name": "Get all Hubs",
+          "request": {
+            "name": "Get all Hubs",
+            "description": {
+              "content": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get a list of Hubs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data-acquisition",
+                "hubs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Include additional Hub fields. Passing 'status' includes network and health statuses."
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Include additional Hub fields. Passing 'status' includes network and health statuses."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef1273e1-8bf8-4f49-b24c-ef04c5164a28",
+              "name": "Successful response with a list of all Hubs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "hubs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hubs\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"orgSlug\": \"string\",\n      \"l7ProxyForwardPort\": 7988.502406719215,\n      \"l7ProxyReverseHttpPort\": 7783.5517826333,\n      \"l7ProxyReverseHttpsPort\": 1748.8805332905156,\n      \"l7ProxySocatPort\": 1968.4024751285544,\n      \"l7ProxyLocalnets\": \"string\",\n      \"l7ProxyMaximumMemoryMb\": 3473.1497532867074,\n      \"enabled\": false,\n      \"host\": {\n        \"ipAddress\": \"string\",\n        \"hostName\": \"string\",\n        \"platformName\": \"string\",\n        \"platformVersion\": \"string\"\n      },\n      \"updatedAt\": \"2004-10-10T00:05:14.457Z\",\n      \"createdAt\": \"1983-02-26T04:45:40.639Z\",\n      \"activationExpiresAt\": \"1980-10-10T01:36:07.851Z\",\n      \"description\": \"string\",\n      \"httpProxyHost\": \"string\",\n      \"httpProxyPort\": 4284.860577823959,\n      \"httpProxyUsername\": \"string\",\n      \"httpsProxyHost\": \"string\",\n      \"httpsProxyPort\": 6347.804847315287,\n      \"httpsProxyUsername\": \"string\",\n      \"noProxy\": \"string\",\n      \"l7ProxyReverseMqttPort\": 8992.762792333173,\n      \"l7ProxySocatMqttPort\": 2467.832577565929,\n      \"l7ProxyDnsNameservers\": \"string\",\n      \"l7ProxyWhitelist\": \"string\",\n      \"status\": {\n        \"network\": \"Offline\",\n        \"lastSeen\": \"2015-02-02T05:39:08.707Z\",\n        \"proxies\": {\n          \"l7\": {\n            \"startedAt\": \"1957-05-12T16:39:56.663Z\",\n            \"status\": \"RUNNING\"\n          },\n          \"l7ReverseNginx\": {\n            \"startedAt\": \"2024-02-20T04:06:43.444Z\",\n            \"status\": \"STOPPED\"\n          },\n          \"l7ReverseSocat\": {\n            \"startedAt\": \"1947-05-12T23:33:17.667Z\",\n            \"status\": \"STOPPED\"\n          },\n          \"metrics\": [\n            {\n              \"cpuUsed\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryUsed\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryUsedPercentOfMax\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryUsedPercentOfReservation\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryMax\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"cpuUsed\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryUsed\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryUsedPercentOfMax\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryUsedPercentOfReservation\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryMax\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"metrics\": [\n          {\n            \"cpuUsedSystem\": {\n              \"value\": 3976.8985376151036,\n              \"unit\": \"Percent\"\n            },\n            \"cpuUsedUser\": {\n              \"value\": 8822.220034478985,\n              \"unit\": \"Percent\"\n            },\n            \"diskFree\": {\n              \"value\": 8870.021897067409,\n              \"unit\": \"Bytes\"\n            },\n            \"diskUsed\": {\n              \"value\": 7547.464136185762,\n              \"unit\": \"Percent\"\n            },\n            \"memoryUsed\": {\n              \"value\": 7347.56413630115,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryFree\": {\n              \"value\": 3137.60659845819,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryBuffered\": {\n              \"value\": 8287.506945717296,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryCached\": {\n              \"value\": 3896.862148943012,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryAvailable\": {\n              \"value\": 5686.791158380464,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryTotal\": {\n              \"value\": 2399.9911962018728,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryUsedPercentOfReservation\": {\n              \"value\": 6258.531559138057,\n              \"unit\": \"Percent\"\n            },\n            \"memoryMax\": {\n              \"value\": 106.99836787413042,\n              \"unit\": \"Bytes\"\n            }\n          },\n          {\n            \"cpuUsedSystem\": {\n              \"value\": 619.2756098453523,\n              \"unit\": \"Percent\"\n            },\n            \"cpuUsedUser\": {\n              \"value\": 4339.965911355743,\n              \"unit\": \"Percent\"\n            },\n            \"diskFree\": {\n              \"value\": 1492.5615329187692,\n              \"unit\": \"Bytes\"\n            },\n            \"diskUsed\": {\n              \"value\": 4460.099716160472,\n              \"unit\": \"Percent\"\n            },\n            \"memoryUsed\": {\n              \"value\": 5418.8568311009585,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryFree\": {\n              \"value\": 187.79037122719555,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryBuffered\": {\n              \"value\": 9541.009079821235,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryCached\": {\n              \"value\": 7100.261131490877,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryAvailable\": {\n              \"value\": 7016.443382463273,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryTotal\": {\n              \"value\": 8063.748876457704,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryUsedPercentOfReservation\": {\n              \"value\": 7032.423735183752,\n              \"unit\": \"Percent\"\n            },\n            \"memoryMax\": {\n              \"value\": 4483.5638261807135,\n              \"unit\": \"Bytes\"\n            }\n          }\n        ],\n        \"health\": {\n          \"breakdown\": [\n            {\n              \"name\": \"ProxyMemory\",\n              \"status\": \"WARNING\"\n            },\n            {\n              \"name\": \"Memory\",\n              \"status\": \"HEALTHY\"\n            }\n          ],\n          \"status\": \"HEALTHY\"\n        }\n      },\n      \"ssmInstanceId\": \"string\",\n      \"ecsContainerInstanceArn\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"orgSlug\": \"string\",\n      \"l7ProxyForwardPort\": 2250.169342061248,\n      \"l7ProxyReverseHttpPort\": 6465.527290576613,\n      \"l7ProxyReverseHttpsPort\": 5659.099470607498,\n      \"l7ProxySocatPort\": 2782.135132936676,\n      \"l7ProxyLocalnets\": \"string\",\n      \"l7ProxyMaximumMemoryMb\": 2929.9283882639847,\n      \"enabled\": true,\n      \"host\": {\n        \"ipAddress\": \"string\",\n        \"hostName\": \"string\",\n        \"platformName\": \"string\",\n        \"platformVersion\": \"string\"\n      },\n      \"updatedAt\": \"2011-08-29T12:07:17.315Z\",\n      \"createdAt\": \"2014-12-02T19:49:05.594Z\",\n      \"activationExpiresAt\": \"2003-01-07T06:25:49.607Z\",\n      \"description\": \"string\",\n      \"httpProxyHost\": \"string\",\n      \"httpProxyPort\": 4613.245708972748,\n      \"httpProxyUsername\": \"string\",\n      \"httpsProxyHost\": \"string\",\n      \"httpsProxyPort\": 5583.769541262921,\n      \"httpsProxyUsername\": \"string\",\n      \"noProxy\": \"string\",\n      \"l7ProxyReverseMqttPort\": 3801.541674461156,\n      \"l7ProxySocatMqttPort\": 6515.944842656909,\n      \"l7ProxyDnsNameservers\": \"string\",\n      \"l7ProxyWhitelist\": \"string\",\n      \"status\": {\n        \"network\": \"Online\",\n        \"lastSeen\": \"1986-08-29T02:55:33.515Z\",\n        \"proxies\": {\n          \"l7\": {\n            \"startedAt\": \"2008-07-18T08:23:19.418Z\",\n            \"status\": \"STOPPED\"\n          },\n          \"l7ReverseNginx\": {\n            \"startedAt\": \"2001-02-28T09:04:54.781Z\",\n            \"status\": \"RUNNING\"\n          },\n          \"l7ReverseSocat\": {\n            \"startedAt\": \"1952-01-21T06:47:15.097Z\",\n            \"status\": \"STOPPED\"\n          },\n          \"metrics\": [\n            {\n              \"cpuUsed\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryUsed\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryUsedPercentOfMax\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryUsedPercentOfReservation\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryMax\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"cpuUsed\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryUsed\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryUsedPercentOfMax\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryUsedPercentOfReservation\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"memoryMax\": {\n                \"value\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"unit\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"metrics\": [\n          {\n            \"cpuUsedSystem\": {\n              \"value\": 4131.222701282705,\n              \"unit\": \"Percent\"\n            },\n            \"cpuUsedUser\": {\n              \"value\": 4536.314164454716,\n              \"unit\": \"Percent\"\n            },\n            \"diskFree\": {\n              \"value\": 6345.570112276221,\n              \"unit\": \"Bytes\"\n            },\n            \"diskUsed\": {\n              \"value\": 921.4098086305045,\n              \"unit\": \"Percent\"\n            },\n            \"memoryUsed\": {\n              \"value\": 1454.2188162922075,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryFree\": {\n              \"value\": 7408.719511934431,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryBuffered\": {\n              \"value\": 4948.137642665576,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryCached\": {\n              \"value\": 8244.05737142475,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryAvailable\": {\n              \"value\": 8183.44512501355,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryTotal\": {\n              \"value\": 7300.920042301018,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryUsedPercentOfReservation\": {\n              \"value\": 1812.3712348952615,\n              \"unit\": \"Percent\"\n            },\n            \"memoryMax\": {\n              \"value\": 9467.298494328708,\n              \"unit\": \"Bytes\"\n            }\n          },\n          {\n            \"cpuUsedSystem\": {\n              \"value\": 5285.17299028107,\n              \"unit\": \"Percent\"\n            },\n            \"cpuUsedUser\": {\n              \"value\": 1416.5328810806,\n              \"unit\": \"Percent\"\n            },\n            \"diskFree\": {\n              \"value\": 4240.324983000056,\n              \"unit\": \"Bytes\"\n            },\n            \"diskUsed\": {\n              \"value\": 4777.948975449424,\n              \"unit\": \"Percent\"\n            },\n            \"memoryUsed\": {\n              \"value\": 446.5363102032016,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryFree\": {\n              \"value\": 4420.726743492864,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryBuffered\": {\n              \"value\": 7705.2839632582645,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryCached\": {\n              \"value\": 1771.2880689507704,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryAvailable\": {\n              \"value\": 5974.0060283050125,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryTotal\": {\n              \"value\": 2429.073030380252,\n              \"unit\": \"Bytes\"\n            },\n            \"memoryUsedPercentOfReservation\": {\n              \"value\": 4287.929709043274,\n              \"unit\": \"Percent\"\n            },\n            \"memoryMax\": {\n              \"value\": 8434.807858462196,\n              \"unit\": \"Bytes\"\n            }\n          }\n        ],\n        \"health\": {\n          \"breakdown\": [\n            {\n              \"name\": \"ProxyMemoryMax\",\n              \"status\": \"HEALTHY\"\n            },\n            {\n              \"name\": \"CPU\",\n              \"status\": \"HEALTHY\"\n            }\n          ],\n          \"status\": \"CRITICAL\"\n        }\n      },\n      \"ssmInstanceId\": \"string\",\n      \"ecsContainerInstanceArn\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7403b17-06cd-47fc-a0dc-bb4b2ce1eed6",
+          "name": "Get a Hub by id",
+          "request": {
+            "name": "Get a Hub by id",
+            "description": {
+              "content": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get a Hub's details by id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data-acquisition",
+                "hubs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Include additional Hub fields. Passing 'connectors' includes the list of the Hub's Connectors."
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Include additional Hub fields. Passing 'connectors' includes the list of the Hub's Connectors."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "392ae4ff-d701-4f4f-945c-4610049d5a16",
+              "name": "Successful response with a Hub's details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data-acquisition",
+                    "hubs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"orgSlug\": \"string\",\n  \"description\": \"string\",\n  \"httpProxyHost\": \"string\",\n  \"httpProxyPort\": 7360.86640799644,\n  \"httpProxyUsername\": \"string\",\n  \"httpsProxyHost\": \"string\",\n  \"httpsProxyPort\": 6430.913482088314,\n  \"httpsProxyUsername\": \"string\",\n  \"noProxy\": \"string\",\n  \"l7ProxyForwardPort\": 1757.450210229714,\n  \"l7ProxyReverseHttpPort\": 3349.5980577827077,\n  \"l7ProxyReverseHttpsPort\": 8243.023971350687,\n  \"l7ProxySocatPort\": 8839.660315364228,\n  \"l7ProxyReverseMqttPort\": 3243.6956619553425,\n  \"l7ProxySocatMqttPort\": 9301.582529775098,\n  \"l7ProxyLocalnets\": \"string\",\n  \"l7ProxyDnsNameservers\": \"string\",\n  \"l7ProxyWhitelist\": \"string\",\n  \"l7ProxyMaximumMemoryMb\": 4042.48116614938,\n  \"enabled\": true,\n  \"status\": {\n    \"network\": \"Online\",\n    \"lastSeen\": \"1955-01-01T17:47:30.221Z\",\n    \"proxies\": {\n      \"l7\": {\n        \"startedAt\": \"2024-12-31T10:08:17.532Z\",\n        \"status\": \"STOPPED\"\n      },\n      \"l7ReverseNginx\": {\n        \"startedAt\": \"1969-11-04T17:15:06.289Z\",\n        \"status\": \"STOPPED\"\n      },\n      \"l7ReverseSocat\": {\n        \"startedAt\": \"2004-11-25T02:49:20.521Z\",\n        \"status\": \"STOPPED\"\n      },\n      \"metrics\": [\n        {\n          \"cpuUsed\": {\n            \"value\": 4622.729974494032,\n            \"unit\": \"Percent\"\n          },\n          \"memoryUsed\": {\n            \"value\": 9523.539407478422,\n            \"unit\": \"Bytes\"\n          },\n          \"memoryUsedPercentOfMax\": {\n            \"value\": 3747.936670543975,\n            \"unit\": \"Percent\"\n          },\n          \"memoryUsedPercentOfReservation\": {\n            \"value\": 4794.9846678608255,\n            \"unit\": \"Percent\"\n          },\n          \"memoryMax\": {\n            \"value\": 9227.822808078035,\n            \"unit\": \"Bytes\"\n          }\n        },\n        {\n          \"cpuUsed\": {\n            \"value\": 1144.4671276314932,\n            \"unit\": \"Percent\"\n          },\n          \"memoryUsed\": {\n            \"value\": 9729.028734262609,\n            \"unit\": \"Bytes\"\n          },\n          \"memoryUsedPercentOfMax\": {\n            \"value\": 8313.694313682716,\n            \"unit\": \"Percent\"\n          },\n          \"memoryUsedPercentOfReservation\": {\n            \"value\": 7944.324992167544,\n            \"unit\": \"Percent\"\n          },\n          \"memoryMax\": {\n            \"value\": 3131.9744613291055,\n            \"unit\": \"Bytes\"\n          }\n        }\n      ]\n    },\n    \"metrics\": [\n      {\n        \"cpuUsedSystem\": {\n          \"value\": 2714.8031795735037,\n          \"unit\": \"Percent\"\n        },\n        \"cpuUsedUser\": {\n          \"value\": 9808.072649202442,\n          \"unit\": \"Percent\"\n        },\n        \"diskFree\": {\n          \"value\": 7815.9135539864055,\n          \"unit\": \"Bytes\"\n        },\n        \"diskUsed\": {\n          \"value\": 6211.023455320818,\n          \"unit\": \"Percent\"\n        },\n        \"memoryUsed\": {\n          \"value\": 1370.4530188042852,\n          \"unit\": \"Bytes\"\n        },\n        \"memoryFree\": {\n          \"value\": 1618.1993672378758,\n          \"unit\": \"Bytes\"\n        },\n        \"memoryBuffered\": {\n          \"value\": 8690.352497046011,\n          \"unit\": \"Bytes\"\n        },\n        \"memoryCached\": {\n          \"value\": 5392.767396267626,\n          \"unit\": \"Bytes\"\n        },\n        \"memoryAvailable\": {\n          \"value\": 6588.658912937043,\n          \"unit\": \"Bytes\"\n        },\n        \"memoryTotal\": {\n          \"value\": 8895.562403171874,\n          \"unit\": \"Bytes\"\n        },\n        \"memoryUsedPercentOfReservation\": {\n          \"value\": 6602.15664002617,\n          \"unit\": \"Percent\"\n        },\n        \"memoryMax\": {\n          \"value\": 8059.310576178429,\n          \"unit\": \"Bytes\"\n        }\n      },\n      {\n        \"cpuUsedSystem\": {\n          \"value\": 1697.0956596491515,\n          \"unit\": \"Percent\"\n        },\n        \"cpuUsedUser\": {\n          \"value\": 631.1266243339353,\n          \"unit\": \"Percent\"\n        },\n        \"diskFree\": {\n          \"value\": 5283.475048493795,\n          \"unit\": \"Bytes\"\n        },\n        \"diskUsed\": {\n          \"value\": 9286.393232943468,\n          \"unit\": \"Percent\"\n        },\n        \"memoryUsed\": {\n          \"value\": 9081.463091512527,\n          \"unit\": \"Bytes\"\n        },\n        \"memoryFree\": {\n          \"value\": 5769.337439842955,\n          \"unit\": \"Bytes\"\n        },\n        \"memoryBuffered\": {\n          \"value\": 3540.1783257133056,\n          \"unit\": \"Bytes\"\n        },\n        \"memoryCached\": {\n          \"value\": 8957.708397743369,\n          \"unit\": \"Bytes\"\n        },\n        \"memoryAvailable\": {\n          \"value\": 3827.0308532677655,\n          \"unit\": \"Bytes\"\n        },\n        \"memoryTotal\": {\n          \"value\": 5546.097974849362,\n          \"unit\": \"Bytes\"\n        },\n        \"memoryUsedPercentOfReservation\": {\n          \"value\": 6586.850580168021,\n          \"unit\": \"Percent\"\n        },\n        \"memoryMax\": {\n          \"value\": 1288.4133277473054,\n          \"unit\": \"Bytes\"\n        }\n      }\n    ],\n    \"health\": {\n      \"breakdown\": [\n        {\n          \"name\": \"Availability\",\n          \"status\": \"CRITICAL\"\n        },\n        {\n          \"name\": \"ProxyAvailability\",\n          \"status\": \"CRITICAL\"\n        }\n      ],\n      \"status\": \"HEALTHY\"\n    }\n  },\n  \"host\": {\n    \"ipAddress\": \"string\",\n    \"hostName\": \"string\",\n    \"platformName\": \"string\",\n    \"platformVersion\": \"string\"\n  },\n  \"updatedAt\": \"1994-10-07T13:15:14.129Z\",\n  \"createdAt\": \"2017-04-01T05:58:49.895Z\",\n  \"activationExpiresAt\": \"2017-02-12T03:38:17.300Z\",\n  \"ssmInstanceId\": \"string\",\n  \"ecsContainerInstanceArn\": \"string\",\n  \"connectors\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"artifact\": {\n        \"namespace\": \"string\",\n        \"slug\": \"string\",\n        \"version\": \"string\",\n        \"manifest\": \"string\"\n      },\n      \"hostType\": \"cloud\",\n      \"health\": \"string\",\n      \"healthErrorCode\": \"string\",\n      \"operatingStatus\": \"string\",\n      \"networkStatus\": \"string\",\n      \"lastSeenAt\": \"1969-07-09T19:21:38.561Z\",\n      \"updatedAt\": \"1960-07-08T05:52:07.875Z\",\n      \"createdAt\": \"1962-06-02T19:55:22.308Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"artifact\": {\n        \"namespace\": \"string\",\n        \"slug\": \"string\",\n        \"version\": \"string\",\n        \"manifest\": 6315.356778943097\n      },\n      \"hostType\": \"cloud\",\n      \"health\": \"string\",\n      \"healthErrorCode\": \"string\",\n      \"operatingStatus\": \"string\",\n      \"networkStatus\": \"string\",\n      \"lastSeenAt\": \"1973-09-09T19:51:58.504Z\",\n      \"updatedAt\": \"1993-07-02T18:05:43.714Z\",\n      \"createdAt\": \"1947-09-11T18:22:04.767Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3d2634a5-5c8b-4f42-aedd-2c5ee0735bea",
+    "name": "TetraScience Data and AI Cloud Access Groups Hubs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

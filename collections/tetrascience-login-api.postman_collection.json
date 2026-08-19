@@ -1,0 +1,1165 @@
+{
+  "item": [
+    {
+      "id": "b204cbd7-8d74-4e5c-ae39-d878e2ac4339",
+      "name": "Login",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9d0f037c-b25f-45ea-af98-e2ca02803698",
+          "name": "Get login config",
+          "request": {
+            "name": "Get login config",
+            "description": {
+              "content": "Retrieve global login configuration including SSO availability, configured identity providers, and platform features. Use this to check if SSO is enabled and which identity providers are configured.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "login",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "084837e9-5cd2-48bf-b370-237f08871492",
+              "name": "Successfully fetched login config",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ssoEnabled\": false,\n  \"ssoProviders\": [\n    {\n      \"providerName\": \"string\",\n      \"authorizationUrl\": \"string\",\n      \"defaultIdp\": false\n    },\n    {\n      \"providerName\": \"string\",\n      \"authorizationUrl\": \"string\",\n      \"defaultIdp\": true\n    }\n  ],\n  \"features\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "accd035f-dd74-4e7d-b024-8d6b05c8eca3",
+              "name": "Not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36f71e11-637d-4813-bc6a-e1622b8489dd",
+          "name": "SSO login",
+          "request": {
+            "name": "SSO login",
+            "description": {
+              "content": "Authenticate users via Single Sign-On (SSO) using an authorization code from an identity provider. Use this for SSO login flows to obtain user tokens for API access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "login",
+                "sso"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b660e4da-df64-4ae6-9136-0448199f4b65",
+              "name": "Login Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login",
+                    "sso"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"authType\": \"service\",\n    \"email\": \"ETyEj1fF9swr@LTVFCkvbQCsH.qb\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"id\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n    \"lastActivity\": \"string\",\n    \"status\": \"active\",\n    \"systemRole\": \"string\",\n    \"roles\": [\n      {\n        \"id\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"orgSlug\": \"tetrascience\",\n        \"organizationId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"role\": {},\n        \"roleId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"status\": \"active\",\n        \"userId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"orgName\": \"string\"\n      },\n      {\n        \"id\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"orgSlug\": \"tetrascience\",\n        \"organizationId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"role\": {},\n        \"roleId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"status\": \"active\",\n        \"userId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"orgName\": \"string\"\n      }\n    ]\n  },\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c03e5c5-e85c-427c-8b1c-ed56f70efcbc",
+              "name": "SSO not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login",
+                    "sso"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c8fb8c9b-c6e6-4a0c-9d47-d44273ff168f",
+              "name": "Not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login",
+                    "sso"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3b8366f-c63e-4a55-a222-26daa5d3c6b6",
+          "name": "Get login config (Subdomain based)",
+          "request": {
+            "name": "Get login config (Subdomain based)",
+            "description": {
+              "content": "Get tenant-specific login configuration for a subdomain including SSO availability, configured identity providers, and tenant features.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":subdomain",
+                "login",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subdomain",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19a3d1a2-84b9-40d7-8270-1681946a0ed2",
+              "name": "Successfully fetched login config",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":subdomain",
+                    "login",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subdomain",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ssoEnabled\": false,\n  \"ssoProviders\": [\n    {\n      \"providerName\": \"string\",\n      \"authorizationUrl\": \"string\",\n      \"defaultIdp\": true\n    },\n    {\n      \"providerName\": \"string\",\n      \"authorizationUrl\": \"string\",\n      \"defaultIdp\": false\n    }\n  ],\n  \"features\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c9f4e4a-2788-4c07-b528-a520d1c97a7a",
+              "name": "Not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":subdomain",
+                    "login",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subdomain",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d1dddc6-26ce-4f6d-8bfc-97cc85361850",
+          "name": "SSO login (Subdomain based)",
+          "request": {
+            "name": "SSO login (Subdomain based)",
+            "description": {},
+            "url": {
+              "path": [
+                ":subdomain",
+                "login",
+                "sso"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subdomain",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "81203cfc-25ea-4124-97e3-9ebece4749d5",
+              "name": "Login Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":subdomain",
+                    "login",
+                    "sso"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subdomain",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"authType\": \"sso\",\n    \"email\": \"PuIz@VBoG.vwf\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"id\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n    \"lastActivity\": \"string\",\n    \"status\": \"inactive\",\n    \"systemRole\": \"string\",\n    \"roles\": [\n      {\n        \"id\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"orgSlug\": \"tetrascience\",\n        \"organizationId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"role\": {},\n        \"roleId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"status\": \"inactive\",\n        \"userId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"orgName\": \"string\"\n      },\n      {\n        \"id\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"orgSlug\": \"tetrascience\",\n        \"organizationId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"role\": {},\n        \"roleId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"status\": \"active\",\n        \"userId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"orgName\": \"string\"\n      }\n    ]\n  },\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37d65290-64e0-4f36-8195-947d14b2eacf",
+              "name": "SSO not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":subdomain",
+                    "login",
+                    "sso"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subdomain",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c3b5ad8f-f5e4-4b8a-853e-e43b3ffcd1be",
+              "name": "Not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":subdomain",
+                    "login",
+                    "sso"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subdomain",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb5b125c-bcb5-4f35-9cc7-c4c1ea6d4b86",
+          "name": "Send a password reset email to the user by email",
+          "request": {
+            "name": "Send a password reset email to the user by email",
+            "description": {
+              "content": "Initiate a password reset process by sending a reset email to the user. Use this when users forget their password and need to reset it securely.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "login",
+                "forgot-password-request"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"subdomain\": \"<string>\",\n  \"orgSlug\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "904bffa5-4eee-46f0-b9cf-8ee3d83bea53",
+              "name": "Password restore email sent to registered email",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login",
+                    "forgot-password-request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"tFcc-yCs4gNcqL@NIIDNfEHhBJUCyeYSG.iq\",\n  \"subdomain\": \"<string>\",\n  \"orgSlug\": \"tetrascience\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "08a83946-29bd-4193-9e97-f999896d2ce8",
+              "name": "Bad request, details in response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login",
+                    "forgot-password-request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"tFcc-yCs4gNcqL@NIIDNfEHhBJUCyeYSG.iq\",\n  \"subdomain\": \"<string>\",\n  \"orgSlug\": \"tetrascience\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e2948e3-bd7c-41d2-bdf7-00cfb6a44de2",
+          "name": "Login user",
+          "request": {
+            "name": "Login user",
+            "description": {
+              "content": "Authenticate user credentials with email and password. Use this for standard username/password login flows to obtain user tokens for API access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"password\": \"<password>\",\n  \"subdomain\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "03cac5f8-cfe0-476d-bad0-b6e92b24e852",
+              "name": "Login Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"password\": \"<password>\",\n  \"subdomain\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"authType\": \"service\",\n    \"email\": \"<email>\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"id\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n    \"lastActivity\": \"string\",\n    \"status\": \"active\",\n    \"systemRole\": \"string\",\n    \"roles\": [\n      {\n        \"id\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"orgSlug\": \"tetrascience\",\n        \"organizationId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"role\": {},\n        \"roleId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"status\": \"inactive\",\n        \"userId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"orgName\": \"string\"\n      },\n      {\n        \"id\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"orgSlug\": \"tetrascience\",\n        \"organizationId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"role\": {},\n        \"roleId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"status\": \"inactive\",\n        \"userId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n        \"orgName\": \"string\"\n      }\n    ]\n  },\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0256df4-5c13-4ef9-b58a-74179a3ff2bd",
+              "name": "Not authorized, details in response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"password\": \"<password>\",\n  \"subdomain\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3cd77862-4c97-4d24-9b2b-22684a7e1d66",
+          "name": "Update expired password",
+          "request": {
+            "name": "Update expired password",
+            "description": {
+              "content": "Allow users to update their password if it has expired. Use this when users need to set a new password after their current one has expired.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "login",
+                "update-expired"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"password\": \"<password>\",\n  \"newPassword\": \"<password>\",\n  \"subdomain\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9a2b3078-936f-4030-9312-4cf9a2818007",
+              "name": "Password updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login",
+                    "update-expired"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"password\": \"<password>\",\n  \"newPassword\": \"<password>\",\n  \"subdomain\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"authType\": \"sso\",\n  \"email\": \"<email>\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"id\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n  \"lastActivity\": \"string\",\n  \"status\": \"active\",\n  \"systemRole\": \"string\",\n  \"roles\": [\n    {\n      \"id\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n      \"orgSlug\": \"tetrascience\",\n      \"organizationId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n      \"role\": {},\n      \"roleId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n      \"status\": \"inactive\",\n      \"userId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n      \"orgName\": \"string\"\n    },\n    {\n      \"id\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n      \"orgSlug\": \"tetrascience\",\n      \"organizationId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n      \"role\": {},\n      \"roleId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n      \"status\": \"inactive\",\n      \"userId\": \"7b2b05ea-99d1-40e5-bebc-e0fd8713e3e2\",\n      \"orgName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8cbc8bad-b004-413c-b801-52afbd90a9db",
+              "name": "Bad request, details in response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login",
+                    "update-expired"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"password\": \"<password>\",\n  \"newPassword\": \"<password>\",\n  \"subdomain\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b30e8089-34f7-4465-86f8-b7a754985252",
+    "name": "TetraScience Data and AI Cloud Access Groups Login API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

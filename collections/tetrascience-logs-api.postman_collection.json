@@ -1,0 +1,481 @@
+{
+  "item": [
+    {
+      "id": "e2cd1719-1fb0-497d-b940-ffbfcac4dba4",
+      "name": "Logs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "35e24caa-6bdb-4adb-b787-78cc745fa242",
+          "name": "Query System Logs",
+          "request": {
+            "name": "Query System Logs",
+            "description": {
+              "content": "This endpoint retrieves System Logs for user activity in the Data Lake. You can query logs based on various parameters to track user actions or file operations and changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "datalake",
+                "queryActivityLog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "queryId",
+                  "value": "<string>",
+                  "description": "Query ID to retrieve more logs"
+                },
+                {
+                  "disabled": false,
+                  "key": "max",
+                  "value": "1000",
+                  "description": "Maximum number of logs to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>",
+                  "description": "Next page token"
+                },
+                {
+                  "disabled": false,
+                  "key": "take",
+                  "value": "8",
+                  "description": "Number of logs to take"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of logs to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "actor",
+                  "value": "<string>",
+                  "description": "Filter by actor name (case-insensitive partial match)"
+                },
+                {
+                  "disabled": false,
+                  "key": "targetType",
+                  "value": "<string>",
+                  "description": "Filter by target type (exact match)"
+                },
+                {
+                  "disabled": false,
+                  "key": "targetName",
+                  "value": "<string>",
+                  "description": "Filter by target name (case-insensitive partial match)"
+                },
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>",
+                  "description": "Filter by single action type"
+                },
+                {
+                  "disabled": false,
+                  "key": "actions",
+                  "value": "<string>",
+                  "description": "Filter by multiple action types (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "Filter logs after this timestamp (ISO format)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "Filter logs before this timestamp (ISO format)"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Filter by array of IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Filter by array of IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Filter by target ID (case-insensitive partial match)"
+                },
+                {
+                  "disabled": false,
+                  "key": "changeReason",
+                  "value": "<string>",
+                  "description": "Filter by change reason (case-insensitive partial match)"
+                },
+                {
+                  "disabled": false,
+                  "key": "targetIds",
+                  "value": "<string>",
+                  "description": "Filter by multiple target IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Format of the response (use \"csv\" to download a CSV file)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortDirection",
+                  "value": "<string>",
+                  "description": "Order of sorting by timestamp (\"asc\" for ASC, DESC by default)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) JWT Token",
+                "key": "ts-auth-token",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Your organization slug",
+                "key": "x-org-slug",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "409b59c1-3b93-4caf-9c5c-0760c110d2ca",
+              "name": "Successfully retrieved activity logs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "datalake",
+                    "queryActivityLog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "queryId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "max",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "8"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "actor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "targetType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "targetName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "actions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "changeReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "targetIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortDirection",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) JWT Token",
+                    "key": "ts-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your organization slug",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"queryId\": \"c61f201d-e55d-44f0-b196-b0728cf354fb\",\n  \"logs\": [\n    {\n      \"id\": \"1044121d-bf56-4cdd-93d3-4b71b83e0062\",\n      \"type\": \"user.logout.v1\",\n      \"category\": \"event\",\n      \"created_at\": \"2025-01-29T15:25:21.571Z\",\n      \"tenant_id\": \"64682d30-7d38-6866-10b7-b0fe58fb4073\",\n      \"org_slug\": \"cell-culture-app-test\",\n      \"actor\": {\n        \"id\": \"59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd\",\n        \"type\": \"user\",\n        \"name\": \"Administrator Administrator\",\n        \"email\": \"admin@tetrascience.com\"\n      },\n      \"action\": \"logout\",\n      \"target\": {\n        \"id\": \"59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd\",\n        \"type\": \"user\",\n        \"name\": \"Administrator Administrator11\"\n      },\n      \"source\": {\n        \"id\": \"tdp\",\n        \"type\": \"platform\",\n        \"tracking\": {\n          \"ipaddress\": \"11.1.11.111\",\n          \"useragent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36\",\n          \"token\": \"xxxxxx\",\n          \"other\": \"\"\n        }\n      },\n      \"tags\": {},\n      \"before\": {},\n      \"after\": {}\n    },\n    {\n      \"id\": \"1044121d-bf56-4cdd-93d3-4b71b83e0062\",\n      \"type\": \"user.logout.v1\",\n      \"category\": \"event\",\n      \"created_at\": \"2025-01-29T15:25:21.571Z\",\n      \"tenant_id\": \"64682d30-7d38-6866-10b7-b0fe58fb4073\",\n      \"org_slug\": \"cell-culture-app-test\",\n      \"actor\": {\n        \"id\": \"59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd\",\n        \"type\": \"user\",\n        \"name\": \"Administrator Administrator\",\n        \"email\": \"admin@tetrascience.com\"\n      },\n      \"action\": \"logout\",\n      \"target\": {\n        \"id\": \"59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd\",\n        \"type\": \"user\",\n        \"name\": \"Administrator Administrator11\"\n      },\n      \"source\": {\n        \"id\": \"tdp\",\n        \"type\": \"platform\",\n        \"tracking\": {\n          \"ipaddress\": \"11.1.11.111\",\n          \"useragent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36\",\n          \"token\": \"xxxxxx\",\n          \"other\": \"\"\n        }\n      },\n      \"tags\": {},\n      \"before\": {},\n      \"after\": {}\n    }\n  ],\n  \"hasMore\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7dc56e82-a4b4-40dd-b47a-bb9f84e3e88d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "datalake",
+                    "queryActivityLog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "queryId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "max",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "8"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "actor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "targetType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "targetName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "actions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "changeReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "targetIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortDirection",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ts-auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) JWT Token",
+                    "key": "ts-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your organization slug",
+                    "key": "x-org-slug",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"Invalid query parameters\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tetrascience.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ts-auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6d40087b-6ba2-470c-858e-7a54fd6f368e",
+    "name": "TetraScience Data and AI Cloud Access Groups Logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.\n\nContact Support:\n Name: TetraScience",
+      "type": "text/plain"
+    }
+  }
+}

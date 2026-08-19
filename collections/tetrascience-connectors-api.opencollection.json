@@ -1,0 +1,863 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Connectors API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all Connectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/data-acquisition/connectors"
+          },
+          "docs": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get a list of Connectors."
+        },
+        {
+          "info": {
+            "name": "Get a Connector by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/data-acquisition/connectors/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Connector's id."
+              },
+              {
+                "name": "resolveSecrets",
+                "value": "",
+                "type": "query",
+                "description": "If true, resolves secrets in the Connector's config. Requires organization admin permissions."
+              },
+              {
+                "name": "include",
+                "value": "config",
+                "type": "query",
+                "description": "Include additional Connector fields. 'config' includes the Connector's config. 'artifact' includes the Connector artifact's details."
+              }
+            ]
+          },
+          "docs": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get a Connector's details by id."
+        },
+        {
+          "info": {
+            "name": "Get a Connector's metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/data-acquisition/connectors/:id/metrics",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Connector's id."
+              }
+            ]
+          },
+          "docs": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get the metrics reported by a Connector, including resource usage and file upload and error rates."
+        },
+        {
+          "info": {
+            "name": "Get a Connector's reported files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/data-acquisition/connectors/:id/files",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Connector's id."
+              },
+              {
+                "name": "fileIds",
+                "value": "",
+                "type": "query",
+                "description": "A list of file ids to filter by."
+              },
+              {
+                "name": "excludeFileIds",
+                "value": "",
+                "type": "query",
+                "description": "A list of file ids to exclude from the response."
+              },
+              {
+                "name": "uniqueExternalIds",
+                "value": "",
+                "type": "query",
+                "description": "A list of unique external ids to filter by. Used by Connectors to deduplicate external files."
+              },
+              {
+                "name": "excludeUniqueExternalIds",
+                "value": "",
+                "type": "query",
+                "description": "A list of unique external ids to exclude from the response. Used by Connectors to deduplicate external files."
+              },
+              {
+                "name": "statuses",
+                "value": "",
+                "type": "query",
+                "description": "A list of file statuses to filter by."
+              },
+              {
+                "name": "maxErrors",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of errors to filter by. Used by Connectors to limit file upload retries."
+              },
+              {
+                "name": "createdBefore",
+                "value": "",
+                "type": "query",
+                "description": "The maximum creation date to filter by."
+              },
+              {
+                "name": "createdAfter",
+                "value": "",
+                "type": "query",
+                "description": "The minimum creation date to filter by."
+              },
+              {
+                "name": "updatedBefore",
+                "value": "",
+                "type": "query",
+                "description": "The maximum update date to filter by."
+              },
+              {
+                "name": "updatedAfter",
+                "value": "",
+                "type": "query",
+                "description": "The minimum update date to filter by."
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "The field to order by."
+              },
+              {
+                "name": "orderDirection",
+                "value": "",
+                "type": "query",
+                "description": "The order direction."
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query",
+                "description": "The number of files to take. Default is 50."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of files to skip."
+              }
+            ]
+          },
+          "docs": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get metadata about the files reported by a Connector, including those that have not yet been uploaded or that have failed."
+        },
+        {
+          "info": {
+            "name": "Get statistics about a Connector's files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/data-acquisition/connectors/:id/files/stats",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Connector's id."
+              }
+            ]
+          },
+          "docs": "**:warning: This is a new API which is still subject to change.**\n\nUse this endpoint to get the file statistics reported by a Connector, including the total number of files and the number of files in each status."
+        },
+        {
+          "info": {
+            "name": "List all Connectors for namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/connectors/:namespace",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all Connector artifacts given a namespace"
+        },
+        {
+          "info": {
+            "name": "Returns a list of Connector artifacts given a namespace and slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/connectors/:namespace/:slug",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all Connector artifacts given a namespace and slug"
+        },
+        {
+          "info": {
+            "name": "Get contents for an Connector file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/connectors/:namespace/:slug/:version/files/:fileSlug",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "fileSlug",
+                "value": "build",
+                "type": "path",
+                "description": "File slug corresponding to file within a Connector"
+              },
+              {
+                "name": "download",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, return a download url"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns the file contents for an Connector file given a namespace, slug, version, and file slug"
+        },
+        {
+          "info": {
+            "name": "Get single Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/connectors/:namespace/:slug/:version",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a single Connector artifact matching the namespace, slug, and version"
+        },
+        {
+          "info": {
+            "name": "Get available file slugs for Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/connectors/:namespace/:slug/:version/files",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns which file slugs are available to retrieve for this Connector"
+        },
+        {
+          "info": {
+            "name": "Get labels for an Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/connectors/:namespace/:slug/:version/labels",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of the labels associated with a Connector artifact"
+        },
+        {
+          "info": {
+            "name": "Get artifacts related to Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/connectors/:namespace/:slug/:version/relationships",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of the relationships a Connector artifact has with other artifacts"
+        },
+        {
+          "info": {
+            "name": "List all connectors artifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/connectors",
+            "params": [
+              {
+                "name": "namespace_type",
+                "value": "client",
+                "type": "query",
+                "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all Connector artifacts, optionally filtered by namespace type"
+        },
+        {
+          "info": {
+            "name": "List all Data Apps for namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/data-apps/:namespace",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all Data App artifacts given a namespace"
+        },
+        {
+          "info": {
+            "name": "Returns a list of Data App artifacts given a namespace and slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/data-apps/:namespace/:slug",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all Data App artifacts given a namespace and slug"
+        },
+        {
+          "info": {
+            "name": "Get contents for a Data App file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/data-apps/:namespace/:slug/:version/files/:fileSlug",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "fileSlug",
+                "value": "build",
+                "type": "path",
+                "description": "File slug corresponding to file within a Connector"
+              },
+              {
+                "name": "download",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, return a download url"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns the file contents for an Data App file given a namespace, slug, version, and file slug"
+        },
+        {
+          "info": {
+            "name": "Get single Data App",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/data-apps/:namespace/:slug/:version",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a single Data App artifact matching the namespace, slug, and version"
+        },
+        {
+          "info": {
+            "name": "Get available file slugs for Data App",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/data-apps/:namespace/:slug/:version/files",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns which file slugs are available to retrieve for this Data App"
+        },
+        {
+          "info": {
+            "name": "Get labels for a Data App",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/data-apps/:namespace/:slug/:version/labels",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of the labels associated with a Data App artifact"
+        },
+        {
+          "info": {
+            "name": "Get artifacts related to Data App",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/data-apps/:namespace/:slug/:version/relationships",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "common",
+                "type": "path",
+                "description": "Artifact namespace. Should be common, private-*, or client-*"
+              },
+              {
+                "name": "slug",
+                "value": "demo-slug",
+                "type": "path",
+                "description": "Artifact slug"
+              },
+              {
+                "name": "version",
+                "value": "v1.0.0",
+                "type": "path",
+                "description": "Artifact version"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of the relationships a Data App artifact has with other artifacts"
+        },
+        {
+          "info": {
+            "name": "List all connectors artifacts of sub-type data-app",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/artifacts/data-apps",
+            "params": [
+              {
+                "name": "namespace_type",
+                "value": "client",
+                "type": "query",
+                "description": "Namespace type of artifacts to be returned ('common', 'client', or 'private')"
+              },
+              {
+                "name": "latest_only",
+                "value": "true",
+                "type": "query",
+                "description": "Only return the latest version of each artifact"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Returns a list of all Connector artifacts that can be deployed as a data app, optionally filtered by namespace type"
+        },
+        {
+          "info": {
+            "name": "Search for items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/artifacts/connectors/search",
+            "params": [
+              {
+                "name": "value",
+                "value": "",
+                "type": "query",
+                "description": "The search string"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Search for items using specified criteria"
+        },
+        {
+          "info": {
+            "name": "Search for items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/artifacts/data-apps/search",
+            "params": [
+              {
+                "name": "value",
+                "value": "",
+                "type": "query",
+                "description": "The search string"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return"
+              },
+              {
+                "name": "include_prereleases",
+                "value": "true",
+                "type": "query",
+                "description": "Include prerelease artifacts in search"
+              }
+            ]
+          },
+          "docs": "Search for items using specified criteria"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TetraScience Data and AI Cloud Access Groups Embedded Data Apps API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ts-auth-token",
+      "value": "{{ts-auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Embedded Data Apps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List available Data Apps for installation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tetrascience.com/v1/dataapps/apps/manage",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination (starts from 1)"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search term to filter data apps by name or slug"
+              }
+            ]
+          },
+          "docs": "Retrieves the catalog of Data Apps available for installation in your organization, including their current installation status. Use this as the discovery endpoint for automated governance workflows — browse available apps and check requirements before installing."
+        },
+        {
+          "info": {
+            "name": "Install, update, or uninstall Data Apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tetrascience.com/v1/dataapps/apps/manage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Perform one or more install, update, or uninstall operations on embedded Data Apps. Submit an array of operations to manage which Data Apps are enabled in your organization. This endpoint supports automated governance workflows from CI/CD pipelines, GitHub Actions, or ServiceNow."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
