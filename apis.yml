@@ -9,6 +9,18 @@ description: >-
   (scientific AI agents) to accelerate discovery, development, manufacturing, and quality outcomes for pharma, biotech,
   CROs, and CDMOs.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
@@ -1607,6 +1619,9 @@ apis:
   - type: FinOps
     url: finops/tetrascience-finops.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/tetrascience-capability-edges.yml
+    name: TetraScience Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/tetrascience/overview
   - type: AgenticAccess
