@@ -23,18 +23,19 @@ deliveryModel:
   method: derived
 accessModel:
   pricing: paid
-  onboarding: self-serve
+  onboarding: unknown
   trial: false
   try_now: false
   public: false
-  label: Paid · Self-serve signup
-  confidence: high
+  label: Paid
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
-position: Provider
+position: Producing
 access: 1st-Party
 image: >-
   https://files.readme.io/d32e87b276cac7db2775f5d68767afa34d2d5ab987ee1f3a4e02ab250c3f2448-small-tetrascience_logo_logo_color.png
