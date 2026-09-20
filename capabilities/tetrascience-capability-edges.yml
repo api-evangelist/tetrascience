@@ -11,8 +11,18 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 3
+edge_count: 9
 edges:
+- tag: Login
+  spec_file: tetrascience-login-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.9
+  evidence: GET /login/sso SSO login; POST /login/forgot-password-request Send a password reset email
+    to the user by email; PUT /login/update-expired Update expired password
+  reason: Authentication, SSO and credential/password lifecycle operations map to Identity & Access Management.
+  recovered_from: sweep-20260829T005356Z-edges.json
 - tag: Roles
   spec_file: tetrascience-roles-api-openapi.yml
   capability_id: BC-620.20
@@ -34,6 +44,17 @@ edges:
   reason: Operations create groups and assign/remove users, with attribute/filter rules governing what
     data a group may see — group-based access control, i.e. Identity & Access Management. Not a life-sciences
     business capability.
+- tag: Tenants
+  spec_file: tetrascience-tenants-api-openapi.yml
+  capability_id: BC-4230.10
+  capability_id_l1: BC-4230
+  capability_name: Tenant Provisioning & Lifecycle
+  confidence: 0.8
+  evidence: POST /v1/tenants — "Create a new tenant."; GET /v1/tenants/{tenantId}/organizations — "Get
+    all organizations in a tenant"
+  reason: Operations create, read and update tenants and list their organizations/users — tenant provisioning
+    and lifecycle in a multi-tenant platform.
+  recovered_from: sweep-20260829T005356Z-edges.json
 - tag: Users
   spec_file: tetrascience-users-api-openapi.yml
   capability_id: BC-620.20
@@ -44,3 +65,47 @@ edges:
     user token / Update current user's password
   reason: Operations manage user accounts, roles, tokens, passwords and status — identity and access management,
     a Cybersecurity sub-capability. Not HR employee records.
+- tag: Organizations
+  spec_file: tetrascience-organizations-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /v1/organizations/{organizationId}/users Add a user to Organization; DELETE /v1/organizations/{organizationId}/users/{userId}
+    Delete user from organization
+  reason: Operations manage organization records and membership of users within them — tenant/user account
+    administration, best matched to Identity & Access Management. Could also be read as tenant management
+    but no multi-tenant provisioning semantics are shown.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: Requests
+  spec_file: tetrascience-requests-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.7
+  evidence: 'POST /v1/externalevents/requests/creation Request to create a new subscription; schemas:
+    EventbridgeExternalSubscriptionCreate'
+  reason: Requests manage external event (EventBridge) subscription create/update/delete — outbound event
+    subscription lifecycle, matching Webhook & Event Subscription Management.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: Schemas
+  spec_file: tetrascience-schemas-api-openapi.yml
+  capability_id: BC-610.40
+  capability_id_l1: BC-610
+  capability_name: Data Architecture Management
+  confidence: 0.7
+  evidence: GET /v1/datalake/schemas List Schemas; GET /v1/artifacts/schemas/{namespace}/{slug}/{version}
+    Get a single schemas artifact
+  reason: Listing and retrieving versioned data schema definitions for the data lake — logical data architecture
+    / schema management under Information & Data Management.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: View Subscriptions
+  spec_file: tetrascience-view-subscriptions-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.7
+  evidence: GET /v1/externalevents/subscriptions "Get subscriptions for your org"; schema EventbridgeSubscriptionFull
+  reason: Not commercial subscriptions — these are outbound event (EventBridge) subscriptions, i.e. event
+    subscription management. Read-only surface keeps confidence moderate.
+  recovered_from: sweep-20260829T005356Z-edges.json
