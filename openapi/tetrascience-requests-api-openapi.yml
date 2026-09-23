@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups Requests API
+  title: TetraScience Data and AI Cloud Requests API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -192,65 +192,40 @@ paths:
         '501':
           $ref: '#/components/responses/501Any'
 components:
+  responses:
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+    501Any:
+      description: Internal error managing rules on eventbridge
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Internal Eventbridge Error
+            message: Internal error managing rules on eventbridge
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    500Any:
+      description: Internal error managing rules on eventbridge
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Internal DB Error
+            message: Internal error with teh database
   schemas:
-    EventbridgeExternalSubscriptionCreate:
-      type: object
-      properties:
-        selectedEventTypes:
-          type: array
-          items:
-            type: string
-            enum:
-            - tetrascience.file.RegistrationSucceeded.v1
-            - tetrascience.file.RegistrationFailed.v1
-            - tetrascience.file.SearchIndexingSucceeded.v1
-            - tetrascience.file.SearchIndexingFailed.v1
-            - tetrascience.file.SQLIndexingSucceeded.v1
-            - tetrascience.file.SQLIndexingFailed.v1
-            - tetrascience.file.WorkflowCreated.v1
-            - tetrascience.file.WorkflowInProgress.v1
-            - tetrascience.file.WorkflowSucceeded.v1
-            - tetrascience.file.WorkflowFailed.v1
-            - tetrascience.file.WorkflowCanceled.v1
-            - tetrascience.agents.common.heartbeat.v1
-            - tetrascience.agents.common.agentStarted.v1
-            - tetrascience.agents.common.agentStopped.v1
-            - tetrascience.agents.filelog.archiveFileDeleteCompleted.v1
-            - tetrascience.agents.filelog.archiveFileDeleteFailed.v1
-            - tetrascience.agents.filelog.fileArchiveCompleted.v1
-            - tetrascience.agents.filelog.fileArchiveFailed.v1
-            - tetrascience.agents.filelog.fileArchiveSkipped.v1
-            - tetrascience.agents.filelog.fileArchiveStarted.v1
-            - tetrascience.agents.filelog.fileScanned.v1
-            - tetrascience.agents.filelog.fileUploadCompleted.v1
-            - tetrascience.agents.filelog.fileUploadFailed.v1
-            - tetrascience.agents.filelog.fileUploadStarted.v1
-            - tetrascience.agents.filelog.pathValidationFailed.v1
-            - tetrascience.agents.filelog.scanCompleted.v1
-            - tetrascience.agents.filelog.scanError.v1
-            - tetrascience.agents.filelog.scanStarted.v1
-          minItems: 1
-          description: The types of events to subscribe to
-        userDefinedName:
-          type: string
-          pattern: ^[\S ]*\S[\S ]*$
-          description: Subscription name set and displayed in the UI
-        targetEndpoint:
-          type: string
-          pattern: arn:aws:events:.+:.+:.+
-          description: Amazon Resource Name of the bus resource where events should be sent
-        targetType:
-          type: string
-          enum:
-          - BUS
-        enabled:
-          type: boolean
-      required:
-      - selectedEventTypes
-      - userDefinedName
-      - targetEndpoint
-      - targetType
-      - enabled
     EventbridgeSubscriptionUpdate:
       type: object
       properties:
@@ -525,39 +500,64 @@ components:
               - completed
           required:
           - status
-  responses:
-    500Any:
-      description: Internal error managing rules on eventbridge
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Internal DB Error
-            message: Internal error with teh database
-    501Any:
-      description: Internal error managing rules on eventbridge
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Internal Eventbridge Error
-            message: Internal error managing rules on eventbridge
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
+    EventbridgeExternalSubscriptionCreate:
+      type: object
+      properties:
+        selectedEventTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - tetrascience.file.RegistrationSucceeded.v1
+            - tetrascience.file.RegistrationFailed.v1
+            - tetrascience.file.SearchIndexingSucceeded.v1
+            - tetrascience.file.SearchIndexingFailed.v1
+            - tetrascience.file.SQLIndexingSucceeded.v1
+            - tetrascience.file.SQLIndexingFailed.v1
+            - tetrascience.file.WorkflowCreated.v1
+            - tetrascience.file.WorkflowInProgress.v1
+            - tetrascience.file.WorkflowSucceeded.v1
+            - tetrascience.file.WorkflowFailed.v1
+            - tetrascience.file.WorkflowCanceled.v1
+            - tetrascience.agents.common.heartbeat.v1
+            - tetrascience.agents.common.agentStarted.v1
+            - tetrascience.agents.common.agentStopped.v1
+            - tetrascience.agents.filelog.archiveFileDeleteCompleted.v1
+            - tetrascience.agents.filelog.archiveFileDeleteFailed.v1
+            - tetrascience.agents.filelog.fileArchiveCompleted.v1
+            - tetrascience.agents.filelog.fileArchiveFailed.v1
+            - tetrascience.agents.filelog.fileArchiveSkipped.v1
+            - tetrascience.agents.filelog.fileArchiveStarted.v1
+            - tetrascience.agents.filelog.fileScanned.v1
+            - tetrascience.agents.filelog.fileUploadCompleted.v1
+            - tetrascience.agents.filelog.fileUploadFailed.v1
+            - tetrascience.agents.filelog.fileUploadStarted.v1
+            - tetrascience.agents.filelog.pathValidationFailed.v1
+            - tetrascience.agents.filelog.scanCompleted.v1
+            - tetrascience.agents.filelog.scanError.v1
+            - tetrascience.agents.filelog.scanStarted.v1
+          minItems: 1
+          description: The types of events to subscribe to
+        userDefinedName:
+          type: string
+          pattern: ^[\S ]*\S[\S ]*$
+          description: Subscription name set and displayed in the UI
+        targetEndpoint:
+          type: string
+          pattern: arn:aws:events:.+:.+:.+
+          description: Amazon Resource Name of the bus resource where events should be sent
+        targetType:
+          type: string
+          enum:
+          - BUS
+        enabled:
+          type: boolean
+      required:
+      - selectedEventTypes
+      - userDefinedName
+      - targetEndpoint
+      - targetType
+      - enabled
   securitySchemes:
     token:
       type: apiKey

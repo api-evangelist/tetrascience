@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups Tenants API
+  title: TetraScience Data and AI Cloud Tenants API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -54,6 +54,8 @@ paths:
           description: Invalid token
         '403':
           description: Caller is not authorized to perform this action
+      operationId: getV1TenantsByTenantIdOrganizations
+      x-operation-id-source: derived
   /v1/tenants/{tenantId}/users:
     get:
       description: Get all users in a tenant, needs to be org or system admin.
@@ -98,6 +100,8 @@ paths:
           description: Invalid token
         '403':
           description: Caller is not authorized to perform this action
+      operationId: getV1TenantsByTenantIdUsers
+      x-operation-id-source: derived
   /v1/tenants/{tenantId}:
     get:
       description: Get tenant by ID, needs to be org or system admin.
@@ -121,6 +125,8 @@ paths:
           description: Invalid token
         '403':
           description: Caller is not authorized to perform this action
+      operationId: getV1TenantsByTenantId
+      x-operation-id-source: derived
     put:
       description: Update tenant by ID, needs to be system admin.
       tags:
@@ -202,6 +208,8 @@ paths:
           description: Invalid token
         '403':
           description: Caller is not authorized to perform this action
+      operationId: putV1TenantsByTenantId
+      x-operation-id-source: derived
   /v1/tenants:
     get:
       description: Get all tenants, needs to be system admin.
@@ -254,11 +262,13 @@ paths:
           description: Invalid token
         '403':
           description: Caller is not authorized to perform this action
+      operationId: getV1Tenants
+      x-operation-id-source: derived
     post:
       description: Create a new tenant, must be system admin.
       tags:
       - Tenants
-      summary: Create a new tenant.
+      summary: Create a new tenant
       requestBody:
         required: true
         content:
@@ -421,6 +431,8 @@ paths:
           description: Caller is not authorized to perform this action
         '409':
           description: Bad request, Tenant already exists.
+      operationId: postV1Tenants
+      x-operation-id-source: derived
 components:
   securitySchemes:
     token:

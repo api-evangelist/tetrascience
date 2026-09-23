@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups tetraflows API
+  title: TetraScience Data and AI Cloud Tetraflows API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -170,7 +170,145 @@ paths:
         '404':
           $ref: '#/components/responses/404Any'
 components:
+  schemas:
+    ArtifactNamespace:
+      type: string
+      pattern: ^(common|(private|client)-).*$
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
+    TetraflowFileSlug:
+      type: string
+      enum:
+      - build
+      - manifest
+      - readme
+      - source
+      - protocol
+      - tetraflowYml
+      - generated
+    LabelList:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          value:
+            type: string
+        required:
+        - name
+        - value
+        additionalProperties: false
+      example:
+      - name: label1
+        value: value1
+      - name: another-label
+        value: another-value
+    TetraflowObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TetraflowObject'
+    TetraflowObject:
+      allOf:
+      - $ref: '#/components/schemas/ArtifactObjectBase'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - tetraflow
+        required:
+        - type
+      example:
+        type: tetraflow
+        namespace: common
+        slug: simplo
+        version: v1.0.2
+        createdAt: '2024-04-25T15:15:34.269Z'
+        lastUpdatedAt: '2023-04-25T17:15:34.269Z'
+        name: A demo tetraflow
+        description: The description for the demo tetraflow powering the simplo use case
+        otherVersions:
+        - v1.0.0
+        - v1.0.1
+    ArtifactObjectBase:
+      type: object
+      properties:
+        namespace:
+          $ref: '#/components/schemas/ArtifactNamespace'
+        slug:
+          type: string
+        version:
+          type: string
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdatedAt:
+          type: string
+          format: date-time
+        otherVersions:
+          type: array
+          items:
+            type: string
+        supportedPlatformVersion:
+          $ref: '#/components/schemas/SupportedPlatformVersion'
+      required:
+      - namespace
+      - slug
+      - version
+      - createdAt
+      - lastUpdatedAt
   responses:
+    200TetraflowObject:
+      description: Successfully fetched TetraflowObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TetraflowObject'
+    200TetraflowObjectList:
+      description: Successfully fetched TetraflowObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TetraflowObjectList'
+    200TetraflowFileSlugList:
+      description: Successfully fetched available Tetraflow file slugs
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/TetraflowFileSlug'
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
     200Labels:
       description: Successfully fetched Labels
       content:
@@ -207,153 +345,22 @@ components:
                 * item 2
 
                 * item 3'
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
-    200TetraflowObjectList:
-      description: Successfully fetched TetraflowObject list
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TetraflowObjectList'
-    200TetraflowObject:
-      description: Successfully fetched TetraflowObject
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TetraflowObject'
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    200TetraflowFileSlugList:
-      description: Successfully fetched available Tetraflow file slugs
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/TetraflowFileSlug'
-  schemas:
-    LabelList:
-      type: array
-      items:
-        type: object
-        properties:
-          name:
-            type: string
-          value:
-            type: string
-        required:
-        - name
-        - value
-        additionalProperties: false
-      example:
-      - name: label1
-        value: value1
-      - name: another-label
-        value: another-value
-    TetraflowFileSlug:
-      type: string
-      enum:
-      - build
-      - manifest
-      - readme
-      - source
-      - protocol
-      - tetraflowYml
-      - generated
-    SupportedPlatformVersion:
-      type: object
-      nullable: true
-      properties:
-        minPlatformVersion:
-          type: string
-          nullable: false
-        maxPlatformVersion:
-          type: string
-          nullable: true
-    TetraflowObject:
-      allOf:
-      - $ref: '#/components/schemas/ArtifactObjectBase'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - tetraflow
-        required:
-        - type
-      example:
-        type: tetraflow
-        namespace: common
-        slug: simplo
-        version: v1.0.2
-        createdAt: '2024-04-25T15:15:34.269Z'
-        lastUpdatedAt: '2023-04-25T17:15:34.269Z'
-        name: A demo tetraflow
-        description: The description for the demo tetraflow powering the simplo use case
-        otherVersions:
-        - v1.0.0
-        - v1.0.1
-    TetraflowObjectList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TetraflowObject'
-    ArtifactNamespace:
-      type: string
-      pattern: ^(common|(private|client)-).*$
-    ArtifactObjectBase:
-      type: object
-      properties:
-        namespace:
-          $ref: '#/components/schemas/ArtifactNamespace'
-        slug:
-          type: string
-        version:
-          type: string
-        name:
-          type: string
-          nullable: true
-        description:
-          type: string
-          nullable: true
-        createdAt:
-          type: string
-          format: date-time
-        lastUpdatedAt:
-          type: string
-          format: date-time
-        otherVersions:
-          type: array
-          items:
-            type: string
-        supportedPlatformVersion:
-          $ref: '#/components/schemas/SupportedPlatformVersion'
-      required:
-      - namespace
-      - slug
-      - version
-      - createdAt
-      - lastUpdatedAt
   parameters:
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
-      in: query
-      required: false
+    ArtifactSlug:
+      description: Artifact slug
+      name: slug
+      in: path
+      required: true
       schema:
-        type: boolean
-      example: true
+        type: string
+      example: demo-slug
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
     LimitQuery:
       name: limit
       in: query
@@ -362,6 +369,14 @@ components:
       schema:
         type: integer
         minimum: 1
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
     DownloadQuery:
       name: download
       in: query
@@ -369,13 +384,6 @@ components:
       required: false
       schema:
         type: boolean
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
     ArtifactNamespaceTypeQuery:
       description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
       name: namespace_type
@@ -388,6 +396,14 @@ components:
         - client
         - private
       example: client
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
     TetraflowFileSlugParam:
       name: fileSlug
       description: File slug corresponding to file within a tetraflow
@@ -396,14 +412,14 @@ components:
       schema:
         $ref: '#/components/schemas/TetraflowFileSlug'
       example: build
-    ArtifactSlug:
-      description: Artifact slug
-      name: slug
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
       in: path
+      name: namespace
       required: true
       schema:
-        type: string
-      example: demo-slug
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
     ArtifactVersion:
       description: Artifact version
       name: version
@@ -413,22 +429,6 @@ components:
         type: string
         pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
       example: v1.0.0
-    IncludePrereleasesQuery:
-      description: Include prerelease artifacts in search
-      name: include_prereleases
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
-      in: path
-      name: namespace
-      required: true
-      schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
   securitySchemes:
     token:
       type: apiKey

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups clusters API
+  title: TetraScience Data and AI Cloud Clusters API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -24,7 +24,7 @@ security:
 - orgSlug: []
   tsAuthToken: []
 tags:
-- name: clusters
+- name: Clusters
 paths:
   /v1/pipeline/clusterPolicies/databricks:
     get:
@@ -32,7 +32,7 @@ paths:
       description: Returns a list of platform-level Databricks cluster policies filtered by prefix 'ts-platform-policy-*'
       operationId: DL-FI-listDatabricksClusterPolicies
       tags:
-      - clusters
+      - Clusters
       responses:
         '200':
           description: Success
@@ -63,7 +63,7 @@ paths:
       description: ''
       operationId: DL-FI-listDatabricksClusters
       tags:
-      - clusters
+      - Clusters
       responses:
         '200':
           description: Success
@@ -78,7 +78,39 @@ paths:
         '404':
           $ref: '#/components/responses/404Any'
 components:
+  responses:
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+    401Any:
+      description: Unauthorized
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Unauthorized
+            message: Missing authentication.
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
   schemas:
+    DatabricksClusterObject:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
     DatabricksClusterPolicy:
       type: object
       required:
@@ -94,38 +126,6 @@ components:
         description:
           type: string
           description: Description of the cluster policy
-    DatabricksClusterObject:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-  responses:
-    401Any:
-      description: Unauthorized
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Unauthorized
-            message: Missing authentication.
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
   securitySchemes:
     token:
       type: apiKey

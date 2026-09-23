@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups Organizations API
+  title: TetraScience Data and AI Cloud Organizations API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -46,6 +46,8 @@ paths:
           description: Invalid token
         '403':
           description: Caller is not authorized to perform this action
+      operationId: deleteV1OrganizationsByOrganizationIdUsersByUserId
+      x-operation-id-source: derived
   /v1/organizations/{organizationId}/users:
     post:
       description: Add a new user to the organization or invite existing users. Assigns default roles and sends invitation emails as configured.
@@ -370,6 +372,8 @@ paths:
           description: Invalid token
         '403':
           description: Caller is not authorized to perform this action
+      operationId: getV1OrganizationsByOrganizationIdUsers
+      x-operation-id-source: derived
   /v1/organizations/{organizationId}:
     get:
       description: Retrieve organization details including settings, features, subdomain, and administrative configuration for management purposes.
@@ -439,6 +443,8 @@ paths:
           description: Caller is not authorized to perform this action
         '404':
           description: Organization not found.
+      operationId: getV1OrganizationsByOrganizationId
+      x-operation-id-source: derived
     put:
       description: Update organization properties including name, description, logo, authentication type, email domain, and feature settings. Requires organization or system admin privileges.
       summary: Update organization by ID
@@ -507,6 +513,8 @@ paths:
           description: Caller is not authorized to perform this action
         '404':
           description: Organization not found.
+      operationId: putV1OrganizationsByOrganizationId
+      x-operation-id-source: derived
 components:
   securitySchemes:
     token:

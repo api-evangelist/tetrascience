@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups Search API
+  title: TetraScience Data and AI Cloud Search API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -211,7 +211,7 @@ paths:
   /v1/fileinfo/search:
     get:
       summary: Search Files (GET) (Deprecated)
-      description: "\uD83D\uDEA7 IMPORTANT The Search Files (GET) endpoint is on a deprecation path and does not support searching for files by metadata. It's recommended that you use the [/searchEql endpoint](<https://developers.tetrascience.com/reference/dl-fi-dl-search-files-via-elasticsearch-query>) instead. For more information, see [Search Files, Search Workflow, and Paginate through All Pipeline Details API Endpoints Deprecation](<https://developers.tetrascience.com/docs/tdp-deprecation-notices#search-files-search-workflow-and-paginate-through-all-pipeline-details-api-endpoints-deprecation>)."
+      description: 🚧 IMPORTANT The Search Files (GET) endpoint is on a deprecation path and does not support searching for files by metadata. It's recommended that you use the /searchEql endpoint instead. For more information, see Search Files, Search Workflow, and Paginate through All Pipeline Details API Endpoints Deprecation.
       tags:
       - Search
       operationId: DL-FI-search-files-get
@@ -526,7 +526,7 @@ paths:
         - curl
     post:
       summary: Search Files (POST) (Deprecated)
-      description: "\uD83D\uDEA7 IMPORTANT The Search Files (POST) endpoint is on a deprecation path and does not support searching for files by metadata. It's recommended that you use the [/searchEql endpoint](<https://developers.tetrascience.com/reference/dl-fi-dl-search-files-via-elasticsearch-query>) instead. For more information, see [Search Files, Search Workflow, and Paginate through All Pipeline Details API Endpoints Deprecation](<https://developers.tetrascience.com/docs/tdp-deprecation-notices#search-files-search-workflow-and-paginate-through-all-pipeline-details-api-endpoints-deprecation>)."
+      description: 🚧 IMPORTANT The Search Files (POST) endpoint is on a deprecation path and does not support searching for files by metadata. It's recommended that you use the /searchEql endpoint instead. For more information, see Search Files, Search Workflow, and Paginate through All Pipeline Details API Endpoints Deprecation.
       tags:
       - Search
       operationId: DL-FI-search-files-post

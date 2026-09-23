@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups View Subscriptions API
+  title: TetraScience Data and AI Cloud View Subscriptions API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -79,22 +79,6 @@ paths:
           $ref: '#/components/responses/503Any'
 components:
   responses:
-    500Any:
-      description: Internal error managing rules on eventbridge
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Internal DB Error
-            message: Internal error with teh database
-    503Any:
-      description: Could not retrieve information from AWS
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Unavailable
-            message: Information could not be retrieved
     400Any:
       description: Incorrect input provided
       content:
@@ -111,6 +95,22 @@ components:
           example:
             error: Not Found
             message: Subscription not found
+    500Any:
+      description: Internal error managing rules on eventbridge
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Internal DB Error
+            message: Internal error with teh database
+    503Any:
+      description: Could not retrieve information from AWS
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Unavailable
+            message: Information could not be retrieved
   schemas:
     EventbridgeSubscriptionFull:
       type: object

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups Commands API
+  title: TetraScience Data and AI Cloud Commands API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -29,7 +29,7 @@ paths:
   /v1/commands:
     post:
       summary: Create command
-      description: 'Use this endpoint to create a new command for an on-premises connector/agent. It also automatically sends command to SQS queue for execution. Once it is in the queue, the connector/agent listening on the target queue picks up the command,  tries to execute it, and sends the response back to the command service.
+      description: 'Use this endpoint to create a new command for an on-premises connector/agent. It also automatically sends command to SQS queue for execution. Once it is in the queue, the connector/agent listening on the target queue picks up the command, tries to execute it, and sends the response back to the command service.
 
         The maximum create command request size is 10 MB.'
       tags:
@@ -249,7 +249,7 @@ paths:
       deprecated: false
     delete:
       summary: Purge queue
-      description: Use this method to purge all existing commands from the target queue. This command can be useful when testing new pipelines and command creation and the queue is blocked by a large number of unexecuted commands. When you fire this endpoint, all commands are deleted from the queue, and the command status is changed to PURGED.  Also, during the purge, the queue for the given target is blocked and does not receive new commands.
+      description: Use this method to purge all existing commands from the target queue. This command can be useful when testing new pipelines and command creation and the queue is blocked by a large number of unexecuted commands. When you fire this endpoint, all commands are deleted from the queue, and the command status is changed to PURGED. Also, during the purge, the queue for the given target is blocked and does not receive new commands.
       tags:
       - Commands
       operationId: ag-purge-queue

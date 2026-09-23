@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: TetraScience Data and AI Cloud Access Groups API
   version: '4.0'
@@ -29,7 +29,7 @@ paths:
   /v1/accessGroups/{id}:
     delete:
       summary: Delete an Access Group
-      description: Delete an [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization).
+      description: Delete an access group.
       tags:
       - Access Groups
       parameters:
@@ -42,9 +42,11 @@ paths:
       responses:
         '204':
           description: Access group deleted successfully.
+      operationId: deleteV1AccessGroupsById
+      x-operation-id-source: derived
     get:
       summary: Get Access Group Details
-      description: Get the details of a specific [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization).
+      description: Get the details of a specific access group.
       tags:
       - Access Groups
       parameters:
@@ -61,9 +63,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccessGroup'
+      operationId: getV1AccessGroupsById
+      x-operation-id-source: derived
     put:
       summary: Edit an Access Group
-      description: Edit an [access group's](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization) name, description, status, and [data access rules](https://developers.tetrascience.com/docs/managing-organization-details#create-access-groups).
+      description: Edit an access group's name, description, status, and data access rules.
       tags:
       - Access Groups
       parameters:
@@ -86,10 +90,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccessGroup'
+      operationId: putV1AccessGroupsById
+      x-operation-id-source: derived
   /v1/accessGroups/{id}/user/{userId}:
     delete:
       summary: Remove a User from an Access Group
-      description: Remove a user from an [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization).
+      description: Remove a user from an access group.
       tags:
       - Access Groups
       parameters:
@@ -108,10 +114,12 @@ paths:
       responses:
         '204':
           description: User removed from the access group.
+      operationId: deleteV1AccessGroupsByIdUserByUserId
+      x-operation-id-source: derived
   /v1/accessGroups:
     get:
       summary: List Access Groups for an Organization
-      description: Get a list of all [access groups](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization) for an organization.
+      description: Get a list of all access groups for an organization.
       tags:
       - Access Groups
       responses:
@@ -123,9 +131,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/AccessGroupSummary'
+      operationId: getV1AccessGroups
+      x-operation-id-source: derived
     post:
       summary: Create a New Access Group
-      description: Create a new [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization).
+      description: Create a new access group.
       tags:
       - Access Groups
       requestBody:
@@ -141,10 +151,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccessGroup'
+      operationId: postV1AccessGroups
+      x-operation-id-source: derived
   /v1/accessGroups/user/{id}:
     get:
       summary: List Access Groups that a User Belongs To
-      description: Get a list of all [access groups](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization) that a user belongs to.
+      description: Get a list of all access groups that a user belongs to.
       tags:
       - Access Groups
       parameters:
@@ -163,10 +175,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/AccessGroupSummary'
+      operationId: getV1AccessGroupsUserById
+      x-operation-id-source: derived
   /v1/accessGroups/{id}/user:
     post:
       summary: Add a User to an Access Group
-      description: Add a user to an [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization).
+      description: Add a user to an access group.
       tags:
       - Access Groups
       parameters:
@@ -192,10 +206,12 @@ paths:
       responses:
         '201':
           description: User added to the group.
+      operationId: postV1AccessGroupsByIdUser
+      x-operation-id-source: derived
   /v1/accessGroups/{id}/users:
     post:
       summary: Add or Remove Users from an Access Group
-      description: Add or remove users from an [access group](https://developers.tetrascience.com/docs/managing-organization-details#configure-data-access-rules-for-an-organization).
+      description: Add or remove users from an access group.
       tags:
       - Access Groups
       parameters:
@@ -225,49 +241,10 @@ paths:
       responses:
         '201':
           description: Users list updated.
+      operationId: postV1AccessGroupsByIdUsers
+      x-operation-id-source: derived
 components:
   schemas:
-    FilterLeaf:
-      anyOf:
-      - $ref: '#/components/schemas/FilterCategoryConfig'
-      - $ref: '#/components/schemas/FilterCreatedAtConfig'
-      - $ref: '#/components/schemas/FilterFilePathConfig'
-      - $ref: '#/components/schemas/FilterIDSConfig'
-      - $ref: '#/components/schemas/FilterIDSTypeConfig'
-      - $ref: '#/components/schemas/FilterLabelConfig'
-      - $ref: '#/components/schemas/FilterMetadatumConfig'
-      - $ref: '#/components/schemas/FilterPipelineConfig'
-      - $ref: '#/components/schemas/FilterSourceNameConfig'
-      - $ref: '#/components/schemas/FilterSourceTypeConfig'
-      - $ref: '#/components/schemas/FilterTagConfig'
-      - $ref: '#/components/schemas/FilterTagNameConfig'
-    AttributeRule:
-      properties:
-        filters:
-          anyOf:
-          - $ref: '#/components/schemas/FilterOrConfig'
-          - $ref: '#/components/schemas/FilterAndConfig'
-          - $ref: '#/components/schemas/FilterAllowAllConfig'
-      required:
-      - filters
-      additionalProperties: false
-      type: object
-    FilterAndConfig:
-      properties:
-        id:
-          type: string
-        value:
-          items:
-            $ref: '#/components/schemas/FilterConfig'
-          type: array
-        type:
-          enum:
-          - and
-          type: string
-      required:
-      - type
-      additionalProperties: false
-      type: object
     FilterTagConfig:
       properties:
         id:
@@ -291,6 +268,20 @@ components:
       - tag
       additionalProperties: false
       type: object
+    FilterLeaf:
+      anyOf:
+      - $ref: '#/components/schemas/FilterCategoryConfig'
+      - $ref: '#/components/schemas/FilterCreatedAtConfig'
+      - $ref: '#/components/schemas/FilterFilePathConfig'
+      - $ref: '#/components/schemas/FilterIDSConfig'
+      - $ref: '#/components/schemas/FilterIDSTypeConfig'
+      - $ref: '#/components/schemas/FilterLabelConfig'
+      - $ref: '#/components/schemas/FilterMetadatumConfig'
+      - $ref: '#/components/schemas/FilterPipelineConfig'
+      - $ref: '#/components/schemas/FilterSourceNameConfig'
+      - $ref: '#/components/schemas/FilterSourceTypeConfig'
+      - $ref: '#/components/schemas/FilterTagConfig'
+      - $ref: '#/components/schemas/FilterTagNameConfig'
     FilterMetadatumConfig:
       properties:
         id:
@@ -321,17 +312,7 @@ components:
       - metadatum
       additionalProperties: false
       type: object
-    FilterAllowAllConfig:
-      properties:
-        type:
-          enum:
-          - allow-all
-          type: string
-      required:
-      - type
-      additionalProperties: false
-      type: object
-    FilterCategoryConfig:
+    FilterPipelineConfig:
       properties:
         id:
           type: string
@@ -343,20 +324,65 @@ components:
         value:
           items:
             type: string
-            enum:
-            - ids
-            - raw
-            - processed
           type: array
         type:
           enum:
-          - category
+          - pipeline
           type: string
       required:
       - operator
       - type
       additionalProperties: false
       type: object
+    AttributeRule:
+      properties:
+        filters:
+          anyOf:
+          - $ref: '#/components/schemas/FilterOrConfig'
+          - $ref: '#/components/schemas/FilterAndConfig'
+          - $ref: '#/components/schemas/FilterAllowAllConfig'
+      required:
+      - filters
+      additionalProperties: false
+      type: object
+    FilterCreatedAtConfig:
+      properties:
+        id:
+          type: string
+        operator:
+          type: string
+          enum:
+          - between
+          - greater than
+          - greater than or equal to
+          - less than
+          - less than or equal to
+        value:
+          type: string
+        type:
+          enum:
+          - created-at
+          type: string
+      required:
+      - operator
+      - type
+      additionalProperties: false
+      type: object
+    FilterAllowAllConfig:
+      properties:
+        type:
+          enum:
+          - allow-all
+          type: string
+      required:
+      - type
+      additionalProperties: false
+      type: object
+    FilterConfig:
+      anyOf:
+      - $ref: '#/components/schemas/FilterOrConfig'
+      - $ref: '#/components/schemas/FilterAndConfig'
+      - $ref: '#/components/schemas/FilterLeaf'
     FilterSourceNameConfig:
       properties:
         id:
@@ -379,35 +405,7 @@ components:
       - type
       additionalProperties: false
       type: object
-    CreateUpdateAccessGroup:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the group.
-          maxLength: 100
-          minLength: 1
-        description:
-          type: string
-          nullable: true
-          description: The description of the group.
-          maxLength: 1000
-        enabled:
-          type: boolean
-          description: Indicates whether the group is enabled or not.
-        rules:
-          $ref: '#/components/schemas/AttributeRuleConfiguration'
-        ssoGroupMappings:
-          type: array
-          default: []
-          items:
-            type: string
-            description: The SSO group name.
-      required:
-      - name
-      - enabled
-      - rules
-    FilterPipelineConfig:
+    FilterSourceTypeConfig:
       properties:
         id:
           type: string
@@ -422,7 +420,27 @@ components:
           type: array
         type:
           enum:
-          - pipeline
+          - source-type
+          type: string
+      required:
+      - operator
+      - type
+      additionalProperties: false
+      type: object
+    FilterTagNameConfig:
+      properties:
+        id:
+          type: string
+        operator:
+          type: string
+          enum:
+          - has one that begins with
+          - has one that ends with
+        value:
+          type: string
+        type:
+          enum:
+          - tag-name
           type: string
       required:
       - operator
@@ -472,7 +490,11 @@ components:
       - enabled
       - rules
       - createdAt
-    FilterSourceTypeConfig:
+    AttributeRuleConfiguration:
+      additionalProperties:
+        $ref: '#/components/schemas/AttributeRule'
+      type: object
+    FilterIDSTypeConfig:
       properties:
         id:
           type: string
@@ -487,12 +509,70 @@ components:
           type: array
         type:
           enum:
-          - source-type
+          - ids-type
           type: string
       required:
       - operator
       - type
       additionalProperties: false
+      type: object
+    FilterAndConfig:
+      properties:
+        id:
+          type: string
+        value:
+          items:
+            $ref: '#/components/schemas/FilterConfig'
+          type: array
+        type:
+          enum:
+          - and
+          type: string
+      required:
+      - type
+      additionalProperties: false
+      type: object
+    AccessGroupSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the group.
+          format: uuid
+        name:
+          type: string
+          description: The name of the group.
+        description:
+          type: string
+          nullable: true
+          description: The description of the group.
+      required:
+      - id
+      - name
+    FilterFilePathConfig:
+      properties:
+        id:
+          type: string
+        operator:
+          type: string
+          enum:
+          - contains
+          - does not contain
+          - is
+          - is not
+          - begins with
+          - ends with
+        value:
+          type: string
+        type:
+          enum:
+          - file-path
+          type: string
+      required:
+      - operator
+      - type
+      additionalProperties: false
+      title: FilterFilePathConfig
       type: object
     FilterOrConfig:
       properties:
@@ -532,122 +612,6 @@ components:
       - type
       additionalProperties: false
       type: object
-    FilterFilePathConfig:
-      properties:
-        id:
-          type: string
-        operator:
-          type: string
-          enum:
-          - contains
-          - does not contain
-          - is
-          - is not
-          - begins with
-          - ends with
-        value:
-          type: string
-        type:
-          enum:
-          - file-path
-          type: string
-      required:
-      - operator
-      - type
-      additionalProperties: false
-      title: FilterFilePathConfig
-      type: object
-    FilterIDSTypeConfig:
-      properties:
-        id:
-          type: string
-        operator:
-          type: string
-          enum:
-          - is
-          - is not
-        value:
-          items:
-            type: string
-          type: array
-        type:
-          enum:
-          - ids-type
-          type: string
-      required:
-      - operator
-      - type
-      additionalProperties: false
-      type: object
-    FilterCreatedAtConfig:
-      properties:
-        id:
-          type: string
-        operator:
-          type: string
-          enum:
-          - between
-          - greater than
-          - greater than or equal to
-          - less than
-          - less than or equal to
-        value:
-          type: string
-        type:
-          enum:
-          - created-at
-          type: string
-      required:
-      - operator
-      - type
-      additionalProperties: false
-      type: object
-    FilterTagNameConfig:
-      properties:
-        id:
-          type: string
-        operator:
-          type: string
-          enum:
-          - has one that begins with
-          - has one that ends with
-        value:
-          type: string
-        type:
-          enum:
-          - tag-name
-          type: string
-      required:
-      - operator
-      - type
-      additionalProperties: false
-      type: object
-    AccessGroupSummary:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique identifier of the group.
-          format: uuid
-        name:
-          type: string
-          description: The name of the group.
-        description:
-          type: string
-          nullable: true
-          description: The description of the group.
-      required:
-      - id
-      - name
-    FilterConfig:
-      anyOf:
-      - $ref: '#/components/schemas/FilterOrConfig'
-      - $ref: '#/components/schemas/FilterAndConfig'
-      - $ref: '#/components/schemas/FilterLeaf'
-    AttributeRuleConfiguration:
-      additionalProperties:
-        $ref: '#/components/schemas/AttributeRule'
-      type: object
     FilterLabelConfig:
       properties:
         id:
@@ -677,6 +641,60 @@ components:
       - operator
       - type
       - label
+      additionalProperties: false
+      type: object
+    CreateUpdateAccessGroup:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the group.
+          maxLength: 100
+          minLength: 1
+        description:
+          type: string
+          nullable: true
+          description: The description of the group.
+          maxLength: 1000
+        enabled:
+          type: boolean
+          description: Indicates whether the group is enabled or not.
+        rules:
+          $ref: '#/components/schemas/AttributeRuleConfiguration'
+        ssoGroupMappings:
+          type: array
+          default: []
+          items:
+            type: string
+            description: The SSO group name.
+      required:
+      - name
+      - enabled
+      - rules
+    FilterCategoryConfig:
+      properties:
+        id:
+          type: string
+        operator:
+          type: string
+          enum:
+          - is
+          - is not
+        value:
+          items:
+            type: string
+            enum:
+            - ids
+            - raw
+            - processed
+          type: array
+        type:
+          enum:
+          - category
+          type: string
+      required:
+      - operator
+      - type
       additionalProperties: false
       type: object
   securitySchemes:

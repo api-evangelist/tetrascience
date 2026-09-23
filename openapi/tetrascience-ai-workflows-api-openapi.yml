@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups ai-workflows API
+  title: TetraScience Data and AI Cloud AI Workflows API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -171,6 +171,31 @@ paths:
           $ref: '#/components/responses/404Any'
 components:
   schemas:
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
+    ArtifactNamespace:
+      type: string
+      pattern: ^(common|(private|client)-).*$
+    AiWorkflowObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AiWorkflowObject'
+    AiWorkflowFileSlug:
+      type: string
+      enum:
+      - build
+      - manifest
+      - readme
+      - source
+      - databricksYml
     AiWorkflowObject:
       allOf:
       - $ref: '#/components/schemas/ArtifactObjectBase'
@@ -212,27 +237,6 @@ components:
         value: value1
       - name: another-label
         value: another-value
-    SupportedPlatformVersion:
-      type: object
-      nullable: true
-      properties:
-        minPlatformVersion:
-          type: string
-          nullable: false
-        maxPlatformVersion:
-          type: string
-          nullable: true
-    AiWorkflowFileSlug:
-      type: string
-      enum:
-      - build
-      - manifest
-      - readme
-      - source
-      - databricksYml
-    ArtifactNamespace:
-      type: string
-      pattern: ^(common|(private|client)-).*$
     ArtifactObjectBase:
       type: object
       properties:
@@ -266,10 +270,90 @@ components:
       - version
       - createdAt
       - lastUpdatedAt
-    AiWorkflowObjectList:
-      type: array
-      items:
-        $ref: '#/components/schemas/AiWorkflowObject'
+  parameters:
+    ArtifactSlug:
+      description: Artifact slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+      example: demo-slug
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
+    AiWorkflowFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within an ai-workflow
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/AiWorkflowFileSlug'
+      example: build
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    ArtifactNamespaceTypeQuery:
+      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
+      name: namespace_type
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - common
+        - client
+        - private
+      example: client
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
+    ArtifactVersion:
+      description: Artifact version
+      name: version
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
+      example: v1.0.0
   responses:
     200AiWorkflowFileSlugList:
       description: Successfully fetched available AiWorkflow file slugs
@@ -279,6 +363,28 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/AiWorkflowFileSlug'
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+    200AiWorkflowObjectList:
+      description: Successfully fetched AiWorkflowObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AiWorkflowObjectList'
     200Labels:
       description: Successfully fetched Labels
       content:
@@ -321,112 +427,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/AiWorkflowObject'
-    200AiWorkflowObjectList:
-      description: Successfully fetched AiWorkflowObject list
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AiWorkflowObjectList'
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-  parameters:
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    LimitQuery:
-      name: limit
-      in: query
-      description: The maximum number of results to return
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-    DownloadQuery:
-      name: download
-      in: query
-      description: If set to true, return a download url
-      required: false
-      schema:
-        type: boolean
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
-    ArtifactNamespaceTypeQuery:
-      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
-      name: namespace_type
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-        - common
-        - client
-        - private
-      example: client
-    ArtifactSlug:
-      description: Artifact slug
-      name: slug
-      in: path
-      required: true
-      schema:
-        type: string
-      example: demo-slug
-    ArtifactVersion:
-      description: Artifact version
-      name: version
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
-      example: v1.0.0
-    IncludePrereleasesQuery:
-      description: Include prerelease artifacts in search
-      name: include_prereleases
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
-      in: path
-      name: namespace
-      required: true
-      schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
-    AiWorkflowFileSlugParam:
-      name: fileSlug
-      description: File slug corresponding to file within an ai-workflow
-      required: true
-      in: path
-      schema:
-        $ref: '#/components/schemas/AiWorkflowFileSlug'
-      example: build
   securitySchemes:
     token:
       type: apiKey

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups Roles API
+  title: TetraScience Data and AI Cloud Roles API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -42,6 +42,8 @@ paths:
           description: Caller is not authorized to perform this action
         '404':
           description: Role not found
+      operationId: deleteV1RolesByRoleId
+      x-operation-id-source: derived
     get:
       summary: Get role by ID
       tags:
@@ -65,6 +67,8 @@ paths:
           description: Caller is not authorized to perform this action
         '404':
           description: Role not found
+      operationId: getV1RolesByRoleId
+      x-operation-id-source: derived
     put:
       summary: Update role by ID
       tags:
@@ -124,6 +128,8 @@ paths:
           description: Caller is not authorized to perform this action
         '404':
           description: Role not found
+      operationId: putV1RolesByRoleId
+      x-operation-id-source: derived
   /v1/roles/policies:
     get:
       summary: Get all policies supported in the system
@@ -159,6 +165,8 @@ paths:
           description: Invalid token
         '403':
           description: Caller is not authorized to perform this action
+      operationId: getV1RolesPolicies
+      x-operation-id-source: derived
   /v1/roles/{roleId}/users:
     get:
       summary: Get users with the role
@@ -252,6 +260,8 @@ paths:
           description: Caller is not authorized to perform this action
         '404':
           description: Role not found
+      operationId: getV1RolesByRoleIdUsers
+      x-operation-id-source: derived
     post:
       summary: Add / remove users to role
       tags:
@@ -282,6 +292,8 @@ paths:
           description: Caller is not authorized to perform this action
         '404':
           description: Role not found
+      operationId: postV1RolesByRoleIdUsers
+      x-operation-id-source: derived
   /v1/roles:
     get:
       summary: List all roles in an organization
@@ -335,6 +347,8 @@ paths:
           description: Caller is not authorized to perform this action
         '404':
           description: Organization not found
+      operationId: getV1Roles
+      x-operation-id-source: derived
     post:
       summary: Create a new role in an organization
       tags:
@@ -419,6 +433,8 @@ paths:
           description: Caller is not authorized to perform this action
         '404':
           description: Organization not found
+      operationId: postV1Roles
+      x-operation-id-source: derived
   /v1/roles/{roleId}/ssoMapping:
     put:
       summary: Update SSO group mapping for role
@@ -451,6 +467,8 @@ paths:
           description: Caller is not authorized to perform this action
         '404':
           description: Role not found
+      operationId: putV1RolesByRoleIdSsoMapping
+      x-operation-id-source: derived
 components:
   securitySchemes:
     token:

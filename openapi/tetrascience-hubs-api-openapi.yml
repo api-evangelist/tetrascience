@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups Hubs API
+  title: TetraScience Data and AI Cloud Hubs API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -90,6 +90,35 @@ paths:
                 $ref: '#/components/schemas/HubDetailsDto'
 components:
   schemas:
+    HubsResponse:
+      type: object
+      properties:
+        hubs:
+          type: array
+          items:
+            $ref: '#/components/schemas/HubDto'
+      required:
+      - hubs
+    HubHostDto:
+      type: object
+      properties:
+        ipAddress:
+          type: string
+          description: The Hub's IP address.
+        hostName:
+          type: string
+          description: The Hub's host name.
+        platformName:
+          type: string
+          description: The Hub's operating system name.
+        platformVersion:
+          type: string
+          description: The Hub's operating system version.
+      required:
+      - ipAddress
+      - hostName
+      - platformName
+      - platformVersion
     HubDetailsDto:
       type: object
       properties:
@@ -189,26 +218,50 @@ components:
       - ssmInstanceId
       - ecsContainerInstanceArn
       - connectors
-    HubHostDto:
+    HubConnectorDto:
       type: object
       properties:
-        ipAddress:
+        id:
           type: string
-          description: The Hub's IP address.
-        hostName:
+        name:
           type: string
-          description: The Hub's host name.
-        platformName:
+        artifact:
+          $ref: '#/components/schemas/ArtifactDto'
+        hostType:
           type: string
-          description: The Hub's operating system name.
-        platformVersion:
+          description: The type of host the Connector is running on.
+          enum:
+          - cloud
+          - hub
+        health:
           type: string
-          description: The Hub's operating system version.
+        healthErrorCode:
+          type: string
+        operatingStatus:
+          type: string
+        networkStatus:
+          type: string
+        lastSeenAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        createdAt:
+          format: date-time
+          type: string
       required:
-      - ipAddress
-      - hostName
-      - platformName
-      - platformVersion
+      - id
+      - name
+      - artifact
+      - hostType
+      - health
+      - healthErrorCode
+      - operatingStatus
+      - networkStatus
+      - lastSeenAt
+      - updatedAt
+      - createdAt
     ArtifactDto:
       type: object
       properties:
@@ -475,50 +528,6 @@ components:
       - proxies
       - metrics
       - health
-    HubConnectorDto:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        artifact:
-          $ref: '#/components/schemas/ArtifactDto'
-        hostType:
-          type: string
-          description: The type of host the Connector is running on.
-          enum:
-          - cloud
-          - hub
-        health:
-          type: string
-        healthErrorCode:
-          type: string
-        operatingStatus:
-          type: string
-        networkStatus:
-          type: string
-        lastSeenAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - name
-      - artifact
-      - hostType
-      - health
-      - healthErrorCode
-      - operatingStatus
-      - networkStatus
-      - lastSeenAt
-      - updatedAt
-      - createdAt
     HubDto:
       type: object
       properties:
@@ -624,15 +633,6 @@ components:
       - updatedAt
       - createdAt
       - activationExpiresAt
-    HubsResponse:
-      type: object
-      properties:
-        hubs:
-          type: array
-          items:
-            $ref: '#/components/schemas/HubDto'
-      required:
-      - hubs
   securitySchemes:
     token:
       type: apiKey

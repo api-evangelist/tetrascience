@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups Schemas API
+  title: TetraScience Data and AI Cloud Schemas API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -52,9 +52,7 @@ paths:
         - README: `GET /v1/artifacts/ids/{namespace}/{slug}/{version}/files/readme`
 
 
-        **When to use alternatives**: If you need specific schema details or are working with organizations that have many IDS definitions.
-
-        '
+        **When to use alternatives**: If you need specific schema details or are working with organizations that have many IDS definitions.'
       operationId: DL-FI-dl-list-schemas
       parameters:
       - name: type
@@ -332,98 +330,7 @@ paths:
         '404':
           $ref: '#/components/responses/404Any'
 components:
-  responses:
-    200Labels:
-      description: Successfully fetched Labels
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/LabelList'
-    200SchemaObject:
-      description: Successfully fetched SchemaObject
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SchemaObject'
-    200SchemaFileSlugList:
-      description: Successfully fetched available Schema file slugs
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SchemaFileSlug'
-    200File:
-      description: Successfully fetched file
-      content:
-        application/json:
-          schema:
-            oneOf:
-            - type: object
-              properties:
-                url:
-                  type: string
-              required:
-              - url
-              additionalProperties: false
-            - type: object
-              properties:
-                content:
-                  description: Content of the file.  Could be any type
-                  format: unknown
-              required:
-              - content
-              additionalProperties: false
-            example:
-              content: '# README Contents
-
-
-                * item 1
-
-                * item 2
-
-                * item 3'
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
-    200SchemaObjectList:
-      description: Successfully fetched SchemaObject list
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SchemaObjectList'
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
   schemas:
-    LabelList:
-      type: array
-      items:
-        type: object
-        properties:
-          name:
-            type: string
-          value:
-            type: string
-        required:
-        - name
-        - value
-        additionalProperties: false
-      example:
-      - name: label1
-        value: value1
-      - name: another-label
-        value: another-value
     SupportedPlatformVersion:
       type: object
       nullable: true
@@ -434,15 +341,9 @@ components:
         maxPlatformVersion:
           type: string
           nullable: true
-    SchemaFileSlug:
+    ArtifactNamespace:
       type: string
-      enum:
-      - build
-      - manifest
-      - readme
-      - source
-      - schema
-      - expected
+      pattern: ^(common|(private|client)-).*$
     SchemaObject:
       allOf:
       - $ref: '#/components/schemas/ArtifactObjectBase'
@@ -466,9 +367,37 @@ components:
         otherVersions:
         - v0.1.0
         - v0.5.0
-    ArtifactNamespace:
+    SchemaObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SchemaObject'
+    SchemaFileSlug:
       type: string
-      pattern: ^(common|(private|client)-).*$
+      enum:
+      - build
+      - manifest
+      - readme
+      - source
+      - schema
+      - expected
+    LabelList:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          value:
+            type: string
+        required:
+        - name
+        - value
+        additionalProperties: false
+      example:
+      - name: label1
+        value: value1
+      - name: another-label
+        value: another-value
     ArtifactObjectBase:
       type: object
       properties:
@@ -502,27 +431,95 @@ components:
       - version
       - createdAt
       - lastUpdatedAt
-    SchemaObjectList:
-      type: array
-      items:
-        $ref: '#/components/schemas/SchemaObject'
+  responses:
+    200SchemaObjectList:
+      description: Successfully fetched SchemaObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SchemaObjectList'
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
+    200File:
+      description: Successfully fetched file
+      content:
+        application/json:
+          schema:
+            oneOf:
+            - type: object
+              properties:
+                url:
+                  type: string
+              required:
+              - url
+              additionalProperties: false
+            - type: object
+              properties:
+                content:
+                  description: Content of the file.  Could be any type
+                  format: unknown
+              required:
+              - content
+              additionalProperties: false
+            example:
+              content: '# README Contents
+
+
+                * item 1
+
+                * item 2
+
+                * item 3'
+    200SchemaObject:
+      description: Successfully fetched SchemaObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SchemaObject'
+    200SchemaFileSlugList:
+      description: Successfully fetched available Schema file slugs
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/SchemaFileSlug'
   parameters:
-    SchemaFileSlugParam:
-      name: fileSlug
-      description: File slug corresponding to file within a schema
-      required: true
+    ArtifactSlug:
+      description: Artifact slug
+      name: slug
       in: path
+      required: true
       schema:
-        $ref: '#/components/schemas/SchemaFileSlug'
-      example: build
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
+        type: string
+      example: demo-slug
+    ValueQuery:
+      name: value
       in: query
-      required: false
+      description: The search string
+      required: true
       schema:
-        type: boolean
-      example: true
+        type: string
     LimitQuery:
       name: limit
       in: query
@@ -531,6 +528,22 @@ components:
       schema:
         type: integer
         minimum: 1
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    SchemaFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within a schema
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/SchemaFileSlug'
+      example: build
     DownloadQuery:
       name: download
       in: query
@@ -538,13 +551,6 @@ components:
       required: false
       schema:
         type: boolean
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
     ArtifactNamespaceTypeQuery:
       description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
       name: namespace_type
@@ -557,26 +563,9 @@ components:
         - client
         - private
       example: client
-    ArtifactSlug:
-      description: Artifact slug
-      name: slug
-      in: path
-      required: true
-      schema:
-        type: string
-      example: demo-slug
-    ArtifactVersion:
-      description: Artifact version
-      name: version
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
-      example: v1.0.0
-    IncludePrereleasesQuery:
-      description: Include prerelease artifacts in search
-      name: include_prereleases
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
       in: query
       required: false
       schema:
@@ -590,6 +579,15 @@ components:
       schema:
         $ref: '#/components/schemas/ArtifactNamespace'
       example: common
+    ArtifactVersion:
+      description: Artifact version
+      name: version
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
+      example: v1.0.0
   securitySchemes:
     token:
       type: apiKey

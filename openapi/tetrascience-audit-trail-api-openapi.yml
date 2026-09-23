@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups Audit Trail API
+  title: TetraScience Data and AI Cloud Audit Trail API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -202,6 +202,8 @@ paths:
                   e7917f3c-330a-4f56-8218-a8f018e09bfc,tetrascience,59eb8bd4-8b10-43b3-ac57-fe3ab86c05fd,user,Administrator Administrator,admin@tetrascience.com,178.127.44.13,,w7AY9Uc,service-user,6a7e3a44-4f7a-42dc-b728-75ddfb548339,enable,"{""id"": ""6a7e3a44-4f7a-42dc-b728-75ddfb548339"", ""name"": ""Connector 2b50b737-df0d-4a90-9962-cd6b8df6ffdb"", ""type"": ""service-user"", ""email"": ""ts-service-user.6a7e3a44-4f7a-42dc-b728-75ddfb548339@tetrascience.com"", ""status"": ""inactive""}","{""id"": ""6a7e3a44-4f7a-42dc-b728-75ddfb548339"", ""name"": ""Connector 2b50b737-df0d-4a90-9962-cd6b8df6ffdb"", ""type"": ""service-user"", ""email"": ""ts-service-user.6a7e3a44-4f7a-42dc-b728-75ddfb548339@tetrascience.com"", ""status"": ""active""}",,1,2023-04-19 12:05:02.42+00,Connector 2b50b737-df0d-4a90-9962-cd6b8df6ffdb
 
                   '
+      operationId: getAuditTrail
+      x-operation-id-source: derived
 components:
   securitySchemes:
     token:

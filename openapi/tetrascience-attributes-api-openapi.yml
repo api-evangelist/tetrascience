@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups Attributes API
+  title: TetraScience Data and AI Cloud Attributes API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -274,7 +274,78 @@ paths:
       summary: Add metadata and tags to a file
       tags:
       - Attributes
-      description: "This endpoint appends tags to a target file in the datalake or modifies the value of a metadata key. This endpoint requires either `fileId` or `bucket`, `fileKey` and `version` to be provided in order to uniquely identify a file.\n**Note:** Applying metadata or tags to files larger than 5 GB isn't supported and will return a `500` error. For large files, you should [apply labels](https://developers.tetrascience.com/reference/dl-fi-add-labels) instead. This limitation is because of a hard limit on the [`CopyObject` API operation in Amazon Storage Service (Amazon S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/copy-object.html), which has a maximum source size of 5 GB. When a file's tags or metadata are updated, the TDP copies the Amazon S3 object with new metadata, and this copy operation fails for files 5 GB or larger. For more information, see [Attributes](https://developers.tetrascience.com/docs/basic-concepts-metadata-tags-and-labels).\nTarget file query is determined by field `originalFile`. Target file is queried in two ways:\n1. by `fileId` (UUID of a file in datalake)\n2. by `bucket`, `fileKey` and `version`\n\nEndpoint finds target file by given file query and creates new version with updated metadata and tags. If payload contains neither `metadata` nor `tags`, endpoint will return existing file from datalake.\n\nParameters `metadata` and `tags` description:\n\n1. `metadata` is JSON object, e.g. { \"key1\": \"value\", \"key2\": \"2\" }\n2. `metadata` can have empty string values\n3. `metadata` entry field can be null and in that case it will remove custom metadata value on target file\n4. `tags` is JSON array, e.g.  [\"a\", \"b\"]\nHere is an example payload for this endpoint:\n{\n  \"originalFile\": {\n    \"fileKey\": \"tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json\",\n    \"bucket\": \"ts-platform-dev-datalake\",\n    \"version\": \"dUzbISdeNgKXuSsv.lUT73qr7lYoby_u\",\n    \"type\": \"s3file\"\n  },\n  \"metadata\": {\n    \"a\": \"a\",\n    \"b\": \"\",\n    \"c\": \"Test\"\n  },\n  \"tags\": [\"Boston\", \"San Fran\", \"123\"]\n}\nIt will append any existing metadata/tags with the ones listed in the payload.\n\nValidations performed by this endpoint:\n\n1. if parameter `fileId` is not provided, then all three parameters (`bucket`, `fileKey` and `version`) must be provided\n2. if any one of parameters `bucket`, `fileKey` and `version` is not provided, then parameter `fileId` must be provided\n3. `metadata` keys can only include letters, numbers, spaces, and the symbols `+`, `-`, or `_`\n4. `metadata` values can only include letters, numbers, spaces, and the symbols `+`, `-`, `_`, `/`, `.` or `,`\n5. `tags` must contain only letters, numbers, spaces, and the symbols `+`, `-`, `.`, `/` or ` _` and they must be unique\n6. `metadata` and `tags` together as JSON objects must have less than 1.5KB of text (1536 characters)"
+      description: 'This endpoint appends tags to a target file in the datalake or modifies the value of a metadata key. This endpoint requires either `fileId` or `bucket`, `fileKey` and `version` to be provided in order to uniquely identify a file.
+
+        **Note:** Applying metadata or tags to files larger than 5 GB isn''t supported and will return a `500` error. For large files, you should apply labels instead. This limitation is because of a hard limit on the `CopyObject` API operation in Amazon Storage Service (Amazon S3), which has a maximum source size of 5 GB. When a file''s tags or metadata are updated, the TDP copies the Amazon S3 object with new metadata, and this copy operation fails for files 5 GB or larger. For more information, see Attributes.
+
+        Target file query is determined by field `originalFile`. Target file is queried in two ways:
+
+        1. by `fileId` (UUID of a file in datalake)
+
+        2. by `bucket`, `fileKey` and `version`
+
+
+        Endpoint finds target file by given file query and creates new version with updated metadata and tags. If payload contains neither `metadata` nor `tags`, endpoint will return existing file from datalake.
+
+
+        Parameters `metadata` and `tags` description:
+
+
+        1. `metadata` is JSON object, e.g. { "key1": "value", "key2": "2" }
+
+        2. `metadata` can have empty string values
+
+        3. `metadata` entry field can be null and in that case it will remove custom metadata value on target file
+
+        4. `tags` is JSON array, e.g. ["a", "b"]
+
+        Here is an example payload for this endpoint:
+
+        {
+
+        "originalFile": {
+
+        "fileKey": "tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json",
+
+        "bucket": "ts-platform-dev-datalake",
+
+        "version": "dUzbISdeNgKXuSsv.lUT73qr7lYoby_u",
+
+        "type": "s3file"
+
+        },
+
+        "metadata": {
+
+        "a": "a",
+
+        "b": "",
+
+        "c": "Test"
+
+        },
+
+        "tags": ["Boston", "San Fran", "123"]
+
+        }
+
+        It will append any existing metadata/tags with the ones listed in the payload.
+
+
+        Validations performed by this endpoint:
+
+
+        1. if parameter `fileId` is not provided, then all three parameters (`bucket`, `fileKey` and `version`) must be provided
+
+        2. if any one of parameters `bucket`, `fileKey` and `version` is not provided, then parameter `fileId` must be provided
+
+        3. `metadata` keys can only include letters, numbers, spaces, and the symbols `+`, `-`, or `_`
+
+        4. `metadata` values can only include letters, numbers, spaces, and the symbols `+`, `-`, `_`, `/`, `.` or `,`
+
+        5. `tags` must contain only letters, numbers, spaces, and the symbols `+`, `-`, `.`, `/` or ` _` and they must be unique
+
+        6. `metadata` and `tags` together as JSON objects must have less than 1.5KB of text (1536 characters)'
       operationId: DL-FI-dl-post-metadata-and-tags-of-a-file
       parameters:
       - name: ts-auth-token
@@ -557,7 +628,77 @@ paths:
       summary: Update metadata and tags to a file
       tags:
       - Attributes
-      description: "This endpoint replaces metadata and tags to a target file in the datalake. This endpoint require either `fileId` or `bucket`, `fileKey` and `version` to be provided in order to uniquely identify file.\n\nTarget file query is determined by field `originalFile`. Target file is queried in two ways:\n1. by `fileId` (UUID of a file in datalake)\n2. by `bucket`, `fileKey` and `version`\n\nEndpoint finds target file by given file query and creates new version with updated metadata and tags. If payload doesn't contain neither `metadata` nor `tags`, endpoint will remove all metadata and tags.\n\nParameters `metadata` and `tags` description:\n\n1. `metadata` is JSON object, e.g. { \"key1\": \"value\", \"key2\": \"2\" }\n2. `metadata` can have empty string values\n3. `metadata` entry field can be null and in that case it will remove custom metadata value on target file\n4. `tags` is JSON array, e.g.  [\"a\", \"b\"]\nHere is an example payload for this endpoint:\n{\n  \"originalFile\": {\n    \"fileKey\": \"tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json\",\n    \"bucket\": \"ts-platform-dev-datalake\",\n    \"version\": \"dUzbISdeNgKXuSsv.lUT73qr7lYoby_u\",\n    \"type\": \"s3file\"\n  },\n  \"metadata\": {\n    \"a\": \"a\",\n    \"b\": \"\",\n    \"c\": \"Test\"\n  },\n  \"tags\": [\"Boston\", \"San Fran\", \"123\"]\n}\nIt will replace any existing metadata/tags with the ones listed in the payload.\n\nValidations performed by this endpoint:\n\n1. if parameter `fileId` is not provided, then all three parameters `bucket`, `fileKey` and `version` be provided\n2. if any of parameters `bucket`, `fileKey` and `version` is not provided, then parameter `fileId` must be provided\n3. `metadata` keys can only include letters, numbers, spaces, and the symbols `+`, `-`, or `_`\n4. `metadata` values can only include letters, numbers, spaces, and the symbols `+`, `-`, `_`, `/`, `.` or `,`\n5. `tags` must contain only letters, numbers, spaces, and the symbols `+`, `-`, `.`, `/` or ` _` and they must be unique\n6. `metadata` and `tags` together as JSON objects must have less than 1.5KB of text (1536 characters)"
+      description: 'This endpoint replaces metadata and tags to a target file in the datalake. This endpoint require either `fileId` or `bucket`, `fileKey` and `version` to be provided in order to uniquely identify file.
+
+
+        Target file query is determined by field `originalFile`. Target file is queried in two ways:
+
+        1. by `fileId` (UUID of a file in datalake)
+
+        2. by `bucket`, `fileKey` and `version`
+
+
+        Endpoint finds target file by given file query and creates new version with updated metadata and tags. If payload doesn''t contain neither `metadata` nor `tags`, endpoint will remove all metadata and tags.
+
+
+        Parameters `metadata` and `tags` description:
+
+
+        1. `metadata` is JSON object, e.g. { "key1": "value", "key2": "2" }
+
+        2. `metadata` can have empty string values
+
+        3. `metadata` entry field can be null and in that case it will remove custom metadata value on target file
+
+        4. `tags` is JSON array, e.g. ["a", "b"]
+
+        Here is an example payload for this endpoint:
+
+        {
+
+        "originalFile": {
+
+        "fileKey": "tetrascience/47ab98d5-cccb-4a7d-86f4-0ff8f7c11bdf/RAW/WAT12/Test_0504/Test_SignOff/PQ Sample Set/1135/19970917300559.json",
+
+        "bucket": "ts-platform-dev-datalake",
+
+        "version": "dUzbISdeNgKXuSsv.lUT73qr7lYoby_u",
+
+        "type": "s3file"
+
+        },
+
+        "metadata": {
+
+        "a": "a",
+
+        "b": "",
+
+        "c": "Test"
+
+        },
+
+        "tags": ["Boston", "San Fran", "123"]
+
+        }
+
+        It will replace any existing metadata/tags with the ones listed in the payload.
+
+
+        Validations performed by this endpoint:
+
+
+        1. if parameter `fileId` is not provided, then all three parameters `bucket`, `fileKey` and `version` be provided
+
+        2. if any of parameters `bucket`, `fileKey` and `version` is not provided, then parameter `fileId` must be provided
+
+        3. `metadata` keys can only include letters, numbers, spaces, and the symbols `+`, `-`, or `_`
+
+        4. `metadata` values can only include letters, numbers, spaces, and the symbols `+`, `-`, `_`, `/`, `.` or `,`
+
+        5. `tags` must contain only letters, numbers, spaces, and the symbols `+`, `-`, `.`, `/` or ` _` and they must be unique
+
+        6. `metadata` and `tags` together as JSON objects must have less than 1.5KB of text (1536 characters)'
       operationId: DL-FI-dl-update-metadata-and-tags-of-a-file
       parameters:
       - name: ts-auth-token

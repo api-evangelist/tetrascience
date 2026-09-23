@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups IDS API
+  title: TetraScience Data and AI Cloud IDS API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -165,44 +165,40 @@ paths:
                 $ref: '#/components/schemas/IdsObjectList'
 components:
   schemas:
-    Relationships:
+    Key:
       type: object
       properties:
-        ids:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        taskScripts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        protocols:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        connectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-      additionalProperties: false
-    LabelList:
-      type: array
-      items:
-        type: object
-        properties:
-          name:
-            type: string
-          value:
-            type: string
-        required:
-        - name
-        - value
-        additionalProperties: false
+        type:
+          type: string
+        namespace:
+          $ref: '#/components/schemas/ArtifactNamespace'
+        slug:
+          type: string
+        version:
+          type: string
+      required:
+      - type
+      - namespace
+      - slug
+      - version
       example:
-      - name: label1
-        value: value1
-      - name: another-label
-        value: another-value
+        type: ids
+        namespace: common
+        slug: akta
+        version: v1.1.0
+    ArtifactNamespace:
+      type: string
+      pattern: ^(common|(private|client)-).*$
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
     IdsObject:
       allOf:
       - $ref: '#/components/schemas/ArtifactObjectBase'
@@ -233,32 +229,6 @@ components:
         - v1.3.0
         - v1.2.0
         - v1.0.0
-    SupportedPlatformVersion:
-      type: object
-      nullable: true
-      properties:
-        minPlatformVersion:
-          type: string
-          nullable: false
-        maxPlatformVersion:
-          type: string
-          nullable: true
-    IdsFileSlug:
-      type: string
-      enum:
-      - athena
-      - build
-      - elasticsearch
-      - erd
-      - expected
-      - manifest
-      - readme
-      - schema
-      - source
-      - mapping
-    ArtifactNamespace:
-      type: string
-      pattern: ^(common|(private|client)-).*$
     ArtifactObjectBase:
       type: object
       properties:
@@ -292,38 +262,174 @@ components:
       - version
       - createdAt
       - lastUpdatedAt
-    Key:
-      type: object
-      properties:
-        type:
-          type: string
-        namespace:
-          $ref: '#/components/schemas/ArtifactNamespace'
-        slug:
-          type: string
-        version:
-          type: string
-      required:
-      - type
-      - namespace
-      - slug
-      - version
+    LabelList:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          value:
+            type: string
+        required:
+        - name
+        - value
+        additionalProperties: false
       example:
-        type: ids
-        namespace: common
-        slug: akta
-        version: v1.1.0
+      - name: label1
+        value: value1
+      - name: another-label
+        value: another-value
+    IdsFileSlug:
+      type: string
+      enum:
+      - athena
+      - build
+      - elasticsearch
+      - erd
+      - expected
+      - manifest
+      - readme
+      - schema
+      - source
+      - mapping
     IdsObjectList:
       type: array
       items:
         $ref: '#/components/schemas/IdsObject'
+    Relationships:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        taskScripts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        protocols:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        connectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+      additionalProperties: false
+  parameters:
+    ArtifactSlug:
+      description: Artifact slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+      example: demo-slug
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    IdsFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within an IDS
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/IdsFileSlug'
+      example: build
+    ArtifactNamespaceTypeQuery:
+      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
+      name: namespace_type
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - common
+        - client
+        - private
+      example: client
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    ArtifactVersion:
+      description: Artifact version
+      name: version
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
+      example: v1.0.0
   responses:
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
     200Labels:
       description: Successfully fetched Labels
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/LabelList'
+    200Relationships:
+      description: Successfully fetched Relationships
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Relationships'
     200File:
       description: Successfully fetched file
       content:
@@ -354,124 +460,18 @@ components:
                 * item 2
 
                 * item 3'
-    200Relationships:
-      description: Successfully fetched Relationships
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Relationships'
     200IdsObjectList:
       description: Successfully fetched IdsObject list
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/IdsObjectList'
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
     200IdsObject:
       description: Successfully fetched IdsObject
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/IdsObject'
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-  parameters:
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    LimitQuery:
-      name: limit
-      in: query
-      description: The maximum number of results to return
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-    DownloadQuery:
-      name: download
-      in: query
-      description: If set to true, return a download url
-      required: false
-      schema:
-        type: boolean
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
-    ArtifactNamespaceTypeQuery:
-      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
-      name: namespace_type
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-        - common
-        - client
-        - private
-      example: client
-    ArtifactSlug:
-      description: Artifact slug
-      name: slug
-      in: path
-      required: true
-      schema:
-        type: string
-      example: demo-slug
-    IdsFileSlugParam:
-      name: fileSlug
-      description: File slug corresponding to file within an IDS
-      required: true
-      in: path
-      schema:
-        $ref: '#/components/schemas/IdsFileSlug'
-      example: build
-    ArtifactVersion:
-      description: Artifact version
-      name: version
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
-      example: v1.0.0
-    IncludePrereleasesQuery:
-      description: Include prerelease artifacts in search
-      name: include_prereleases
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
-      in: path
-      name: namespace
-      required: true
-      schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
   securitySchemes:
     token:
       type: apiKey

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups Data Acquisition API
+  title: TetraScience Data and AI Cloud Data Acquisition API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -277,7 +277,10 @@ paths:
       deprecated: false
     put:
       summary: Agent Status Setting Update
-      description: "This endpoint allows TetraScience Agent to send status setting update to platform. Tetrascience agents have start/stop button. When start button is clicked, agent should hit endpoint with `statusSetting=STARTED`. Opposite, when stop button is clicked, agent should hit endpoint with `statusSetting=STOPPED`.\n\n It requires a user-defined agent set up in the TetraScience Web UI"
+      description: 'This endpoint allows TetraScience Agent to send status setting update to platform. Tetrascience agents have start/stop button. When start button is clicked, agent should hit endpoint with `statusSetting=STARTED`. Opposite, when stop button is clicked, agent should hit endpoint with `statusSetting=STOPPED`.
+
+
+        It requires a user-defined agent set up in the TetraScience Web UI'
       tags:
       - Data Acquisition
       operationId: user-defined-integration-agent-status-setting-update
@@ -413,8 +416,7 @@ paths:
   /v1/data-acquisition/agent/upload:
     post:
       summary: File Upload
-      description: 'This endpoint uploads a file to TetraScience Cloud.  It requires a user-defined agent set up in the TetraScience Web UI.  API users can use it to upload, manage their files, and trigger pipelines.
-
+      description: 'This endpoint uploads a file to TetraScience Cloud. It requires a user-defined agent set up in the TetraScience Web UI. API users can use it to upload, manage their files, and trigger pipelines.
 
 
         Maximum payload size: 500MB

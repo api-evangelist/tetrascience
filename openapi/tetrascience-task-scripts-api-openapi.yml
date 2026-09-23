@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups Task Scripts API
+  title: TetraScience Data and AI Cloud Task Scripts API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -165,48 +165,40 @@ paths:
                 $ref: '#/components/schemas/TaskScriptObjectList'
 components:
   schemas:
-    Relationships:
+    Key:
       type: object
       properties:
-        ids:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        taskScripts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        protocols:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        connectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-      additionalProperties: false
-    LabelList:
-      type: array
-      items:
-        type: object
-        properties:
-          name:
-            type: string
-          value:
-            type: string
-        required:
-        - name
-        - value
-        additionalProperties: false
+        type:
+          type: string
+        namespace:
+          $ref: '#/components/schemas/ArtifactNamespace'
+        slug:
+          type: string
+        version:
+          type: string
+      required:
+      - type
+      - namespace
+      - slug
+      - version
       example:
-      - name: label1
-        value: value1
-      - name: another-label
-        value: another-value
-    TaskScriptObjectList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TaskScriptObject'
+        type: ids
+        namespace: common
+        slug: akta
+        version: v1.1.0
+    ArtifactNamespace:
+      type: string
+      pattern: ^(common|(private|client)-).*$
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
     TaskScriptObject:
       allOf:
       - $ref: '#/components/schemas/ArtifactObjectBase'
@@ -242,16 +234,6 @@ components:
         - v1.0.9
         - v1.0.5
         - v0.0.3
-    SupportedPlatformVersion:
-      type: object
-      nullable: true
-      properties:
-        minPlatformVersion:
-          type: string
-          nullable: false
-        maxPlatformVersion:
-          type: string
-          nullable: true
     TaskScriptFileSlug:
       type: string
       enum:
@@ -260,9 +242,10 @@ components:
       - manifest
       - readme
       - source
-    ArtifactNamespace:
-      type: string
-      pattern: ^(common|(private|client)-).*$
+    TaskScriptObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TaskScriptObject'
     ArtifactObjectBase:
       type: object
       properties:
@@ -296,34 +279,79 @@ components:
       - version
       - createdAt
       - lastUpdatedAt
-    Key:
+    LabelList:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          value:
+            type: string
+        required:
+        - name
+        - value
+        additionalProperties: false
+      example:
+      - name: label1
+        value: value1
+      - name: another-label
+        value: another-value
+    Relationships:
       type: object
       properties:
-        type:
-          type: string
-        namespace:
-          $ref: '#/components/schemas/ArtifactNamespace'
-        slug:
-          type: string
-        version:
-          type: string
-      required:
-      - type
-      - namespace
-      - slug
-      - version
-      example:
-        type: ids
-        namespace: common
-        slug: akta
-        version: v1.1.0
+        ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        taskScripts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        protocols:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        connectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+      additionalProperties: false
   responses:
+    200TaskScriptObjectList:
+      description: Successfully fetched TaskScriptObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TaskScriptObjectList'
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
     200Labels:
       description: Successfully fetched Labels
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/LabelList'
+    200Relationships:
+      description: Successfully fetched Relationships
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Relationships'
     200File:
       description: Successfully fetched file
       content:
@@ -354,49 +382,28 @@ components:
                 * item 2
 
                 * item 3'
-    200Relationships:
-      description: Successfully fetched Relationships
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Relationships'
     200TaskScriptObject:
       description: Successfully fetched TaskScriptObject
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/TaskScriptObject'
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    200TaskScriptObjectList:
-      description: Successfully fetched TaskScriptObject list
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TaskScriptObjectList'
   parameters:
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
-      in: query
-      required: false
+    ArtifactSlug:
+      description: Artifact slug
+      name: slug
+      in: path
+      required: true
       schema:
-        type: boolean
-      example: true
+        type: string
+      example: demo-slug
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
     LimitQuery:
       name: limit
       in: query
@@ -405,20 +412,14 @@ components:
       schema:
         type: integer
         minimum: 1
-    DownloadQuery:
-      name: download
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
       in: query
-      description: If set to true, return a download url
       required: false
       schema:
         type: boolean
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
+      example: true
     ArtifactNamespaceTypeQuery:
       description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
       name: namespace_type
@@ -431,14 +432,37 @@ components:
         - client
         - private
       example: client
-    ArtifactSlug:
-      description: Artifact slug
-      name: slug
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    TaskScriptFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within a task-script
+      required: true
       in: path
+      schema:
+        $ref: '#/components/schemas/TaskScriptFileSlug'
+      example: build
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
       required: true
       schema:
-        type: string
-      example: demo-slug
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
     ArtifactVersion:
       description: Artifact version
       name: version
@@ -448,30 +472,6 @@ components:
         type: string
         pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
       example: v1.0.0
-    IncludePrereleasesQuery:
-      description: Include prerelease artifacts in search
-      name: include_prereleases
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
-      in: path
-      name: namespace
-      required: true
-      schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
-    TaskScriptFileSlugParam:
-      name: fileSlug
-      description: File slug corresponding to file within a task-script
-      required: true
-      in: path
-      schema:
-        $ref: '#/components/schemas/TaskScriptFileSlug'
-      example: build
   securitySchemes:
     token:
       type: apiKey

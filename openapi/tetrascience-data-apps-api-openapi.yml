@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TetraScience Data and AI Cloud Access Groups Data Apps API
+  title: TetraScience Data and AI Cloud Data Apps API
   version: '4.0'
   description: Programmatic access to the TetraScience Scientific Data and AI Platform — manage tenants, organizations, users, roles, agents, integrations, pipelines, files, datasets, schemas, and search across the Tetra Data Platform.
   contact:
@@ -669,86 +669,13 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    SaveDataAppConnectorKeyValuesRequest:
+    ConnectorKeyValuesResponse:
       type: object
-      required:
-      - values
       properties:
         values:
           type: array
           items:
-            type: object
-            required:
-            - key
-            - value
-            properties:
-              key:
-                type: string
-                pattern: ^[^,]+$
-                description: Connector key. Commas are not allowed.
-              value: {}
-              secure:
-                type: boolean
-    DMLResult:
-      type: object
-      required:
-      - chunk
-      - resultSchema
-      - statementId
-      - totalChunks
-      - totalRowCount
-      properties:
-        chunk:
-          $ref: '#/components/schemas/DMLResultChunk'
-        resultSchema:
-          $ref: '#/components/schemas/DMLResultSchema'
-        statementId:
-          type: string
-        totalChunks:
-          type: integer
-        totalRowCount:
-          type: integer
-    DMLResultSchemaColumn:
-      type: object
-      required:
-      - name
-      - position
-      - type
-      properties:
-        name:
-          type: string
-        position:
-          type: integer
-        type:
-          type: string
-    DMLResultSchema:
-      type: object
-      required:
-      - columnCount
-      - columns
-      properties:
-        columnCount:
-          type: integer
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/DMLResultSchemaColumn'
-    PaginatedDataApp:
-      type: object
-      properties:
-        dataApps:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataApp'
-        count:
-          type: integer
-    DataAppConnectorKeyValueKeysResponse:
-      type: object
-      properties:
-        keys:
-          type: array
-          items:
-            type: string
+            $ref: '#/components/schemas/ConnectorKeyValue'
     ExecuteDMLRequest:
       type: object
       required:
@@ -774,76 +701,6 @@ components:
               value: {}
               type:
                 type: string
-    DataAppProvider:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        orgSlug:
-          type: string
-        type:
-          type: string
-        iconUrl:
-          type: string
-        updatedAt:
-          type: string
-          format: date-time
-        createdAt:
-          type: string
-          format: date-time
-        updatedBy:
-          type: string
-        createdBy:
-          type: string
-        secrets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataAppProviderSecret'
-    ConnectorKeyValuesResponse:
-      type: object
-      properties:
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConnectorKeyValue'
-    DMLResultChunk:
-      type: object
-      required:
-      - statementId
-      - chunkIndex
-      - nextChunkIndex
-      - data
-      - rowCount
-      properties:
-        statementId:
-          type: string
-        chunkIndex:
-          type: integer
-        nextChunkIndex:
-          type: integer
-          nullable: true
-        data:
-          type: array
-          items: {}
-        rowCount:
-          type: integer
-    DataAppProviderSecret:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-        type:
-          type: string
-        required:
-          type: boolean
-        arn:
-          type: string
-        envName:
-          type: string
     DataApp:
       type: object
       properties:
@@ -956,6 +813,149 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataAppProvider'
+    DMLResultSchemaColumn:
+      type: object
+      required:
+      - name
+      - position
+      - type
+      properties:
+        name:
+          type: string
+        position:
+          type: integer
+        type:
+          type: string
+    SaveDataAppConnectorKeyValuesRequest:
+      type: object
+      required:
+      - values
+      properties:
+        values:
+          type: array
+          items:
+            type: object
+            required:
+            - key
+            - value
+            properties:
+              key:
+                type: string
+                pattern: ^[^,]+$
+                description: Connector key. Commas are not allowed.
+              value: {}
+              secure:
+                type: boolean
+    DataAppConnectorKeyValueKeysResponse:
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            type: string
+    DataAppProvider:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        orgSlug:
+          type: string
+        type:
+          type: string
+        iconUrl:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedBy:
+          type: string
+        createdBy:
+          type: string
+        secrets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataAppProviderSecret'
+    DataAppProviderSecret:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        type:
+          type: string
+        required:
+          type: boolean
+        arn:
+          type: string
+        envName:
+          type: string
+    DMLResultSchema:
+      type: object
+      required:
+      - columnCount
+      - columns
+      properties:
+        columnCount:
+          type: integer
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/DMLResultSchemaColumn'
+    DMLResult:
+      type: object
+      required:
+      - chunk
+      - resultSchema
+      - statementId
+      - totalChunks
+      - totalRowCount
+      properties:
+        chunk:
+          $ref: '#/components/schemas/DMLResultChunk'
+        resultSchema:
+          $ref: '#/components/schemas/DMLResultSchema'
+        statementId:
+          type: string
+        totalChunks:
+          type: integer
+        totalRowCount:
+          type: integer
+    PaginatedDataApp:
+      type: object
+      properties:
+        dataApps:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataApp'
+        count:
+          type: integer
+    DMLResultChunk:
+      type: object
+      required:
+      - statementId
+      - chunkIndex
+      - nextChunkIndex
+      - data
+      - rowCount
+      properties:
+        statementId:
+          type: string
+        chunkIndex:
+          type: integer
+        nextChunkIndex:
+          type: integer
+          nullable: true
+        data:
+          type: array
+          items: {}
+        rowCount:
+          type: integer
     ConnectorKeyValue:
       type: object
       required:
