@@ -733,59 +733,46 @@ paths:
         '404':
           $ref: '#/components/responses/404Any'
 components:
-  responses:
-    401Any:
-      description: Unauthorized
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Unauthorized
-            message: Missing authentication.
-    204Any:
-      description: No Data
-      content:
-        application/json:
-          schema: {}
-    200Any:
-      description: Success
-      content:
-        application/json:
-          schema: {}
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
-    200PipelineObject:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PipelineOutputObject'
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    200PipelineIdsList:
-      description: Success
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              type: string
   schemas:
-    ScheduledTriggerOutputPipeline:
+    PipelineRevisionMetadata:
+      type: object
+      required:
+      - message
+      - pipelineId
+      - number
+      - userId
+      - createdAt
+      properties:
+        message:
+          type: string
+        pipelineId:
+          type: string
+        number:
+          type: number
+        userId:
+          oneOf:
+          - type: string
+          - type: 'null'
+        createdAt:
+          type: string
+    DatabricksClusterPolicy:
+      type: object
+      required:
+      - policyId
+      - name
+      properties:
+        policyId:
+          type: string
+          description: Canonical unique identifier for the cluster policy
+        name:
+          type: string
+          description: Display name of the cluster policy
+        description:
+          type: string
+          description: Description of the cluster policy
+    ScheduledTriggerInputPipeline:
       allOf:
-      - $ref: '#/components/schemas/BasicPipelineOutputObject'
+      - $ref: '#/components/schemas/BasicPipelineInputObject'
       - type: object
         required:
         - triggerType
@@ -805,7 +792,68 @@ components:
                 type: string
               tz:
                 type: string
-                description: Java Timezone https://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html
+    PipelineInputObject:
+      oneOf:
+      - $ref: '#/components/schemas/FileTriggerInputPipeline'
+      - $ref: '#/components/schemas/ScheduledTriggerInputPipeline'
+    FileTriggerOutputPipeline:
+      allOf:
+      - $ref: '#/components/schemas/BasicPipelineOutputObject'
+      - type: object
+        required:
+        - triggerType
+        - triggerCondition
+        properties:
+          triggerType:
+            type: string
+            enum:
+            - custom
+          triggerCondition:
+            oneOf:
+            - type: object
+              additionalProperties: false
+            - $ref: '#/components/schemas/TriggerConditionGroup'
+    PipelineLabelFilter:
+      properties:
+        id:
+          type: string
+        operator:
+          type: string
+          enum:
+          - contains
+          - is
+          - is not
+          - exists
+          - does not exist
+        value:
+          anyOf:
+          - type: array
+            items:
+              type: string
+          - type: string
+          - type: boolean
+        type:
+          enum:
+          - label
+          type: string
+        label:
+          type: string
+      required:
+      - operator
+      - type
+      - label
+      additionalProperties: false
+      type: object
+    PipelineNestedLabel:
+      type: object
+      required:
+      - name
+      - value
+      properties:
+        name:
+          type: string
+        value:
+          type: string
     PipelineSettings:
       type: object
       required:
@@ -912,41 +960,25 @@ components:
           - type: object
             format: unknown
           - type: 'null'
-    PipelineLabelFilter:
-      properties:
-        id:
-          type: string
-        operator:
-          type: string
-          enum:
-          - contains
-          - is
-          - is not
-          - exists
-          - does not exist
-        value:
-          anyOf:
-          - type: array
-            items:
-              type: string
-          - type: string
-          - type: boolean
-        type:
-          enum:
-          - label
-          type: string
-        label:
-          type: string
-      required:
-      - operator
-      - type
-      - label
-      additionalProperties: false
+    PipelineConfig:
       type: object
-    PipelineFilterConfig:
-      anyOf:
-      - $ref: '#/components/schemas/PipelineFilterLogicalConfig'
-      - $ref: '#/components/schemas/PipelineLabelFilter'
+      additionalProperties:
+        anyOf:
+        - type: object
+          additionalProperties: true
+        - type: array
+          items: {}
+        - type: string
+        - type: integer
+        - type: number
+        - type: boolean
+        - type: 'null'
+        - type: object
+          properties:
+            ssm:
+              type: string
+            secret:
+              type: boolean
     PipelineAttributeRule:
       properties:
         filters:
@@ -957,21 +989,115 @@ components:
       - filters
       additionalProperties: false
       type: object
-    DatabricksClusterPolicy:
-      type: object
-      required:
-      - policyId
-      - name
+    PipelineRevision:
+      allOf:
+      - $ref: '#/components/schemas/PipelineRevisionMetadata'
+      - $ref: '#/components/schemas/PipelineSettings'
+    FilterAllowAllConfig:
       properties:
-        policyId:
+        type:
+          enum:
+          - allow-all
           type: string
-          description: Canonical unique identifier for the cluster policy
+      required:
+      - type
+      additionalProperties: false
+      type: object
+    PipelineFilterConfig:
+      anyOf:
+      - $ref: '#/components/schemas/PipelineFilterLogicalConfig'
+      - $ref: '#/components/schemas/PipelineLabelFilter'
+    FileTriggerInputPipeline:
+      allOf:
+      - $ref: '#/components/schemas/BasicPipelineInputObject'
+      - type: object
+        required:
+        - triggerType
+        - triggerCondition
+        properties:
+          triggerType:
+            type: string
+            enum:
+            - custom
+          triggerCondition:
+            oneOf:
+            - type: object
+              additionalProperties: false
+            - $ref: '#/components/schemas/TriggerConditionGroup'
+    DatabricksClusterObject:
+      type: object
+      properties:
+        id:
+          type: string
         name:
           type: string
-          description: Display name of the cluster policy
-        description:
+    StepsConfig:
+      type: object
+      properties:
+        memoryInMB:
+          type: integer
+        runInLambda:
+          type: boolean
+    PipelineFilterLogicalConfig:
+      properties:
+        id:
           type: string
-          description: Description of the cluster policy
+        value:
+          items:
+            $ref: '#/components/schemas/PipelineFilterConfig'
+          type: array
+        type:
+          enum:
+          - and
+          - or
+          type: string
+      required:
+      - type
+      additionalProperties: false
+      type: object
+    BasicPipelineInputObject:
+      allOf:
+      - $ref: '#/components/schemas/PipelineSettings'
+      - type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+            description: ignored when provided in Query parameters
+          orgSlug:
+            type: string
+            description: ignored when provided in URL/Headers
+          message:
+            type: string
+          updatedAt:
+            type: string
+          labels:
+            type: array
+            items:
+              $ref: '#/components/schemas/PipelineNestedLabel'
+    ScheduledTriggerOutputPipeline:
+      allOf:
+      - $ref: '#/components/schemas/BasicPipelineOutputObject'
+      - type: object
+        required:
+        - triggerType
+        - triggerCondition
+        properties:
+          triggerType:
+            type: string
+            enum:
+            - sched
+          triggerCondition:
+            type: object
+            required:
+            - cron
+            - tz
+            properties:
+              cron:
+                type: string
+              tz:
+                type: string
+                description: Java Timezone https://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html
     TriggerConditionGroup:
       type: object
       required:
@@ -1002,137 +1128,10 @@ components:
                   type: string
                 value:
                   type: string
-    PipelineRevision:
-      allOf:
-      - $ref: '#/components/schemas/PipelineRevisionMetadata'
-      - $ref: '#/components/schemas/PipelineSettings'
-    BasicPipelineInputObject:
-      allOf:
-      - $ref: '#/components/schemas/PipelineSettings'
-      - type: object
-        properties:
-          id:
-            type: string
-            format: uuid
-            description: ignored when provided in Query parameters
-          orgSlug:
-            type: string
-            description: ignored when provided in URL/Headers
-          message:
-            type: string
-          updatedAt:
-            type: string
-          labels:
-            type: array
-            items:
-              $ref: '#/components/schemas/PipelineNestedLabel'
     PipelineOutputObject:
       oneOf:
       - $ref: '#/components/schemas/FileTriggerOutputPipeline'
       - $ref: '#/components/schemas/ScheduledTriggerOutputPipeline'
-    PipelineInputObject:
-      oneOf:
-      - $ref: '#/components/schemas/FileTriggerInputPipeline'
-      - $ref: '#/components/schemas/ScheduledTriggerInputPipeline'
-    PipelineRevisionMetadata:
-      type: object
-      required:
-      - message
-      - pipelineId
-      - number
-      - userId
-      - createdAt
-      properties:
-        message:
-          type: string
-        pipelineId:
-          type: string
-        number:
-          type: number
-        userId:
-          oneOf:
-          - type: string
-          - type: 'null'
-        createdAt:
-          type: string
-    FilterAllowAllConfig:
-      properties:
-        type:
-          enum:
-          - allow-all
-          type: string
-      required:
-      - type
-      additionalProperties: false
-      type: object
-    FileTriggerInputPipeline:
-      allOf:
-      - $ref: '#/components/schemas/BasicPipelineInputObject'
-      - type: object
-        required:
-        - triggerType
-        - triggerCondition
-        properties:
-          triggerType:
-            type: string
-            enum:
-            - custom
-          triggerCondition:
-            oneOf:
-            - type: object
-              additionalProperties: false
-            - $ref: '#/components/schemas/TriggerConditionGroup'
-    PipelineFilterLogicalConfig:
-      properties:
-        id:
-          type: string
-        value:
-          items:
-            $ref: '#/components/schemas/PipelineFilterConfig'
-          type: array
-        type:
-          enum:
-          - and
-          - or
-          type: string
-      required:
-      - type
-      additionalProperties: false
-      type: object
-    DatabricksClusterObject:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    PipelineNestedLabel:
-      type: object
-      required:
-      - name
-      - value
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-    FileTriggerOutputPipeline:
-      allOf:
-      - $ref: '#/components/schemas/BasicPipelineOutputObject'
-      - type: object
-        required:
-        - triggerType
-        - triggerCondition
-        properties:
-          triggerType:
-            type: string
-            enum:
-            - custom
-          triggerCondition:
-            oneOf:
-            - type: object
-              additionalProperties: false
-            - $ref: '#/components/schemas/TriggerConditionGroup'
     BasicPipelineOutputObject:
       allOf:
       - $ref: '#/components/schemas/PipelineSettings'
@@ -1159,54 +1158,55 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/PipelineNestedLabel'
-    ScheduledTriggerInputPipeline:
-      allOf:
-      - $ref: '#/components/schemas/BasicPipelineInputObject'
-      - type: object
-        required:
-        - triggerType
-        - triggerCondition
-        properties:
-          triggerType:
-            type: string
-            enum:
-            - sched
-          triggerCondition:
-            type: object
-            required:
-            - cron
-            - tz
-            properties:
-              cron:
-                type: string
-              tz:
-                type: string
-    StepsConfig:
-      type: object
-      properties:
-        memoryInMB:
-          type: integer
-        runInLambda:
-          type: boolean
-    PipelineConfig:
-      type: object
-      additionalProperties:
-        anyOf:
-        - type: object
-          additionalProperties: true
-        - type: array
-          items: {}
-        - type: string
-        - type: integer
-        - type: number
-        - type: boolean
-        - type: 'null'
-        - type: object
-          properties:
-            ssm:
+  responses:
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+    200Any:
+      description: Success
+      content:
+        application/json:
+          schema: {}
+    401Any:
+      description: Unauthorized
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Unauthorized
+            message: Missing authentication.
+    200PipelineIdsList:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
               type: string
-            secret:
-              type: boolean
+    204Any:
+      description: No Data
+      content:
+        application/json:
+          schema: {}
+    200PipelineObject:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PipelineOutputObject'
   securitySchemes:
     token:
       type: apiKey

@@ -222,100 +222,9 @@ paths:
                 $ref: '#/components/schemas/ProtocolObjectList'
 components:
   schemas:
-    Key:
-      type: object
-      properties:
-        type:
-          type: string
-        namespace:
-          $ref: '#/components/schemas/ArtifactNamespace'
-        slug:
-          type: string
-        version:
-          type: string
-      required:
-      - type
-      - namespace
-      - slug
-      - version
-      example:
-        type: ids
-        namespace: common
-        slug: akta
-        version: v1.1.0
-    SupportedPlatformVersion:
-      type: object
-      nullable: true
-      properties:
-        minPlatformVersion:
-          type: string
-          nullable: false
-        maxPlatformVersion:
-          type: string
-          nullable: true
     ArtifactNamespace:
       type: string
       pattern: ^(common|(private|client)-).*$
-    ProtocolObjectList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ProtocolObject'
-    ProtocolObject:
-      allOf:
-      - $ref: '#/components/schemas/ArtifactObjectBase'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - protocol
-          protocolSchema:
-            type: string
-            enum:
-            - v2
-            - v3
-            - tfv1
-          triggerTypeFile:
-            type: boolean
-          triggerTypeScheduled:
-            type: boolean
-        required:
-        - type
-        - protocolSchema
-        - triggerTypeFile
-        - triggerTypeScheduled
-      example:
-        type: protocol
-        namespace: common
-        slug: akta
-        version: v1.2.18
-        createdAt: '2023-02-16T15:15:34.269Z'
-        lastUpdatedAt: '2023-02-16T15:15:34.269Z'
-        name: A demo protocol
-        description: The description for the demo protocol
-        otherVersions:
-        - v1.2.18
-        - v1.2.17
-        - v1.1.0
-        - v0.0.10
-    TaskScriptFileSlug:
-      type: string
-      enum:
-      - build
-      - buildlog
-      - manifest
-      - readme
-      - source
-    ProtocolFileSlug:
-      type: string
-      enum:
-      - build
-      - manifest
-      - protocol
-      - readme
-      - script
-      - source
-      - protocolYml
     ArtifactObjectBase:
       type: object
       properties:
@@ -367,19 +276,41 @@ components:
         value: value1
       - name: another-label
         value: another-value
-    IdsFileSlug:
+    ProtocolObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ProtocolObject'
+    Key:
+      type: object
+      properties:
+        type:
+          type: string
+        namespace:
+          $ref: '#/components/schemas/ArtifactNamespace'
+        slug:
+          type: string
+        version:
+          type: string
+      required:
+      - type
+      - namespace
+      - slug
+      - version
+      example:
+        type: ids
+        namespace: common
+        slug: akta
+        version: v1.1.0
+    ProtocolFileSlug:
       type: string
       enum:
-      - athena
       - build
-      - elasticsearch
-      - erd
-      - expected
       - manifest
+      - protocol
       - readme
-      - schema
+      - script
       - source
-      - mapping
+      - protocolYml
     Relationships:
       type: object
       properties:
@@ -400,91 +331,88 @@ components:
           items:
             $ref: '#/components/schemas/Key'
       additionalProperties: false
-  parameters:
-    ArtifactSlug:
-      description: Artifact slug
-      name: slug
-      in: path
-      required: true
-      schema:
-        type: string
-      example: demo-slug
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
-    LimitQuery:
-      name: limit
-      in: query
-      description: The maximum number of results to return
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-    IncludePrereleasesQuery:
-      description: Include prerelease artifacts in search
-      name: include_prereleases
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ArtifactNamespaceTypeQuery:
-      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
-      name: namespace_type
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-        - common
-        - client
-        - private
-      example: client
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ProtocolFileSlugParam:
-      name: fileSlug
-      description: File slug corresponding to file within a protocol
-      required: true
-      in: path
-      schema:
-        $ref: '#/components/schemas/ProtocolFileSlug'
-      example: build
-    ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
-      in: path
-      name: namespace
-      required: true
-      schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
-    DownloadQuery:
-      name: download
-      in: query
-      description: If set to true, return a download url
-      required: false
-      schema:
-        type: boolean
-    ArtifactVersion:
-      description: Artifact version
-      name: version
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
-      example: v1.0.0
+    TaskScriptFileSlug:
+      type: string
+      enum:
+      - build
+      - buildlog
+      - manifest
+      - readme
+      - source
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
+    IdsFileSlug:
+      type: string
+      enum:
+      - athena
+      - build
+      - elasticsearch
+      - erd
+      - expected
+      - manifest
+      - readme
+      - schema
+      - source
+      - mapping
+    ProtocolObject:
+      allOf:
+      - $ref: '#/components/schemas/ArtifactObjectBase'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - protocol
+          protocolSchema:
+            type: string
+            enum:
+            - v2
+            - v3
+            - tfv1
+          triggerTypeFile:
+            type: boolean
+          triggerTypeScheduled:
+            type: boolean
+        required:
+        - type
+        - protocolSchema
+        - triggerTypeFile
+        - triggerTypeScheduled
+      example:
+        type: protocol
+        namespace: common
+        slug: akta
+        version: v1.2.18
+        createdAt: '2023-02-16T15:15:34.269Z'
+        lastUpdatedAt: '2023-02-16T15:15:34.269Z'
+        name: A demo protocol
+        description: The description for the demo protocol
+        otherVersions:
+        - v1.2.18
+        - v1.2.17
+        - v1.1.0
+        - v0.0.10
   responses:
+    200ProtocolObject:
+      description: Successfully fetched ProtocolObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ProtocolObject'
+    200ProtocolObjectList:
+      description: Successfully fetched ProtocolObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ProtocolObjectList'
     404Any:
       description: Not found or not visible to user
       content:
@@ -493,36 +421,6 @@ components:
           example:
             error: Not Found
             message: Subscription not found
-    200ProtocolObjectList:
-      description: Successfully fetched ProtocolObject list
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ProtocolObjectList'
-    200TaskScriptFileSlugList:
-      description: Successfully fetched available Task Script file slugs
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/TaskScriptFileSlug'
-    200ProtocolFileSlugList:
-      description: Successfully fetched available Protocol file slugs
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ProtocolFileSlug'
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
     200IdsFileSlugList:
       description: Successfully fetched available IDS file slugs
       content:
@@ -537,12 +435,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/LabelList'
-    200Relationships:
-      description: Successfully fetched Relationships
+    400Any:
+      description: Incorrect input provided
       content:
         application/json:
-          schema:
-            $ref: '#/components/schemas/Relationships'
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
     200File:
       description: Successfully fetched file
       content:
@@ -573,12 +473,112 @@ components:
                 * item 2
 
                 * item 3'
-    200ProtocolObject:
-      description: Successfully fetched ProtocolObject
+    200ProtocolFileSlugList:
+      description: Successfully fetched available Protocol file slugs
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ProtocolObject'
+            type: array
+            items:
+              $ref: '#/components/schemas/ProtocolFileSlug'
+    200TaskScriptFileSlugList:
+      description: Successfully fetched available Task Script file slugs
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/TaskScriptFileSlug'
+    200Relationships:
+      description: Successfully fetched Relationships
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Relationships'
+  parameters:
+    ArtifactSlug:
+      description: Artifact slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+      example: demo-slug
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
+    ProtocolFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within a protocol
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/ProtocolFileSlug'
+      example: build
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    ArtifactNamespaceTypeQuery:
+      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
+      name: namespace_type
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - common
+        - client
+        - private
+      example: client
+    ArtifactVersion:
+      description: Artifact version
+      name: version
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
+      example: v1.0.0
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
   securitySchemes:
     token:
       type: apiKey

@@ -242,6 +242,17 @@ paths:
           description: Service Unavailable
 components:
   schemas:
+    DataAppProviderTemplateField:
+      type: object
+      properties:
+        name:
+          type: string
+        display:
+          type: string
+        type:
+          type: string
+        required:
+          type: boolean
     DataAppProviderSecret:
       type: object
       properties:
@@ -306,17 +317,6 @@ components:
             $ref: '#/components/schemas/DataAppProvider'
         count:
           type: integer
-    DataAppProviderTemplateField:
-      type: object
-      properties:
-        name:
-          type: string
-        display:
-          type: string
-        type:
-          type: string
-        required:
-          type: boolean
   securitySchemes:
     token:
       type: apiKey

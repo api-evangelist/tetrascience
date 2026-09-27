@@ -90,134 +90,6 @@ paths:
                 $ref: '#/components/schemas/HubDetailsDto'
 components:
   schemas:
-    HubsResponse:
-      type: object
-      properties:
-        hubs:
-          type: array
-          items:
-            $ref: '#/components/schemas/HubDto'
-      required:
-      - hubs
-    HubHostDto:
-      type: object
-      properties:
-        ipAddress:
-          type: string
-          description: The Hub's IP address.
-        hostName:
-          type: string
-          description: The Hub's host name.
-        platformName:
-          type: string
-          description: The Hub's operating system name.
-        platformVersion:
-          type: string
-          description: The Hub's operating system version.
-      required:
-      - ipAddress
-      - hostName
-      - platformName
-      - platformVersion
-    HubDetailsDto:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        orgSlug:
-          type: string
-        description:
-          type: string
-        httpProxyHost:
-          type: string
-        httpProxyPort:
-          type: number
-        httpProxyUsername:
-          type: string
-        httpsProxyHost:
-          type: string
-        httpsProxyPort:
-          type: number
-        httpsProxyUsername:
-          type: string
-        noProxy:
-          type: string
-        l7ProxyForwardPort:
-          type: number
-        l7ProxyReverseHttpPort:
-          type: number
-        l7ProxyReverseHttpsPort:
-          type: number
-        l7ProxySocatPort:
-          type: number
-        l7ProxyReverseMqttPort:
-          type: number
-        l7ProxySocatMqttPort:
-          type: number
-        l7ProxyLocalnets:
-          type: string
-        l7ProxyDnsNameservers:
-          type: string
-        l7ProxyWhitelist:
-          type: string
-        l7ProxyMaximumMemoryMb:
-          type: number
-        enabled:
-          type: boolean
-        status:
-          $ref: '#/components/schemas/HubStatusDto'
-        host:
-          $ref: '#/components/schemas/HubHostDto'
-        updatedAt:
-          format: date-time
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        activationExpiresAt:
-          format: date-time
-          type: string
-        ssmInstanceId:
-          type: string
-        ecsContainerInstanceArn:
-          type: string
-        connectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/HubConnectorDto'
-      required:
-      - id
-      - name
-      - orgSlug
-      - description
-      - httpProxyHost
-      - httpProxyPort
-      - httpProxyUsername
-      - httpsProxyHost
-      - httpsProxyPort
-      - httpsProxyUsername
-      - noProxy
-      - l7ProxyForwardPort
-      - l7ProxyReverseHttpPort
-      - l7ProxyReverseHttpsPort
-      - l7ProxySocatPort
-      - l7ProxyReverseMqttPort
-      - l7ProxySocatMqttPort
-      - l7ProxyLocalnets
-      - l7ProxyDnsNameservers
-      - l7ProxyWhitelist
-      - l7ProxyMaximumMemoryMb
-      - enabled
-      - status
-      - host
-      - updatedAt
-      - createdAt
-      - activationExpiresAt
-      - ssmInstanceId
-      - ecsContainerInstanceArn
-      - connectors
     HubConnectorDto:
       type: object
       properties:
@@ -262,6 +134,15 @@ components:
       - lastSeenAt
       - updatedAt
       - createdAt
+    HubsResponse:
+      type: object
+      properties:
+        hubs:
+          type: array
+          items:
+            $ref: '#/components/schemas/HubDto'
+      required:
+      - hubs
     ArtifactDto:
       type: object
       properties:
@@ -528,6 +409,105 @@ components:
       - proxies
       - metrics
       - health
+    HubDetailsDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        orgSlug:
+          type: string
+        description:
+          type: string
+        httpProxyHost:
+          type: string
+        httpProxyPort:
+          type: number
+        httpProxyUsername:
+          type: string
+        httpsProxyHost:
+          type: string
+        httpsProxyPort:
+          type: number
+        httpsProxyUsername:
+          type: string
+        noProxy:
+          type: string
+        l7ProxyForwardPort:
+          type: number
+        l7ProxyReverseHttpPort:
+          type: number
+        l7ProxyReverseHttpsPort:
+          type: number
+        l7ProxySocatPort:
+          type: number
+        l7ProxyReverseMqttPort:
+          type: number
+        l7ProxySocatMqttPort:
+          type: number
+        l7ProxyLocalnets:
+          type: string
+        l7ProxyDnsNameservers:
+          type: string
+        l7ProxyWhitelist:
+          type: string
+        l7ProxyMaximumMemoryMb:
+          type: number
+        enabled:
+          type: boolean
+        status:
+          $ref: '#/components/schemas/HubStatusDto'
+        host:
+          $ref: '#/components/schemas/HubHostDto'
+        updatedAt:
+          format: date-time
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        activationExpiresAt:
+          format: date-time
+          type: string
+        ssmInstanceId:
+          type: string
+        ecsContainerInstanceArn:
+          type: string
+        connectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/HubConnectorDto'
+      required:
+      - id
+      - name
+      - orgSlug
+      - description
+      - httpProxyHost
+      - httpProxyPort
+      - httpProxyUsername
+      - httpsProxyHost
+      - httpsProxyPort
+      - httpsProxyUsername
+      - noProxy
+      - l7ProxyForwardPort
+      - l7ProxyReverseHttpPort
+      - l7ProxyReverseHttpsPort
+      - l7ProxySocatPort
+      - l7ProxyReverseMqttPort
+      - l7ProxySocatMqttPort
+      - l7ProxyLocalnets
+      - l7ProxyDnsNameservers
+      - l7ProxyWhitelist
+      - l7ProxyMaximumMemoryMb
+      - enabled
+      - status
+      - host
+      - updatedAt
+      - createdAt
+      - activationExpiresAt
+      - ssmInstanceId
+      - ecsContainerInstanceArn
+      - connectors
     HubDto:
       type: object
       properties:
@@ -633,6 +613,26 @@ components:
       - updatedAt
       - createdAt
       - activationExpiresAt
+    HubHostDto:
+      type: object
+      properties:
+        ipAddress:
+          type: string
+          description: The Hub's IP address.
+        hostName:
+          type: string
+          description: The Hub's host name.
+        platformName:
+          type: string
+          description: The Hub's operating system name.
+        platformVersion:
+          type: string
+          description: The Hub's operating system version.
+      required:
+      - ipAddress
+      - hostName
+      - platformName
+      - platformVersion
   securitySchemes:
     token:
       type: apiKey

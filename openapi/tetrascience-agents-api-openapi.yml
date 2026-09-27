@@ -1039,6 +1039,163 @@ paths:
           $ref: '#/paths/~1v1~1agents~1{agentId}~1configuration/post/responses/404'
 components:
   schemas:
+    AgentConfiguration:
+      type: object
+      properties:
+        id:
+          type: string
+          example: f82d2230-eed1-443c-9ed8-2e1fef9039c2
+          description: The unique ID of the configuration.
+        config:
+          $ref: '#/components/schemas/FLAConfiguration'
+        by:
+          type: string
+          example: cloud
+          description: The entity that initiated the command.
+        at:
+          type: string
+          format: date-time
+          example: '2023-08-28T14:43:46.381Z'
+          description: The timestamp when the command was executed.
+        commandStatus:
+          type: string
+          example: SUCCESS
+          description: The status of the command.
+        commandId:
+          type: string
+          example: f82d2230-eed1-443c-9ed8-2e1fef9039c2
+          description: The unique ID of the command.
+    FLAFileWatcherPathConfigurationItem:
+      type: object
+      description: '**FLA v4.3.0+**: Options for archival and deletion of files in the path after upload'
+      properties:
+        path:
+          type: string
+          description: The path to watch.
+          example: C:\FLA\test1
+        file_watch_mode:
+          type: string
+          enum:
+          - file
+          - folder
+          description: The file watch mode.
+          example: file
+        source_type:
+          type: string
+          description: The source type.
+          example: unknown
+        interval:
+          type: integer
+          description: 'The time in seconds the agent will monitor the files for changes before uploading.
+
+            This also specifies the time between scans of the path.'
+          example: 30
+        start_date:
+          type: string
+          format: date
+          description: Files with a last modified date on or after the specified date will be scanned and uploaded.
+          example: '2023-03-27'
+        patterns:
+          type: array
+          items:
+            type: string
+          description: Defines a list of [glob patterns](https://developers.tetrascience.com/docs/common-glob-pattern) to match files in the path.
+          example:
+          - '*.*'
+        metadata:
+          type: object
+          description: Custom metadata to associate with files in the path.
+          example:
+            meta1: value1
+        tags:
+          type: string
+          description: Comma-separated list of tags to associate with files in the path.
+          example: tag1,tag2
+        labels:
+          type: array
+          description: '**FLA v4.3.0+**: Labels applied to files in the path'
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The label name.
+                example: vendor
+              value:
+                type: string
+                description: The label value.
+                example: Beckman Coulter
+            required:
+            - name
+            - value
+        archive:
+          type: object
+          description: '**FLA v4.3.0+**: Options for archival and deletion of files in the path after upload'
+          properties:
+            path:
+              type: string
+              description: The location where files from this path will be archived
+              example: c:\archive
+            wait_time:
+              type: integer
+              description: Amount of time to wait before moving the source file to the archive path after uploading
+              example: 1
+            wait_time_unit:
+              type: string
+              enum:
+              - Minutes
+              - Hours
+              - Days
+              description: The unit for the wait_time
+              example: Days
+            archive_without_checksum:
+              type: boolean
+              description: Determines if files uploaded by a previous agent version that have no checksum are archived or not.
+              example: false
+            dry_run:
+              type: boolean
+              description: Whether to perform a dry run
+              example: false
+            delete:
+              type: object
+              description: Options for deletion of files from the archive path
+              properties:
+                wait_time:
+                  type: integer
+                  description: Amount of time to wait before deleting the file from the archive path
+                  example: 7
+                wait_time_unit:
+                  type: string
+                  enum:
+                  - Minutes
+                  - Hours
+                  - Days
+                  description: The unit for the wait_time
+                  example: Days
+              required:
+              - wait_time
+              - wait_time_unit
+          required:
+          - path
+          - wait_time
+          - wait_time_unit
+        fetch_os_created_user:
+          type: boolean
+          description: Determines if the OS-created user metadata is retrieved and included as metadata on files in the path or not.
+          example: false
+        symlink_behavior:
+          type: string
+          enum:
+          - Legacy
+          - Ignore
+          description: '**(For FLA v4.4.1 and higher only)** Specifies how the Agent handles symbolic links when file scanning.'
+      required:
+      - file_watch_mode
+      - source_type
+      - interval
+      - start_date
+      - path
+      - patterns
     FLAConfiguration:
       type: object
       description: Agent configuration if available, null otherwise.
@@ -1178,163 +1335,6 @@ components:
               type: string
               description: The time of day when the Windows scheduled task is triggered.
               example: 1:00pm
-    FLAFileWatcherPathConfigurationItem:
-      type: object
-      description: '**FLA v4.3.0+**: Options for archival and deletion of files in the path after upload'
-      properties:
-        path:
-          type: string
-          description: The path to watch.
-          example: C:\FLA\test1
-        file_watch_mode:
-          type: string
-          enum:
-          - file
-          - folder
-          description: The file watch mode.
-          example: file
-        source_type:
-          type: string
-          description: The source type.
-          example: unknown
-        interval:
-          type: integer
-          description: 'The time in seconds the agent will monitor the files for changes before uploading.
-
-            This also specifies the time between scans of the path.'
-          example: 30
-        start_date:
-          type: string
-          format: date
-          description: Files with a last modified date on or after the specified date will be scanned and uploaded.
-          example: '2023-03-27'
-        patterns:
-          type: array
-          items:
-            type: string
-          description: Defines a list of [glob patterns](https://developers.tetrascience.com/docs/common-glob-pattern) to match files in the path.
-          example:
-          - '*.*'
-        metadata:
-          type: object
-          description: Custom metadata to associate with files in the path.
-          example:
-            meta1: value1
-        tags:
-          type: string
-          description: Comma-separated list of tags to associate with files in the path.
-          example: tag1,tag2
-        labels:
-          type: array
-          description: '**FLA v4.3.0+**: Labels applied to files in the path'
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-                description: The label name.
-                example: vendor
-              value:
-                type: string
-                description: The label value.
-                example: Beckman Coulter
-            required:
-            - name
-            - value
-        archive:
-          type: object
-          description: '**FLA v4.3.0+**: Options for archival and deletion of files in the path after upload'
-          properties:
-            path:
-              type: string
-              description: The location where files from this path will be archived
-              example: c:\archive
-            wait_time:
-              type: integer
-              description: Amount of time to wait before moving the source file to the archive path after uploading
-              example: 1
-            wait_time_unit:
-              type: string
-              enum:
-              - Minutes
-              - Hours
-              - Days
-              description: The unit for the wait_time
-              example: Days
-            archive_without_checksum:
-              type: boolean
-              description: Determines if files uploaded by a previous agent version that have no checksum are archived or not.
-              example: false
-            dry_run:
-              type: boolean
-              description: Whether to perform a dry run
-              example: false
-            delete:
-              type: object
-              description: Options for deletion of files from the archive path
-              properties:
-                wait_time:
-                  type: integer
-                  description: Amount of time to wait before deleting the file from the archive path
-                  example: 7
-                wait_time_unit:
-                  type: string
-                  enum:
-                  - Minutes
-                  - Hours
-                  - Days
-                  description: The unit for the wait_time
-                  example: Days
-              required:
-              - wait_time
-              - wait_time_unit
-          required:
-          - path
-          - wait_time
-          - wait_time_unit
-        fetch_os_created_user:
-          type: boolean
-          description: Determines if the OS-created user metadata is retrieved and included as metadata on files in the path or not.
-          example: false
-        symlink_behavior:
-          type: string
-          enum:
-          - Legacy
-          - Ignore
-          description: '**(For FLA v4.4.1 and higher only)** Specifies how the Agent handles symbolic links when file scanning.'
-      required:
-      - file_watch_mode
-      - source_type
-      - interval
-      - start_date
-      - path
-      - patterns
-    AgentConfiguration:
-      type: object
-      properties:
-        id:
-          type: string
-          example: f82d2230-eed1-443c-9ed8-2e1fef9039c2
-          description: The unique ID of the configuration.
-        config:
-          $ref: '#/components/schemas/FLAConfiguration'
-        by:
-          type: string
-          example: cloud
-          description: The entity that initiated the command.
-        at:
-          type: string
-          format: date-time
-          example: '2023-08-28T14:43:46.381Z'
-          description: The timestamp when the command was executed.
-        commandStatus:
-          type: string
-          example: SUCCESS
-          description: The status of the command.
-        commandId:
-          type: string
-          example: f82d2230-eed1-443c-9ed8-2e1fef9039c2
-          description: The unique ID of the command.
   securitySchemes:
     token:
       type: apiKey

@@ -78,31 +78,6 @@ paths:
         '404':
           $ref: '#/components/responses/404Any'
 components:
-  responses:
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    401Any:
-      description: Unauthorized
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Unauthorized
-            message: Missing authentication.
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
   schemas:
     DatabricksClusterObject:
       type: object
@@ -126,6 +101,31 @@ components:
         description:
           type: string
           description: Description of the cluster policy
+  responses:
+    401Any:
+      description: Unauthorized
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Unauthorized
+            message: Missing authentication.
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
   securitySchemes:
     token:
       type: apiKey

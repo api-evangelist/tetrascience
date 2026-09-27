@@ -165,40 +165,9 @@ paths:
                 $ref: '#/components/schemas/TaskScriptObjectList'
 components:
   schemas:
-    Key:
-      type: object
-      properties:
-        type:
-          type: string
-        namespace:
-          $ref: '#/components/schemas/ArtifactNamespace'
-        slug:
-          type: string
-        version:
-          type: string
-      required:
-      - type
-      - namespace
-      - slug
-      - version
-      example:
-        type: ids
-        namespace: common
-        slug: akta
-        version: v1.1.0
     ArtifactNamespace:
       type: string
       pattern: ^(common|(private|client)-).*$
-    SupportedPlatformVersion:
-      type: object
-      nullable: true
-      properties:
-        minPlatformVersion:
-          type: string
-          nullable: false
-        maxPlatformVersion:
-          type: string
-          nullable: true
     TaskScriptObject:
       allOf:
       - $ref: '#/components/schemas/ArtifactObjectBase'
@@ -234,18 +203,6 @@ components:
         - v1.0.9
         - v1.0.5
         - v0.0.3
-    TaskScriptFileSlug:
-      type: string
-      enum:
-      - build
-      - buildlog
-      - manifest
-      - readme
-      - source
-    TaskScriptObjectList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TaskScriptObject'
     ArtifactObjectBase:
       type: object
       properties:
@@ -297,6 +254,27 @@ components:
         value: value1
       - name: another-label
         value: another-value
+    Key:
+      type: object
+      properties:
+        type:
+          type: string
+        namespace:
+          $ref: '#/components/schemas/ArtifactNamespace'
+        slug:
+          type: string
+        version:
+          type: string
+      required:
+      - type
+      - namespace
+      - slug
+      - version
+      example:
+        type: ids
+        namespace: common
+        slug: akta
+        version: v1.1.0
     Relationships:
       type: object
       properties:
@@ -317,13 +295,113 @@ components:
           items:
             $ref: '#/components/schemas/Key'
       additionalProperties: false
+    TaskScriptFileSlug:
+      type: string
+      enum:
+      - build
+      - buildlog
+      - manifest
+      - readme
+      - source
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
+    TaskScriptObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TaskScriptObject'
+  parameters:
+    ArtifactSlug:
+      description: Artifact slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+      example: demo-slug
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    ArtifactNamespaceTypeQuery:
+      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
+      name: namespace_type
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - common
+        - client
+        - private
+      example: client
+    ArtifactVersion:
+      description: Artifact version
+      name: version
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
+      example: v1.0.0
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    TaskScriptFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within a task-script
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/TaskScriptFileSlug'
+      example: build
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
   responses:
-    200TaskScriptObjectList:
-      description: Successfully fetched TaskScriptObject list
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TaskScriptObjectList'
     404Any:
       description: Not found or not visible to user
       content:
@@ -332,6 +410,24 @@ components:
           example:
             error: Not Found
             message: Subscription not found
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
+    200TaskScriptObject:
+      description: Successfully fetched TaskScriptObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TaskScriptObject'
+    200TaskScriptObjectList:
+      description: Successfully fetched TaskScriptObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TaskScriptObjectList'
     400Any:
       description: Incorrect input provided
       content:
@@ -340,18 +436,6 @@ components:
           example:
             error: Bad Request
             message: Invalid parameters provided.
-    200Labels:
-      description: Successfully fetched Labels
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/LabelList'
-    200Relationships:
-      description: Successfully fetched Relationships
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Relationships'
     200File:
       description: Successfully fetched file
       content:
@@ -382,96 +466,12 @@ components:
                 * item 2
 
                 * item 3'
-    200TaskScriptObject:
-      description: Successfully fetched TaskScriptObject
+    200Relationships:
+      description: Successfully fetched Relationships
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TaskScriptObject'
-  parameters:
-    ArtifactSlug:
-      description: Artifact slug
-      name: slug
-      in: path
-      required: true
-      schema:
-        type: string
-      example: demo-slug
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
-    LimitQuery:
-      name: limit
-      in: query
-      description: The maximum number of results to return
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-    IncludePrereleasesQuery:
-      description: Include prerelease artifacts in search
-      name: include_prereleases
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ArtifactNamespaceTypeQuery:
-      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
-      name: namespace_type
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-        - common
-        - client
-        - private
-      example: client
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    TaskScriptFileSlugParam:
-      name: fileSlug
-      description: File slug corresponding to file within a task-script
-      required: true
-      in: path
-      schema:
-        $ref: '#/components/schemas/TaskScriptFileSlug'
-      example: build
-    ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
-      in: path
-      name: namespace
-      required: true
-      schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
-    DownloadQuery:
-      name: download
-      in: query
-      description: If set to true, return a download url
-      required: false
-      schema:
-        type: boolean
-    ArtifactVersion:
-      description: Artifact version
-      name: version
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
-      example: v1.0.0
+            $ref: '#/components/schemas/Relationships'
   securitySchemes:
     token:
       type: apiKey

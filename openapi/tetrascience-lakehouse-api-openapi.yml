@@ -171,30 +171,9 @@ paths:
           $ref: '#/components/responses/404Any'
 components:
   schemas:
-    SupportedPlatformVersion:
-      type: object
-      nullable: true
-      properties:
-        minPlatformVersion:
-          type: string
-          nullable: false
-        maxPlatformVersion:
-          type: string
-          nullable: true
     ArtifactNamespace:
       type: string
       pattern: ^(common|(private|client)-).*$
-    LakehouseObjectList:
-      type: array
-      items:
-        $ref: '#/components/schemas/LakehouseObject'
-    LakehouseFileSlug:
-      type: string
-      enum:
-      - build
-      - manifest
-      - source
-      - databricksYml
     ArtifactObjectBase:
       type: object
       properties:
@@ -228,6 +207,31 @@ components:
       - version
       - createdAt
       - lastUpdatedAt
+    LabelList:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          value:
+            type: string
+        required:
+        - name
+        - value
+        additionalProperties: false
+      example:
+      - name: label1
+        value: value1
+      - name: another-label
+        value: another-value
+    LakehouseFileSlug:
+      type: string
+      enum:
+      - build
+      - manifest
+      - source
+      - databricksYml
     LakehouseObject:
       allOf:
       - $ref: '#/components/schemas/ArtifactObjectBase'
@@ -251,24 +255,20 @@ components:
         otherVersions:
         - v1.0.0
         - v1.1.0
-    LabelList:
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
+    LakehouseObjectList:
       type: array
       items:
-        type: object
-        properties:
-          name:
-            type: string
-          value:
-            type: string
-        required:
-        - name
-        - value
-        additionalProperties: false
-      example:
-      - name: label1
-        value: value1
-      - name: another-label
-        value: another-value
+        $ref: '#/components/schemas/LakehouseObject'
   parameters:
     ArtifactSlug:
       description: Artifact slug
@@ -278,6 +278,22 @@ components:
       schema:
         type: string
       example: demo-slug
+    LakehouseFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within a lakehouse
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/LakehouseFileSlug'
+      example: build
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
     ValueQuery:
       name: value
       in: query
@@ -285,6 +301,42 @@ components:
       required: true
       schema:
         type: string
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    ArtifactNamespaceTypeQuery:
+      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
+      name: namespace_type
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - common
+        - client
+        - private
+      example: client
+    ArtifactVersion:
+      description: Artifact version
+      name: version
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
+      example: v1.0.0
     LimitQuery:
       name: limit
       in: query
@@ -301,58 +353,6 @@ components:
       schema:
         type: boolean
       example: true
-    LakehouseFileSlugParam:
-      name: fileSlug
-      description: File slug corresponding to file within a lakehouse
-      required: true
-      in: path
-      schema:
-        $ref: '#/components/schemas/LakehouseFileSlug'
-      example: build
-    ArtifactNamespaceTypeQuery:
-      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
-      name: namespace_type
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-        - common
-        - client
-        - private
-      example: client
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
-      in: path
-      name: namespace
-      required: true
-      schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
-    DownloadQuery:
-      name: download
-      in: query
-      description: If set to true, return a download url
-      required: false
-      schema:
-        type: boolean
-    ArtifactVersion:
-      description: Artifact version
-      name: version
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
-      example: v1.0.0
   responses:
     404Any:
       description: Not found or not visible to user
@@ -362,6 +362,12 @@ components:
           example:
             error: Not Found
             message: Subscription not found
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
     400Any:
       description: Incorrect input provided
       content:
@@ -376,20 +382,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/LakehouseObjectList'
-    200LakehouseFileSlugList:
-      description: Successfully fetched available Lakehouse file slugs
+    200LakehouseObject:
+      description: Successfully fetched LakehouseObject
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/LakehouseFileSlug'
-    200Labels:
-      description: Successfully fetched Labels
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/LabelList'
+            $ref: '#/components/schemas/LakehouseObject'
     200File:
       description: Successfully fetched file
       content:
@@ -420,12 +418,14 @@ components:
                 * item 2
 
                 * item 3'
-    200LakehouseObject:
-      description: Successfully fetched LakehouseObject
+    200LakehouseFileSlugList:
+      description: Successfully fetched available Lakehouse file slugs
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/LakehouseObject'
+            type: array
+            items:
+              $ref: '#/components/schemas/LakehouseFileSlug'
   securitySchemes:
     token:
       type: apiKey

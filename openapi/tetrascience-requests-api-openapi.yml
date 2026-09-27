@@ -193,22 +193,6 @@ paths:
           $ref: '#/components/responses/501Any'
 components:
   responses:
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    501Any:
-      description: Internal error managing rules on eventbridge
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Internal Eventbridge Error
-            message: Internal error managing rules on eventbridge
     404Any:
       description: Not found or not visible to user
       content:
@@ -217,6 +201,14 @@ components:
           example:
             error: Not Found
             message: Subscription not found
+    501Any:
+      description: Internal error managing rules on eventbridge
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Internal Eventbridge Error
+            message: Internal error managing rules on eventbridge
     500Any:
       description: Internal error managing rules on eventbridge
       content:
@@ -225,6 +217,14 @@ components:
           example:
             error: Internal DB Error
             message: Internal error with teh database
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
   schemas:
     EventbridgeSubscriptionUpdate:
       type: object

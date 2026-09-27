@@ -591,103 +591,42 @@ paths:
           $ref: '#/components/responses/404Any'
 components:
   schemas:
-    ConnectorDto:
+    GetConnectorMetricsDto:
       type: object
-      description: Details of a single Connector
+      description: The set of metrics reported by the Connector.
       properties:
-        id:
-          description: The Connector's id.
-          type: string
-        name:
-          description: The Connector's name.
-          type: string
-        orgSlug:
-          description: The organization slug that the Connector belongs to.
-          type: string
-        description:
-          description: The Connector's description.
-          type: string
-        artifact:
-          $ref: '#/components/schemas/ArtifactDto'
-        hostType:
-          description: The type of host the Connector is running on.
-          type: string
-          enum:
-          - cloud
-          - hub
-        hub:
-          $ref: '#/components/schemas/HubDto'
-        metadata:
-          type: object
-        tags:
+        metrics:
           type: array
           items:
-            type: string
-        commandQueue:
-          description: The ARN of the Connector's command queue.
-          type: string
-        clusterArn:
-          description: The ARN of the ECS cluster the Connector is running in.
-          type: string
-        taskDefinitionArn:
-          description: The ARN of the ECS task definition the Connector is running.
-          type: string
-        health:
-          description: The health status of the Connector. N/A indicates the Connector has never reported health.
-          type: string
-          enum:
-          - HEALTHY
-          - WARNING
-          - CRITICAL
-          - N/A
-        healthErrorCode:
-          description: The error code of the Connector's health status, if unhealthy. Defined by each Connector and used to display an error message in the UI.
-          type: string
-        operatingStatus:
-          description: The desired operating status of the Connector. RUNNING means the Connector is fully working; IDLE means the Connector software is running and awaiting commands, but is not performing its main (Connector-defined) work yet; DISABLED means the software is not running at all.
-          type: string
-          enum:
-          - IDLE
-          - RUNNING
-          - DISABLED
-        networkStatus:
-          description: The network status of the Connector.
-          type: string
-          enum:
-          - Online
-          - Offline
-        config:
-          description: The Connector's current configuration, schema varies per Connector.
-          type: object
-        lastSeenAt:
-          description: The last time the Connector was seen by the platform.
+            $ref: '#/components/schemas/ConnectorMetricDto'
+      required:
+      - metrics
+    MetricTimeValueDto:
+      type: object
+      description: A metric time-value pair reported by a Connector.
+      properties:
+        time:
           format: date-time
           type: string
-        updatedAt:
-          description: The last time the Connector's details were updated.
-          format: date-time
+        value:
+          type: number
+      required:
+      - time
+      - value
+    ArtifactDto:
+      type: object
+      properties:
+        namespace:
           type: string
-        createdAt:
-          description: The time the Connector was created.
-          format: date-time
+        slug:
+          type: string
+        version:
           type: string
       required:
-      - id
-      - name
-      - orgSlug
-      - artifact
-      - hostType
-      - metadata
-      - tags
-      - commandQueue
-      - clusterArn
-      - taskDefinitionArn
-      - health
-      - operatingStatus
-      - networkStatus
-      - lastSeenAt
-      - updatedAt
-      - createdAt
+      - namespace
+      - slug
+      - version
+      - manifest
     ConnectorFilesResponse:
       type: object
       description: A list of files reported by a Connector.
@@ -701,117 +640,6 @@ components:
       required:
       - files
       - total
-    ConnectorFileDto:
-      type: object
-      description: A file reported by a Connector.
-      properties:
-        id:
-          type: string
-          description: The file's id.
-        uniqueExternalId:
-          type: string
-          description: The file's unique external id, used by Connectors to deduplicate external files.
-        filepath:
-          type: string
-          description: The file's path.
-        status:
-          type: string
-          description: The file's status, as reported by the Connector. This reflects the Connector's own workflow to upload files, not the platform's processing of those files.
-          enum:
-          - PENDING
-          - PROCESSING
-          - SKIPPED
-          - SUCCESS
-          - ERROR
-        metadata:
-          type: object
-        errorCount:
-          type: number
-          description: The number of times the file has errored during upload. After 5 errors, the Connector will stop attempting to retry this file.
-        errorMessage:
-          type: string
-          description: The last error message reported by the Connector for this file.
-        updatedAt:
-          format: date-time
-          type: string
-          description: The last time the file's details were updated.
-        createdAt:
-          format: date-time
-          type: string
-          description: The time the file was created.
-      required:
-      - id
-      - uniqueExternalId
-      - filepath
-      - status
-      - metadata
-      - errorCount
-      - updatedAt
-      - createdAt
-    LabelDto:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        value:
-          type: string
-      required:
-      - id
-      - name
-      - value
-    MetricTimeValueDto:
-      type: object
-      description: A metric time-value pair reported by a Connector.
-      properties:
-        time:
-          format: date-time
-          type: string
-        value:
-          type: number
-      required:
-      - time
-      - value
-    ConnectorGeneratedConfigUiComponentDto:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - generated
-        trigger:
-          type: string
-          enum:
-          - configuration
-        config:
-          type: array
-          items:
-            type: string
-      required:
-      - type
-      - trigger
-      - config
-    HubHostDto:
-      type: object
-      properties:
-        ipAddress:
-          type: string
-          description: The Hub's IP address.
-        hostName:
-          type: string
-          description: The Hub's host name.
-        platformName:
-          type: string
-          description: The Hub's operating system name.
-        platformVersion:
-          type: string
-          description: The Hub's operating system version.
-      required:
-      - ipAddress
-      - hostName
-      - platformName
-      - platformVersion
     HubStatusDto:
       type: object
       properties:
@@ -1064,121 +892,6 @@ components:
       - proxies
       - metrics
       - health
-    HubDto:
-      type: object
-      properties:
-        id:
-          description: The Hub's id.
-          type: string
-        name:
-          description: The Hub's name.
-          type: string
-        orgSlug:
-          description: The organization slug that the Hub belongs to.
-          type: string
-        description:
-          description: The Hub's description.
-          type: string
-        httpProxyHost:
-          description: The Hub's http parent proxy host, if set.
-          type: string
-        httpProxyPort:
-          description: The Hub's http parent proxy port, if set.
-          type: number
-        httpProxyUsername:
-          description: A legacy field from when Hub's parent proxy was configured in the cloud; no longer populated.
-          type: string
-        httpsProxyHost:
-          type: string
-          description: The Hub's https parent proxy host, if set.
-        httpsProxyPort:
-          type: number
-          description: The Hub's https parent proxy port, if set.
-        httpsProxyUsername:
-          type: string
-          description: A legacy field from when Hub's parent proxy was configured in the cloud; no longer populated.
-        noProxy:
-          type: string
-          description: The Hub's no proxy list, if set.
-        l7ProxyForwardPort:
-          type: number
-          description: The Hub's L7 proxy forward port, used by Agents automatically when using this Hub.
-        l7ProxyReverseHttpPort:
-          type: number
-          description: The Hub's L7 proxy reverse http port, configured explicitly on Agents.
-        l7ProxyReverseHttpsPort:
-          type: number
-          description: The Hub's L7 proxy reverse https port, configured explicitly on Agents.
-        l7ProxySocatPort:
-          type: number
-          description: The Hub's L7 proxy socat port. Not used externally, but configurable to avoid port conflicts.
-        l7ProxyReverseMqttPort:
-          type: number
-          description: The Hub's L7 proxy reverse mqtt port, if set, configured explicitly on IoT Agents.
-        l7ProxySocatMqttPort:
-          type: number
-          description: The Hub's L7 proxy socat mqtt port. Not used externally, but configurable to avoid port conflicts.
-        l7ProxyLocalnets:
-          type: string
-          description: The Hub's L7 proxy localnets, if set.
-        l7ProxyDnsNameservers:
-          type: string
-          description: The Hub's L7 proxy dns nameservers, if set explicitly. Otherwise, defaults to the host VM's.
-        l7ProxyWhitelist:
-          type: string
-          description: The Hub's L7 proxy whitelist, if set. If not set, all endpoints are allowed.
-        l7ProxyMaximumMemoryMb:
-          type: number
-          description: The Hub's L7 proxy maximum memory in MB, if set.
-        enabled:
-          type: boolean
-          description: Whether the Hub is enabled. When disabled, Hub Connectors are disabled but the SSM and ECS Agents continue to await commands.
-        status:
-          description: The Hub's status. Only present on the list endpoint if include=status is passed. Not present when Hub info is returned on Connectors endpoints.
-          $ref: '#/components/schemas/HubStatusDto'
-        host:
-          $ref: '#/components/schemas/HubHostDto'
-        updatedAt:
-          format: date-time
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        activationExpiresAt:
-          description: The time at which the Hub's activation will expire. 24 hours after creation.
-          format: date-time
-          type: string
-        ssmInstanceId:
-          description: The Hub's AWS Systems Manager instance id, if the Hub has been installed.
-          type: string
-        ecsContainerInstanceArn:
-          description: The Hub's AWS ECS container instance ARN, if the Hub has been installed.
-          type: string
-      required:
-      - id
-      - name
-      - orgSlug
-      - l7ProxyForwardPort
-      - l7ProxyReverseHttpPort
-      - l7ProxyReverseHttpsPort
-      - l7ProxySocatPort
-      - l7ProxyLocalnets
-      - l7ProxyMaximumMemoryMb
-      - enabled
-      - host
-      - updatedAt
-      - createdAt
-      - activationExpiresAt
-    ConnectorsResponse:
-      type: object
-      description: A list of Connectors
-      properties:
-        connectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConnectorDto'
-      required:
-      - connectors
     ConnectorUiDto:
       type: object
       properties:
@@ -1191,6 +904,29 @@ components:
             - $ref: '#/components/schemas/ConnectorCustomRouteUiComponentDto'
       required:
       - components
+    ConnectorsResponse:
+      type: object
+      description: A list of Connectors
+      properties:
+        connectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConnectorDto'
+      required:
+      - connectors
+    LabelDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        value:
+          type: string
+      required:
+      - id
+      - name
+      - value
     ConnectorDetailsDto:
       type: object
       description: Details of a single Connector.
@@ -1296,107 +1032,150 @@ components:
       - lastSeenAt
       - updatedAt
       - createdAt
-    ConnectorCustomRouteUiComponentDto:
+    ConnectorDto:
       type: object
+      description: Details of a single Connector
       properties:
-        type:
-          type: string
-          enum:
-          - custom
-        trigger:
-          type: string
-          enum:
-          - route
-        route:
-          type: string
-        component:
-          type: string
-      required:
-      - type
-      - trigger
-      - route
-      - component
-    ArtifactDetailsDto:
-      type: object
-      description: This is the detailed version of the ArtifactDto. Includes dynamic fields from the artifact's manifest, so not all response keys are listed here.
-      properties:
-        namespace:
-          type: string
-        slug:
-          type: string
-        version:
+        id:
+          description: The Connector's id.
           type: string
         name:
+          description: The Connector's name.
+          type: string
+        orgSlug:
+          description: The organization slug that the Connector belongs to.
           type: string
         description:
+          description: The Connector's description.
           type: string
-        sourceType:
-          type: string
-        ui:
-          $ref: '#/components/schemas/ConnectorUiDto'
-      required:
-      - namespace
-      - slug
-      - version
-      - manifest
-      - name
-      - description
-      - sourceType
-      - ui
-    ConnectorCustomConfigUiComponentDto:
-      type: object
-      properties:
-        type:
+        artifact:
+          $ref: '#/components/schemas/ArtifactDto'
+        hostType:
+          description: The type of host the Connector is running on.
           type: string
           enum:
-          - custom
-        trigger:
+          - cloud
+          - hub
+        hub:
+          $ref: '#/components/schemas/HubDto'
+        metadata:
+          type: object
+        tags:
+          type: array
+          items:
+            type: string
+        commandQueue:
+          description: The ARN of the Connector's command queue.
+          type: string
+        clusterArn:
+          description: The ARN of the ECS cluster the Connector is running in.
+          type: string
+        taskDefinitionArn:
+          description: The ARN of the ECS task definition the Connector is running.
+          type: string
+        health:
+          description: The health status of the Connector. N/A indicates the Connector has never reported health.
           type: string
           enum:
-          - configuration
-        component:
+          - HEALTHY
+          - WARNING
+          - CRITICAL
+          - N/A
+        healthErrorCode:
+          description: The error code of the Connector's health status, if unhealthy. Defined by each Connector and used to display an error message in the UI.
+          type: string
+        operatingStatus:
+          description: The desired operating status of the Connector. RUNNING means the Connector is fully working; IDLE means the Connector software is running and awaiting commands, but is not performing its main (Connector-defined) work yet; DISABLED means the software is not running at all.
+          type: string
+          enum:
+          - IDLE
+          - RUNNING
+          - DISABLED
+        networkStatus:
+          description: The network status of the Connector.
+          type: string
+          enum:
+          - Online
+          - Offline
+        config:
+          description: The Connector's current configuration, schema varies per Connector.
+          type: object
+        lastSeenAt:
+          description: The last time the Connector was seen by the platform.
+          format: date-time
+          type: string
+        updatedAt:
+          description: The last time the Connector's details were updated.
+          format: date-time
+          type: string
+        createdAt:
+          description: The time the Connector was created.
+          format: date-time
           type: string
       required:
-      - type
-      - trigger
-      - component
-    ArtifactDto:
-      type: object
-      properties:
-        namespace:
-          type: string
-        slug:
-          type: string
-        version:
-          type: string
-      required:
-      - namespace
-      - slug
-      - version
-      - manifest
-    ConnectorMetricDto:
-      type: object
-      description: A set of metric values reported by a Connector.
-      properties:
-        name:
-          type: string
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricTimeValueDto'
-      required:
+      - id
       - name
-      - values
-    GetConnectorMetricsDto:
+      - orgSlug
+      - artifact
+      - hostType
+      - metadata
+      - tags
+      - commandQueue
+      - clusterArn
+      - taskDefinitionArn
+      - health
+      - operatingStatus
+      - networkStatus
+      - lastSeenAt
+      - updatedAt
+      - createdAt
+    ConnectorFileDto:
       type: object
-      description: The set of metrics reported by the Connector.
+      description: A file reported by a Connector.
       properties:
-        metrics:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConnectorMetricDto'
+        id:
+          type: string
+          description: The file's id.
+        uniqueExternalId:
+          type: string
+          description: The file's unique external id, used by Connectors to deduplicate external files.
+        filepath:
+          type: string
+          description: The file's path.
+        status:
+          type: string
+          description: The file's status, as reported by the Connector. This reflects the Connector's own workflow to upload files, not the platform's processing of those files.
+          enum:
+          - PENDING
+          - PROCESSING
+          - SKIPPED
+          - SUCCESS
+          - ERROR
+        metadata:
+          type: object
+        errorCount:
+          type: number
+          description: The number of times the file has errored during upload. After 5 errors, the Connector will stop attempting to retry this file.
+        errorMessage:
+          type: string
+          description: The last error message reported by the Connector for this file.
+        updatedAt:
+          format: date-time
+          type: string
+          description: The last time the file's details were updated.
+        createdAt:
+          format: date-time
+          type: string
+          description: The time the file was created.
       required:
-      - metrics
+      - id
+      - uniqueExternalId
+      - filepath
+      - status
+      - metadata
+      - errorCount
+      - updatedAt
+      - createdAt
     GetConnectorFileStatsDto:
       type: object
       description: The file stats reported by a Connector.
@@ -1426,40 +1205,230 @@ components:
       - processing
       - error
       - skipped
-    Key:
+    ArtifactDetailsDto:
       type: object
+      description: This is the detailed version of the ArtifactDto. Includes dynamic fields from the artifact's manifest, so not all response keys are listed here.
       properties:
-        type:
-          type: string
         namespace:
-          $ref: '#/components/schemas/ArtifactNamespace'
+          type: string
         slug:
           type: string
         version:
           type: string
+        name:
+          type: string
+        description:
+          type: string
+        sourceType:
+          type: string
+        ui:
+          $ref: '#/components/schemas/ConnectorUiDto'
       required:
-      - type
       - namespace
       - slug
       - version
-      example:
-        type: ids
-        namespace: common
-        slug: akta
-        version: v1.1.0
+      - manifest
+      - name
+      - description
+      - sourceType
+      - ui
+    HubHostDto:
+      type: object
+      properties:
+        ipAddress:
+          type: string
+          description: The Hub's IP address.
+        hostName:
+          type: string
+          description: The Hub's host name.
+        platformName:
+          type: string
+          description: The Hub's operating system name.
+        platformVersion:
+          type: string
+          description: The Hub's operating system version.
+      required:
+      - ipAddress
+      - hostName
+      - platformName
+      - platformVersion
+    ConnectorGeneratedConfigUiComponentDto:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - generated
+        trigger:
+          type: string
+          enum:
+          - configuration
+        config:
+          type: array
+          items:
+            type: string
+      required:
+      - type
+      - trigger
+      - config
+    ConnectorCustomRouteUiComponentDto:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - custom
+        trigger:
+          type: string
+          enum:
+          - route
+        route:
+          type: string
+        component:
+          type: string
+      required:
+      - type
+      - trigger
+      - route
+      - component
+    ConnectorMetricDto:
+      type: object
+      description: A set of metric values reported by a Connector.
+      properties:
+        name:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricTimeValueDto'
+      required:
+      - name
+      - values
+    ConnectorCustomConfigUiComponentDto:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - custom
+        trigger:
+          type: string
+          enum:
+          - configuration
+        component:
+          type: string
+      required:
+      - type
+      - trigger
+      - component
+    HubDto:
+      type: object
+      properties:
+        id:
+          description: The Hub's id.
+          type: string
+        name:
+          description: The Hub's name.
+          type: string
+        orgSlug:
+          description: The organization slug that the Hub belongs to.
+          type: string
+        description:
+          description: The Hub's description.
+          type: string
+        httpProxyHost:
+          description: The Hub's http parent proxy host, if set.
+          type: string
+        httpProxyPort:
+          description: The Hub's http parent proxy port, if set.
+          type: number
+        httpProxyUsername:
+          description: A legacy field from when Hub's parent proxy was configured in the cloud; no longer populated.
+          type: string
+        httpsProxyHost:
+          type: string
+          description: The Hub's https parent proxy host, if set.
+        httpsProxyPort:
+          type: number
+          description: The Hub's https parent proxy port, if set.
+        httpsProxyUsername:
+          type: string
+          description: A legacy field from when Hub's parent proxy was configured in the cloud; no longer populated.
+        noProxy:
+          type: string
+          description: The Hub's no proxy list, if set.
+        l7ProxyForwardPort:
+          type: number
+          description: The Hub's L7 proxy forward port, used by Agents automatically when using this Hub.
+        l7ProxyReverseHttpPort:
+          type: number
+          description: The Hub's L7 proxy reverse http port, configured explicitly on Agents.
+        l7ProxyReverseHttpsPort:
+          type: number
+          description: The Hub's L7 proxy reverse https port, configured explicitly on Agents.
+        l7ProxySocatPort:
+          type: number
+          description: The Hub's L7 proxy socat port. Not used externally, but configurable to avoid port conflicts.
+        l7ProxyReverseMqttPort:
+          type: number
+          description: The Hub's L7 proxy reverse mqtt port, if set, configured explicitly on IoT Agents.
+        l7ProxySocatMqttPort:
+          type: number
+          description: The Hub's L7 proxy socat mqtt port. Not used externally, but configurable to avoid port conflicts.
+        l7ProxyLocalnets:
+          type: string
+          description: The Hub's L7 proxy localnets, if set.
+        l7ProxyDnsNameservers:
+          type: string
+          description: The Hub's L7 proxy dns nameservers, if set explicitly. Otherwise, defaults to the host VM's.
+        l7ProxyWhitelist:
+          type: string
+          description: The Hub's L7 proxy whitelist, if set. If not set, all endpoints are allowed.
+        l7ProxyMaximumMemoryMb:
+          type: number
+          description: The Hub's L7 proxy maximum memory in MB, if set.
+        enabled:
+          type: boolean
+          description: Whether the Hub is enabled. When disabled, Hub Connectors are disabled but the SSM and ECS Agents continue to await commands.
+        status:
+          description: The Hub's status. Only present on the list endpoint if include=status is passed. Not present when Hub info is returned on Connectors endpoints.
+          $ref: '#/components/schemas/HubStatusDto'
+        host:
+          $ref: '#/components/schemas/HubHostDto'
+        updatedAt:
+          format: date-time
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        activationExpiresAt:
+          description: The time at which the Hub's activation will expire. 24 hours after creation.
+          format: date-time
+          type: string
+        ssmInstanceId:
+          description: The Hub's AWS Systems Manager instance id, if the Hub has been installed.
+          type: string
+        ecsContainerInstanceArn:
+          description: The Hub's AWS ECS container instance ARN, if the Hub has been installed.
+          type: string
+      required:
+      - id
+      - name
+      - orgSlug
+      - l7ProxyForwardPort
+      - l7ProxyReverseHttpPort
+      - l7ProxyReverseHttpsPort
+      - l7ProxySocatPort
+      - l7ProxyLocalnets
+      - l7ProxyMaximumMemoryMb
+      - enabled
+      - host
+      - updatedAt
+      - createdAt
+      - activationExpiresAt
     ArtifactNamespace:
       type: string
       pattern: ^(common|(private|client)-).*$
-    SupportedPlatformVersion:
-      type: object
-      nullable: true
-      properties:
-        minPlatformVersion:
-          type: string
-          nullable: false
-        maxPlatformVersion:
-          type: string
-          nullable: true
     ArtifactObjectBase:
       type: object
       properties:
@@ -1493,6 +1462,69 @@ components:
       - version
       - createdAt
       - lastUpdatedAt
+    LabelList:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          value:
+            type: string
+        required:
+        - name
+        - value
+        additionalProperties: false
+      example:
+      - name: label1
+        value: value1
+      - name: another-label
+        value: another-value
+    Key:
+      type: object
+      properties:
+        type:
+          type: string
+        namespace:
+          $ref: '#/components/schemas/ArtifactNamespace'
+        slug:
+          type: string
+        version:
+          type: string
+      required:
+      - type
+      - namespace
+      - slug
+      - version
+      example:
+        type: ids
+        namespace: common
+        slug: akta
+        version: v1.1.0
+    Relationships:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        taskScripts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        protocols:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        connectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+      additionalProperties: false
+    ConnectorObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ConnectorObject'
     ConnectorFileSlug:
       type: string
       enum:
@@ -1531,48 +1563,16 @@ components:
         - v1.3.0
         - v1.2.0
         - v1.0.0
-    LabelList:
-      type: array
-      items:
-        type: object
-        properties:
-          name:
-            type: string
-          value:
-            type: string
-        required:
-        - name
-        - value
-        additionalProperties: false
-      example:
-      - name: label1
-        value: value1
-      - name: another-label
-        value: another-value
-    ConnectorObjectList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ConnectorObject'
-    Relationships:
+    SupportedPlatformVersion:
       type: object
+      nullable: true
       properties:
-        ids:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        taskScripts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        protocols:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        connectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-      additionalProperties: false
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
   parameters:
     ArtifactSlug:
       description: Artifact slug
@@ -1582,6 +1582,14 @@ components:
       schema:
         type: string
       example: demo-slug
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
     ValueQuery:
       name: value
       in: query
@@ -1589,6 +1597,50 @@ components:
       required: true
       schema:
         type: string
+    ConnectorFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within a Connector
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/ConnectorFileSlug'
+      example: build
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    ArtifactNamespaceTypeQuery:
+      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
+      name: namespace_type
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - common
+        - client
+        - private
+      example: client
+    ArtifactVersion:
+      description: Artifact version
+      name: version
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
+      example: v1.0.0
     LimitQuery:
       name: limit
       in: query
@@ -1605,65 +1657,7 @@ components:
       schema:
         type: boolean
       example: true
-    ConnectorFileSlugParam:
-      name: fileSlug
-      description: File slug corresponding to file within a Connector
-      required: true
-      in: path
-      schema:
-        $ref: '#/components/schemas/ConnectorFileSlug'
-      example: build
-    ArtifactNamespaceTypeQuery:
-      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
-      name: namespace_type
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-        - common
-        - client
-        - private
-      example: client
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
-      in: path
-      name: namespace
-      required: true
-      schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
-    DownloadQuery:
-      name: download
-      in: query
-      description: If set to true, return a download url
-      required: false
-      schema:
-        type: boolean
-    ArtifactVersion:
-      description: Artifact version
-      name: version
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
-      example: v1.0.0
   responses:
-    200ConnectorObjectList:
-      description: Successfully fetched ConnectorObject list
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ConnectorObjectList'
     404Any:
       description: Not found or not visible to user
       content:
@@ -1672,6 +1666,24 @@ components:
           example:
             error: Not Found
             message: Subscription not found
+    200ConnectorObjectList:
+      description: Successfully fetched ConnectorObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConnectorObjectList'
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
+    200ConnectorObject:
+      description: Successfully fetched ConnectorObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConnectorObject'
     400Any:
       description: Incorrect input provided
       content:
@@ -1680,24 +1692,14 @@ components:
           example:
             error: Bad Request
             message: Invalid parameters provided.
-    200ConnectorObject:
-      description: Successfully fetched ConnectorObject
+    200ConnectorFileSlugList:
+      description: Successfully fetched available Connector file slugs
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ConnectorObject'
-    200Labels:
-      description: Successfully fetched Labels
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/LabelList'
-    200Relationships:
-      description: Successfully fetched Relationships
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Relationships'
+            type: array
+            items:
+              $ref: '#/components/schemas/ConnectorFileSlug'
     200File:
       description: Successfully fetched file
       content:
@@ -1728,14 +1730,12 @@ components:
                 * item 2
 
                 * item 3'
-    200ConnectorFileSlugList:
-      description: Successfully fetched available Connector file slugs
+    200Relationships:
+      description: Successfully fetched Relationships
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ConnectorFileSlug'
+            $ref: '#/components/schemas/Relationships'
   securitySchemes:
     token:
       type: apiKey
