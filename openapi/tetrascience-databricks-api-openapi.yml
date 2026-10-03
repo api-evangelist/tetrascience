@@ -78,29 +78,6 @@ paths:
         '404':
           $ref: '#/components/responses/404Any'
 components:
-  schemas:
-    DatabricksClusterObject:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    DatabricksClusterPolicy:
-      type: object
-      required:
-      - policyId
-      - name
-      properties:
-        policyId:
-          type: string
-          description: Canonical unique identifier for the cluster policy
-        name:
-          type: string
-          description: Display name of the cluster policy
-        description:
-          type: string
-          description: Description of the cluster policy
   responses:
     401Any:
       description: Unauthorized
@@ -126,6 +103,29 @@ components:
           example:
             error: Not Found
             message: Subscription not found
+  schemas:
+    DatabricksClusterPolicy:
+      type: object
+      required:
+      - policyId
+      - name
+      properties:
+        policyId:
+          type: string
+          description: Canonical unique identifier for the cluster policy
+        name:
+          type: string
+          description: Display name of the cluster policy
+        description:
+          type: string
+          description: Description of the cluster policy
+    DatabricksClusterObject:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
   securitySchemes:
     token:
       type: apiKey

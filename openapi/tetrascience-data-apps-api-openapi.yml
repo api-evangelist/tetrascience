@@ -669,6 +669,78 @@ paths:
           description: Internal Server Error
 components:
   schemas:
+    DataAppProviderSecret:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        type:
+          type: string
+        required:
+          type: boolean
+        arn:
+          type: string
+        envName:
+          type: string
+    ConnectorKeyValue:
+      type: object
+      required:
+      - key
+      - secure
+      - createdAt
+      - updatedAt
+      properties:
+        key:
+          type: string
+        value: {}
+        secure:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    ExecuteDMLRequest:
+      type: object
+      required:
+      - appId
+      - statement
+      - parameters
+      properties:
+        appId:
+          type: string
+        statement:
+          type: string
+        parameters:
+          type: array
+          items:
+            type: object
+            required:
+            - name
+            - value
+            - type
+            properties:
+              name:
+                type: string
+              value: {}
+              type:
+                type: string
+    DMLResultSchemaColumn:
+      type: object
+      required:
+      - name
+      - position
+      - type
+      properties:
+        name:
+          type: string
+        position:
+          type: integer
+        type:
+          type: string
     DMLResultChunk:
       type: object
       required:
@@ -690,6 +762,61 @@ components:
           items: {}
         rowCount:
           type: integer
+    DataAppConnectorKeyValueKeysResponse:
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            type: string
+    PaginatedDataApp:
+      type: object
+      properties:
+        dataApps:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataApp'
+        count:
+          type: integer
+    DMLResult:
+      type: object
+      required:
+      - chunk
+      - resultSchema
+      - statementId
+      - totalChunks
+      - totalRowCount
+      properties:
+        chunk:
+          $ref: '#/components/schemas/DMLResultChunk'
+        resultSchema:
+          $ref: '#/components/schemas/DMLResultSchema'
+        statementId:
+          type: string
+        totalChunks:
+          type: integer
+        totalRowCount:
+          type: integer
+    SaveDataAppConnectorKeyValuesRequest:
+      type: object
+      required:
+      - values
+      properties:
+        values:
+          type: array
+          items:
+            type: object
+            required:
+            - key
+            - value
+            properties:
+              key:
+                type: string
+                pattern: ^[^,]+$
+                description: Connector key. Commas are not allowed.
+              value: {}
+              secure:
+                type: boolean
     DataApp:
       type: object
       properties:
@@ -802,80 +929,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataAppProvider'
-    ConnectorKeyValuesResponse:
-      type: object
-      properties:
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConnectorKeyValue'
-    SaveDataAppConnectorKeyValuesRequest:
-      type: object
-      required:
-      - values
-      properties:
-        values:
-          type: array
-          items:
-            type: object
-            required:
-            - key
-            - value
-            properties:
-              key:
-                type: string
-                pattern: ^[^,]+$
-                description: Connector key. Commas are not allowed.
-              value: {}
-              secure:
-                type: boolean
-    DataAppConnectorKeyValueKeysResponse:
-      type: object
-      properties:
-        keys:
-          type: array
-          items:
-            type: string
-    ExecuteDMLRequest:
-      type: object
-      required:
-      - appId
-      - statement
-      - parameters
-      properties:
-        appId:
-          type: string
-        statement:
-          type: string
-        parameters:
-          type: array
-          items:
-            type: object
-            required:
-            - name
-            - value
-            - type
-            properties:
-              name:
-                type: string
-              value: {}
-              type:
-                type: string
-    DataAppProviderSecret:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-        type:
-          type: string
-        required:
-          type: boolean
-        arn:
-          type: string
-        envName:
-          type: string
     DataAppProvider:
       type: object
       properties:
@@ -903,15 +956,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataAppProviderSecret'
-    PaginatedDataApp:
-      type: object
-      properties:
-        dataApps:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataApp'
-        count:
-          type: integer
     DMLResultSchema:
       type: object
       required:
@@ -924,57 +968,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DMLResultSchemaColumn'
-    ConnectorKeyValue:
+    ConnectorKeyValuesResponse:
       type: object
-      required:
-      - key
-      - secure
-      - createdAt
-      - updatedAt
       properties:
-        key:
-          type: string
-        value: {}
-        secure:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-    DMLResult:
-      type: object
-      required:
-      - chunk
-      - resultSchema
-      - statementId
-      - totalChunks
-      - totalRowCount
-      properties:
-        chunk:
-          $ref: '#/components/schemas/DMLResultChunk'
-        resultSchema:
-          $ref: '#/components/schemas/DMLResultSchema'
-        statementId:
-          type: string
-        totalChunks:
-          type: integer
-        totalRowCount:
-          type: integer
-    DMLResultSchemaColumn:
-      type: object
-      required:
-      - name
-      - position
-      - type
-      properties:
-        name:
-          type: string
-        position:
-          type: integer
-        type:
-          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConnectorKeyValue'
   securitySchemes:
     token:
       type: apiKey

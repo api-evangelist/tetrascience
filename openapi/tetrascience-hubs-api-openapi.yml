@@ -143,20 +143,111 @@ components:
             $ref: '#/components/schemas/HubDto'
       required:
       - hubs
-    ArtifactDto:
+    HubDto:
       type: object
       properties:
-        namespace:
+        id:
+          description: The Hub's id.
           type: string
-        slug:
+        name:
+          description: The Hub's name.
           type: string
-        version:
+        orgSlug:
+          description: The organization slug that the Hub belongs to.
+          type: string
+        description:
+          description: The Hub's description.
+          type: string
+        httpProxyHost:
+          description: The Hub's http parent proxy host, if set.
+          type: string
+        httpProxyPort:
+          description: The Hub's http parent proxy port, if set.
+          type: number
+        httpProxyUsername:
+          description: A legacy field from when Hub's parent proxy was configured in the cloud; no longer populated.
+          type: string
+        httpsProxyHost:
+          type: string
+          description: The Hub's https parent proxy host, if set.
+        httpsProxyPort:
+          type: number
+          description: The Hub's https parent proxy port, if set.
+        httpsProxyUsername:
+          type: string
+          description: A legacy field from when Hub's parent proxy was configured in the cloud; no longer populated.
+        noProxy:
+          type: string
+          description: The Hub's no proxy list, if set.
+        l7ProxyForwardPort:
+          type: number
+          description: The Hub's L7 proxy forward port, used by Agents automatically when using this Hub.
+        l7ProxyReverseHttpPort:
+          type: number
+          description: The Hub's L7 proxy reverse http port, configured explicitly on Agents.
+        l7ProxyReverseHttpsPort:
+          type: number
+          description: The Hub's L7 proxy reverse https port, configured explicitly on Agents.
+        l7ProxySocatPort:
+          type: number
+          description: The Hub's L7 proxy socat port. Not used externally, but configurable to avoid port conflicts.
+        l7ProxyReverseMqttPort:
+          type: number
+          description: The Hub's L7 proxy reverse mqtt port, if set, configured explicitly on IoT Agents.
+        l7ProxySocatMqttPort:
+          type: number
+          description: The Hub's L7 proxy socat mqtt port. Not used externally, but configurable to avoid port conflicts.
+        l7ProxyLocalnets:
+          type: string
+          description: The Hub's L7 proxy localnets, if set.
+        l7ProxyDnsNameservers:
+          type: string
+          description: The Hub's L7 proxy dns nameservers, if set explicitly. Otherwise, defaults to the host VM's.
+        l7ProxyWhitelist:
+          type: string
+          description: The Hub's L7 proxy whitelist, if set. If not set, all endpoints are allowed.
+        l7ProxyMaximumMemoryMb:
+          type: number
+          description: The Hub's L7 proxy maximum memory in MB, if set.
+        enabled:
+          type: boolean
+          description: Whether the Hub is enabled. When disabled, Hub Connectors are disabled but the SSM and ECS Agents continue to await commands.
+        status:
+          description: The Hub's status. Only present on the list endpoint if include=status is passed. Not present when Hub info is returned on Connectors endpoints.
+          $ref: '#/components/schemas/HubStatusDto'
+        host:
+          $ref: '#/components/schemas/HubHostDto'
+        updatedAt:
+          format: date-time
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        activationExpiresAt:
+          description: The time at which the Hub's activation will expire. 24 hours after creation.
+          format: date-time
+          type: string
+        ssmInstanceId:
+          description: The Hub's AWS Systems Manager instance id, if the Hub has been installed.
+          type: string
+        ecsContainerInstanceArn:
+          description: The Hub's AWS ECS container instance ARN, if the Hub has been installed.
           type: string
       required:
-      - namespace
-      - slug
-      - version
-      - manifest
+      - id
+      - name
+      - orgSlug
+      - l7ProxyForwardPort
+      - l7ProxyReverseHttpPort
+      - l7ProxyReverseHttpsPort
+      - l7ProxySocatPort
+      - l7ProxyLocalnets
+      - l7ProxyMaximumMemoryMb
+      - enabled
+      - host
+      - updatedAt
+      - createdAt
+      - activationExpiresAt
     HubStatusDto:
       type: object
       properties:
@@ -409,6 +500,40 @@ components:
       - proxies
       - metrics
       - health
+    ArtifactDto:
+      type: object
+      properties:
+        namespace:
+          type: string
+        slug:
+          type: string
+        version:
+          type: string
+      required:
+      - namespace
+      - slug
+      - version
+      - manifest
+    HubHostDto:
+      type: object
+      properties:
+        ipAddress:
+          type: string
+          description: The Hub's IP address.
+        hostName:
+          type: string
+          description: The Hub's host name.
+        platformName:
+          type: string
+          description: The Hub's operating system name.
+        platformVersion:
+          type: string
+          description: The Hub's operating system version.
+      required:
+      - ipAddress
+      - hostName
+      - platformName
+      - platformVersion
     HubDetailsDto:
       type: object
       properties:
@@ -508,131 +633,6 @@ components:
       - ssmInstanceId
       - ecsContainerInstanceArn
       - connectors
-    HubDto:
-      type: object
-      properties:
-        id:
-          description: The Hub's id.
-          type: string
-        name:
-          description: The Hub's name.
-          type: string
-        orgSlug:
-          description: The organization slug that the Hub belongs to.
-          type: string
-        description:
-          description: The Hub's description.
-          type: string
-        httpProxyHost:
-          description: The Hub's http parent proxy host, if set.
-          type: string
-        httpProxyPort:
-          description: The Hub's http parent proxy port, if set.
-          type: number
-        httpProxyUsername:
-          description: A legacy field from when Hub's parent proxy was configured in the cloud; no longer populated.
-          type: string
-        httpsProxyHost:
-          type: string
-          description: The Hub's https parent proxy host, if set.
-        httpsProxyPort:
-          type: number
-          description: The Hub's https parent proxy port, if set.
-        httpsProxyUsername:
-          type: string
-          description: A legacy field from when Hub's parent proxy was configured in the cloud; no longer populated.
-        noProxy:
-          type: string
-          description: The Hub's no proxy list, if set.
-        l7ProxyForwardPort:
-          type: number
-          description: The Hub's L7 proxy forward port, used by Agents automatically when using this Hub.
-        l7ProxyReverseHttpPort:
-          type: number
-          description: The Hub's L7 proxy reverse http port, configured explicitly on Agents.
-        l7ProxyReverseHttpsPort:
-          type: number
-          description: The Hub's L7 proxy reverse https port, configured explicitly on Agents.
-        l7ProxySocatPort:
-          type: number
-          description: The Hub's L7 proxy socat port. Not used externally, but configurable to avoid port conflicts.
-        l7ProxyReverseMqttPort:
-          type: number
-          description: The Hub's L7 proxy reverse mqtt port, if set, configured explicitly on IoT Agents.
-        l7ProxySocatMqttPort:
-          type: number
-          description: The Hub's L7 proxy socat mqtt port. Not used externally, but configurable to avoid port conflicts.
-        l7ProxyLocalnets:
-          type: string
-          description: The Hub's L7 proxy localnets, if set.
-        l7ProxyDnsNameservers:
-          type: string
-          description: The Hub's L7 proxy dns nameservers, if set explicitly. Otherwise, defaults to the host VM's.
-        l7ProxyWhitelist:
-          type: string
-          description: The Hub's L7 proxy whitelist, if set. If not set, all endpoints are allowed.
-        l7ProxyMaximumMemoryMb:
-          type: number
-          description: The Hub's L7 proxy maximum memory in MB, if set.
-        enabled:
-          type: boolean
-          description: Whether the Hub is enabled. When disabled, Hub Connectors are disabled but the SSM and ECS Agents continue to await commands.
-        status:
-          description: The Hub's status. Only present on the list endpoint if include=status is passed. Not present when Hub info is returned on Connectors endpoints.
-          $ref: '#/components/schemas/HubStatusDto'
-        host:
-          $ref: '#/components/schemas/HubHostDto'
-        updatedAt:
-          format: date-time
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        activationExpiresAt:
-          description: The time at which the Hub's activation will expire. 24 hours after creation.
-          format: date-time
-          type: string
-        ssmInstanceId:
-          description: The Hub's AWS Systems Manager instance id, if the Hub has been installed.
-          type: string
-        ecsContainerInstanceArn:
-          description: The Hub's AWS ECS container instance ARN, if the Hub has been installed.
-          type: string
-      required:
-      - id
-      - name
-      - orgSlug
-      - l7ProxyForwardPort
-      - l7ProxyReverseHttpPort
-      - l7ProxyReverseHttpsPort
-      - l7ProxySocatPort
-      - l7ProxyLocalnets
-      - l7ProxyMaximumMemoryMb
-      - enabled
-      - host
-      - updatedAt
-      - createdAt
-      - activationExpiresAt
-    HubHostDto:
-      type: object
-      properties:
-        ipAddress:
-          type: string
-          description: The Hub's IP address.
-        hostName:
-          type: string
-          description: The Hub's host name.
-        platformName:
-          type: string
-          description: The Hub's operating system name.
-        platformVersion:
-          type: string
-          description: The Hub's operating system version.
-      required:
-      - ipAddress
-      - hostName
-      - platformName
-      - platformVersion
   securitySchemes:
     token:
       type: apiKey

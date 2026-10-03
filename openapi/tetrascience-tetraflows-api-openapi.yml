@@ -170,7 +170,109 @@ paths:
         '404':
           $ref: '#/components/responses/404Any'
 components:
+  parameters:
+    TetraflowFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within a tetraflow
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/TetraflowFileSlug'
+      example: build
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    ArtifactNamespaceTypeQuery:
+      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
+      name: namespace_type
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - common
+        - client
+        - private
+      example: client
+    ArtifactSlug:
+      description: Artifact slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+      example: demo-slug
+    ArtifactVersion:
+      description: Artifact version
+      name: version
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
+      example: v1.0.0
   schemas:
+    LabelList:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          value:
+            type: string
+        required:
+        - name
+        - value
+        additionalProperties: false
+      example:
+      - name: label1
+        value: value1
+      - name: another-label
+        value: another-value
     ArtifactNamespace:
       type: string
       pattern: ^(common|(private|client)-).*$
@@ -207,28 +309,16 @@ components:
       - version
       - createdAt
       - lastUpdatedAt
-    TetraflowObjectList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TetraflowObject'
-    LabelList:
-      type: array
-      items:
-        type: object
-        properties:
-          name:
-            type: string
-          value:
-            type: string
-        required:
-        - name
-        - value
-        additionalProperties: false
-      example:
-      - name: label1
-        value: value1
-      - name: another-label
-        value: another-value
+    TetraflowFileSlug:
+      type: string
+      enum:
+      - build
+      - manifest
+      - readme
+      - source
+      - protocol
+      - tetraflowYml
+      - generated
     TetraflowObject:
       allOf:
       - $ref: '#/components/schemas/ArtifactObjectBase'
@@ -252,16 +342,6 @@ components:
         otherVersions:
         - v1.0.0
         - v1.0.1
-    TetraflowFileSlug:
-      type: string
-      enum:
-      - build
-      - manifest
-      - readme
-      - source
-      - protocol
-      - tetraflowYml
-      - generated
     SupportedPlatformVersion:
       type: object
       nullable: true
@@ -272,105 +352,17 @@ components:
         maxPlatformVersion:
           type: string
           nullable: true
-  parameters:
-    ArtifactSlug:
-      description: Artifact slug
-      name: slug
-      in: path
-      required: true
-      schema:
-        type: string
-      example: demo-slug
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
-    TetraflowFileSlugParam:
-      name: fileSlug
-      description: File slug corresponding to file within a tetraflow
-      required: true
-      in: path
-      schema:
-        $ref: '#/components/schemas/TetraflowFileSlug'
-      example: build
-    ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
-      in: path
-      name: namespace
-      required: true
-      schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
-    DownloadQuery:
-      name: download
-      in: query
-      description: If set to true, return a download url
-      required: false
-      schema:
-        type: boolean
-    ArtifactNamespaceTypeQuery:
-      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
-      name: namespace_type
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-        - common
-        - client
-        - private
-      example: client
-    ArtifactVersion:
-      description: Artifact version
-      name: version
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
-      example: v1.0.0
-    LimitQuery:
-      name: limit
-      in: query
-      description: The maximum number of results to return
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-    IncludePrereleasesQuery:
-      description: Include prerelease artifacts in search
-      name: include_prereleases
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
+    TetraflowObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TetraflowObject'
   responses:
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
-    200TetraflowObject:
-      description: Successfully fetched TetraflowObject
+    200TetraflowObjectList:
+      description: Successfully fetched TetraflowObject list
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TetraflowObject'
+            $ref: '#/components/schemas/TetraflowObjectList'
     200TetraflowFileSlugList:
       description: Successfully fetched available Tetraflow file slugs
       content:
@@ -379,12 +371,12 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/TetraflowFileSlug'
-    200TetraflowObjectList:
-      description: Successfully fetched TetraflowObject list
+    200TetraflowObject:
+      description: Successfully fetched TetraflowObject
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TetraflowObjectList'
+            $ref: '#/components/schemas/TetraflowObject'
     200Labels:
       description: Successfully fetched Labels
       content:
@@ -399,6 +391,14 @@ components:
           example:
             error: Bad Request
             message: Invalid parameters provided.
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
     200File:
       description: Successfully fetched file
       content:
