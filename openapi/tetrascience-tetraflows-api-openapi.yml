@@ -187,6 +187,18 @@ components:
       schema:
         type: boolean
       example: true
+    ArtifactNamespaceTypeQuery:
+      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
+      name: namespace_type
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - common
+        - client
+        - private
+      example: client
     ValueQuery:
       name: value
       in: query
@@ -194,14 +206,14 @@ components:
       required: true
       schema:
         type: string
-    ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
+    ArtifactSlug:
+      description: Artifact slug
+      name: slug
       in: path
-      name: namespace
       required: true
       schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
+        type: string
+      example: demo-slug
     LimitQuery:
       name: limit
       in: query
@@ -210,6 +222,15 @@ components:
       schema:
         type: integer
         minimum: 1
+    ArtifactVersion:
+      description: Artifact version
+      name: version
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
+      example: v1.0.0
     DownloadQuery:
       name: download
       in: query
@@ -225,36 +246,25 @@ components:
       schema:
         type: boolean
       example: true
-    ArtifactNamespaceTypeQuery:
-      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
-      name: namespace_type
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-        - common
-        - client
-        - private
-      example: client
-    ArtifactSlug:
-      description: Artifact slug
-      name: slug
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
       in: path
+      name: namespace
       required: true
       schema:
-        type: string
-      example: demo-slug
-    ArtifactVersion:
-      description: Artifact version
-      name: version
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
-      example: v1.0.0
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
   schemas:
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
     LabelList:
       type: array
       items:
@@ -273,9 +283,6 @@ components:
         value: value1
       - name: another-label
         value: another-value
-    ArtifactNamespace:
-      type: string
-      pattern: ^(common|(private|client)-).*$
     ArtifactObjectBase:
       type: object
       properties:
@@ -342,21 +349,26 @@ components:
         otherVersions:
         - v1.0.0
         - v1.0.1
-    SupportedPlatformVersion:
-      type: object
-      nullable: true
-      properties:
-        minPlatformVersion:
-          type: string
-          nullable: false
-        maxPlatformVersion:
-          type: string
-          nullable: true
+    ArtifactNamespace:
+      type: string
+      pattern: ^(common|(private|client)-).*$
     TetraflowObjectList:
       type: array
       items:
         $ref: '#/components/schemas/TetraflowObject'
   responses:
+    200TetraflowObject:
+      description: Successfully fetched TetraflowObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TetraflowObject'
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
     200TetraflowObjectList:
       description: Successfully fetched TetraflowObject list
       content:
@@ -371,26 +383,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/TetraflowFileSlug'
-    200TetraflowObject:
-      description: Successfully fetched TetraflowObject
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TetraflowObject'
-    200Labels:
-      description: Successfully fetched Labels
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/LabelList'
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
     404Any:
       description: Not found or not visible to user
       content:
@@ -399,6 +391,14 @@ components:
           example:
             error: Not Found
             message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
     200File:
       description: Successfully fetched file
       content:

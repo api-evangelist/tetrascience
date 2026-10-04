@@ -170,7 +170,101 @@ paths:
         '404':
           $ref: '#/components/responses/404Any'
 components:
+  parameters:
+    AiWorkflowFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within an ai-workflow
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/AiWorkflowFileSlug'
+      example: build
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    ArtifactNamespaceTypeQuery:
+      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
+      name: namespace_type
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - common
+        - client
+        - private
+      example: client
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
+    ArtifactSlug:
+      description: Artifact slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+      example: demo-slug
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    ArtifactVersion:
+      description: Artifact version
+      name: version
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
+      example: v1.0.0
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
   schemas:
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
     LabelList:
       type: array
       items:
@@ -189,17 +283,6 @@ components:
         value: value1
       - name: another-label
         value: another-value
-    ArtifactNamespace:
-      type: string
-      pattern: ^(common|(private|client)-).*$
-    AiWorkflowFileSlug:
-      type: string
-      enum:
-      - build
-      - manifest
-      - readme
-      - source
-      - databricksYml
     ArtifactObjectBase:
       type: object
       properties:
@@ -233,20 +316,14 @@ components:
       - version
       - createdAt
       - lastUpdatedAt
-    AiWorkflowObjectList:
-      type: array
-      items:
-        $ref: '#/components/schemas/AiWorkflowObject'
-    SupportedPlatformVersion:
-      type: object
-      nullable: true
-      properties:
-        minPlatformVersion:
-          type: string
-          nullable: false
-        maxPlatformVersion:
-          type: string
-          nullable: true
+    AiWorkflowFileSlug:
+      type: string
+      enum:
+      - build
+      - manifest
+      - readme
+      - source
+      - databricksYml
     AiWorkflowObject:
       allOf:
       - $ref: '#/components/schemas/ArtifactObjectBase'
@@ -270,119 +347,14 @@ components:
         otherVersions:
         - v0.1.0
         - v0.5.0
-  parameters:
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
+    AiWorkflowObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AiWorkflowObject'
     ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
-      in: path
-      name: namespace
-      required: true
-      schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
-    LimitQuery:
-      name: limit
-      in: query
-      description: The maximum number of results to return
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-    DownloadQuery:
-      name: download
-      in: query
-      description: If set to true, return a download url
-      required: false
-      schema:
-        type: boolean
-    AiWorkflowFileSlugParam:
-      name: fileSlug
-      description: File slug corresponding to file within an ai-workflow
-      required: true
-      in: path
-      schema:
-        $ref: '#/components/schemas/AiWorkflowFileSlug'
-      example: build
-    IncludePrereleasesQuery:
-      description: Include prerelease artifacts in search
-      name: include_prereleases
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ArtifactNamespaceTypeQuery:
-      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
-      name: namespace_type
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-        - common
-        - client
-        - private
-      example: client
-    ArtifactSlug:
-      description: Artifact slug
-      name: slug
-      in: path
-      required: true
-      schema:
-        type: string
-      example: demo-slug
-    ArtifactVersion:
-      description: Artifact version
-      name: version
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
-      example: v1.0.0
+      type: string
+      pattern: ^(common|(private|client)-).*$
   responses:
-    200Labels:
-      description: Successfully fetched Labels
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/LabelList'
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    200AiWorkflowObject:
-      description: Successfully fetched AiWorkflowObject
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AiWorkflowObject'
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
     200AiWorkflowFileSlugList:
       description: Successfully fetched available AiWorkflow file slugs
       content:
@@ -391,12 +363,40 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/AiWorkflowFileSlug'
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
     200AiWorkflowObjectList:
       description: Successfully fetched AiWorkflowObject list
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/AiWorkflowObjectList'
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    200AiWorkflowObject:
+      description: Successfully fetched AiWorkflowObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AiWorkflowObject'
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
     200File:
       description: Successfully fetched file
       content:

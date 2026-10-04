@@ -87,14 +87,6 @@ components:
           example:
             error: Unauthorized
             message: Missing authentication.
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
     404Any:
       description: Not found or not visible to user
       content:
@@ -103,7 +95,22 @@ components:
           example:
             error: Not Found
             message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
   schemas:
+    DatabricksClusterObject:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
     DatabricksClusterPolicy:
       type: object
       required:
@@ -119,13 +126,6 @@ components:
         description:
           type: string
           description: Description of the cluster policy
-    DatabricksClusterObject:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
   securitySchemes:
     token:
       type: apiKey

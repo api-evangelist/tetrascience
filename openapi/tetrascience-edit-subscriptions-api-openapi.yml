@@ -147,39 +147,6 @@ paths:
         '501':
           $ref: '#/components/responses/501Any'
 components:
-  responses:
-    501Any:
-      description: Internal error managing rules on eventbridge
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Internal Eventbridge Error
-            message: Internal error managing rules on eventbridge
-    500Any:
-      description: Internal error managing rules on eventbridge
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Internal DB Error
-            message: Internal error with teh database
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
   schemas:
     EventbridgeWriteRequest:
       allOf:
@@ -403,6 +370,37 @@ components:
               - completed
           required:
           - status
+    EventbridgeEventType:
+      type: string
+      enum:
+      - tetrascience.file.RegistrationSucceeded.v1
+      - tetrascience.file.RegistrationFailed.v1
+      - tetrascience.file.SearchIndexingSucceeded.v1
+      - tetrascience.file.SearchIndexingFailed.v1
+      - tetrascience.file.SQLIndexingSucceeded.v1
+      - tetrascience.file.SQLIndexingFailed.v1
+      - tetrascience.file.WorkflowCreated.v1
+      - tetrascience.file.WorkflowInProgress.v1
+      - tetrascience.file.WorkflowSucceeded.v1
+      - tetrascience.file.WorkflowFailed.v1
+      - tetrascience.file.WorkflowCanceled.v1
+      - tetrascience.agents.common.heartbeat.v1
+      - tetrascience.agents.common.agentStarted.v1
+      - tetrascience.agents.common.agentStopped.v1
+      - tetrascience.agents.filelog.archiveFileDeleteCompleted.v1
+      - tetrascience.agents.filelog.archiveFileDeleteFailed.v1
+      - tetrascience.agents.filelog.fileArchiveCompleted.v1
+      - tetrascience.agents.filelog.fileArchiveFailed.v1
+      - tetrascience.agents.filelog.fileArchiveSkipped.v1
+      - tetrascience.agents.filelog.fileArchiveStarted.v1
+      - tetrascience.agents.filelog.fileScanned.v1
+      - tetrascience.agents.filelog.fileUploadCompleted.v1
+      - tetrascience.agents.filelog.fileUploadFailed.v1
+      - tetrascience.agents.filelog.fileUploadStarted.v1
+      - tetrascience.agents.filelog.pathValidationFailed.v1
+      - tetrascience.agents.filelog.scanCompleted.v1
+      - tetrascience.agents.filelog.scanError.v1
+      - tetrascience.agents.filelog.scanStarted.v1
     EventbridgeSubscriptionUpdate:
       type: object
       properties:
@@ -455,37 +453,6 @@ components:
           - BUS
         enabled:
           type: boolean
-    EventbridgeEventType:
-      type: string
-      enum:
-      - tetrascience.file.RegistrationSucceeded.v1
-      - tetrascience.file.RegistrationFailed.v1
-      - tetrascience.file.SearchIndexingSucceeded.v1
-      - tetrascience.file.SearchIndexingFailed.v1
-      - tetrascience.file.SQLIndexingSucceeded.v1
-      - tetrascience.file.SQLIndexingFailed.v1
-      - tetrascience.file.WorkflowCreated.v1
-      - tetrascience.file.WorkflowInProgress.v1
-      - tetrascience.file.WorkflowSucceeded.v1
-      - tetrascience.file.WorkflowFailed.v1
-      - tetrascience.file.WorkflowCanceled.v1
-      - tetrascience.agents.common.heartbeat.v1
-      - tetrascience.agents.common.agentStarted.v1
-      - tetrascience.agents.common.agentStopped.v1
-      - tetrascience.agents.filelog.archiveFileDeleteCompleted.v1
-      - tetrascience.agents.filelog.archiveFileDeleteFailed.v1
-      - tetrascience.agents.filelog.fileArchiveCompleted.v1
-      - tetrascience.agents.filelog.fileArchiveFailed.v1
-      - tetrascience.agents.filelog.fileArchiveSkipped.v1
-      - tetrascience.agents.filelog.fileArchiveStarted.v1
-      - tetrascience.agents.filelog.fileScanned.v1
-      - tetrascience.agents.filelog.fileUploadCompleted.v1
-      - tetrascience.agents.filelog.fileUploadFailed.v1
-      - tetrascience.agents.filelog.fileUploadStarted.v1
-      - tetrascience.agents.filelog.pathValidationFailed.v1
-      - tetrascience.agents.filelog.scanCompleted.v1
-      - tetrascience.agents.filelog.scanError.v1
-      - tetrascience.agents.filelog.scanStarted.v1
     EventbridgeExternalSubscriptionCreate:
       type: object
       properties:
@@ -544,6 +511,39 @@ components:
       - targetEndpoint
       - targetType
       - enabled
+  responses:
+    500Any:
+      description: Internal error managing rules on eventbridge
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Internal DB Error
+            message: Internal error with teh database
+    501Any:
+      description: Internal error managing rules on eventbridge
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Internal Eventbridge Error
+            message: Internal error managing rules on eventbridge
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
   securitySchemes:
     token:
       type: apiKey

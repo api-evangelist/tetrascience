@@ -192,39 +192,6 @@ paths:
         '501':
           $ref: '#/components/responses/501Any'
 components:
-  responses:
-    501Any:
-      description: Internal error managing rules on eventbridge
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Internal Eventbridge Error
-            message: Internal error managing rules on eventbridge
-    500Any:
-      description: Internal error managing rules on eventbridge
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Internal DB Error
-            message: Internal error with teh database
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
   schemas:
     EventbridgeWriteRequest:
       allOf:
@@ -558,6 +525,39 @@ components:
       - targetEndpoint
       - targetType
       - enabled
+  responses:
+    500Any:
+      description: Internal error managing rules on eventbridge
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Internal DB Error
+            message: Internal error with teh database
+    501Any:
+      description: Internal error managing rules on eventbridge
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Internal Eventbridge Error
+            message: Internal error managing rules on eventbridge
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
   securitySchemes:
     token:
       type: apiKey

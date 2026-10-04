@@ -331,10 +331,16 @@ paths:
           $ref: '#/components/responses/404Any'
 components:
   schemas:
-    SchemaObjectList:
-      type: array
-      items:
-        $ref: '#/components/schemas/SchemaObject'
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
     LabelList:
       type: array
       items:
@@ -353,41 +359,6 @@ components:
         value: value1
       - name: another-label
         value: another-value
-    ArtifactNamespace:
-      type: string
-      pattern: ^(common|(private|client)-).*$
-    SchemaFileSlug:
-      type: string
-      enum:
-      - build
-      - manifest
-      - readme
-      - source
-      - schema
-      - expected
-    SchemaObject:
-      allOf:
-      - $ref: '#/components/schemas/ArtifactObjectBase'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - schema
-        required:
-        - type
-      example:
-        type: schema
-        namespace: private-test
-        slug: tabular
-        version: v0.5.0
-        createdAt: '2024-04-25T15:15:34.269Z'
-        lastUpdatedAt: '2023-04-25T17:15:34.269Z'
-        name: Tabular schema
-        description: A tabular schema
-        otherVersions:
-        - v0.1.0
-        - v0.5.0
     ArtifactObjectBase:
       type: object
       properties:
@@ -421,51 +392,52 @@ components:
       - version
       - createdAt
       - lastUpdatedAt
-    SupportedPlatformVersion:
-      type: object
-      nullable: true
-      properties:
-        minPlatformVersion:
-          type: string
-          nullable: false
-        maxPlatformVersion:
-          type: string
-          nullable: true
+    SchemaObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SchemaObject'
+    SchemaFileSlug:
+      type: string
+      enum:
+      - build
+      - manifest
+      - readme
+      - source
+      - schema
+      - expected
+    ArtifactNamespace:
+      type: string
+      pattern: ^(common|(private|client)-).*$
+    SchemaObject:
+      allOf:
+      - $ref: '#/components/schemas/ArtifactObjectBase'
+      - type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - schema
+        required:
+        - type
+      example:
+        type: schema
+        namespace: private-test
+        slug: tabular
+        version: v0.5.0
+        createdAt: '2024-04-25T15:15:34.269Z'
+        lastUpdatedAt: '2023-04-25T17:15:34.269Z'
+        name: Tabular schema
+        description: A tabular schema
+        otherVersions:
+        - v0.1.0
+        - v0.5.0
   responses:
-    200SchemaObjectList:
-      description: Successfully fetched SchemaObject list
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SchemaObjectList'
     200SchemaObject:
       description: Successfully fetched SchemaObject
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/SchemaObject'
-    200Labels:
-      description: Successfully fetched Labels
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/LabelList'
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
     200SchemaFileSlugList:
       description: Successfully fetched available Schema file slugs
       content:
@@ -474,6 +446,34 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/SchemaFileSlug'
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+    200SchemaObjectList:
+      description: Successfully fetched SchemaObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SchemaObjectList'
     200File:
       description: Successfully fetched file
       content:
@@ -513,52 +513,6 @@ components:
       schema:
         type: boolean
       example: true
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
-    ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
-      in: path
-      name: namespace
-      required: true
-      schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
-    LimitQuery:
-      name: limit
-      in: query
-      description: The maximum number of results to return
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-    DownloadQuery:
-      name: download
-      in: query
-      description: If set to true, return a download url
-      required: false
-      schema:
-        type: boolean
-    SchemaFileSlugParam:
-      name: fileSlug
-      description: File slug corresponding to file within a schema
-      required: true
-      in: path
-      schema:
-        $ref: '#/components/schemas/SchemaFileSlug'
-      example: build
-    IncludePrereleasesQuery:
-      description: Include prerelease artifacts in search
-      name: include_prereleases
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
     ArtifactNamespaceTypeQuery:
       description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
       name: namespace_type
@@ -571,6 +525,21 @@ components:
         - client
         - private
       example: client
+    SchemaFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within a schema
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/SchemaFileSlug'
+      example: build
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
     ArtifactSlug:
       description: Artifact slug
       name: slug
@@ -579,6 +548,14 @@ components:
       schema:
         type: string
       example: demo-slug
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        minimum: 1
     ArtifactVersion:
       description: Artifact version
       name: version
@@ -588,6 +565,29 @@ components:
         type: string
         pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
       example: v1.0.0
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
   securitySchemes:
     token:
       type: apiKey

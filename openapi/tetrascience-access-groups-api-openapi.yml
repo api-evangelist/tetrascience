@@ -245,68 +245,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    CreateUpdateAccessGroup:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the group.
-          maxLength: 100
-          minLength: 1
-        description:
-          type: string
-          nullable: true
-          description: The description of the group.
-          maxLength: 1000
-        enabled:
-          type: boolean
-          description: Indicates whether the group is enabled or not.
-        rules:
-          $ref: '#/components/schemas/AttributeRuleConfiguration'
-        ssoGroupMappings:
-          type: array
-          default: []
-          items:
-            type: string
-            description: The SSO group name.
-      required:
-      - name
-      - enabled
-      - rules
-    AttributeRuleConfiguration:
-      additionalProperties:
-        $ref: '#/components/schemas/AttributeRule'
-      type: object
-    FilterMetadatumConfig:
-      properties:
-        id:
-          type: string
-        operator:
-          type: string
-          enum:
-          - contains
-          - is
-          - exists
-          - does not exist
-        value:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: string
-          - type: boolean
-        type:
-          enum:
-          - metadatum
-          type: string
-        metadatum:
-          type: string
-      required:
-      - operator
-      - type
-      - metadatum
-      additionalProperties: false
-      type: object
     AccessGroup:
       type: object
       properties:
@@ -350,136 +288,6 @@ components:
       - enabled
       - rules
       - createdAt
-    FilterAllowAllConfig:
-      properties:
-        type:
-          enum:
-          - allow-all
-          type: string
-      required:
-      - type
-      additionalProperties: false
-      type: object
-    AccessGroupSummary:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique identifier of the group.
-          format: uuid
-        name:
-          type: string
-          description: The name of the group.
-        description:
-          type: string
-          nullable: true
-          description: The description of the group.
-      required:
-      - id
-      - name
-    FilterTagConfig:
-      properties:
-        id:
-          type: string
-        operator:
-          type: string
-          enum:
-          - has a tag that is
-          - does not have a tag that is
-        value:
-          type: boolean
-        type:
-          enum:
-          - tag
-          type: string
-        tag:
-          type: string
-      required:
-      - operator
-      - type
-      - tag
-      additionalProperties: false
-      type: object
-    AttributeRule:
-      properties:
-        filters:
-          anyOf:
-          - $ref: '#/components/schemas/FilterOrConfig'
-          - $ref: '#/components/schemas/FilterAndConfig'
-          - $ref: '#/components/schemas/FilterAllowAllConfig'
-      required:
-      - filters
-      additionalProperties: false
-      type: object
-    FilterSourceNameConfig:
-      properties:
-        id:
-          type: string
-        operator:
-          type: string
-          enum:
-          - is
-          - is not
-        value:
-          items:
-            type: string
-          type: array
-        type:
-          enum:
-          - source-name
-          type: string
-      required:
-      - operator
-      - type
-      additionalProperties: false
-      type: object
-    FilterConfig:
-      anyOf:
-      - $ref: '#/components/schemas/FilterOrConfig'
-      - $ref: '#/components/schemas/FilterAndConfig'
-      - $ref: '#/components/schemas/FilterLeaf'
-    FilterTagNameConfig:
-      properties:
-        id:
-          type: string
-        operator:
-          type: string
-          enum:
-          - has one that begins with
-          - has one that ends with
-        value:
-          type: string
-        type:
-          enum:
-          - tag-name
-          type: string
-      required:
-      - operator
-      - type
-      additionalProperties: false
-      type: object
-    FilterIDSTypeConfig:
-      properties:
-        id:
-          type: string
-        operator:
-          type: string
-          enum:
-          - is
-          - is not
-        value:
-          items:
-            type: string
-          type: array
-        type:
-          enum:
-          - ids-type
-          type: string
-      required:
-      - operator
-      - type
-      additionalProperties: false
-      type: object
     FilterCategoryConfig:
       properties:
         id:
@@ -506,84 +314,27 @@ components:
       - type
       additionalProperties: false
       type: object
-    FilterCreatedAtConfig:
+    FilterTagConfig:
       properties:
         id:
           type: string
         operator:
           type: string
           enum:
-          - between
-          - greater than
-          - greater than or equal to
-          - less than
-          - less than or equal to
+          - has a tag that is
+          - does not have a tag that is
         value:
-          type: string
+          type: boolean
         type:
           enum:
-          - created-at
+          - tag
+          type: string
+        tag:
           type: string
       required:
       - operator
       - type
-      additionalProperties: false
-      type: object
-    FilterFilePathConfig:
-      properties:
-        id:
-          type: string
-        operator:
-          type: string
-          enum:
-          - contains
-          - does not contain
-          - is
-          - is not
-          - begins with
-          - ends with
-        value:
-          type: string
-        type:
-          enum:
-          - file-path
-          type: string
-      required:
-      - operator
-      - type
-      additionalProperties: false
-      title: FilterFilePathConfig
-      type: object
-    FilterOrConfig:
-      properties:
-        id:
-          type: string
-        value:
-          items:
-            $ref: '#/components/schemas/FilterConfig'
-          type: array
-        type:
-          enum:
-          - or
-          type: string
-      required:
-      - type
-      additionalProperties: false
-      type: object
-    FilterAndConfig:
-      properties:
-        id:
-          type: string
-        value:
-          items:
-            $ref: '#/components/schemas/FilterConfig'
-          type: array
-        type:
-          enum:
-          - and
-          type: string
-      required:
-      - type
+      - tag
       additionalProperties: false
       type: object
     FilterSourceTypeConfig:
@@ -608,6 +359,105 @@ components:
       - type
       additionalProperties: false
       type: object
+    FilterIDSConfig:
+      properties:
+        id:
+          type: string
+        operator:
+          type: string
+          enum:
+          - is
+          - is not
+        value:
+          items:
+            type: string
+          type: array
+        type:
+          enum:
+          - ids
+          type: string
+      required:
+      - operator
+      - type
+      additionalProperties: false
+      type: object
+    AttributeRule:
+      properties:
+        filters:
+          anyOf:
+          - $ref: '#/components/schemas/FilterOrConfig'
+          - $ref: '#/components/schemas/FilterAndConfig'
+          - $ref: '#/components/schemas/FilterAllowAllConfig'
+      required:
+      - filters
+      additionalProperties: false
+      type: object
+    CreateUpdateAccessGroup:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the group.
+          maxLength: 100
+          minLength: 1
+        description:
+          type: string
+          nullable: true
+          description: The description of the group.
+          maxLength: 1000
+        enabled:
+          type: boolean
+          description: Indicates whether the group is enabled or not.
+        rules:
+          $ref: '#/components/schemas/AttributeRuleConfiguration'
+        ssoGroupMappings:
+          type: array
+          default: []
+          items:
+            type: string
+            description: The SSO group name.
+      required:
+      - name
+      - enabled
+      - rules
+    FilterAndConfig:
+      properties:
+        id:
+          type: string
+        value:
+          items:
+            $ref: '#/components/schemas/FilterConfig'
+          type: array
+        type:
+          enum:
+          - and
+          type: string
+      required:
+      - type
+      additionalProperties: false
+      type: object
+    FilterSourceNameConfig:
+      properties:
+        id:
+          type: string
+        operator:
+          type: string
+          enum:
+          - is
+          - is not
+        value:
+          items:
+            type: string
+          type: array
+        type:
+          enum:
+          - source-name
+          type: string
+      required:
+      - operator
+      - type
+      additionalProperties: false
+      type: object
     FilterLeaf:
       anyOf:
       - $ref: '#/components/schemas/FilterCategoryConfig'
@@ -622,6 +472,175 @@ components:
       - $ref: '#/components/schemas/FilterSourceTypeConfig'
       - $ref: '#/components/schemas/FilterTagConfig'
       - $ref: '#/components/schemas/FilterTagNameConfig'
+    FilterConfig:
+      anyOf:
+      - $ref: '#/components/schemas/FilterOrConfig'
+      - $ref: '#/components/schemas/FilterAndConfig'
+      - $ref: '#/components/schemas/FilterLeaf'
+    FilterMetadatumConfig:
+      properties:
+        id:
+          type: string
+        operator:
+          type: string
+          enum:
+          - contains
+          - is
+          - exists
+          - does not exist
+        value:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: string
+          - type: boolean
+        type:
+          enum:
+          - metadatum
+          type: string
+        metadatum:
+          type: string
+      required:
+      - operator
+      - type
+      - metadatum
+      additionalProperties: false
+      type: object
+    FilterCreatedAtConfig:
+      properties:
+        id:
+          type: string
+        operator:
+          type: string
+          enum:
+          - between
+          - greater than
+          - greater than or equal to
+          - less than
+          - less than or equal to
+        value:
+          type: string
+        type:
+          enum:
+          - created-at
+          type: string
+      required:
+      - operator
+      - type
+      additionalProperties: false
+      type: object
+    FilterOrConfig:
+      properties:
+        id:
+          type: string
+        value:
+          items:
+            $ref: '#/components/schemas/FilterConfig'
+          type: array
+        type:
+          enum:
+          - or
+          type: string
+      required:
+      - type
+      additionalProperties: false
+      type: object
+    FilterIDSTypeConfig:
+      properties:
+        id:
+          type: string
+        operator:
+          type: string
+          enum:
+          - is
+          - is not
+        value:
+          items:
+            type: string
+          type: array
+        type:
+          enum:
+          - ids-type
+          type: string
+      required:
+      - operator
+      - type
+      additionalProperties: false
+      type: object
+    AttributeRuleConfiguration:
+      additionalProperties:
+        $ref: '#/components/schemas/AttributeRule'
+      type: object
+    FilterTagNameConfig:
+      properties:
+        id:
+          type: string
+        operator:
+          type: string
+          enum:
+          - has one that begins with
+          - has one that ends with
+        value:
+          type: string
+        type:
+          enum:
+          - tag-name
+          type: string
+      required:
+      - operator
+      - type
+      additionalProperties: false
+      type: object
+    AccessGroupSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the group.
+          format: uuid
+        name:
+          type: string
+          description: The name of the group.
+        description:
+          type: string
+          nullable: true
+          description: The description of the group.
+      required:
+      - id
+      - name
+    FilterAllowAllConfig:
+      properties:
+        type:
+          enum:
+          - allow-all
+          type: string
+      required:
+      - type
+      additionalProperties: false
+      type: object
+    FilterPipelineConfig:
+      properties:
+        id:
+          type: string
+        operator:
+          type: string
+          enum:
+          - is
+          - is not
+        value:
+          items:
+            type: string
+          type: array
+        type:
+          enum:
+          - pipeline
+          type: string
+      required:
+      - operator
+      - type
+      additionalProperties: false
+      type: object
     FilterLabelConfig:
       properties:
         id:
@@ -653,49 +672,30 @@ components:
       - label
       additionalProperties: false
       type: object
-    FilterIDSConfig:
+    FilterFilePathConfig:
       properties:
         id:
           type: string
         operator:
           type: string
           enum:
+          - contains
+          - does not contain
           - is
           - is not
+          - begins with
+          - ends with
         value:
-          items:
-            type: string
-          type: array
+          type: string
         type:
           enum:
-          - ids
+          - file-path
           type: string
       required:
       - operator
       - type
       additionalProperties: false
-      type: object
-    FilterPipelineConfig:
-      properties:
-        id:
-          type: string
-        operator:
-          type: string
-          enum:
-          - is
-          - is not
-        value:
-          items:
-            type: string
-          type: array
-        type:
-          enum:
-          - pipeline
-          type: string
-      required:
-      - operator
-      - type
-      additionalProperties: false
+      title: FilterFilePathConfig
       type: object
   securitySchemes:
     token:

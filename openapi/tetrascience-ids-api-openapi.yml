@@ -164,98 +164,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/IdsObjectList'
 components:
-  responses:
-    200Relationships:
-      description: Successfully fetched Relationships
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Relationships'
-    200IdsObjectList:
-      description: Successfully fetched IdsObject list
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/IdsObjectList'
-    200IdsObject:
-      description: Successfully fetched IdsObject
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/IdsObject'
-    200Labels:
-      description: Successfully fetched Labels
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/LabelList'
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
-    200File:
-      description: Successfully fetched file
-      content:
-        application/json:
-          schema:
-            oneOf:
-            - type: object
-              properties:
-                url:
-                  type: string
-              required:
-              - url
-              additionalProperties: false
-            - type: object
-              properties:
-                content:
-                  description: Content of the file.  Could be any type
-                  format: unknown
-              required:
-              - content
-              additionalProperties: false
-            example:
-              content: '# README Contents
-
-
-                * item 1
-
-                * item 2
-
-                * item 3'
   schemas:
-    Relationships:
+    SupportedPlatformVersion:
       type: object
+      nullable: true
       properties:
-        ids:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        taskScripts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        protocols:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        connectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-      additionalProperties: false
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
     LabelList:
       type: array
       items:
@@ -274,9 +193,6 @@ components:
         value: value1
       - name: another-label
         value: another-value
-    ArtifactNamespace:
-      type: string
-      pattern: ^(common|(private|client)-).*$
     ArtifactObjectBase:
       type: object
       properties:
@@ -310,41 +226,6 @@ components:
       - version
       - createdAt
       - lastUpdatedAt
-    Key:
-      type: object
-      properties:
-        type:
-          type: string
-        namespace:
-          $ref: '#/components/schemas/ArtifactNamespace'
-        slug:
-          type: string
-        version:
-          type: string
-      required:
-      - type
-      - namespace
-      - slug
-      - version
-      example:
-        type: ids
-        namespace: common
-        slug: akta
-        version: v1.1.0
-    SupportedPlatformVersion:
-      type: object
-      nullable: true
-      properties:
-        minPlatformVersion:
-          type: string
-          nullable: false
-        maxPlatformVersion:
-          type: string
-          nullable: true
-    IdsObjectList:
-      type: array
-      items:
-        $ref: '#/components/schemas/IdsObject'
     IdsObject:
       allOf:
       - $ref: '#/components/schemas/ArtifactObjectBase'
@@ -375,6 +256,13 @@ components:
         - v1.3.0
         - v1.2.0
         - v1.0.0
+    ArtifactNamespace:
+      type: string
+      pattern: ^(common|(private|client)-).*$
+    IdsObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/IdsObject'
     IdsFileSlug:
       type: string
       enum:
@@ -388,56 +276,122 @@ components:
       - schema
       - source
       - mapping
+    Relationships:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        taskScripts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        protocols:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        connectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+      additionalProperties: false
+    Key:
+      type: object
+      properties:
+        type:
+          type: string
+        namespace:
+          $ref: '#/components/schemas/ArtifactNamespace'
+        slug:
+          type: string
+        version:
+          type: string
+      required:
+      - type
+      - namespace
+      - slug
+      - version
+      example:
+        type: ids
+        namespace: common
+        slug: akta
+        version: v1.1.0
+  responses:
+    200IdsObjectList:
+      description: Successfully fetched IdsObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IdsObjectList'
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    200IdsObject:
+      description: Successfully fetched IdsObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IdsObject'
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+    200File:
+      description: Successfully fetched file
+      content:
+        application/json:
+          schema:
+            oneOf:
+            - type: object
+              properties:
+                url:
+                  type: string
+              required:
+              - url
+              additionalProperties: false
+            - type: object
+              properties:
+                content:
+                  description: Content of the file.  Could be any type
+                  format: unknown
+              required:
+              - content
+              additionalProperties: false
+            example:
+              content: '# README Contents
+
+
+                * item 1
+
+                * item 2
+
+                * item 3'
+    200Relationships:
+      description: Successfully fetched Relationships
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Relationships'
   parameters:
     LatestOnlyQuery:
       description: Only return the latest version of each artifact
       name: latest_only
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
-    ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
-      in: path
-      name: namespace
-      required: true
-      schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
-    LimitQuery:
-      name: limit
-      in: query
-      description: The maximum number of results to return
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-    IdsFileSlugParam:
-      name: fileSlug
-      description: File slug corresponding to file within an IDS
-      required: true
-      in: path
-      schema:
-        $ref: '#/components/schemas/IdsFileSlug'
-      example: build
-    DownloadQuery:
-      name: download
-      in: query
-      description: If set to true, return a download url
-      required: false
-      schema:
-        type: boolean
-    IncludePrereleasesQuery:
-      description: Include prerelease artifacts in search
-      name: include_prereleases
       in: query
       required: false
       schema:
@@ -455,6 +409,21 @@ components:
         - client
         - private
       example: client
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
+    IdsFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within an IDS
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/IdsFileSlug'
+      example: build
     ArtifactSlug:
       description: Artifact slug
       name: slug
@@ -463,6 +432,14 @@ components:
       schema:
         type: string
       example: demo-slug
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        minimum: 1
     ArtifactVersion:
       description: Artifact version
       name: version
@@ -472,6 +449,29 @@ components:
         type: string
         pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
       example: v1.0.0
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
   securitySchemes:
     token:
       type: apiKey

@@ -242,21 +242,28 @@ paths:
           description: Service Unavailable
 components:
   schemas:
-    DataAppProviderSecret:
+    PaginatedDataAppProvider:
       type: object
       properties:
-        name:
-          type: string
-        value:
-          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataAppProvider'
+        count:
+          type: integer
+    DataAppProviderTemplate:
+      type: object
+      properties:
         type:
           type: string
-        required:
-          type: boolean
-        arn:
+        name:
           type: string
-        envName:
+        iconUrl:
           type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataAppProviderTemplateField'
     DataAppProviderTemplateField:
       type: object
       properties:
@@ -268,15 +275,6 @@ components:
           type: string
         required:
           type: boolean
-    PaginatedDataAppProvider:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataAppProvider'
-        count:
-          type: integer
     DataAppProvider:
       type: object
       properties:
@@ -304,19 +302,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataAppProviderSecret'
-    DataAppProviderTemplate:
+    DataAppProviderSecret:
       type: object
       properties:
-        type:
-          type: string
         name:
           type: string
-        iconUrl:
+        value:
           type: string
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataAppProviderTemplateField'
+        type:
+          type: string
+        required:
+          type: boolean
+        arn:
+          type: string
+        envName:
+          type: string
   securitySchemes:
     token:
       type: apiKey

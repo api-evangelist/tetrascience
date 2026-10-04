@@ -164,116 +164,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TaskScriptObjectList'
 components:
-  responses:
-    200Relationships:
-      description: Successfully fetched Relationships
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Relationships'
-    200TaskScriptObjectList:
-      description: Successfully fetched TaskScriptObject list
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TaskScriptObjectList'
-    200Labels:
-      description: Successfully fetched Labels
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/LabelList'
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
-    200TaskScriptObject:
-      description: Successfully fetched TaskScriptObject
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TaskScriptObject'
-    200File:
-      description: Successfully fetched file
-      content:
-        application/json:
-          schema:
-            oneOf:
-            - type: object
-              properties:
-                url:
-                  type: string
-              required:
-              - url
-              additionalProperties: false
-            - type: object
-              properties:
-                content:
-                  description: Content of the file.  Could be any type
-                  format: unknown
-              required:
-              - content
-              additionalProperties: false
-            example:
-              content: '# README Contents
-
-
-                * item 1
-
-                * item 2
-
-                * item 3'
   schemas:
-    Relationships:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        taskScripts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        protocols:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        connectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-      additionalProperties: false
-    LabelList:
-      type: array
-      items:
-        type: object
-        properties:
-          name:
-            type: string
-          value:
-            type: string
-        required:
-        - name
-        - value
-        additionalProperties: false
-      example:
-      - name: label1
-        value: value1
-      - name: another-label
-        value: another-value
     TaskScriptObject:
       allOf:
       - $ref: '#/components/schemas/ArtifactObjectBase'
@@ -309,13 +200,34 @@ components:
         - v1.0.9
         - v1.0.5
         - v0.0.3
-    ArtifactNamespace:
-      type: string
-      pattern: ^(common|(private|client)-).*$
-    TaskScriptObjectList:
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
+    LabelList:
       type: array
       items:
-        $ref: '#/components/schemas/TaskScriptObject'
+        type: object
+        properties:
+          name:
+            type: string
+          value:
+            type: string
+        required:
+        - name
+        - value
+        additionalProperties: false
+      example:
+      - name: label1
+        value: value1
+      - name: another-label
+        value: another-value
     ArtifactObjectBase:
       type: object
       properties:
@@ -349,6 +261,33 @@ components:
       - version
       - createdAt
       - lastUpdatedAt
+    TaskScriptObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TaskScriptObject'
+    ArtifactNamespace:
+      type: string
+      pattern: ^(common|(private|client)-).*$
+    Relationships:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        taskScripts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        protocols:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        connectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+      additionalProperties: false
     Key:
       type: object
       properties:
@@ -378,55 +317,7 @@ components:
       - manifest
       - readme
       - source
-    SupportedPlatformVersion:
-      type: object
-      nullable: true
-      properties:
-        minPlatformVersion:
-          type: string
-          nullable: false
-        maxPlatformVersion:
-          type: string
-          nullable: true
   parameters:
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
-    ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
-      in: path
-      name: namespace
-      required: true
-      schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
-    LimitQuery:
-      name: limit
-      in: query
-      description: The maximum number of results to return
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-    DownloadQuery:
-      name: download
-      in: query
-      description: If set to true, return a download url
-      required: false
-      schema:
-        type: boolean
     TaskScriptFileSlugParam:
       name: fileSlug
       description: File slug corresponding to file within a task-script
@@ -435,9 +326,9 @@ components:
       schema:
         $ref: '#/components/schemas/TaskScriptFileSlug'
       example: build
-    IncludePrereleasesQuery:
-      description: Include prerelease artifacts in search
-      name: include_prereleases
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
       in: query
       required: false
       schema:
@@ -455,6 +346,13 @@ components:
         - client
         - private
       example: client
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
     ArtifactSlug:
       description: Artifact slug
       name: slug
@@ -463,6 +361,14 @@ components:
       schema:
         type: string
       example: demo-slug
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        minimum: 1
     ArtifactVersion:
       description: Artifact version
       name: version
@@ -472,6 +378,100 @@ components:
         type: string
         pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
       example: v1.0.0
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
+  responses:
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    200TaskScriptObjectList:
+      description: Successfully fetched TaskScriptObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TaskScriptObjectList'
+    200TaskScriptObject:
+      description: Successfully fetched TaskScriptObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TaskScriptObject'
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+    200File:
+      description: Successfully fetched file
+      content:
+        application/json:
+          schema:
+            oneOf:
+            - type: object
+              properties:
+                url:
+                  type: string
+              required:
+              - url
+              additionalProperties: false
+            - type: object
+              properties:
+                content:
+                  description: Content of the file.  Could be any type
+                  format: unknown
+              required:
+              - content
+              additionalProperties: false
+            example:
+              content: '# README Contents
+
+
+                * item 1
+
+                * item 2
+
+                * item 3'
+    200Relationships:
+      description: Successfully fetched Relationships
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Relationships'
   securitySchemes:
     token:
       type: apiKey

@@ -90,50 +90,6 @@ paths:
                 $ref: '#/components/schemas/HubDetailsDto'
 components:
   schemas:
-    HubConnectorDto:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        artifact:
-          $ref: '#/components/schemas/ArtifactDto'
-        hostType:
-          type: string
-          description: The type of host the Connector is running on.
-          enum:
-          - cloud
-          - hub
-        health:
-          type: string
-        healthErrorCode:
-          type: string
-        operatingStatus:
-          type: string
-        networkStatus:
-          type: string
-        lastSeenAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - name
-      - artifact
-      - hostType
-      - health
-      - healthErrorCode
-      - operatingStatus
-      - networkStatus
-      - lastSeenAt
-      - updatedAt
-      - createdAt
     HubsResponse:
       type: object
       properties:
@@ -248,6 +204,64 @@ components:
       - updatedAt
       - createdAt
       - activationExpiresAt
+    HubConnectorDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        artifact:
+          $ref: '#/components/schemas/ArtifactDto'
+        hostType:
+          type: string
+          description: The type of host the Connector is running on.
+          enum:
+          - cloud
+          - hub
+        health:
+          type: string
+        healthErrorCode:
+          type: string
+        operatingStatus:
+          type: string
+        networkStatus:
+          type: string
+        lastSeenAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - artifact
+      - hostType
+      - health
+      - healthErrorCode
+      - operatingStatus
+      - networkStatus
+      - lastSeenAt
+      - updatedAt
+      - createdAt
+    ArtifactDto:
+      type: object
+      properties:
+        namespace:
+          type: string
+        slug:
+          type: string
+        version:
+          type: string
+      required:
+      - namespace
+      - slug
+      - version
+      - manifest
     HubStatusDto:
       type: object
       properties:
@@ -500,40 +514,6 @@ components:
       - proxies
       - metrics
       - health
-    ArtifactDto:
-      type: object
-      properties:
-        namespace:
-          type: string
-        slug:
-          type: string
-        version:
-          type: string
-      required:
-      - namespace
-      - slug
-      - version
-      - manifest
-    HubHostDto:
-      type: object
-      properties:
-        ipAddress:
-          type: string
-          description: The Hub's IP address.
-        hostName:
-          type: string
-          description: The Hub's host name.
-        platformName:
-          type: string
-          description: The Hub's operating system name.
-        platformVersion:
-          type: string
-          description: The Hub's operating system version.
-      required:
-      - ipAddress
-      - hostName
-      - platformName
-      - platformVersion
     HubDetailsDto:
       type: object
       properties:
@@ -633,6 +613,26 @@ components:
       - ssmInstanceId
       - ecsContainerInstanceArn
       - connectors
+    HubHostDto:
+      type: object
+      properties:
+        ipAddress:
+          type: string
+          description: The Hub's IP address.
+        hostName:
+          type: string
+          description: The Hub's host name.
+        platformName:
+          type: string
+          description: The Hub's operating system name.
+        platformVersion:
+          type: string
+          description: The Hub's operating system version.
+      required:
+      - ipAddress
+      - hostName
+      - platformName
+      - platformVersion
   securitySchemes:
     token:
       type: apiKey
