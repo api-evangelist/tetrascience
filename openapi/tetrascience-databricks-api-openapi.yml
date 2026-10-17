@@ -104,13 +104,6 @@ components:
             error: Bad Request
             message: Invalid parameters provided.
   schemas:
-    DatabricksClusterObject:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     DatabricksClusterPolicy:
       type: object
       required:
@@ -126,6 +119,13 @@ components:
         description:
           type: string
           description: Description of the cluster policy
+    DatabricksClusterObject:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
   securitySchemes:
     token:
       type: apiKey

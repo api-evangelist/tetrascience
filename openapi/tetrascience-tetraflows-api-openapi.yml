@@ -171,22 +171,21 @@ paths:
           $ref: '#/components/responses/404Any'
 components:
   parameters:
-    TetraflowFileSlugParam:
-      name: fileSlug
-      description: File slug corresponding to file within a tetraflow
-      required: true
-      in: path
-      schema:
-        $ref: '#/components/schemas/TetraflowFileSlug'
-      example: build
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
+    ValueQuery:
+      name: value
       in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
       required: false
       schema:
-        type: boolean
-      example: true
+        type: integer
+        minimum: 1
     ArtifactNamespaceTypeQuery:
       description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
       name: namespace_type
@@ -199,13 +198,6 @@ components:
         - client
         - private
       example: client
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
     ArtifactSlug:
       description: Artifact slug
       name: slug
@@ -214,14 +206,6 @@ components:
       schema:
         type: string
       example: demo-slug
-    LimitQuery:
-      name: limit
-      in: query
-      description: The maximum number of results to return
-      required: false
-      schema:
-        type: integer
-        minimum: 1
     ArtifactVersion:
       description: Artifact version
       name: version
@@ -231,6 +215,14 @@ components:
         type: string
         pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
       example: v1.0.0
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
     DownloadQuery:
       name: download
       in: query
@@ -254,6 +246,87 @@ components:
       schema:
         $ref: '#/components/schemas/ArtifactNamespace'
       example: common
+    TetraflowFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within a tetraflow
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/TetraflowFileSlug'
+      example: build
+  responses:
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+    200TetraflowObjectList:
+      description: Successfully fetched TetraflowObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TetraflowObjectList'
+    200TetraflowObject:
+      description: Successfully fetched TetraflowObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TetraflowObject'
+    200TetraflowFileSlugList:
+      description: Successfully fetched available Tetraflow file slugs
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/TetraflowFileSlug'
+    200File:
+      description: Successfully fetched file
+      content:
+        application/json:
+          schema:
+            oneOf:
+            - type: object
+              properties:
+                url:
+                  type: string
+              required:
+              - url
+              additionalProperties: false
+            - type: object
+              properties:
+                content:
+                  description: Content of the file.  Could be any type
+                  format: unknown
+              required:
+              - content
+              additionalProperties: false
+            example:
+              content: '# README Contents
+
+
+                * item 1
+
+                * item 2
+
+                * item 3'
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
   schemas:
     SupportedPlatformVersion:
       type: object
@@ -265,24 +338,20 @@ components:
         maxPlatformVersion:
           type: string
           nullable: true
-    LabelList:
+    TetraflowFileSlug:
+      type: string
+      enum:
+      - build
+      - manifest
+      - readme
+      - source
+      - protocol
+      - tetraflowYml
+      - generated
+    TetraflowObjectList:
       type: array
       items:
-        type: object
-        properties:
-          name:
-            type: string
-          value:
-            type: string
-        required:
-        - name
-        - value
-        additionalProperties: false
-      example:
-      - name: label1
-        value: value1
-      - name: another-label
-        value: another-value
+        $ref: '#/components/schemas/TetraflowObject'
     ArtifactObjectBase:
       type: object
       properties:
@@ -316,16 +385,6 @@ components:
       - version
       - createdAt
       - lastUpdatedAt
-    TetraflowFileSlug:
-      type: string
-      enum:
-      - build
-      - manifest
-      - readme
-      - source
-      - protocol
-      - tetraflowYml
-      - generated
     TetraflowObject:
       allOf:
       - $ref: '#/components/schemas/ArtifactObjectBase'
@@ -352,83 +411,24 @@ components:
     ArtifactNamespace:
       type: string
       pattern: ^(common|(private|client)-).*$
-    TetraflowObjectList:
+    LabelList:
       type: array
       items:
-        $ref: '#/components/schemas/TetraflowObject'
-  responses:
-    200TetraflowObject:
-      description: Successfully fetched TetraflowObject
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TetraflowObject'
-    200Labels:
-      description: Successfully fetched Labels
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/LabelList'
-    200TetraflowObjectList:
-      description: Successfully fetched TetraflowObject list
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TetraflowObjectList'
-    200TetraflowFileSlugList:
-      description: Successfully fetched available Tetraflow file slugs
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/TetraflowFileSlug'
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    200File:
-      description: Successfully fetched file
-      content:
-        application/json:
-          schema:
-            oneOf:
-            - type: object
-              properties:
-                url:
-                  type: string
-              required:
-              - url
-              additionalProperties: false
-            - type: object
-              properties:
-                content:
-                  description: Content of the file.  Could be any type
-                  format: unknown
-              required:
-              - content
-              additionalProperties: false
-            example:
-              content: '# README Contents
-
-
-                * item 1
-
-                * item 2
-
-                * item 3'
+        type: object
+        properties:
+          name:
+            type: string
+          value:
+            type: string
+        required:
+        - name
+        - value
+        additionalProperties: false
+      example:
+      - name: label1
+        value: value1
+      - name: another-label
+        value: another-value
   securitySchemes:
     token:
       type: apiKey

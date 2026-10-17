@@ -90,15 +90,6 @@ paths:
                 $ref: '#/components/schemas/HubDetailsDto'
 components:
   schemas:
-    HubsResponse:
-      type: object
-      properties:
-        hubs:
-          type: array
-          items:
-            $ref: '#/components/schemas/HubDto'
-      required:
-      - hubs
     HubDto:
       type: object
       properties:
@@ -204,6 +195,15 @@ components:
       - updatedAt
       - createdAt
       - activationExpiresAt
+    HubsResponse:
+      type: object
+      properties:
+        hubs:
+          type: array
+          items:
+            $ref: '#/components/schemas/HubDto'
+      required:
+      - hubs
     HubConnectorDto:
       type: object
       properties:
@@ -514,6 +514,26 @@ components:
       - proxies
       - metrics
       - health
+    HubHostDto:
+      type: object
+      properties:
+        ipAddress:
+          type: string
+          description: The Hub's IP address.
+        hostName:
+          type: string
+          description: The Hub's host name.
+        platformName:
+          type: string
+          description: The Hub's operating system name.
+        platformVersion:
+          type: string
+          description: The Hub's operating system version.
+      required:
+      - ipAddress
+      - hostName
+      - platformName
+      - platformVersion
     HubDetailsDto:
       type: object
       properties:
@@ -613,26 +633,6 @@ components:
       - ssmInstanceId
       - ecsContainerInstanceArn
       - connectors
-    HubHostDto:
-      type: object
-      properties:
-        ipAddress:
-          type: string
-          description: The Hub's IP address.
-        hostName:
-          type: string
-          description: The Hub's host name.
-        platformName:
-          type: string
-          description: The Hub's operating system name.
-        platformVersion:
-          type: string
-          description: The Hub's operating system version.
-      required:
-      - ipAddress
-      - hostName
-      - platformName
-      - platformVersion
   securitySchemes:
     token:
       type: apiKey

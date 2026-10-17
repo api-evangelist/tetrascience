@@ -171,6 +171,21 @@ paths:
           $ref: '#/components/responses/404Any'
 components:
   parameters:
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        minimum: 1
     AiWorkflowFileSlugParam:
       name: fileSlug
       description: File slug corresponding to file within an ai-workflow
@@ -179,14 +194,6 @@ components:
       schema:
         $ref: '#/components/schemas/AiWorkflowFileSlug'
       example: build
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
     ArtifactNamespaceTypeQuery:
       description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
       name: namespace_type
@@ -199,13 +206,6 @@ components:
         - client
         - private
       example: client
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
     ArtifactSlug:
       description: Artifact slug
       name: slug
@@ -214,14 +214,6 @@ components:
       schema:
         type: string
       example: demo-slug
-    LimitQuery:
-      name: limit
-      in: query
-      description: The maximum number of results to return
-      required: false
-      schema:
-        type: integer
-        minimum: 1
     ArtifactVersion:
       description: Artifact version
       name: version
@@ -231,6 +223,14 @@ components:
         type: string
         pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
       example: v1.0.0
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
     DownloadQuery:
       name: download
       in: query
@@ -254,6 +254,79 @@ components:
       schema:
         $ref: '#/components/schemas/ArtifactNamespace'
       example: common
+  responses:
+    404Any:
+      description: Not found or not visible to user
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Not Found
+            message: Subscription not found
+    400Any:
+      description: Incorrect input provided
+      content:
+        application/json:
+          schema: {}
+          example:
+            error: Bad Request
+            message: Invalid parameters provided.
+    200AiWorkflowFileSlugList:
+      description: Successfully fetched available AiWorkflow file slugs
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/AiWorkflowFileSlug'
+    200AiWorkflowObject:
+      description: Successfully fetched AiWorkflowObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AiWorkflowObject'
+    200File:
+      description: Successfully fetched file
+      content:
+        application/json:
+          schema:
+            oneOf:
+            - type: object
+              properties:
+                url:
+                  type: string
+              required:
+              - url
+              additionalProperties: false
+            - type: object
+              properties:
+                content:
+                  description: Content of the file.  Could be any type
+                  format: unknown
+              required:
+              - content
+              additionalProperties: false
+            example:
+              content: '# README Contents
+
+
+                * item 1
+
+                * item 2
+
+                * item 3'
+    200AiWorkflowObjectList:
+      description: Successfully fetched AiWorkflowObject list
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AiWorkflowObjectList'
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
   schemas:
     SupportedPlatformVersion:
       type: object
@@ -265,24 +338,29 @@ components:
         maxPlatformVersion:
           type: string
           nullable: true
-    LabelList:
-      type: array
-      items:
-        type: object
+    AiWorkflowObject:
+      allOf:
+      - $ref: '#/components/schemas/ArtifactObjectBase'
+      - type: object
         properties:
-          name:
+          type:
             type: string
-          value:
-            type: string
+            enum:
+            - ai-workflow
         required:
-        - name
-        - value
-        additionalProperties: false
+        - type
       example:
-      - name: label1
-        value: value1
-      - name: another-label
-        value: another-value
+        type: ai-workflow
+        namespace: private-test
+        slug: mlflow
+        version: v0.5.0
+        createdAt: '2024-04-25T15:15:34.269Z'
+        lastUpdatedAt: '2023-04-25T17:15:34.269Z'
+        name: MLflow workflow
+        description: An MLflow workflow
+        otherVersions:
+        - v0.1.0
+        - v0.5.0
     ArtifactObjectBase:
       type: object
       properties:
@@ -316,6 +394,13 @@ components:
       - version
       - createdAt
       - lastUpdatedAt
+    AiWorkflowObjectList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AiWorkflowObject'
+    ArtifactNamespace:
+      type: string
+      pattern: ^(common|(private|client)-).*$
     AiWorkflowFileSlug:
       type: string
       enum:
@@ -324,109 +409,24 @@ components:
       - readme
       - source
       - databricksYml
-    AiWorkflowObject:
-      allOf:
-      - $ref: '#/components/schemas/ArtifactObjectBase'
-      - type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - ai-workflow
-        required:
-        - type
-      example:
-        type: ai-workflow
-        namespace: private-test
-        slug: mlflow
-        version: v0.5.0
-        createdAt: '2024-04-25T15:15:34.269Z'
-        lastUpdatedAt: '2023-04-25T17:15:34.269Z'
-        name: MLflow workflow
-        description: An MLflow workflow
-        otherVersions:
-        - v0.1.0
-        - v0.5.0
-    AiWorkflowObjectList:
+    LabelList:
       type: array
       items:
-        $ref: '#/components/schemas/AiWorkflowObject'
-    ArtifactNamespace:
-      type: string
-      pattern: ^(common|(private|client)-).*$
-  responses:
-    200AiWorkflowFileSlugList:
-      description: Successfully fetched available AiWorkflow file slugs
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/AiWorkflowFileSlug'
-    200Labels:
-      description: Successfully fetched Labels
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/LabelList'
-    200AiWorkflowObjectList:
-      description: Successfully fetched AiWorkflowObject list
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AiWorkflowObjectList'
-    404Any:
-      description: Not found or not visible to user
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Not Found
-            message: Subscription not found
-    200AiWorkflowObject:
-      description: Successfully fetched AiWorkflowObject
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AiWorkflowObject'
-    400Any:
-      description: Incorrect input provided
-      content:
-        application/json:
-          schema: {}
-          example:
-            error: Bad Request
-            message: Invalid parameters provided.
-    200File:
-      description: Successfully fetched file
-      content:
-        application/json:
-          schema:
-            oneOf:
-            - type: object
-              properties:
-                url:
-                  type: string
-              required:
-              - url
-              additionalProperties: false
-            - type: object
-              properties:
-                content:
-                  description: Content of the file.  Could be any type
-                  format: unknown
-              required:
-              - content
-              additionalProperties: false
-            example:
-              content: '# README Contents
-
-
-                * item 1
-
-                * item 2
-
-                * item 3'
+        type: object
+        properties:
+          name:
+            type: string
+          value:
+            type: string
+        required:
+        - name
+        - value
+        additionalProperties: false
+      example:
+      - name: label1
+        value: value1
+      - name: another-label
+        value: another-value
   securitySchemes:
     token:
       type: apiKey

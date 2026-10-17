@@ -170,33 +170,97 @@ paths:
         '404':
           $ref: '#/components/responses/404Any'
 components:
+  parameters:
+    ValueQuery:
+      name: value
+      in: query
+      description: The search string
+      required: true
+      schema:
+        type: string
+    LimitQuery:
+      name: limit
+      in: query
+      description: The maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    ArtifactNamespaceTypeQuery:
+      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
+      name: namespace_type
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - common
+        - client
+        - private
+      example: client
+    ArtifactSlug:
+      description: Artifact slug
+      name: slug
+      in: path
+      required: true
+      schema:
+        type: string
+      example: demo-slug
+    ArtifactVersion:
+      description: Artifact version
+      name: version
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
+      example: v1.0.0
+    LatestOnlyQuery:
+      description: Only return the latest version of each artifact
+      name: latest_only
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    DownloadQuery:
+      name: download
+      in: query
+      description: If set to true, return a download url
+      required: false
+      schema:
+        type: boolean
+    ArtifactNamespace:
+      description: Artifact namespace. Should be common, private-*, or client-*
+      in: path
+      name: namespace
+      required: true
+      schema:
+        $ref: '#/components/schemas/ArtifactNamespace'
+      example: common
+    IncludePrereleasesQuery:
+      description: Include prerelease artifacts in search
+      name: include_prereleases
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
+    TetrasphereFileSlugParam:
+      name: fileSlug
+      description: File slug corresponding to file within a tetrasphere
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/TetrasphereFileSlug'
+      example: build
   responses:
-    200TetrasphereObject:
-      description: Successfully fetched TetrasphereObject
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TetrasphereObject'
-    200TetrasphereFileSlugList:
-      description: Successfully fetched available Tetrasphere file slugs
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/TetrasphereFileSlug'
     200TetrasphereObjectList:
       description: Successfully fetched TetrasphereObject list
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/TetrasphereObjectList'
-    200Labels:
-      description: Successfully fetched Labels
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/LabelList'
     404Any:
       description: Not found or not visible to user
       content:
@@ -205,6 +269,12 @@ components:
           example:
             error: Not Found
             message: Subscription not found
+    200TetrasphereObject:
+      description: Successfully fetched TetrasphereObject
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TetrasphereObject'
     400Any:
       description: Incorrect input provided
       content:
@@ -213,6 +283,14 @@ components:
           example:
             error: Bad Request
             message: Invalid parameters provided.
+    200TetrasphereFileSlugList:
+      description: Successfully fetched available Tetrasphere file slugs
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/TetrasphereFileSlug'
     200File:
       description: Successfully fetched file
       content:
@@ -243,7 +321,31 @@ components:
                 * item 2
 
                 * item 3'
+    200Labels:
+      description: Successfully fetched Labels
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LabelList'
   schemas:
+    SupportedPlatformVersion:
+      type: object
+      nullable: true
+      properties:
+        minPlatformVersion:
+          type: string
+          nullable: false
+        maxPlatformVersion:
+          type: string
+          nullable: true
+    TetrasphereFileSlug:
+      type: string
+      enum:
+      - build
+      - manifest
+      - readme
+      - source
+      - distZip
     TetrasphereObject:
       allOf:
       - $ref: '#/components/schemas/ArtifactObjectBase'
@@ -267,34 +369,6 @@ components:
         otherVersions:
         - v0.1.0
         - v0.5.0
-    SupportedPlatformVersion:
-      type: object
-      nullable: true
-      properties:
-        minPlatformVersion:
-          type: string
-          nullable: false
-        maxPlatformVersion:
-          type: string
-          nullable: true
-    LabelList:
-      type: array
-      items:
-        type: object
-        properties:
-          name:
-            type: string
-          value:
-            type: string
-        required:
-        - name
-        - value
-        additionalProperties: false
-      example:
-      - name: label1
-        value: value1
-      - name: another-label
-        value: another-value
     ArtifactObjectBase:
       type: object
       properties:
@@ -328,105 +402,31 @@ components:
       - version
       - createdAt
       - lastUpdatedAt
+    ArtifactNamespace:
+      type: string
+      pattern: ^(common|(private|client)-).*$
+    LabelList:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          value:
+            type: string
+        required:
+        - name
+        - value
+        additionalProperties: false
+      example:
+      - name: label1
+        value: value1
+      - name: another-label
+        value: another-value
     TetrasphereObjectList:
       type: array
       items:
         $ref: '#/components/schemas/TetrasphereObject'
-    TetrasphereFileSlug:
-      type: string
-      enum:
-      - build
-      - manifest
-      - readme
-      - source
-      - distZip
-    ArtifactNamespace:
-      type: string
-      pattern: ^(common|(private|client)-).*$
-  parameters:
-    TetrasphereFileSlugParam:
-      name: fileSlug
-      description: File slug corresponding to file within a tetrasphere
-      required: true
-      in: path
-      schema:
-        $ref: '#/components/schemas/TetrasphereFileSlug'
-      example: build
-    LatestOnlyQuery:
-      description: Only return the latest version of each artifact
-      name: latest_only
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ArtifactNamespaceTypeQuery:
-      description: Namespace type of artifacts to be returned ('common', 'client', or 'private')
-      name: namespace_type
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-        - common
-        - client
-        - private
-      example: client
-    ValueQuery:
-      name: value
-      in: query
-      description: The search string
-      required: true
-      schema:
-        type: string
-    ArtifactSlug:
-      description: Artifact slug
-      name: slug
-      in: path
-      required: true
-      schema:
-        type: string
-      example: demo-slug
-    LimitQuery:
-      name: limit
-      in: query
-      description: The maximum number of results to return
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-    ArtifactVersion:
-      description: Artifact version
-      name: version
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^v(\d+|x)\.(\d+|x)\.(\d+|x)(-.*)?$
-      example: v1.0.0
-    DownloadQuery:
-      name: download
-      in: query
-      description: If set to true, return a download url
-      required: false
-      schema:
-        type: boolean
-    IncludePrereleasesQuery:
-      description: Include prerelease artifacts in search
-      name: include_prereleases
-      in: query
-      required: false
-      schema:
-        type: boolean
-      example: true
-    ArtifactNamespace:
-      description: Artifact namespace. Should be common, private-*, or client-*
-      in: path
-      name: namespace
-      required: true
-      schema:
-        $ref: '#/components/schemas/ArtifactNamespace'
-      example: common
   securitySchemes:
     token:
       type: apiKey
